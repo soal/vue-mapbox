@@ -6,35 +6,31 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "./dist"),
     publicPath: "/dist/",
-    filename: "vue-mapbox.js"
+    filename: "vue-mapbox.min.js",
+    // library: "vue-mapbox",
+    libraryTarget: "umd"
   },
+  externals: ["vue", "mapbox-gl"],
   module: {
     rules: [
       {
         test: /\.vue$/,
         loader: "vue-loader",
-        options: {
-          loaders: {
+        // options: {
+          // loaders: {
             // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
             // the "scss" and "sass" values for the lang attribute to the right configs here.
             // other preprocessors should work out of the box, no loader config like this necessary.
-            "scss": "vue-style-loader!css-loader!sass-loader",
-            "sass": "vue-style-loader!css-loader!sass-loader?indentedSyntax"
-          }
+            // "scss": "vue-style-loader!css-loader!sass-loader",
+            // "sass": "vue-style-loader!css-loader!sass-loader?indentedSyntax"
+          // }
           // other vue-loader options go here
-        }
+        // }
       },
       {
         test: /\.js$/,
         loader: "babel-loader",
         exclude: /node_modules/
-      },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: "file-loader",
-        options: {
-          name: "[name].[ext]?[hash]"
-        }
       }
     ]
   },
@@ -43,18 +39,9 @@ module.exports = {
       "vue$": "vue/dist/vue.esm.js"
     }
   },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: false,
-    compress: false,
-    host: "0.0.0.0",
-    https: false,
-    stats: "minimal"
-  },
   performance: {
     hints: false
-  },
-  devtool: "#eval-source-map"
+  }
 };
 
 if (process.env.NODE_ENV === "production") {

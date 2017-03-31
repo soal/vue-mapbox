@@ -51,7 +51,7 @@ const events = [
   "pitch"
 ];
 
-const props = {
+var props = {
   accessToken: {
     type: String,
     default: null
@@ -67,7 +67,7 @@ const props = {
   style: {
     type: [String, Object],
     required: true,
-    default: null
+    default() { return null; }
   },
   hash: {
     type: Boolean,
@@ -83,7 +83,7 @@ const props = {
   },
   classes: {
     type: Array,
-    default: []
+    default() { return []; }
   },
   attributionControl: {
     type: Boolean,
@@ -107,11 +107,11 @@ const props = {
   },
   maxBounds: {
     type: Array,
-    default: null
+    default() { return []; }
   },
   scrollZoom: {
     type: [Boolean, Object],
-    default: true
+    default() { return true; }
   },
   boxZoom: {
     type: Boolean,
@@ -135,7 +135,7 @@ const props = {
   },
   touchZoomRotate: {
     type: [Boolean, Object],
-    default: true
+    default() { return true; }
   },
   trackResize: {
     type: Boolean,
@@ -143,7 +143,7 @@ const props = {
   },
   center: {
     type: Array,
-    default: [0, 0]
+    default() { return [0, 0]; }
   },
   zoom: {
     type: Number,
@@ -155,7 +155,7 @@ const props = {
   },
   pitch: {
     type: Number,
-    default: true
+    default: 0
   },
   renderWorldCopies: {
     type: Boolean,
@@ -164,6 +164,7 @@ const props = {
 };
 
 export default {
+  name: "GlMap",
   props: props,
 
   mounted() {
@@ -175,9 +176,11 @@ export default {
   methods: {
     loadMap() {
       return new Promise((resolve) => {
-        if (this.props.accessToken) M.accessToken = this.props.accessToken;
+        console.log(this);
+        console.log("PORPS:", this._props);
+        if (this.accessToken) M.accessToken = this.accessToken;
 
-        let map = new M.Map({ container: "#map", ...this.props });
+        let map = new M.Map({ container: "#map", ...this._props });
 
         map.on("load", () => resolve(map));
       });

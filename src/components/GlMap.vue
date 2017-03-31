@@ -184,7 +184,7 @@
 
     mounted() {
       this.loadMap().then(map => {
-        this.$emit("mbx-load", map);
+        this.$emit("mgl-load", map);
       });
     },
 

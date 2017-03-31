@@ -2,9 +2,9 @@
   "name": "vue-mapbox",
   "version": "0.0.10",
   "description": "Vuejs 2 components for interacting with mapbox-gj-js ",
-  "main": "dist/vue-mapbox.js",
-  "module": "dist/vue-mapbox.js",
-  "unpkg": "dist/vue-mapbox.js",
+  "main": "dist/vue-mapbox.min.js",
+  "module": "dist/vue-mapbox.min.js",
+  "unpkg": "dist/vue-mapbox.min.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --progress",
     "test": "echo \"Error: no test specified\" && exit 1"

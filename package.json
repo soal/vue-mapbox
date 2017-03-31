@@ -1,0 +1,54 @@
+{
+  "name": "vue-mapbox",
+  "version": "0.0.10",
+  "description": "Vuejs 2 components for interacting with mapbox-gj-js ",
+  "main": "dist/vue-mapbox.js",
+  "module": "dist/vue-mapbox.js",
+  "unpkg": "dist/vue-mapbox.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soal/vue-mapbox.git"
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "mapbox",
+    "mapbox-gl-js"
+  ],
+  "author": "soal <sorrow.about.alice@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/soal/vue-mapbox/issues"
+  },
+  "homepage": "https://github.com/soal/vue-mapbox#readme",
+  "dependencies": {
+    "mapbox-gl": "^0.34.0",
+    "vue": "^2.2.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-latest": "^6.0.0",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "eslint": "^3.18.0",
+    "eslint-config-vue": "^2.0.2",
+    "eslint-plugin-html": "^2.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-vue": "^2.0.1",
+    "express": "^4.15.2",
+    "express-history-api-fallback": "^2.1.0",
+    "file-loader": "^0.9.0",
+    "node-sass": "^4.5.0",
+    "pug": "^2.0.0-beta11",
+    "sass-loader": "^5.0.1",
+    "vue-loader": "^11.1.4",
+    "vue-template-compiler": "^2.2.1",
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0"
+  }
+}

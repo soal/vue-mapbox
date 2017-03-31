@@ -1,1 +1,1 @@
-exports.Map = require("./components/Map.vue");
+exports.GlMap = require("./components/GlMap.vue");

@@ -35,7 +35,7 @@ export default {
   },
   classes: {
     type: Array,
-    default () {
+    default() {
       return [];
     }
   },
@@ -61,13 +61,13 @@ export default {
   },
   maxBounds: {
     type: Array,
-    default () {
+    default() {
       return undefined;
     }
   },
   scrollZoom: {
     type: [Boolean, Object],
-    default () {
+    default() {
       return true;
     }
   },
@@ -93,7 +93,7 @@ export default {
   },
   touchZoomRotate: {
     type: [Boolean, Object],
-    default () {
+    default() {
       return true;
     }
   },
@@ -103,7 +103,7 @@ export default {
   },
   center: {
     type: Array,
-    default () {
+    default() {
       return [0, 0];
     }
   },

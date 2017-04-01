@@ -1,6 +1,6 @@
-# vue-mapbox
+# vue-mapbox [WIP]
 Vuejs 2 components for interacting with mapbox-gj-js
-
+## Project on initial state and not suitabal for any purpose for now.
 # Installation
 
 ```

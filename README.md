@@ -7,4 +7,4 @@ Vuejs 2 components for interacting with mapbox-gj-js
 ```
 npm install vue-mapbox
 ```
-Inspired by KoRiGaN's [Vue2Leaflet](https://github.com/KoRiGaN/Vue2Leaflet) library for Vue and Leaflet.
+Inspired by KoRiGaN's [Vue2Leaflet](https://github.com/KoRiGaN/Vue2Leaflet).

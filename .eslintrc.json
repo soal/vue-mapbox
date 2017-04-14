@@ -66,7 +66,7 @@
     "linebreak-style": [2, "unix"],
     "semi": [2, "always"],
     "dot-location": [1, "property"],
-    "quotes": [1, "double", "avoid-escape"],
+    "quotes": [1, "single", "avoid-escape"],
     "no-unused-vars": [1, { "vars": "all", "args": "after-used" }],
     "import/no-unresolved": [0, {"commonjs": true, "amd": true}],
 

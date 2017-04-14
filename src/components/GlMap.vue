@@ -5,19 +5,27 @@
 </template>
 
 <script>
-  import Vue from "vue";
-  import M from "mapbox-gl";
+  import M from 'mapbox-gl';
+  // import bus from './mapMessageBus';
 
-  import events from "../lib/events";
-  import props from "../lib/options";
+  // import events from '../lib/events';
+  import props from '../lib/options';
 
   export default {
-    name: "GlMap",
+    name: 'GlMap',
     props,
+
+    data() {
+      return {
+        map: undefined
+      };
+    },
 
     mounted() {
       this.loadMap().then(map => {
-        this.$emit("mgl-load", map);
+        this.map = map;
+        this.$emit('mgl-load', map);
+        // bus.$emit('mgl-load', map);
       });
     },
 
@@ -29,7 +37,7 @@
             ...this._props,
             style: this.mapStyle
           });
-          map.on("load", () => resolve(map));
+          map.on('load', () => resolve(map));
         });
       }
     }

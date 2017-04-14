@@ -2,7 +2,7 @@ export default {
   container: {
     type: [String, HTMLElement],
     default () {
-      return "map";
+      return 'map';
     }
   },
   accessToken: {
@@ -45,7 +45,7 @@ export default {
   },
   logoPosition: {
     type: String,
-    default: "bottom-left"
+    default: 'bottom-left'
   },
   failIfMajorPerformanceCaveat: {
     type: Boolean,

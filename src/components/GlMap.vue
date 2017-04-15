@@ -6,7 +6,7 @@
 
 <script>
   import M from 'mapbox-gl';
-  // import bus from './mapMessageBus';
+  import bus from './mglMessageBus';
 
   // import events from '../lib/events';
   import props from '../lib/options';
@@ -25,7 +25,7 @@
       this.loadMap().then(map => {
         this.map = map;
         this.$emit('mgl-load', map);
-        // bus.$emit('mgl-load', map);
+        bus.$emit('mgl-load', map);
       });
     },
 

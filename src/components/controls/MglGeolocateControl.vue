@@ -2,11 +2,16 @@
 
 <script>
   import M from 'mapbox-gl';
+  import bus from '../mglMessageBus';
 
   export default {
     name: 'MglGeolocateControl',
 
     props: {
+      position: {
+        type: String,
+        default: 'top-right'
+      },
       positionOptions: {
         type: Object,
         default() {
@@ -24,41 +29,35 @@
 
     data() {
       return {
-        control: undefined
+        control: undefined,
+        map: undefined
       };
     },
 
     created() {
       this.control = new M.GeolocateControl(this._props);
-      this.$parent.$once('mgl-load', map => {
-        this.deferredMount(map)
-      });
 
       this.control.on('error', err => {
         this.$emit('geolocate-error', err);
+        bus.$emit('geolocate-error', err);
       });
       this.control.on('geolocate', position => {
         this.$emit('geolocate', position);
+        bus.$emit('geolocate-error', position);
       })
-    },
-
-    mounted() {
-      if (this.$parent._isMounted && this.$parent.map) {
-        this.deferredMount(this.$parent.map);
-      }
+      bus.$on('mgl-load', this.deferredMount);
     },
 
     beforeDestroy() {
-      this.$parent.map.removeControl(this.control);
+      this.map.removeControl(this.control);
     },
 
     methods: {
       deferredMount(map) {
-        if (this.control !== undefined) {
-          map.addControl(this.control);
-          this.$emit('mgl-geolocate-control-added', this.control);
-        }
-
+        this.map = map;
+        this.map.addControl(this.control);
+        this.$emit('mgl-geolocate-control-added', this.control);
+        bus.$emit('mgl-geolocate-control-added', this.control);
       }
     }
   };

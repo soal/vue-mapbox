@@ -2,6 +2,7 @@
 
 <script>
   import M from 'mapbox-gl';
+  import bus from '../mglMessageBus';
 
   export default {
     name: 'MglNavigationControl',
@@ -15,34 +16,26 @@
 
     data() {
       return {
-        control: undefined
+        control: undefined,
+        map: undefined
       };
     },
 
     created() {
       this.control = new M.NavigationControl();
-
-      this.$parent.$once('mgl-load', map => {
-        this.deferredMount(map)
-      });
-    },
-
-    mounted() {
-      if (this.$parent._isMounted && this.$parent.map) {
-        this.deferredMount(this.$parent.map);
-      }
+      bus.$on('mgl-load', this.deferredMount);
     },
 
     beforeDestroy() {
-      this.$parent.map.removeControl(this.control);
+      this.map.removeControl(this.control);
     },
 
     methods: {
       deferredMount(map) {
-        if (this.control !== undefined) {
-          map.addControl(this.control, this.position);
-          this.$emit('mgl-nav-control-added', this.control);
-        }
+        this.map = map;
+        this.map.addControl(this.control, this.position);
+        this.$emit('mgl-nav-control-added', this.control);
+        bus.$emit('mgl-nav-control-added', this.control);
       }
     }
   };

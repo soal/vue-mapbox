@@ -5,26 +5,31 @@
 
   export default {
     name: 'MglNavigationControl',
+
     props: {
       position: {
         type: String,
         default: 'top-right'
       }
     },
+
     data() {
       return {
         control: undefined
       };
     },
 
-    mounted() {
+    created() {
       this.control = new M.NavigationControl();
-      if (this.$parent._isMounted && this.$parent.map !== undefined) {
+
+      this.$parent.$once('mgl-load', map => {
+        this.deferredMount(map)
+      });
+    },
+
+    mounted() {
+      if (this.$parent._isMounted && this.$parent.map) {
         this.deferredMount(this.$parent.map);
-      } else {
-        this.$parent.$once('mgl-load', map => {
-          this.deferredMount(map);
-        });
       }
     },
 
@@ -34,8 +39,10 @@
 
     methods: {
       deferredMount(map) {
-        map.addControl(this.control, this.position);
-        this.$emit('mgl-nav-control-added', this.control);
+        if (this.control !== undefined) {
+          map.addControl(this.control, this.position);
+          this.$emit('mgl-nav-control-added', this.control);
+        }
       }
     }
   };

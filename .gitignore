@@ -39,3 +39,5 @@ jspm_packages
 
 *.sublime-*
 *.editorconfig
+
+*.map*

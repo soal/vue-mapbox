@@ -1,7 +1,6 @@
 <template></template>
 
 <script>
-  import M from 'mapbox-gl';
   // import { UIMixin } from '../mixins';
   import bus from '../mglMessageBus';
 
@@ -10,11 +9,40 @@
 
     props: {
       sourceId: {
-        type: String,
-        required: true
+        type: String
       },
       source: {
         type: [Object, String]
+      },
+
+      // mapbox layer style properties
+      layerId: {
+        type: String,
+        required: true
+      },
+      type: {
+        validator(value) {
+          let allowedValues = ['fill', 'line', 'symbol', 'circle', 'fill-extrusion', 'raster', 'background'];
+          return (typeof value === 'string' && allowedValues.indexOf(value) !== -1) || value === undefined;
+        },
+        default: 'fill'
+      },
+      metadata: Object,
+      refLayer: String,
+      'source-layer': String,
+      minzoom: Number,
+      maxzoom: Number,
+      filter: Object,
+      layout: Object,
+      paint: Object,
+
+      // mapbox layer options
+      before: Object,
+
+      // custom options for component
+      clearSource: {
+        type: Boolean,
+        default: true
       },
       hidden: {
         type: Boolean,
@@ -23,17 +51,6 @@
       force: {
         type: Boolean,
         default: false
-      },
-      layerId: {
-        type: String,
-        required: true
-      },
-      before: {
-        type: Object
-      },
-      clearSource: {
-        type: Boolean,
-        default: true
       }
     },
 
@@ -47,27 +64,29 @@
     mounted() {
       bus.$on('mgl-load', map => {
         this.map = map;
-
         this.map.on('dataloading', this.watchSourceLoading);
-        try {
-          this.map.addSource(this.sourceId, {
-            type: 'geojson',
-            data: this.source
-          })
-        } catch (err) {
-          if (this.force) {
-            this.map.removeSource(this.sourceId);
+        if (this.source) {
+          try {
             this.map.addSource(this.sourceId, {
               type: 'geojson',
               data: this.source
             })
-          } else {
-            this.$emit('layer-source-error', err);
-            bus.$emit('layer-source-error', err);
+          } catch (err) {
+            if (this.force) {
+              this.map.removeSource(this.sourceId);
+              this.map.addSource(this.sourceId, {
+                type: 'geojson',
+                data: this.source
+              })
+            } else {
+              this.$emit('layer-source-error', err);
+              bus.$emit('layer-source-error', err);
+            }
           }
-        } finally {
-          this.addLayer()
+        } else if (!this.ref) {
+          this.source = this.map.getSource(this.sourceId);
         }
+        this.addLayer()
 
       });
     },
@@ -90,13 +109,28 @@
       addLayer() {
         this.layer = {
           id: this.layerId,
-          source: this.sourceId,
-          type: 'fill',
-          layout: {
-            visibility: this.hidden ? 'none' : 'visible'
-          },
-          paint: { 'fill-color': `rgba(${12 * (this.layerId.length * 3)},153,80,0.55)` }
+          source: this.sourceId
         }
+        if (this.refLayer) {
+          this.layer.ref = this.refLayer;
+        } else {
+          this.layer.type = this.type ? this.type : 'fill'
+          this.layer.source = this.sourceId;
+          if (this['source-layer']) {
+            this.layout['source-layer'] = this['source-layer']
+          }
+          if (this.minzoom) this.layer.minzoom = this.minzoom
+          if (this.maxzoom) this.layer.maxzoom = this.maxzoom
+          if (this.layout) {
+            this.layer.layout = this.layout;
+          }
+          if (this.filter)  this.layer.filter = this.filter
+        }
+        this.layer.paint = this.paint
+                           ? this.paint
+                           : {'fill-color': `rgba(${12 * (this.layerId.length * 3)},153,80,0.55)` };
+        this.layer.metadata = this.metadata
+
         this.map.addLayer(this.layer, this.before);
         this.$emit('layer-added', this.layerId);
         bus.$emit('layer-added', this.layerId);

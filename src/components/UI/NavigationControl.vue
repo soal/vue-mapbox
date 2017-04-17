@@ -2,14 +2,15 @@
 
 <script>
   import M from 'mapbox-gl';
-  import bus from '../mglMessageBus';
+  import bus from '../../mglMessageBus';
 
   export default {
-    name: 'MglAttributionControl',
+    name: 'MglNavigationControl',
 
     props: {
-      compact: {
-        type: Boolean
+      position: {
+        type: String,
+        default: 'top-right'
       }
     },
 
@@ -21,7 +22,7 @@
     },
 
     created() {
-      this.control = new M.AttributionControl();
+      this.control = new M.NavigationControl();
       bus.$on('mgl-load', this.deferredMount);
     },
 
@@ -32,9 +33,9 @@
     methods: {
       deferredMount(map) {
         this.map = map;
-        this.map.addControl(this.control, { compact: this.compact });
-        this.$emit('mgl-attribution-control-added', this.control);
-        bus.$emit('mgl-attribution-control-added', this.control);
+        this.map.addControl(this.control, this.position);
+        this.$emit('mgl-nav-control-added', this.control);
+        bus.$emit('mgl-nav-control-added', this.control);
       }
     }
   };

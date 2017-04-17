@@ -2,7 +2,7 @@
 
 <script>
   import M from 'mapbox-gl';
-  import bus from '../mglMessageBus';
+  import bus from '../../mglMessageBus';
 
   export default {
     name: 'MglFullscreenControl',

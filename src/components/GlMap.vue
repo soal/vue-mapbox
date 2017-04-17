@@ -22,10 +22,13 @@
     },
 
     mounted() {
+      // bus.$on('layer-source-error', err => console.log(err))
+
       this.loadMap().then(map => {
         this.map = map;
         this.$emit('mgl-load', map);
         bus.$emit('mgl-load', map);
+
       });
     },
 

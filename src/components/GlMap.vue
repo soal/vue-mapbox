@@ -6,7 +6,7 @@
 
 <script>
   import M from 'mapbox-gl';
-  import bus from './mglMessageBus';
+  import bus from '../mglMessageBus';
 
   // import events from '../lib/events';
   import props from '../lib/options';

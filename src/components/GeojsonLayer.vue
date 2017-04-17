@@ -1,8 +1,9 @@
 <template></template>
 
 <script>
-  // import { UIMixin } from '../mixins';
   import bus from '../mglMessageBus';
+  import layerEvents from '../lib/layerEvents';
+
 
   export default {
     name: 'GeoJSONLayer',
@@ -40,6 +41,10 @@
       before: Object,
 
       // custom options for component
+      listenUserEvents: {
+        type: Boolean,
+        default: false
+      },
       clearSource: {
         type: Boolean,
         default: true
@@ -56,7 +61,7 @@
 
     data() {
       return {
-        layer: undefined,
+        initial: true,
         map: undefined
       };
     },
@@ -83,11 +88,12 @@
               bus.$emit('layer-source-error', err);
             }
           }
-        } else if (!this.ref) {
-          this.source = this.map.getSource(this.sourceId);
         }
-        this.addLayer()
-
+        this.addLayer();
+        if (this.listenUserEvents) {
+          this.bindEvents(layerEvents);
+        }
+        this.initial = false;
       });
     },
 
@@ -97,7 +103,69 @@
         if (this.clearSource) { this.map.removeSource(this.sourceId) }
       }
     },
+
+    computed: {
+      sourceLoaded() {
+        return this.map.isSourceLoaded(this.sourceId);
+      }
+    },
+
+    watch: {
+      source(data) {
+        if (this.initial) return;
+        this.map.getSource(this.sourceId).setData(data);
+      },
+      filter(filter) {
+        if (this.initial) return;
+        this.map.setFilter(this.layerId, filter);
+      },
+      minzoom(val) {
+        if (this.initial) return;
+        this.map.setLayerZoomRange(this.layerId, val, this.maxzoom)
+      },
+      maxzoom(val) {
+        if (this.initial) return;
+        this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
+      },
+      paint(val) {
+        // FIXME: save initial state and replace only changed fields?
+        if (this.initial) return;
+        val.keys().forEach(key => {
+          this.map.setPaintProperty(this.layerId, key, val);
+        });
+      },
+      layout(val) {
+        // FIXME: save initial state and replace only changed fields?
+        if (this.initial) return;
+        val.keys().forEach(key => {
+          this.map.setPaintProperty(this.layerId, key, val);
+        });
+      },
+      listenedEvents(val) {
+        if (this.initial) return;
+        if (val) {
+          this.bindEvents(layerEvents);
+        } else {
+          this.unBindEvents(layerEvents);
+        }
+      }
+    },
+
     methods: {
+      bindEvents(events) {
+        events.forEach(eventName => {
+          this.map.on(eventName, this.layerId, event => {
+            this.$emit(`mgl-${ event }`, event);
+          })
+        });
+      },
+
+      unBindEvents(events) {
+        events.forEach(eventName => {
+          this.map.off(eventName, this.layerId);
+        });
+      },
+
       watchSourceLoading(data) {
         if (data.dataType === 'source' && data.sourceId === this.sourceId) {
           this.$emit('layer-source-loading', this.sourceId);
@@ -107,33 +175,37 @@
       },
 
       addLayer() {
-        this.layer = {
+        let layer = {
           id: this.layerId,
           source: this.sourceId
         }
         if (this.refLayer) {
-          this.layer.ref = this.refLayer;
+          layer.ref = this.refLayer;
         } else {
-          this.layer.type = this.type ? this.type : 'fill'
-          this.layer.source = this.sourceId;
+          layer.type = this.type ? this.type : 'fill'
+          layer.source = this.sourceId;
           if (this['source-layer']) {
-            this.layout['source-layer'] = this['source-layer']
+            layer['source-layer'] = this['source-layer']
           }
-          if (this.minzoom) this.layer.minzoom = this.minzoom
-          if (this.maxzoom) this.layer.maxzoom = this.maxzoom
+          if (this.minzoom) layer.minzoom = this.minzoom
+          if (this.maxzoom) layer.maxzoom = this.maxzoom
           if (this.layout) {
-            this.layer.layout = this.layout;
+            layer.layout = this.layout;
           }
-          if (this.filter)  this.layer.filter = this.filter
+          if (this.filter) layer.filter = this.filter
         }
-        this.layer.paint = this.paint
+        layer.paint = this.paint
                            ? this.paint
                            : {'fill-color': `rgba(${12 * (this.layerId.length * 3)},153,80,0.55)` };
-        this.layer.metadata = this.metadata
+        layer.metadata = this.metadata
 
-        this.map.addLayer(this.layer, this.before);
+        this.map.addLayer(layer, this.before);
         this.$emit('layer-added', this.layerId);
         bus.$emit('layer-added', this.layerId);
+      },
+
+      move(beforeId) {
+        this.map.moveLayer(this.layerId, beforeId);
       }
     }
   }

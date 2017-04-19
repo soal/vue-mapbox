@@ -41,6 +41,10 @@
           });
           map.on('load', () => resolve(map));
         });
+      },
+
+      resize() {
+        this.map.resize();
       }
     }
   };

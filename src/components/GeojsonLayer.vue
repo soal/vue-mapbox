@@ -53,7 +53,11 @@
         type: Boolean,
         default: false
       },
-      force: {
+      replaceSource: {
+        type: Boolean,
+        default: false
+      },
+      replace: {
         type: Boolean,
         default: false
       }
@@ -77,15 +81,15 @@
               data: this.source
             })
           } catch (err) {
-            if (this.force) {
+            if (this.replaceSource) {
               this.map.removeSource(this.sourceId);
               this.map.addSource(this.sourceId, {
                 type: 'geojson',
                 data: this.source
               })
             } else {
-              this.$emit('layer-source-error', err);
-              bus.$emit('layer-source-error', err);
+              this.$emit('mgl-layer-source-error', err);
+              bus.$emit('mgl-layer-source-error', err);
             }
           }
         }
@@ -100,7 +104,14 @@
     beforeDestroy() {
       if (this.map) {
         this.map.removeLayer(this.layerId);
-        if (this.clearSource) { this.map.removeSource(this.sourceId) }
+        if (this.clearSource) {
+          try {
+            this.map.removeSource(this.sourceId)
+          } catch (error) {
+            this.$emit('mgl-source-does-not-exist', error);
+            bus.$emit('mgl-source-does-not-exist', error);
+          }
+        }
       }
     },
 
@@ -168,13 +179,23 @@
 
       watchSourceLoading(data) {
         if (data.dataType === 'source' && data.sourceId === this.sourceId) {
-          this.$emit('layer-source-loading', this.sourceId);
-          bus.$emit('layer-source-loading', this.sourceId);
+          this.$emit('mgl-layer-source-loading', this.sourceId);
+          bus.$emit('mgl-layer-source-loading', this.sourceId);
           this.map.off('dataloading', this.watchSourceLoading)
         }
       },
 
       addLayer() {
+        let existed = this.map.getLayer(this.layerId);
+        if (existed) {
+          if (this.replace) {
+            this.map.removeLayer(this.layerId);
+          } else {
+            this.$emit('mgl-layer-exists', this.layerId);
+            bus.$emit('mgl-layer-exists', this.layerId);
+            return existed;
+          }
+        }
         let layer = {
           id: this.layerId,
           source: this.sourceId
@@ -200,8 +221,8 @@
         layer.metadata = this.metadata
 
         this.map.addLayer(layer, this.before);
-        this.$emit('layer-added', this.layerId);
-        bus.$emit('layer-added', this.layerId);
+        this.$emit('mgl-layer-added', this.layerId);
+        bus.$emit('mgl-layer-added', this.layerId);
       },
 
       move(beforeId) {

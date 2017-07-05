@@ -52,14 +52,15 @@
 
     beforeDestroy() {
       if (this.map) {
-        this.marker.remove()
+        this.marker.remove();
       }
     },
 
-    computed: {
-    },
-
     watch: {
+      coordinates(lngLat) {
+        if (this.initial) return;
+        this.marker.setLngLat(lngLat);
+      }
     },
 
     methods: {

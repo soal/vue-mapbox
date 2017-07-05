@@ -39,3 +39,7 @@ jspm_packages
 
 *.sublime-*
 *.editorconfig
+
+*.map*
+*.DS_Store
+vue-mapbox-demo

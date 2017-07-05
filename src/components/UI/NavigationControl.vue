@@ -2,40 +2,40 @@
 
 <script>
   import M from 'mapbox-gl';
+  import bus from '../../mglMessageBus';
 
   export default {
     name: 'MglNavigationControl',
+
     props: {
       position: {
         type: String,
         default: 'top-right'
       }
     },
+
     data() {
       return {
-        control: undefined
+        control: undefined,
+        map: undefined
       };
     },
 
-    mounted() {
+    created() {
       this.control = new M.NavigationControl();
-      if (this.$parent._isMounted && this.$parent.map !== undefined) {
-        this.deferredMount(this.$parent.map);
-      } else {
-        this.$parent.$once('mgl-load', map => {
-          this.deferredMount(map);
-        });
-      }
+      bus.$on('mgl-load', this.deferredMount);
     },
 
     beforeDestroy() {
-      this.$parent.map.removeControl(this.control);
+      this.map.removeControl(this.control);
     },
 
     methods: {
       deferredMount(map) {
-        map.addControl(this.control, this.position);
+        this.map = map;
+        this.map.addControl(this.control, this.position);
         this.$emit('mgl-nav-control-added', this.control);
+        bus.$emit('mgl-nav-control-added', this.control);
       }
     }
   };

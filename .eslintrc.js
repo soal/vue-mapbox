@@ -1,42 +1,42 @@
-{
-  "extends": ["vue"],
-  "plugins": [
-    "import",
-    "html",
-    "vue"
-  ],
+// http://eslint.org/docs/user-guide/configuring
 
-  "env": {
+module.exports = {
+  root: true,
+  parser: "babel-eslint",
+  parserOptions: {
+    sourceType: "module"
+  },
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "destructuring": true,
+    "classes": false,
+    "defaultParams": false,
+    "blockBindings": true,
+    "modules": true,
+    "objectLiteralComputedProperties": true,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "restParams": true,
+    "spread": true,
+    "forOf": false,
+    "generators": false,
+    "templateStrings": true,
+    "superInFunctions": false,
+    "experimentalObjectRestSpread": false
+  },
+  env: {
     "browser": true,
     "node": true,
     "es6": true,
     "worker": true,
     "serviceworker": true
   },
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 6,
-    "ecmaFeatures": {
-      "arrowFunctions": true,
-      "destructuring": true,
-      "classes": true,
-      "defaultParams": true,
-      "blockBindings": true,
-      "modules": true,
-      "objectLiteralComputedProperties": true,
-      "objectLiteralShorthandMethods": true,
-      "objectLiteralShorthandProperties": true,
-      "restParams": true,
-      "spread": true,
-      "forOf": true,
-      "generators": true,
-      "templateStrings": true,
-      "superInFunctions": false,
-      "experimentalObjectRestSpread": true
-    }
-  },
-
+  plugins: [
+    "import",
+    "html"
+  ],
   "rules": {
+    "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
     "accessor-pairs": 2,
     "array-bracket-spacing": 0,
     "block-scoped-var": 0,
@@ -64,7 +64,7 @@
     "key-spacing": [2, { "beforeColon": false, "afterColon": true }],
 
     "linebreak-style": [2, "unix"],
-    "semi": [2, "always"],
+    "semi": [process.env.NODE_ENV === "production" ? 1 : 0, "always"],
     "dot-location": [1, "property"],
     "quotes": [1, "single", "avoid-escape"],
     "no-unused-vars": [1, { "vars": "all", "args": "after-used" }],
@@ -80,11 +80,10 @@
     "no-caller": 2,
     "no-catch-shadow": 0,
     "no-cond-assign": 2,
-    "no-console": 1,
+    "no-console": process.env.NODE_ENV === "production" ? 2 : 0,
     "no-constant-condition": 0,
     "no-continue": 0,
     "no-control-regex": 2,
-    "no-debugger": 2,
     "no-delete-var": 2,
     "no-div-regex": 0,
     "no-dupe-args": 2,
@@ -123,7 +122,7 @@
     "no-native-reassign": 2,
     "no-negated-in-lhs": 2,
     "no-nested-ternary": 0,
-    "no-new": 0,
+    "no-new": 2,
     "no-new-func": 0,
     "no-new-object": 2,
     "no-new-require": 2,
@@ -192,4 +191,4 @@
     "wrap-regex": 0,
     "yoda": [2, "never"]
   }
-}
+};

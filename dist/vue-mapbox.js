@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("mapbox-gl"), require("vue")) : factory(root["mapbox-gl"], root["vue"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_26__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_27__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -16,9 +16,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
+/******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-/******/ 		}
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -81,7 +81,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({ name: 'mglMessageBus' }));
@@ -157,13 +157,13 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(10),
   /* template */
-  __webpack_require__(25),
+  __webpack_require__(26),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/home/soal/dev/HM/vue-mapbox/src/components/GeojsonLayer.vue"
+Component.options.__file = "/Users/soal/dev/HM/vue-mapbox/src/components/GeojsonLayer.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] GeojsonLayer.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -191,13 +191,13 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(11),
   /* template */
-  __webpack_require__(23),
+  __webpack_require__(24),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/home/soal/dev/HM/vue-mapbox/src/components/GlMap.vue"
+Component.options.__file = "/Users/soal/dev/HM/vue-mapbox/src/components/GlMap.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] GlMap.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -225,13 +225,13 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(12),
   /* template */
-  __webpack_require__(19),
+  __webpack_require__(20),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/home/soal/dev/HM/vue-mapbox/src/components/UI/AttributionControl.vue"
+Component.options.__file = "/Users/soal/dev/HM/vue-mapbox/src/components/UI/AttributionControl.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AttributionControl.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -259,13 +259,13 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(13),
   /* template */
-  __webpack_require__(24),
+  __webpack_require__(25),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/home/soal/dev/HM/vue-mapbox/src/components/UI/FullscreenControl.vue"
+Component.options.__file = "/Users/soal/dev/HM/vue-mapbox/src/components/UI/FullscreenControl.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] FullscreenControl.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -293,13 +293,13 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(14),
   /* template */
-  __webpack_require__(22),
+  __webpack_require__(23),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/home/soal/dev/HM/vue-mapbox/src/components/UI/GeolocateControl.vue"
+Component.options.__file = "/Users/soal/dev/HM/vue-mapbox/src/components/UI/GeolocateControl.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] GeolocateControl.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -327,13 +327,13 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(15),
   /* template */
-  __webpack_require__(21),
+  __webpack_require__(22),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/home/soal/dev/HM/vue-mapbox/src/components/UI/NavigationControl.vue"
+Component.options.__file = "/Users/soal/dev/HM/vue-mapbox/src/components/UI/NavigationControl.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] NavigationControl.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -361,13 +361,13 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(16),
   /* template */
-  __webpack_require__(20),
+  __webpack_require__(21),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/home/soal/dev/HM/vue-mapbox/src/components/UI/ScaleControl.vue"
+Component.options.__file = "/Users/soal/dev/HM/vue-mapbox/src/components/UI/ScaleControl.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ScaleControl.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -394,15 +394,14 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mglMessageBus__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__lib_layerEvents__ = __webpack_require__(17);
 //
 //
 
-// import { UIMixin } from '../mixins';
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'GeoJSONLayer',
-
   props: {
     sourceId: {
       type: String
@@ -437,6 +436,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     before: Object,
 
     // custom options for component
+    listenUserEvents: {
+      type: Boolean,
+      default: false
+    },
     clearSource: {
       type: Boolean,
       default: true
@@ -445,7 +448,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       type: Boolean,
       default: false
     },
-    force: {
+    replaceSource: {
+      type: Boolean,
+      default: false
+    },
+    replace: {
       type: Boolean,
       default: false
     }
@@ -453,13 +460,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   data: function data() {
     return {
-      layer: undefined,
+      initial: true,
       map: undefined
     };
   },
   mounted: function mounted() {
     var _this = this;
 
+    // We wait for "load" event from map component to ensure mapbox is loaded and map created
     __WEBPACK_IMPORTED_MODULE_0__mglMessageBus__["a" /* default */].$on('mgl-load', function (map) {
       _this.map = map;
       _this.map.on('dataloading', _this.watchSourceLoading);
@@ -470,66 +478,154 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             data: _this.source
           });
         } catch (err) {
-          if (_this.force) {
+          if (_this.replaceSource) {
             _this.map.removeSource(_this.sourceId);
             _this.map.addSource(_this.sourceId, {
               type: 'geojson',
               data: _this.source
             });
           } else {
-            _this.$emit('layer-source-error', err);
-            __WEBPACK_IMPORTED_MODULE_0__mglMessageBus__["a" /* default */].$emit('layer-source-error', err);
+            _this.$emit('mgl-layer-source-error', err);
+            __WEBPACK_IMPORTED_MODULE_0__mglMessageBus__["a" /* default */].$emit('mgl-layer-source-error', err);
           }
         }
-      } else if (!_this.ref) {
-        _this.source = _this.map.getSource(_this.sourceId);
       }
       _this.addLayer();
+      if (_this.listenUserEvents) {
+        _this.bindEvents(__WEBPACK_IMPORTED_MODULE_1__lib_layerEvents__["a" /* default */]);
+      }
+      _this.initial = false;
     });
   },
   beforeDestroy: function beforeDestroy() {
     if (this.map) {
       this.map.removeLayer(this.layerId);
       if (this.clearSource) {
-        this.map.removeSource(this.sourceId);
+        try {
+          this.map.removeSource(this.sourceId);
+        } catch (error) {
+          this.$emit('mgl-source-does-not-exist', error);
+          __WEBPACK_IMPORTED_MODULE_0__mglMessageBus__["a" /* default */].$emit('mgl-source-does-not-exist', error);
+        }
+      }
+    }
+  },
+
+
+  computed: {
+    sourceLoaded: function sourceLoaded() {
+      return this.map.isSourceLoaded(this.sourceId);
+    }
+  },
+
+  watch: {
+    source: function source(data) {
+      if (this.initial) return;
+      this.map.getSource(this.sourceId).setData(data);
+    },
+    filter: function filter(_filter) {
+      if (this.initial) return;
+      this.map.setFilter(this.layerId, _filter);
+    },
+    minzoom: function minzoom(val) {
+      if (this.initial) return;
+      this.map.setLayerZoomRange(this.layerId, val, this.maxzoom);
+    },
+    maxzoom: function maxzoom(val) {
+      if (this.initial) return;
+      this.map.setLayerZoomRange(this.layerId, this.minzoom, val);
+    },
+    paint: function paint(val) {
+      var _this2 = this;
+
+      // FIXME: save initial state and replace only changed fields?
+      if (this.initial) return;
+      val.keys().forEach(function (key) {
+        _this2.map.setPaintProperty(_this2.layerId, key, val);
+      });
+    },
+    layout: function layout(val) {
+      var _this3 = this;
+
+      // FIXME: save initial state and replace only changed fields?
+      if (this.initial) return;
+      val.keys().forEach(function (key) {
+        _this3.map.setPaintProperty(_this3.layerId, key, val);
+      });
+    },
+    listenedEvents: function listenedEvents(val) {
+      if (this.initial) return;
+      if (val) {
+        this.bindEvents(__WEBPACK_IMPORTED_MODULE_1__lib_layerEvents__["a" /* default */]);
+      } else {
+        this.unBindEvents(__WEBPACK_IMPORTED_MODULE_1__lib_layerEvents__["a" /* default */]);
       }
     }
   },
 
   methods: {
+    bindEvents: function bindEvents(events) {
+      var _this4 = this;
+
+      events.forEach(function (eventName) {
+        _this4.map.on(eventName, _this4.layerId, function (event) {
+          _this4.$emit('mgl-' + event, event);
+        });
+      });
+    },
+    unBindEvents: function unBindEvents(events) {
+      var _this5 = this;
+
+      events.forEach(function (eventName) {
+        _this5.map.off(eventName, _this5.layerId);
+      });
+    },
     watchSourceLoading: function watchSourceLoading(data) {
       if (data.dataType === 'source' && data.sourceId === this.sourceId) {
-        this.$emit('layer-source-loading', this.sourceId);
-        __WEBPACK_IMPORTED_MODULE_0__mglMessageBus__["a" /* default */].$emit('layer-source-loading', this.sourceId);
+        this.$emit('mgl-layer-source-loading', this.sourceId);
+        __WEBPACK_IMPORTED_MODULE_0__mglMessageBus__["a" /* default */].$emit('mgl-layer-source-loading', this.sourceId);
         this.map.off('dataloading', this.watchSourceLoading);
       }
     },
     addLayer: function addLayer() {
-      this.layer = {
+      var existed = this.map.getLayer(this.layerId);
+      if (existed) {
+        if (this.replace) {
+          this.map.removeLayer(this.layerId);
+        } else {
+          this.$emit('mgl-layer-exists', this.layerId);
+          __WEBPACK_IMPORTED_MODULE_0__mglMessageBus__["a" /* default */].$emit('mgl-layer-exists', this.layerId);
+          return existed;
+        }
+      }
+      var layer = {
         id: this.layerId,
         source: this.sourceId
       };
       if (this.refLayer) {
-        this.layer.ref = this.refLayer;
+        layer.ref = this.refLayer;
       } else {
-        this.layer.type = this.type ? this.type : 'fill';
-        this.layer.source = this.sourceId;
+        layer.type = this.type ? this.type : 'fill';
+        layer.source = this.sourceId;
         if (this['source-layer']) {
-          this.layout['source-layer'] = this['source-layer'];
+          layer['source-layer'] = this['source-layer'];
         }
-        if (this.minzoom) this.layer.minzoom = this.minzoom;
-        if (this.maxzoom) this.layer.maxzoom = this.maxzoom;
+        if (this.minzoom) layer.minzoom = this.minzoom;
+        if (this.maxzoom) layer.maxzoom = this.maxzoom;
         if (this.layout) {
-          this.layer.layout = this.layout;
+          layer.layout = this.layout;
         }
-        if (this.filter) this.layer.filter = this.filter;
+        if (this.filter) layer.filter = this.filter;
       }
-      this.layer.paint = this.paint ? this.paint : { 'fill-color': 'rgba(' + 12 * (this.layerId.length * 3) + ',153,80,0.55)' };
-      this.layer.metadata = this.metadata;
+      layer.paint = this.paint ? this.paint : { 'fill-color': 'rgba(' + 12 * (this.layerId.length * 3) + ',153,80,0.55)' };
+      layer.metadata = this.metadata;
 
-      this.map.addLayer(this.layer, this.before);
-      this.$emit('layer-added', this.layerId);
-      __WEBPACK_IMPORTED_MODULE_0__mglMessageBus__["a" /* default */].$emit('layer-added', this.layerId);
+      this.map.addLayer(layer, this.before);
+      this.$emit('mgl-layer-added', this.layerId);
+      __WEBPACK_IMPORTED_MODULE_0__mglMessageBus__["a" /* default */].$emit('mgl-layer-added', this.layerId);
+    },
+    move: function move(beforeId) {
+      this.map.moveLayer(this.layerId, beforeId);
     }
   }
 });
@@ -543,7 +639,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mapbox_gl__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mapbox_gl___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mapbox_gl__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mglMessageBus__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lib_options__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lib_options__ = __webpack_require__(18);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -560,7 +656,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'GlMap',
   props: __WEBPACK_IMPORTED_MODULE_2__lib_options__["a" /* default */],
 
   data: function data() {
@@ -581,6 +676,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
   methods: {
+    // We wait in promise to ensure map is loaded and other components will receive map object
     loadMap: function loadMap() {
       var _this2 = this;
 
@@ -593,6 +689,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           return resolve(map);
         });
       });
+    },
+    resize: function resize() {
+      this.map.resize();
     }
   }
 });
@@ -613,11 +712,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'MglAttributionControl',
-
   props: {
     compact: {
-      type: Boolean
+      type: Boolean,
+      default: true
     }
   },
 
@@ -628,7 +726,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
   created: function created() {
-    this.control = new __WEBPACK_IMPORTED_MODULE_0_mapbox_gl___default.a.AttributionControl();
+    this.control = new __WEBPACK_IMPORTED_MODULE_0_mapbox_gl___default.a.AttributionControl({ compact: this.compact });
     __WEBPACK_IMPORTED_MODULE_1__mglMessageBus__["a" /* default */].$on('mgl-load', this.deferredMount);
   },
   beforeDestroy: function beforeDestroy() {
@@ -639,7 +737,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     deferredMount: function deferredMount(map) {
       this.map = map;
-      this.map.addControl(this.control, { compact: this.compact });
+      this.map.addControl(this.control);
       this.$emit('mgl-attribution-control-added', this.control);
       __WEBPACK_IMPORTED_MODULE_1__mglMessageBus__["a" /* default */].$emit('mgl-attribution-control-added', this.control);
     }
@@ -856,7 +954,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
   created: function created() {
-    this.control = new __WEBPACK_IMPORTED_MODULE_0_mapbox_gl___default.a.ScaleControl();
+    this.control = new __WEBPACK_IMPORTED_MODULE_0_mapbox_gl___default.a.ScaleControl(this._props);
     __WEBPACK_IMPORTED_MODULE_1__mglMessageBus__["a" /* default */].$on('mgl-load', this.deferredMount);
   },
   beforeDestroy: function beforeDestroy() {
@@ -867,7 +965,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     deferredMount: function deferredMount(map) {
       this.map = map;
-      this.map.addControl(this.control, this._props);
+      try {
+        this.map.addControl(this.control);
+      } catch (err) {
+        console.log(err);
+      }
       this.$emit('mgl-scale-control-added', this.control);
       __WEBPACK_IMPORTED_MODULE_1__mglMessageBus__["a" /* default */].$emit('mgl-scale-control-added', this.control);
     }
@@ -876,6 +978,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (['mousedown', 'mouseup', 'click', 'dblclick', 'mousemove', 'mouseenter', 'mouseleave', 'mouseover', 'mouseout', 'contextmenu', 'touchstart', 'touchend', 'touchcancel']);
+
+/***/ }),
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1007,7 +1116,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1058,32 +1167,17 @@ var MglGeojsonLayer = __WEBPACK_IMPORTED_MODULE_6__components_GeojsonLayer_vue__
 // };
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c("div")
+  return _c('div')
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-311f8626", module.exports)
-  }
-}
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c("div")
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4afaf47b", module.exports)
   }
 }
 
@@ -1098,7 +1192,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-5605dbde", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-4afaf47b", module.exports)
   }
 }
 
@@ -1113,12 +1207,27 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-64495e42", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-5605dbde", module.exports)
   }
 }
 
 /***/ }),
 /* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c("div")
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-64495e42", module.exports)
+  }
+}
+
+/***/ }),
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1137,7 +1246,7 @@ if (false) {
 }
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1152,11 +1261,11 @@ if (false) {
 }
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c("div")
+  return _c('div')
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -1167,12 +1276,12 @@ if (false) {
 }
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_26__;
+module.exports = __WEBPACK_EXTERNAL_MODULE_27__;
 
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=vue-mapbox.min.js.map
+//# sourceMappingURL=vue-mapbox.js.map

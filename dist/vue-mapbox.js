@@ -992,7 +992,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   container: {
     type: [String, HTMLElement],
     default: function _default() {
-      return 'map';
+      return 'map-' + ('' + Math.random()).split('.')[1];
     }
   },
   accessToken: {
@@ -1135,6 +1135,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_UI_ScaleControl_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_UI_ScaleControl_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_GeojsonLayer_vue__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_GeojsonLayer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_GeojsonLayer_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Marker_vue__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Marker_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_Marker_vue__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MglMap", function() { return MglMap; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MglNavigationControl", function() { return MglNavigationControl; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MglGeolocateControl", function() { return MglGeolocateControl; });
@@ -1142,6 +1144,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MglAttributionControl", function() { return MglAttributionControl; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MglScaleControl", function() { return MglScaleControl; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MglGeojsonLayer", function() { return MglGeojsonLayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MglMarker", function() { return MglMarker; });
 // exports.MglMap = require('./components/GlMap.vue');
 // exports.MglNavigationControl = require('./components/controls/MglNavigationControl.vue');
 
@@ -1153,14 +1156,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
 var MglMap = __WEBPACK_IMPORTED_MODULE_0__components_GlMap_vue___default.a;
+
 var MglNavigationControl = __WEBPACK_IMPORTED_MODULE_1__components_UI_NavigationControl_vue___default.a;
 var MglGeolocateControl = __WEBPACK_IMPORTED_MODULE_2__components_UI_GeolocateControl_vue___default.a;
 var MglFullscreenControl = __WEBPACK_IMPORTED_MODULE_3__components_UI_FullscreenControl_vue___default.a;
 var MglAttributionControl = __WEBPACK_IMPORTED_MODULE_4__components_UI_AttributionControl_vue___default.a;
 var MglScaleControl = __WEBPACK_IMPORTED_MODULE_5__components_UI_ScaleControl_vue___default.a;
+
 var MglGeojsonLayer = __WEBPACK_IMPORTED_MODULE_6__components_GeojsonLayer_vue___default.a;
 
+var MglMarker = __WEBPACK_IMPORTED_MODULE_7__components_Marker_vue___default.a;
 // export default {
 //   MglMap,
 //   MglNavigationControl
@@ -1171,7 +1178,7 @@ var MglGeojsonLayer = __WEBPACK_IMPORTED_MODULE_6__components_GeojsonLayer_vue__
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div')
+  return _c("div")
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -1265,7 +1272,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div')
+  return _c("div")
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -1280,6 +1287,151 @@ if (false) {
 /***/ (function(module, exports) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_27__;
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(29),
+  /* template */
+  __webpack_require__(30),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/soal/dev/HM/vue-mapbox/src/components/Marker.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Marker.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9189c446", Component.options)
+  } else {
+    hotAPI.reload("data-v-9189c446", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 29 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mapbox_gl__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mapbox_gl___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mapbox_gl__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mglMessageBus__ = __webpack_require__(0);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+
+
+
+// import layerEvents from '../lib/layerEvents';
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    // mapbox marker options
+    offset: {
+      type: [Object, Array],
+      default: function _default() {
+        return [0, 0];
+      }
+    },
+    coordinates: {
+      type: Array,
+      required: true
+    },
+
+    // custom options for component
+    listenUserEvents: {
+      type: Boolean,
+      default: false
+    },
+    replace: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  data: function data() {
+    return {
+      initial: true,
+      map: undefined,
+      marker: undefined
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    // We wait for "load" event from map component to ensure mapbox is loaded and map created
+    __WEBPACK_IMPORTED_MODULE_1__mglMessageBus__["a" /* default */].$on('mgl-load', function (map) {
+      _this.marker = new __WEBPACK_IMPORTED_MODULE_0_mapbox_gl___default.a.Marker(_this.$slots.marker[0].elm, _extends({}, _this._props));
+      _this.map = map;
+      _this.addMarker();
+      _this.initial = false;
+    });
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.map) {
+      this.marker.remove();
+    }
+  },
+
+
+  computed: {},
+
+  watch: {},
+
+  methods: {
+    // Events?
+    addMarker: function addMarker() {
+      this.marker.setLngLat(this.coordinates).addTo(this.map);
+
+      this.$emit('mgl-marker-added', this.marker);
+      __WEBPACK_IMPORTED_MODULE_1__mglMessageBus__["a" /* default */].$emit('mgl-marker-added', this.marker);
+    },
+    remove: function remove() {
+      this.marker.remove();
+      this.$emit('mgl-marker-removed', this.marker);
+      __WEBPACK_IMPORTED_MODULE_1__mglMessageBus__["a" /* default */].$emit('mgl-marker-removed', this.marker);
+    }
+  }
+});
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      "display": "none"
+    }
+  }, [_vm._t("marker")], 2)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-9189c446", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

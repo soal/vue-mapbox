@@ -1,4 +1,4 @@
-<template><div></div></template>
+<template></template>
 
 <script>
   import bus from '../mglMessageBus';

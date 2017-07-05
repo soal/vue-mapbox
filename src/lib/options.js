@@ -2,7 +2,7 @@ export default {
   container: {
     type: [String, HTMLElement],
     default () {
-      return 'map';
+      return `map-${('' + Math.random()).split('.')[1]}`;
     }
   },
   accessToken: {

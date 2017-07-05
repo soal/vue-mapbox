@@ -12,7 +12,6 @@
   import props from '../lib/options';
 
   export default {
-    name: 'GlMap',
     props,
 
     data() {
@@ -32,6 +31,7 @@
     },
 
     methods: {
+      // We wait in promise to ensure map is loaded and other components will receive map object
       loadMap() {
         return new Promise((resolve) => {
           if (this.accessToken) M.accessToken = this.accessToken;

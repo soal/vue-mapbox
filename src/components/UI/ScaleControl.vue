@@ -26,7 +26,7 @@
     },
 
     created() {
-      this.control = new M.ScaleControl();
+      this.control = new M.ScaleControl(this._props);
       bus.$on('mgl-load', this.deferredMount);
     },
 
@@ -37,7 +37,11 @@
     methods: {
       deferredMount(map) {
         this.map = map;
-        this.map.addControl(this.control, this._props);
+        try {
+          this.map.addControl(this.control);
+        } catch (err) {
+          console.log(err);
+        }
         this.$emit('mgl-scale-control-added', this.control);
         bus.$emit('mgl-scale-control-added', this.control);
       }

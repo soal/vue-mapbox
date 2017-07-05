@@ -1,4 +1,4 @@
-<template></template>
+<template><div></div></template>
 
 <script>
   import bus from '../mglMessageBus';
@@ -6,8 +6,6 @@
 
 
   export default {
-    name: 'GeoJSONLayer',
-
     props: {
       sourceId: {
         type: String
@@ -71,6 +69,7 @@
     },
 
     mounted() {
+      // We wait for "load" event from map component to ensure mapbox is loaded and map created
       bus.$on('mgl-load', map => {
         this.map = map;
         this.map.on('dataloading', this.watchSourceLoading);

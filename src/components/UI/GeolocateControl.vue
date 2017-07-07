@@ -2,7 +2,7 @@
 
 <script>
   import M from 'mapbox-gl';
-  import bus from '../../mglMessageBus';
+  import bus from '../../messageBus';
 
   export default {
     name: 'MglGeolocateControl',
@@ -45,7 +45,7 @@
         this.$emit('geolocate', position);
         bus.$emit('geolocate-error', position);
       })
-      bus.$on('mgl-load', this.deferredMount);
+      bus.$on('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {
@@ -53,7 +53,7 @@
     },
 
     methods: {
-      deferredMount(map) {
+      _deferredMount(map) {
         this.map = map;
         this.map.addControl(this.control);
         this.$emit('mgl-geolocate-control-added', this.control);

@@ -2,7 +2,7 @@
 
 <script>
   import M from 'mapbox-gl';
-  import bus from '../../mglMessageBus';
+  import bus from '../../messageBus';
 
   export default {
     props: {
@@ -21,7 +21,7 @@
 
     created() {
       this.control = new M.AttributionControl({ compact: this.compact });
-      bus.$on('mgl-load', this.deferredMount);
+      bus.$on('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {
@@ -29,7 +29,7 @@
     },
 
     methods: {
-      deferredMount(map) {
+      _deferredMount(map) {
         this.map = map;
         this.map.addControl(this.control);
         this.$emit('mgl-attribution-control-added', this.control);

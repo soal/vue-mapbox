@@ -1,12 +1,13 @@
 <template>
-  <div style="display:none">
+  <div v-show style="display:none">
     <slot name="marker"></slot>
+    <slot></slot>
   </div>
 </template>
 
 <script>
   import M from 'mapbox-gl';
-  import bus from '../mglMessageBus';
+  import bus from '../../messageBus';
   // import layerEvents from '../lib/layerEvents';
 
   export default {
@@ -19,16 +20,6 @@
       coordinates: {
         type: Array,
         required: true
-      },
-
-      // custom options for component
-      listenUserEvents: {
-        type: Boolean,
-        default: false
-      },
-      replace: {
-        type: Boolean,
-        default: false
       }
     },
 
@@ -43,9 +34,14 @@
     mounted() {
       // We wait for "load" event from map component to ensure mapbox is loaded and map created
       bus.$on('mgl-load', map => {
-        this.marker = new M.Marker(this.$slots.marker[0].elm, { ...this._props });
+        if (this.$slots.marker) {
+          this.marker = new M.Marker(this.$slots.marker[0].elm, { ...this._props });
+        } else {
+          this.marker = new M.Marker({ ...this._props });
+        }
+
         this.map = map;
-        this.addMarker()
+        this._addMarker()
         this.initial = false;
       });
     },
@@ -65,7 +61,7 @@
 
     methods: {
       // Events?
-      addMarker() {
+      _addMarker() {
         this.marker
           .setLngLat(this.coordinates)
           .addTo(this.map);
@@ -78,6 +74,10 @@
         this.marker.remove()
         this.$emit('mgl-marker-removed', this.marker);
         bus.$emit('mgl-marker-removed', this.marker);
+      },
+
+      togglePopup() {
+        this.marker.togglePopup();
       }
     }
   }

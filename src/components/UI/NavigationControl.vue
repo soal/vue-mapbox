@@ -1,8 +1,8 @@
-<template></template>
+  <template></template>
 
 <script>
   import M from 'mapbox-gl';
-  import bus from '../../mglMessageBus';
+  import bus from '../../messageBus';
 
   export default {
     name: 'MglNavigationControl',
@@ -23,7 +23,7 @@
 
     created() {
       this.control = new M.NavigationControl();
-      bus.$on('mgl-load', this.deferredMount);
+      bus.$on('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {
@@ -31,7 +31,7 @@
     },
 
     methods: {
-      deferredMount(map) {
+      _deferredMount(map) {
         this.map = map;
         this.map.addControl(this.control, this.position);
         this.$emit('mgl-nav-control-added', this.control);

@@ -7,8 +7,10 @@ import GeolocateControl from './components/UI/GeolocateControl.vue';
 import FullscreenControl from './components/UI/FullscreenControl.vue';
 import AttributionControl from './components/UI/AttributionControl.vue';
 import ScaleControl from './components/UI/ScaleControl.vue';
+import Marker from './components/UI/Marker.vue';
+import Popup from './components/UI/Popup.vue';
+
 import GeojsonLayer from './components/GeojsonLayer.vue'
-import Marker from './components/Marker.vue';
 
 export const MglMap = GlMap;
 
@@ -21,6 +23,10 @@ export const MglScaleControl = ScaleControl;
 export const MglGeojsonLayer = GeojsonLayer;
 
 export const MglMarker = Marker;
+export const MglPopup = Popup;
+
+
+
 // export default {
 //   MglMap,
 //   MglNavigationControl

@@ -1,7 +1,7 @@
 <template></template>
 
 <script>
-  import bus from '../mglMessageBus';
+  import bus from '../messageBus';
   import layerEvents from '../lib/layerEvents';
 
 
@@ -72,7 +72,7 @@
       // We wait for "load" event from map component to ensure mapbox is loaded and map created
       bus.$on('mgl-load', map => {
         this.map = map;
-        this.map.on('dataloading', this.watchSourceLoading);
+        this.map.on('dataloading', this._watchSourceLoading);
         if (this.source) {
           try {
             this.map.addSource(this.sourceId, {
@@ -92,9 +92,9 @@
             }
           }
         }
-        this.addLayer();
+        this._addLayer();
         if (this.listenUserEvents) {
-          this.bindEvents(layerEvents);
+          this._bindEvents(layerEvents);
         }
         this.initial = false;
       });
@@ -162,7 +162,7 @@
     },
 
     methods: {
-      bindEvents(events) {
+      _bindEvents(events) {
         events.forEach(eventName => {
           this.map.on(eventName, this.layerId, event => {
             this.$emit(`mgl-${ event }`, event);
@@ -170,13 +170,13 @@
         });
       },
 
-      unBindEvents(events) {
+      _unBindEvents(events) {
         events.forEach(eventName => {
           this.map.off(eventName, this.layerId);
         });
       },
 
-      watchSourceLoading(data) {
+      _watchSourceLoading(data) {
         if (data.dataType === 'source' && data.sourceId === this.sourceId) {
           this.$emit('mgl-layer-source-loading', this.sourceId);
           bus.$emit('mgl-layer-source-loading', this.sourceId);
@@ -184,7 +184,7 @@
         }
       },
 
-      addLayer() {
+      _addLayer() {
         let existed = this.map.getLayer(this.layerId);
         if (existed) {
           if (this.replace) {

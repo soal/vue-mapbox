@@ -10,21 +10,19 @@
       sourceId: {
         type: String
       },
-      source: {
-        type: [Object, String]
+      coordinates: {
+        type: Array,
+        required: true
+      },
+      url: {
+        type: String,
+        requored: true
       },
 
       // mapbox layer style properties
       layerId: {
         type: String,
         required: true
-      },
-      type: {
-        validator(value) {
-          let allowedValues = ['fill', 'line', 'symbol', 'circle', 'fill-extrusion', 'raster', 'background'];
-          return (typeof value === 'string' && allowedValues.indexOf(value) !== -1) || value === undefined;
-        },
-        default: 'fill'
       },
       metadata: Object,
       refLayer: String,
@@ -69,23 +67,22 @@
     },
 
     mounted() {
+      let source = {
+        type: 'image',
+        url: this.url,
+        coordinates: this.coordinates
+      }
       // We wait for "load" event from map component to ensure mapbox is loaded and map created
       bus.$on('mgl-load', map => {
         this.map = map;
         this.map.on('dataloading', this._watchSourceLoading);
-        if (this.source) {
+        if (source) {
           try {
-            this.map.addSource(this.sourceId, {
-              type: 'geojson',
-              data: this.source
-            })
+            this.map.addSource(this.sourceId, source)
           } catch (err) {
             if (this.replaceSource) {
               this.map.removeSource(this.sourceId);
-              this.map.addSource(this.sourceId, {
-                type: 'geojson',
-                data: this.source
-              })
+              this.map.addSource(this.sourceId, source)
             } else {
               this.$emit('mgl-layer-source-error', err);
               bus.$emit('mgl-layer-source-error', err);
@@ -118,7 +115,7 @@
       sourceLoaded() {
         return this.map.isSourceLoaded(this.sourceId);
       },
-      maplayer() {
+      mapLayer() {
         return this.map.getLayer(this.layerId);
       }
     },
@@ -200,13 +197,12 @@
         }
         let layer = {
           id: this.layerId,
-          source: this.sourceId
+          source: this.sourceId,
+          type: 'raster'
         }
         if (this.refLayer) {
           layer.ref = this.refLayer;
         } else {
-          layer.type = this.type ? this.type : 'fill'
-          layer.source = this.sourceId;
           if (this['source-layer']) {
             layer['source-layer'] = this['source-layer']
           }
@@ -217,12 +213,12 @@
           }
           if (this.filter) layer.filter = this.filter
         }
-        layer.paint = this.paint
-                           ? this.paint
-                           : {'fill-color': `rgba(${12 * (this.layerId.length * 3)},153,80,0.55)` };
+        layer.paint = this.paint ? this.paint : { 'raster-opacity': 0.85 };
         layer.metadata = this.metadata
 
         this.map.addLayer(layer, this.before);
+        console.log("LAYER INFO: ", layer)
+        console.log('LAYER OBJECT: ', this.map.getLayer('image-layer'))
         this.$emit('mgl-layer-added', this.layerId);
         bus.$emit('mgl-layer-added', this.layerId);
       },

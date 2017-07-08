@@ -66,14 +66,14 @@
     data() {
       return {
         initial: true,
-        map: undefined,
-        canvas: undefined
+        map: undefined
       };
     },
 
     mounted() {
       if (this.$slots.default[0].tag !== 'canvas') {
-        throw new Error('You need to add canvas element as child of canvas layer')
+        throw new Error(`Error in map layer component with source id "${this.sourceId}" and layer id "${this.layerId}"
+          You need to add canvas element as child of canvas layer.`)
       }
       let source = {
         type: 'canvas',
@@ -128,7 +128,7 @@
         return this.map.getLayer(this.layerId);
       },
       canvas() {
-        return this.map.getCanvas();
+        return this.map.getSource(this.sourceId).getCanvas();
       }
     },
 
@@ -225,8 +225,8 @@
         layer.metadata = this.metadata
 
         this.map.addLayer(layer, this.before);
-        this.$emit('mgl-layer-added', this.layerId);
-        bus.$emit('mgl-layer-added', this.layerId);
+        this.$emit('mgl-layer-added', { component: this, layerId: this.layerId });
+        bus.$emit('mgl-layer-added', { component: this, layerId: this.layerId });
       },
 
       move(beforeId) {

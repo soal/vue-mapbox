@@ -1,12 +1,8 @@
-<template>
-  <div style="display: none">
-    <slot></slot>
-  </div>
-</template>
+<template></template>
 
 <script>
-  import bus from '../messageBus';
-  import layerEvents from '../lib/layerEvents';
+  import bus from '../../messageBus';
+  import layerEvents from '../../lib/layerEvents';
 
 
   export default {
@@ -18,9 +14,9 @@
         type: Array,
         required: true
       },
-      animate: {
-        type: Boolean,
-        default: true
+      url: {
+        type: String,
+        required: true
       },
 
       // mapbox layer style properties
@@ -35,7 +31,7 @@
       maxzoom: Number,
       // filter: Object,
       // layout: Object,
-      // paint: Object,
+      paint: Object,
 
       // mapbox layer options
       before: Object,
@@ -71,15 +67,10 @@
     },
 
     mounted() {
-      if (this.$slots.default[0].tag !== 'canvas') {
-        throw new Error(`Error in map layer component with source id "${this.sourceId}" and layer id "${this.layerId}"
-          You need to add canvas element as child of canvas layer.`)
-      }
       let source = {
-        type: 'canvas',
-        coordinates: this.coordinates,
-        animate: this.animate,
-        canvas: this.$slots.default[0].data.attrs.id
+        type: 'image',
+        url: this.url,
+        coordinates: this.coordinates
       }
       // We wait for "load" event from map component to ensure mapbox is loaded and map created
       bus.$on('mgl-load', map => {
@@ -126,9 +117,6 @@
       },
       mapLayer() {
         return this.map.getLayer(this.layerId);
-      },
-      canvas() {
-        return this.map.getSource(this.sourceId).getCanvas();
       }
     },
 
@@ -141,13 +129,13 @@
         if (this.initial) return;
         this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
       },
-      // paint(val) {
-      //   // FIXME: save initial state and replace only changed fields?
-      //   if (this.initial) return;
-      //   val.keys().forEach(key => {
-      //     this.map.setPaintProperty(this.layerId, key, val);
-      //   });
-      // },
+      paint(val) {
+        // FIXME: save initial state and replace only changed fields?
+        if (this.initial) return;
+        val.keys().forEach(key => {
+          this.map.setPaintProperty(this.layerId, key, val);
+        });
+      },
       coordinates(val) {
         if (this.initial) return;
         this.map.setCoordinates(val);
@@ -225,8 +213,8 @@
         layer.metadata = this.metadata
 
         this.map.addLayer(layer, this.before);
-        this.$emit('mgl-layer-added', { component: this, layerId: this.layerId });
-        bus.$emit('mgl-layer-added', { component: this, layerId: this.layerId });
+        this.$emit('mgl-layer-added', this.layerId);
+        bus.$emit('mgl-layer-added', this.layerId);
       },
 
       move(beforeId) {

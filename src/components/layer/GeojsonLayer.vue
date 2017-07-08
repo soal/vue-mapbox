@@ -1,8 +1,8 @@
 <template></template>
 
 <script>
-  import bus from '../messageBus';
-  import layerEvents from '../lib/layerEvents';
+  import bus from '../../messageBus';
+  import layerEvents from '../../lib/layerEvents';
 
 
   export default {

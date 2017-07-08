@@ -10,9 +10,10 @@ import ScaleControl from './components/UI/ScaleControl.vue';
 import Marker from './components/UI/Marker.vue';
 import Popup from './components/UI/Popup.vue';
 
-import GeojsonLayer from './components/GeojsonLayer.vue'
-import ImageLayer from './components/ImageLayer.vue'
-import CanvasLayer from './components/CanvasLayer.vue'
+import GeojsonLayer from './components/layer/GeojsonLayer.vue'
+import ImageLayer from './components/layer/ImageLayer.vue'
+import CanvasLayer from './components/layer/CanvasLayer.vue'
+import VideoLayer from './components/layer/VideoLayer.vue'
 
 export const MglMap = GlMap;
 
@@ -25,6 +26,7 @@ export const MglScaleControl = ScaleControl;
 export const MglGeojsonLayer = GeojsonLayer;
 export const MglImageLayer = ImageLayer;
 export const MglCanvasLayer = CanvasLayer;
+export const MglVideoLayer = VideoLayer;
 
 export const MglMarker = Marker;
 export const MglPopup = Popup;

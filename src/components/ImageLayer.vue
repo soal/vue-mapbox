@@ -16,7 +16,7 @@
       },
       url: {
         type: String,
-        requored: true
+        required: true
       },
 
       // mapbox layer style properties
@@ -29,8 +29,8 @@
       'source-layer': String,
       minzoom: Number,
       maxzoom: Number,
-      filter: Object,
-      layout: Object,
+      // filter: Object,
+      // layout: Object,
       paint: Object,
 
       // mapbox layer options
@@ -121,14 +121,6 @@
     },
 
     watch: {
-      source(data) {
-        if (this.initial) return;
-        this.map.getSource(this.sourceId).setData(data);
-      },
-      filter(filter) {
-        if (this.initial) return;
-        this.map.setFilter(this.layerId, filter);
-      },
       minzoom(val) {
         if (this.initial) return;
         this.map.setLayerZoomRange(this.layerId, val, this.maxzoom)
@@ -144,13 +136,17 @@
           this.map.setPaintProperty(this.layerId, key, val);
         });
       },
-      layout(val) {
-        // FIXME: save initial state and replace only changed fields?
+      coordinates(val) {
         if (this.initial) return;
-        val.keys().forEach(key => {
-          this.map.setPaintProperty(this.layerId, key, val);
-        });
+        this.map.setCoordinates(val);
       },
+      // layout(val) {
+      //   // FIXME: save initial state and replace only changed fields?
+      //   if (this.initial) return;
+      //   val.keys().forEach(key => {
+      //     this.map.setPaintProperty(this.layerId, key, val);
+      //   });
+      // },
       listenedEvents(val) {
         if (this.initial) return;
         if (val) {
@@ -217,8 +213,6 @@
         layer.metadata = this.metadata
 
         this.map.addLayer(layer, this.before);
-        console.log("LAYER INFO: ", layer)
-        console.log('LAYER OBJECT: ', this.map.getLayer('image-layer'))
         this.$emit('mgl-layer-added', this.layerId);
         bus.$emit('mgl-layer-added', this.layerId);
       },

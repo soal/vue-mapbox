@@ -12,6 +12,7 @@ import Popup from './components/UI/Popup.vue';
 
 import GeojsonLayer from './components/GeojsonLayer.vue'
 import ImageLayer from './components/ImageLayer.vue'
+import CanvasLayer from './components/CanvasLayer.vue'
 
 export const MglMap = GlMap;
 
@@ -23,6 +24,7 @@ export const MglScaleControl = ScaleControl;
 
 export const MglGeojsonLayer = GeojsonLayer;
 export const MglImageLayer = ImageLayer;
+export const MglCanvasLayer = CanvasLayer;
 
 export const MglMarker = Marker;
 export const MglPopup = Popup;

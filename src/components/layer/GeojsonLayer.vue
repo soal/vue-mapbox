@@ -23,7 +23,7 @@
 
     mounted() {
       // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      bus.$on('mgl-load', map => {
+      bus.$once('mgl-load', map => {
         this.map = map;
         this.map.on('dataloading', this._watchSourceLoading);
         if (this.source) {

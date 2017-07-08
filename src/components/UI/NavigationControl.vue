@@ -23,7 +23,7 @@
 
     created() {
       this.control = new M.NavigationControl();
-      bus.$on('mgl-load', this._deferredMount);
+      bus.$once('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {

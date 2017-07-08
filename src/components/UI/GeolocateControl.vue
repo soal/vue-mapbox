@@ -45,7 +45,7 @@
         this.$emit('geolocate', position);
         bus.$emit('geolocate-error', position);
       })
-      bus.$on('mgl-load', this._deferredMount);
+      bus.$once('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {

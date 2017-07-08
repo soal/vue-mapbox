@@ -27,7 +27,7 @@
 
     created() {
       this.control = new M.ScaleControl(this._props);
-      bus.$on('mgl-load', this.deferredMount);
+      bus.$once('mgl-load', this.deferredMount);
     },
 
     beforeDestroy() {

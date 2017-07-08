@@ -33,7 +33,7 @@
 
     mounted() {
       // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      bus.$on('mgl-load', map => {
+      bus.$once('mgl-load', map => {
         if (this.$slots.marker) {
           this.marker = new M.Marker(this.$slots.marker[0].elm, { ...this._props });
         } else {

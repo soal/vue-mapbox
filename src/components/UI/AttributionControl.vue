@@ -21,7 +21,7 @@
 
     created() {
       this.control = new M.AttributionControl({ compact: this.compact });
-      bus.$on('mgl-load', this._deferredMount);
+      bus.$once('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {

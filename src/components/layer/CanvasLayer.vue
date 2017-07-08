@@ -35,7 +35,7 @@
         canvas: this.$slots.default[0].data.attrs.id
       }
       // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      bus.$on('mgl-load', map => {
+      bus.$once('mgl-load', map => {
         this.map = map;
         this.map.on('dataloading', this._watchSourceLoading);
         if (source) {
@@ -105,10 +105,10 @@
           }
           if (this.minzoom) layer.minzoom = this.minzoom
           if (this.maxzoom) layer.maxzoom = this.maxzoom
-          if (this.layout) {
-            layer.layout = this.layout;
-          }
-          if (this.filter) layer.filter = this.filter
+          // if (this.layout) {
+          //   layer.layout = this.layout;
+          // }
+          // if (this.filter) layer.filter = this.filter
         }
         layer.paint = this.paint ? this.paint : { 'raster-opacity': 0.85 };
         layer.metadata = this.metadata

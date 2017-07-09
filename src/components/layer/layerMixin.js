@@ -109,10 +109,91 @@ export default {
 
     _watchSourceLoading(data) {
       if (data.dataType === 'source' && data.sourceId === this.sourceId) {
-        this.$emit('mgl-layer-source-loading', this.sourceId);
-        bus.$emit('mgl-layer-source-loading', this.sourceId);
+        this._emitSourceLoading();
         this.map.off('dataloading', this.watchSourceLoading)
       }
+    },
+
+    _emitSourceLoading() {
+      this.$emit('mgl-layer-source-loading', {
+        sourceId: this.sourceId,
+        map: this.map,
+        component: this
+      });
+      bus.$emit('mgl-layer-source-loading', {
+        sourceId: this.sourceId,
+        map: this.map,
+        component: this
+      });
+    },
+
+    _emitSourceError(error) {
+      this.$emit('mgl-layer-source-error', {
+        map: this.map,
+        component: this,
+        sourceId: this.sourceId,
+        error
+      });
+      bus.$emit('mgl-layer-source-error', {
+        map: this.map,
+        component: this,
+        sourceId: this.sourceId,
+        error
+      });
+    },
+
+    _emitLayerError(error) {
+      this.$emit('mgl-layer-error', {
+        map: this.map,
+        component: this,
+        layerId: this.layerId,
+        error
+      });
+      bus.$emit('mgl-layer-error', {
+        map: this.map,
+        component: this,
+        layerId: this.layerId,
+        error
+      });
+    },
+
+    _emitLayerExists() {
+      this.$emit('mgl-layer-exists', {
+        map: this.map,
+        component: this,
+        layer: this.layerId
+      });
+      bus.$emit('mgl-layer-exists', {
+        map: this.map,
+        component: this,
+        layer: this.layerId
+      });
+    },
+
+    _emitLayerAdded() {
+      this.$emit('mgl-layer-added', {
+        map: this.map,
+        component: this,
+        layerId: this.layerId
+      });
+      bus.$emit('mgl-layer-added', {
+        map: this.map,
+        component: this,
+        layerId: this.layerId
+      });
+    },
+
+    _emitLayerRemoved() {
+      this.$emit('mgl-layer-removed', {
+        map: this.map,
+        component: this,
+        layerId: this.layerId
+      });
+      bus.$emit('mgl-layer-removed', {
+        map: this.map,
+        component: this,
+        layerId: this.layerId
+      });
     },
 
     move(beforeId) {

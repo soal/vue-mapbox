@@ -40,8 +40,7 @@
                 data: this.source
               })
             } else {
-              this.$emit('mgl-layer-source-error', err);
-              bus.$emit('mgl-layer-source-error', err);
+              this._emitSourceError(err);
             }
           }
         }
@@ -93,8 +92,7 @@
           if (this.replace) {
             this.map.removeLayer(this.layerId);
           } else {
-            this.$emit('mgl-layer-exists', this.layerId);
-            bus.$emit('mgl-layer-exists', this.layerId);
+            this._emitLayerExists();
             return existed;
           }
         }
@@ -123,8 +121,7 @@
         layer.metadata = this.metadata
 
         this.map.addLayer(layer, this.before);
-        this.$emit('mgl-layer-added', this.layerId);
-        bus.$emit('mgl-layer-added', this.layerId);
+        this._emitLayerAdded();
       }
     }
   }

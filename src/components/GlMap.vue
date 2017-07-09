@@ -8,8 +8,9 @@
   import M from 'mapbox-gl';
   import bus from '../messageBus';
 
-  // import events from '../lib/events';
+  import events from '../lib/events';
   import props from '../lib/options';
+
 
   export default {
     props,
@@ -17,7 +18,22 @@
     data() {
       return {
         initial: true,
-        map: undefined
+        functionalChange: false,
+        map: undefined,
+        mapOptions: {
+          minZoom:          this.initMinZoom,
+          maxZoom:          this.initMaxZoom,
+          maxBounds:        this.initMaxBounds,
+          mapStyle:         this.initMapStyle,
+          center:           this.initCenter,
+          zoom:             this.initZoom,
+          bearing:          this.initBearing,
+          pitch:            this.initPitch,
+          collisionBoxes:   this.initCollisionBoxes,
+          titleBoundaries:  this.initTileBoundaries,
+          repaint:          this.initRepaint,
+          light:            this.initLight
+        }
       };
     },
 
@@ -25,41 +41,73 @@
       loaded() { return this.map.loaded(); },
       version() { return this.map.version; },
       bounds() { return this.map.getBounds(); },
-      styleLoaded() { return this.map.isStyleLoaded(); },
-      tilesLoaded() { return this.map.areTilesLoaded(); },
+      isStyleLoaded() { return this.map.isStyleLoaded(); },
+      areTilesLoaded() { return this.map.areTilesLoaded(); },
       isMoving() { return this.map.isMoving(); },
       canvas() { return this.map.getCanvas() },
       canvasContainer() { return this.map.getCanvasContainer(); }
     },
 
     watch: {
-      maxBounds(bounds) {
-        if (this.initital) return;
+      initMaxBounds(bounds) {
+        if (this.initial) return;
         this.map.setMaxBounds(bounds);
+        this.mapOptions.maxBounds = bounds;
       },
-      minZoom(zoom) {
-        if (this.initital) return;
+      initMinZoom(zoom) {
+        if (this.initial) return;
         this.map.setMinZoom(zoom);
+        this.mapOptions.minZoom = zoom;
       },
-      maxZoom(zoom) {
-        if (this.initital) return;
+      initMaxZoom(zoom) {
+        if (this.initial) return;
         this.map.setMaxZoom(zoom);
+        this.mapOptions.maxZoom = zoom;
       },
-      mapStyle(style) {
-        if (this.initital) return;
+      initMapStyle(style) {
+        if (this.initial) return;
         this.map.setStyle(style);
+        this.mapOptions.mapStyle = style;
       },
-      collisionBoxes(val) {
-        if (this.initital) return;
+      initCollisionBoxes(val) {
+        if (this.initial) return;
         this.map.showCollisionBoxes = val;
+        this.mapOptions.showCollisionBoxes = val;
       },
-      tileBoundaries(val) {
-        if (this.initital) return;
+      initTileBoundaries(val) {
+        if (this.initial) return;
         this.map.showTileBoundaries = val;
+        this.mapOptions.showTileBoundaries = val;
       },
-      repaint(val) {
+      initRepaint(val) {
         if (this.initial) return;
         this.map.repaint = val;
+        this.mapOptions.repaint = val;
+      },
+      initZoom(val) {
+        if (this.initial) return;
+        this.map.setZoom(val);
+        this.mapOptions.zoom = val;
+      },
+      initCenter(val) {
+        if (this.initial) return;
+        this.map.setCenter(val);
+        this.mapOptions.center = val;
+      },
+      initBearing(val) {
+        if (this.initial) return;
+        this.map.setBearing(val);
+        this.mapOptions.bearing = val
+      },
+      initPitch(val) {
+        if (this.initial) return;
+        this.map.setPitch(val);
+        this.mapOptions.pitch = val
+      },
+      initLight(val) {
+        if (this.initial) return;
+        this.map.setLight(val);
+        this.mapOptions.light = val;
       }
     },
 
@@ -70,9 +118,11 @@
         if (this.RTLTextPluginUrl !== undefined) {
           map.setRTLTextPlugin(this.RTLTextPluginUrl, this._RTLTextPluginError);
         }
-        this.initial = false;
         this.$emit('mgl-load', map);
         bus.$emit('mgl-load', map);
+        this._bindEvents(events);
+        this.initial = false;
+        console.log(this);
       });
     },
 
@@ -87,6 +137,7 @@
           if (this.accessToken) M.accessToken = this.accessToken;
           let map = new M.Map({
             ...this._props,
+            ...this.mapOptions,
             style: this.mapStyle
           });
           map.on('load', () => resolve(map));
@@ -96,7 +147,20 @@
       _RTLTextPluginError(error) {
         this.$emit('mgl-rtl-plugin-error', { map: this.map, error: error });
       },
+      _bindEvents(events) {
+        events.forEach(eventName => {
+          this.map.on(eventName, event => {
+            this.$emit(`mgl-${ event }`, event);
+            bus.$emit(`mgl-${ event }`, event);
+          })
+        });
+      },
 
+      _unBindEvents(events) {
+        events.forEach(eventName => {
+          this.map.off(eventName);
+        });
+      },
       supported(perfomanceCheck=false) {
         return this.map.supported({ failIfMajorPerformanceCaveat: perfomanceCheck });
       },
@@ -105,11 +169,11 @@
         this.map.resize();
       },
 
-      project(coordinates) {
+      project(mapCoordinates) {
         return this.map.project(coordinates);
       },
 
-      unproject(coordinates) {
+      unproject(containerCoordinates) {
         return this.map.unproject(coordinates);
       },
 
@@ -133,52 +197,253 @@
         this.map.loadImage(url, callback);
       },
 
-      panBy(offset, options=undefined, eventData=undefined) {
-        return this.map.panBy(offset, options, eventData);
+      panBy(offset, options=undefined) {
+        let eventData = {
+          evenId: `panBy-${ ('' + Math.random()).split('.')[1] }`
+        }
+        function catchMoveEnds(options) {
+          if (options.eventId !== eventData.evenId) return;
+          this.mapOptions.center = this.map.getCenter();
+          this.map.off('moveend', catchMoveEnds)
+        }
+        this.map.on('moveend', catchMoveEnds);
+        this.map.panBy(offset, options, eventData);
       },
 
-      zoomTo(zoom, options=undefined, eventData=undefined) {
-        return this.map.zoomTo(zoom, options, eventData);
+      panTo(coordinates, options=undefined) {
+        let eventData = {
+          evenId: `panTo-${ ('' + Math.random()).split('.')[1] }`
+        }
+        function catchMoveEnds(options) {
+          if (options.eventId !== eventData.evenId) return;
+          this.mapOptions.center = this.map.getCenter();
+          this.map.off('moveend', catchMoveEnds)
+        }
+        this.map.on('moveend', catchMoveEnds);
+        this.map.panBy(offset, options, eventData);
       },
 
-      zoomIn(options=undefined, eventData=undefined) {
-        return this.map.zoomIn(options, eventData);
+      zoomTo(zoom, options=undefined) {
+        let eventData = {
+          evenId: `zoomTo-${ ('' + Math.random()).split('.')[1] }`
+        }
+
+        function catchZoomEnds(options) {
+          if (options.eventId !== eventData.evenId) return;
+          this.mapOptions.zoom = this.map.getZoom();
+          this.map.off('zoomend', catchZoomEnds);
+        }
+
+        this.map.on('zoomend', catchZoomEnds);
+        this.map.zoomTo(zoom, options, eventData);
+      },
+
+      zoomIn(options=undefined) {
+        let eventData = {
+          evenId: `zoomIn-${ ('' + Math.random()).split('.')[1] }`
+        }
+        function catchZoomEnds(options) {
+          if (options.eventId !== eventData.evenId) return;
+          this.mapOptions.zoom = this.map.getZoom();
+          this.map.off('zoomend', catchZoomEnds);
+        }
+        this.map.on('zoomend', catchZoomEnds);
+        this.map.zoomIn(zoom, options, eventData);
       },
 
       zoomOut(options=undefined, eventData=undefined) {
-        return this.map.zoomOut(options, eventData);
+        let eventData = {
+          evenId: `zoomOut-${ ('' + Math.random()).split('.')[1] }`
+        }
+        function catchZoomEnds(options) {
+          if (options.eventId !== eventData.evenId) return;
+          this.mapOptions.zoom = this.map.getZoom();
+          this.map.off('zoomend', catchZoomEnds);
+        }
+        this.map.on('zoomend', catchZoomEnds);
+        this.map.zoomOut(zoom, options, eventData);
       },
 
       rotateTo(bearing, options=undefined, eventData=undefined) {
-        return this.map.rotateTo(bearing, options, eventData)
+        let eventData = {
+          evenId: `rotateTo-${ ('' + Math.random()).split('.')[1] }`
+        }
+        function catchRotateEnds(options) {
+          if (options.eventId !== eventData.evenId) return;
+          this.mapOptions.bearing = this.map.getBearing();
+          this.map.off('rotateend', catchRotateEnds);
+        }
+        this.map.on('rotateend', catchRotateEnds)
+        this.map.rotateTo(bearing, options, eventData)
       },
 
       resetNorth(options=undefined, eventData=undefined) {
-        return this.map.resetNorth(options, eventData);
+        let eventData = {
+          evenId: `resetNorth-${ ('' + Math.random()).split('.')[1] }`
+        }
+        function catchRotateEnds(options) {
+          if (options.eventId !== eventData.evenId) return;
+          this.mapOptions.bearing = this.map.getBearing();
+          this.map.off('rotateend', catchRotateEnds);
+        }
+        this.map.on('rotateend', catchRotateEnds)
+        this.map.resetNorth(options, eventData);
       },
 
       snapToNorth(options=undefined, eventData=undefined) {
-        return this.map.snapToNorth(options, eventData);
+        let eventData = {
+          evenId: `snapToNorth-${ ('' + Math.random()).split('.')[1] }`
+        }
+        function catchRotateEnds(options) {
+          if (options.eventId !== eventData.evenId) return;
+          this.mapOptions.bearing = this.map.getBearing();
+          this.map.off('rotateend', catchRotateEnds);
+        }
+        this.map.on('rotateend', catchRotateEnds)
+        this.map.snapToNorth(options, eventData);
       },
 
       fitBounds(bounds, options=undefined, eventData=undefined) {
-        return this.map.fitBounds(bounds, options, eventData);
+        let eventData = {
+          evenId: `fitBounds-${ ('' + Math.random()).split('.')[1] }`
+        }
+        function catchZoomEnds(options) {
+          if (options.eventId !== eventData.evenId) return;
+          this.mapOptions.zoom = this.map.getZoom();
+          this.map.off('zoomend', catchZoomEnds);
+        }
+        this.map.on('zoomend', catchZoomEnds);
+        function catchMoveEnds(options) {
+          if (options.eventId !== eventData.evenId) return;
+          this.mapOptions.center = this.map.getCenter();
+          this.map.off('moveend', catchMoveEnds)
+        }
+        this.map.on('moveend', catchMoveEnds);
+        this.map.fitBounds(bounds, options, eventData);
       },
 
       jumpTo(options, eventData=undefined) {
-        return this.map.jumpTo(options, eventData);
+        let eventData = {
+          evenId: `jumpTo-${ ('' + Math.random()).split('.')[1] }`
+        }
+        if (options.bearing) {
+          function catchRotateEnds(options) {
+            if (options.eventId !== eventData.evenId) return;
+            this.mapOptions.bearing = this.map.getBearing();
+            this.map.off('rotateend', catchRotateEnds);
+          }
+          this.map.on('rotateend', catchRotateEnds)
+        }
+        if (options.zoom) {
+          function catchZoomEnds(options) {
+            if (options.eventId !== eventData.evenId) return;
+            this.mapOptions.zoom = this.map.getZoom();
+            this.map.off('zoomend', catchZoomEnds);
+          }
+          this.map.on('zoomend', catchZoomEnds);
+        }
+        if (options.center) {
+          function catchMoveEnds(options) {
+            if (options.eventId !== eventData.evenId) return;
+            this.mapOptions.center = this.map.getCenter();
+            this.map.off('moveend', catchMoveEnds)
+          }
+          this.map.on('moveend', catchMoveEnds);
+        }
+        if (options.pitch) {
+          function catchPitchEnds(options) {
+            if (options.eventId !== eventData.evenId) return;
+            this.mapOptions.pitch = this.map.getPitch();
+            this.map.off('pitchend', catchPitchEnds)
+          }
+          this.map.on('pitchend', catchPitchEnds);
+        }
+        this.map.jumpTo(options, eventData);
       },
 
       easeTo(options, eventData=undefined) {
-        return this.map.easeTo(options, eventData);
+        let eventData = {
+          evenId: `easeTo-${ ('' + Math.random()).split('.')[1] }`
+        }
+        if (options.bearing) {
+          function catchRotateEnds(options) {
+            if (options.eventId !== eventData.evenId) return;
+            this.mapOptions.bearing = this.map.getBearing();
+            this.map.off('rotateend', catchRotateEnds);
+          }
+          this.map.on('rotateend', catchRotateEnds)
+        }
+        if (options.zoom) {
+          function catchZoomEnds(options) {
+            if (options.eventId !== eventData.evenId) return;
+            this.mapOptions.zoom = this.map.getZoom();
+            this.map.off('zoomend', catchZoomEnds);
+          }
+          this.map.on('zoomend', catchZoomEnds);
+        }
+        if (options.center) {
+          function catchMoveEnds(options) {
+            if (options.eventId !== eventData.evenId) return;
+            this.mapOptions.center = this.map.getCenter();
+            this.map.off('moveend', catchMoveEnds)
+          }
+          this.map.on('moveend', catchMoveEnds);
+        }
+        if (options.pitch) {
+          function catchPitchEnds(options) {
+            if (options.eventId !== eventData.evenId) return;
+            this.mapOptions.pitch = this.map.getPitch();
+            this.map.off('pitchend', catchPitchEnds)
+          }
+          this.map.on('pitchend', catchPitchEnds);
+        }
+        this.map.easeTo(options, eventData);
       },
 
       flyTo(options, eventData=undefined) {
-        return this.map.flyTo(options, eventData);
+        let eventData = {
+          evenId: `flyTo-${ ('' + Math.random()).split('.')[1] }`
+        }
+        if (options.bearing) {
+          function catchRotateEnds(options) {
+            if (options.eventId !== eventData.evenId) return;
+            this.mapOptions.bearing = this.map.getBearing();
+            this.map.off('rotateend', catchRotateEnds);
+          }
+          this.map.on('rotateend', catchRotateEnds)
+        }
+        if (options.zoom) {
+          function catchZoomEnds(options) {
+            if (options.eventId !== eventData.evenId) return;
+            this.mapOptions.zoom = this.map.getZoom();
+            this.map.off('zoomend', catchZoomEnds);
+          }
+          this.map.on('zoomend', catchZoomEnds);
+        }
+        if (options.center) {
+          function catchMoveEnds(options) {
+            if (options.eventId !== eventData.evenId) return;
+            this.mapOptions.center = this.map.getCenter();
+            this.map.off('moveend', catchMoveEnds)
+          }
+          this.map.on('moveend', catchMoveEnds);
+        }
+        if (options.pitch) {
+          function catchPitchEnds(options) {
+            if (options.eventId !== eventData.evenId) return;
+            this.mapOptions.pitch = this.map.getPitch();
+            this.map.off('pitchend', catchPitchEnds)
+          }
+          this.map.on('pitchend', catchPitchEnds);
+        }
+        this.map.flyTo(options, eventData);
       },
 
       stop() {
         this.map.stop();
+        this.mapOptions.pitch = this.map.getPitch();
+        this.mapOptions.zoom = this.map.getZoom();
+        this.mapOptions.bearing = this.map.getBearing();
       }
     }
   };

@@ -122,5 +122,9 @@ export default {
   renderWorldCopies: {
     type: Boolean,
     default: true
+  },
+  RTLTextPluginUrl: {
+    type: String,
+    default: undefined
   }
 };

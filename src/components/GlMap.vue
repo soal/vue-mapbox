@@ -20,10 +20,17 @@
       };
     },
 
+    computed: {
+      version() { return this.map.version; }
+    },
+
     mounted() {
       // bus.$on('layer-source-error', err => console.log(err))
       this._loadMap().then(map => {
         this.map = map;
+        if (this.RTLTextPluginUrl !== undefined) {
+          map.setRTLTextPlugin(this.RTLTextPluginUrl, this._RTLTextPluginError);
+        }
         this.$emit('mgl-load', map);
         bus.$emit('mgl-load', map);
 
@@ -41,6 +48,14 @@
           });
           map.on('load', () => resolve(map));
         });
+      },
+
+      _RTLTextPluginError(error) {
+        this.$emit('mgl-rtl-plugin-error', { map: this.map, error: error });
+      },
+
+      supported(perfomanceCheck=false) {
+        return this.map.supported({ failIfMajorPerformanceCaveat: perfomanceCheck });
       },
 
       resize() {

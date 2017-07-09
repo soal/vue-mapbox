@@ -51,6 +51,7 @@
         if (this.listenUserEvents) {
           this._bindEvents(layerEvents);
         }
+        this.map.off('dataloading', this._watchSourceLoading);
         this.initial = false;
       });
     },

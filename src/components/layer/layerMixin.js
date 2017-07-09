@@ -1,3 +1,5 @@
+import events from '../../lib/layerEvents';
+
 let mapboxSourceProps = {
   sourceId: {
     type: String
@@ -19,9 +21,17 @@ let mapboxLayerStyleProps = {
 }
 
 let componentProps = {
-  listenUserEvents: {
-    type: Boolean,
-    default: false
+  eventsToListen: {
+    validator(eventsArray) {
+      if (!(eventsArray instanceof Array)) {
+        return false;
+      }
+      for (let e of eventsArray) {
+        if (!events.includes(e)) return false;
+      }
+      return true;
+    },
+    default: () => []
   },
   clearSource: {
     type: Boolean,
@@ -68,13 +78,10 @@ export default {
   },
 
   watch: {
-    listenedEvents(val) {
+    eventsToListen(events) {
       if (this.initial) return;
-      if (val) {
-        this.bindEvents(layerEvents);
-      } else {
-        this.unBindEvents(layerEvents);
-      }
+      this.unBindEvents(layerEvents);
+      this.bindEvents(events);
     }
   },
 
@@ -94,6 +101,7 @@ export default {
 
   methods: {
     _bindEvents(events) {
+      if (events.length === 0) return;
       events.forEach(eventName => {
         this.map.on(eventName, this.layerId, event => {
           this.$emit(`mgl-${ event }`, event);

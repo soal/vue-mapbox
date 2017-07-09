@@ -1,3 +1,5 @@
+import events from './events';
+
 export default {
   container: {
     type: [String, HTMLElement],
@@ -7,7 +9,7 @@ export default {
   },
   accessToken: {
     type: String,
-    default: null
+    default: undefined
   },
   initMinZoom: {
     type: Number,
@@ -130,16 +132,29 @@ export default {
   initLight: {
     type: Object
   },
-  tileBoundaries: {
+  initTileBoundaries: {
     type: Boolean,
     default: false
   },
-  collisionBoxes: {
+  initCollisionBoxes: {
     type: Boolean,
     default: false
   },
-  repaint: {
+  initRepaint: {
     type: Boolean,
     default: false
+  },
+  eventsToListen: {
+    type: Array,
+    validator(eventsArray) {
+      if (!(eventsArray instanceof Array)) {
+        return false;
+      }
+      for (let e of eventsArray) {
+        if (!(Object.keys(events).includes(e))) return false;
+      }
+      return true;
+    },
+    default: () => []
   }
 };

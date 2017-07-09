@@ -126,5 +126,20 @@ export default {
   RTLTextPluginUrl: {
     type: String,
     default: undefined
+  },
+  light: {
+    type: Object
+  },
+  tileBoundaries: {
+    type: Boolean,
+    default: false
+  },
+  collisionBoxes: {
+    type: Boolean,
+    default: false
+  },
+  repaint: {
+    type: Boolean,
+    default: false
   }
 };

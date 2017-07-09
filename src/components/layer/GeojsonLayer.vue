@@ -18,6 +18,9 @@
           return (typeof value === 'string' && allowedValues.indexOf(value) !== -1) || value === undefined;
         },
         default: 'fill'
+      },
+      filter: {
+        type: Array
       }
     },
 

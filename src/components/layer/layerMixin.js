@@ -39,10 +39,10 @@ let componentProps = {
     type: Boolean,
     default: true
   },
-  hidden: {
-    type: Boolean,
-    default: false
-  },
+  // hidden: {
+  //   type: Boolean,
+  //   default: false
+  // },
   replaceSource: {
     type: Boolean,
     default: false

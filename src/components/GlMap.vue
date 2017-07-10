@@ -8,7 +8,7 @@
   import M from 'mapbox-gl';
   import bus from '../messageBus';
 
-  import events from '../lib/events';
+  import mapEvents from '../lib/events';
   import props from '../lib/options';
 
 

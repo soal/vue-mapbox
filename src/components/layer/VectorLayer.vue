@@ -1,6 +1,4 @@
-<template>
-
-</template>
+<template></template>
 
 <script>
 import bus from '../../messageBus';
@@ -25,15 +23,14 @@ export default {
     tilesMaxZoom: {
       type: Number,
       default: undefined
+    },
+    initFilter: {
+      type: Array,
+      default:undefined
     }
   },
 
   watch: {
-    initSource(data) {
-      if (this.initial) return;
-      this.map.getSource(this.sourceId).setData(data);
-      this.source = this.map.getSource(this.sourceId);
-    },
     initFilter(filter) {
       if (this.initial) return;
       this.map.setFilter(this.layerId, filter);
@@ -45,6 +42,7 @@ export default {
     bus.$once('mgl-load', map => {
       this.map = map;
       let source = {
+        type: 'vector',
         tilesMinZoom: this.tilesMinZoom,
         tilesMaxZoom: this.tilesMaxZoom,
         url: this.url,

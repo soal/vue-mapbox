@@ -99,7 +99,7 @@
           }
           if (this.filter) layer.filter = this.filter
         }
-        layer.paint = this.paint ? this.paint : { 'raster-opacity': 0.85 };
+        layer.paint = this.paint ? this.paint : { 'raster-opacity': 1 };
         layer.metadata = this.metadata
 
         this.map.addLayer(layer, this.before);

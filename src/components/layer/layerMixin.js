@@ -1,4 +1,5 @@
-import events from '../../lib/layerEvents';
+import bus from '../../messageBus';
+import layerEvents from '../../lib/layerEvents';
 
 let mapboxSourceProps = {
   sourceId: {
@@ -14,9 +15,10 @@ let mapboxLayerStyleProps = {
   metadata: Object,
   refLayer: String,
   'source-layer': String,
-  minzoom: Number,
-  maxzoom: Number,
-  paint: Object,
+  initMinzoom: Number,
+  initMaxzoom: Number,
+  initPaint: Object,
+  initLayout: Object,
   before: Object
 }
 
@@ -27,7 +29,7 @@ let componentProps = {
         return false;
       }
       for (let e of eventsArray) {
-        if (!events.includes(e)) return false;
+        if (!layerEvents.includes(e)) return false;
       }
       return true;
     },
@@ -51,9 +53,6 @@ let componentProps = {
   }
 }
 
-import bus from '../../messageBus';
-import layerEvents from '../../lib/layerEvents';
-
 export default {
   props: {
     ...mapboxSourceProps,
@@ -64,7 +63,12 @@ export default {
   data() {
     return {
       initial: true,
-      map: undefined
+      map: undefined,
+      minzoom: this.initMinzoom,
+      maxzoom: this.initMaxzoom,
+      paint: this.initPaint,
+      filter: this.initFilter,
+      layout: this.initLayout
     }
   },
 
@@ -82,6 +86,32 @@ export default {
       if (this.initial) return;
       this.unBindEvents(layerEvents);
       this.bindEvents(events);
+    },
+    initMinzoom(val) {
+      if (this.initial) return;
+      this.map.setLayerZoomRange(this.layerId, val, this.maxzoom)
+    },
+    initMaxzoom(val) {
+      if (this.initial) return;
+      this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
+    },
+    initPaint(properties) {
+      if (this.initial) return;
+      for (let prop in Object.keys(this.paint)) {
+        if (this.paint[prop] !== properties[prop]) {
+          this.map.setPaintProperty(this.layerId, prop, properties[prop]);
+          this.paint[prop] = properties[prop];
+        }
+      }
+    },
+    initLayout(properties) {
+      if (this.initial) return;
+      for (let prop in Object.keys(this.layout)) {
+        if (this.layout[prop] !== properties[prop]) {
+          this.map.setLayoutProperty(this.layerId, prop, properties[prop]);
+          this.layout[prop] = properties[prop];
+        }
+      }
     }
   },
 
@@ -137,6 +167,10 @@ export default {
     move(beforeId) {
       this.map.moveLayer(this.layerId, beforeId);
       this._emitMapEvent('mgl-layer-moved', { layerId: this.layerId, beforeId: beforeId });
+    },
+
+    remove() {
+      this.map.removeLayer(this.layerId);
     }
   }
 }

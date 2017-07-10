@@ -9,7 +9,7 @@
   export default {
     mixins: [mixin],
     props: {
-      source: {
+      initSource: {
         type: [Object, String]
       },
       type: {
@@ -19,8 +19,14 @@
         },
         default: 'fill'
       },
-      filter: {
+      initFilter: {
         type: Array
+      }
+    },
+
+    data() {
+      return {
+        source: this.initSource
       }
     },
 
@@ -57,35 +63,15 @@
     },
 
     watch: {
-      source(data) {
+      initSource(data) {
         if (this.initial) return;
         this.map.getSource(this.sourceId).setData(data);
+        this.source = this.map.getSource(this.sourceId);
       },
-      filter(filter) {
+      initFilter(filter) {
         if (this.initial) return;
         this.map.setFilter(this.layerId, filter);
-      },
-      minzoom(val) {
-        if (this.initial) return;
-        this.map.setLayerZoomRange(this.layerId, val, this.maxzoom)
-      },
-      maxzoom(val) {
-        if (this.initial) return;
-        this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
-      },
-      paint(val) {
-        // FIXME: save initial state and replace only changed fields?
-        if (this.initial) return;
-        val.keys().forEach(key => {
-          this.map.setPaintProperty(this.layerId, key, val);
-        });
-      },
-      layout(val) {
-        // FIXME: save initial state and replace only changed fields?
-        if (this.initial) return;
-        val.keys().forEach(key => {
-          this.map.setPaintProperty(this.layerId, key, val);
-        });
+        this.mapOptions.filter = filter;
       }
     },
 

@@ -61,7 +61,7 @@ module.exports = {
     "guard-for-in": 0,
     "handle-callback-err": [2, "^(err|error)$" ],
     "indent": [1, 2, { "SwitchCase": 1 }],
-    "key-spacing": [2, { "beforeColon": false, "afterColon": true }],
+    // "key-spacing": [2, { "beforeColon": false, "afterColon": true }],
 
     "linebreak-style": [2, "unix"],
     "semi": [process.env.NODE_ENV === "production" ? 1 : 0, "always"],
@@ -106,7 +106,7 @@ module.exports = {
     "no-func-assign": 2,
     "no-implied-eval": 2,
     "no-inline-comments": 0,
-    "no-inner-declarations": [2, "functions"],
+    "no-inner-declarations": [1, "functions"],
     "no-invalid-regexp": 2,
     "no-irregular-whitespace": 2,
     "no-iterator": 2,

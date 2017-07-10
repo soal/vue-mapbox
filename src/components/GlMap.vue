@@ -120,7 +120,6 @@
         bus.$emit('mgl-load', map);
         this._bindEvents(this.eventsToListen);
         this.initial = false;
-        console.log(this);
       });
     },
 

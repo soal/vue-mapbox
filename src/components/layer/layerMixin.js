@@ -91,9 +91,8 @@ export default {
       if (this.clearSource) {
         try {
           this.map.removeSource(this.sourceId)
-        } catch (error) {
-          this.$emit('mgl-source-does-not-exist', error);
-          bus.$emit('mgl-source-does-not-exist', error);
+        } catch (err) {
+          this._emitMapEvent('mgl-source-does-not-exist', { sourceId: this.sourceId, error: err })
         }
       }
     }
@@ -117,7 +116,7 @@ export default {
 
     _watchSourceLoading(data) {
       if (data.dataType === 'source' && data.sourceId === this.sourceId) {
-        this._emitSourceLoading();
+        this._emitMapEvent('mgl-layer-source-loading', { sourceId: this.sourceId });
         this.map.off('dataloading', this.watchSourceLoading)
       }
     },
@@ -135,37 +134,9 @@ export default {
       });
     },
 
-    _emitSourceLoading() {
-      this._emitMapEvent('mgl-layer-source-loading', { sourceId: this.sourceId });
-    },
-
-    _emitSourceError(error) {
-      this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error });
-    },
-
-    _emitLayerError(error) {
-      this._emitMapEvent('mgl-layer-error', { layerId: this.layerId, error });
-    },
-
-    _emitLayerExists() {
-      this._emitMapEvent('mgl-layer-exists', { layerId: this.layerId });
-    },
-
-    _emitLayerAdded() {
-      this._emitMapEvent('mgl-layer-added', { layerId: this.layerId });
-    },
-
-    _emitLayerRemoved() {
-      this._emitMapEvent('mgl-layer-removed', { layerId: this.layerId });
-    },
-
-    _emitLayerMoved(beforeId) {
-      this._emitMapEvent('mgl-layer-moved', { layerId: this.layerId, beforeId: beforeId });
-    },
-
     move(beforeId) {
       this.map.moveLayer(this.layerId, beforeId);
-      this._emitLayerMoved(beforeId);
+      this._emitMapEvent('mgl-layer-moved', { layerId: this.layerId, beforeId: beforeId });
     }
   }
 }

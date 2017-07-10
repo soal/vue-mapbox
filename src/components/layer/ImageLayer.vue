@@ -36,7 +36,7 @@
               this.map.removeSource(this.sourceId);
               this.map.addSource(this.sourceId, source)
             } else {
-              this._emitSourceError(err);
+              this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error: err });
             }
           }
         }
@@ -77,7 +77,7 @@
           if (this.replace) {
             this.map.removeLayer(this.layerId);
           } else {
-            this._emitLayerExists();
+            this._emitMapEvent('mgl-layer-exists', { layerId: this.layerId });
             return existed;
           }
         }
@@ -103,7 +103,7 @@
         layer.metadata = this.metadata
 
         this.map.addLayer(layer, this.before);
-        this._emitLayerAdded();
+        this._emitMapEvent('mgl-layer-added', { layerId: this.layerId });
       }
     }
   }

@@ -122,90 +122,50 @@ export default {
       }
     },
 
+    _emitMapEvent(name, data={}) {
+      this.$emit(name, {
+        map: this.map,
+        component: this,
+        ...data
+      });
+      bus.$emit(name, {
+        map: this.map,
+        component: this,
+        ...data
+      });
+    },
+
     _emitSourceLoading() {
-      this.$emit('mgl-layer-source-loading', {
-        sourceId: this.sourceId,
-        map: this.map,
-        component: this
-      });
-      bus.$emit('mgl-layer-source-loading', {
-        sourceId: this.sourceId,
-        map: this.map,
-        component: this
-      });
+      this._emitMapEvent('mgl-layer-source-loading', { sourceId: this.sourceId });
     },
 
     _emitSourceError(error) {
-      this.$emit('mgl-layer-source-error', {
-        map: this.map,
-        component: this,
-        sourceId: this.sourceId,
-        error
-      });
-      bus.$emit('mgl-layer-source-error', {
-        map: this.map,
-        component: this,
-        sourceId: this.sourceId,
-        error
-      });
+      this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error });
     },
 
     _emitLayerError(error) {
-      this.$emit('mgl-layer-error', {
-        map: this.map,
-        component: this,
-        layerId: this.layerId,
-        error
-      });
-      bus.$emit('mgl-layer-error', {
-        map: this.map,
-        component: this,
-        layerId: this.layerId,
-        error
-      });
+      this._emitMapEvent('mgl-layer-error', { layerId: this.layerId, error });
     },
 
     _emitLayerExists() {
-      this.$emit('mgl-layer-exists', {
-        map: this.map,
-        component: this,
-        layer: this.layerId
-      });
-      bus.$emit('mgl-layer-exists', {
-        map: this.map,
-        component: this,
-        layer: this.layerId
-      });
+      this._emitMapEvent('mgl-layer-exists', { layerId: this.layerId });
     },
 
     _emitLayerAdded() {
-      this.$emit('mgl-layer-added', {
-        map: this.map,
-        component: this,
-        layerId: this.layerId
-      });
-      bus.$emit('mgl-layer-added', {
-        map: this.map,
-        component: this,
-        layerId: this.layerId
-      });
+      this._emitMapEvent('mgl-layer-added', { layerId: this.layerId });
     },
 
     _emitLayerRemoved() {
-      this.$emit('mgl-layer-removed', {
-        map: this.map,
-        component: this,
-        layerId: this.layerId
-      });
-      bus.$emit('mgl-layer-removed', {
-        map: this.map,
-        component: this,
-        layerId: this.layerId
-      });
+      this._emitMapEvent('mgl-layer-removed', { layerId: this.layerId });
+    },
+
+    _emitLayerMoved(beforeId) {
+      this._emitMapEvent('mgl-layer-moved', { layerId: this.layerId, beforeId: beforeId });
     },
 
     move(beforeId) {
       this.map.moveLayer(this.layerId, beforeId);
+      this._emitLayerMoved(beforeId);
     }
   }
 }

@@ -148,10 +148,10 @@
 
       _bindEvents(events) {
         if (events.length === 0) return;
-        for (let event of Object.keys(events)) {
-          this.map.on(eventName, event => {
-            this.$emit(`mgl-${ event }`, event);
-            bus.$emit(`mgl-${ event }`, event);
+        for (let e of Object.keys(events)) {
+          this.map.on(e, event => {
+            this.$emit(`mgl-${ event }`, e);
+            bus.$emit(`mgl-${ event }`, e);
           });
         }
       },
@@ -170,11 +170,11 @@
       },
 
       project(mapCoordinates) {
-        return this.map.project(coordinates);
+        return this.map.project(mapCoordinates);
       },
 
       unproject(containerCoordinates) {
-        return this.map.unproject(coordinates);
+        return this.map.unproject(containerCoordinates);
       },
 
       queryRenderedFeatures(geometry=undefined, parameters=undefined) {
@@ -220,7 +220,7 @@
           this.map.off('moveend', catchMoveEnds)
         }
         this.map.on('moveend', catchMoveEnds);
-        this.map.panBy(offset, options, eventData);
+        this.map.panTo(coordinates, options, eventData);
       },
 
       zoomTo(zoom, options=undefined) {
@@ -248,7 +248,7 @@
           this.map.off('zoomend', catchZoomEnds);
         }
         this.map.on('zoomend', catchZoomEnds);
-        this.map.zoomIn(zoom, options, eventData);
+        this.map.zoomIn(options, eventData);
       },
 
       zoomOut(options=undefined) {
@@ -261,7 +261,7 @@
           this.map.off('zoomend', catchZoomEnds);
         }
         this.map.on('zoomend', catchZoomEnds);
-        this.map.zoomOut(zoom, options, eventData);
+        this.map.zoomOut(options, eventData);
       },
 
       rotateTo(bearing, options=undefined) {

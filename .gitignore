@@ -43,3 +43,4 @@ jspm_packages
 *.map*
 *.DS_Store
 vue-mapbox-demo
+checklist.txt

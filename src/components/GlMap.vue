@@ -116,8 +116,8 @@
         if (this.RTLTextPluginUrl !== undefined) {
           map.setRTLTextPlugin(this.RTLTextPluginUrl, this._RTLTextPluginError);
         }
-        this.$emit('mgl-load', map);
-        bus.$emit('mgl-load', map);
+        this.$emit('mgl-load', { map: map, component: this, mapId: this.container });
+        bus.$emit('mgl-load', { map: map, component: this, mapId: this.container });
         this._bindEvents(this.eventsToListen);
         this.initial = false;
       });

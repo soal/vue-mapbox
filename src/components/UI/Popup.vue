@@ -7,9 +7,11 @@
 <script>
   import M from 'mapbox-gl';
   import bus from '../../messageBus';
+  import baseMixin from '../../lib/mixin';
   // import layerEvents from '../lib/layerEvents';
 
   export default {
+    mixins: [baseMixin],
     props: {
       // mapbox marker options
       closeButton: {
@@ -61,11 +63,7 @@
 
     mounted() {
       // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      bus.$once('mgl-load', map => {
-        this.map = map;
-        this._addPopup()
-        this.initial = false;
-      });
+      bus.$on('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {
@@ -84,6 +82,15 @@
     },
 
     methods: {
+      _deferredMount(payload) {
+        this._checkMapId();
+        if (payload.mapId !== this.mapId) return;
+        this.map = payload.map;
+        this._addPopup()
+        this.initial = false;
+        bus.$off('mgl-load', this._deferredMount);
+      },
+
       _addPopup() {
         this.popup = new M.Popup({ ...this._props });
         if (this.coordinates !== undefined) this.popup.setLngLat(this.coordinates)

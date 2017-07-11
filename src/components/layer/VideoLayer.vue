@@ -19,33 +19,9 @@
     },
 
     mounted() {
-      let source = {
-        type: 'video',
-        urls: this.urls,
-        coordinates: this.coordinates
-      }
+      this._checkMapId();
       // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      bus.$once('mgl-load', map => {
-        this.map = map;
-        this.map.on('dataloading', this._watchSourceLoading);
-        if (source) {
-          try {
-            this.map.addSource(this.sourceId, source)
-          } catch (err) {
-            if (this.replaceSource) {
-              this.map.removeSource(this.sourceId);
-              this.map.addSource(this.sourceId, source)
-            } else {
-              this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error: err });
-            }
-          }
-        }
-        this._addLayer();
-        if (this.listenUserEvents) {
-          this._bindEvents(layerEvents);
-        }
-        this.initial = false;
-      });
+      bus.$on('mgl-load', this._deferredMount);
     },
 
     computed: {
@@ -70,6 +46,36 @@
     },
 
     methods: {
+      _deferredMount(payload) {
+        if (payload.mapId !== this.mapId) return;
+        let source = {
+          type: 'video',
+          urls: this.urls,
+          coordinates: this.coordinates
+        }
+
+        this.map = payload.map;
+        this.map.on('dataloading', this._watchSourceLoading);
+        if (source) {
+          try {
+            this.map.addSource(this.sourceId, source)
+          } catch (err) {
+            if (this.replaceSource) {
+              this.map.removeSource(this.sourceId);
+              this.map.addSource(this.sourceId, source)
+            } else {
+              this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error: err });
+            }
+          }
+        }
+        this._addLayer();
+        if (this.listenUserEvents) {
+          this._bindEvents(layerEvents);
+        }
+        this.initial = false;
+        bus.$off('mgl-load', this._deferredMount);
+      },
+
       _addLayer() {
         let existed = this.map.getLayer(this.layerId);
         if (existed) {

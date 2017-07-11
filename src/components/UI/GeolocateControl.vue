@@ -3,9 +3,10 @@
 <script>
   import M from 'mapbox-gl';
   import bus from '../../messageBus';
+  import baseMixin from '../../lib/mixin';
 
   export default {
-    name: 'MglGeolocateControl',
+    mixins: [baseMixin],
 
     props: {
       position: {
@@ -45,7 +46,11 @@
         this.$emit('geolocate', position);
         bus.$emit('geolocate-error', position);
       })
-      bus.$once('mgl-load', this._deferredMount);
+    },
+
+    mounted() {
+      this._checkMapId();
+      bus.$on('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {
@@ -53,11 +58,13 @@
     },
 
     methods: {
-      _deferredMount(map) {
-        this.map = map;
+      _deferredMount(payload) {
+        if (payload.mapId !== this.mapId) return;
+        this.map = payload.map;
         this.map.addControl(this.control);
         this.$emit('mgl-geolocate-control-added', this.control);
         bus.$emit('mgl-geolocate-control-added', this.control);
+        bus.$off('mgl-load', this._deferredMount);
       }
     }
   };

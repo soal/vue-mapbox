@@ -3,9 +3,10 @@
 <script>
   import M from 'mapbox-gl';
   import bus from '../../messageBus';
+  import baseMixin from '../../lib/mixin';
 
   export default {
-    name: 'MglNavigationControl',
+    mixins: [baseMixin],
 
     props: {
       position: {
@@ -23,7 +24,11 @@
 
     created() {
       this.control = new M.NavigationControl();
-      bus.$once('mgl-load', this._deferredMount);
+    },
+
+    mounted() {
+      this._checkMapId();
+      bus.$on('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {
@@ -31,11 +36,13 @@
     },
 
     methods: {
-      _deferredMount(map) {
-        this.map = map;
+      _deferredMount(payload) {
+        if (payload.mapId !== this.mapId) return;
+        this.map = payload.map;
         this.map.addControl(this.control, this.position);
         this.$emit('mgl-nav-control-added', this.control);
         bus.$emit('mgl-nav-control-added', this.control);
+        bus.$off('mgl-load', this._deferredMount);
       }
     }
   };

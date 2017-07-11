@@ -1,5 +1,5 @@
 <template>
-  <div v-show style="display:none">
+  <div style="display:none">
     <slot name="marker"></slot>
     <slot></slot>
   </div>
@@ -8,9 +8,10 @@
 <script>
   import M from 'mapbox-gl';
   import bus from '../../messageBus';
-  // import layerEvents from '../lib/layerEvents';
+  import baseMixin from '../../lib/mixin';
 
   export default {
+    mixins: [baseMixin],
     props: {
       // mapbox marker options
       offset: {
@@ -20,6 +21,9 @@
       coordinates: {
         type: Array,
         required: true
+      },
+      mapContainerId: {
+        type: String
       }
     },
 
@@ -32,18 +36,9 @@
     },
 
     mounted() {
+      this._checkMapId();
       // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      bus.$once('mgl-load', map => {
-        if (this.$slots.marker) {
-          this.marker = new M.Marker(this.$slots.marker[0].elm, { ...this._props });
-        } else {
-          this.marker = new M.Marker({ ...this._props });
-        }
-
-        this.map = map;
-        this._addMarker()
-        this.initial = false;
-      });
+      bus.$on('mgl-load', this._deferredMount)
     },
 
     beforeDestroy() {
@@ -61,6 +56,19 @@
 
     methods: {
       // Events?
+      _deferredMount(payload) {
+        if (payload.mapId !== this.mapId) return;
+        if (this.$slots.marker) {
+          this.marker = new M.Marker(this.$slots.marker[0].elm, { ...this._props });
+        } else {
+          this.marker = new M.Marker({ ...this._props });
+        }
+
+        this.map = payload.map;
+        this._addMarker()
+        this.initial = false;
+        bus.$off('mgl-load', this._deferredMount)
+      },
       _addMarker() {
         this.marker
           .setLngLat(this.coordinates)

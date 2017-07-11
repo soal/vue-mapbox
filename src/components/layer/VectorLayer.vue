@@ -39,8 +39,14 @@ export default {
   },
 
   mounted() {
-    bus.$once('mgl-load', map => {
-      this.map = map;
+    this._checkMapId();
+    bus.$on('mgl-load', this._deferredMount);
+  },
+
+  methods: {
+    _deferredMount(payload) {
+      if (payload.mapId !== this.mapId) return;
+      this.map = payload.map;
       let source = {
         type: 'vector',
         tilesMinZoom: this.tilesMinZoom,
@@ -66,10 +72,9 @@ export default {
       }
       this.map.off('dataloading', this._watchSourceLoading);
       this.initial = false;
-    });
-  },
+      bus.$off('mgl-load', this._deferredMount);
+    },
 
-  methods: {
     _addLayer() {
       let existed = this.map.getLayer(this.layerId);
       if (existed) {

@@ -1,5 +1,6 @@
 import bus from '../../messageBus';
 import layerEvents from '../../lib/layerEvents';
+import baseMixin from '../../lib/mixin';
 
 let mapboxSourceProps = {
   sourceId: {
@@ -54,6 +55,7 @@ let componentProps = {
 }
 
 export default {
+  mixins: [baseMixin],
   props: {
     ...mapboxSourceProps,
     ...mapboxLayerStyleProps,

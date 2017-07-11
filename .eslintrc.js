@@ -4,25 +4,25 @@ module.exports = {
   root: true,
   parser: "babel-eslint",
   parserOptions: {
-    sourceType: "module"
-  },
-  "ecmaFeatures": {
-    "arrowFunctions": true,
-    "destructuring": true,
-    "classes": false,
-    "defaultParams": false,
-    "blockBindings": true,
-    "modules": true,
-    "objectLiteralComputedProperties": true,
-    "objectLiteralShorthandMethods": true,
-    "objectLiteralShorthandProperties": true,
-    "restParams": true,
-    "spread": true,
-    "forOf": false,
-    "generators": false,
-    "templateStrings": true,
-    "superInFunctions": false,
-    "experimentalObjectRestSpread": false
+    sourceType: "module",
+    "ecmaFeatures": {
+      "arrowFunctions": true,
+      "destructuring": true,
+      "classes": false,
+      "defaultParams": false,
+      "blockBindings": true,
+      "modules": true,
+      "objectLiteralComputedProperties": true,
+      "objectLiteralShorthandMethods": true,
+      "objectLiteralShorthandProperties": true,
+      "restParams": true,
+      "spread": true,
+      "forOf": false,
+      "generators": false,
+      "templateStrings": true,
+      "superInFunctions": false,
+      "experimentalObjectRestSpread": false
+    }
   },
   env: {
     "browser": true,

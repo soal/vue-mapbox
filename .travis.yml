@@ -5,14 +5,9 @@ node_js:
 
 script:
 - npm install
-- npm install -G cross-env
 - npm run build
 
 branches:
   only:
   - master
   - development
-
-skip_cleanup: true
-env:
- - NODE_ENV=production

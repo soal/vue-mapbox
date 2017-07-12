@@ -29,7 +29,8 @@
   "homepage": "https://github.com/soal/vue-mapbox#readme",
   "dependencies": {
     "mapbox-gl": "^0.38.0",
-    "vue": "^2.3.4"
+    "vue": "^2.3.4",
+    "cross-env": "^5.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -37,7 +38,6 @@
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
-    "cross-env": "^5.0.1",
     "css-loader": "^0.25.0",
     "eslint": "^4.2.0",
     "eslint-config-vue": "^2.0.2",

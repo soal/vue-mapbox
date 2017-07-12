@@ -5,6 +5,7 @@ node_js:
 
 script:
 - npm install
+- npm install -G cross-env
 - npm run build
 
 branches:

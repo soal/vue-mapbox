@@ -1,7 +1,10 @@
 language: node_js
+node_js:
+  - "node"
+  - "6"
 install:
-- npm install
 - npm install -G cross-env
+- npm install
 script:
 - npm run build
 

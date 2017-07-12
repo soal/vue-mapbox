@@ -6,7 +6,7 @@
   "module": "dist/vue-mapbox.js",
   "unpkg": "dist/vue-mapbox.js",
   "scripts": {
-    "ci-build": "cross-env NODE_ENV=production webpack",
+    "ci-build": "cross-env NODE_ENV=production ./node_modules/webpack/bin/webpack.js",
     "build": "cross-env NODE_ENV=production webpack --progress",
     "dev": "cross-env NODE_ENV=development webpack --watch --progress",
     "test": "echo \"Error: no test specified\" && exit 1"

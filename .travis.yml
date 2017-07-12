@@ -1,13 +1,20 @@
 language: node_js
 node_js:
   - "node"
-  - "6.1.0"
+  - "6"
+install:
+  npm install -G cross-env
+  npm install -G webpack
 
 script:
 - npm install
-- npm run ci-build
+- npm run build
 
 branches:
   only:
   - master
   - development
+
+skip_cleanup: true
+env:
+ - NODE_ENV=production

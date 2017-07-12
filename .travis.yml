@@ -1,0 +1,10 @@
+language: node_js
+install:
+- npm install
+script:
+- npm run build
+
+branches:
+  only:
+  - master
+  - development

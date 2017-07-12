@@ -1,4 +1,4 @@
-  <template></template>
+<template></template>
 
 <script>
   import M from 'mapbox-gl';
@@ -7,7 +7,6 @@
 
   export default {
     mixins: [baseMixin],
-
     props: {
       position: {
         type: String,
@@ -24,11 +23,7 @@
 
     created() {
       this.control = new M.NavigationControl();
-    },
-
-    mounted() {
-      this._checkMapId();
-      bus.$on('mgl-load', this._deferredMount);
+      bus.$on('mgl-load', this.deferredMount);
     },
 
     beforeDestroy() {
@@ -36,13 +31,11 @@
     },
 
     methods: {
-      _deferredMount(payload) {
-        if (payload.mapId !== this.mapId) return;
-        this.map = payload.map;
+      deferredMount(map) {
+        this.map = map;
         this.map.addControl(this.control, this.position);
         this.$emit('mgl-nav-control-added', this.control);
         bus.$emit('mgl-nav-control-added', this.control);
-        bus.$off('mgl-load', this._deferredMount);
       }
     }
   };

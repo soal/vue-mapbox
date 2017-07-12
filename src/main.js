@@ -31,8 +31,6 @@ export const MglVideoLayer = VideoLayer;
 export const MglMarker = Marker;
 export const MglPopup = Popup;
 
-
-
 // export default {
 //   MglMap,
 //   MglNavigationControl

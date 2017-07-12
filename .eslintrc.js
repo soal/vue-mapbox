@@ -22,7 +22,8 @@ module.exports = {
       "templateStrings": true,
       "superInFunctions": false,
       "experimentalObjectRestSpread": false
-    }
+    },
+    sourceType: "module"
   },
   env: {
     "browser": true,

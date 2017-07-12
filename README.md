@@ -1,15 +1,15 @@
 # vue-mapbox [WIP]  [![Build Status](https://travis-ci.org/soal/vue-mapbox.svg?branch=master)](https://travis-ci.org/soal/vue-mapbox)
-## Vue 2 and [mapbox-gj-js](https://www.mapbox.com/mapbox-gl-js/api/) integration for using Mapbox map features vueish way.
+### Vue 2 and [mapbox-gj-js](https://www.mapbox.com/mapbox-gl-js/api/) integration for using Mapbox map features vueish way.
 
-## Project in alpha-stage for now.
+### Project in alpha-stage for now.
 
-# Installation
+## Installation
 
 ```
 npm install vue-mapbox
 ```
 
-# Development
+## Development
 ```bash
 git clone git@github.com:soal/vue-mapbox.git
 cd vue-mapbox

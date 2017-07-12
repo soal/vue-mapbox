@@ -1,12 +1,13 @@
 language: node_js
 node_js:
-  - "node"
-  - "6"
+- "node"
+- "6"
 install:
-  - npm install -G cross-env&&npm install -G webpack
+- npm install -G cross-env&&npm install -G webpack
 
 script:
-- npm install&&npm run build
+- npm install
+- npm run build
 
 branches:
   only:

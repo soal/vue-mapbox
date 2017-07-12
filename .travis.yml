@@ -16,5 +16,3 @@ branches:
   - development
 
 skip_cleanup: true
-env:
- - NODE_ENV=production

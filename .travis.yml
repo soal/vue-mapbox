@@ -12,3 +12,5 @@ branches:
   only:
   - master
   - development
+
+skip_cleanup: true

@@ -2,11 +2,11 @@
 
 <script>
   import M from 'mapbox-gl';
-  import bus from '../../mglMessageBus';
+  import bus from '../../messageBus';
+  import baseMixin from '../../lib/mixin';
 
   export default {
-    name: 'MglNavigationControl',
-
+    mixins: [baseMixin],
     props: {
       position: {
         type: String,

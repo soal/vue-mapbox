@@ -2,10 +2,11 @@
 
 <script>
   import M from 'mapbox-gl';
-  import bus from '../../mglMessageBus';
+  import bus from '../../messageBus';
+  import baseMixin from '../../lib/mixin';
 
   export default {
-    name: 'MglScaleControl',
+    mixins: [baseMixin],
 
     props: {
       maxWidth: {
@@ -27,6 +28,9 @@
 
     created() {
       this.control = new M.ScaleControl(this._props);
+    },
+
+    mounted() {
       bus.$on('mgl-load', this.deferredMount);
     },
 
@@ -35,8 +39,9 @@
     },
 
     methods: {
-      deferredMount(map) {
-        this.map = map;
+      deferredMount(payload) {
+        if (payload.mapId !== this.mapId) return;
+        this.map = payload.map;
         try {
           this.map.addControl(this.control);
         } catch (err) {
@@ -44,6 +49,7 @@
         }
         this.$emit('mgl-scale-control-added', this.control);
         bus.$emit('mgl-scale-control-added', this.control);
+        bus.$off('mgl-load', this.deferredMount);
       }
     }
   };

@@ -1,10 +1,13 @@
-<template><div></div></template>
+
+<template></template>
 
 <script>
   import M from 'mapbox-gl';
-  import bus from '../../mglMessageBus';
+  import bus from '../../messageBus';
+  import baseMixin from '../../lib/mixin';
 
   export default {
+    mixins: [baseMixin],
     props: {
       compact: {
         type: Boolean,
@@ -21,7 +24,11 @@
 
     created() {
       this.control = new M.AttributionControl({ compact: this.compact });
-      bus.$on('mgl-load', this.deferredMount);
+    },
+
+    mounted() {
+      this._checkMapId();
+      bus.$on('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {
@@ -29,11 +36,13 @@
     },
 
     methods: {
-      deferredMount(map) {
-        this.map = map;
+      _deferredMount(payload) {
+        if (payload.mapId !== this.mapId) return;
+        this.map = payload.map;
         this.map.addControl(this.control);
         this.$emit('mgl-attribution-control-added', this.control);
         bus.$emit('mgl-attribution-control-added', this.control);
+        bus.$off('mgl-load', this._deferredMount);
       }
     }
   };

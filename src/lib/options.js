@@ -1,23 +1,25 @@
+import events from './events';
+
 export default {
   container: {
     type: [String, HTMLElement],
     default () {
-      return 'map';
+      return `map-${('' + Math.random()).split('.')[1]}`;
     }
   },
   accessToken: {
     type: String,
-    default: null
+    default: undefined
   },
-  minZoom: {
+  initMinZoom: {
     type: Number,
     default: 0
   },
-  maxZoom: {
+  initMaxZoom: {
     type: Number,
     default: 22
   },
-  mapStyle: {
+  initMapStyle: {
     type: [String, Object],
     required: true
   },
@@ -59,7 +61,7 @@ export default {
     type: Boolean,
     default: false
   },
-  maxBounds: {
+  initMaxBounds: {
     type: Array,
     default() {
       return undefined;
@@ -101,26 +103,58 @@ export default {
     type: Boolean,
     default: true
   },
-  center: {
+  initCenter: {
     type: Array,
     default() {
       return [0, 0];
     }
   },
-  zoom: {
+  initZoom: {
     type: Number,
     default: 0
   },
-  bearing: {
+  initBearing: {
     type: Number,
     default: 0
   },
-  pitch: {
+  initPitch: {
     type: Number,
     default: 0
   },
   renderWorldCopies: {
     type: Boolean,
     default: true
+  },
+  RTLTextPluginUrl: {
+    type: String,
+    default: undefined
+  },
+  initLight: {
+    type: Object
+  },
+  initTileBoundaries: {
+    type: Boolean,
+    default: false
+  },
+  initCollisionBoxes: {
+    type: Boolean,
+    default: false
+  },
+  initRepaint: {
+    type: Boolean,
+    default: false
+  },
+  eventsToListen: {
+    type: Array,
+    validator(eventsArray) {
+      if (!(eventsArray instanceof Array)) {
+        return false;
+      }
+      for (let e of eventsArray) {
+        if (!(Object.keys(events).includes(e))) return false;
+      }
+      return true;
+    },
+    default: () => []
   }
 };

@@ -5,7 +5,7 @@ module.exports = {
   parser: "babel-eslint",
   parserOptions: {
     sourceType: "module",
-    "ecmaFeatures": {
+    ecmaFeatures: {
       "arrowFunctions": true,
       "destructuring": true,
       "classes": false,
@@ -22,8 +22,7 @@ module.exports = {
       "templateStrings": true,
       "superInFunctions": false,
       "experimentalObjectRestSpread": false
-    },
-    sourceType: "module"
+    }
   },
   env: {
     "browser": true,

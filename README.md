@@ -10,7 +10,7 @@ npm install vue-mapbox
 ```
 
 ## Development
-```bash
+```
 git clone git@github.com:soal/vue-mapbox.git
 cd vue-mapbox
 npm install

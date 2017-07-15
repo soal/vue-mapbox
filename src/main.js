@@ -30,6 +30,12 @@ export const MglPopup = Popup
 
 export default {
   install(Vue, options) {
-    Vue.mapbox = options.mapboxgl
+    Vue.mixin({
+      data() {
+        return {
+          mapbox: options.mapboxgl
+        }
+      }
+    })
   }
 }

@@ -1,7 +1,6 @@
 <template></template>
 
 <script>
-  import M from 'mapbox-gl';
   import bus from '../../messageBus';
   import baseMixin from '../../lib/mixin';
 
@@ -27,11 +26,12 @@
     },
 
     created() {
-      this.control = new M.ScaleControl(this._props);
+      this.control = new this.mapbox.ScaleControl(this._props);
     },
 
     mounted() {
-      bus.$on('mgl-load', this.deferredMount);
+      this._checkMapId();
+      bus.$on('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {
@@ -39,7 +39,7 @@
     },
 
     methods: {
-      deferredMount(payload) {
+      _deferredMount(payload) {
         if (payload.mapId !== this.mapId) return;
         this.map = payload.map;
         try {
@@ -49,7 +49,7 @@
         }
         this.$emit('mgl-scale-control-added', this.control);
         bus.$emit('mgl-scale-control-added', this.control);
-        bus.$off('mgl-load', this.deferredMount);
+        bus.$off('mgl-load', this._deferredMount);
       }
     }
   };

@@ -1,7 +1,6 @@
 <template></template>
 
 <script>
-  import M from 'mapbox-gl';
   import bus from '../../messageBus';
   import baseMixin from '../../lib/mixin';
 
@@ -36,7 +35,7 @@
     },
 
     created() {
-      this.control = new M.GeolocateControl(this._props);
+      this.control = new this.mapbox.GeolocateControl(this._props);
 
       this.control.on('error', err => {
         this.$emit('geolocate-error', err);

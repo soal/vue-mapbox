@@ -2,7 +2,6 @@
 <template></template>
 
 <script>
-  import M from 'mapbox-gl';
   import bus from '../../messageBus';
   import baseMixin from '../../lib/mixin';
 
@@ -23,7 +22,7 @@
     },
 
     created() {
-      this.control = new M.AttributionControl({ compact: this.compact });
+      this.control = new this.mapbox.AttributionControl({ compact: this.compact });
     },
 
     mounted() {

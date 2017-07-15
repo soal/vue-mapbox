@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import bus from '../../messageBus';
+
   import baseMixin from '../../lib/mixin';
 
   export default {
@@ -37,7 +37,7 @@
     mounted() {
       this._checkMapId();
       // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      bus.$on('mgl-load', this._deferredMount)
+      this.bus.$on('mgl-load', this._deferredMount)
     },
 
     beforeDestroy() {
@@ -66,7 +66,7 @@
         this.map = payload.map;
         this._addMarker()
         this.initial = false;
-        bus.$off('mgl-load', this._deferredMount)
+        this.bus.$off('mgl-load', this._deferredMount)
       },
       _addMarker() {
         this.marker
@@ -74,13 +74,13 @@
           .addTo(this.map);
 
         this.$emit('mgl-marker-added', this.marker);
-        bus.$emit('mgl-marker-added', this.marker);
+        this.bus.$emit('mgl-marker-added', this.marker);
       },
 
       remove() {
         this.marker.remove()
         this.$emit('mgl-marker-removed', this.marker);
-        bus.$emit('mgl-marker-removed', this.marker);
+        this.bus.$emit('mgl-marker-removed', this.marker);
       },
 
       togglePopup() {

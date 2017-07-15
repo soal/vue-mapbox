@@ -1,14 +1,14 @@
-import bus from '../../messageBus';
-import layerEvents from '../../lib/layerEvents';
-import baseMixin from '../../lib/mixin';
+import bus from '../../messageBus'
+import layerEvents from '../../lib/layerEvents'
+import baseMixin from '../../lib/mixin'
 
-let mapboxSourceProps = {
+const mapboxSourceProps = {
   sourceId: {
     type: String
   }
 }
 
-let mapboxLayerStyleProps = {
+const mapboxLayerStyleProps = {
   layerId: {
     type: String,
     required: true
@@ -23,16 +23,16 @@ let mapboxLayerStyleProps = {
   before: Object
 }
 
-let componentProps = {
+const componentProps = {
   eventsToListen: {
     validator(eventsArray) {
       if (!(eventsArray instanceof Array)) {
-        return false;
+        return false
       }
       for (let e of eventsArray) {
-        if (!layerEvents.includes(e)) return false;
+        if (!layerEvents.includes(e)) return false
       }
-      return true;
+      return true
     },
     default: () => []
   },
@@ -76,42 +76,42 @@ export default {
 
   computed: {
     sourceLoaded() {
-      return this.map.isSourceLoaded(this.sourceId);
+      return this.map.isSourceLoaded(this.sourceId)
     },
     mapLayer() {
-      return this.map.getLayer(this.layerId);
+      return this.map.getLayer(this.layerId)
     }
   },
 
   watch: {
     eventsToListen(events) {
-      if (this.initial) return;
-      this.unBindEvents(layerEvents);
-      this.bindEvents(events);
+      if (this.initial) return
+      this.unBindEvents(layerEvents)
+      this.bindEvents(events)
     },
     initMinzoom(val) {
-      if (this.initial) return;
+      if (this.initial) return
       this.map.setLayerZoomRange(this.layerId, val, this.maxzoom)
     },
     initMaxzoom(val) {
-      if (this.initial) return;
+      if (this.initial) return
       this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
     },
     initPaint(properties) {
-      if (this.initial) return;
+      if (this.initial) return
       for (let prop in Object.keys(this.paint)) {
         if (this.paint[prop] !== properties[prop]) {
-          this.map.setPaintProperty(this.layerId, prop, properties[prop]);
-          this.paint[prop] = properties[prop];
+          this.map.setPaintProperty(this.layerId, prop, properties[prop])
+          this.paint[prop] = properties[prop]
         }
       }
     },
     initLayout(properties) {
-      if (this.initial) return;
+      if (this.initial) return
       for (let prop in Object.keys(this.layout)) {
         if (this.layout[prop] !== properties[prop]) {
-          this.map.setLayoutProperty(this.layerId, prop, properties[prop]);
-          this.layout[prop] = properties[prop];
+          this.map.setLayoutProperty(this.layerId, prop, properties[prop])
+          this.layout[prop] = properties[prop]
         }
       }
     }
@@ -119,7 +119,7 @@ export default {
 
   beforeDestroy() {
     if (this.map) {
-      this.map.removeLayer(this.layerId);
+      this.map.removeLayer(this.layerId)
       if (this.clearSource) {
         try {
           this.map.removeSource(this.sourceId)
@@ -132,23 +132,23 @@ export default {
 
   methods: {
     _bindEvents(events) {
-      if (events.length === 0) return;
+      if (events.length === 0) return
       events.forEach(eventName => {
         this.map.on(eventName, this.layerId, event => {
-          this.$emit(`mgl-${ event }`, event);
+          this.$emit(`mgl-${event}`, event)
         })
-      });
+      })
     },
 
     _unBindEvents(events) {
       events.forEach(eventName => {
-        this.map.off(eventName, this.layerId);
-      });
+        this.map.off(eventName, this.layerId)
+      })
     },
 
     _watchSourceLoading(data) {
       if (data.dataType === 'source' && data.sourceId === this.sourceId) {
-        this._emitMapEvent('mgl-layer-source-loading', { sourceId: this.sourceId });
+        this._emitMapEvent('mgl-layer-source-loading', { sourceId: this.sourceId })
         this.map.off('dataloading', this.watchSourceLoading)
       }
     },
@@ -158,21 +158,21 @@ export default {
         map: this.map,
         component: this,
         ...data
-      });
+      })
       bus.$emit(name, {
         map: this.map,
         component: this,
         ...data
-      });
+      })
     },
 
     move(beforeId) {
-      this.map.moveLayer(this.layerId, beforeId);
-      this._emitMapEvent('mgl-layer-moved', { layerId: this.layerId, beforeId: beforeId });
+      this.map.moveLayer(this.layerId, beforeId)
+      this._emitMapEvent('mgl-layer-moved', { layerId: this.layerId, beforeId: beforeId })
     },
 
     remove() {
-      this.map.removeLayer(this.layerId);
+      this.map.removeLayer(this.layerId)
     }
   }
 }

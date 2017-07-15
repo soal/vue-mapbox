@@ -41,7 +41,7 @@
     },
 
     beforeDestroy() {
-      if (this.map) {
+      if (this.map !== undefined && this.marker !== undefined) {
         this.marker.remove();
       }
     },

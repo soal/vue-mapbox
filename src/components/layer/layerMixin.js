@@ -114,12 +114,16 @@ export default {
 
   beforeDestroy() {
     if (this.map) {
-      this.map.removeLayer(this.layerId)
+      try {
+        this.map.removeLayer(this.layerId)
+      } catch (err) {
+        this._emitMapEvent('mgl-layer-does-not-exist', { map: this.map, component: this, layerId: this.sourceId, error: err })
+      }
       if (this.clearSource) {
         try {
           this.map.removeSource(this.sourceId)
         } catch (err) {
-          this._emitMapEvent('mgl-source-does-not-exist', { sourceId: this.sourceId, error: err })
+          this._emitMapEvent('mgl-source-does-not-exist', { map: this.map, component: this, sourceId: this.sourceId, error: err })
         }
       }
     }

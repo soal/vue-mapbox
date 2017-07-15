@@ -21,7 +21,7 @@
         type: Array,
         required: true
       },
-      mapContainerId: {
+      mapId: {
         type: String
       }
     },

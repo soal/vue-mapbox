@@ -16,10 +16,10 @@ const mapboxLayerStyleProps = {
   metadata: Object,
   refLayer: String,
   'source-layer': String,
-  initMinzoom: Number,
-  initMaxzoom: Number,
-  initPaint: Object,
-  initLayout: Object,
+  minZoom: Number,
+  maxZoom: Number,
+  paint: Object,
+  layout: Object,
   before: Object
 }
 
@@ -65,12 +65,7 @@ export default {
   data() {
     return {
       initial: true,
-      map: undefined,
-      minzoom: this.initMinzoom,
-      maxzoom: this.initMaxzoom,
-      paint: this.initPaint,
-      filter: this.initFilter,
-      layout: this.initLayout
+      map: undefined
     }
   },
 
@@ -89,15 +84,15 @@ export default {
       this.unBindEvents(layerEvents)
       this.bindEvents(events)
     },
-    initMinzoom(val) {
+    minzoom(val) {
       if (this.initial) return
       this.map.setLayerZoomRange(this.layerId, val, this.maxzoom)
     },
-    initMaxzoom(val) {
+    maxzoom(val) {
       if (this.initial) return
       this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
     },
-    initPaint(properties) {
+    paint(properties) {
       if (this.initial) return
       for (let prop in Object.keys(this.paint)) {
         if (this.paint[prop] !== properties[prop]) {
@@ -106,7 +101,7 @@ export default {
         }
       }
     },
-    initLayout(properties) {
+    layout(properties) {
       if (this.initial) return
       for (let prop in Object.keys(this.layout)) {
         if (this.layout[prop] !== properties[prop]) {

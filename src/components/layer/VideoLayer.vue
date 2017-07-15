@@ -31,14 +31,6 @@
     },
 
     watch: {
-      minzoom(val) {
-        if (this.initial) return;
-        this.map.setLayerZoomRange(this.layerId, val, this.maxzoom)
-      },
-      maxzoom(val) {
-        if (this.initial) return;
-        this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
-      },
       coordinates(val) {
         if (this.initial) return;
         this.map.setCoordinates(val);

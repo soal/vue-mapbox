@@ -9,7 +9,7 @@ import mixin from './layerMixin';
 export default {
   mixins: [mixin],
   props: {
-    initSource: {
+    source: {
       type: [Object, String]
     },
     type: {
@@ -19,28 +19,20 @@ export default {
       },
       default: 'fill'
     },
-    initFilter: {
+    filter: {
       type: Array,
       default: undefined
     }
   },
 
-  data() {
-    return {
-      source: this.initSource
-    }
-  },
-
   watch: {
-    initSource(data) {
+    source(data) {
       if (this.initial) return;
       this.map.getSource(this.sourceId).setData(data);
-      this.source = this.map.getSource(this.sourceId);
     },
-    initFilter(filter) {
+    filter(filter) {
       if (this.initial) return;
       this.map.setFilter(this.layerId, filter);
-      this.mapOptions.filter = filter;
     }
   },
 

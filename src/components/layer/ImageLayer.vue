@@ -25,21 +25,6 @@
     },
 
     watch: {
-      minzoom(val) {
-        if (this.initial) return;
-        this.map.setLayerZoomRange(this.layerId, val, this.maxzoom)
-      },
-      maxzoom(val) {
-        if (this.initial) return;
-        this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
-      },
-      paint(val) {
-        // FIXME: save initial state and replace only changed fields?
-        if (this.initial) return;
-        val.keys().forEach(key => {
-          this.map.setPaintProperty(this.layerId, key, val);
-        });
-      },
       coordinates(val) {
         if (this.initial) return;
         this.map.setCoordinates(val);

@@ -1,7 +1,7 @@
 <template></template>
 
 <script>
-  import bus from '../../messageBus';
+
   import mixin from './layerMixin';
   import layerEvents from '../../lib/layerEvents';
 
@@ -21,7 +21,7 @@
     mounted() {
       this._checkMapId();
       // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      bus.$on('mgl-load', this._deferredMount);
+      this.bus.$on('mgl-load', this._deferredMount);
     },
 
     watch: {
@@ -74,7 +74,7 @@
           this._bindEvents(layerEvents);
         }
         this.initial = false;
-        bus.$off('mgl-load', this._deferredMount);
+        this.bus.$off('mgl-load', this._deferredMount);
       },
 
       _addLayer() {

@@ -1,7 +1,7 @@
 <template></template>
 
 <script>
-import bus from '../../messageBus';
+
 import layerEvents from '../../lib/layerEvents';
 import mixin from './layerMixin';
 
@@ -40,7 +40,7 @@ export default {
 
   mounted() {
     this._checkMapId();
-    bus.$on('mgl-load', this._deferredMount);
+    this.bus.$on('mgl-load', this._deferredMount);
   },
 
   methods: {
@@ -72,7 +72,7 @@ export default {
       }
       this.map.off('dataloading', this._watchSourceLoading);
       this.initial = false;
-      bus.$off('mgl-load', this._deferredMount);
+      this.bus.$off('mgl-load', this._deferredMount);
     },
 
     _addLayer() {

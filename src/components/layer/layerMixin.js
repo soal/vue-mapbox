@@ -1,4 +1,4 @@
-import bus from '../../messageBus'
+
 import layerEvents from '../../lib/layerEvents'
 import baseMixin from '../../lib/mixin'
 
@@ -159,7 +159,7 @@ export default {
         component: this,
         ...data
       })
-      bus.$emit(name, {
+      this.bus.$emit(name, {
         map: this.map,
         component: this,
         ...data

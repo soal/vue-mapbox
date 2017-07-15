@@ -1,7 +1,7 @@
 <template></template>
 
 <script>
-  import bus from '../../messageBus';
+
   import baseMixin from '../../lib/mixin';
 
   export default {
@@ -27,7 +27,7 @@
 
     mounted() {
       this._checkMapId();
-      bus.$on('mgl-load', this._deferredMount);
+      this.bus.$on('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {
@@ -40,8 +40,8 @@
         this.map = payload.map;
         this.map.addControl(this.control, this.position);
         this.$emit('mgl-fullscreen-control-added', this.control);
-        bus.$emit('mgl-fullscreen-control-added', this.control);
-        bus.$off('mgl-load', this._deferredMount);
+        this.bus.$emit('mgl-fullscreen-control-added', this.control);
+        this.bus.$off('mgl-load', this._deferredMount);
       }
     }
   };

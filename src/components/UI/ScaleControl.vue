@@ -1,7 +1,7 @@
 <template></template>
 
 <script>
-  import bus from '../../messageBus';
+
   import baseMixin from '../../lib/mixin';
 
   export default {
@@ -31,7 +31,7 @@
 
     mounted() {
       this._checkMapId();
-      bus.$on('mgl-load', this._deferredMount);
+      this.bus.$on('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {
@@ -48,8 +48,8 @@
           console.log(err);
         }
         this.$emit('mgl-scale-control-added', this.control);
-        bus.$emit('mgl-scale-control-added', this.control);
-        bus.$off('mgl-load', this._deferredMount);
+        this.bus.$emit('mgl-scale-control-added', this.control);
+        this.bus.$off('mgl-load', this._deferredMount);
       }
     }
   };

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import bus from '../../messageBus';
+
   import baseMixin from '../../lib/mixin';
 
   export default {
@@ -61,13 +61,13 @@
 
     mounted() {
       // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      bus.$on('mgl-load', this._deferredMount);
+      this.bus.$on('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {
       if (this.map) {
         this.$emit('mgl-popup-removed', this.popup);
-        bus.$emit('mgl-popup-removed', this.popup);
+        this.bus.$emit('mgl-popup-removed', this.popup);
         this.popup.remove();
       }
     },
@@ -86,7 +86,7 @@
         this.map = payload.map;
         this._addPopup()
         this.initial = false;
-        bus.$off('mgl-load', this._deferredMount);
+        this.bus.$off('mgl-load', this._deferredMount);
       },
 
       _addPopup() {
@@ -107,7 +107,7 @@
         }
         this.popup.addTo(this.map);
         this.$emit('mgl-popup-added', this.popup);
-        bus.$emit('mgl-popup-added', this.popup);
+        this.bus.$emit('mgl-popup-added', this.popup);
 
         this.popup.on('close', this._onClose);
 
@@ -118,7 +118,7 @@
 
       _onClose() {
         this.$emit('mgl-popup-close', this.popup);
-        bus.$emit('mgl-popup-close', this.popup);
+        this.bus.$emit('mgl-popup-close', this.popup);
       }
     }
   }

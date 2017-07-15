@@ -1,7 +1,7 @@
 <template></template>
 
 <script>
-  import bus from '../../messageBus';
+
   import baseMixin from '../../lib/mixin';
 
   export default {
@@ -39,17 +39,17 @@
 
       this.control.on('error', err => {
         this.$emit('geolocate-error', err);
-        bus.$emit('geolocate-error', err);
+        this.bus.$emit('geolocate-error', err);
       });
       this.control.on('geolocate', position => {
         this.$emit('geolocate', position);
-        bus.$emit('geolocate-error', position);
+        this.bus.$emit('geolocate-error', position);
       })
     },
 
     mounted() {
       this._checkMapId();
-      bus.$on('mgl-load', this._deferredMount);
+      this.bus.$on('mgl-load', this._deferredMount);
     },
 
     beforeDestroy() {
@@ -62,8 +62,8 @@
         this.map = payload.map;
         this.map.addControl(this.control);
         this.$emit('mgl-geolocate-control-added', this.control);
-        bus.$emit('mgl-geolocate-control-added', this.control);
-        bus.$off('mgl-load', this._deferredMount);
+        this.bus.$emit('mgl-geolocate-control-added', this.control);
+        this.bus.$off('mgl-load', this._deferredMount);
       }
     }
   };

@@ -5,11 +5,8 @@
 </template>
 
 <script>
-  import bus from '../messageBus';
-
   import mapEvents from '../lib/events';
   import props from '../lib/options';
-
 
   export default {
     props,
@@ -110,6 +107,7 @@
     },
 
     mounted() {
+      console.log('Map: ', this);
       this._loadMap().then(map => {
         console.log(this.container);
         this.map = map;
@@ -117,7 +115,7 @@
           map.setRTLTextPlugin(this.RTLTextPluginUrl, this._RTLTextPluginError);
         }
         this.$emit('mgl-load', { map, component: this, mapId: this.container });
-        bus.$emit('mgl-load', { map, component: this, mapId: this.container });
+        this.bus.$emit('mgl-load', { map, component: this, mapId: this.container });
         this._bindEvents(this.eventsToListen);
         this.initial = false;
       });
@@ -150,7 +148,7 @@
         for (let e of Object.keys(events)) {
           this.map.on(e, event => {
             this.$emit(`mgl-${ event }`, e);
-            bus.$emit(`mgl-${ event }`, e);
+            this.bus.$emit(`mgl-${ event }`, e);
           });
         }
       },

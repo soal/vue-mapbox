@@ -5,10 +5,8 @@
 </template>
 
 <script>
-  import M from 'mapbox-gl';
   import bus from '../../messageBus';
   import baseMixin from '../../lib/mixin';
-  // import layerEvents from '../lib/layerEvents';
 
   export default {
     mixins: [baseMixin],
@@ -92,7 +90,7 @@
       },
 
       _addPopup() {
-        this.popup = new M.Popup({ ...this._props });
+        this.popup = new this.mapbox.Popup({ ...this._props });
         if (this.coordinates !== undefined) this.popup.setLngLat(this.coordinates)
         if (this.$slots.default !== undefined) {
           if (this.onlyText) {

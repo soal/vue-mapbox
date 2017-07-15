@@ -5,7 +5,6 @@
 </template>
 
 <script>
-  import M from 'mapbox-gl';
   import bus from '../messageBus';
 
   import mapEvents from '../lib/events';
@@ -112,12 +111,13 @@
 
     mounted() {
       this._loadMap().then(map => {
+        console.log(this.container);
         this.map = map;
         if (this.RTLTextPluginUrl !== undefined) {
           map.setRTLTextPlugin(this.RTLTextPluginUrl, this._RTLTextPluginError);
         }
-        this.$emit('mgl-load', { map: map, component: this, mapId: this.container });
-        bus.$emit('mgl-load', { map: map, component: this, mapId: this.container });
+        this.$emit('mgl-load', { map, component: this, mapId: this.container });
+        bus.$emit('mgl-load', { map, component: this, mapId: this.container });
         this._bindEvents(this.eventsToListen);
         this.initial = false;
       });
@@ -131,8 +131,8 @@
       // We wait in promise to ensure map is loaded and other components will receive map object
       _loadMap() {
         return new Promise((resolve) => {
-          if (this.accessToken) M.accessToken = this.accessToken;
-          let map = new M.Map({
+          if (this.accessToken) this.mapbox.accessToken = this.accessToken;
+          let map = new this.mapbox.Map({
             ...this._props,
             ...this.mapOptions,
             style: this.initMapStyle

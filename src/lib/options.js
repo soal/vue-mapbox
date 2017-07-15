@@ -1,10 +1,10 @@
-import events from './events';
+import events from './events'
 
 export default {
   container: {
     type: [String, HTMLElement],
     default () {
-      return `map-${('' + Math.random()).split('.')[1]}`;
+      return `map-${('' + Math.random()).split('.')[1]}`
     }
   },
   accessToken: {
@@ -38,7 +38,7 @@ export default {
   classes: {
     type: Array,
     default() {
-      return [];
+      return []
     }
   },
   attributionControl: {
@@ -64,13 +64,13 @@ export default {
   initMaxBounds: {
     type: Array,
     default() {
-      return undefined;
+      return undefined
     }
   },
   scrollZoom: {
     type: [Boolean, Object],
     default() {
-      return true;
+      return true
     }
   },
   boxZoom: {
@@ -96,7 +96,7 @@ export default {
   touchZoomRotate: {
     type: [Boolean, Object],
     default() {
-      return true;
+      return true
     }
   },
   trackResize: {
@@ -106,7 +106,7 @@ export default {
   initCenter: {
     type: Array,
     default() {
-      return [0, 0];
+      return [0, 0]
     }
   },
   initZoom: {
@@ -148,13 +148,13 @@ export default {
     type: Array,
     validator(eventsArray) {
       if (!(eventsArray instanceof Array)) {
-        return false;
+        return false
       }
-      for (let e of eventsArray) {
-        if (!(Object.keys(events).includes(e))) return false;
+      for (const e of eventsArray) {
+        if (!(Object.keys(events).includes(e))) return false
       }
-      return true;
+      return true
     },
     default: () => []
   }
-};
+}

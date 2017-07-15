@@ -41,4 +41,4 @@ export default {
   drag: 'drag',
   dragstart: 'dragstart',
   pitch: 'pitch'
-};
+}

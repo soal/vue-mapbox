@@ -6,7 +6,6 @@
 </template>
 
 <script>
-  import M from 'mapbox-gl';
   import bus from '../../messageBus';
   import baseMixin from '../../lib/mixin';
 
@@ -59,9 +58,9 @@
       _deferredMount(payload) {
         if (payload.mapId !== this.mapId) return;
         if (this.$slots.marker) {
-          this.marker = new M.Marker(this.$slots.marker[0].elm, { ...this._props });
+          this.marker = new this.mapbox.Marker(this.$slots.marker[0].elm, { ...this._props });
         } else {
-          this.marker = new M.Marker({ ...this._props });
+          this.marker = new this.mapbox.Marker({ ...this._props });
         }
 
         this.map = payload.map;

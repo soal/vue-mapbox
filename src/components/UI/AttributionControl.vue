@@ -26,18 +26,22 @@
     },
 
     mounted() {
-      this._checkMapId()
-      this.bus.$on('mgl-load', this._deferredMount)
+      // this._checkMapId()
+      let mapComponent = this._findBaseMap()
+      if (mapComponent.mapLoaded) {
+        this._deferredMount({ component: mapComponent, map: mapComponent.map })
+      } else {
+        mapComponent.$on('mgl-load', this._deferredMount)
+      }
+      // this.bus.$on('mgl-load', this._deferredMount)
     },
 
     methods: {
       _deferredMount(payload) {
-        if (payload.mapId !== this.mapId) return
         this.map = payload.map
         this.map.addControl(this.control)
         this.$emit('mgl-attribution-control-added', this.control)
-        this.bus.$emit('mgl-attribution-control-added', this.control)
-        this.bus.$off('mgl-load', this._deferredMount)
+        payload.component.$off('mgl-load', this._deferredMount)
       }
     }
   };

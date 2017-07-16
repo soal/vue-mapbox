@@ -26,14 +26,12 @@
     },
 
     mounted() {
-      // this._checkMapId()
       let mapComponent = this._findBaseMap()
       if (mapComponent.mapLoaded) {
         this._deferredMount({ component: mapComponent, map: mapComponent.map })
       } else {
         mapComponent.$on('mgl-load', this._deferredMount)
       }
-      // this.bus.$on('mgl-load', this._deferredMount)
     },
 
     methods: {

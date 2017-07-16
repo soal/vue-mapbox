@@ -12,10 +12,10 @@ export default {
       }
     },
     _findBaseMap() {
-      let baseMapComponent;
+      let baseMapComponent
       function walkParents(component) {
         if (component.baseMap) {
-          baseMapComponent = component;
+          baseMapComponent = component
         } else {
           walkParents(component.$parent)
         }

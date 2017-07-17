@@ -56,7 +56,6 @@
 
     methods: {
       _deferredMount(payload) {
-        if (payload.mapId !== this.mapId) return;
         let source = {
           type: 'canvas',
           coordinates: this.coordinates,
@@ -65,25 +64,25 @@
         }
 
         this.map = payload.map;
-        this.map.on('dataloading', this._watchSourceLoading);
+        this.map.on('dataloading', this._watchSourceLoading)
         if (source) {
           try {
             this.map.addSource(this.sourceId, source)
           } catch (err) {
             if (this.replaceSource) {
-              this.map.removeSource(this.sourceId);
+              this.map.removeSource(this.sourceId)
               this.map.addSource(this.sourceId, source)
             } else {
-              this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error: err });
+              this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error: err })
             }
           }
         }
         this._addLayer();
         if (this.listenUserEvents) {
-          this._bindEvents(layerEvents);
+          this._bindEvents(layerEvents)
         }
-        this.initial = false;
-        this.bus.$off('mgl-load', this._deferredMount);
+        payload.component.$off('mgl-load', this._deferredMount)
+        this.initial = false
       },
 
       _addLayer() {

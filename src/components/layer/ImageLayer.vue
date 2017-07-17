@@ -18,28 +18,7 @@
       }
     },
 
-    mounted() {
-      this._checkMapId();
-      // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      this.bus.$on('mgl-load', this._deferredMount);
-    },
-
     watch: {
-      minzoom(val) {
-        if (this.initial) return;
-        this.map.setLayerZoomRange(this.layerId, val, this.maxzoom)
-      },
-      maxzoom(val) {
-        if (this.initial) return;
-        this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
-      },
-      paint(val) {
-        // FIXME: save initial state and replace only changed fields?
-        if (this.initial) return;
-        val.keys().forEach(key => {
-          this.map.setPaintProperty(this.layerId, key, val);
-        });
-      },
       coordinates(val) {
         if (this.initial) return;
         this.map.setCoordinates(val);
@@ -48,7 +27,6 @@
 
     methods: {
       _deferredMount(payload) {
-        if (payload.mapId !== this.mapId) return;
         let source = {
           type: 'image',
           url: this.url,
@@ -74,7 +52,7 @@
           this._bindEvents(layerEvents);
         }
         this.initial = false;
-        this.bus.$off('mgl-load', this._deferredMount);
+        payload.component.$off('mgl-load', this._deferredMount)
       },
 
       _addLayer() {

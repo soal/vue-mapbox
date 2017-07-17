@@ -9,7 +9,7 @@ import mixin from './layerMixin';
 export default {
   mixins: [mixin],
   props: {
-    initSource: {
+    source: {
       type: [Object, String]
     },
     type: {
@@ -19,40 +19,25 @@ export default {
       },
       default: 'fill'
     },
-    initFilter: {
+    filter: {
       type: Array,
       default: undefined
     }
   },
 
-  data() {
-    return {
-      source: this.initSource
-    }
-  },
-
   watch: {
-    initSource(data) {
+    source(data) {
       if (this.initial) return;
       this.map.getSource(this.sourceId).setData(data);
-      this.source = this.map.getSource(this.sourceId);
     },
-    initFilter(filter) {
+    filter(filter) {
       if (this.initial) return;
       this.map.setFilter(this.layerId, filter);
-      this.mapOptions.filter = filter;
     }
-  },
-
-  mounted() {
-    this._checkMapId();
-    // We wait for "load" event from map component to ensure mapbox is loaded and map created
-    this.bus.$on('mgl-load', this._deferredMount);
   },
 
   methods: {
     _deferredMount(payload) {
-      if (payload.mapId !== this.mapId) return;
       this.map = payload.map;
       this.map.on('dataloading', this._watchSourceLoading);
       if (this.source) {
@@ -79,7 +64,7 @@ export default {
       }
       this.map.off('dataloading', this._watchSourceLoading);
       this.initial = false;
-      this.bus.$off('mgl-load', this._deferredMount);
+      payload.component.$off('mgl-load', this._deferredMount)
     },
 
     _addLayer() {

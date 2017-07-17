@@ -2,11 +2,11 @@
 <template></template>
 
 <script>
-
-  import baseMixin from '../../lib/mixin';
+  import baseMixin from '../../lib/mixin'
+  import controlMixin from './controlMixin'
 
   export default {
-    mixins: [baseMixin],
+    mixins: [baseMixin, controlMixin],
     props: {
       compact: {
         type: Boolean,
@@ -22,26 +22,15 @@
     },
 
     created() {
-      this.control = new this.mapbox.AttributionControl({ compact: this.compact });
-    },
-
-    mounted() {
-      this._checkMapId()
-      this.bus.$on('mgl-load', this._deferredMount);
-    },
-
-    beforeDestroy() {
-      this.map.removeControl(this.control);
+      this.control = new this.mapbox.AttributionControl({ compact: this.compact })
     },
 
     methods: {
       _deferredMount(payload) {
-        if (payload.mapId !== this.mapId) return;
-        this.map = payload.map;
-        this.map.addControl(this.control);
-        this.$emit('mgl-attribution-control-added', this.control);
-        this.bus.$emit('mgl-attribution-control-added', this.control);
-        this.bus.$off('mgl-load', this._deferredMount);
+        this.map = payload.map
+        this.map.addControl(this.control)
+        this.$emit('mgl-attribution-control-added', this.control)
+        payload.component.$off('mgl-load', this._deferredMount)
       }
     }
   };

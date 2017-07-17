@@ -18,12 +18,6 @@
       }
     },
 
-    mounted() {
-      this._checkMapId();
-      // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      this.bus.$on('mgl-load', this._deferredMount);
-    },
-
     computed: {
       video() {
         return this.map.getSource(this.sourceId).getVideo();
@@ -31,14 +25,6 @@
     },
 
     watch: {
-      minzoom(val) {
-        if (this.initial) return;
-        this.map.setLayerZoomRange(this.layerId, val, this.maxzoom)
-      },
-      maxzoom(val) {
-        if (this.initial) return;
-        this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
-      },
       coordinates(val) {
         if (this.initial) return;
         this.map.setCoordinates(val);

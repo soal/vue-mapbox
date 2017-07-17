@@ -2,10 +2,11 @@
 
 <script>
 
-  import baseMixin from '../../lib/mixin';
+  import baseMixin from '../../lib/mixin'
+  import controlMixin from './controlMixin'
 
   export default {
-    mixins: [baseMixin],
+    mixins: [baseMixin, controlMixin],
     props: {
       position: {
         type: String,
@@ -21,26 +22,17 @@
     },
 
     created() {
-      this.control = new this.mapbox.NavigationControl();
-    },
-
-    mounted() {
-      this._checkMapId();
-      this.bus.$on('mgl-load', this._deferredMount);
-    },
-
-    beforeDestroy() {
-      this.map.removeControl(this.control);
+      this.control = new this.mapbox.NavigationControl()
     },
 
     methods: {
       _deferredMount(payload) {
-        if (payload.mapId !== this.mapId) return;
-        this.map = payload.map;
-        this.map.addControl(this.control, this.position);
-        this.$emit('mgl-nav-control-added', this.control);
-        this.bus.$emit('mgl-nav-control-added', this.control);
-        this.bus.$off('mgl-load', this._deferredMount);
+        this.map = payload.map
+        this.map.addControl(this.control, this.position)
+        this._emitMapEvent('mgl-nav-control-added', { control: this.control })
+
+        payload.component.$off('mgl-load', this._deferredMount)
+
       }
     }
   };

@@ -11,15 +11,15 @@ export default {
     type: String,
     default: undefined
   },
-  initMinZoom: {
+  minZoom: {
     type: Number,
     default: 0
   },
-  initMaxZoom: {
+  maxZoom: {
     type: Number,
     default: 22
   },
-  initMapStyle: {
+  mapStyle: {
     type: [String, Object],
     required: true
   },
@@ -61,7 +61,7 @@ export default {
     type: Boolean,
     default: false
   },
-  initMaxBounds: {
+  maxBounds: {
     type: Array,
     default() {
       return undefined
@@ -103,21 +103,21 @@ export default {
     type: Boolean,
     default: true
   },
-  initCenter: {
+  center: {
     type: Array,
     default() {
       return [0, 0]
     }
   },
-  initZoom: {
+  zoom: {
     type: Number,
     default: 0
   },
-  initBearing: {
+  bearing: {
     type: Number,
     default: 0
   },
-  initPitch: {
+  pitch: {
     type: Number,
     default: 0
   },
@@ -129,18 +129,18 @@ export default {
     type: String,
     default: undefined
   },
-  initLight: {
+  light: {
     type: Object
   },
-  initTileBoundaries: {
+  tileBoundaries: {
     type: Boolean,
     default: false
   },
-  initCollisionBoxes: {
+  collisionBoxes: {
     type: Boolean,
     default: false
   },
-  initRepaint: {
+  repaint: {
     type: Boolean,
     default: false
   },

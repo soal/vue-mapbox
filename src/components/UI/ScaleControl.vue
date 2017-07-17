@@ -2,10 +2,11 @@
 
 <script>
 
-  import baseMixin from '../../lib/mixin';
+  import baseMixin from '../../lib/mixin'
+  import controlMixin from './controlMixin'
 
   export default {
-    mixins: [baseMixin],
+    mixins: [baseMixin, controlMixin],
 
     props: {
       maxWidth: {
@@ -27,15 +28,6 @@
 
     created() {
       this.control = new this.mapbox.ScaleControl(this._props);
-    },
-
-    mounted() {
-      this._checkMapId();
-      this.bus.$on('mgl-load', this._deferredMount);
-    },
-
-    beforeDestroy() {
-      this.map.removeControl(this.control);
     },
 
     methods: {

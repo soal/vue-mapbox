@@ -24,23 +24,17 @@ export default {
       type: Number,
       default: undefined
     },
-    initFilter: {
+    filter: {
       type: Array,
       default:undefined
     }
   },
 
   watch: {
-    initFilter(filter) {
+    filter(filter) {
       if (this.initial) return;
       this.map.setFilter(this.layerId, filter);
-      this.mapOptions.filter = filter;
     }
-  },
-
-  mounted() {
-    this._checkMapId();
-    this.bus.$on('mgl-load', this._deferredMount);
   },
 
   methods: {

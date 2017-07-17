@@ -22,7 +22,7 @@
     },
 
     created() {
-      this.control = new this.mapbox.NavigationControl();
+      this.control = new this.mapbox.NavigationControl()
     },
 
     methods: {

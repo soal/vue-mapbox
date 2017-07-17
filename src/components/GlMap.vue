@@ -95,13 +95,13 @@
     },
 
     mounted() {
+      console.log('Map: ', this);
       this._loadMap().then(map => {
         this.map = map
         if (this.RTLTextPluginUrl !== undefined) {
           map.setRTLTextPlugin(this.RTLTextPluginUrl, this._RTLTextPluginError)
         }
-        this.$emit('mgl-load', { map, component: this, mapId: this.container })
-        // this.bus.$emit('mgl-load', { map, component: this, mapId: this.container })
+        this.$emit('mgl-load', { map, component: this })
         this._bindEvents(this.eventsToListen)
         this.initial = false
         this.mapLoaded = true

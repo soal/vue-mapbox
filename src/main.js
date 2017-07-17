@@ -30,12 +30,10 @@ export const MglPopup = Popup
 
 export default {
   install(Vue, options) {
-    const bus = new Vue()
     Vue.mixin({
       data() {
         return {
-          mapbox: options.mapboxgl,
-          bus: bus
+          mapbox: options.mapboxgl
         }
       }
     })

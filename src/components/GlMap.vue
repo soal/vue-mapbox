@@ -14,6 +14,8 @@
     data() {
       return {
         initial: true,
+        baseMap: true,
+        mapLoaded: false,
         map: undefined
       };
     },
@@ -94,14 +96,15 @@
 
     mounted() {
       this._loadMap().then(map => {
-        this.map = map;
+        this.map = map
         if (this.RTLTextPluginUrl !== undefined) {
-          map.setRTLTextPlugin(this.RTLTextPluginUrl, this._RTLTextPluginError);
+          map.setRTLTextPlugin(this.RTLTextPluginUrl, this._RTLTextPluginError)
         }
-        this.$emit('mgl-load', { map, component: this, mapId: this.container });
-        this.bus.$emit('mgl-load', { map, component: this, mapId: this.container });
-        this._bindEvents(this.eventsToListen);
-        this.initial = false;
+        this.$emit('mgl-load', { map, component: this, mapId: this.container })
+        // this.bus.$emit('mgl-load', { map, component: this, mapId: this.container })
+        this._bindEvents(this.eventsToListen)
+        this.initial = false
+        this.mapLoaded = true
       });
     },
 
@@ -113,7 +116,7 @@
       // We wait in promise to ensure map is loaded and other components will receive map object
       _loadMap() {
         return new Promise((resolve) => {
-          if (this.accessToken) this.mapbox.accessToken = this.accessToken;
+          if (this.accessToken) this.mapbox.accessToken = this.accessToken
           let map = new this.mapbox.Map({
             ...this._props,
             style: this.mapStyle
@@ -131,7 +134,6 @@
         for (let e of Object.keys(events)) {
           this.map.on(e, event => {
             this.$emit(`mgl-${ event }`, e);
-            this.bus.$emit(`mgl-${ event }`, e);
           });
         }
       },

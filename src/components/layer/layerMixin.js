@@ -134,7 +134,7 @@ export default {
       if (events.length === 0) return
       events.forEach(eventName => {
         this.map.on(eventName, this.layerId, event => {
-          this.$emit(`mgl-${event}`, event)
+          this._emitMapEvent(`mgl-${event}`, { mapEvent: event })
         })
       })
     },
@@ -150,19 +150,6 @@ export default {
         this._emitMapEvent('mgl-layer-source-loading', { sourceId: this.sourceId })
         this.map.off('dataloading', this.watchSourceLoading)
       }
-    },
-
-    _emitMapEvent(name, data={}) {
-      this.$emit(name, {
-        map: this.map,
-        component: this,
-        ...data
-      })
-      this.bus.$emit(name, {
-        map: this.map,
-        component: this,
-        ...data
-      })
     },
 
     move(beforeId) {

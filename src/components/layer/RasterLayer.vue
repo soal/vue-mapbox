@@ -30,14 +30,8 @@ export default {
     }
   },
 
-  mounted() {
-    this._checkMapId();
-    this.bus.$on('mgl-load', this._deferredMount);
-  },
-
   methods: {
     _deferredMount(payload) {
-      if (payload.mapId !== this.mapId) return;
       this.map = payload.map;
       let source = {
         type: 'raster',
@@ -65,7 +59,7 @@ export default {
       }
       this.map.off('dataloading', this._watchSourceLoading);
       this.initial = false;
-      this.bus.$off('mgl-load', this._deferredMount);
+      payload.component.$off('mgl-load', this._deferredMount)
     },
 
     _addLayer() {

@@ -36,15 +36,8 @@ export default {
     }
   },
 
-  mounted() {
-    this._checkMapId();
-    // We wait for "load" event from map component to ensure mapbox is loaded and map created
-    this.bus.$on('mgl-load', this._deferredMount);
-  },
-
   methods: {
     _deferredMount(payload) {
-      if (payload.mapId !== this.mapId) return;
       this.map = payload.map;
       this.map.on('dataloading', this._watchSourceLoading);
       if (this.source) {
@@ -71,7 +64,7 @@ export default {
       }
       this.map.off('dataloading', this._watchSourceLoading);
       this.initial = false;
-      this.bus.$off('mgl-load', this._deferredMount);
+      payload.component.$off('mgl-load', this._deferredMount)
     },
 
     _addLayer() {

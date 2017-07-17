@@ -61,13 +61,13 @@
 
     mounted() {
       // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      this.bus.$on('mgl-load', this._deferredMount);
+      // this.bus.$on('mgl-load', this._deferredMount);
+      this._checkMapTree()
     },
 
     beforeDestroy() {
       if (this.map) {
-        this.$emit('mgl-popup-removed', this.popup);
-        this.bus.$emit('mgl-popup-removed', this.popup);
+        this._emitMapEvent('mgl-popup-removed', { popup: this.popup });
         this.popup.remove();
       }
     },
@@ -81,12 +81,10 @@
 
     methods: {
       _deferredMount(payload) {
-        this._checkMapId();
-        if (payload.mapId !== this.mapId) return;
         this.map = payload.map;
         this._addPopup()
         this.initial = false;
-        this.bus.$off('mgl-load', this._deferredMount);
+        payload.component.$off('mgl-load', this._deferredMount)
       },
 
       _addPopup() {
@@ -105,20 +103,18 @@
             this.popup.setDOMContent(this.$slots.default[0].elm)
           }
         }
-        this.popup.addTo(this.map);
-        this.$emit('mgl-popup-added', this.popup);
-        this.bus.$emit('mgl-popup-added', this.popup);
+        this.popup.addTo(this.map)
+        this._emitMapEvent('mgl-popup-added', {popup: this.popup })
 
-        this.popup.on('close', this._onClose);
+        this.popup.on('close', this._onClose)
 
-        this.$parent.$on('mgl-marker-added', marker => {
-          marker.setPopup(this.popup);
+        this.$parent.$on('mgl-marker-added', ({ marker }) => {
+          marker.setPopup(this.popup)
         });
       },
 
       _onClose() {
-        this.$emit('mgl-popup-close', this.popup);
-        this.bus.$emit('mgl-popup-close', this.popup);
+        this._emitMapEvent('mgl-popup-close', { popup: this.popup })
       }
     }
   }

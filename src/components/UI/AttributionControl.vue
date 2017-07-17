@@ -25,15 +25,6 @@
       this.control = new this.mapbox.AttributionControl({ compact: this.compact })
     },
 
-    mounted() {
-      let mapComponent = this._findBaseMap()
-      if (mapComponent.mapLoaded) {
-        this._deferredMount({ component: mapComponent, map: mapComponent.map })
-      } else {
-        mapComponent.$on('mgl-load', this._deferredMount)
-      }
-    },
-
     methods: {
       _deferredMount(payload) {
         this.map = payload.map

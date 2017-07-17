@@ -35,9 +35,7 @@
     },
 
     mounted() {
-      this._checkMapId();
-      // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      this.bus.$on('mgl-load', this._deferredMount)
+      this._checkMapTree()
     },
 
     beforeDestroy() {
@@ -54,9 +52,7 @@
     },
 
     methods: {
-      // Events?
       _deferredMount(payload) {
-        if (payload.mapId !== this.mapId) return;
         if (this.$slots.marker) {
           this.marker = new this.mapbox.Marker(this.$slots.marker[0].elm, { ...this._props });
         } else {
@@ -66,21 +62,19 @@
         this.map = payload.map;
         this._addMarker()
         this.initial = false;
-        this.bus.$off('mgl-load', this._deferredMount)
+        payload.component.$off('mgl-load', this._deferredMount)
       },
       _addMarker() {
         this.marker
           .setLngLat(this.coordinates)
           .addTo(this.map);
 
-        this.$emit('mgl-marker-added', this.marker);
-        this.bus.$emit('mgl-marker-added', this.marker);
+        this._emitMapEvent('mgl-marker-added', { marker: this.marker });
       },
 
       remove() {
         this.marker.remove()
-        this.$emit('mgl-marker-removed', this.marker);
-        this.bus.$emit('mgl-marker-removed', this.marker);
+        this._emitMapEvent('mgl-marker-removed', { marker: this.marker });
       },
 
       togglePopup() {

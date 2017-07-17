@@ -101,7 +101,7 @@
           map.setRTLTextPlugin(this.RTLTextPluginUrl, this._RTLTextPluginError)
         }
         this.$emit('mgl-load', { map, component: this, mapId: this.container })
-        this.bus.$emit('mgl-load', { map, component: this, mapId: this.container })
+        // this.bus.$emit('mgl-load', { map, component: this, mapId: this.container })
         this._bindEvents(this.eventsToListen)
         this.initial = false
         this.mapLoaded = true
@@ -134,7 +134,6 @@
         for (let e of Object.keys(events)) {
           this.map.on(e, event => {
             this.$emit(`mgl-${ event }`, e);
-            this.bus.$emit(`mgl-${ event }`, e);
           });
         }
       },

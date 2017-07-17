@@ -30,11 +30,6 @@
       this.control = new this.mapbox.ScaleControl(this._props);
     },
 
-    mounted() {
-      this._checkMapId();
-      this.bus.$on('mgl-load', this._deferredMount);
-    },
-
     methods: {
       _deferredMount(payload) {
         if (payload.mapId !== this.mapId) return;

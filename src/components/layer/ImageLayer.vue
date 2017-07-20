@@ -17,37 +17,41 @@
         required: true
       }
     },
+    data() {
+      return {
+        source: undefined
+      }
+    },
 
     watch: {
       coordinates(val) {
-        if (this.initial) return;
-        this.map.setCoordinates(val);
+        if (this.initial) return
+        this.source.setCoordinates(val)
       }
     },
 
     methods: {
       _deferredMount(payload) {
-        let source = {
+        const source = {
           type: 'image',
           url: this.url,
           coordinates: this.coordinates
         }
 
         this.map = payload.map;
-        this.map.on('dataloading', this._watchSourceLoading);
-        if (source) {
-          try {
+        this.map.on('dataloading', this._watchSourceLoading)
+        try {
+          this.map.addSource(this.sourceId, source)
+        } catch (err) {
+          if (this.replaceSource) {
+            this.map.removeSource(this.sourceId);
             this.map.addSource(this.sourceId, source)
-          } catch (err) {
-            if (this.replaceSource) {
-              this.map.removeSource(this.sourceId);
-              this.map.addSource(this.sourceId, source)
-            } else {
-              this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error: err });
-            }
+          } else {
+            this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error: err })
           }
         }
-        this._addLayer();
+        this.source = this.map.getSource(this.sourceId)
+        this._addLayer()
         if (this.listenUserEvents) {
           this._bindEvents(layerEvents);
         }

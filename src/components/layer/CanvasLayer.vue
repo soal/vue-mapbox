@@ -23,14 +23,18 @@
       }
     },
 
+    data() {
+      return {
+        source: undefined
+      }
+    },
+
     mounted() {
       if (this.$slots.default[0].tag !== 'canvas') {
         throw new Error(`Error in map layer component with source id "${this.sourceId}" and layer id "${this.layerId}"
           You need to add canvas element as child of canvas layer.`)
       }
-      this._checkMapId()
-      // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      this.bus.$on('mgl-load', this._deferredMount);
+      this._checkMapTree()
     },
 
     computed: {
@@ -49,14 +53,14 @@
         this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
       },
       coordinates(val) {
-        if (this.initial) return;
-        this.map.setCoordinates(val);
+        if (this.initial) return
+        this.source.setCoordinates(val)
       }
     },
 
     methods: {
       _deferredMount(payload) {
-        let source = {
+        const source = {
           type: 'canvas',
           coordinates: this.coordinates,
           animate: this.animate,
@@ -65,18 +69,17 @@
 
         this.map = payload.map;
         this.map.on('dataloading', this._watchSourceLoading)
-        if (source) {
-          try {
+        try {
+          this.map.addSource(this.sourceId, source)
+        } catch (err) {
+          if (this.replaceSource) {
+            this.map.removeSource(this.sourceId)
             this.map.addSource(this.sourceId, source)
-          } catch (err) {
-            if (this.replaceSource) {
-              this.map.removeSource(this.sourceId)
-              this.map.addSource(this.sourceId, source)
-            } else {
-              this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error: err })
-            }
+          } else {
+            this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error: err })
           }
         }
+        this.source = this.map.getSource(this.sourceId)
         this._addLayer();
         if (this.listenUserEvents) {
           this._bindEvents(layerEvents)

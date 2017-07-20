@@ -17,7 +17,11 @@
         required: true
       }
     },
-
+    data() {
+      return {
+        source: undefined
+      }
+    },
     computed: {
       video() {
         return this.map.getSource(this.sourceId).getVideo();
@@ -27,14 +31,14 @@
     watch: {
       coordinates(val) {
         if (this.initial) return;
-        this.map.setCoordinates(val);
+        this.source.setCoordinates(val);
       }
     },
 
     methods: {
       _deferredMount(payload) {
         if (payload.mapId !== this.mapId) return;
-        let source = {
+        const source = {
           type: 'video',
           urls: this.urls,
           coordinates: this.coordinates
@@ -54,6 +58,7 @@
             }
           }
         }
+        this.source = this.map.getSource(this.sourceId)
         this._addLayer();
         if (this.listenUserEvents) {
           this._bindEvents(layerEvents);

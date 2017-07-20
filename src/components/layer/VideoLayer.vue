@@ -37,7 +37,6 @@
 
     methods: {
       _deferredMount(payload) {
-        if (payload.mapId !== this.mapId) return;
         const source = {
           type: 'video',
           urls: this.urls,
@@ -51,20 +50,20 @@
             this.map.addSource(this.sourceId, source)
           } catch (err) {
             if (this.replaceSource) {
-              this.map.removeSource(this.sourceId);
+              this.map.removeSource(this.sourceId)
               this.map.addSource(this.sourceId, source)
             } else {
-              this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error: err });
+              this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error: err })
             }
           }
         }
         this.source = this.map.getSource(this.sourceId)
-        this._addLayer();
+        this._addLayer()
         if (this.listenUserEvents) {
-          this._bindEvents(layerEvents);
+          this._bindEvents(layerEvents)
         }
-        this.initial = false;
-        this.bus.$off('mgl-load', this._deferredMount);
+        this.initial = false
+        payload.component.$off('mgl-load', this._deferredMount)
       },
 
       _addLayer() {

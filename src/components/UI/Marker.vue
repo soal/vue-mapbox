@@ -46,17 +46,17 @@
 
     watch: {
       coordinates(lngLat) {
-        if (this.initial) return;
-        this.marker.setLngLat(lngLat);
+        if (this.initial) return
+        this.marker.setLngLat(lngLat)
       }
     },
 
     methods: {
       _deferredMount(payload) {
         if (this.$slots.marker) {
-          this.marker = new this.mapbox.Marker(this.$slots.marker[0].elm, { ...this._props });
+          this.marker = new this.mapbox.Marker(this.$slots.marker[0].elm, { ...this._props })
         } else {
-          this.marker = new this.mapbox.Marker({ ...this._props });
+          this.marker = new this.mapbox.Marker({ ...this._props })
         }
 
         this.map = payload.map;
@@ -69,12 +69,12 @@
           .setLngLat(this.coordinates)
           .addTo(this.map);
 
-        this._emitMapEvent('mgl-marker-added', { marker: this.marker });
+        this._emitMapEvent('mgl-marker-added', { marker: this.marker })
       },
 
       remove() {
         this.marker.remove()
-        this._emitMapEvent('mgl-marker-removed', { marker: this.marker });
+        this._emitMapEvent('mgl-marker-removed', { marker: this.marker })
       },
 
       togglePopup() {

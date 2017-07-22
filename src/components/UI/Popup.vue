@@ -60,8 +60,6 @@
     },
 
     mounted() {
-      // We wait for "load" event from map component to ensure mapbox is loaded and map created
-      // this.bus.$on('mgl-load', this._deferredMount);
       this._checkMapTree()
     },
 
@@ -108,9 +106,14 @@
 
         this.popup.on('close', this._onClose)
 
-        this.$parent.$on('mgl-marker-added', ({ marker }) => {
-          marker.setPopup(this.popup)
-        });
+        if (this.$parent.marker !== undefined) {
+          this.$parent.marker.setPopup(this.popup)
+        } else {
+          this.$parent.$once('mgl-marker-added', ({ marker }) => {
+            console.log(marker)
+            marker.setPopup(this.popup)
+          });
+        }
       },
 
       _onClose() {

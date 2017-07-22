@@ -60,13 +60,13 @@ export default {
           this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error: err });
         }
       }
-      this._addLayer();
+      this._addLayer()
       if (this.listenUserEvents) {
-        this._bindEvents(layerEvents);
+        this._bindEvents(layerEvents)
       }
-      this.map.off('dataloading', this._watchSourceLoading);
-      this.initial = false;
-      this.bus.$off('mgl-load', this._deferredMount);
+      this.map.off('dataloading', this._watchSourceLoading)
+      this.initial = false
+      mapComponent.$on('mgl-load', this._deferredMount)
     },
 
     _addLayer() {

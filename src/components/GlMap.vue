@@ -1,4 +1,9 @@
-<template> <div :id="container"> <slot></slot> </div> </template>
+<template>
+  <div :id="container">
+    <slot></slot>
+  </div>
+</template>
+
 <script>
   import mapEvents from '../lib/events'
   import props from '../lib/options'
@@ -17,81 +22,80 @@
     },
 
     computed: {
-      loaded() { return this.map.loaded(); },
-      version() { return this.map.version; },
-      bounds() { return this.map.getBounds(); },
-      isStyleLoaded() { return this.map.isStyleLoaded(); },
-      areTilesLoaded() { return this.map.areTilesLoaded(); },
-      isMoving() { return this.map.isMoving(); },
+      loaded() { return this.map.loaded() },
+      version() { return this.map.version },
+      bounds() { return this.map.getBounds() },
+      isStyleLoaded() { return this.map.isStyleLoaded() },
+      areTilesLoaded() { return this.map.areTilesLoaded() },
+      isMoving() { return this.map.isMoving() },
       canvas() { return this.map.getCanvas() },
-      canvasContainer() { return this.map.getCanvasContainer(); }
+      canvasContainer() { return this.map.getCanvasContainer() }
     },
 
     watch: {
       maxBounds(bounds) {
-        if (this.initial) return;
-        this.map.setMaxBounds(bounds);
-        this.maxBounds = bounds;
+        if (this.initial) return
+        this.map.setMaxBounds(bounds)
+        this.maxBounds = bounds
       },
       minZoom(zoom) {
-        if (this.initial) return;
-        this.map.setMinZoom(zoom);
-        this.minZoom = zoom;
+        if (this.initial) return
+        this.map.setMinZoom(zoom)
+        this.minZoom = zoom
       },
       maxZoom(zoom) {
-        if (this.initial) return;
-        this.map.setMaxZoom(zoom);
-        this.maxZoom = zoom;
+        if (this.initial) return
+        this.map.setMaxZoom(zoom)
+        this.maxZoom = zoom
       },
       mapStyle(style) {
-        if (this.initial) return;
-        this.map.setStyle(style);
-        this.mapStyle = style;
+        if (this.initial) return
+        this.map.setStyle(style)
+        this.mapStyle = style
       },
       collisionBoxes(val) {
-        if (this.initial) return;
-        this.map.showCollisionBoxes = val;
-        this.showCollisionBoxes = val;
+        if (this.initial) return
+        this.map.showCollisionBoxes = val
+        this.showCollisionBoxes = val
       },
       tileBoundaries(val) {
-        if (this.initial) return;
-        this.map.showTileBoundaries = val;
-        this.showTileBoundaries = val;
+        if (this.initial) return
+        this.map.showTileBoundaries = val
+        this.showTileBoundaries = val
       },
       repaint(val) {
-        if (this.initial) return;
-        this.map.repaint = val;
-        this.repaint = val;
+        if (this.initial) return
+        this.map.repaint = val
+        this.repaint = val
       },
       zoom(val) {
-        if (this.initial) return;
-        this.map.setZoom(val);
-        this.zoom = val;
+        if (this.initial) return
+        this.map.setZoom(val)
+        this.zoom = val
       },
       center(val) {
-        if (this.initial) return;
-        this.map.setCenter(val);
-        this.center = val;
+        if (this.initial) return
+        this.map.setCenter(val)
+        this.center = val
       },
       bearing(val) {
-        if (this.initial) return;
-        this.map.setBearing(val);
+        if (this.initial) return
+        this.map.setBearing(val)
         this.bearing = val
       },
       pitch(val) {
-        if (this.initial) return;
-        this.map.setPitch(val);
+        if (this.initial) return
+        this.map.setPitch(val)
         this.pitch = val
       },
       light(val) {
-        if (this.initial) return;
-        this.map.setLight(val);
+        if (this.initial) return
+        this.map.setLight(val)
         this.light = val;
       }
     },
 
     mounted() {
-      console.log('Map: ', this);
       this._loadMap().then(map => {
         this.map = map
         if (this.RTLTextPluginUrl !== undefined) {
@@ -125,42 +129,42 @@
             ...this._props,
             style: this.mapStyle
           });
-          map.on('load', () => resolve(map));
+          map.on('load', () => resolve(map))
         });
       },
 
       _RTLTextPluginError(error) {
-        this.$emit('mgl-rtl-plugin-error', { map: this.map, error: error });
+        this.$emit('mgl-rtl-plugin-error', { map: this.map, error: error })
       },
 
       _bindEvents(events) {
         if (events.length === 0) return;
         for (let e of Object.keys(events)) {
           this.map.on(e, event => {
-            this.$emit(`mgl-${ event }`, e);
+            this.$emit(`mgl-${ event }`, e)
           });
         }
       },
 
       _unBindEvents(events) {
         events.forEach(eventName => {
-          this.map.off(eventName);
+          this.map.off(eventName)
         });
       },
       supported(perfomanceCheck=false) {
-        return this.map.supported({ failIfMajorPerformanceCaveat: perfomanceCheck });
+        return this.map.supported({ failIfMajorPerformanceCaveat: perfomanceCheck })
       },
 
       resize() {
-        this.map.resize();
+        this.map.resize()
       },
 
       project(mapCoordinates) {
-        return this.map.project(mapCoordinates);
+        return this.map.project(mapCoordinates)
       },
 
       unproject(containerCoordinates) {
-        return this.map.unproject(containerCoordinates);
+        return this.map.unproject(containerCoordinates)
       },
 
       queryRenderedFeatures(geometry=undefined, parameters=undefined) {
@@ -168,19 +172,19 @@
       },
 
       querySourceFeatures(sourceId, parameters=undefined) {
-        return this.map.querySourceFeatures(sourceId, parameters);
+        return this.map.querySourceFeatures(sourceId, parameters)
       },
 
       addImage(name, image, options=undefined) {
-        this.map.addImage(name, image, options);
+        this.map.addImage(name, image, options)
       },
 
       removeImage(name) {
-        this.map.addImage(name);
+        this.map.addImage(name)
       },
 
       loadImage(url, callback) {
-        this.map.loadImage(url, callback);
+        this.map.loadImage(url, callback)
       },
 
       _catchMoveFabric(eventData, resolve, reject) {
@@ -200,7 +204,7 @@
           if (options.eventId !== eventData.eventId) return
           let newZoom = self.map.getZoom()
           self.$emit('update:zoom', newZoom)
-          self.map.off('zoomend', catchZoom);
+          self.map.off('zoomend', catchZoom)
           return resolve({ eventData, zoom: newZoom })
         }
       },
@@ -449,7 +453,7 @@
         let eventData = {
           eventId: `flyTo-${ ('' + Math.random()).split('.')[1] }`
         }
-        let func = []
+        let funcs = []
         if (options.bearing !== undefined && options.bearing !== this.map.getBearing()) {
           let rotateFunc = new Promise((resolve, reject) => {
             this.map.on('rotate', this._catchRotateFabric(eventData, resolve, reject))

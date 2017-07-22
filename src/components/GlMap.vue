@@ -389,7 +389,6 @@
         this.map.jumpTo(options, eventData)
 
         return Promise.all(funcs).then(results => {
-          // console.log('RESULTS: ', results)
           let resObj = {}
           for (let res of results) {
             Object.assign(resObj, res)
@@ -490,7 +489,6 @@
         }
         this.map.flyTo(options, eventData)
         return Promise.all(funcs).then(results => {
-          // console.log('RESULTS: ', results)
           let resObj = {}
           for (let res of results) {
             Object.assign(resObj, res)

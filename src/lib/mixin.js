@@ -16,6 +16,21 @@ export default {
           }
         }
       }
+<<<<<<< HEAD
+=======
+    },
+    _findBaseMap() {
+      let baseMapComponent
+      function walkParents(component) {
+        if (component.baseMap) {
+          baseMapComponent = component
+        } else {
+          if (component.$parent !== undefined) {
+            walkParents(component.$parent)
+          }
+        }
+      }
+>>>>>>> master
       walkParents(this.$parent)
       if (baseMapComponent === undefined) {
         throw new Error('Component must have root map')
@@ -27,7 +42,11 @@ export default {
       if (mapComponent.mapLoaded) {
         this._deferredMount({ component: mapComponent, map: mapComponent.map })
       } else {
+<<<<<<< HEAD
         mapComponent.$once('mgl-load', this._deferredMount)
+=======
+        mapComponent.$on('mgl-load', this._deferredMount)
+>>>>>>> master
       }
     },
     _emitMapEvent(name, data={}) {

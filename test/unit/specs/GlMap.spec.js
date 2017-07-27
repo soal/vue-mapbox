@@ -28,4 +28,18 @@ describe('GlMap.vue', () => {
     const elClass = vm._props.container
     expect(vm.$el.id).to.equal(elClass)
   })
+
+  it('should create canvas element for map', () => {
+    const Constructor = Vue.extend(GlMap)
+    let vm = new Constructor({
+      propsData: {
+        mapStyle: 'mapbox://styles/soal/cj0v9r49j00lq2rtact0w0ldv',
+        accessToken: 'pk.eyJ1Ijoic29hbCIsImEiOiJjaW1qZndnMmwwMDEzdzBtNHRxcGFrampqIn0.bpwowsJ4GLBdsPnnXuZboA'
+      }
+    })
+    vm = vm.$mount()
+    vm.$on('mgl-load', () => {
+      expect(vm.$el.querySelector('canvas').to.be.a(HTMLElement))
+    })
+  })
 })

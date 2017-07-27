@@ -39,11 +39,9 @@
 
       this.control.on('error', err => {
         this.$emit('geolocate-error', err);
-        this.bus.$emit('geolocate-error', err);
       });
       this.control.on('geolocate', position => {
-        this.$emit('geolocate', position);
-        this.bus.$emit('geolocate-error', position);
+        this.$emit('geolocate-error', position);
       })
     },
 

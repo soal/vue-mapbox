@@ -27,21 +27,19 @@
     },
 
     created() {
-      this.control = new this.mapbox.ScaleControl(this._props);
+      this.control = new this.mapbox.ScaleControl(this._props)
     },
 
     methods: {
       _deferredMount(payload) {
-        if (payload.mapId !== this.mapId) return;
-        this.map = payload.map;
+        this.map = payload.map
         try {
-          this.map.addControl(this.control);
+          this.map.addControl(this.control)
         } catch (err) {
-          console.log(err);
+          console.log(err)
         }
-        this.$emit('mgl-scale-control-added', this.control);
-        this.bus.$emit('mgl-scale-control-added', this.control);
-        this.bus.$off('mgl-load', this._deferredMount);
+        this.$emit('mgl-scale-control-added', this.control)
+        payload.component.$off('mgl-load', this._deferredMount)
       }
     }
   };

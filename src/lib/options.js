@@ -104,7 +104,7 @@ export default {
     default: true
   },
   center: {
-    type: Array,
+    type: [Array, Object],
     default() {
       return [0, 0]
     }

@@ -36,9 +36,7 @@
   "scripts": {
     "dev": "webpack --config build/webpack.dev.conf.js --watch --progress --hide-modules",
     "build": "node build/build.js",
-    "unit": "jest",
-    "e2e": "node test/e2e/runner.js",
-    "test": "npm run unit && npm run e2e",
+    "test": "jest",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
@@ -79,9 +77,7 @@
     "lolex": "^1.5.2",
     "opn": "^4.0.2",
     "ora": "^1.2.0",
-    "phantomjs-prebuilt": "^2.1.14",
     "rimraf": "^2.6.0",
-    "selenium-server": "^3.0.1",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
     "vue-loader": "^12.1.0",

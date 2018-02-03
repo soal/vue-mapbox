@@ -102,7 +102,12 @@
           map.setRTLTextPlugin(this.RTLTextPluginUrl, this._RTLTextPluginError)
         }
         this.$emit('mgl-load', { map, component: this })
-        this._bindEvents(this.eventsToListen)
+        const eventNames = Object.keys(mapEvents)
+        const eventsToListen = Object.keys(this.$options._parentListeners)
+            .filter(eventName =>
+              eventNames.indexOf(eventName) !== -1
+            )
+        this._bindEvents(eventsToListen)
         this._bindPropsUpdateEvents()
         this.initial = false
         this.mapLoaded = true
@@ -110,7 +115,7 @@
     },
 
     destroyed() {
-      if (this.map) this.map.remove();
+      if (this.map) this.map.remove()
     },
 
     methods: {

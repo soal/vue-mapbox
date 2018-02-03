@@ -1,5 +1,3 @@
-import events from './events'
-
 export default {
   container: {
     type: [String, HTMLElement],
@@ -35,17 +33,17 @@ export default {
     type: Number,
     default: 7
   },
-  classes: {
-    type: Array,
-    default() {
-      return []
-    }
-  },
+  // classes: {
+  //   type: Array,
+  //   default() {
+  //     return []
+  //   }
+  // },
   attributionControl: {
     type: Boolean,
     default: true
   },
-  logoPosition: {
+  logoPosition: { // TODO: Add validator
     type: String,
     default: 'bottom-left'
   },
@@ -104,7 +102,7 @@ export default {
     default: true
   },
   center: {
-    type: [Array, Object],
+    type: [Object, Array],
     default() {
       return [0, 0]
     }
@@ -143,18 +141,5 @@ export default {
   repaint: {
     type: Boolean,
     default: false
-  },
-  eventsToListen: {
-    type: Array,
-    validator(eventsArray) {
-      if (!(eventsArray instanceof Array)) {
-        return false
-      }
-      for (const e of eventsArray) {
-        if (!(Object.keys(events).includes(e))) return false
-      }
-      return true
-    },
-    default: () => []
   }
 }

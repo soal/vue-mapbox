@@ -11,6 +11,7 @@ import GeojsonLayer from './components/layer/GeojsonLayer.vue'
 import ImageLayer from './components/layer/ImageLayer.vue'
 import CanvasLayer from './components/layer/CanvasLayer.vue'
 import VideoLayer from './components/layer/VideoLayer.vue'
+import VectorLayer from './components/layer/VectorLayer.vue'
 
 export const MglMap = GlMap
 
@@ -24,6 +25,7 @@ export const MglGeojsonLayer = GeojsonLayer
 export const MglImageLayer = ImageLayer
 export const MglCanvasLayer = CanvasLayer
 export const MglVideoLayer = VideoLayer
+export const MglVectorLayer = VectorLayer
 
 export const MglMarker = Marker
 export const MglPopup = Popup

@@ -1,7 +1,6 @@
 <template></template>
 
 <script>
-
   import baseMixin from '../../lib/mixin'
   import controlMixin from './controlMixin'
 
@@ -23,7 +22,7 @@
       return {
         control: undefined,
         map: undefined
-      };
+      }
     },
 
     created() {
@@ -31,16 +30,16 @@
     },
 
     methods: {
-      _deferredMount(payload) {
+      $_deferredMount(payload) {
         this.map = payload.map
         try {
           this.map.addControl(this.control)
         } catch (err) {
           console.log(err)
         }
-        this.$emit('mgl-scale-control-added', this.control)
-        payload.component.$off('mgl-load', this._deferredMount)
+        this.$emit('scale-control-added', this.control)
+        payload.component.$off('load', this.$_deferredMount)
       }
     }
-  };
+  }
 </script>

@@ -100,7 +100,7 @@
         if (this.RTLTextPluginUrl !== undefined) {
           map.setRTLTextPlugin(this.RTLTextPluginUrl, this.$_RTLTextPluginError)
         }
-        this.$emit('mgl-load', { map, component: this })
+        this.$emit('load', { map, component: this })
         const eventNames = Object.keys(mapEvents)
         const eventsToListen = Object.keys(this.$options._parentListeners)
             .filter(eventName =>
@@ -139,7 +139,7 @@
       },
 
       $_RTLTextPluginError(error) {
-        this.$emit('mgl-rtl-plugin-error', { map: this.map, error: error })
+        this.$emit('rtl-plugin-error', { map: this.map, error: error })
       },
 
       $_bindEvents(events) {

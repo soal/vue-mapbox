@@ -27,7 +27,7 @@ export default {
       if (mapComponent.mapLoaded) {
         this._deferredMount({ component: mapComponent, map: mapComponent.map })
       } else {
-        mapComponent.$on('mgl-load', this._deferredMount)
+        mapComponent.$on('load', this._deferredMount)
       }
     },
     _emitMapEvent(name, data={}) {

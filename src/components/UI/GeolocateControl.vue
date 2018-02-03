@@ -49,8 +49,8 @@
       _deferredMount(payload) {
         this.map = payload.map;
         this.map.addControl(this.control);
-        this.$emit('mgl-geolocate-control-added', this.control);
-        payload.component.$off('mgl-load', this._deferredMount)
+        this.$emit('geolocate-control-added', this.control);
+        payload.component.$off('load', this._deferredMount)
       }
     }
   };

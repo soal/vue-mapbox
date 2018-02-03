@@ -29,8 +29,8 @@
       _deferredMount(payload) {
         this.map = payload.map
         this.map.addControl(this.control)
-        this.$emit('mgl-attribution-control-added', this.control)
-        payload.component.$off('mgl-load', this._deferredMount)
+        this.$emit('attribution-control-added', this.control)
+        payload.component.$off('load', this._deferredMount)
       }
     }
   };

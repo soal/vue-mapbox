@@ -38,8 +38,8 @@
         } catch (err) {
           console.log(err)
         }
-        this.$emit('mgl-scale-control-added', this.control)
-        payload.component.$off('mgl-load', this._deferredMount)
+        this.$emit('scale-control-added', this.control)
+        payload.component.$off('load', this._deferredMount)
       }
     }
   };

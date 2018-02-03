@@ -29,9 +29,9 @@
       _deferredMount(payload) {
         this.map = payload.map
         this.map.addControl(this.control, this.position)
-        this._emitMapEvent('mgl-nav-control-added', { control: this.control })
+        this._emitMapEvent('nav-control-added', { control: this.control })
 
-        payload.component.$off('mgl-load', this._deferredMount)
+        payload.component.$off('load', this._deferredMount)
 
       }
     }

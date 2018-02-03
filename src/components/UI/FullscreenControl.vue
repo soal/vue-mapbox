@@ -31,8 +31,8 @@
         // if (payload.mapId !== this.mapId) return;
         this.map = payload.map;
         this.map.addControl(this.control, this.position);
-        this.$emit('mgl-fullscreen-control-added', this.control);
-        payload.component.$off('mgl-load', this._deferredMount)
+        this.$emit('fullscreen-control-added', this.control);
+        payload.component.$off('load', this._deferredMount)
       }
     }
   };

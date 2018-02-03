@@ -117,13 +117,13 @@ export default {
       try {
         this.map.removeLayer(this.layerId)
       } catch (err) {
-        this._emitMapEvent('mgl-layer-does-not-exist', { map: this.map, component: this, layerId: this.sourceId, error: err })
+        this._emitMapEvent('layer-does-not-exist', { map: this.map, component: this, layerId: this.sourceId, error: err })
       }
       if (this.clearSource) {
         try {
           this.map.removeSource(this.sourceId)
         } catch (err) {
-          this._emitMapEvent('mgl-source-does-not-exist', { map: this.map, component: this, sourceId: this.sourceId, error: err })
+          this._emitMapEvent('source-does-not-exist', { map: this.map, component: this, sourceId: this.sourceId, error: err })
         }
       }
     }
@@ -134,7 +134,7 @@ export default {
       if (events.length === 0) return
       events.forEach(eventName => {
         this.map.on(eventName, this.layerId, event => {
-          this._emitMapEvent(`mgl-${event}`, { mapEvent: event })
+          this._emitMapEvent(`${event}`, { mapEvent: event })
         })
       })
     },
@@ -147,14 +147,14 @@ export default {
 
     _watchSourceLoading(data) {
       if (data.dataType === 'source' && data.sourceId === this.sourceId) {
-        this._emitMapEvent('mgl-layer-source-loading', { sourceId: this.sourceId })
+        this._emitMapEvent('layer-source-loading', { sourceId: this.sourceId })
         this.map.off('dataloading', this.watchSourceLoading)
       }
     },
 
     move(beforeId) {
       this.map.moveLayer(this.layerId, beforeId)
-      this._emitMapEvent('mgl-layer-moved', { layerId: this.layerId, beforeId: beforeId })
+      this._emitMapEvent('layer-moved', { layerId: this.layerId, beforeId: beforeId })
     },
 
     remove() {

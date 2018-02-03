@@ -50,7 +50,7 @@ export default {
           this.map.removeSource(this.sourceId);
           this.map.addSource(this.sourceId, source)
         } else {
-          this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error: err });
+          this._emitMapEvent('layer-source-error', { sourceId: this.sourceId, error: err });
         }
       }
       this._addLayer();
@@ -59,7 +59,7 @@ export default {
       }
       this.map.off('dataloading', this._watchSourceLoading);
       this.initial = false;
-      payload.component.$off('mgl-load', this._deferredMount)
+      payload.component.$off('load', this._deferredMount)
     },
 
     _addLayer() {
@@ -68,7 +68,7 @@ export default {
         if (this.replace) {
           this.map.removeLayer(this.layerId);
         } else {
-          this._emitMapEvent('mgl-layer-exists', { layerId: this.layerId });
+          this._emitMapEvent('layer-exists', { layerId: this.layerId });
           return existed;
         }
       }
@@ -92,7 +92,7 @@ export default {
       layer.metadata = this.metadata
 
       this.map.addLayer(layer, this.before);
-      this._emitMapEvent('mgl-layer-added', { layerId: this.layerId });
+      this._emitMapEvent('layer-added', { layerId: this.layerId });
     }
   }
 }

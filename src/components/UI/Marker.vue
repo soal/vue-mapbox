@@ -62,19 +62,19 @@
         this.map = payload.map;
         this._addMarker()
         this.initial = false;
-        payload.component.$off('mgl-load', this._deferredMount)
+        payload.component.$off('load', this._deferredMount)
       },
       _addMarker() {
         this.marker
           .setLngLat(this.coordinates)
           .addTo(this.map);
 
-        this._emitMapEvent('mgl-marker-added', { marker: this.marker })
+        this._emitMapEvent('marker-added', { marker: this.marker })
       },
 
       remove() {
         this.marker.remove()
-        this._emitMapEvent('mgl-marker-removed', { marker: this.marker })
+        this._emitMapEvent('marker-removed', { marker: this.marker })
       },
 
       togglePopup() {

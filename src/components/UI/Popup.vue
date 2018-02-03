@@ -65,7 +65,7 @@
 
     beforeDestroy() {
       if (this.map) {
-        this._emitMapEvent('mgl-popup-removed', { popup: this.popup });
+        this._emitMapEvent('popup-removed', { popup: this.popup });
         this.popup.remove();
       }
     },
@@ -82,7 +82,7 @@
         this.map = payload.map;
         this._addPopup()
         this.initial = false;
-        payload.component.$off('mgl-load', this._deferredMount)
+        payload.component.$off('load', this._deferredMount)
       },
 
       _addPopup() {
@@ -102,14 +102,14 @@
           }
         }
         this.popup.addTo(this.map)
-        this._emitMapEvent('mgl-popup-added', {popup: this.popup })
+        this._emitMapEvent('popup-added', {popup: this.popup })
 
         this.popup.on('close', this._onClose)
 
         if (this.$parent.marker !== undefined) {
           this.$parent.marker.setPopup(this.popup)
         } else {
-          this.$parent.$once('mgl-marker-added', ({ marker }) => {
+          this.$parent.$once('marker-added', ({ marker }) => {
             console.log(marker)
             marker.setPopup(this.popup)
           });
@@ -117,7 +117,7 @@
       },
 
       _onClose() {
-        this._emitMapEvent('mgl-popup-close', { popup: this.popup })
+        this._emitMapEvent('popup-close', { popup: this.popup })
       }
     }
   }

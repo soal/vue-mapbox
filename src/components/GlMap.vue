@@ -1,13 +1,12 @@
 <template>
   <div :id="container">
-    <slot></slot>
+    <slot/>
   </div>
 </template>
 
 <script>
   import mapEvents from '../lib/events'
   import props from '../lib/options'
-  import { mapPositionsEvents } from '../lib/events'
 
   export default {
     props,
@@ -96,10 +95,10 @@
     },
 
     mounted() {
-      this._loadMap().then(map => {
+      this.$_loadMap().then(map => {
         this.map = map
         if (this.RTLTextPluginUrl !== undefined) {
-          map.setRTLTextPlugin(this.RTLTextPluginUrl, this._RTLTextPluginError)
+          map.setRTLTextPlugin(this.RTLTextPluginUrl, this.$_RTLTextPluginError)
         }
         this.$emit('mgl-load', { map, component: this })
         const eventNames = Object.keys(mapEvents)
@@ -107,8 +106,9 @@
             .filter(eventName =>
               eventNames.indexOf(eventName) !== -1
             )
-        this._bindEvents(eventsToListen)
-        this._bindPropsUpdateEvents()
+
+        this.$_bindEvents(eventsToListen)
+        this.$_bindPropsUpdateEvents()
         this.initial = false
         this.mapLoaded = true
       });
@@ -120,14 +120,14 @@
 
     methods: {
       // We wait in promise to ensure map is loaded and other components will receive map object
-      _bindPropsUpdateEvents() {
+      $_bindPropsUpdateEvents() {
         this.map.on('moveend', event => this.$emit('update:center', this.map.getCenter()))
         this.map.on('zoomend', event => this.$emit('update:zoom', this.map.getZoom()))
         this.map.on('rotate', event => this.$emit('update:bearing', this.map.getBearing()))
         this.map.on('pitch', event => this.$emit('update:pitch', this.map.getPitch()))
 
       },
-      _loadMap() {
+      $_loadMap() {
         return new Promise((resolve) => {
           if (this.accessToken) this.mapbox.accessToken = this.accessToken
           let map = new this.mapbox.Map({
@@ -138,20 +138,20 @@
         });
       },
 
-      _RTLTextPluginError(error) {
+      $_RTLTextPluginError(error) {
         this.$emit('mgl-rtl-plugin-error', { map: this.map, error: error })
       },
 
-      _bindEvents(events) {
+      $_bindEvents(events) {
         if (events.length === 0) return;
-        for (let e of Object.keys(events)) {
+        for (let e of events) {
           this.map.on(e, event => {
-            this.$emit(`mgl-${ event }`, e)
+            this.$emit(e, event)
           });
         }
       },
 
-      _unBindEvents(events) {
+      $_unBindEvents(events) {
         events.forEach(eventName => {
           this.map.off(eventName)
         });
@@ -192,7 +192,7 @@
         this.map.loadImage(url, callback)
       },
 
-      _catchMoveFabric(eventData, resolve, reject) {
+      $_catchMoveFabric(eventData, resolve, reject) {
         let self = this
         return function catchMove(options) {
           if (options.eventId !== eventData.eventId) return
@@ -203,7 +203,7 @@
         }
       },
 
-      _catchZoomFabric(eventData, resolve, reject) {
+      $_catchZoomFabric(eventData, resolve, reject) {
         let self = this
         return function catchZoom(options) {
           if (options.eventId !== eventData.eventId) return
@@ -214,7 +214,7 @@
         }
       },
 
-      _catchRotateFabric(eventData, resolve, reject) {
+      $_catchRotateFabric(eventData, resolve, reject) {
         let self = this
         return function catchRotate(options) {
           if (options.eventId !== eventData.eventId) return
@@ -225,7 +225,7 @@
         }
       },
 
-      _catchPitchFabric(eventData, resolve, reject) {
+      $_catchPitchFabric(eventData, resolve, reject) {
         let self = this
         return function catchPitch(options) {
           if (options.eventId !== eventData.eventId) return
@@ -244,7 +244,7 @@
           let eventData = {
             eventId: `panBy-${ ('' + Math.random()).split('.')[1] }`
           }
-          this.map.on('moveend', this._catchMoveFabric(eventData, resolve, reject))
+          this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
           this.map.panBy(offset, options, eventData)
         })
       },
@@ -260,7 +260,7 @@
           let eventData = {
             eventId: `panTo-${ ('' + Math.random()).split('.')[1] }`
           }
-          this.map.on('moveend', this._catchMoveFabric(eventData, resolve, reject))
+          this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
           this.map.panTo(coordinates, options, eventData)
         })
 
@@ -274,7 +274,7 @@
           let eventData = {
             eventId: `zoomTo-${ ('' + Math.random()).split('.')[1] }`
           }
-          this.map.on('zoomend', this._catchZoomFabric(eventData, resolve, reject))
+          this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
           this.map.zoomTo(zoom, options, eventData);
         })
       },
@@ -284,7 +284,7 @@
           let eventData = {
             eventId: `zoomIn-${ ('' + Math.random()).split('.')[1] }`
           }
-          this.map.on('zoomend', this._catchZoomFabric(eventData, resolve, reject))
+          this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
           this.map.zoomIn(options, eventData)
         })
       },
@@ -294,7 +294,7 @@
           let eventData = {
             eventId: `zoomOut-${ ('' + Math.random()).split('.')[1] }`
           }
-          this.map.on('zoomend', this._catchZoomFabric(eventData, resolve, reject))
+          this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
           this.map.zoomOut(options, eventData)
         })
       },
@@ -307,7 +307,7 @@
           let eventData = {
             eventId: `rotateTo-${ ('' + Math.random()).split('.')[1] }`
           }
-          this.map.on('rotate', this._catchRotateFabric(eventData, resolve, reject))
+          this.map.on('rotate', this.$_catchRotateFabric(eventData, resolve, reject))
           this.map.rotateTo(bearing, options, eventData)
         })
       },
@@ -317,7 +317,7 @@
           let eventData = {
             eventId: `resetNorth-${ ('' + Math.random()).split('.')[1] }`
           }
-          this.map.on('rotate', this._catchRotateFabric(eventData, resolve, reject))
+          this.map.on('rotate', this.$_catchRotateFabric(eventData, resolve, reject))
           this.map.resetNorth(options, eventData)
         })
       },
@@ -327,7 +327,7 @@
           let eventData = {
             eventId: `snapToNorth-${ ('' + Math.random()).split('.')[1] }`
           }
-          this.map.on('rotate', this._catchRotateFabric(eventData, resolve, reject))
+          this.map.on('rotate', this.$_catchRotateFabric(eventData, resolve, reject))
           this.map.snapToNorth(options, eventData);
         })
       },
@@ -340,11 +340,11 @@
           eventId: `fitBounds-${ ('' + Math.random()).split('.')[1] }`
         }
         let zoomFunc = new Promise((resolve, reject) => {
-          this.map.on('zoomend', this._catchZoomFabric(eventData, resolve, reject))
+          this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
         })
 
         let moveFunc = new Promise((resolve, reject) => {
-          this.map.on('moveend', this._catchMoveFabric(eventData, resolve, reject))
+          this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
         })
         this.map.fitBounds(bounds, options, eventData)
         return Promise.all([zoomFunc, moveFunc]).then(results => {
@@ -359,25 +359,25 @@
         let funcs = []
         if (options.bearing !== undefined && options.bearing !== this.map.getBearing()) {
           let rotateFunc = new Promise((resolve, reject) => {
-            this.map.on('rotate', this._catchRotateFabric(eventData, resolve, reject))
+            this.map.on('rotate', this.$_catchRotateFabric(eventData, resolve, reject))
           })
           funcs.push(rotateFunc)
         }
         if (options.zoom !== undefined && options.zoom !== this.map.getZoom()) {
           let zoomFunc = new Promise((resolve, reject) => {
-            this.map.on('zoomend', this._catchZoomFabric(eventData, resolve, reject))
+            this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
           })
           funcs.push(zoomFunc)
         }
         if (options.center !== undefined && options.center !== this.map.getCenter()) {
           let centerFunc = new Promise((resolve, reject) => {
-            this.map.on('moveend', this._catchMoveFabric(eventData, resolve, reject))
+            this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
           })
           funcs.push(centerFunc)
         }
         if (options.pitch !== undefined && options.pitch !== this.map.getPitch()) {
           let pitchFunc = new Promise((resolve, reject) => {
-            this.map.on('pitch', this._catchPitchFabric(eventData, resolve, reject))
+            this.map.on('pitch', this.$_catchPitchFabric(eventData, resolve, reject))
           })
           funcs.push(pitchFunc)
         }
@@ -409,25 +409,25 @@
         }
         if (options.bearing !== undefined && options.bearing !== this.map.getBearing()) {
           let rotateFunc = new Promise((resolve, reject) => {
-            this.map.on('rotate', this._catchRotateFabric(eventData, resolve, reject))
+            this.map.on('rotate', this.$_catchRotateFabric(eventData, resolve, reject))
           })
           funcs.push(rotateFunc)
         }
         if (options.zoom !== undefined && options.zoom !== this.map.getZoom()) {
           let zoomFunc = new Promise((resolve, reject) => {
-            this.map.on('zoomend', this._catchZoomFabric(eventData, resolve, reject))
+            this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
           })
           funcs.push(zoomFunc)
         }
         if (options.center !== undefined && options.center !== this.map.getCenter()) {
           let centerFunc = new Promise((resolve, reject) => {
-            this.map.on('moveend', this._catchMoveFabric(eventData, resolve, reject))
+            this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
           })
           funcs.push(centerFunc)
         }
         if (options.pitch !== undefined && options.pitch !== this.map.getPitch()) {
           let pitchFunc = new Promise((resolve, reject) => {
-            this.map.on('pitch', this._catchPitchFabric(eventData, resolve, reject))
+            this.map.on('pitch', this.$_catchPitchFabric(eventData, resolve, reject))
           })
           funcs.push(pitchFunc)
         }
@@ -460,25 +460,25 @@
         let funcs = []
         if (options.bearing !== undefined && options.bearing !== this.map.getBearing()) {
           let rotateFunc = new Promise((resolve, reject) => {
-            this.map.on('rotate', this._catchRotateFabric(eventData, resolve, reject))
+            this.map.on('rotate', this.$_catchRotateFabric(eventData, resolve, reject))
           })
           funcs.push(rotateFunc)
         }
         if (options.zoom !== undefined && options.zoom !== this.map.getZoom()) {
           let zoomFunc = new Promise((resolve, reject) => {
-            this.map.on('zoomend', this._catchZoomFabric(eventData, resolve, reject))
+            this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
           })
           funcs.push(zoomFunc)
         }
         if (options.center !== undefined && options.center !== this.map.getCenter()) {
           let centerFunc = new Promise((resolve, reject) => {
-            this.map.on('moveend', this._catchMoveFabric(eventData, resolve, reject))
+            this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
           })
           funcs.push(centerFunc)
         }
         if (options.pitch !== undefined && options.pitch !== this.map.getPitch()) {
           let pitchFunc = new Promise((resolve, reject) => {
-            this.map.on('pitch', this._catchPitchFabric(eventData, resolve, reject))
+            this.map.on('pitch', this.$_catchPitchFabric(eventData, resolve, reject))
           })
           funcs.push(pitchFunc)
         }

@@ -1,14 +1,12 @@
 <template>
   <div style="display: none">
-    <slot></slot>
+    <slot/>
   </div>
 </template>
 
 <script>
-
-  import layerEvents from '../../lib/layerEvents';
-  import mixin from './layerMixin';
-
+  import layerEvents from '../../lib/layerEvents'
+  import mixin from './layerMixin'
 
   export default {
     mixins: [mixin],
@@ -34,22 +32,22 @@
         throw new Error(`Error in map layer component with source id "${this.sourceId}" and layer id "${this.layerId}"
           You need to add canvas element as child of canvas layer.`)
       }
-      this._checkMapTree()
+      this.$_checkMapTree()
     },
 
     computed: {
       canvas() {
-        return this.map.getSource(this.sourceId).getCanvas();
+        return this.map.getSource(this.sourceId).getCanvas()
       }
     },
 
     watch: {
       minzoom(val) {
-        if (this.initial) return;
+        if (this.initial) return
         this.map.setLayerZoomRange(this.layerId, val, this.maxzoom)
       },
       maxzoom(val) {
-        if (this.initial) return;
+        if (this.initial) return
         this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
       },
       coordinates(val) {
@@ -59,7 +57,7 @@
     },
 
     methods: {
-      _deferredMount(payload) {
+      $_deferredMount(payload) {
         const source = {
           type: 'canvas',
           coordinates: this.coordinates,
@@ -67,8 +65,8 @@
           canvas: this.$slots.default[0].data.attrs.id
         }
 
-        this.map = payload.map;
-        this.map.on('dataloading', this._watchSourceLoading)
+        this.map = payload.map
+        this.map.on('dataloading', this.$_watchSourceLoading)
         try {
           this.map.addSource(this.sourceId, source)
         } catch (err) {
@@ -76,26 +74,26 @@
             this.map.removeSource(this.sourceId)
             this.map.addSource(this.sourceId, source)
           } else {
-            this._emitMapEvent('mgl-layer-source-error', { sourceId: this.sourceId, error: err })
+            this.$_emitMapEvent('layer-source-error', { sourceId: this.sourceId, error: err })
           }
         }
         this.source = this.map.getSource(this.sourceId)
-        this._addLayer();
+        this.$_addLayer()
         if (this.listenUserEvents) {
-          this._bindEvents(layerEvents)
+          this.$_bindEvents(layerEvents)
         }
-        payload.component.$off('mgl-load', this._deferredMount)
+        payload.component.$off('load', this.$_deferredMount)
         this.initial = false
       },
 
-      _addLayer() {
-        let existed = this.map.getLayer(this.layerId);
+      $_addLayer() {
+        let existed = this.map.getLayer(this.layerId)
         if (existed) {
           if (this.replace) {
-            this.map.removeLayer(this.layerId);
+            this.map.removeLayer(this.layerId)
           } else {
-            this._emitMapEvent('mgl-layer-exists', { layerId: this.layerId });
-            return existed;
+            this.$_emitMapEvent('layer-exists', { layerId: this.layerId })
+            return existed
           }
         }
         let layer = {
@@ -104,7 +102,7 @@
           type: 'raster'
         }
         if (this.refLayer) {
-          layer.ref = this.refLayer;
+          layer.ref = this.refLayer
         } else {
           if (this['source-layer']) {
             layer['source-layer'] = this['source-layer']
@@ -116,11 +114,11 @@
           // }
           // if (this.filter) layer.filter = this.filter
         }
-        layer.paint = this.paint ? this.paint : { 'raster-opacity': 0.85 };
+        layer.paint = this.paint ? this.paint : { 'raster-opacity': 0.85 }
         layer.metadata = this.metadata
 
-        this.map.addLayer(layer, this.before);
-        this._emitMapEvent('mgl-layer-added', { layerId: this.layerId });
+        this.map.addLayer(layer, this.before)
+        this.$_emitMapEvent('layer-added', { layerId: this.layerId })
       }
     }
   }

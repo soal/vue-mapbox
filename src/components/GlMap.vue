@@ -1,13 +1,12 @@
 <template>
   <div :id="container">
-    <slot></slot>
+    <slot/>
   </div>
 </template>
 
 <script>
   import mapEvents from '../lib/events'
   import props from '../lib/options'
-  import { mapPositionsEvents } from '../lib/events'
 
   export default {
     props,
@@ -18,7 +17,7 @@
         baseMap: true,
         mapLoaded: false,
         map: undefined
-      };
+      }
     },
 
     computed: {
@@ -91,67 +90,72 @@
       light(val) {
         if (this.initial) return
         this.map.setLight(val)
-        this.light = val;
+        this.light = val
       }
     },
 
     mounted() {
-      this._loadMap().then(map => {
+      this.$_loadMap().then(map => {
         this.map = map
         if (this.RTLTextPluginUrl !== undefined) {
-          map.setRTLTextPlugin(this.RTLTextPluginUrl, this._RTLTextPluginError)
+          map.setRTLTextPlugin(this.RTLTextPluginUrl, this.$_RTLTextPluginError)
         }
-        this.$emit('mgl-load', { map, component: this })
-        this._bindEvents(this.eventsToListen)
-        this._bindPropsUpdateEvents()
+        this.$emit('load', { map, component: this })
+        const eventNames = Object.keys(mapEvents)
+        const eventsToListen = Object.keys(this.$options._parentListeners)
+            .filter(eventName =>
+              eventNames.indexOf(eventName) !== -1
+            )
+
+        this.$_bindEvents(eventsToListen)
+        this.$_bindPropsUpdateEvents()
         this.initial = false
         this.mapLoaded = true
-      });
+      })
     },
 
     destroyed() {
-      if (this.map) this.map.remove();
+      if (this.map) this.map.remove()
     },
 
     methods: {
       // We wait in promise to ensure map is loaded and other components will receive map object
-      _bindPropsUpdateEvents() {
+      $_bindPropsUpdateEvents() {
         this.map.on('moveend', event => this.$emit('update:center', this.map.getCenter()))
         this.map.on('zoomend', event => this.$emit('update:zoom', this.map.getZoom()))
         this.map.on('rotate', event => this.$emit('update:bearing', this.map.getBearing()))
         this.map.on('pitch', event => this.$emit('update:pitch', this.map.getPitch()))
-
       },
-      _loadMap() {
+      $_loadMap() {
         return new Promise((resolve) => {
           if (this.accessToken) this.mapbox.accessToken = this.accessToken
           let map = new this.mapbox.Map({
             ...this._props,
             style: this.mapStyle
-          });
+          })
           map.on('load', () => resolve(map))
-        });
+        })
       },
 
-      _RTLTextPluginError(error) {
-        this.$emit('mgl-rtl-plugin-error', { map: this.map, error: error })
+      $_RTLTextPluginError(error) {
+        this.$emit('rtl-plugin-error', { map: this.map, error: error })
       },
 
-      _bindEvents(events) {
-        if (events.length === 0) return;
-        for (let e of Object.keys(events)) {
+      $_bindEvents(events) {
+        if (events.length === 0) return
+        for (let e of events) {
           this.map.on(e, event => {
-            this.$emit(`mgl-${ event }`, e)
-          });
+            this.$emit(e, event)
+          })
         }
       },
 
-      _unBindEvents(events) {
+      $_unBindEvents(events) {
         events.forEach(eventName => {
           this.map.off(eventName)
-        });
+        })
       },
-      supported(perfomanceCheck=false) {
+      supported(perfomanceCheck = false) {
         return this.map.supported({ failIfMajorPerformanceCaveat: perfomanceCheck })
       },
 
@@ -167,15 +171,15 @@
         return this.map.unproject(containerCoordinates)
       },
 
-      queryRenderedFeatures(geometry=undefined, parameters=undefined) {
+      queryRenderedFeatures(geometry = undefined, parameters = undefined) {
         return this.map.queryRenderedFeatures(geometry, parameters)
       },
 
-      querySourceFeatures(sourceId, parameters=undefined) {
+      querySourceFeatures(sourceId, parameters = undefined) {
         return this.map.querySourceFeatures(sourceId, parameters)
       },
 
-      addImage(name, image, options=undefined) {
+      addImage(name, image, options = undefined) {
         this.map.addImage(name, image, options)
       },
 
@@ -187,7 +191,7 @@
         this.map.loadImage(url, callback)
       },
 
-      _catchMoveFabric(eventData, resolve, reject) {
+      $_catchMoveFabric(eventData, resolve, reject) {
         let self = this
         return function catchMove(options) {
           if (options.eventId !== eventData.eventId) return
@@ -198,7 +202,7 @@
         }
       },
 
-      _catchZoomFabric(eventData, resolve, reject) {
+      $_catchZoomFabric(eventData, resolve, reject) {
         let self = this
         return function catchZoom(options) {
           if (options.eventId !== eventData.eventId) return
@@ -209,7 +213,7 @@
         }
       },
 
-      _catchRotateFabric(eventData, resolve, reject) {
+      $_catchRotateFabric(eventData, resolve, reject) {
         let self = this
         return function catchRotate(options) {
           if (options.eventId !== eventData.eventId) return
@@ -220,7 +224,7 @@
         }
       },
 
-      _catchPitchFabric(eventData, resolve, reject) {
+      $_catchPitchFabric(eventData, resolve, reject) {
         let self = this
         return function catchPitch(options) {
           if (options.eventId !== eventData.eventId) return
@@ -231,21 +235,21 @@
         }
       },
 
-      panBy(offset, options=undefined) {
+      panBy(offset, options = undefined) {
         if (offset[0] === 0 && offset[1] === 0) {
           return new Promise((resolve, reject) => resolve({ center: this.map.getCenter() }))
         }
         return new Promise((resolve, reject) => {
           let eventData = {
-            eventId: `panBy-${ ('' + Math.random()).split('.')[1] }`
+            eventId: `panBy-${('' + Math.random()).split('.')[1]}`
           }
-          this.map.on('moveend', this._catchMoveFabric(eventData, resolve, reject))
+          this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
           this.map.panBy(offset, options, eventData)
         })
       },
 
-      panTo(coordinates, options=undefined) {
-        if (!coordinates instanceof Array) {
+      panTo(coordinates, options = undefined) {
+        if (!(coordinates instanceof Array)) {
           coordinates = coordinates.toArray()
         }
         if (coordinates[0] === 0 && coordinates[1] === 0) {
@@ -253,93 +257,92 @@
         }
         return new Promise((resolve, reject) => {
           let eventData = {
-            eventId: `panTo-${ ('' + Math.random()).split('.')[1] }`
+            eventId: `panTo-${('' + Math.random()).split('.')[1]}`
           }
-          this.map.on('moveend', this._catchMoveFabric(eventData, resolve, reject))
+          this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
           this.map.panTo(coordinates, options, eventData)
         })
-
       },
 
-      zoomTo(zoom, options=undefined) {
+      zoomTo(zoom, options = undefined) {
         if (zoom === this.map.getZoom()) {
           return new Promise((resolve, reject) => resolve({ zoom: this.map.getZoom() }))
         }
         return new Promise((resolve, reject) => {
           let eventData = {
-            eventId: `zoomTo-${ ('' + Math.random()).split('.')[1] }`
+            eventId: `zoomTo-${('' + Math.random()).split('.')[1]}`
           }
-          this.map.on('zoomend', this._catchZoomFabric(eventData, resolve, reject))
-          this.map.zoomTo(zoom, options, eventData);
+          this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
+          this.map.zoomTo(zoom, options, eventData)
         })
       },
 
-      zoomIn(options=undefined) {
+      zoomIn(options = undefined) {
         return new Promise((resolve, reject) => {
           let eventData = {
-            eventId: `zoomIn-${ ('' + Math.random()).split('.')[1] }`
+            eventId: `zoomIn-${('' + Math.random()).split('.')[1]}`
           }
-          this.map.on('zoomend', this._catchZoomFabric(eventData, resolve, reject))
+          this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
           this.map.zoomIn(options, eventData)
         })
       },
 
-      zoomOut(options=undefined) {
+      zoomOut(options = undefined) {
         return new Promise((resolve, reject) => {
           let eventData = {
-            eventId: `zoomOut-${ ('' + Math.random()).split('.')[1] }`
+            eventId: `zoomOut-${('' + Math.random()).split('.')[1]}`
           }
-          this.map.on('zoomend', this._catchZoomFabric(eventData, resolve, reject))
+          this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
           this.map.zoomOut(options, eventData)
         })
       },
 
-      rotateTo(bearing, options=undefined) {
+      rotateTo(bearing, options = undefined) {
         if (bearing === this.map.getBearing()) {
           return new Promise((resolve, reject) => resolve({ bearing: this.map.getBearing() }))
         }
         return new Promise((resolve, reject) => {
           let eventData = {
-            eventId: `rotateTo-${ ('' + Math.random()).split('.')[1] }`
+            eventId: `rotateTo-${('' + Math.random()).split('.')[1]}`
           }
-          this.map.on('rotate', this._catchRotateFabric(eventData, resolve, reject))
+          this.map.on('rotate', this.$_catchRotateFabric(eventData, resolve, reject))
           this.map.rotateTo(bearing, options, eventData)
         })
       },
 
-      resetNorth(options=undefined) {
+      resetNorth(options = undefined) {
         return new Promise((resolve, reject) => {
           let eventData = {
-            eventId: `resetNorth-${ ('' + Math.random()).split('.')[1] }`
+            eventId: `resetNorth-${('' + Math.random()).split('.')[1]}`
           }
-          this.map.on('rotate', this._catchRotateFabric(eventData, resolve, reject))
+          this.map.on('rotate', this.$_catchRotateFabric(eventData, resolve, reject))
           this.map.resetNorth(options, eventData)
         })
       },
 
-      snapToNorth(options=undefined) {
+      snapToNorth(options = undefined) {
         return new Promise((resolve, reject) => {
           let eventData = {
-            eventId: `snapToNorth-${ ('' + Math.random()).split('.')[1] }`
+            eventId: `snapToNorth-${('' + Math.random()).split('.')[1]}`
           }
-          this.map.on('rotate', this._catchRotateFabric(eventData, resolve, reject))
-          this.map.snapToNorth(options, eventData);
+          this.map.on('rotate', this.$_catchRotateFabric(eventData, resolve, reject))
+          this.map.snapToNorth(options, eventData)
         })
       },
 
-      fitBounds(bounds, options=undefined) {
+      fitBounds(bounds, options = undefined) {
         if (bounds === this.map.getBounds()) {
           return new Promise((resolve, reject) => resolve({ bounds: this.map.getBounds() }))
         }
         let eventData = {
-          eventId: `fitBounds-${ ('' + Math.random()).split('.')[1] }`
+          eventId: `fitBounds-${('' + Math.random()).split('.')[1]}`
         }
         let zoomFunc = new Promise((resolve, reject) => {
-          this.map.on('zoomend', this._catchZoomFabric(eventData, resolve, reject))
+          this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
         })
 
         let moveFunc = new Promise((resolve, reject) => {
-          this.map.on('moveend', this._catchMoveFabric(eventData, resolve, reject))
+          this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
         })
         this.map.fitBounds(bounds, options, eventData)
         return Promise.all([zoomFunc, moveFunc]).then(results => {
@@ -349,34 +352,34 @@
 
       jumpTo(options) {
         let eventData = {
-          eventId: `jumpTo-${ ('' + Math.random()).split('.')[1] }`
+          eventId: `jumpTo-${('' + Math.random()).split('.')[1]}`
         }
         let funcs = []
         if (options.bearing !== undefined && options.bearing !== this.map.getBearing()) {
           let rotateFunc = new Promise((resolve, reject) => {
-            this.map.on('rotate', this._catchRotateFabric(eventData, resolve, reject))
+            this.map.on('rotate', this.$_catchRotateFabric(eventData, resolve, reject))
           })
           funcs.push(rotateFunc)
         }
         if (options.zoom !== undefined && options.zoom !== this.map.getZoom()) {
           let zoomFunc = new Promise((resolve, reject) => {
-            this.map.on('zoomend', this._catchZoomFabric(eventData, resolve, reject))
+            this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
           })
           funcs.push(zoomFunc)
         }
         if (options.center !== undefined && options.center !== this.map.getCenter()) {
           let centerFunc = new Promise((resolve, reject) => {
-            this.map.on('moveend', this._catchMoveFabric(eventData, resolve, reject))
+            this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
           })
           funcs.push(centerFunc)
         }
         if (options.pitch !== undefined && options.pitch !== this.map.getPitch()) {
           let pitchFunc = new Promise((resolve, reject) => {
-            this.map.on('pitch', this._catchPitchFabric(eventData, resolve, reject))
+            this.map.on('pitch', this.$_catchPitchFabric(eventData, resolve, reject))
           })
           funcs.push(pitchFunc)
         }
-        if (func.length === 0) {
+        if (funcs.length === 0) {
           return new Promise((resolve, reject) => {
             resolve({
               pitch: this.map.getPitch(),
@@ -400,29 +403,29 @@
       easeTo(options) {
         let funcs = []
         let eventData = {
-          eventId: `easeTo-${ ('' + Math.random()).split('.')[1] }`
+          eventId: `easeTo-${('' + Math.random()).split('.')[1]}`
         }
         if (options.bearing !== undefined && options.bearing !== this.map.getBearing()) {
           let rotateFunc = new Promise((resolve, reject) => {
-            this.map.on('rotate', this._catchRotateFabric(eventData, resolve, reject))
+            this.map.on('rotate', this.$_catchRotateFabric(eventData, resolve, reject))
           })
           funcs.push(rotateFunc)
         }
         if (options.zoom !== undefined && options.zoom !== this.map.getZoom()) {
           let zoomFunc = new Promise((resolve, reject) => {
-            this.map.on('zoomend', this._catchZoomFabric(eventData, resolve, reject))
+            this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
           })
           funcs.push(zoomFunc)
         }
         if (options.center !== undefined && options.center !== this.map.getCenter()) {
           let centerFunc = new Promise((resolve, reject) => {
-            this.map.on('moveend', this._catchMoveFabric(eventData, resolve, reject))
+            this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
           })
           funcs.push(centerFunc)
         }
         if (options.pitch !== undefined && options.pitch !== this.map.getPitch()) {
           let pitchFunc = new Promise((resolve, reject) => {
-            this.map.on('pitch', this._catchPitchFabric(eventData, resolve, reject))
+            this.map.on('pitch', this.$_catchPitchFabric(eventData, resolve, reject))
           })
           funcs.push(pitchFunc)
         }
@@ -450,30 +453,30 @@
 
       flyTo(options) {
         let eventData = {
-          eventId: `flyTo-${ ('' + Math.random()).split('.')[1] }`
+          eventId: `flyTo-${('' + Math.random()).split('.')[1]}`
         }
         let funcs = []
         if (options.bearing !== undefined && options.bearing !== this.map.getBearing()) {
           let rotateFunc = new Promise((resolve, reject) => {
-            this.map.on('rotate', this._catchRotateFabric(eventData, resolve, reject))
+            this.map.on('rotate', this.$_catchRotateFabric(eventData, resolve, reject))
           })
           funcs.push(rotateFunc)
         }
         if (options.zoom !== undefined && options.zoom !== this.map.getZoom()) {
           let zoomFunc = new Promise((resolve, reject) => {
-            this.map.on('zoomend', this._catchZoomFabric(eventData, resolve, reject))
+            this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
           })
           funcs.push(zoomFunc)
         }
         if (options.center !== undefined && options.center !== this.map.getCenter()) {
           let centerFunc = new Promise((resolve, reject) => {
-            this.map.on('moveend', this._catchMoveFabric(eventData, resolve, reject))
+            this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
           })
           funcs.push(centerFunc)
         }
         if (options.pitch !== undefined && options.pitch !== this.map.getPitch()) {
           let pitchFunc = new Promise((resolve, reject) => {
-            this.map.on('pitch', this._catchPitchFabric(eventData, resolve, reject))
+            this.map.on('pitch', this.$_catchPitchFabric(eventData, resolve, reject))
           })
           funcs.push(pitchFunc)
         }

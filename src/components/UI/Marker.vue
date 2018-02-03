@@ -1,15 +1,15 @@
 <template>
-  <div style="display:none">
-    <slot name="marker"></slot>
-    <slot></slot>
+  <div style="display: none">
+    <slot name="marker"/>
+    <slot/>
   </div>
 </template>
 
 <script>
 
-  import baseMixin from '../../lib/mixin';
+  import baseMixin from '../../lib/mixin'
 
-  export default {
+export default {
     mixins: [baseMixin],
     props: {
       // mapbox marker options
@@ -31,16 +31,16 @@
         initial: true,
         map: undefined,
         marker: undefined
-      };
+      }
     },
 
     mounted() {
-      this._checkMapTree()
+      this.$_checkMapTree()
     },
 
     beforeDestroy() {
       if (this.map !== undefined && this.marker !== undefined) {
-        this.marker.remove();
+        this.marker.remove()
       }
     },
 
@@ -52,33 +52,33 @@
     },
 
     methods: {
-      _deferredMount(payload) {
+      $_deferredMount(payload) {
         if (this.$slots.marker) {
           this.marker = new this.mapbox.Marker(this.$slots.marker[0].elm, { ...this._props })
         } else {
           this.marker = new this.mapbox.Marker({ ...this._props })
         }
 
-        this.map = payload.map;
-        this._addMarker()
-        this.initial = false;
-        payload.component.$off('load', this._deferredMount)
+        this.map = payload.map
+        this.$_addMarker()
+        this.initial = false
+        payload.component.$off('load', this.$_deferredMount)
       },
-      _addMarker() {
+      $_addMarker() {
         this.marker
           .setLngLat(this.coordinates)
-          .addTo(this.map);
+          .addTo(this.map)
 
-        this._emitMapEvent('marker-added', { marker: this.marker })
+        this.$_emitMapEvent('marker-added', { marker: this.marker })
       },
 
       remove() {
         this.marker.remove()
-        this._emitMapEvent('marker-removed', { marker: this.marker })
+        this.$_emitMapEvent('marker-removed', { marker: this.marker })
       },
 
       togglePopup() {
-        this.marker.togglePopup();
+        this.marker.togglePopup()
       }
     }
   }

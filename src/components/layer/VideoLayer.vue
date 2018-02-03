@@ -2,10 +2,10 @@
 
 <script>
 
-  import layerEvents from '../../lib/layerEvents';
-  import mixin from './layerMixin';
+  import layerEvents from '../../lib/layerEvents'
+import mixin from './layerMixin'
 
-  export default {
+export default {
     mixins: [mixin],
     props: {
       coordinates: {
@@ -24,14 +24,14 @@
     },
     computed: {
       video() {
-        return this.map.getSource(this.sourceId).getVideo();
+        return this.map.getSource(this.sourceId).getVideo()
       }
     },
 
     watch: {
       coordinates(val) {
-        if (this.initial) return;
-        this.source.setCoordinates(val);
+        if (this.initial) return
+        this.source.setCoordinates(val)
       }
     },
 
@@ -43,8 +43,8 @@
           coordinates: this.coordinates
         }
 
-        this.map = payload.map;
-        this.map.on('dataloading', this._watchSourceLoading);
+        this.map = payload.map
+        this.map.on('dataloading', this.$_watchSourceLoading)
         if (source) {
           try {
             this.map.addSource(this.sourceId, source)
@@ -53,27 +53,27 @@
               this.map.removeSource(this.sourceId)
               this.map.addSource(this.sourceId, source)
             } else {
-              this._emitMapEvent('layer-source-error', { sourceId: this.sourceId, error: err })
+              this.$_emitMapEvent('layer-source-error', { sourceId: this.sourceId, error: err })
             }
           }
         }
         this.source = this.map.getSource(this.sourceId)
-        this._addLayer()
+        this.$_addLayer()
         if (this.listenUserEvents) {
-          this._bindEvents(layerEvents)
+          this.$_bindEvents(layerEvents)
         }
         this.initial = false
-        payload.component.$off('load', this._deferredMount)
+        payload.component.$off('load', this.$_deferredMount)
       },
 
-      _addLayer() {
-        let existed = this.map.getLayer(this.layerId);
+      $_addLayer() {
+        let existed = this.map.getLayer(this.layerId)
         if (existed) {
           if (this.replace) {
-            this.map.removeLayer(this.layerId);
+            this.map.removeLayer(this.layerId)
           } else {
-            this._emitMapEvent('layer-exists', { layerId: this.layerId });
-            return existed;
+            this.$_emitMapEvent('layer-exists', { layerId: this.layerId })
+            return existed
           }
         }
         let layer = {
@@ -82,7 +82,7 @@
           type: 'background'
         }
         if (this.refLayer) {
-          layer.ref = this.refLayer;
+          layer.ref = this.refLayer
         } else {
           if (this['source-layer']) {
             layer['source-layer'] = this['source-layer']
@@ -97,8 +97,8 @@
         // layer.paint = this.paint ? this.paint : { 'raster-opacity': 0.85 };
         layer.metadata = this.metadata
 
-        this.map.addLayer(layer, this.before);
-        this._emitMapEvent('layer-added', { layerId: this.layerId });
+        this.map.addLayer(layer, this.before)
+        this.$_emitMapEvent('layer-added', { layerId: this.layerId })
       }
     }
   }

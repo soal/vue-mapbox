@@ -18,7 +18,7 @@
           return {
             enableHighAccuracy: false,
             timeout: 6000
-          };
+          }
         }
       },
       watchPosition: {
@@ -31,27 +31,27 @@
       return {
         control: undefined,
         map: undefined
-      };
+      }
     },
 
     created() {
-      this.control = new this.mapbox.GeolocateControl(this._props);
+      this.control = new this.mapbox.GeolocateControl(this._props)
 
       this.control.on('error', err => {
-        this.$emit('geolocate-error', err);
-      });
+        this.$emit('geolocate-error', err)
+      })
       this.control.on('geolocate', position => {
-        this.$emit('geolocate-error', position);
+        this.$emit('geolocate-error', position)
       })
     },
 
     methods: {
-      _deferredMount(payload) {
-        this.map = payload.map;
-        this.map.addControl(this.control);
-        this.$emit('geolocate-control-added', this.control);
-        payload.component.$off('load', this._deferredMount)
+      $_deferredMount(payload) {
+        this.map = payload.map
+        this.map.addControl(this.control)
+        this.$emit('geolocate-control-added', this.control)
+        payload.component.$off('load', this.$_deferredMount)
       }
     }
-  };
+  }
 </script>

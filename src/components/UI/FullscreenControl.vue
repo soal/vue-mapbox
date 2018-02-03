@@ -19,21 +19,20 @@
       return {
         control: undefined,
         map: undefined
-      };
+      }
     },
 
     created() {
-      this.control = new this.mapbox.FullscreenControl();
+      this.control = new this.mapbox.FullscreenControl()
     },
 
     methods: {
-      _deferredMount(payload) {
-        // if (payload.mapId !== this.mapId) return;
-        this.map = payload.map;
-        this.map.addControl(this.control, this.position);
-        this.$emit('fullscreen-control-added', this.control);
-        payload.component.$off('load', this._deferredMount)
+      $_deferredMount(payload) {
+        this.map = payload.map
+        this.map.addControl(this.control, this.position)
+        this.$emit('fullscreen-control-added', this.control)
+        payload.component.$off('load', this.$_deferredMount)
       }
     }
-  };
+  }
 </script>

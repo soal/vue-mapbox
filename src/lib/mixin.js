@@ -1,11 +1,11 @@
 export default {
   mounted() {
-    this._checkMapTree()
+    this.$_checkMapTree()
     // We wait for "load" event from map component to ensure mapbox is loaded and map created
   },
 
   methods: {
-    _findBaseMap() {
+    $_findBaseMap() {
       let baseMapComponent
       function walkParents(component) {
         if (component.baseMap) {
@@ -22,15 +22,15 @@ export default {
       }
       return baseMapComponent
     },
-    _checkMapTree() {
-      let mapComponent = this._findBaseMap()
+    $_checkMapTree() {
+      let mapComponent = this.$_findBaseMap()
       if (mapComponent.mapLoaded) {
-        this._deferredMount({ component: mapComponent, map: mapComponent.map })
+        this.$_deferredMount({ component: mapComponent, map: mapComponent.map })
       } else {
-        mapComponent.$on('load', this._deferredMount)
+        mapComponent.$on('load', this.$_deferredMount)
       }
     },
-    _emitMapEvent(name, data={}) {
+    $_emitMapEvent(name, data = {}) {
       this.$emit(name, {
         map: this.map,
         component: this,

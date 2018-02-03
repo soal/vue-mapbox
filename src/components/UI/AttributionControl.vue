@@ -18,7 +18,7 @@
       return {
         control: undefined,
         map: undefined
-      };
+      }
     },
 
     created() {
@@ -26,12 +26,12 @@
     },
 
     methods: {
-      _deferredMount(payload) {
+      $_deferredMount(payload) {
         this.map = payload.map
         this.map.addControl(this.control)
         this.$emit('attribution-control-added', this.control)
-        payload.component.$off('load', this._deferredMount)
+        payload.component.$off('load', this.$_deferredMount)
       }
     }
-  };
+  }
 </script>

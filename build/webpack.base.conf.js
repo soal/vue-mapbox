@@ -14,6 +14,10 @@ module.exports = {
     filename: '[name].js',
     publicPath: config.build.assetsPublicPath
   },
+  externals: {
+    mapboxgl: 'mapboxgl',
+    vue: 'vue'
+  },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {

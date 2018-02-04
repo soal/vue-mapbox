@@ -1,13 +1,18 @@
-# vue-mapbox [WIP]  [![Build Status](https://travis-ci.org/soal/vue-mapbox.svg?branch=master)](https://travis-ci.org/soal/vue-mapbox)
-### Vue 2 and [mapbox-gj-js](https://www.mapbox.com/mapbox-gl-js/api/) integration for using Mapbox map features vueish way.
+# vue-mapbox [![Build Status](https://travis-ci.org/soal/vue-mapbox.svg?branch=master)](https://travis-ci.org/soal/vue-mapbox)
 
-### Project in alpha-stage for now.
+> Combine powers of [Vue.js](https://vuejs.org/) and [Mapbox Gl JS](https://mapbox.com/mapbox-gl-js)
 
-## Installation
+Vue-mapbox is wrapper around Mapbox GL JS library that provides vueish-way to interact with the map.
 
-```
-npm install vue-mapbox
-```
+[Description and documentation](https://soal.github.io/vue-mapbox)
+ 
+## Size
+ ~ 39 kB minified  
+ ~ 7 kB minified and gzipped
+ 
+## Browser compatibility
+_Coming soon_
+
 
 ## Development
 ```

@@ -442,7 +442,6 @@
         this.map.easeTo(options, eventData)
 
         return Promise.all(funcs).then(results => {
-          // console.log('RESULTS: ', results)
           let resObj = {}
           for (let res of results) {
             Object.assign(resObj, res)
@@ -502,10 +501,18 @@
 
       stop() {
         this.map.stop()
-        this.$emit('update:pitch', this.map.getPitch())
-        this.$emit('update:zoom', this.map.getZoom())
-        this.$emit('update:bearing', this.map.getBearing())
-        this.$emit('update:center', this.map.getCenter())
+        const [pitch, zoom, bearing, center] = [this.map.getPitch(), this.map.getZoom(), this.map.getBearing(), this.map.getCenter()]
+        this.$emit('update:pitch', pitch)
+        this.$emit('update:zoom', zoom)
+        this.$emit('update:bearing', bearing)
+        this.$emit('update:center', center)
+
+        return Promise.resolve({
+          pitch,
+          zoom,
+          bearing,
+          center
+        })
       }
     }
   }

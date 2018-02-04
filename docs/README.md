@@ -16,7 +16,7 @@ Motivation for creating this library described in depths [here](motivation.md)
  - You can use them in OOP-style, for example use GeojsonLayer.move() instead of getting layer object from map and use map.move(layer)
  - You can do async map operations and get results in Promise without messing with map events and figuring out what action cause it
  - You can catch map events like Vue events
- - ...and other good stuff that makes work with map _**vuetified**_ 👌
+ - ...and other good stuff that makes work with map _**vuefied**_ 👌
 
 ## Dependencies
 Vue-mapox works with  

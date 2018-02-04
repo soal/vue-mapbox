@@ -1,4 +1,4 @@
-# vue-mapbox [![Build Status](https://travis-ci.org/soal/vue-mapbox.svg?branch=master)](https://travis-ci.org/soal/vue-mapbox)
+# vue-mapbox [![Build Status](https://travis-ci.org/soal/vue-mapbox.svg?branch=master)](https://travis-ci.org/soal/vue-mapbox) [![npm version](https://badge.fury.io/js/vue-mapbox.svg)](https://badge.fury.io/js/vue-mapbox)
 
 > Combine powers of [Vue.js](https://vuejs.org/) and [Mapbox Gl JS](https://mapbox.com/mapbox-gl-js)
 

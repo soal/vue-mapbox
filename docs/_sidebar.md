@@ -26,4 +26,3 @@
         
         
 - [Motivation](motivation.md)
-   

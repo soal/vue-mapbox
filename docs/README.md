@@ -29,4 +29,3 @@ Vue.js 2.5+
  
 ## Browser compatibility
 _Coming soon_
-

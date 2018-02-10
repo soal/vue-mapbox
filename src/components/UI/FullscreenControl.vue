@@ -30,7 +30,7 @@
       $_deferredMount(payload) {
         this.map = payload.map
         this.map.addControl(this.control, this.position)
-        this.$emit('fullscreen-control-added', this.control)
+        this.$emit('added', this.control)
         payload.component.$off('load', this.$_deferredMount)
       }
     }

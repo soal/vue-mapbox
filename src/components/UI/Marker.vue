@@ -69,12 +69,12 @@ export default {
           .setLngLat(this.coordinates)
           .addTo(this.map)
 
-        this.$_emitMapEvent('marker-added', { marker: this.marker })
+        this.$_emitMapEvent('added', { marker: this.marker })
       },
 
       remove() {
         this.marker.remove()
-        this.$_emitMapEvent('marker-removed', { marker: this.marker })
+        this.$_emitMapEvent('removed', { marker: this.marker })
       },
 
       togglePopup() {

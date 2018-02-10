@@ -1,6 +1,6 @@
 - Getting Started
     - [Quickstart](quickstart.md)
-    
+
 - Guide
     - [Base map](basemap.md)
     - [Component composition](composition.md)
@@ -23,6 +23,5 @@
         - [RasterLayer](api/rasterlayer.md)
         - [VectorLayer](api/vectorlayer.md)
         - [VideoLayer](api/videolayer.md)
-        
-        
+
 - [Motivation](motivation.md)

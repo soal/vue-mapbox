@@ -90,7 +90,7 @@
         layer.metadata = this.metadata
 
         this.map.addLayer(layer, this.before)
-        this.$_emitMapEvent('layer-added', { layerId: this.layerId })
+        this.$_emitMapEvent('added', { layerId: this.layerId })
       }
     }
   }

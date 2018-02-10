@@ -1,2 +1,144 @@
 # Composition
-_Coming soon_
+You can use Mapbox GL feature as Vue component and compose it as a child of GlMap. During creation all components waits until map properly initialized.
+
+For example, adding map controls:
+
+```html
+<div id="#app">
+  <mgl-map
+    :accessToken="accessToken"
+    :mapStyle.sync="mapStyle"
+  >
+    <mgl-navigation-contol position="top-right"/>
+    <mgl-geolocate-contol position="top-right" />
+  </mgl-map>
+</div>
+```
+
+```javascript
+import {
+  MglMap,
+  MglNavigationControl,
+  MglGeolocateControl
+} from 'vue-mapbox'
+
+export default {
+  components: {
+    MglMap,
+    MglNavigationControl,
+    MglGeolocateControl
+  },
+  data() {
+    return {
+      accessToken: 'some_token',
+      mapStyle: 'style_object'
+    }
+  }
+}
+```
+
+Adding a popup:
+
+```html
+<div id="#app">
+  <mgl-map
+    :accessToken="accessToken"
+    :mapStyle.sync="mapStyle"
+  >
+    <mgl-navigation-contol position="top-right"/>
+    <mgl-geolocate-contol position="top-right" />
+    <mgl-popup :coordinates="popupCoordinates">
+      <span>Hello world!</span>
+    </mgl-popup>
+
+  </mgl-map>
+</div>
+```
+
+```javascript
+import {
+  MglMap,
+  MglNavigationControl,
+  MglGeolocateControl,
+  MglPopup
+} from 'vue-mapbox'
+
+export default {
+  components: {
+    MglMap,
+    MglNavigationControl,
+    MglGeolocateControl,
+    MglPopup
+  },
+  data() {
+    return {
+      accessToken: 'some_token',
+      mapStyle: 'style_object',
+      popupCoordinates: [10, 10]
+    }
+  }
+}
+```
+
+Vue-mapbox component will work even if it wrapped in another component as long they in components sub-tree of base map component.
+
+For example:
+
+**_Popup wrapper_**:
+```html
+<div class="popup-wrapper">
+  <mgl-popup :coordinates="popupCoordinates">
+      <span>Hello world from wrapped popup!</span>
+    </mgl-popup>
+</div>
+```
+
+```javascript
+import { MglPopup } from 'vue-mapbox'
+
+export default {
+  name: 'PopupWrapper'
+  components: {
+    MglPopup
+  },
+  computed() {
+    popupCoordinates() {
+      // Here we can do some work for calculate proper coordinates
+      //...
+      return [10, 10]
+    }
+  }
+}
+```
+
+**_Main component_**:
+```html
+<div id="#app">
+  <mgl-map
+    :accessToken="accessToken"
+    :mapStyle.sync="mapStyle"
+  >
+    <popup-wrapper /> <!-- works! -->
+  </mgl-map>
+</div>
+```
+
+```javascript
+import { MglMap } from 'vue-mapbox'
+import PopupWrapper from 'PopupWrapper' // wrapper for popup
+
+export default {
+  components: {
+    MglMap,
+    PopupWrapper // wrapper for popup
+  },
+  data() {
+    return {
+      accessToken: 'some_token',
+      mapStyle: 'style_object'
+    }
+  }
+}
+```
+
+After successful mount all components emits 'added' envent with map object, Vue component object and additional data, such as corresponding Mapbox GL JS object or obhect contining layer id in payload.

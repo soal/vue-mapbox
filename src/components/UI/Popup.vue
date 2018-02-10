@@ -101,14 +101,14 @@ export default {
         }
       }
       this.popup.addTo(this.map)
-      this.$_emitMapEvent('popup-added', { popup: this.popup })
+      this.$_emitMapEvent('added', { popup: this.popup })
 
       this.popup.on('close', this.$_onClose)
 
       if (this.$parent.marker !== undefined) {
         this.$parent.marker.setPopup(this.popup)
       } else {
-        this.$parent.$once('marker-added', ({ marker }) => {
+        this.$parent.$once('added', ({ marker }) => {
           console.log(marker)
           marker.setPopup(this.popup)
         })

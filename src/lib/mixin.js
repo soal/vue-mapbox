@@ -1,3 +1,4 @@
+// @ts-check
 export default {
   mounted() {
     this.$_checkMapTree()
@@ -6,7 +7,7 @@ export default {
 
   methods: {
     $_findBaseMap() {
-      let baseMapComponent
+      let baseMapComponent = null
       function walkParents(component) {
         if (component.baseMap) {
           baseMapComponent = component
@@ -24,10 +25,12 @@ export default {
     },
     $_checkMapTree() {
       let mapComponent = this.$_findBaseMap()
-      if (mapComponent.mapLoaded) {
-        this.$_deferredMount({ component: mapComponent, map: mapComponent.map })
-      } else {
-        mapComponent.$on('load', this.$_deferredMount)
+      if (mapComponent) {
+        if (mapComponent.mapLoaded) {
+          this.$_deferredMount({ component: mapComponent, map: mapComponent.map })
+        } else {
+          mapComponent.$on('load', this.$_deferredMount)
+        }
       }
     },
     $_emitMapEvent(name, data = {}) {

@@ -1,5 +1,3 @@
-
-import layerEvents from '../../lib/layerEvents'
 import baseMixin from '../../lib/mixin'
 
 const mapboxSourceProps = {

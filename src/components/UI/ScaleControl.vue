@@ -37,7 +37,7 @@
         } catch (err) {
           console.log(err)
         }
-        this.$emit('scale-control-added', this.control)
+        this.$emit('added', this.control)
         payload.component.$off('load', this.$_deferredMount)
       }
     }

@@ -9,7 +9,7 @@
     props: {
       position: {
         type: String,
-        default: 'top-right'
+        default: 'top-right' // TODO: add validator
       }
     },
 

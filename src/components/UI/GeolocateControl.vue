@@ -49,7 +49,7 @@
       $_deferredMount(payload) {
         this.map = payload.map
         this.map.addControl(this.control)
-        this.$emit('geolocate-control-added', this.control)
+        this.$emit('added', this.control)
         payload.component.$off('load', this.$_deferredMount)
       }
     }

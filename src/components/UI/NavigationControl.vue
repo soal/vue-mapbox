@@ -28,7 +28,7 @@
       $_deferredMount(payload) {
         this.map = payload.map
         this.map.addControl(this.control, this.position)
-        this.$_emitMapEvent('nav-control-added', { control: this.control })
+        this.$_emitMapEvent('added', { control: this.control })
 
         payload.component.$off('load', this.$_deferredMount)
       }

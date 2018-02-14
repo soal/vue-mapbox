@@ -8,3 +8,4 @@ See list of controls and they properties in [API docs](api/controls.md)
 Take note that you should not use MglMap prop and control component simultaniesly. For exmaple, you should use `<mgl-map> -->
 
 ### Attribution control
+Due to Mapbox [policy](https://www.mapbox.com/help/how-attribution-works/) attribution control is enabled by default. Yo can disable default attributions by `attributionControl` prop of MglMap to `false` and set your own attribution using AttributionControl component.

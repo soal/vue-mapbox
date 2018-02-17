@@ -29,7 +29,6 @@ export default {
     data() {
       return {
         initial: true,
-        map: undefined,
         marker: undefined
       }
     },

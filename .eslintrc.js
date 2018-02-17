@@ -21,7 +21,6 @@ module.exports = {
   "rules": {
     "jsx-quotes": 1,
     "no-debugger": process.env.NODE_ENV === "production" ? 2 : 1,
-    "camelcase": 0,
     "comma-dangle": [2, "never"],
     "complexity": 2,
     "space-before-function-paren": [0, "never"],

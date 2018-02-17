@@ -1,5 +1,5 @@
 <template>
-  <div :id="container">
+  <div v-once :id="container" ref="container">
     <slot/>
   </div>
 </template>
@@ -15,8 +15,7 @@ export default {
     return {
       initial: true,
       baseMap: true,
-      mapLoaded: false,
-      map: null
+      mapLoaded: false
     }
   },
 
@@ -94,6 +93,10 @@ export default {
     }
   },
 
+  created() {
+    this.map = null
+  },
+
   mounted() {
     this.$_loadMap().then(map => {
       this.map = map
@@ -109,7 +112,7 @@ export default {
 
       this.$_bindEvents(eventsToListen)
       this.$_bindPropsUpdateEvents()
-      this.initial = false
+      this.initial = true
       this.mapLoaded = true
     })
   },
@@ -129,8 +132,9 @@ export default {
     $_loadMap() {
       return new Promise((resolve) => {
         if (this.accessToken) this.mapbox.accessToken = this.accessToken
-        let map = new this.mapbox.Map({
+        const map = new this.mapbox.Map({
           ...this._props,
+          container: this.$el,
           style: this.mapStyle
         })
         map.on('load', () => resolve(map))

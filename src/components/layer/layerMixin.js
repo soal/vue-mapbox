@@ -50,8 +50,7 @@ export default {
 
   data() {
     return {
-      initial: true,
-      map: undefined
+      initial: true
     }
   },
 
@@ -75,7 +74,7 @@ export default {
     },
     paint(properties) {
       if (this.initial) return
-      for (let prop in Object.keys(this.paint)) {
+      for (let prop of Object.keys(this.paint)) {
         if (this.paint[prop] !== properties[prop]) {
           this.map.setPaintProperty(this.layerId, prop, properties[prop])
           this.paint[prop] = properties[prop]
@@ -84,7 +83,7 @@ export default {
     },
     layout(properties) {
       if (this.initial) return
-      for (let prop in Object.keys(this.layout)) {
+      for (let prop of Object.keys(this.layout)) {
         if (this.layout[prop] !== properties[prop]) {
           this.map.setLayoutProperty(this.layerId, prop, properties[prop])
           this.layout[prop] = properties[prop]
@@ -140,6 +139,7 @@ export default {
 
     remove() {
       this.map.removeLayer(this.layerId)
+      this.$_emitMapEvent('layer-removed', { layerId: this.layerId })
     }
   }
 }

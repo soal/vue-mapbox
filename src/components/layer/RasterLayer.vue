@@ -87,7 +87,7 @@ export default {
           layer.layout = this.layout
         }
       }
-      layer.paint = layer.paint = this.paint ? this.paint : { 'raster-opacity': 1 }
+      layer.paint = this.paint ? this.paint : { 'raster-opacity': 1 }
       layer.metadata = this.metadata
 
       this.map.addLayer(layer, this.before)

@@ -80,7 +80,7 @@ export default {
 }
 ```
 
-Vue-mapbox component will work even if it wrapped in another component as long they in components sub-tree of base map component.
+Vue-mapbox component will work even if it wrapped in another component as long as they in components sub-tree of base map component.
 
 For example:
 
@@ -141,4 +141,4 @@ export default {
 }
 ```
 
-After successful mount all components emits 'added' envent with map object, Vue component object and additional data, such as corresponding Mapbox GL JS object or obhect contining layer id in payload.
+After successful mount all components emits 'added' envent with map object, Vue component object and additional data, such as corresponding Mapbox GL JS object or object containing layer id in payload.

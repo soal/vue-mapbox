@@ -80,7 +80,7 @@ export default {
 }
 ```
 
-Vue-mapbox component will work even if it wrapped in another component as long they in components sub-tree of base map component.
+Vue-mapbox component will work even if it wrapped in another component as long as they in components sub-tree of base map component.
 
 For example:
 

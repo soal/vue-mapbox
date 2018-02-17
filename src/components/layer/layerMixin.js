@@ -50,8 +50,7 @@ export default {
 
   data() {
     return {
-      initial: true,
-      map: undefined
+      initial: true
     }
   },
 
@@ -140,6 +139,7 @@ export default {
 
     remove() {
       this.map.removeLayer(this.layerId)
+      this.$_emitMapEvent('layer-removed', { layerId: this.layerId })
     }
   }
 }

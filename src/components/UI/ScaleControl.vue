@@ -20,8 +20,7 @@
 
     data() {
       return {
-        control: undefined,
-        map: undefined
+        control: undefined
       }
     },
 

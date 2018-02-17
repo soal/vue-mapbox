@@ -1,5 +1,8 @@
 // @ts-check
 export default {
+  created() {
+    this.map = null
+  },
   mounted() {
     this.$_checkMapTree()
     // We wait for "load" event from map component to ensure mapbox is loaded and map created

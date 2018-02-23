@@ -7,7 +7,7 @@
 Vue-mapbox is wrapper around Mapbox GL JS library that provides vueish-way to interact with the map.
 
 ## Why
-Motivation for creating this library described in depths [here](motivation.md)
+Motivation for creating this library described in depths [here](motivation.md).
 
 #### TL;DR:
  - You can use map elements like layers, markers, popups as Vue components
@@ -16,10 +16,10 @@ Motivation for creating this library described in depths [here](motivation.md)
  - You can use them in OOP-style, for example use GeojsonLayer.move() instead of getting layer object from map and use map.move(layer)
  - You can do async map operations and get results in Promise without messing with map events and figuring out what action cause it
  - You can catch map events like Vue events
- - ...and other good stuff that makes work with map _**vuefied**_ 👌
+ - ...and other good stuff that makes work with mapbox _**vuefied**_ 👌
 
 ## Dependencies
-Vue-mapox works with  
+Vue-mapbox works with  
 Vue.js 2.5+  
  Mapbox GL JS 0.40+  
  

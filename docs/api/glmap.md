@@ -5,7 +5,7 @@
  
  - **Type**: `String`, `Object`
  - **Required**
- - **Non-Synced**
+ - **Synced**
  - **Description:**  The map's Mapbox style. This must be an a JSON object conforming to the schema described in the Mapbox Style Specification , or a URL to such JSON.
  - **Mapbox GL Docs:** `options.style` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
 
@@ -134,4 +134,80 @@
  - **Non-Synced**
  - **Description:** If true, the "double click to zoom" interaction is enabled  
  - **Mapbox GL Docs:** `options.doubleClickZoom` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
+ 
+#### `touchZoomRotate`
+ - **Type:** `Boolean`, `Object`
+ - **Default:** `true` 
+ - **Non-Synced**
+ - **Description:** If true, the "pinch to rotate and zoom" interaction is enabled. An Object value is passed as options to TouchZoomRotateHandler#enable   
+ - **Mapbox GL Docs:** `options.touchZoomRotate` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
+ 
+#### `trackResize`
+ - **Type:** `Boolean`
+ - **Default:** `true` 
+ - **Non-Synced**
+ - **Description:** If true, the map will automatically resize when the browser window resizes.    
+ - **Mapbox GL Docs:** `options.trackResize` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
+ 
+#### `center`
+ - **Type:** `Array, LngLatLike Object`
+ - **Default:** `undefined` 
+ - **Synced**
+ - **Description:** Geographical centerpoint of the map. If center is not specified in the constructor options, Mapbox GL JS will look for it in the map's style object.If it is not specified in the style, either, it will default to `[0, 0]`    
+ - **Mapbox GL Docs:** `options.center` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
 
+#### `zoom`
+ - **Type:** `Number`
+ - **Default:** `undefined` 
+ - **Synced**
+ - **Description:** Zoom level of the map. If zoom is not specified in the constructor options, Mapbox GL JS will look for it in the map's style object. If it is not specified in the style, either, it will default to `0`    
+ - **Mapbox GL Docs:** `options.zoom` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
+
+#### `bearing`
+ - **Type:** `Number`
+ - **Default:** `undefined` 
+ - **Synced**
+ - **Description:** Bearing (rotation) of the map, measured in degrees counter-clockwise from north. If bearing is not specified in the constructor options, Mapbox GL JS will look for it in the map's style object. If it is not specified in the style, either, it will default to `0`     
+ - **Mapbox GL Docs:** `options.bearing` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
+ 
+#### `pitch`
+ - **Type:** `Number`
+ - **Default:** `undefined` 
+ - **Synced**
+ - **Description:** Pitch (tilt) of the map, measured in degrees away from the plane of the screen (0-60). If pitch is not specified in the constructor options, Mapbox GL JS will look for it in the map's style object. If it is not specified in the style, either, it will default to `0`     
+ - **Mapbox GL Docs:** `options.pitch` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
+
+#### `renderWorldCopies`
+ - **Type:** `Boolean`
+ - **Default:** `true` 
+ - **Non-Synced**
+ - **Description:** If true , multiple copies of the world will be rendered, when zoomed out     
+ - **Mapbox GL Docs:** `options.renderWorldCopies` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
+ 
+#### `light`
+ - **Type:** `Object`
+ - **Default:** `undefined` 
+ - **Synced**
+ - **Description:** Light properties. Must conform to the Mapbox Style Specification
+ - **Mapbox GL Docs:** See [setLight](https://www.mapbox.com/mapbox-gl-js/api/#map#setlight) Map method
+ 
+#### `tileBoundaries`
+ - **Type:** `Boolean`
+ - **Default:** `false` 
+ - **Synced**
+ - **Description:** A Boolean indicating whether the map will render an outline around each tile. These tile boundaries are useful for debugging
+ - **Mapbox GL Docs:** See [showTileBoundaries](https://www.mapbox.com/mapbox-gl-js/api/#map#showtileboundaries) Map property
+ 
+#### `collisionBoxes`
+ - **Type:** `Boolean`
+ - **Default:** `false` 
+ - **Synced**
+ - **Description:** A Boolean indicating whether the map will render boxes around all symbols in the data source, revealing which symbols were rendered or which were hidden due to collisions. This information is useful for debugging
+ - **Mapbox GL Docs:** See [showCollisionBoxes](https://www.mapbox.com/mapbox-gl-js/api/#map#showcollisionboxes) Map property
+ 
+#### `repaint`
+ - **Type:** `Boolean`
+ - **Default:** `false` 
+ - **Synced**
+ - **Description:** A Boolean indicating whether the map will continuously repaint. This information is useful for analyzing performance.
+ - **Mapbox GL Docs:** See [repaint](https://www.mapbox.com/mapbox-gl-js/api/#map#repaint) Map property

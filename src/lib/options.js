@@ -103,9 +103,7 @@ export default {
   },
   center: {
     type: [Object, Array],
-    default() {
-      return [0, 0]
-    }
+    default: undefined
   },
   zoom: {
     type: Number,

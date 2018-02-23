@@ -6,10 +6,10 @@
 </template>
 
 <script>
-
   import baseMixin from '../../lib/mixin'
 
-export default {
+  export default {
+    name: 'Marker',
     mixins: [baseMixin],
     props: {
       // mapbox marker options

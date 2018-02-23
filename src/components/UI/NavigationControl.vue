@@ -5,6 +5,7 @@
   import controlMixin from './controlMixin'
 
   export default {
+    name: 'NavigationControl',
     mixins: [baseMixin, controlMixin],
     props: {
       position: {

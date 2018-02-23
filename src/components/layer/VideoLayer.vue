@@ -5,6 +5,7 @@ import layerEvents from '../../lib/layerEvents'
 import mixin from './layerMixin'
 
 export default {
+  name: 'VideoLayer',
   mixins: [mixin],
   props: {
     coordinates: {

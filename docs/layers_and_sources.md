@@ -10,7 +10,7 @@ For example adding a layer with GeoJSON data:
     :accessToken="accessToken"
     :mapStyle.sync="mapStyle"
   >
-    <mgl-navigation-contol position="top-right"/> <!-- Adding navigation control-->
+    <mgl-navigation-control position="top-right"/> <!-- Adding navigation control-->
     <mgl-geojson-layer
       :type="fill"
       :layerId="geoJsonSource.properties.id"

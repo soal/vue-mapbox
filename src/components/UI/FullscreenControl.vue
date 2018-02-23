@@ -1,11 +1,11 @@
 <template></template>
 
 <script>
-
   import baseMixin from '../../lib/mixin'
   import controlMixin from './controlMixin'
 
   export default {
+    name: 'FullscreenControl',
     mixins: [baseMixin, controlMixin],
 
     props: {

@@ -5,6 +5,7 @@
   import controlMixin from './controlMixin'
 
   export default {
+    name: 'GeolocateControl',
     mixins: [baseMixin, controlMixin],
 
     props: {

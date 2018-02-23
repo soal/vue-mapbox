@@ -5,6 +5,7 @@
   import controlMixin from './controlMixin'
 
   export default {
+    name: 'ScaleControl',
     mixins: [baseMixin, controlMixin],
 
     props: {

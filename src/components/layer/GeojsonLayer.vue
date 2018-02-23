@@ -6,6 +6,7 @@ import layerEvents from '../../lib/layerEvents'
 import mixin from './layerMixin'
 
 export default {
+  name: 'GeojsonLayer',
   mixins: [mixin],
   props: {
     source: {

@@ -1,4 +1,7 @@
 // @ts-check
+/**
+ * @mixin
+ */
 export default {
   created() {
     this.map = null

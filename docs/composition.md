@@ -9,8 +9,8 @@ For example, adding map controls:
     :accessToken="accessToken"
     :mapStyle.sync="mapStyle"
   >
-    <mgl-navigation-contol position="top-right"/>
-    <mgl-geolocate-contol position="top-right" />
+    <mgl-navigation-control position="top-right"/>
+    <mgl-geolocate-control position="top-right" />
   </mgl-map>
 </div>
 ```
@@ -45,8 +45,8 @@ Adding a popup:
     :accessToken="accessToken"
     :mapStyle.sync="mapStyle"
   >
-    <mgl-navigation-contol position="top-right"/>
-    <mgl-geolocate-contol position="top-right" />
+    <mgl-navigation-control position="top-right"/>
+    <mgl-geolocate-control position="top-right" />
     <mgl-popup :coordinates="popupCoordinates">
       <span>Hello world!</span>
     </mgl-popup>

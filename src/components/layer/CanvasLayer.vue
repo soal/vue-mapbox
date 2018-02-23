@@ -9,6 +9,7 @@
   import mixin from './layerMixin'
 
   export default {
+    name: 'CanvasLayer',
     mixins: [mixin],
     props: {
       coordinates: {

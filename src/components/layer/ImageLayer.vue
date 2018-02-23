@@ -5,6 +5,7 @@
   import layerEvents from '../../lib/layerEvents'
 
   export default {
+    name: 'ImageLayer',
     mixins: [mixin],
     props: {
       coordinates: {

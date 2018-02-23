@@ -57,7 +57,7 @@ export default {
   },
   refreshExpiredTiles: {
     type: Boolean,
-    default: false
+    default: true
   },
   maxBounds: {
     type: Array,

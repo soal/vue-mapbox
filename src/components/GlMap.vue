@@ -9,6 +9,7 @@ import mapEvents from '../lib/events'
 import props from '../lib/options'
 
 export default {
+  name: 'GlMap',
   props,
 
   data() {

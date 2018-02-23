@@ -6,6 +6,7 @@
   import controlMixin from './controlMixin'
 
   export default {
+    name: 'AttributionControl',
     mixins: [baseMixin, controlMixin],
     props: {
       compact: {

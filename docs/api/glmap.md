@@ -430,48 +430,11 @@
 - **Returns:** `{Promise<{ eventData, pitch, zoom, center, bearing }>}`
   Promise that resolves object with event data and new pitch, zoom, center and bearing of the map when animations ends
 - **See:** [flyTo](https://www.mapbox.com/mapbox-gl-js/api/#map#flyto) Map method
+
 ## Events
 
-### `@resize`
- - **Description:** MapboxEvent
- - **See:** [Mapbox GL resize event](https://www.mapbox.com/mapbox-gl-js/api/#map.event:resize)
-
-### `@webglcontextlost`
-### `@webglcontextrestored`
-### `@remove`
-### `@movestart`
 ### `@load`
-### `@contextmenu`
-### `@dblclick`
-### `@click`
-### `@touchcancel`
-### `@touchmove`
-### `@touchend`
-### `@touchstart`
-### `@dataloading`
-### `@mousemove`
-### `@mouseup`
-### `@mousedown`
-### `@sourcedataloading`
-### `@error`
-### `@data`
-### `@styledata`
-### `@sourcedata`
-### `@mouseout`
-### `@styledataloading`
-### `@moveend`
-### `@move`
-### `@render`
-### `@zoom`
-### `@zoomstart`
-### `@zoomend`
-### `@boxzoomstart`
-### `@boxzoomcancel`
-### `@boxzoomend`
-### `@rotate`
-### `@rotatestart`
-### `@rotateend`
-### `@dragend`
-### `@drag`
-### `@dragstart`
-### `@pitch`
+ - **Description:** Fires after map fully loaded
+ - **Payload** `{ map, component }` `map` is Mapbox Gl JS Map object, `component` is instance of GlMap component
+
+GlMap passes all Mapbox GL JS Map events. Full list of map events see [here](https://www.mapbox.com/mapbox-gl-js/api/#map.event:resize)

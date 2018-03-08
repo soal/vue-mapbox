@@ -176,15 +176,15 @@ export default {
       return this.map.unproject(containerCoordinates)
     },
 
-    queryRenderedFeatures(geometry = undefined, parameters = undefined) {
+    queryRenderedFeatures(geometry, parameters) {
       return this.map.queryRenderedFeatures(geometry, parameters)
     },
 
-    querySourceFeatures(sourceId, parameters = undefined) {
+    querySourceFeatures(sourceId, parameters) {
       return this.map.querySourceFeatures(sourceId, parameters)
     },
 
-    addImage(name, image, options = undefined) {
+    addImage(name, image, options) {
       this.map.addImage(name, image, options)
     },
 
@@ -240,7 +240,7 @@ export default {
       }
     },
 
-    panBy(offset, options = undefined) {
+    panBy(offset, options) {
       if (offset[0] === 0 && offset[1] === 0) {
         return new Promise((resolve, reject) => resolve({ center: this.map.getCenter() }))
       }
@@ -253,7 +253,7 @@ export default {
       })
     },
 
-    panTo(coordinates, options = undefined) {
+    panTo(coordinates, options) {
       if (!(coordinates instanceof Array)) {
         coordinates = coordinates.toArray()
       }
@@ -269,7 +269,7 @@ export default {
       })
     },
 
-    zoomTo(zoom, options = undefined) {
+    zoomTo(zoom, options) {
       if (zoom === this.map.getZoom()) {
         return new Promise((resolve, reject) => resolve({ zoom: this.map.getZoom() }))
       }
@@ -282,7 +282,7 @@ export default {
       })
     },
 
-    zoomIn(options = undefined) {
+    zoomIn(options) {
       return new Promise((resolve, reject) => {
         let eventData = {
           eventId: `zoomIn-${('' + Math.random()).split('.')[1]}`
@@ -292,7 +292,7 @@ export default {
       })
     },
 
-    zoomOut(options = undefined) {
+    zoomOut(options) {
       return new Promise((resolve, reject) => {
         let eventData = {
           eventId: `zoomOut-${('' + Math.random()).split('.')[1]}`
@@ -302,7 +302,7 @@ export default {
       })
     },
 
-    rotateTo(bearing, options = undefined) {
+    rotateTo(bearing, options) {
       if (bearing === this.map.getBearing()) {
         return new Promise((resolve, reject) => resolve({ bearing: this.map.getBearing() }))
       }
@@ -315,7 +315,7 @@ export default {
       })
     },
 
-    resetNorth(options = undefined) {
+    resetNorth(options) {
       return new Promise((resolve, reject) => {
         let eventData = {
           eventId: `resetNorth-${('' + Math.random()).split('.')[1]}`
@@ -325,7 +325,7 @@ export default {
       })
     },
 
-    snapToNorth(options = undefined) {
+    snapToNorth(options) {
       return new Promise((resolve, reject) => {
         let eventData = {
           eventId: `snapToNorth-${('' + Math.random()).split('.')[1]}`
@@ -335,7 +335,7 @@ export default {
       })
     },
 
-    fitBounds(bounds, options = undefined) {
+    fitBounds(bounds, options) {
       if (bounds === this.map.getBounds()) {
         return new Promise((resolve, reject) => resolve({ bounds: this.map.getBounds() }))
       }

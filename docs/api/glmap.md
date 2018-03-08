@@ -211,3 +211,77 @@
  - **Synced**
  - **Description:** A Boolean indicating whether the map will continuously repaint. This information is useful for analyzing performance.
  - **Mapbox GL Docs:** See [repaint](https://www.mapbox.com/mapbox-gl-js/api/#map#repaint) Map property
+
+### Methods
+
+#### `.stop()`
+ - **Returns:** `{Promise<{ pitch, zoom, bearing, center }>}` 
+ Promise that resolves object with map parameters on the moment of call `stop()`
+
+#### `.supported(perfomanceCheck = false)`
+#### `.resize()`
+#### `.project(mapCoordinates)`
+#### `.unproject(containerCoordinates)`
+#### `.queryRenderedFeatures(geometry, parameters)`
+#### `.querySourceFeatures(sourceId, parameters)`
+#### `.addImage(name, image, options)`
+#### `.removeImage(name)`
+#### `.loadImage(url, callback)`
+#### `.panBy(offset, options)`
+#### `.panTo(coordinates, options)`
+#### `.zoomTo(zoom, options)`
+#### `.zoomIn(options)`
+#### `.zoomOut(options)`
+#### `.rotateTo(bearing, options)`
+#### `.resetNorth(options)`
+#### `.snapToNorth(options)`
+#### `.fitBounds(bounds, options)`
+#### `.jumpTo(options)`
+#### `.easeTo(options)`
+#### `.flyTo(options)`
+
+### Events
+
+### `@resize`
+ - **Description:** MapboxEvent
+ - **See:** [Mapbox GL resize event](https://www.mapbox.com/mapbox-gl-js/api/#map.event:resize)
+
+### `@webglcontextlost`
+### `@webglcontextrestored`
+### `@remove`
+### `@movestart`
+### `@load`
+### `@contextmenu`
+### `@dblclick`
+### `@click`
+### `@touchcancel`
+### `@touchmove`
+### `@touchend`
+### `@touchstart`
+### `@dataloading`
+### `@mousemove`
+### `@mouseup`
+### `@mousedown`
+### `@sourcedataloading`
+### `@error`
+### `@data`
+### `@styledata`
+### `@sourcedata`
+### `@mouseout`
+### `@styledataloading`
+### `@moveend`
+### `@move`
+### `@render`
+### `@zoom`
+### `@zoomstart`
+### `@zoomend`
+### `@boxzoomstart`
+### `@boxzoomcancel`
+### `@boxzoomend`
+### `@rotate`
+### `@rotatestart`
+### `@rotateend`
+### `@dragend`
+### `@drag`
+### `@dragstart`
+### `@pitch`

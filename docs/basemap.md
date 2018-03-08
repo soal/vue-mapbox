@@ -46,5 +46,5 @@ example with flyTo
 ### Method .stop()
    
 Method .stop() just stops all animations on map, updates props with new positions and return Promise with map parameters in the moment when stop() called.  
-See full list of methods on API page.
+See full list of methods on [API](api/glmap.md#methods) page.
 

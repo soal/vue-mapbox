@@ -176,20 +176,20 @@ export default {
       return this.map.unproject(containerCoordinates)
     },
 
-    queryRenderedFeatures(geometry = undefined, parameters = undefined) {
+    queryRenderedFeatures(geometry, parameters) {
       return this.map.queryRenderedFeatures(geometry, parameters)
     },
 
-    querySourceFeatures(sourceId, parameters = undefined) {
+    querySourceFeatures(sourceId, parameters) {
       return this.map.querySourceFeatures(sourceId, parameters)
     },
 
-    addImage(name, image, options = undefined) {
+    addImage(name, image, options) {
       this.map.addImage(name, image, options)
     },
 
     removeImage(name) {
-      this.map.addImage(name)
+      this.map.removeImage(name)
     },
 
     loadImage(url, callback) {
@@ -240,49 +240,49 @@ export default {
       }
     },
 
-    panBy(offset, options = undefined) {
+    panBy(offset, options) {
+      const eventData = {
+        eventId: `panBy-${('' + Math.random()).split('.')[1]}`
+      }
       if (offset[0] === 0 && offset[1] === 0) {
         return new Promise((resolve, reject) => resolve({ center: this.map.getCenter() }))
       }
       return new Promise((resolve, reject) => {
-        let eventData = {
-          eventId: `panBy-${('' + Math.random()).split('.')[1]}`
-        }
         this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
         this.map.panBy(offset, options, eventData)
       })
     },
 
-    panTo(coordinates, options = undefined) {
+    panTo(coordinates, options) {
       if (!(coordinates instanceof Array)) {
         coordinates = coordinates.toArray()
       }
+      const eventData = {
+        eventId: `panTo-${('' + Math.random()).split('.')[1]}`
+      }
       if (coordinates[0] === 0 && coordinates[1] === 0) {
-        return new Promise((resolve, reject) => resolve({ center: this.map.getCenter() }))
+        return new Promise((resolve, reject) => resolve({ eventData, center: this.map.getCenter() }))
       }
       return new Promise((resolve, reject) => {
-        let eventData = {
-          eventId: `panTo-${('' + Math.random()).split('.')[1]}`
-        }
         this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
         this.map.panTo(coordinates, options, eventData)
       })
     },
 
-    zoomTo(zoom, options = undefined) {
+    zoomTo(zoom, options) {
+      const eventData = {
+        eventId: `zoomTo-${('' + Math.random()).split('.')[1]}`
+      }
       if (zoom === this.map.getZoom()) {
-        return new Promise((resolve, reject) => resolve({ zoom: this.map.getZoom() }))
+        return new Promise((resolve, reject) => resolve({ eventData, zoom: this.map.getZoom() }))
       }
       return new Promise((resolve, reject) => {
-        let eventData = {
-          eventId: `zoomTo-${('' + Math.random()).split('.')[1]}`
-        }
         this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
         this.map.zoomTo(zoom, options, eventData)
       })
     },
 
-    zoomIn(options = undefined) {
+    zoomIn(options) {
       return new Promise((resolve, reject) => {
         let eventData = {
           eventId: `zoomIn-${('' + Math.random()).split('.')[1]}`
@@ -292,7 +292,7 @@ export default {
       })
     },
 
-    zoomOut(options = undefined) {
+    zoomOut(options) {
       return new Promise((resolve, reject) => {
         let eventData = {
           eventId: `zoomOut-${('' + Math.random()).split('.')[1]}`
@@ -302,7 +302,7 @@ export default {
       })
     },
 
-    rotateTo(bearing, options = undefined) {
+    rotateTo(bearing, options) {
       if (bearing === this.map.getBearing()) {
         return new Promise((resolve, reject) => resolve({ bearing: this.map.getBearing() }))
       }
@@ -315,7 +315,7 @@ export default {
       })
     },
 
-    resetNorth(options = undefined) {
+    resetNorth(options) {
       return new Promise((resolve, reject) => {
         let eventData = {
           eventId: `resetNorth-${('' + Math.random()).split('.')[1]}`
@@ -325,7 +325,7 @@ export default {
       })
     },
 
-    snapToNorth(options = undefined) {
+    snapToNorth(options) {
       return new Promise((resolve, reject) => {
         let eventData = {
           eventId: `snapToNorth-${('' + Math.random()).split('.')[1]}`
@@ -335,12 +335,12 @@ export default {
       })
     },
 
-    fitBounds(bounds, options = undefined) {
-      if (bounds === this.map.getBounds()) {
-        return new Promise((resolve, reject) => resolve({ bounds: this.map.getBounds() }))
-      }
+    fitBounds(bounds, options) {
       let eventData = {
         eventId: `fitBounds-${('' + Math.random()).split('.')[1]}`
+      }
+      if (bounds === this.map.getBounds()) {
+        return new Promise((resolve, reject) => resolve({ eventData, bounds: this.map.getBounds() }))
       }
       let zoomFunc = new Promise((resolve, reject) => {
         this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
@@ -387,6 +387,7 @@ export default {
       if (funcs.length === 0) {
         return new Promise((resolve, reject) => {
           resolve({
+            eventData,
             pitch: this.map.getPitch(),
             zoom: this.map.getZoom(),
             center: this.map.getCenter(),
@@ -401,7 +402,7 @@ export default {
         for (let res of results) {
           Object.assign(resObj, res)
         }
-        return { eventData, ...resObj }
+        return { ...resObj, eventData }
       })
     },
 
@@ -437,6 +438,7 @@ export default {
       if (funcs.length === 0) {
         return new Promise((resolve, reject) => {
           resolve({
+            eventData,
             pitch: this.map.getPitch(),
             zoom: this.map.getZoom(),
             center: this.map.getCenter(),
@@ -451,7 +453,7 @@ export default {
         for (let res of results) {
           Object.assign(resObj, res)
         }
-        return { eventData, ...resObj }
+        return { ...resObj, eventData }
       })
     },
 
@@ -487,6 +489,7 @@ export default {
       if (funcs.length === 0) {
         return new Promise((resolve, reject) => {
           resolve({
+            eventData,
             pitch: this.map.getPitch(),
             zoom: this.map.getZoom(),
             center: this.map.getCenter(),
@@ -500,7 +503,7 @@ export default {
         for (let res of results) {
           Object.assign(resObj, res)
         }
-        return { eventData, ...resObj }
+        return { ...resObj, eventData }
       })
     },
 

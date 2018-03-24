@@ -1,2 +1,7 @@
 # GeojsonLayer
-_Coming soon_
+
+## Props
+
+## Methods
+
+## Events

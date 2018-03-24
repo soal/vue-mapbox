@@ -141,7 +141,6 @@ export default {
         this.$parent.marker.setPopup(this.popup)
       } else {
         this.$parent.$once('added', ({ marker }) => {
-          console.log(marker)
           marker.setPopup(this.popup)
         })
       }
@@ -158,4 +157,3 @@ export default {
   }
 }
 </script>
-

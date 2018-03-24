@@ -20,9 +20,6 @@
       coordinates: {
         type: Array,
         required: true
-      },
-      mapId: {
-        type: String
       }
     },
 
@@ -55,7 +52,7 @@
         if (this.$slots.marker) {
           this.marker = new this.mapbox.Marker(this.$slots.marker[0].elm, { ...this._props })
         } else {
-          this.marker = new this.mapbox.Marker({ ...this._props })
+          this.marker = new this.mapbox.Marker()
         }
 
         this.map = payload.map

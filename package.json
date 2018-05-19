@@ -40,8 +40,9 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "peerDependencies": {
-    "vue": "^2.5.13",
-    "mapbox-gl": "^0.44.1"
+    "mapbox-gl": "^0.45.0",
+    "@mapbox/mapbox-gl-geocoder": "^2.0.1",
+    "vue": "^2.5.13"
   },
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.10",

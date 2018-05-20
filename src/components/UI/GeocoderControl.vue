@@ -3,6 +3,7 @@
 <script>
   import baseMixin from '../../lib/mixin'
   import controlMixin from './controlMixin'
+  import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 
   export default {
     name: 'GeolocateControl',
@@ -13,38 +14,27 @@
         type: String,
         default: 'top-right'
       },
-      positionOptions: {
-        type: Object,
-        default() {
-          return {
-            enableHighAccuracy: false,
-            timeout: 6000
-          }
-        }
-      },
-      watchPosition: {
-        type: Boolean,
-        default: false
+      accessToken: {
+        type: String,
+        default: undefined
       }
     },
-
     data() {
       return {
         control: undefined
       }
     },
-
     created() {
-      this.control = new this.mapbox.GeolocateControl(this._props)
+      if (this.accessToken) this.mapbox.accessToken = this.accessToken
+      this.control = new MapboxGeocoder(this._props)
 
       this.control.on('error', err => {
-        this.$emit('geolocate-error', err)
+        this.$emit('geocoder-error', err)
       })
-      this.control.on('geolocate', position => {
-        this.$emit('geolocate', position)
+      this.control.on('result', ev => {
+        this.$emit('geocoder-result', ev)
       })
     },
-
     methods: {
       $_deferredMount(payload) {
         this.map = payload.map

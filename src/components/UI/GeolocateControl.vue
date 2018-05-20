@@ -41,14 +41,14 @@
         this.$emit('geolocate-error', err)
       })
       this.control.on('geolocate', position => {
-        this.$emit('geolocate-error', position)
+        this.$emit('geolocate', position)
       })
     },
 
     methods: {
       $_deferredMount(payload) {
         this.map = payload.map
-        this.map.addControl(this.control)
+        this.map.addControl(this.control, this.position)
         this.$emit('added', this.control)
         payload.component.$off('load', this.$_deferredMount)
       }

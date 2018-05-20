@@ -1,15 +1,13 @@
 <template>
-  <div style="display: none">
     <slot name="marker"/>
     <slot/>
-  </div>
 </template>
 
 <script>
   import baseMixin from '../../lib/mixin'
 
   export default {
-    name: 'Marker',
+    name: 'MapMarker',
     mixins: [baseMixin],
     props: {
       // mapbox marker options
@@ -20,12 +18,26 @@
       coordinates: {
         type: Array,
         required: true
+      },
+      element: {
+        type: String,
+        required: false
+      },
+      color: {
+        type: String,
+        required: false
+      },
+      anchor: {
+        type: String,
+        default: () => {
+          return 'center'
+        },
+        required: false
       }
     },
 
     data() {
       return {
-        initial: true,
         marker: undefined
       }
     },
@@ -41,38 +53,47 @@
     },
 
     watch: {
-      coordinates(lngLat) {
-        if (this.initial) return
-        this.marker.setLngLat(lngLat)
+      coordinates: (lngLat) => {
+        console.log(lngLat)
+        if (lngLat instanceof Array) {
+          this.marker.setLngLat(lngLat)
+        }
       }
     },
 
     methods: {
       $_deferredMount(payload) {
         if (this.$slots.marker) {
-          this.marker = new this.mapbox.Marker(this.$slots.marker[0].elm, { ...this._props })
+          this.marker = new this.mapbox.Marker(this.$slots.marker[0].elm, {...this._props})
         } else {
           this.marker = new this.mapbox.Marker()
         }
 
         this.map = payload.map
         this.$_addMarker()
-        this.initial = false
         payload.component.$off('load', this.$_deferredMount)
       },
       $_addMarker() {
         this.marker
-          .setLngLat(this.coordinates)
-          .addTo(this.map)
+        .setLngLat(this.coordinates)
+        .addTo(this.map)
 
-        this.$_emitMapEvent('added', { marker: this.marker })
+        this.$_emitMapEvent('added', {marker: this.marker})
       },
 
       remove() {
         this.marker.remove()
-        this.$_emitMapEvent('removed', { marker: this.marker })
+        this.$_emitMapEvent('removed', {marker: this.marker})
       },
-
+      getLngLat() {
+        return this.marker.getLngLat()
+      },
+      getPopup () {
+        this.marker.getPopup()
+      },
+      setPopup () {
+        this.marker.setPopup(this.popup)
+      },
       togglePopup() {
         this.marker.togglePopup()
       }

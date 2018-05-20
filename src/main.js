@@ -5,7 +5,7 @@ import GeocoderControl from './components/UI/GeocoderControl.vue'
 import FullscreenControl from './components/UI/FullscreenControl.vue'
 import AttributionControl from './components/UI/AttributionControl.vue'
 import ScaleControl from './components/UI/ScaleControl.vue'
-import Marker from './components/UI/Marker.vue'
+import MapMarker from './components/UI/MapMarker.vue'
 import Popup from './components/UI/Popup.vue'
 
 import GeojsonLayer from './components/layer/GeojsonLayer.vue'
@@ -29,7 +29,7 @@ export const MglCanvasLayer = CanvasLayer
 export const MglVideoLayer = VideoLayer
 export const MglVectorLayer = VectorLayer
 
-export const MglMarker = Marker
+export const MglMarker = MapMarker
 export const MglPopup = Popup
 
 export default {

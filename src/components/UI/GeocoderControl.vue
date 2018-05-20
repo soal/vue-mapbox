@@ -3,7 +3,7 @@
 <script>
   import baseMixin from '../../lib/mixin'
   import controlMixin from './controlMixin'
-  import MapboxGeocoder from 'mapbox-gl-geocoder'
+  import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 
   export default {
     name: 'GeolocateControl',

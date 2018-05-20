@@ -39,9 +39,11 @@
     "test": "jest",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
+  "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^2.2.0"
+  },
   "peerDependencies": {
     "mapbox-gl": "^0.45.0",
-    "@mapbox/mapbox-gl-geocoder": "^2.0.1",
     "vue": "^2.5.13"
   },
   "devDependencies": {

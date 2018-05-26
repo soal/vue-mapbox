@@ -33,7 +33,7 @@
 ### `coordinates`
 
 - **Type**: `Array`
-- **Description:**
+- **Description:** Popup coordinates in format `[longitude, latitude]`
 - **See:** `setLngLat()` in [Popup](https://www.mapbox.com/mapbox-gl-js/api/#popup#setlnglat)
 
 ### `onlyText`

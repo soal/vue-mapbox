@@ -11,7 +11,7 @@
   import baseMixin from '../../lib/mixin'
 
   export default {
-    name: 'Marker',
+    name: 'MapboxMarker',
     mixins: [baseMixin],
     props: {
       // mapbox marker options

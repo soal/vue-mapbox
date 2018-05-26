@@ -79,12 +79,11 @@ export default {
 </script>
 ```
 
-### The `popup` slot
+### Default slot
 
-The `popup` slot allows you to specify content to display in a Mapbox popup when the marker is clicked. See [below](markers&popups.md#markers-amp-popups-together)
+Default slot allows you to specify content to display in a Mapbox popup when the marker is clicked. See [below](markers&popups.md#markers-amp-popups-together)
 
-
-# Popup
+## Popup
 
 The Popup component is wrapper around the [Mapbox GL Popup API](https://www.mapbox.com/mapbox-gl-js/api/#popup).
 
@@ -139,9 +138,9 @@ If you set `onlyText` prop to `true` content in Popup default slot will be treat
 Full list of props you can see on [API page](api/popup.md#props)
 
 
-# Markers & Popups together
+## Markers & Popups together
 
-Popup often used inside of map markers. You can achive this by passing Popup inside Marker in `popup` slot:
+Popup often used inside of map markers. You can achive this by passing Popup inside Marker in default slot:
 
 ```vue
 <template>

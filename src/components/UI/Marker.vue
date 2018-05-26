@@ -3,7 +3,7 @@
     <!-- slot for custom marker -->
     <slot name="marker"/>
     <!-- slot for popup -->
-    <slot name="popup"/>
+    <slot />
   </div>
 </template>
 
@@ -55,12 +55,13 @@
           const markerOptions = {
             ...this._props
           }
-
+          // console.log(this.$slots.marker)
           if (this.$slots.marker) {
             markerOptions.element = this.$slots.marker[0].elm
           }
-
+          // console.log(markerOptions)
           this.marker = new this.mapbox.Marker(markerOptions)
+          // console.log(this.marker)
         }
 
         this.map = payload.map

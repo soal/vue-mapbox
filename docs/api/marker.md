@@ -22,7 +22,7 @@
 ### `marker`
 - **Description:** Slot for custom marker. Can be HTML element or Vue component.
 
-### `popup`
+### `default`
 - **Description:** Slot for popup component. When popup put inside marker, popup automaticaly mounted to marker, similiar as [setPopup](https://www.mapbox.com/mapbox-gl-js/api/#marker#setpopup)
 
 

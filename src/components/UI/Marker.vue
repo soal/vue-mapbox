@@ -3,7 +3,7 @@
     <!-- slot for custom marker -->
     <slot name="marker"/>
     <!-- slot for popup -->
-    <slot/>
+    <slot name="popup"/>
   </div>
 </template>
 

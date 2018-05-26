@@ -1,7 +1,9 @@
 <template>
   <div style="display: none">
+    <!-- slot for custom marker -->
     <slot name="marker"/>
-    <slot/>
+    <!-- slot for popup -->
+    <slot />
   </div>
 </template>
 
@@ -50,11 +52,16 @@
     methods: {
       $_deferredMount(payload) {
         if (!this.marker) {
-          if (this.$slots.marker) {
-            this.marker = new this.mapbox.Marker(this.$slots.marker[0].elm, { ...this._props })
-          } else {
-            this.marker = new this.mapbox.Marker()
+          const markerOptions = {
+            ...this._props
           }
+          // console.log(this.$slots.marker)
+          if (this.$slots.marker) {
+            markerOptions.element = this.$slots.marker[0].elm
+          }
+          // console.log(markerOptions)
+          this.marker = new this.mapbox.Marker(markerOptions)
+          // console.log(this.marker)
         }
 
         this.map = payload.map
@@ -71,12 +78,12 @@
       },
 
       remove() {
-        this.marker.remove()
         this.$_emitMapEvent('removed', { marker: this.marker })
+        return this.marker.remove()
       },
 
       togglePopup() {
-        this.marker.togglePopup()
+        return this.marker.togglePopup()
       }
     }
   }

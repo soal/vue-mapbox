@@ -96,7 +96,7 @@ export default {
 
   beforeDestroy() {
     if (this.map) {
-      this.$_emitMapEvent('popup-removed', { popup: this.popup })
+      this.$_emitMapEvent('removed', { popup: this.popup })
       this.popup.remove()
     }
   },
@@ -136,6 +136,7 @@ export default {
       this.$_emitMapEvent('added', { popup: this.popup })
 
       this.popup.on('close', this.$_onClose)
+      this.popup.on('open', this.$_onOpen)
 
       if (this.$parent.marker !== undefined) {
         this.$parent.marker.setPopup(this.popup)
@@ -153,6 +154,15 @@ export default {
        * @type {object}
        */
       this.$_emitMapEvent('close', { popup: this.popup })
+    },
+
+    $_onOpen() {
+      /**
+       * Popup close event
+       * @event open
+       * @type {object}
+       */
+      this.$_emitMapEvent('open', { popup: this.popup })
     }
   }
 }

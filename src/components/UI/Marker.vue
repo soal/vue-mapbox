@@ -1,7 +1,7 @@
 <template>
   <div style="display: none">
-    <slot name="marker"/>
-    <slot/>
+    <slot name="marker"/><slot/>
+    <slot name="popup"/><slot/>
   </div>
 </template>
 
@@ -50,10 +50,22 @@
     methods: {
       $_deferredMount(payload) {
         if (!this.marker) {
+          const markerOptions = {
+            ...this._props
+          }
+
           if (this.$slots.marker) {
-            this.marker = new this.mapbox.Marker(this.$slots.marker[0].elm, { ...this._props })
-          } else {
-            this.marker = new this.mapbox.Marker()
+            markerOptions.element = this.$slots.marker[0].elm
+          }
+
+          this.marker = new this.mapbox.Marker(markerOptions)
+
+          if (this.$slots.popup) {
+            const popup = this.popup = new this.mapbox.Popup()
+              .setLngLat(this.coordinates)
+              .setDOMContent(this.$slots.popup[0].elm)
+
+            this.marker.setPopup(popup)
           }
         }
 

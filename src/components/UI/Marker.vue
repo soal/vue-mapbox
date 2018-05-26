@@ -52,11 +52,15 @@
     methods: {
       $_deferredMount(payload) {
         if (!this.marker) {
-          if (this.$slots.marker) {
-            this.marker = new this.mapbox.Marker(this.$slots.marker[0].elm, { ...this._props })
-          } else {
-            this.marker = new this.mapbox.Marker()
+          const markerOptions = {
+            ...this._props
           }
+
+          if (this.$slots.marker) {
+            markerOptions.element = this.$slots.marker[0].elm
+          }
+
+          this.marker = new this.mapbox.Marker(markerOptions)
         }
 
         this.map = payload.map

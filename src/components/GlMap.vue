@@ -1,5 +1,5 @@
 <template>
-  <div v-once :id="container" ref="container">
+  <div :id="container" ref="container">
     <slot/>
   </div>
 </template>

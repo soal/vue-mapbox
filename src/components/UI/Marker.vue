@@ -1,6 +1,8 @@
 <template>
   <div style="display: none">
+    <!-- slot for custom marker -->
     <slot name="marker"/>
+    <!-- slot for popup -->
     <slot/>
   </div>
 </template>
@@ -71,12 +73,12 @@
       },
 
       remove() {
-        this.marker.remove()
         this.$_emitMapEvent('removed', { marker: this.marker })
+        return this.marker.remove()
       },
 
       togglePopup() {
-        this.marker.togglePopup()
+        return this.marker.togglePopup()
       }
     }
   }

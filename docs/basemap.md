@@ -5,16 +5,15 @@ For using maps with Mapbox GL JS you need a map style. See details in Mapbox GL 
 For using Mapbox-hosted maps, you need to set access_token. See details in Mapbox [documentation](https://mapbox.com/help/define-access-token/).  
 If you using self-hosting maps on your own server you can omit this parameter.
 
-#### Template
 ```vue
+<template>
 <mgl-map
     :accessToken="accessToken"
     :mapStyle.sync="mapStyle"
 />
-```
+</template>
 
-#### JavaScript
-```javascript
+<script>
 import { MglMap } from 'vue-mapbox'
 
 export default {
@@ -28,6 +27,7 @@ export default {
     }
   }
 }
+</script>
 ```
 
 ### Interact with map properties as GlMap props

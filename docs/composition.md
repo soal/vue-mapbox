@@ -3,7 +3,8 @@ You can use Mapbox GL feature as Vue component and compose it as a child of GlMa
 
 For example, adding map controls:
 
-```html
+```vue
+<template>
 <div id="#app">
   <mgl-map
     :accessToken="accessToken"
@@ -13,9 +14,9 @@ For example, adding map controls:
     <mgl-geolocate-control position="top-right" />
   </mgl-map>
 </div>
-```
+</template>
 
-```javascript
+<script>
 import {
   MglMap,
   MglNavigationControl,
@@ -35,11 +36,13 @@ export default {
     }
   }
 }
+</script>
 ```
 
 Adding a popup:
 
-```html
+```vue
+<template>
 <div id="#app">
   <mgl-map
     :accessToken="accessToken"
@@ -53,9 +56,9 @@ Adding a popup:
 
   </mgl-map>
 </div>
-```
+</template>
 
-```javascript
+<script>
 import {
   MglMap,
   MglNavigationControl,
@@ -78,6 +81,7 @@ export default {
     }
   }
 }
+</script>
 ```
 
 Vue-mapbox component will work even if it wrapped in another component as long as they in components sub-tree of base map component.
@@ -85,15 +89,16 @@ Vue-mapbox component will work even if it wrapped in another component as long a
 For example:
 
 **_Popup wrapper_**:
-```html
+```vue
+<template>
 <div class="popup-wrapper">
   <mgl-popup :coordinates="popupCoordinates">
-      <span>Hello world from wrapped popup!</span>
-    </mgl-popup>
+    <span>Hello world from wrapped popup!</span>
+  </mgl-popup>
 </div>
-```
+</template>
 
-```javascript
+<script>
 import { MglPopup } from 'vue-mapbox'
 
 export default {
@@ -109,10 +114,12 @@ export default {
     }
   }
 }
+</script>
 ```
 
 **_Main component_**:
-```html
+```vue
+<template>
 <div id="#app">
   <mgl-map
     :accessToken="accessToken"
@@ -121,9 +128,9 @@ export default {
     <popup-wrapper /> <!-- works! -->
   </mgl-map>
 </div>
-```
+</template>
 
-```javascript
+<script>
 import { MglMap } from 'vue-mapbox'
 import PopupWrapper from 'PopupWrapper' // wrapper for popup
 
@@ -139,6 +146,7 @@ export default {
     }
   }
 }
+</script>
 ```
 
-After successful mount all components emits 'added' envent with map object, Vue component object and additional data, such as corresponding Mapbox GL JS object or object containing layer id in payload.
+After successful mount all components emits 'added' envent with Vue component object and additional data, such as corresponding Mapbox GL JS object or object containing layer id in payload.

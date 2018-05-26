@@ -6,8 +6,7 @@
     - [Component composition](composition.md)
     - [Map controls](controls.md)
     - [Layers and sources](layers_and_sources.md)
-    - [Markers](markers.md)
-    - [Popups](popups.md)
+    - [Markers&Popups](markers&popups.md)
 
 - API
     - [Vue-mapbox](api/vue-mapbox.md)

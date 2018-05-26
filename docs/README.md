@@ -21,7 +21,7 @@ Motivation for creating this library described in depths [here](motivation.md).
 ## Dependencies
 Vue-mapbox works with  
 Vue.js 2.5+  
- Mapbox GL JS 0.40+  
+ Mapbox GL JS 0.45+  
  
 ## Size
  ~ 39 kB minified  

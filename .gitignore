@@ -41,6 +41,7 @@ jspm_packages
 
 *.sublime-*
 *.editorconfig
+*.code-workspace
 
 *.map*
 *.DS_Store

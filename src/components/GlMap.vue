@@ -21,14 +21,14 @@ export default {
   },
 
   computed: {
-    loaded() { return this.map.loaded() },
-    version() { return this.map.version },
-    bounds() { return this.map.getBounds() },
-    isStyleLoaded() { return this.map.isStyleLoaded() },
-    areTilesLoaded() { return this.map.areTilesLoaded() },
-    isMoving() { return this.map.isMoving() },
-    canvas() { return this.map.getCanvas() },
-    canvasContainer() { return this.map.getCanvasContainer() }
+    loaded() { return this.map && this.map.loaded() },
+    version() { return this.map && this.map.version },
+    bounds() { return this.map && this.map.getBounds() },
+    isStyleLoaded() { return this.map && this.map.isStyleLoaded() },
+    areTilesLoaded() { return this.map && this.map.areTilesLoaded() },
+    isMoving() { return this.map && this.map.isMoving() },
+    canvas() { return this.map && this.map.getCanvas() },
+    canvasContainer() { return this.map && this.map.getCanvasContainer() }
   },
 
   watch: {

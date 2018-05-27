@@ -22,6 +22,9 @@
       coordinates: {
         type: Array,
         required: true
+      },
+      color: {
+        type: String
       }
     },
 

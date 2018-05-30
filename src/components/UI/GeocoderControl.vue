@@ -26,19 +26,20 @@
     },
     created() {
       if (this.accessToken) this.mapbox.accessToken = this.accessToken
+      let vm = this
       this.control = new MapboxGeocoder(this._props)
 
-      this.control.on('error', err => {
-        this.$emit('geocoder-error', err)
+      this.control.on('error', function (err) {
+        vm.$emit('geocoder-error', err)
       })
-      this.control.on('result', ev => {
-        this.$emit('geocoder-result', ev)
+      this.control.on('result', function (ev) {
+        vm.$emit('geocoder-result', ev)
       })
     },
     methods: {
       $_deferredMount(payload) {
         this.map = payload.map
-        this.map.addControl(this.control, this.position)
+        payload.map.addControl(this.control, this.position)
         this.$emit('added', this.control)
         payload.component.$off('load', this.$_deferredMount)
       }

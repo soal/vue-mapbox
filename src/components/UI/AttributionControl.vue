@@ -1,4 +1,3 @@
-
 <template></template>
 
 <script>
@@ -22,14 +21,14 @@
     },
 
     created() {
-      this.control = new this.mapbox.AttributionControl({ compact: this.compact })
+      this.control = new this.mapbox.AttributionControl({compact: this.compact})
     },
 
     methods: {
       $_deferredMount(payload) {
         this.map = payload.map
         this.map.addControl(this.control)
-        this.$emit('added', this.control)
+        this.$_emitMapEvent('added', {control: this.control})
         payload.component.$off('load', this.$_deferredMount)
       }
     }

@@ -106,13 +106,15 @@ export default {
       }
       this.$emit('load', { map, component: this })
       const eventNames = Object.keys(mapEvents)
-      const eventsToListen = Object.keys(this.$options._parentListeners)
+      if (this.$options._parentListeners) {
+        const eventsToListen = Object.keys(this.$options._parentListeners)
         .filter(eventName =>
           eventNames.indexOf(eventName) !== -1
         )
-
-      this.$_bindEvents(eventsToListen)
+        this.$_bindEvents(eventsToListen)
+      }
       this.$_bindPropsUpdateEvents()
+
       this.initial = true
       this.mapLoaded = true
     })

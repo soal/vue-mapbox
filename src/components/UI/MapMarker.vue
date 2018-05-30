@@ -38,7 +38,7 @@
 
     data() {
       return {
-        marker: undefined
+        marker: null
       }
     },
 
@@ -47,7 +47,7 @@
     },
 
     beforeDestroy() {
-      if (this.map !== undefined && this.marker !== undefined) {
+      if (this.map !== null && this.marker !== null) {
         this.marker.remove()
       }
     },
@@ -80,7 +80,8 @@
 
         this.$_emitMapEvent('added', {marker: this.marker})
       },
-
+      onAdd () { },
+      onRemove () { },
       remove() {
         this.marker.remove()
         this.$_emitMapEvent('removed', {marker: this.marker})

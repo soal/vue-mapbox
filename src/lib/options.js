@@ -139,5 +139,9 @@ export default {
   repaint: {
     type: Boolean,
     default: false
+  },
+  transformRequest: {
+    type: Object,
+    default: null
   }
 }

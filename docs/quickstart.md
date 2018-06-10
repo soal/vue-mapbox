@@ -39,7 +39,7 @@ Add Vue, MapboxGL and Vue-mapbox scripts on your page:
     <!-- VueJS -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js  "></script>
     <!-- Vue-mapbox -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue-mapbox@0.0.25/dist/vue-mapbox.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue-mapbox@0.0.26/dist/vue-mapbox.min.js"></script>
     <!-- ... -->
   </head>
 </html>
@@ -49,19 +49,6 @@ Register plugin and add base map component to your application:
 
 ```javascript
       Vue.use(VueMapbox.plugin, { mapboxgl: window.mapboxgl })
-
-      const App = new Vue({
-        el: '#app',
-        components: {
-          MglMap: VueMapbox.MglMap
-        },
-        data() {
-          return {
-            accessToken: 'pk.eyJ1Ijoic29hbCIsImEiOiJjaW1qZndnMmwwMDEzdzBtNHRxcGFrampqIn0.bpwowsJ4GLBdsPnnXuZboA',
-            mapSource: 'mapbox://styles/soal/cimlxnm0d006yzpmccqs5dg01'
-          }
-        }
-      })
 ```
 
 All components will be placed in global VueMapbox object (`VueMapbox.MglMap` etc.)

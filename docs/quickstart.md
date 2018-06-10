@@ -39,7 +39,7 @@ Add Vue, MapboxGL and Vue-mapbox scripts on your page:
     <!-- VueJS -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js  "></script>
     <!-- Vue-mapbox -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue-mapbox@0.0.23/dist/vue-mapbox.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue-mapbox@0.0.24/dist/vue-mapbox.min.js"></script>
     <!-- ... -->
   </head>
 </html>

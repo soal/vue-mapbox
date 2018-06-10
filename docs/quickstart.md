@@ -26,6 +26,7 @@ new Vue({
 ## Using in browser
 ### Installation
 Add Vue, MapboxGL and Vue-mapbox scripts on your page:
+
 ```html
 <!DOCTYPE html>
 <html>

@@ -1,4 +1,4 @@
-# Vue-mapbox <small>0.0.22</small>
+# Vue-mapbox <small>0.0.23</small>
 
 > Combine powers of [Vue.js](https://vuejs.org/) and [Mapbox Gl JS](https://mapbox.com/mapbox-gl-js)
 

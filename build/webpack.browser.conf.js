@@ -16,8 +16,8 @@ var webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].min.js',
-    library: '[name]',
-    libraryTarget: 'umd'
+    library: 'VueMapbox',
+    libraryTarget: 'window'
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -48,11 +48,6 @@ if (config.build.productionGzip) {
       minRatio: 0.8
     })
   )
-}
-
-if (config.build.bundleAnalyzerReport) {
-  var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
 
 module.exports = webpackConfig

@@ -15,7 +15,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   devtool: false,
   output: {
     path: config.build.assetsRoot,
-    filename: '[name].min.js',
+    filename: '[name].umd.min.js',
     library: '[name]',
     libraryTarget: 'umd'
   },

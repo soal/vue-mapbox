@@ -17,6 +17,14 @@
 - **Type**: `string`
 - **Description:**  The color to use for the default marker if custom marker is not provided. The default is light blue.
 
+### `anchor`
+- **Type**: `string`
+- **Non-Synced**
+- **Default** `center`
+- **Description:**  A string indicating the part of the Marker that should be positioned closest to the coordinate set via Marker#setLngLat . Options are 'center' , 'top' , 'bottom' , 'left' , 'right' , 'top-left' , 'top-right' , 'bottom-left' , and 'bottom-right' . The default is 'center'. 
+- **See** `options.anchor` in [Marker](https://www.mapbox.com/mapbox-gl-js/api/#marker)
+
+
 ## Slots
 
 ### `marker`

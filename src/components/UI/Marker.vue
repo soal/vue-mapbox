@@ -25,6 +25,10 @@
       },
       color: {
         type: String
+      },
+      anchor: {
+        type: String,
+        default: 'center'
       }
     },
 
@@ -58,13 +62,10 @@
           const markerOptions = {
             ...this._props
           }
-          // console.log(this.$slots.marker)
           if (this.$slots.marker) {
             markerOptions.element = this.$slots.marker[0].elm
           }
-          // console.log(markerOptions)
           this.marker = new this.mapbox.Marker(markerOptions)
-          // console.log(this.marker)
         }
 
         this.map = payload.map

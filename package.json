@@ -1,8 +1,8 @@
 {
   "name": "vue-mapbox",
-  "version": "0.0.20",
+  "version": "0.0.24",
   "description": "Vuejs 2 components for interacting with mapbox-gj-js ",
-  "main": "dist/vue-mapbox.min.js",
+  "main": "dist/vue-mapbox.umd.min.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/soal/vue-mapbox.git"

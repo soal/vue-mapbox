@@ -7,14 +7,15 @@ var rm = require('rimraf')
 var chalk = require('chalk')
 var webpack = require('webpack')
 var config = require('../config')
-var webpackConfig = require('./webpack.lib.conf')
+var umdWebpackConfig = require('./webpack.umd.conf')
+var browserWebpackConfig = require('./webpack.browser.conf')
 
 var spinner = ora('building for library...')
 spinner.start()
 
 rm(config.build.assetsRoot, err => {
   if (err) throw err
-  webpack(webpackConfig, function (err, stats) {
+  webpack(umdWebpackConfig, function (err, stats) {
     spinner.stop()
     if (err) throw err
     process.stdout.write(stats.toString({
@@ -25,10 +26,30 @@ rm(config.build.assetsRoot, err => {
       chunkModules: false
     }) + '\n\n')
 
-    console.log(chalk.cyan('  Build complete.\n'))
     console.log(chalk.yellow(
-      '  Tip: Now you are ready to publish your library to npm.\n' +
+      '  Tip: Building UMD module complete.\n' +
       '  Then users can import it as an es6 module: import vue-mapbox from \'vue-mapbox\'\n'
+    ))
+  })
+
+  webpack(browserWebpackConfig, function (err, stats) {
+    spinner.stop()
+    if (err) throw err
+    process.stdout.write(stats.toString({
+      colors: true,
+      modules: false,
+      children: false,
+      chunks: true,
+      chunkModules: false
+    }) + '\n\n')
+
+    console.log(chalk.yellow(
+      '  Tip: Building browser module complete.\n' +
+      '  Then users can add file to their app using <script> tag'
+    ))
+    console.log(chalk.cyan(
+      '  Build complete.\n' +
+      '  Now you are ready to publish your library to npm'
     ))
   })
 })

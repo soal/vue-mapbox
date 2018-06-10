@@ -141,7 +141,7 @@ export default {
     default: false
   },
   transformRequest: {
-    type: Function,
+    type: Function
     default: null
   }
 }

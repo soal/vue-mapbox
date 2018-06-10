@@ -242,6 +242,14 @@
 - **Description:** A Boolean indicating whether the map will continuously repaint. This information is useful for analyzing performance.
 - **See:** See [repaint](https://www.mapbox.com/mapbox-gl-js/api/#map#repaint) Map property
 
+### `transformRequest`
+
+- **Type:** `Object`
+- **Default:** `null`
+- **Non-Synced**
+- **Description:** A callback run before the Map makes a request for an external URL. The callback can be used to modify the url, set headers, or set the credentials property for cross-origin requests. Expected to return an object with a `url` property and optionally `headers` and `credentials` properties.
+- **See:** `options.transformRequest` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
+
 ## Methods
 
 ### `.stop()`

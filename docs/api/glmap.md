@@ -244,7 +244,7 @@
 
 ### `transformRequest`
 
-- **Type:** `Object`
+- **Type:** `Function`
 - **Default:** `null`
 - **Non-Synced**
 - **Description:** A callback run before the Map makes a request for an external URL. The callback can be used to modify the url, set headers, or set the credentials property for cross-origin requests. Expected to return an object with a `url` property and optionally `headers` and `credentials` properties.

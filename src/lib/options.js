@@ -75,6 +75,10 @@ export default {
     type: Boolean,
     default: true
   },
+  crossSourceCollisions: {
+    type: Boolean,
+    default: true
+  },
   dragRotate: {
     type: Boolean,
     default: true

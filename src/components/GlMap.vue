@@ -21,14 +21,15 @@ export default {
   },
 
   computed: {
-    loaded() { return this.map && this.map.loaded() },
-    version() { return this.map && this.map.version },
-    bounds() { return this.map && this.map.getBounds() },
-    isStyleLoaded() { return this.map && this.map.isStyleLoaded() },
-    areTilesLoaded() { return this.map && this.map.areTilesLoaded() },
-    isMoving() { return this.map && this.map.isMoving() },
-    canvas() { return this.map && this.map.getCanvas() },
-    canvasContainer() { return this.map && this.map.getCanvasContainer() }
+    loaded() { return this.map ? this.map.loaded() : false },
+    version() { return this.map ? this.map.version : null },
+    bounds() { return this.map ? this.map.getBounds() : null },
+    isStyleLoaded() { return this.map ? this.map.isStyleLoaded() : false },
+    areTilesLoaded() { return this.map ? this.map.areTilesLoaded() : false },
+    isMoving() { return this.map ? this.map.isMoving() : false },
+    canvas() { return this.map ? this.map.getCanvas() : null },
+    canvasContainer() { return this.map ? this.map.getCanvasContainer() : null },
+    images() { return this.map ? this.map.listImages() : null }
   },
 
   watch: {
@@ -180,20 +181,36 @@ export default {
       return this.map.queryRenderedFeatures(geometry, parameters)
     },
 
+    getFeatureState(feature) {
+      return this.map.getFeatureState(feature)
+    },
+
+    setFeatureState(feature, state) {
+      return this.map.setFeatureState(feature, state)
+    },
+
     querySourceFeatures(sourceId, parameters) {
       return this.map.querySourceFeatures(sourceId, parameters)
     },
 
+    cameraForBounds(bounds, options) {
+      return this.map.cameraForBounds(bounds, options)
+    },
+
     addImage(name, image, options) {
-      this.map.addImage(name, image, options)
+      return this.map.addImage(name, image, options)
+    },
+
+    hasImage(id) {
+      return this.map.hasImage(id)
     },
 
     removeImage(name) {
-      this.map.removeImage(name)
+      return this.map.removeImage(name)
     },
 
     loadImage(url, callback) {
-      this.map.loadImage(url, callback)
+      return this.map.loadImage(url, callback)
     },
 
     $_catchMoveFabric(eventData, resolve, reject) {

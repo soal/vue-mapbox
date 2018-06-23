@@ -29,6 +29,10 @@
       anchor: {
         type: String,
         default: 'center'
+      },
+      draggable: {
+        type: Boolean,
+        default: false
       }
     },
 
@@ -39,6 +43,17 @@
       }
     },
 
+    watch: {
+      coordinates(lngLat) {
+        if (this.initial) return
+        this.marker.setLngLat(lngLat)
+      },
+      draggable(next, prev) {
+        if (this.initial) return
+        this.marker.setDraggable(next)
+      }
+    },
+
     mounted() {
       this.$_checkMapTree()
     },
@@ -46,13 +61,6 @@
     beforeDestroy() {
       if (this.map !== undefined && this.marker !== undefined) {
         this.marker.remove()
-      }
-    },
-
-    watch: {
-      coordinates(lngLat) {
-        if (this.initial) return
-        this.marker.setLngLat(lngLat)
       }
     },
 

@@ -90,6 +90,22 @@
 - **Description:** If true, map creation will fail if the performance of Mapbox GL JS would be dramatically worse than expected (i.e. a software renderer would be used)
 - **See:** `options.failIfMajorPerformanceCaveat` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
 
+### `crossSourceCollisions`
+
+- **Type:** `Boolean`
+- **Default:** `true`
+- **Non-Synced**
+- **Description:** If true, symbols from multiple sources can collide with each other during collision detection. If false , collision detection is run separately for the symbols in each source.
+- **See:** `options.crossSourceCollisions` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
+
+### `fadeDuration`
+
+- **Type:** `Number`
+- **Default:** `300`
+- **Non-Synced**
+- **Description:** Controls the duration of the fade-in/fade-out animation for label collisions, in milliseconds. This setting affects all symbol layers. This setting does not affect the duration of runtime styling transitions or raster tile cross-fading.
+- **See:** `options.fadeDuration` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
+
 ### `preserveDrawingBuffer`
 
 - **Type:** `Boolean`
@@ -250,6 +266,14 @@
 - **Description:** A callback run before the Map makes a request for an external URL. The callback can be used to modify the url, set headers, or set the credentials property for cross-origin requests. Expected to return an object with a `url` property and optionally `headers` and `credentials` properties.
 - **See:** `options.transformRequest` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
 
+### `localIdeographFontFamily`
+
+- **Type:** `String`
+- **Default:** `null`
+- **Non-Synced**
+- **Description:** If specified, defines a CSS font-family for locally overriding generation of glyphs in the 'CJK Unified Ideographs' and 'Hangul Syllables' ranges. In these ranges, font settings from the map's style will be ignored, except for font-weight keywords (light/regular/medium/bold). The purpose of this option is to avoid bandwidth-intensive glyph server requests. 
+- **See:** `options.localIdeographFontFamily` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
+
 ## Methods
 
 ### `.stop()`
@@ -287,6 +311,16 @@
 - **Description:** Wrapper aroud Mapbox GL JS method
 - **See:** [querySourceFeatures](https://www.mapbox.com/mapbox-gl-js/api/#map#querysourcefeatures) Map method
 
+### `.getFeatureState(feature?)`
+
+- **Description:** Wrapper aroud Mapbox GL JS method
+- **See:** [getFeatureState](https://www.mapbox.com/mapbox-gl-js/api/#map#getfeaturestate) Map method
+
+### `.setFeatureState(feature?, state)`
+
+- **Description:** Wrapper aroud Mapbox GL JS method
+- **See:** [#setfeaturestate](https://www.mapbox.com/mapbox-gl-js/api/#map#setfeaturestate) Map method
+
 ### `.addImage(name, image, options)`
 
 - **Description:** Wrapper aroud Mapbox GL JS method
@@ -301,6 +335,11 @@
 
 - **Description:** Wrapper aroud Mapbox GL JS method
 - **See:** [loadImage](https://www.mapbox.com/mapbox-gl-js/api/#map#loadimage) Map method
+
+### `.hasImage(id)`
+
+- **Description:** Wrapper aroud Mapbox GL JS method
+- **See:** [hasImage](https://www.mapbox.com/mapbox-gl-js/api/#map#hasimage) Map method
 
 ### `.panBy(offset, options)`
 
@@ -351,6 +390,7 @@
 - **See:** [zoomOut](https://www.mapbox.com/mapbox-gl-js/api/#map#zoomOut) Map method
 
 ### `.rotateTo(bearing, options)`
+
 - **Arguments:**
   - `bearing` `{number}` The desired bearing
   - `options` `{AnimationOptions object}` animation options. See [AnimationOptions](https://www.mapbox.com/mapbox-gl-js/api/#animationoptions)
@@ -391,6 +431,11 @@
 - **Returns:** `{Promise<{ eventData, bounds }>}`
   Promise that resolves object with event data and new bounds of the map when animation ends
 - **See:** [fitBounds](https://www.mapbox.com/mapbox-gl-js/api/#map#fitbounds) Map method
+
+### `.cameraForBounds(bounds, options)`
+
+- **Description:** Wrapper aroud Mapbox GL JS method
+- **See:** [cameraForBounds](https://www.mapbox.com/mapbox-gl-js/api/#map#cameraforbounds) Map method
 
 ### `.jumpTo(options)`
 
@@ -442,7 +487,8 @@
 ## Events
 
 ### `@load`
- - **Description:** Fires after map fully loaded
- - **Payload** `{ map, component }` `map` is Mapbox Gl JS Map object, `component` is instance of GlMap component
+
+  - **Description:** Fires after map fully loaded
+  - **Payload** `{ map, component }` `map` is Mapbox Gl JS Map object, `component` is instance of GlMap component
 
 GlMap passes all Mapbox GL JS Map events. Full list of map events see [here](https://www.mapbox.com/mapbox-gl-js/api/#map.event:resize)

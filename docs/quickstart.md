@@ -1,20 +1,25 @@
 # Quickstart
 
 ## Using as ES module
+
 ### Installation
+
 You can install vue-mapbox via npm. Take note that you need to install mapbox-gl as peer dependency:
+
 ```bash
 npm install --save vue-mapbox mapbox-gl
 ```
 
 Add mapbox CSS file to `<head></head>` block of your HTML file (e.g. `index.html`)
+
 ```html
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
 ```
 
 ### Register a plugin
+
 You need to set up vue-mapbox as a plugin for Vue and pass mapbox-gl as argument:
-  
+
 ```javascript
 import Vue from 'vue'
 import VueMapbox from 'vue-mapbox'
@@ -29,7 +34,9 @@ new Vue({
 ```
 
 ## Using in browser
+
 ### Installation
+
 Add Vue, MapboxGL and Vue-mapbox scripts on your page:
 
 ```html
@@ -38,11 +45,11 @@ Add Vue, MapboxGL and Vue-mapbox scripts on your page:
   <head>
     <!-- ... -->
     <!-- Mapbox GL CSS -->
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' /> 
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css" rel="stylesheet" />
     <!-- Mapbox GL JS -->
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js"></script>
     <!-- VueJS -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js  "></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.min.js"></script>
     <!-- Vue-mapbox -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue-mapbox@latest/dist/vue-mapbox.min.js"></script>
     <!-- ... -->

@@ -65,9 +65,24 @@
 ### `@added`
 
 - **Description:** Fires when marker added on the map.
-- **Payload** `{ marker: Marker }` Object with MapboxGL `Marker` object
+- **Payload** `{ component: MarkerComponent, map: Map, marker: Marker }` Object with `Marker` component, parent map and MapboxGl `Marker` object
 
 ### `@removed`
 
 - **Description:** Fires when marker removed the map.
-- **Payload** `{ marker: Marker }` Object with MapboxGL `Marker` object
+- **Payload** `{ component: MarkerComponent, map: Map, marker: Marker }` Object with `Marker` component, parent map and MapboxGl `Marker` object
+
+### `@drag`
+
+- **Description:** Fires when marker dragged if marker `draggable` prop is `true`
+- **Payload** `{ component: MarkerComponent, map: Map, MapEvent: Event }` Object with `Marker` component, parent map and original MapboxGl event
+
+### `@dragstart`
+
+- **Description:** Fires when marker dragging starts if marker `draggable` prop is `true`
+- **Payload** `{ component: MarkerComponent, map: Map, MapEvent: Event }` Object with `Marker` component, parent map and original MapboxGl event
+
+### `@dragend`
+
+- **Description:** Fires when marker dragging ends if marker `draggable` prop is `true`
+- **Payload** `{ component: MarkerComponent, map: Map, MapEvent: Event }` Object with `Marker` component, parent map and original MapboxGl event

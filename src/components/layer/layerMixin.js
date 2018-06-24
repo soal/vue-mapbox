@@ -110,20 +110,20 @@ export default {
   },
 
   methods: {
-    // $_bindEvents(events) {
-    //   if (events.length === 0) return
-    //   events.forEach(eventName => {
-    //     this.map.on(eventName, this.layerId, event => {
-    //       this.$_emitMapEvent(`${event}`, { mapEvent: event })
-    //     })
-    //   })
-    // },
+    $_bindEvents(events) {
+      if (events.length === 0) return
+      events.forEach(eventName => {
+        this.map.on(eventName, this.layerId, event => {
+          this.$_emitMapEvent(`${event}`, { mapEvent: event })
+        })
+      })
+    },
 
-    // $_unBindEvents(events) {
-    //   events.forEach(eventName => {
-    //     this.map.off(eventName, this.layerId)
-    //   })
-    // },
+    $_unBindEvents(events) {
+      events.forEach(eventName => {
+        this.map.off(eventName, this.layerId)
+      })
+    },
 
     $_watchSourceLoading(data) {
       if (data.dataType === 'source' && data.sourceId === this.sourceId) {

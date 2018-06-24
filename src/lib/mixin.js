@@ -57,17 +57,11 @@ export default {
       })
     },
 
-    $_bindEvents(events, component = null) {
+    $_unbindSelfEvents(events, emitter = null) {
       if (events.length === 0) return
+      emitter = emitter || this.map
       events.forEach(eventName => {
-        this.map.on(eventName, this.layerId, event => {
-          this.$_emitMapEvent(`${event}`, { mapEvent: event })
-        })
-      })
-    },
-    $_unBindEvents(events) {
-      events.forEach(eventName => {
-        this.map.off(eventName, this.layerId)
+        emitter.off(eventName, this.layerId)
       })
     }
   }

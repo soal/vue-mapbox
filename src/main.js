@@ -13,6 +13,12 @@ import CanvasLayer from './components/layer/CanvasLayer.vue'
 import VideoLayer from './components/layer/VideoLayer.vue'
 import VectorLayer from './components/layer/VectorLayer.vue'
 
+import baseMixin from './lib/mixin'
+import controlMixin from './lib/controlMixin'
+
+export const mglBaseMixin = baseMixin
+export const mglControlMixin = controlMixin
+
 export const MglMap = GlMap
 
 export const MglNavigationControl = NavigationControl
@@ -31,14 +37,24 @@ export const MglMarker = Marker
 export const MglPopup = Popup
 
 export const plugin = {
-  install(Vue, options) {
-    Vue.mixin({
-      data() {
-        return {
-          mapbox: options.mapboxgl
-        }
-      }
-    })
+
+  /**
+   *  Create Vue-mapbox plugin for Vue
+   *
+   * @param {Object} Vue
+   * @param {Object} options: mapboxgl: MapboxGl JS instances
+   * @returns
+   */
+  install(Vue, options = {}) {
+    const data = { mapbox: options.mapboxgl }
+    if (options.plugins && options.plugins.length) {
+      options.plugins.forEach(plugin => {
+        const key = Object.keys(plugin)[0]
+        const value = Object.values(plugin)[0]
+        data[key] = value
+      })
+    }
+    Vue.mixin({ data() { return data } })
   }
 }
 

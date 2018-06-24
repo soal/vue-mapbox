@@ -38,13 +38,13 @@ Add Vue, MapboxGL and Vue-mapbox scripts on your page:
   <head>
     <!-- ... -->
     <!-- Mapbox GL CSS -->
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' /> 
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' /> 
     <!-- Mapbox GL JS -->
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
     <!-- VueJS -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js  "></script>
     <!-- Vue-mapbox -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue-mapbox@0.0.26/dist/vue-mapbox.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue-mapbox@latest/dist/vue-mapbox.min.js"></script>
     <!-- ... -->
   </head>
 </html>

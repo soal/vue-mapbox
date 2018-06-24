@@ -31,7 +31,7 @@ export default {
 ```
 
 ### Interact with map properties as GlMap props
-You can control map parameters like zoom, bearing, pitch etc. by changing props. 
+You can control map parameters like zoom, bearing, pitch etc. by changing props.
 If you set .sync modifier ([Vue docs](https://vuejs.org/v2/guide/components.html#sync-Modifier)) to prop, it will updates when you use operations that takes time to proceed. For example, if you use flyTo method, props zoom, center, bearing, pitch will be updated when animation ends.
 <!-- See example with flyTo:
 example with flyTo -->

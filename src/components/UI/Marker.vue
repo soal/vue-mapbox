@@ -10,6 +10,12 @@
 <script>
   import baseMixin from '../../lib/mixin'
 
+  const markerEvents = {
+    drag: 'drag',
+    dragstart: 'dragstart',
+    dragend: 'dragend'
+  }
+
   export default {
     name: 'MapMarker',
     mixins: [baseMixin],
@@ -78,6 +84,25 @@
 
         this.map = payload.map
         this.$_addMarker()
+
+        this.marker.on('dragend', event => {
+          let newCoordinates
+          if (this.coordinates instanceof Array) {
+            newCoordinates = [event.target._lngLat.lng, event.target._lngLat.lat]
+          } else {
+            newCoordinates = event.target._lngLat
+          }
+          this.$emit('update:coordinates', newCoordinates)
+        })
+
+        const eventNames = Object.keys(markerEvents)
+        const eventsToListen = Object.keys(this.$options._parentListeners)
+        .filter(eventName =>
+          eventNames.indexOf(eventName) !== -1
+        )
+
+        this.$_bindEvents(eventsToListen)
+
         this.initial = false
         payload.component.$off('load', this.$_deferredMount)
       },

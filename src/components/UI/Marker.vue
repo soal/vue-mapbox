@@ -96,12 +96,13 @@
         })
 
         const eventNames = Object.keys(markerEvents)
+        console.log(this.$options._parentListeners)
         const eventsToListen = Object.keys(this.$options._parentListeners)
-        .filter(eventName =>
-          eventNames.indexOf(eventName) !== -1
-        )
-
-        this.$_bindEvents(eventsToListen)
+          .filter(eventName =>
+            eventNames.indexOf(eventName) !== -1
+          )
+        console.log(eventsToListen)
+        this.$_bindSelfEvents(eventsToListen, this.marker)
 
         this.initial = false
         payload.component.$off('load', this.$_deferredMount)

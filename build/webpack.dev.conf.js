@@ -8,7 +8,7 @@ module.exports = merge(baseWebpackConfig, {
   devtool: '#cheap-module-eval-source-map',
   output: {
     path: config.build.assetsRoot,
-    filename: '[name].min.js',
+    filename: '[name].umd.min.js',
     library: '[name]',
     libraryTarget: 'umd'
   },

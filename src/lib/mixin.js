@@ -7,6 +7,7 @@ export default {
     this.map = null
   },
   mounted() {
+    console.log(this)
     this.$_checkMapTree()
     // We wait for "load" event from map component to ensure mapbox is loaded and map created
   },

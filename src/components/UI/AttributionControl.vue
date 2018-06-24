@@ -1,9 +1,8 @@
-
 <template></template>
 
 <script>
   import baseMixin from '../../lib/mixin'
-  import controlMixin from './controlMixin'
+  import controlMixin from '../../lib/controlMixin'
 
   export default {
     name: 'AttributionControl',

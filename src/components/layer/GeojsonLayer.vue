@@ -40,6 +40,7 @@ export default {
     $_deferredMount(payload) {
       this.map = payload.map
       this.map.on('dataloading', this.$_watchSourceLoading)
+      console.log(this.source)
       if (this.source) {
         try {
           this.map.addSource(this.sourceId, {
@@ -77,6 +78,7 @@ export default {
           return existed
         }
       }
+      console.log(this.source, this.sourceId)
       let layer = {
         id: this.layerId,
         source: this.sourceId

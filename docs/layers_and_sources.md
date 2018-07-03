@@ -12,7 +12,8 @@ For example adding a layer with GeoJSON data:
   >
     <mgl-navigation-control position="top-right"/> <!-- Adding navigation control-->
     <mgl-geojson-layer
-      :type="fill"
+      type="fill"
+      :sourceId="geoJsonSource.properties.id"
       :layerId="geoJsonSource.properties.id"
       :source.sync="geoJsonSource"
     >

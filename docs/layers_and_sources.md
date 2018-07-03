@@ -48,3 +48,9 @@ export default {
   }
 }
 ```
+
+In this example `geoJsonSource` can be an `object`, representing GeoJSON feature or `string` with URL to GeoJSON.
+
+Sources are stored in Mapbox GL JS `Map` object by `sourceId`. If you sure that source already added to map, you can skip `source` prop and just pass `sourceId` and use same source for different layers. If you try to add same source twice it raises an error, but you can set `replaceSource` prop to `true` to just replace old source with new one passed in `source` prop.
+
+By default when Layer components destroing, it removes source from map. If you want to keep source in Map (for e.g. for future using or if other layers use this source), set `clearSource` prop to `false`.

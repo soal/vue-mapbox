@@ -2,7 +2,8 @@ import baseMixin from '../../lib/mixin'
 
 const mapboxSourceProps = {
   sourceId: {
-    type: String
+    type: String,
+    required: true
   }
 }
 

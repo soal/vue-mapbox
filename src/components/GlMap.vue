@@ -114,7 +114,7 @@ export default {
 
       this.$_bindEvents(eventsToListen)
       this.$_bindPropsUpdateEvents()
-      this.initial = true
+      this.initial = false
       this.mapLoaded = true
     })
   },

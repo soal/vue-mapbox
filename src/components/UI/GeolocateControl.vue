@@ -22,9 +22,17 @@
           }
         }
       },
-      watchPosition: {
+      trackUserLocation: {
         type: Boolean,
         default: false
+      },
+      showUserLocation: {
+        type: Boolean,
+        default: true
+      },
+      fitBoundsOptions: {
+        type: Object,
+        default: () => ({ maxZoom: 15 })
       }
     },
 

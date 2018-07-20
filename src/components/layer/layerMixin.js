@@ -38,6 +38,10 @@ const componentProps = {
   replace: {
     type: Boolean,
     default: false
+  },
+  listenUserEvents: {
+    type: Boolean,
+    default: false
   }
 }
 

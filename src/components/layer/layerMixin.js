@@ -119,7 +119,7 @@ export default {
       if (events.length === 0) return
       events.forEach(eventName => {
         this.map.on(eventName, this.layerId, event => {
-          this.$_emitMapEvent(`${event}`, { mapEvent: event })
+          this.$_emitMapEvent(eventName, { mapEvent: event })
         })
       })
     },

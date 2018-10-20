@@ -1,46 +1,63 @@
-<template></template>
 
-<script>
 import layerEvents from '../../lib/layerEvents'
 import mixin from './layerMixin'
 
 export default {
-  name: 'VideoLayer',
+  name: 'CanvasLayer',
   mixins: [mixin],
   props: {
     coordinates: {
       type: Array,
       required: true
     },
-    urls: {
-      type: Array,
-      required: true
+    animate: {
+      type: Boolean,
+      default: true
     }
   },
-  data() {
+
+  data () {
     return {
       source: undefined
     }
   },
+
+  mounted () {
+    if (this.$slots.default[0].tag !== 'canvas') {
+      throw new Error(`Error in map layer component with source id "${this.sourceId}" and layer id "${this.layerId}"
+          You need to add canvas element as child of canvas layer.`)
+    }
+    this.$_checkMapTree()
+  },
+
   computed: {
-    video() {
-      return this.map.getSource(this.sourceId).getVideo()
+    canvas () {
+      return this.map.getSource(this.sourceId).getCanvas()
     }
   },
 
   watch: {
-    coordinates(val) {
+    minzoom (val) {
+      if (this.initial) return
+      this.map.setLayerZoomRange(this.layerId, val, this.maxzoom)
+    },
+    maxzoom (val) {
+      if (this.initial) return
+      this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
+    },
+    coordinates (val) {
       if (this.initial) return
       this.source.setCoordinates(val)
     }
   },
 
   methods: {
-    _deferredMount(payload) {
+    $_deferredMount (payload) {
       const source = {
-        type: 'video',
-        urls: this.urls,
-        coordinates: this.coordinates
+        type: 'canvas',
+        coordinates: this.coordinates,
+        animate: this.animate,
+        canvas: this.$slots.default[0].data.attrs.id
       }
 
       this.map = payload.map
@@ -60,11 +77,11 @@ export default {
       if (this.listenUserEvents) {
         this.$_bindEvents(layerEvents)
       }
-      this.initial = false
       payload.component.$off('load', this.$_deferredMount)
+      this.initial = false
     },
 
-    $_addLayer() {
+    $_addLayer () {
       let existed = this.map.getLayer(this.layerId)
       if (existed) {
         if (this.replace) {
@@ -77,7 +94,7 @@ export default {
       let layer = {
         id: this.layerId,
         source: this.sourceId,
-        type: 'background'
+        type: 'raster'
       }
       if (this.refLayer) {
         layer.ref = this.refLayer
@@ -92,12 +109,18 @@ export default {
         // }
         // if (this.filter) layer.filter = this.filter
       }
-      // layer.paint = this.paint ? this.paint : { 'raster-opacity': 0.85 };
+      layer.paint = this.paint ? this.paint : { 'raster-opacity': 0.85 }
       layer.metadata = this.metadata
 
       this.map.addLayer(layer, this.before)
       this.$_emitMapEvent('added', { layerId: this.layerId })
     }
+  },
+
+  render (h) {
+    // FIXME: render teplate:
+    // <div style="display: none">
+    //   <slot/>
+    // </div>
   }
 }
-</script>

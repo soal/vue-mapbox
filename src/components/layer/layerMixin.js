@@ -146,5 +146,7 @@ export default {
       this.map.removeLayer(this.layerId)
       this.$_emitMapEvent('layer-removed', { layerId: this.layerId })
     }
-  }
+  },
+
+  render (h) {}
 }

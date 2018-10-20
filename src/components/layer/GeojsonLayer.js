@@ -1,28 +1,19 @@
-<template></template>
-
-<script>
 import layerEvents from '../../lib/layerEvents'
 import mixin from './layerMixin'
 
 export default {
-  name: 'VectorLayer',
+  name: 'GeojsonLayer',
   mixins: [mixin],
   props: {
-    url: {
-      type: String,
-      default: undefined
+    source: {
+      type: [Object, String]
     },
-    tiles: {
-      type: Array,
-      default: () => []
-    },
-    tilesMinZoom: {
-      type: Number,
-      default: undefined
-    },
-    tilesMaxZoom: {
-      type: Number,
-      default: undefined
+    type: {
+      validator (value) {
+        let allowedValues = ['fill', 'line', 'symbol', 'circle', 'fill-extrusion', 'raster', 'background']
+        return (typeof value === 'string' && allowedValues.indexOf(value) !== -1) || value === undefined
+      },
+      default: 'fill'
     },
     filter: {
       type: Array,
@@ -31,33 +22,36 @@ export default {
   },
 
   watch: {
-    filter(filter) {
+    source (data) {
+      if (this.initial) return
+      this.map.getSource(this.sourceId).setData(data)
+    },
+    filter (filter) {
       if (this.initial) return
       this.map.setFilter(this.layerId, filter)
     }
   },
 
   methods: {
-    $_deferredMount(payload) {
-      if (payload.mapId !== this.mapId) return
+    $_deferredMount (payload) {
       this.map = payload.map
-      let source = {
-        type: 'vector',
-        tilesMinZoom: this.tilesMinZoom,
-        tilesMaxZoom: this.tilesMaxZoom,
-        url: this.url,
-        tiles: this.tiles
-      }
-
       this.map.on('dataloading', this.$_watchSourceLoading)
-      try {
-        this.map.addSource(this.sourceId, source)
-      } catch (err) {
-        if (this.replaceSource) {
-          this.map.removeSource(this.sourceId)
-          this.map.addSource(this.sourceId, source)
-        } else {
-          this.$_emitMapEvent('layer-source-error', { sourceId: this.sourceId, error: err })
+      if (this.source) {
+        try {
+          this.map.addSource(this.sourceId, {
+            type: 'geojson',
+            data: this.source
+          })
+        } catch (err) {
+          if (this.replaceSource) {
+            this.map.removeSource(this.sourceId)
+            this.map.addSource(this.sourceId, {
+              type: 'geojson',
+              data: this.source
+            })
+          } else {
+            this.$_emitMapEvent('layer-source-error', { sourceId: this.sourceId, error: err })
+          }
         }
       }
       this._addLayer()
@@ -66,10 +60,10 @@ export default {
       }
       this.map.off('dataloading', this.$_watchSourceLoading)
       this.initial = false
-      payload.mapComponent.$on('load', this.$_deferredMount)
+      payload.component.$off('load', this.$_deferredMount)
     },
 
-    _addLayer() {
+    _addLayer () {
       let existed = this.map.getLayer(this.layerId)
       if (existed) {
         if (this.replace) {
@@ -88,7 +82,9 @@ export default {
       } else {
         layer.type = this.type ? this.type : 'fill'
         layer.source = this.sourceId
-        layer['source-layer'] = this['source-layer']
+        if (this['source-layer']) {
+          layer['source-layer'] = this['source-layer']
+        }
         if (this.minzoom) layer.minzoom = this.minzoom
         if (this.maxzoom) layer.maxzoom = this.maxzoom
         if (this.layout) {
@@ -97,8 +93,8 @@ export default {
         if (this.filter) layer.filter = this.filter
       }
       layer.paint = this.paint
-                          ? this.paint
-                          : { 'fill-color': `rgba(${12 * (this.layerId.length * 3)},153,80,0.55)` }
+        ? this.paint
+        : { 'fill-color': `rgba(${12 * (this.layerId.length * 3)},153,80,0.55)` }
       layer.metadata = this.metadata
 
       this.map.addLayer(layer, this.before)
@@ -106,4 +102,3 @@ export default {
     }
   }
 }
-</script>

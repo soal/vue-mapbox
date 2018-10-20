@@ -12,7 +12,7 @@ export default {
   name: 'GlMap',
   props,
 
-  data() {
+  data () {
     return {
       initial: true,
       baseMap: true,
@@ -21,85 +21,85 @@ export default {
   },
 
   computed: {
-    loaded() { return this.map ? this.map.loaded() : false },
-    version() { return this.map ? this.map.version : null },
-    bounds() { return this.map ? this.map.getBounds() : null },
-    isStyleLoaded() { return this.map ? this.map.isStyleLoaded() : false },
-    areTilesLoaded() { return this.map ? this.map.areTilesLoaded() : false },
-    isMoving() { return this.map ? this.map.isMoving() : false },
-    canvas() { return this.map ? this.map.getCanvas() : null },
-    canvasContainer() { return this.map ? this.map.getCanvasContainer() : null },
-    images() { return this.map ? this.map.listImages() : null }
+    loaded () { return this.map ? this.map.loaded() : false },
+    version () { return this.map ? this.map.version : null },
+    bounds () { return this.map ? this.map.getBounds() : null },
+    isStyleLoaded () { return this.map ? this.map.isStyleLoaded() : false },
+    areTilesLoaded () { return this.map ? this.map.areTilesLoaded() : false },
+    isMoving () { return this.map ? this.map.isMoving() : false },
+    canvas () { return this.map ? this.map.getCanvas() : null },
+    canvasContainer () { return this.map ? this.map.getCanvasContainer() : null },
+    images () { return this.map ? this.map.listImages() : null }
   },
 
   watch: {
-    maxBounds(bounds) {
+    maxBounds (bounds) {
       if (this.initial) return
       this.map.setMaxBounds(bounds)
       this.maxBounds = bounds
     },
-    minZoom(zoom) {
+    minZoom (zoom) {
       if (this.initial) return
       this.map.setMinZoom(zoom)
       this.minZoom = zoom
     },
-    maxZoom(zoom) {
+    maxZoom (zoom) {
       if (this.initial) return
       this.map.setMaxZoom(zoom)
       this.maxZoom = zoom
     },
-    mapStyle(style) {
+    mapStyle (style) {
       if (this.initial) return
       this.map.setStyle(style)
       this.mapStyle = style
     },
-    collisionBoxes(val) {
+    collisionBoxes (val) {
       if (this.initial) return
       this.map.showCollisionBoxes = val
       this.showCollisionBoxes = val
     },
-    tileBoundaries(val) {
+    tileBoundaries (val) {
       if (this.initial) return
       this.map.showTileBoundaries = val
       this.showTileBoundaries = val
     },
-    repaint(val) {
+    repaint (val) {
       if (this.initial) return
       this.map.repaint = val
       this.repaint = val
     },
-    zoom(val) {
+    zoom (val) {
       if (this.initial) return
       this.map.setZoom(val)
       this.zoom = val
     },
-    center(val) {
+    center (val) {
       if (this.initial) return
       this.map.setCenter(val)
       this.center = val
     },
-    bearing(val) {
+    bearing (val) {
       if (this.initial) return
       this.map.setBearing(val)
       this.bearing = val
     },
-    pitch(val) {
+    pitch (val) {
       if (this.initial) return
       this.map.setPitch(val)
       this.pitch = val
     },
-    light(val) {
+    light (val) {
       if (this.initial) return
       this.map.setLight(val)
       this.light = val
     }
   },
 
-  created() {
+  created () {
     this.map = null
   },
 
-  mounted() {
+  mounted () {
     this.$_loadMap().then(map => {
       this.map = map
       if (this.RTLTextPluginUrl !== undefined) {
@@ -116,22 +116,27 @@ export default {
       this.$_bindPropsUpdateEvents()
       this.initial = false
       this.mapLoaded = true
+      // this.$emit('load', { map, component: this })
     })
   },
 
-  destroyed() {
+  updated () {
+    console.log('MAP UPDATED!')
+  },
+
+  destroyed () {
     if (this.map) this.map.remove()
   },
 
   methods: {
     // We wait in promise to ensure map is loaded and other components will receive map object
-    $_bindPropsUpdateEvents() {
+    $_bindPropsUpdateEvents () {
       this.map.on('moveend', event => this.$emit('update:center', this.map.getCenter()))
       this.map.on('zoomend', event => this.$emit('update:zoom', this.map.getZoom()))
       this.map.on('rotate', event => this.$emit('update:bearing', this.map.getBearing()))
       this.map.on('pitch', event => this.$emit('update:pitch', this.map.getPitch()))
     },
-    $_loadMap() {
+    $_loadMap () {
       return new Promise((resolve) => {
         if (this.accessToken) this.mapbox.accessToken = this.accessToken
         const map = new this.mapbox.Map({
@@ -143,11 +148,11 @@ export default {
       })
     },
 
-    $_RTLTextPluginError(error) {
+    $_RTLTextPluginError (error) {
       this.$emit('rtl-plugin-error', { map: this.map, error: error })
     },
 
-    $_bindEvents(events) {
+    $_bindEvents (events) {
       if (events.length === 0) return
       for (let e of events) {
         this.map.on(e, event => {
@@ -156,66 +161,66 @@ export default {
       }
     },
 
-    $_unBindEvents(events) {
+    $_unBindEvents (events) {
       events.forEach(eventName => {
         this.map.off(eventName)
       })
     },
-    supported(perfomanceCheck = false) {
+    supported (perfomanceCheck = false) {
       return this.map.supported({ failIfMajorPerformanceCaveat: perfomanceCheck })
     },
 
-    resize() {
+    resize () {
       this.map.resize()
     },
 
-    project(mapCoordinates) {
+    project (mapCoordinates) {
       return this.map.project(mapCoordinates)
     },
 
-    unproject(containerCoordinates) {
+    unproject (containerCoordinates) {
       return this.map.unproject(containerCoordinates)
     },
 
-    queryRenderedFeatures(geometry, parameters) {
+    queryRenderedFeatures (geometry, parameters) {
       return this.map.queryRenderedFeatures(geometry, parameters)
     },
 
-    getFeatureState(feature) {
+    getFeatureState (feature) {
       return this.map.getFeatureState(feature)
     },
 
-    setFeatureState(feature, state) {
+    setFeatureState (feature, state) {
       return this.map.setFeatureState(feature, state)
     },
 
-    querySourceFeatures(sourceId, parameters) {
+    querySourceFeatures (sourceId, parameters) {
       return this.map.querySourceFeatures(sourceId, parameters)
     },
 
-    cameraForBounds(bounds, options) {
+    cameraForBounds (bounds, options) {
       return this.map.cameraForBounds(bounds, options)
     },
 
-    addImage(name, image, options) {
+    addImage (name, image, options) {
       return this.map.addImage(name, image, options)
     },
 
-    hasImage(id) {
+    hasImage (id) {
       return this.map.hasImage(id)
     },
 
-    removeImage(name) {
+    removeImage (name) {
       return this.map.removeImage(name)
     },
 
-    loadImage(url, callback) {
+    loadImage (url, callback) {
       return this.map.loadImage(url, callback)
     },
 
-    $_catchMoveFabric(eventData, resolve, reject) {
+    $_catchMoveFabric (eventData, resolve, reject) {
       let self = this
-      return function catchMove(options) {
+      return function catchMove (options) {
         if (options.eventId !== eventData.eventId) return
         let newCenter = self.map.getCenter()
         self.$emit('update:center', newCenter)
@@ -224,9 +229,9 @@ export default {
       }
     },
 
-    $_catchZoomFabric(eventData, resolve, reject) {
+    $_catchZoomFabric (eventData, resolve, reject) {
       let self = this
-      return function catchZoom(options) {
+      return function catchZoom (options) {
         if (options.eventId !== eventData.eventId) return
         let newZoom = self.map.getZoom()
         self.$emit('update:zoom', newZoom)
@@ -235,9 +240,9 @@ export default {
       }
     },
 
-    $_catchRotateFabric(eventData, resolve, reject) {
+    $_catchRotateFabric (eventData, resolve, reject) {
       let self = this
-      return function catchRotate(options) {
+      return function catchRotate (options) {
         if (options.eventId !== eventData.eventId) return
         let newBearing = self.map.getBearing()
         self.$emit('update:bearing', newBearing)
@@ -246,9 +251,9 @@ export default {
       }
     },
 
-    $_catchPitchFabric(eventData, resolve, reject) {
+    $_catchPitchFabric (eventData, resolve, reject) {
       let self = this
-      return function catchPitch(options) {
+      return function catchPitch (options) {
         if (options.eventId !== eventData.eventId) return
         let newPitch = self.map.getPitch()
         self.$emit('update:pitch', newPitch)
@@ -257,7 +262,7 @@ export default {
       }
     },
 
-    panBy(offset, options) {
+    panBy (offset, options) {
       const eventData = {
         eventId: `panBy-${('' + Math.random()).split('.')[1]}`
       }
@@ -270,7 +275,7 @@ export default {
       })
     },
 
-    panTo(coordinates, options) {
+    panTo (coordinates, options) {
       if (!(coordinates instanceof Array)) {
         coordinates = coordinates.toArray()
       }
@@ -286,7 +291,7 @@ export default {
       })
     },
 
-    zoomTo(zoom, options) {
+    zoomTo (zoom, options) {
       const eventData = {
         eventId: `zoomTo-${('' + Math.random()).split('.')[1]}`
       }
@@ -299,7 +304,7 @@ export default {
       })
     },
 
-    zoomIn(options) {
+    zoomIn (options) {
       return new Promise((resolve, reject) => {
         let eventData = {
           eventId: `zoomIn-${('' + Math.random()).split('.')[1]}`
@@ -309,7 +314,7 @@ export default {
       })
     },
 
-    zoomOut(options) {
+    zoomOut (options) {
       return new Promise((resolve, reject) => {
         let eventData = {
           eventId: `zoomOut-${('' + Math.random()).split('.')[1]}`
@@ -319,7 +324,7 @@ export default {
       })
     },
 
-    rotateTo(bearing, options) {
+    rotateTo (bearing, options) {
       if (bearing === this.map.getBearing()) {
         return new Promise((resolve, reject) => resolve({ bearing: this.map.getBearing() }))
       }
@@ -332,7 +337,7 @@ export default {
       })
     },
 
-    resetNorth(options) {
+    resetNorth (options) {
       return new Promise((resolve, reject) => {
         let eventData = {
           eventId: `resetNorth-${('' + Math.random()).split('.')[1]}`
@@ -342,7 +347,7 @@ export default {
       })
     },
 
-    snapToNorth(options) {
+    snapToNorth (options) {
       return new Promise((resolve, reject) => {
         let eventData = {
           eventId: `snapToNorth-${('' + Math.random()).split('.')[1]}`
@@ -352,7 +357,7 @@ export default {
       })
     },
 
-    fitBounds(bounds, options) {
+    fitBounds (bounds, options) {
       let eventData = {
         eventId: `fitBounds-${('' + Math.random()).split('.')[1]}`
       }
@@ -372,7 +377,7 @@ export default {
       })
     },
 
-    jumpTo(options) {
+    jumpTo (options) {
       let eventData = {
         eventId: `jumpTo-${('' + Math.random()).split('.')[1]}`
       }
@@ -423,7 +428,7 @@ export default {
       })
     },
 
-    easeTo(options) {
+    easeTo (options) {
       let funcs = []
       let eventData = {
         eventId: `easeTo-${('' + Math.random()).split('.')[1]}`
@@ -474,7 +479,7 @@ export default {
       })
     },
 
-    flyTo(options) {
+    flyTo (options) {
       let eventData = {
         eventId: `flyTo-${('' + Math.random()).split('.')[1]}`
       }
@@ -524,7 +529,7 @@ export default {
       })
     },
 
-    stop() {
+    stop () {
       this.map.stop()
       const [pitch, zoom, bearing, center] = [this.map.getPitch(), this.map.getZoom(), this.map.getBearing(), this.map.getCenter()]
       this.$emit('update:pitch', pitch)

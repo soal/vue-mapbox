@@ -1,7 +1,3 @@
-<template></template>
-
-<script>
-
 import layerEvents from '../../lib/layerEvents'
 import mixin from './layerMixin'
 
@@ -13,7 +9,7 @@ export default {
       type: [Object, String]
     },
     type: {
-      validator(value) {
+      validator (value) {
         let allowedValues = ['fill', 'line', 'symbol', 'circle', 'fill-extrusion', 'raster', 'background']
         return (typeof value === 'string' && allowedValues.indexOf(value) !== -1) || value === undefined
       },
@@ -26,18 +22,18 @@ export default {
   },
 
   watch: {
-    source(data) {
+    source (data) {
       if (this.initial) return
-      this.map.getSource(this.sourceId).setData(data)
+      this.mapSource.setData(data)
     },
-    filter(filter) {
+    filter (filter) {
       if (this.initial) return
       this.map.setFilter(this.layerId, filter)
     }
   },
 
   methods: {
-    $_deferredMount(payload) {
+    $_deferredMount (payload) {
       this.map = payload.map
       this.map.on('dataloading', this.$_watchSourceLoading)
       if (this.source) {
@@ -67,7 +63,7 @@ export default {
       payload.component.$off('load', this.$_deferredMount)
     },
 
-    _addLayer() {
+    _addLayer () {
       let existed = this.map.getLayer(this.layerId)
       if (existed) {
         if (this.replace) {
@@ -97,8 +93,8 @@ export default {
         if (this.filter) layer.filter = this.filter
       }
       layer.paint = this.paint
-                          ? this.paint
-                          : { 'fill-color': `rgba(${12 * (this.layerId.length * 3)},153,80,0.55)` }
+        ? this.paint
+        : { 'fill-color': `rgba(${12 * (this.layerId.length * 3)},153,80,0.55)` }
       layer.metadata = this.metadata
 
       this.map.addLayer(layer, this.before)
@@ -106,4 +102,3 @@ export default {
     }
   }
 }
-</script>

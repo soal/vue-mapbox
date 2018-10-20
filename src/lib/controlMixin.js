@@ -3,5 +3,7 @@ export default {
     if (this.map !== undefined) {
       this.map.removeControl(this.control)
     }
-  }
+  },
+
+  render (h) {}
 }

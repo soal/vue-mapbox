@@ -1,11 +1,8 @@
-<template></template>
-
-<script>
 import layerEvents from '../../lib/layerEvents'
 import mixin from './layerMixin'
 
 export default {
-  name: 'VectorLayer',
+  name: 'RasterLayer',
   mixins: [mixin],
   props: {
     url: {
@@ -24,27 +21,20 @@ export default {
       type: Number,
       default: undefined
     },
-    filter: {
-      type: Array,
-      default: undefined
-    }
-  },
-
-  watch: {
-    filter(filter) {
-      if (this.initial) return
-      this.map.setFilter(this.layerId, filter)
+    tileSize: {
+      type: Number,
+      defaul: undefined
     }
   },
 
   methods: {
-    $_deferredMount(payload) {
-      if (payload.mapId !== this.mapId) return
+    $_deferredMount (payload) {
       this.map = payload.map
       let source = {
-        type: 'vector',
+        type: 'raster',
         tilesMinZoom: this.tilesMinZoom,
         tilesMaxZoom: this.tilesMaxZoom,
+        tileSize: this.tileSize,
         url: this.url,
         tiles: this.tiles
       }
@@ -66,10 +56,10 @@ export default {
       }
       this.map.off('dataloading', this.$_watchSourceLoading)
       this.initial = false
-      payload.mapComponent.$on('load', this.$_deferredMount)
+      payload.component.$off('load', this.$_deferredMount)
     },
 
-    _addLayer() {
+    _addLayer () {
       let existed = this.map.getLayer(this.layerId)
       if (existed) {
         if (this.replace) {
@@ -86,7 +76,7 @@ export default {
       if (this.refLayer) {
         layer.ref = this.refLayer
       } else {
-        layer.type = this.type ? this.type : 'fill'
+        layer.type = 'raster'
         layer.source = this.sourceId
         layer['source-layer'] = this['source-layer']
         if (this.minzoom) layer.minzoom = this.minzoom
@@ -94,11 +84,8 @@ export default {
         if (this.layout) {
           layer.layout = this.layout
         }
-        if (this.filter) layer.filter = this.filter
       }
-      layer.paint = this.paint
-                          ? this.paint
-                          : { 'fill-color': `rgba(${12 * (this.layerId.length * 3)},153,80,0.55)` }
+      layer.paint = this.paint ? this.paint : { 'raster-opacity': 1 }
       layer.metadata = this.metadata
 
       this.map.addLayer(layer, this.before)
@@ -106,4 +93,3 @@ export default {
     }
   }
 }
-</script>

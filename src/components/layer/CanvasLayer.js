@@ -1,46 +1,62 @@
-<template></template>
 
-<script>
 import layerEvents from '../../lib/layerEvents'
 import mixin from './layerMixin'
 
 export default {
-  name: 'VideoLayer',
+  name: 'CanvasLayer',
   mixins: [mixin],
   props: {
     coordinates: {
       type: Array,
       required: true
     },
-    urls: {
-      type: Array,
+    animate: {
+      type: Boolean,
+      default: true
+    },
+    width: {
+      type: Number,
+      required: true
+    },
+    height: {
+      type: Number,
       required: true
     }
   },
-  data() {
-    return {
-      source: undefined
-    }
-  },
+
   computed: {
-    video() {
-      return this.map.getSource(this.sourceId).getVideo()
+    canvas () {
+      return this.mapSource.getCanvas()
     }
   },
 
   watch: {
-    coordinates(val) {
+    minzoom (val) {
       if (this.initial) return
-      this.source.setCoordinates(val)
+      this.map.setLayerZoomRange(this.layerId, val, this.maxzoom)
+    },
+    maxzoom (val) {
+      if (this.initial) return
+      this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
+    },
+    coordinates (val) {
+      if (this.initial) return
+      this.mapSource.setCoordinates(val)
     }
   },
 
   methods: {
-    _deferredMount(payload) {
+    $_deferredMount (payload) {
+      const canvasElement = document.createElement('canvas')
+      canvasElement.id = this.sourceId
+      canvasElement.width = this.width
+      canvasElement.height = this.height
+
       const source = {
-        type: 'video',
-        urls: this.urls,
-        coordinates: this.coordinates
+        type: 'canvas',
+        coordinates: this.coordinates,
+        animate: this.animate,
+        canvas: canvasElement
       }
 
       this.map = payload.map
@@ -55,16 +71,15 @@ export default {
           this.$_emitMapEvent('layer-source-error', { sourceId: this.sourceId, error: err })
         }
       }
-      this.source = this.map.getSource(this.sourceId)
       this.$_addLayer()
       if (this.listenUserEvents) {
         this.$_bindEvents(layerEvents)
       }
-      this.initial = false
       payload.component.$off('load', this.$_deferredMount)
+      this.initial = false
     },
 
-    $_addLayer() {
+    $_addLayer () {
       let existed = this.map.getLayer(this.layerId)
       if (existed) {
         if (this.replace) {
@@ -77,7 +92,7 @@ export default {
       let layer = {
         id: this.layerId,
         source: this.sourceId,
-        type: 'background'
+        type: 'raster'
       }
       if (this.refLayer) {
         layer.ref = this.refLayer
@@ -87,17 +102,12 @@ export default {
         }
         if (this.minzoom) layer.minzoom = this.minzoom
         if (this.maxzoom) layer.maxzoom = this.maxzoom
-        // if (this.layout) {
-        //   layer.layout = this.layout;
-        // }
-        // if (this.filter) layer.filter = this.filter
       }
-      // layer.paint = this.paint ? this.paint : { 'raster-opacity': 0.85 };
+      layer.paint = this.paint ? this.paint : { 'raster-opacity': 0.85 }
       layer.metadata = this.metadata
 
       this.map.addLayer(layer, this.before)
-      this.$_emitMapEvent('added', { layerId: this.layerId })
+      this.$_emitMapEvent('added', { layerId: this.layerId, canvas: this.canvas })
     }
   }
 }
-</script>

@@ -65,6 +65,9 @@ export default {
     },
     mapLayer () {
       return this.map.getLayer(this.layerId)
+    },
+    mapSource () {
+      this.map.getSource(this.sourceId)
     }
   },
 
@@ -146,5 +149,7 @@ export default {
       this.map.removeLayer(this.layerId)
       this.$_emitMapEvent('layer-removed', { layerId: this.layerId })
     }
-  }
+  },
+
+  render (h) {}
 }

@@ -2,7 +2,7 @@
   "name": "vue-mapbox",
   "version": "0.0.34",
   "private": false,
-  "main": "dist/vue-mapbox.common.js",
+  "main": "dist/vue-mapbox.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name vue-mapbox src/main.js",

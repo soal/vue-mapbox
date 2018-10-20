@@ -61,13 +61,13 @@ export default {
   },
   maxBounds: {
     type: Array,
-    default() {
+    default () {
       return undefined
     }
   },
   scrollZoom: {
     type: [Boolean, Object],
-    default() {
+    default () {
       return true
     }
   },
@@ -97,7 +97,7 @@ export default {
   },
   touchZoomRotate: {
     type: [Boolean, Object],
-    default() {
+    default () {
       return true
     }
   },

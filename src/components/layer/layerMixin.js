@@ -53,31 +53,31 @@ export default {
     ...componentProps
   },
 
-  data() {
+  data () {
     return {
       initial: true
     }
   },
 
   computed: {
-    sourceLoaded() {
+    sourceLoaded () {
       return this.map.isSourceLoaded(this.sourceId)
     },
-    mapLayer() {
+    mapLayer () {
       return this.map.getLayer(this.layerId)
     }
   },
 
   watch: {
-    minzoom(val) {
+    minzoom (val) {
       if (this.initial) return
       this.map.setLayerZoomRange(this.layerId, val, this.maxzoom)
     },
-    maxzoom(val) {
+    maxzoom (val) {
       if (this.initial) return
       this.map.setLayerZoomRange(this.layerId, this.minzoom, val)
     },
-    paint(properties) {
+    paint (properties) {
       if (this.initial) return
       for (let prop of Object.keys(this.paint)) {
         if (this.paint[prop] !== properties[prop]) {
@@ -86,7 +86,7 @@ export default {
         }
       }
     },
-    layout(properties) {
+    layout (properties) {
       if (this.initial) return
       for (let prop of Object.keys(this.layout)) {
         if (this.layout[prop] !== properties[prop]) {
@@ -97,7 +97,7 @@ export default {
     }
   },
 
-  beforeDestroy() {
+  beforeDestroy () {
     if (this.map) {
       try {
         this.map.removeLayer(this.layerId)
@@ -115,7 +115,7 @@ export default {
   },
 
   methods: {
-    $_bindEvents(events) {
+    $_bindEvents (events) {
       if (events.length === 0) return
       events.forEach(eventName => {
         this.map.on(eventName, this.layerId, event => {
@@ -124,25 +124,25 @@ export default {
       })
     },
 
-    $_unBindEvents(events) {
+    $_unBindEvents (events) {
       events.forEach(eventName => {
         this.map.off(eventName, this.layerId)
       })
     },
 
-    $_watchSourceLoading(data) {
+    $_watchSourceLoading (data) {
       if (data.dataType === 'source' && data.sourceId === this.sourceId) {
         this.$_emitMapEvent('layer-source-loading', { sourceId: this.sourceId })
         this.map.off('dataloading', this.$_watchSourceLoading)
       }
     },
 
-    move(beforeId) {
+    move (beforeId) {
       this.map.moveLayer(this.layerId, beforeId)
       this.$_emitMapEvent('layer-moved', { layerId: this.layerId, beforeId: beforeId })
     },
 
-    remove() {
+    remove () {
       this.map.removeLayer(this.layerId)
       this.$_emitMapEvent('layer-removed', { layerId: this.layerId })
     }

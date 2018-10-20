@@ -45,7 +45,7 @@ export const plugin = {
    * @param {Object} options: mapboxgl: MapboxGl JS instances
    * @returns
    */
-  install(Vue, options = {}) {
+  install (Vue, options = {}) {
     const data = { mapbox: options.mapboxgl }
     if (options.plugins && options.plugins.length) {
       options.plugins.forEach(plugin => {
@@ -54,7 +54,7 @@ export const plugin = {
         data[key] = value
       })
     }
-    Vue.mixin({ data() { return data } })
+    Vue.mixin({ data () { return data } })
   }
 }
 

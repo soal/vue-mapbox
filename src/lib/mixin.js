@@ -3,18 +3,18 @@
  * @mixin
  */
 export default {
-  created() {
+  created () {
     this.map = null
   },
-  mounted() {
+  mounted () {
     this.$_checkMapTree()
     // We wait for "load" event from map component to ensure mapbox is loaded and map created
   },
 
   methods: {
-    $_findBaseMap() {
+    $_findBaseMap () {
       let baseMapComponent = null
-      function walkParents(component) {
+      function walkParents (component) {
         if (component.baseMap) {
           baseMapComponent = component
         } else {
@@ -29,7 +29,7 @@ export default {
       }
       return baseMapComponent
     },
-    $_checkMapTree() {
+    $_checkMapTree () {
       let mapComponent = this.$_findBaseMap()
       if (mapComponent) {
         if (mapComponent.mapLoaded) {
@@ -39,7 +39,7 @@ export default {
         }
       }
     },
-    $_emitMapEvent(name, data = {}) {
+    $_emitMapEvent (name, data = {}) {
       this.$emit(name, {
         map: this.map,
         component: this,
@@ -47,7 +47,7 @@ export default {
       })
     },
 
-    $_bindSelfEvents(events, emitter = null) {
+    $_bindSelfEvents (events, emitter = null) {
       if (events.length === 0) return
       emitter = emitter || this.map
       events.forEach(eventName => {
@@ -57,7 +57,7 @@ export default {
       })
     },
 
-    $_unbindSelfEvents(events, emitter = null) {
+    $_unbindSelfEvents (events, emitter = null) {
       if (events.length === 0) return
       emitter = emitter || this.map
       events.forEach(eventName => {

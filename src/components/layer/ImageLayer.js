@@ -19,6 +19,10 @@ export default {
     coordinates (val) {
       if (this.initial) return
       this.mapSource.setCoordinates(val)
+    },
+    url (val) {
+      if (this.initial) return
+      this.mapSource.updateImage({ url: val, coordinates: this.coordinates })
     }
   },
 

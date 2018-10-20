@@ -1,14 +1,12 @@
-import baseMixin from '../../lib/mixin'
-import controlMixin from '../../lib/controlMixin'
+import controlMixin from './controlMixin'
 
 export default {
-  name: 'FullscreenControl',
-  mixins: [baseMixin, controlMixin],
-
+  name: 'NavigationControl',
+  mixins: [controlMixin],
   props: {
     position: {
       type: String,
-      default: 'top-right'
+      default: 'top-right' // TODO: add validator
     }
   },
 
@@ -19,14 +17,15 @@ export default {
   },
 
   created () {
-    this.control = new this.mapbox.FullscreenControl()
+    this.control = new this.mapbox.NavigationControl()
   },
 
   methods: {
     $_deferredMount (payload) {
       this.map = payload.map
       this.map.addControl(this.control, this.position)
-      this.$emit('added', this.control)
+      this.$_emitMapEvent('added', { control: this.control })
+
       payload.component.$off('load', this.$_deferredMount)
     }
   }

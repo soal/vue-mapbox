@@ -1,6 +1,7 @@
 # Logs
 logs
 *.log
+.dist
 npm-debug.log*
 *.code-workspace
 

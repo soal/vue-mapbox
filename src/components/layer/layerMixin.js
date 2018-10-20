@@ -65,6 +65,9 @@ export default {
     },
     mapLayer () {
       return this.map.getLayer(this.layerId)
+    },
+    mapSource () {
+      this.map.getSource(this.sourceId)
     }
   },
 

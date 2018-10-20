@@ -28,7 +28,7 @@ export default {
   },
 
   methods: {
-    $_deferredMount(payload) {
+    $_deferredMount (payload) {
       this.map = payload.map
       let source = {
         type: 'raster',
@@ -59,7 +59,7 @@ export default {
       payload.component.$off('load', this.$_deferredMount)
     },
 
-    _addLayer() {
+    _addLayer () {
       let existed = this.map.getLayer(this.layerId)
       if (existed) {
         if (this.replace) {

@@ -33,6 +33,7 @@ export default {
       let mapComponent = this.$_findBaseMap()
       if (mapComponent) {
         if (mapComponent.mapLoaded) {
+          // mapComponent.$off('load', this.$_deferredMount)
           this.$_deferredMount({ component: mapComponent, map: mapComponent.map })
         } else {
           mapComponent.$on('load', this.$_deferredMount)

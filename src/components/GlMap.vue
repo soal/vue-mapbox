@@ -116,7 +116,12 @@ export default {
       this.$_bindPropsUpdateEvents()
       this.initial = false
       this.mapLoaded = true
+      // this.$emit('load', { map, component: this })
     })
+  },
+
+  updated () {
+    console.log('MAP UPDATED!')
   },
 
   destroyed () {

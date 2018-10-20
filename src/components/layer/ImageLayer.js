@@ -14,16 +14,11 @@ export default {
       required: true
     }
   },
-  data () {
-    return {
-      source: undefined
-    }
-  },
 
   watch: {
     coordinates (val) {
       if (this.initial) return
-      this.source.setCoordinates(val)
+      this.mapSource.setCoordinates(val)
     }
   },
 
@@ -47,7 +42,6 @@ export default {
           this.$_emitMapEvent('layer-source-error', { sourceId: this.sourceId, error: err })
         }
       }
-      this.source = this.map.getSource(this.sourceId)
       this.$_addLayer()
       if (this.listenUserEvents) {
         this.$_bindEvents(layerEvents)
@@ -62,7 +56,7 @@ export default {
         if (this.replace) {
           this.map.removeLayer(this.layerId)
         } else {
-          this._emitMapEvent('layer-exists', { layerId: this.layerId })
+          this.$_emitMapEvent('layer-exists', { layerId: this.layerId })
           return existed
         }
       }

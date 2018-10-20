@@ -24,7 +24,7 @@ export default {
   watch: {
     source (data) {
       if (this.initial) return
-      this.map.getSource(this.sourceId).setData(data)
+      this.mapSource.setData(data)
     },
     filter (filter) {
       if (this.initial) return

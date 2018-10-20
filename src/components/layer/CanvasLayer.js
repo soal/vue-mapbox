@@ -13,26 +13,20 @@ export default {
     animate: {
       type: Boolean,
       default: true
+    },
+    width: {
+      type: Number,
+      required: true
+    },
+    height: {
+      type: Number,
+      required: true
     }
-  },
-
-  data () {
-    return {
-      source: undefined
-    }
-  },
-
-  mounted () {
-    if (this.$slots.default[0].tag !== 'canvas') {
-      throw new Error(`Error in map layer component with source id "${this.sourceId}" and layer id "${this.layerId}"
-          You need to add canvas element as child of canvas layer.`)
-    }
-    this.$_checkMapTree()
   },
 
   computed: {
     canvas () {
-      return this.map.getSource(this.sourceId).getCanvas()
+      return this.mapSource.getCanvas()
     }
   },
 
@@ -47,17 +41,22 @@ export default {
     },
     coordinates (val) {
       if (this.initial) return
-      this.source.setCoordinates(val)
+      this.mapSource.setCoordinates(val)
     }
   },
 
   methods: {
     $_deferredMount (payload) {
+      const canvasElement = document.createElement('canvas')
+      canvasElement.id = this.sourceId
+      canvasElement.width = this.width
+      canvasElement.height = this.height
+
       const source = {
         type: 'canvas',
         coordinates: this.coordinates,
         animate: this.animate,
-        canvas: this.$slots.default[0].data.attrs.id
+        canvas: canvasElement
       }
 
       this.map = payload.map
@@ -72,7 +71,6 @@ export default {
           this.$_emitMapEvent('layer-source-error', { sourceId: this.sourceId, error: err })
         }
       }
-      this.source = this.map.getSource(this.sourceId)
       this.$_addLayer()
       if (this.listenUserEvents) {
         this.$_bindEvents(layerEvents)
@@ -104,23 +102,12 @@ export default {
         }
         if (this.minzoom) layer.minzoom = this.minzoom
         if (this.maxzoom) layer.maxzoom = this.maxzoom
-        // if (this.layout) {
-        //   layer.layout = this.layout;
-        // }
-        // if (this.filter) layer.filter = this.filter
       }
       layer.paint = this.paint ? this.paint : { 'raster-opacity': 0.85 }
       layer.metadata = this.metadata
 
       this.map.addLayer(layer, this.before)
-      this.$_emitMapEvent('added', { layerId: this.layerId })
+      this.$_emitMapEvent('added', { layerId: this.layerId, canvas: this.canvas })
     }
-  },
-
-  render (h) {
-    // FIXME: render teplate:
-    // <div style="display: none">
-    //   <slot/>
-    // </div>
   }
 }

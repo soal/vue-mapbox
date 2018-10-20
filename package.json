@@ -1,6 +1,12 @@
 {
   "name": "vue-mapbox",
   "version": "0.0.34",
+  "author": {
+    "name": "soal",
+    "email": "sorrrow.about.alice@gmail.com",
+    "url": "https://github.com/soal"
+  },
+  "homepage": "https://soal.github.io/vue-mapbox",
   "private": false,
   "main": "dist/vue-mapbox.umd.min.js",
   "scripts": {

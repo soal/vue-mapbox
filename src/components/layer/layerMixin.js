@@ -61,13 +61,13 @@ export default {
 
   computed: {
     sourceLoaded () {
-      return this.map.isSourceLoaded(this.sourceId)
+      return this.map ? this.map.isSourceLoaded(this.sourceId) : false
     },
     mapLayer () {
-      return this.map.getLayer(this.layerId)
+      return this.map ? this.map.getLayer(this.layerId) : null
     },
     mapSource () {
-      this.map.getSource(this.sourceId)
+      return this.map ? this.map.getSource(this.sourceId) : null
     }
   },
 

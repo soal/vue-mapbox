@@ -26,7 +26,7 @@ export default {
 
   computed: {
     canvas () {
-      return this.mapSource.getCanvas()
+      return this.mapSource ? this.mapSource.getCanvas() : null
     }
   },
 

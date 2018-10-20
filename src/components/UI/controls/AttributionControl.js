@@ -1,9 +1,8 @@
-import baseMixin from '../../lib/mixin'
-import controlMixin from '../../lib/controlMixin'
+import controlMixin from './controlMixin'
 
 export default {
   name: 'AttributionControl',
-  mixins: [baseMixin, controlMixin],
+  mixins: [controlMixin],
   props: {
     compact: {
       type: Boolean,

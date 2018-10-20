@@ -1,9 +1,10 @@
-import GlMap from './components/GlMap.vue'
-import NavigationControl from './components/UI/NavigationControl'
-import GeolocateControl from './components/UI/GeolocateControl'
-import FullscreenControl from './components/UI/FullscreenControl'
-import AttributionControl from './components/UI/AttributionControl'
-import ScaleControl from './components/UI/ScaleControl'
+import GlMap from './components/map/GlMap.vue'
+
+import NavigationControl from './components/UI/controls/NavigationControl'
+import GeolocateControl from './components/UI/controls/GeolocateControl'
+import FullscreenControl from './components/UI/controls/FullscreenControl'
+import AttributionControl from './components/UI/controls/AttributionControl'
+import ScaleControl from './components/UI/controls/ScaleControl'
 import Marker from './components/UI/Marker.vue'
 import Popup from './components/UI/Popup.vue'
 
@@ -14,7 +15,7 @@ import VideoLayer from './components/layer/VideoLayer'
 import VectorLayer from './components/layer/VectorLayer'
 
 import baseMixin from './lib/mixin'
-import controlMixin from './lib/controlMixin'
+import controlMixin from './components/UI/controls/controlMixin'
 
 export const mglBaseMixin = baseMixin
 export const mglControlMixin = controlMixin

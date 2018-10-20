@@ -5,11 +5,15 @@
 </template>
 
 <script>
-import mapEvents from '../lib/events'
-import props from '../lib/options'
+import mapEvents from './events'
+import props from './options'
+import watchers from './watchers'
 
 export default {
   name: 'GlMap',
+
+  mixins: [watchers],
+
   props,
 
   data () {
@@ -32,69 +36,6 @@ export default {
     images () { return this.map ? this.map.listImages() : null }
   },
 
-  watch: {
-    maxBounds (bounds) {
-      if (this.initial) return
-      this.map.setMaxBounds(bounds)
-      this.maxBounds = bounds
-    },
-    minZoom (zoom) {
-      if (this.initial) return
-      this.map.setMinZoom(zoom)
-      this.minZoom = zoom
-    },
-    maxZoom (zoom) {
-      if (this.initial) return
-      this.map.setMaxZoom(zoom)
-      this.maxZoom = zoom
-    },
-    mapStyle (style) {
-      if (this.initial) return
-      this.map.setStyle(style)
-      this.mapStyle = style
-    },
-    collisionBoxes (val) {
-      if (this.initial) return
-      this.map.showCollisionBoxes = val
-      this.showCollisionBoxes = val
-    },
-    tileBoundaries (val) {
-      if (this.initial) return
-      this.map.showTileBoundaries = val
-      this.showTileBoundaries = val
-    },
-    repaint (val) {
-      if (this.initial) return
-      this.map.repaint = val
-      this.repaint = val
-    },
-    zoom (val) {
-      if (this.initial) return
-      this.map.setZoom(val)
-      this.zoom = val
-    },
-    center (val) {
-      if (this.initial) return
-      this.map.setCenter(val)
-      this.center = val
-    },
-    bearing (val) {
-      if (this.initial) return
-      this.map.setBearing(val)
-      this.bearing = val
-    },
-    pitch (val) {
-      if (this.initial) return
-      this.map.setPitch(val)
-      this.pitch = val
-    },
-    light (val) {
-      if (this.initial) return
-      this.map.setLight(val)
-      this.light = val
-    }
-  },
-
   created () {
     this.map = null
   },
@@ -105,7 +46,7 @@ export default {
       if (this.RTLTextPluginUrl !== undefined) {
         map.setRTLTextPlugin(this.RTLTextPluginUrl, this.$_RTLTextPluginError)
       }
-      this.$emit('load', { map, component: this })
+      // this.$emit('load', { map, component: this })
       const eventNames = Object.keys(mapEvents)
       const eventsToListen = Object.keys(this.$options._parentListeners)
         .filter(eventName =>
@@ -116,7 +57,7 @@ export default {
       this.$_bindPropsUpdateEvents()
       this.initial = false
       this.mapLoaded = true
-      // this.$emit('load', { map, component: this })
+      this.$emit('load', { map, component: this })
     })
   },
 

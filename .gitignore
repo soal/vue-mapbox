@@ -2,7 +2,7 @@
 logs
 *.log
 .dist
-dist/*.005b0dfd02b8f06ef04c.hot-update*
+dist/*.hot-update*
 npm-debug.log*
 *.code-workspace
 

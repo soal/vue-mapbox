@@ -1,4 +1,5 @@
 import baseMixin from '../../lib/mixin'
+import withEvents from '../../lib/withEvents'
 
 const mapboxSourceProps = {
   sourceId: {
@@ -46,7 +47,7 @@ const componentProps = {
 }
 
 export default {
-  mixins: [baseMixin],
+  mixins: [baseMixin, withEvents],
   props: {
     ...mapboxSourceProps,
     ...mapboxLayerStyleProps,
@@ -119,18 +120,11 @@ export default {
 
   methods: {
     $_bindEvents (events) {
-      if (events.length === 0) return
-      events.forEach(eventName => {
-        this.map.on(eventName, this.layerId, event => {
-          this.$_emitMapEvent(eventName, { mapEvent: event })
-        })
-      })
+      this.$_bindSelfEvents(events, this.map, this.layerId, { layerId: this.layerId })
     },
 
     $_unBindEvents (events) {
-      events.forEach(eventName => {
-        this.map.off(eventName, this.layerId)
-      })
+      this.$_unbindSelfEvents(events, this.map, this.layerId)
     },
 
     $_watchSourceLoading (data) {

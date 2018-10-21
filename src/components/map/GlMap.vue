@@ -1,8 +1,8 @@
 <script>
+import withEvents from '../../lib/withEvents'
 import mapEvents from './events'
 import props from './options'
 import watchers from './watchers'
-// import generateWatchers from './watchers'
 import eventCatchers from './methods/private/eventCatchers'
 
 import publicMethods from './methods/public'
@@ -13,7 +13,8 @@ export default {
   mixins: [
     watchers,
     eventCatchers,
-    publicMethods
+    publicMethods,
+    withEvents
   ],
 
   props,
@@ -38,8 +39,6 @@ export default {
     images () { return this.map ? this.map.listImages() : null }
   },
 
-  // watch: generateWatchers(this),
-
   created () {
     this.map = null
     this.updates = {
@@ -57,12 +56,11 @@ export default {
         map.setRTLTextPlugin(this.RTLTextPluginUrl, this.$_RTLTextPluginError)
       }
       const eventNames = Object.keys(mapEvents)
-      const eventsToListen = Object.keys(this.$options._parentListeners)
-        .filter(eventName =>
-          eventNames.indexOf(eventName) !== -1
-        )
 
-      this.$_bindEvents(eventsToListen)
+      // this.$_bindEvents(eventsToListen)
+      this.$_bindSelfEvents(eventNames, this.map, null, event => {
+        return { pitch: this.map.getPitch() }
+      })
       this.$_bindPropsUpdateEvents()
       this.initial = false
       this.mapLoaded = true
@@ -70,34 +68,17 @@ export default {
     })
   },
 
-  beforeUpdate () {
-    console.log(this)
-    console.log(this._watcher.dirty)
-  },
-
   beforeDestroy () {
     if (this.map) this.map.remove()
   },
 
   methods: {
-    $_emitUpdateEvent (prop, data) {
-      this.$emit(`update:${prop}`, data)
-    },
     $_updateSyncedPropsFabric (prop, dataGetter) {
       return event => {
-        this._watcher.active = false
-        // console.log('EVENT ', event)
-        // console.log(prop, dataGetter)
-        // console.log(`update:${prop}`, dataGetter())
-        // this.$nextTick(() => {
-        //   console.log('NEXT TICK ', event)
-        //   this._watcher.active = false
-        // })
-        // console.log(`update:${prop}`, dataGetter())
-        return this.$_emitUpdateEvent(prop, dataGetter())
+        this.updates[prop] = true
+        return this.$emit(`update:${prop}`, dataGetter())
       }
     },
-    // We wait in promise to ensure map is loaded and other components will receive map object
     $_bindPropsUpdateEvents () {
       const syncedProps = [
         { event: 'moveend', prop: 'center', getter: this.map.getCenter.bind(this.map) },
@@ -105,20 +86,11 @@ export default {
         { event: 'rotate', prop: 'bearing', getter: this.map.getBearing.bind(this.map) },
         { event: 'pitch', prop: 'pitch', getter: this.map.getPitch.bind(this.map) }
       ]
-      console.log(this)
       syncedProps.forEach(({ event, prop, getter }) => {
         if (this.$listeners[`update:${prop}`]) {
           this.map.on(event, this.$_updateSyncedPropsFabric(prop, getter))
         }
       })
-      // this.map.on('moveend', event => this.$emit('update:center', this.map.getCenter()))
-      // this.map.on('zoomend', event => this.$emit('update:zoom', this.map.getZoom()))
-      // this.map.on('rotate', event => this.$emit('update:bearing', this.map.getBearing()))
-      // this.map.on('pitch', event => this.$emit('update:pitch', this.map.getPitch()))
-      // this.map.on('moveend', this.$_updateSyncedPropsFabric('center', this.map.getCenter()))
-      // this.map.on('zoomend', this.$_updateSyncedPropsFabric('zoom', this.map.getZoom()))
-      // this.map.on('rotate', this.$_updateSyncedPropsFabric('bearing', this.map.getBearing()))
-      // this.map.on('pitch', this.$_updateSyncedPropsFabric('pitch', this.map.getPitch()))
     },
     $_loadMap () {
       return new Promise((resolve) => {
@@ -136,14 +108,14 @@ export default {
       this.$emit('rtl-plugin-error', { map: this.map, error: error })
     },
 
-    $_bindEvents (events) {
-      if (events.length === 0) return
-      for (let e of events) {
-        this.map.on(e, event => {
-          this.$emit(e, event)
-        })
-      }
-    },
+    // $_bindEvents (events) {
+    //   if (events.length === 0) return
+    //   for (let e of events) {
+    //     this.map.on(e, event => {
+    //       this.$emit(e, event)
+    //     })
+    //   }
+    // },
 
     $_unBindEvents (events) {
       events.forEach(eventName => {

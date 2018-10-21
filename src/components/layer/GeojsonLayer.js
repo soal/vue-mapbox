@@ -54,16 +54,16 @@ export default {
           }
         }
       }
-      this._addLayer()
-      if (this.listenUserEvents) {
-        this.$_bindEvents(layerEvents)
-      }
+      this.$_addLayer()
+      // if (this.listenUserEvents) {
+      this.$_bindEvents(layerEvents)
+      // }
       this.map.off('dataloading', this.$_watchSourceLoading)
       this.initial = false
       payload.component.$off('load', this.$_deferredMount)
     },
 
-    _addLayer () {
+    $_addLayer () {
       let existed = this.map.getLayer(this.layerId)
       if (existed) {
         if (this.replace) {

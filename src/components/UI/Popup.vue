@@ -7,6 +7,7 @@
 
 <script>
 import baseMixin from '../../lib/mixin'
+import withEvents from '../../lib/withEvents'
 
 /**
  * Popup component.
@@ -14,7 +15,7 @@ import baseMixin from '../../lib/mixin'
  */
 export default {
   name: 'Popup',
-  mixins: [baseMixin],
+  mixins: [baseMixin, withEvents],
   props: {
     /**
      * If `true`, a close button will appear in the top right corner of the popup.
@@ -39,7 +40,7 @@ export default {
      *  'top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right'
      */
     anchor: {
-      validator(value) {
+      validator (value) {
         let allowedValues = ['top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right']
         return (typeof value === 'string' && allowedValues.indexOf(value) !== -1) || value === undefined
       },
@@ -70,7 +71,7 @@ export default {
     }
   },
 
-  data() {
+  data () {
     return {
       initial: true,
       popup: undefined
@@ -82,7 +83,7 @@ export default {
      * true if popup is open
      * @returns {*}
      */
-    isOpen() {
+    isOpen () {
       if (this.popup !== undefined) {
         return this.popup.isOpen()
       }
@@ -90,11 +91,11 @@ export default {
     }
   },
 
-  mounted() {
+  mounted () {
     this.$_checkMapTree()
   },
 
-  beforeDestroy() {
+  beforeDestroy () {
     if (this.map) {
       this.$_emitMapEvent('removed', { popup: this.popup })
       this.popup.remove()
@@ -102,21 +103,21 @@ export default {
   },
 
   watch: {
-    coordinates(lngLat) {
+    coordinates (lngLat) {
       if (this.initial) return
       this.popup.setLngLat(lngLat)
     }
   },
 
   methods: {
-    $_deferredMount(payload) {
+    $_deferredMount (payload) {
       this.map = payload.map
       this.$_addPopup()
       this.initial = false
       payload.component.$off('load', this.$_deferredMount)
     },
 
-    $_addPopup() {
+    $_addPopup () {
       this.popup = new this.mapbox.Popup({ ...this._props })
       if (this.coordinates !== undefined) this.popup.setLngLat(this.coordinates)
       if (this.$slots.default !== undefined) {
@@ -147,7 +148,7 @@ export default {
       }
     },
 
-    $_onClose() {
+    $_onClose () {
       /**
        * Popup close event
        * @event close
@@ -156,7 +157,7 @@ export default {
       this.$_emitMapEvent('close', { popup: this.popup })
     },
 
-    $_onOpen() {
+    $_onOpen () {
       /**
        * Popup close event
        * @event open

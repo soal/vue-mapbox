@@ -9,6 +9,7 @@
 
 <script>
 import baseMixin from '../../lib/mixin'
+import withEvents from '../../lib/withEvents'
 
 const markerEvents = {
   drag: 'drag',
@@ -18,7 +19,7 @@ const markerEvents = {
 
 export default {
   name: 'MapMarker',
-  mixins: [baseMixin],
+  mixins: [baseMixin, withEvents],
   props: {
     // mapbox marker options
     offset: {
@@ -96,13 +97,14 @@ export default {
       })
 
       const eventNames = Object.keys(markerEvents)
-      if (this.$options._parentListeners) {
-        const eventsToListen = Object.keys(this.$options._parentListeners)
-          .filter(eventName =>
-            eventNames.indexOf(eventName) !== -1
-          )
-        this.$_bindSelfEvents(eventsToListen, this.marker)
-      }
+      this.$_bindSelfEvents(eventNames, this.marker)
+      // if (this.$options._parentListeners) {
+      //   const eventsToListen = Object.keys(this.$options._parentListeners)
+      //     .filter(eventName =>
+      //       eventNames.indexOf(eventName) !== -1
+      //     )
+      //   this.$_bindSelfEvents(eventsToListen, this.marker)
+      // }
 
       this.initial = false
       payload.component.$off('load', this.$_deferredMount)

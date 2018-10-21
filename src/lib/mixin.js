@@ -1,7 +1,14 @@
 // @ts-check
-/**
- * @mixin
- */
+function walkParents (component) {
+  if (component.baseMap) {
+    return component
+  } else {
+    if (component.$parent !== undefined) {
+      walkParents(component.$parent)
+    }
+  }
+}
+
 export default {
   created () {
     this.map = null
@@ -13,17 +20,7 @@ export default {
 
   methods: {
     $_findBaseMap () {
-      let baseMapComponent = null
-      function walkParents (component) {
-        if (component.baseMap) {
-          baseMapComponent = component
-        } else {
-          if (component.$parent !== undefined) {
-            walkParents(component.$parent)
-          }
-        }
-      }
-      walkParents(this.$parent)
+      const baseMapComponent = walkParents(this.$parent)
       if (baseMapComponent === undefined) {
         throw new Error('Component must have root map')
       }
@@ -33,37 +30,11 @@ export default {
       let mapComponent = this.$_findBaseMap()
       if (mapComponent) {
         if (mapComponent.mapLoaded) {
-          // mapComponent.$off('load', this.$_deferredMount)
           this.$_deferredMount({ component: mapComponent, map: mapComponent.map })
         } else {
           mapComponent.$on('load', this.$_deferredMount)
         }
       }
-    },
-    $_emitMapEvent (name, data = {}) {
-      this.$emit(name, {
-        map: this.map,
-        component: this,
-        ...data
-      })
-    },
-
-    $_bindSelfEvents (events, emitter = null) {
-      if (events.length === 0) return
-      emitter = emitter || this.map
-      events.forEach(eventName => {
-        emitter.on(eventName, event => {
-          this.$_emitMapEvent(`${eventName}`, { mapEvent: event })
-        })
-      })
-    },
-
-    $_unbindSelfEvents (events, emitter = null) {
-      if (events.length === 0) return
-      emitter = emitter || this.map
-      events.forEach(eventName => {
-        emitter.off(eventName, this.layerId)
-      })
     }
   }
 }

@@ -3,62 +3,64 @@ export default {
     maxBounds (bounds) {
       if (this.initial) return
       this.map.setMaxBounds(bounds)
-      this.maxBounds = bounds
     },
     minZoom (zoom) {
       if (this.initial) return
       this.map.setMinZoom(zoom)
-      this.minZoom = zoom
     },
     maxZoom (zoom) {
       if (this.initial) return
       this.map.setMaxZoom(zoom)
-      this.maxZoom = zoom
     },
     mapStyle (style) {
       if (this.initial) return
       this.map.setStyle(style)
-      this.mapStyle = style
     },
     collisionBoxes (val) {
       if (this.initial) return
       this.map.showCollisionBoxes = val
-      this.showCollisionBoxes = val
     },
     tileBoundaries (val) {
       if (this.initial) return
       this.map.showTileBoundaries = val
-      this.showTileBoundaries = val
     },
     repaint (val) {
       if (this.initial) return
       this.map.repaint = val
-      this.repaint = val
     },
     zoom (val) {
       if (this.initial) return
-      this.map.setZoom(val)
-      this.zoom = val
+      if (this._watcher.active) {
+        this.map.setZoom(val)
+      } else {
+        this.$nextTick(() => {
+          this._watcher.active = false
+        })
+      }
     },
     center (val) {
       if (this.initial) return
-      this.map.setCenter(val)
-      this.center = val
+      if (this._watcher.active) {
+        this.map.setCenter(val)
+      } else {
+        this.$nextTick(() => {
+          // console.log('NEXT TICK ')
+          this._watcher.active = false
+        })
+      }
+      // this.map.setCenter(val)
     },
     bearing (val) {
       if (this.initial) return
       this.map.setBearing(val)
-      this.bearing = val
     },
     pitch (val) {
       if (this.initial) return
       this.map.setPitch(val)
-      this.pitch = val
     },
     light (val) {
       if (this.initial) return
       this.map.setLight(val)
-      this.light = val
     }
   }
 }

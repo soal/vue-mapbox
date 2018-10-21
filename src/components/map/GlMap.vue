@@ -1,9 +1,3 @@
-<template>
-  <div :id="container" ref="container">
-    <slot/>
-  </div>
-</template>
-
 <script>
 import mapEvents from './events'
 import props from './options'
@@ -45,6 +39,12 @@ export default {
 
   created () {
     this.map = null
+    this.updates = {
+      zoom: false,
+      center: false,
+      pitch: false,
+      bearing: false
+    }
   },
 
   mounted () {
@@ -67,28 +67,62 @@ export default {
     })
   },
 
-  updated () {
-    console.log('MAP UPDATED!')
+  beforeUpdate () {
+    console.log(this)
+    console.log(this._watcher.dirty)
   },
 
-  destroyed () {
+  beforeDestroy () {
     if (this.map) this.map.remove()
   },
 
   methods: {
+    $_emitUpdateEvent (prop, data) {
+      this.$emit(`update:${prop}`, data)
+    },
+    $_updateSyncedPropsFabric (prop, dataGetter) {
+      return event => {
+        this._watcher.active = false
+        // console.log('EVENT ', event)
+        // console.log(prop, dataGetter)
+        // console.log(`update:${prop}`, dataGetter())
+        // this.$nextTick(() => {
+        //   console.log('NEXT TICK ', event)
+        //   this._watcher.active = false
+        // })
+        // console.log(`update:${prop}`, dataGetter())
+        return this.$_emitUpdateEvent(prop, dataGetter())
+      }
+    },
     // We wait in promise to ensure map is loaded and other components will receive map object
     $_bindPropsUpdateEvents () {
-      this.map.on('moveend', event => this.$emit('update:center', this.map.getCenter()))
-      this.map.on('zoomend', event => this.$emit('update:zoom', this.map.getZoom()))
-      this.map.on('rotate', event => this.$emit('update:bearing', this.map.getBearing()))
-      this.map.on('pitch', event => this.$emit('update:pitch', this.map.getPitch()))
+      const syncedProps = [
+        { event: 'moveend', prop: 'center', getter: this.map.getCenter.bind(this.map) },
+        { event: 'zoomend', prop: 'zoom', getter: this.map.getZoom.bind(this.map) },
+        { event: 'rotate', prop: 'bearing', getter: this.map.getBearing.bind(this.map) },
+        { event: 'pitch', prop: 'pitch', getter: this.map.getPitch.bind(this.map) }
+      ]
+      console.log(this)
+      syncedProps.forEach(({ event, prop, getter }) => {
+        if (this.$listeners[`update:${prop}`]) {
+          this.map.on(event, this.$_updateSyncedPropsFabric(prop, getter))
+        }
+      })
+      // this.map.on('moveend', event => this.$emit('update:center', this.map.getCenter()))
+      // this.map.on('zoomend', event => this.$emit('update:zoom', this.map.getZoom()))
+      // this.map.on('rotate', event => this.$emit('update:bearing', this.map.getBearing()))
+      // this.map.on('pitch', event => this.$emit('update:pitch', this.map.getPitch()))
+      // this.map.on('moveend', this.$_updateSyncedPropsFabric('center', this.map.getCenter()))
+      // this.map.on('zoomend', this.$_updateSyncedPropsFabric('zoom', this.map.getZoom()))
+      // this.map.on('rotate', this.$_updateSyncedPropsFabric('bearing', this.map.getBearing()))
+      // this.map.on('pitch', this.$_updateSyncedPropsFabric('pitch', this.map.getPitch()))
     },
     $_loadMap () {
       return new Promise((resolve) => {
         if (this.accessToken) this.mapbox.accessToken = this.accessToken
         const map = new this.mapbox.Map({
           ...this._props,
-          container: this.$el,
+          container: this.$refs.container,
           style: this.mapStyle
         })
         map.on('load', () => resolve(map))
@@ -173,6 +207,24 @@ export default {
         center
       })
     }
+  },
+
+  render (h) {
+    return h(
+      'div',
+      [
+        h(
+          'div',
+          {
+            attrs: {
+              id: this.container
+            },
+            ref: 'container'
+          }
+        ),
+        this.$slots.default
+      ]
+    )
   }
 }
 </script>

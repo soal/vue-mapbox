@@ -2,6 +2,7 @@
 import mapEvents from './events'
 import props from './options'
 import watchers from './watchers'
+// import generateWatchers from './watchers'
 import eventCatchers from './methods/private/eventCatchers'
 
 import publicMethods from './methods/public'
@@ -36,6 +37,8 @@ export default {
     canvasContainer () { return this.map ? this.map.getCanvasContainer() : null },
     images () { return this.map ? this.map.listImages() : null }
   },
+
+  // watch: generateWatchers(this),
 
   created () {
     this.map = null

@@ -15,21 +15,20 @@ const watchers = {
 
 function watcher (prop, callback, next, prev) {
   if (this.initial) return
-  this.propsIsUpdating[prop] = true
-  // if (this.$listeners[`update:${prop}`]) {
-  if (this.propsIsUpdating[prop]) {
-    this._watcher.active = false
-    this.$nextTick(() => {
+  if (this.$listeners[`update:${prop}`]) {
+    if (this.propsIsUpdating[prop]) {
+      this._watcher.active = false
+      this.$nextTick(() => {
+        this._watcher.active = true
+      })
+    } else {
       this._watcher.active = true
-    })
+      callback(next, prev)
+    }
+    this.propsIsUpdating[prop] = false
   } else {
-    this._watcher.active = true
     callback(next, prev)
   }
-  this.propsIsUpdating[prop] = false
-  // } else {
-  //   callback(next, prev)
-  // }
 }
 
 function makeWatchers () {

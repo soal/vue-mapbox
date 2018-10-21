@@ -1,4 +1,4 @@
-const props = {
+const watchers = {
   maxBounds (val) { this.map.setMaxBounds(val) },
   minZoom (val) { this.map.setMinZoom(val) },
   maxZoom (val) { this.map.setMaxZoom(val) },
@@ -6,10 +6,7 @@ const props = {
   collisionBoxes (val) { this.map.showCollisionBoxes = val },
   tileBoundaries (val) { this.map.showTileBoundaries = val },
   repaint (val) { this.map.repaint = val },
-  zoom (next, prev) {
-    console.log('ZOOOM!!', this, next, prev)
-    this.map.setZoom(next)
-  },
+  zoom (next, prev) { this.map.setZoom(next) },
   center (val) { this.map.setCenter(val) },
   bearing (val) { this.map.setBearing(val) },
   pitch (val) { this.map.setPitch(val) },
@@ -18,30 +15,31 @@ const props = {
 
 function watcher (prop, callback, next, prev) {
   if (this.initial) return
-  if (this.$listeners[`update:${prop}`]) {
-    if (this.updates[prop]) {
-      this._watcher.active = false
-      this.$nextTick(() => {
-        this._watcher.active = true
-      })
-    } else {
+  this.propsIsUpdating[prop] = true
+  // if (this.$listeners[`update:${prop}`]) {
+  if (this.propsIsUpdating[prop]) {
+    this._watcher.active = false
+    this.$nextTick(() => {
       this._watcher.active = true
-      callback(next, prev)
-    }
-    this.updates[prop] = false
+    })
   } else {
+    this._watcher.active = true
     callback(next, prev)
   }
+  this.propsIsUpdating[prop] = false
+  // } else {
+  //   callback(next, prev)
+  // }
 }
 
 function makeWatchers () {
-  const watchers = {}
-  Object.entries(props).forEach(prop => {
-    watchers[prop[0]] = function (next, prev) {
+  const wrappers = {}
+  Object.entries(watchers).forEach(prop => {
+    wrappers[prop[0]] = function (next, prev) {
       return watcher.call(this, prop[0], prop[1].bind(this), next, prev)
     }
   })
-  return watchers
+  return wrappers
 }
 
 export default {

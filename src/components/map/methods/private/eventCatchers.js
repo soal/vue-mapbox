@@ -1,47 +1,47 @@
 export default {
   methods: {
     $_catchMoveFabric (eventData, resolve, reject) {
-      let self = this
-      return function catchMove (options) {
+      const catchMove = options => {
         if (options.eventId !== eventData.eventId) return
-        let newCenter = self.map.getCenter()
-        self.$emit('update:center', newCenter)
-        self.map.off('moveend', catchMove)
+        let newCenter = this.map.getCenter()
+        this.$emit('update:center', newCenter)
+        this.map.off('moveend', catchMove)
         return resolve({ eventData, center: newCenter })
       }
+      return catchMove
     },
 
     $_catchZoomFabric (eventData, resolve, reject) {
-      let self = this
-      return function catchZoom (options) {
+      const catchZoom = options => {
         if (options.eventId !== eventData.eventId) return
-        let newZoom = self.map.getZoom()
-        self.$emit('update:zoom', newZoom)
-        self.map.off('zoomend', catchZoom)
+        let newZoom = this.map.getZoom()
+        this.$emit('update:zoom', newZoom)
+        this.map.off('zoomend', catchZoom)
         return resolve({ eventData, zoom: newZoom })
       }
+      return catchZoom
     },
 
     $_catchRotateFabric (eventData, resolve, reject) {
-      let self = this
-      return function catchRotate (options) {
+      const catchRotate = options => {
         if (options.eventId !== eventData.eventId) return
         let newBearing = self.map.getBearing()
         self.$emit('update:bearing', newBearing)
         self.map.off('rotate', catchRotate)
         resolve({ eventData, bearing: newBearing })
       }
+      return catchRotate
     },
 
     $_catchPitchFabric (eventData, resolve, reject) {
-      let self = this
-      return function catchPitch (options) {
+      const catchPitch = options => {
         if (options.eventId !== eventData.eventId) return
         let newPitch = self.map.getPitch()
         self.$emit('update:pitch', newPitch)
         self.map.off('pitch', catchPitch)
         resolve({ eventData, pitch: newPitch })
       }
+      return catchPitch
     }
   }
 }

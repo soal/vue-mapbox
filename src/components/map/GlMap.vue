@@ -1,19 +1,25 @@
+<template>
+  <div class="mgl-map-wrapper">
+    <div v-once :id="container" ref="container"/>
+    <slot />
+  </div>
+</template>
+
 <script>
 import withEvents from '../../lib/withEvents'
 import mapEvents from './events'
 import props from './options'
-import watchers from './watchers'
-import eventCatchers from './methods/private/eventCatchers'
-
-import publicMethods from './methods/public'
+import withWatchers from './withWatchers'
+import withPrivateMethods from './methods/private'
+import withPublicMethods from './methods/public'
 
 export default {
   name: 'GlMap',
 
   mixins: [
-    watchers,
-    eventCatchers,
-    publicMethods,
+    withWatchers,
+    withPrivateMethods,
+    withPublicMethods,
     withEvents
   ],
 
@@ -41,12 +47,7 @@ export default {
 
   created () {
     this.map = null
-    this.updates = {
-      zoom: false,
-      center: false,
-      pitch: false,
-      bearing: false
-    }
+    this.propsIsUpdating = {}
   },
 
   mounted () {
@@ -57,9 +58,8 @@ export default {
       }
       const eventNames = Object.keys(mapEvents)
 
-      // this.$_bindEvents(eventsToListen)
       this.$_bindSelfEvents(eventNames, this.map, null, event => {
-        return { pitch: this.map.getPitch() }
+        return { type: event.type } // TODO: Add info about current event
       })
       this.$_bindPropsUpdateEvents()
       this.initial = false
@@ -75,7 +75,7 @@ export default {
   methods: {
     $_updateSyncedPropsFabric (prop, dataGetter) {
       return event => {
-        this.updates[prop] = true
+        this.propsIsUpdating[prop] = true
         return this.$emit(`update:${prop}`, dataGetter())
       }
     },
@@ -182,24 +182,6 @@ export default {
         center
       })
     }
-  },
-
-  render (h) {
-    return h(
-      'div',
-      [
-        h(
-          'div',
-          {
-            attrs: {
-              id: this.container
-            },
-            ref: 'container'
-          }
-        ),
-        this.$slots.default
-      ]
-    )
   }
 }
 </script>

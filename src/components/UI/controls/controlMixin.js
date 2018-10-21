@@ -1,7 +1,7 @@
-import baseMixin from '../../../lib/mixin'
+import withRegistration from '../../../lib/withRegistration'
 
 export default {
-  mixins: [baseMixin],
+  mixins: [withRegistration],
   beforeDestroy () {
     if (this.map !== undefined) {
       this.map.removeControl(this.control)

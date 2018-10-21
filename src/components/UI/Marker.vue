@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import baseMixin from '../../lib/mixin'
+import withRegistration from '../../lib/withRegistration'
 import withEvents from '../../lib/withEvents'
 
 const markerEvents = {
@@ -19,7 +19,7 @@ const markerEvents = {
 
 export default {
   name: 'MapMarker',
-  mixins: [baseMixin, withEvents],
+  mixins: [withRegistration, withEvents],
   props: {
     // mapbox marker options
     offset: {

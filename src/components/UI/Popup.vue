@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import baseMixin from '../../lib/mixin'
+import withRegistration from '../../lib/withRegistration'
 import withEvents from '../../lib/withEvents'
 
 /**
@@ -15,7 +15,7 @@ import withEvents from '../../lib/withEvents'
  */
 export default {
   name: 'Popup',
-  mixins: [baseMixin, withEvents],
+  mixins: [withRegistration, withEvents],
   props: {
     /**
      * If `true`, a close button will appear in the top right corner of the popup.

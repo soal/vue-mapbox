@@ -73,10 +73,11 @@ export default {
   },
 
   methods: {
-    $_updateSyncedPropsFabric (prop, dataGetter) {
+    $_updateSyncedPropsFabric (prop, data) {
       return event => {
         this.propsIsUpdating[prop] = true
-        return this.$emit(`update:${prop}`, dataGetter())
+        let info = typeof data === 'function' ? data() : data
+        return this.$emit(`update:${prop}`, info)
       }
     },
     $_bindPropsUpdateEvents () {
@@ -120,66 +121,6 @@ export default {
     $_unBindEvents (events) {
       events.forEach(eventName => {
         this.map.off(eventName)
-      })
-    },
-    supported (perfomanceCheck = false) {
-      return this.map.supported({ failIfMajorPerformanceCaveat: perfomanceCheck })
-    },
-
-    resize () {
-      this.map.resize()
-    },
-
-    project (mapCoordinates) {
-      return this.map.project(mapCoordinates)
-    },
-
-    unproject (containerCoordinates) {
-      return this.map.unproject(containerCoordinates)
-    },
-
-    cameraForBounds (bounds, options) {
-      return this.map.cameraForBounds(bounds, options)
-    },
-
-    fitBounds (bounds, options) {
-      let eventData = {
-        eventId: `fitBounds-${('' + Math.random()).split('.')[1]}`
-      }
-      if (bounds === this.map.getBounds()) {
-        return new Promise((resolve, reject) => resolve({ eventData, bounds: this.map.getBounds() }))
-      }
-      let zoomFunc = new Promise((resolve, reject) => {
-        this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
-      })
-
-      let moveFunc = new Promise((resolve, reject) => {
-        this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
-      })
-      this.map.fitBounds(bounds, options, eventData)
-      return Promise.all([zoomFunc, moveFunc]).then(results => {
-        return { eventData, bounds: this.map.getBounds() }
-      })
-    },
-
-    stop () {
-      this.map.stop()
-      const [pitch, zoom, bearing, center] = [
-        this.map.getPitch(),
-        this.map.getZoom(),
-        this.map.getBearing(),
-        this.map.getCenter()
-      ]
-      this.$emit('update:pitch', pitch)
-      this.$emit('update:zoom', zoom)
-      this.$emit('update:bearing', bearing)
-      this.$emit('update:center', center)
-
-      return Promise.resolve({
-        pitch,
-        zoom,
-        bearing,
-        center
       })
     }
   }

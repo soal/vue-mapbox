@@ -1,10 +1,5 @@
-<template>
-  <div :id="container" ref="container">
-    <slot/>
-  </div>
-</template>
-
 <script>
+import withEvents from '../../lib/withEvents'
 import mapEvents from './events'
 import props from './options'
 import watchers from './watchers'
@@ -18,7 +13,8 @@ export default {
   mixins: [
     watchers,
     eventCatchers,
-    publicMethods
+    publicMethods,
+    withEvents
   ],
 
   props,
@@ -45,6 +41,12 @@ export default {
 
   created () {
     this.map = null
+    this.updates = {
+      zoom: false,
+      center: false,
+      pitch: false,
+      bearing: false
+    }
   },
 
   mounted () {
@@ -54,12 +56,11 @@ export default {
         map.setRTLTextPlugin(this.RTLTextPluginUrl, this.$_RTLTextPluginError)
       }
       const eventNames = Object.keys(mapEvents)
-      const eventsToListen = Object.keys(this.$options._parentListeners)
-        .filter(eventName =>
-          eventNames.indexOf(eventName) !== -1
-        )
 
-      this.$_bindEvents(eventsToListen)
+      // this.$_bindEvents(eventsToListen)
+      this.$_bindSelfEvents(eventNames, this.map, null, event => {
+        return { pitch: this.map.getPitch() }
+      })
       this.$_bindPropsUpdateEvents()
       this.initial = false
       this.mapLoaded = true
@@ -67,28 +68,36 @@ export default {
     })
   },
 
-  updated () {
-    console.log('MAP UPDATED!')
-  },
-
-  destroyed () {
+  beforeDestroy () {
     if (this.map) this.map.remove()
   },
 
   methods: {
-    // We wait in promise to ensure map is loaded and other components will receive map object
+    $_updateSyncedPropsFabric (prop, dataGetter) {
+      return event => {
+        this.updates[prop] = true
+        return this.$emit(`update:${prop}`, dataGetter())
+      }
+    },
     $_bindPropsUpdateEvents () {
-      this.map.on('moveend', event => this.$emit('update:center', this.map.getCenter()))
-      this.map.on('zoomend', event => this.$emit('update:zoom', this.map.getZoom()))
-      this.map.on('rotate', event => this.$emit('update:bearing', this.map.getBearing()))
-      this.map.on('pitch', event => this.$emit('update:pitch', this.map.getPitch()))
+      const syncedProps = [
+        { event: 'moveend', prop: 'center', getter: this.map.getCenter.bind(this.map) },
+        { event: 'zoomend', prop: 'zoom', getter: this.map.getZoom.bind(this.map) },
+        { event: 'rotate', prop: 'bearing', getter: this.map.getBearing.bind(this.map) },
+        { event: 'pitch', prop: 'pitch', getter: this.map.getPitch.bind(this.map) }
+      ]
+      syncedProps.forEach(({ event, prop, getter }) => {
+        if (this.$listeners[`update:${prop}`]) {
+          this.map.on(event, this.$_updateSyncedPropsFabric(prop, getter))
+        }
+      })
     },
     $_loadMap () {
       return new Promise((resolve) => {
         if (this.accessToken) this.mapbox.accessToken = this.accessToken
         const map = new this.mapbox.Map({
           ...this._props,
-          container: this.$el,
+          container: this.$refs.container,
           style: this.mapStyle
         })
         map.on('load', () => resolve(map))
@@ -99,14 +108,14 @@ export default {
       this.$emit('rtl-plugin-error', { map: this.map, error: error })
     },
 
-    $_bindEvents (events) {
-      if (events.length === 0) return
-      for (let e of events) {
-        this.map.on(e, event => {
-          this.$emit(e, event)
-        })
-      }
-    },
+    // $_bindEvents (events) {
+    //   if (events.length === 0) return
+    //   for (let e of events) {
+    //     this.map.on(e, event => {
+    //       this.$emit(e, event)
+    //     })
+    //   }
+    // },
 
     $_unBindEvents (events) {
       events.forEach(eventName => {
@@ -173,6 +182,24 @@ export default {
         center
       })
     }
+  },
+
+  render (h) {
+    return h(
+      'div',
+      [
+        h(
+          'div',
+          {
+            attrs: {
+              id: this.container
+            },
+            ref: 'container'
+          }
+        ),
+        this.$slots.default
+      ]
+    )
   }
 }
 </script>

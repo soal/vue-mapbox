@@ -1,64 +1,49 @@
-export default {
-  watch: {
-    maxBounds (bounds) {
-      if (this.initial) return
-      this.map.setMaxBounds(bounds)
-      this.maxBounds = bounds
-    },
-    minZoom (zoom) {
-      if (this.initial) return
-      this.map.setMinZoom(zoom)
-      this.minZoom = zoom
-    },
-    maxZoom (zoom) {
-      if (this.initial) return
-      this.map.setMaxZoom(zoom)
-      this.maxZoom = zoom
-    },
-    mapStyle (style) {
-      if (this.initial) return
-      this.map.setStyle(style)
-      this.mapStyle = style
-    },
-    collisionBoxes (val) {
-      if (this.initial) return
-      this.map.showCollisionBoxes = val
-      this.showCollisionBoxes = val
-    },
-    tileBoundaries (val) {
-      if (this.initial) return
-      this.map.showTileBoundaries = val
-      this.showTileBoundaries = val
-    },
-    repaint (val) {
-      if (this.initial) return
-      this.map.repaint = val
-      this.repaint = val
-    },
-    zoom (val) {
-      if (this.initial) return
-      this.map.setZoom(val)
-      this.zoom = val
-    },
-    center (val) {
-      if (this.initial) return
-      this.map.setCenter(val)
-      this.center = val
-    },
-    bearing (val) {
-      if (this.initial) return
-      this.map.setBearing(val)
-      this.bearing = val
-    },
-    pitch (val) {
-      if (this.initial) return
-      this.map.setPitch(val)
-      this.pitch = val
-    },
-    light (val) {
-      if (this.initial) return
-      this.map.setLight(val)
-      this.light = val
+const props = {
+  maxBounds (val) { this.map.setMaxBounds(val) },
+  minZoom (val) { this.map.setMinZoom(val) },
+  maxZoom (val) { this.map.setMaxZoom(val) },
+  mapStyle (val) { this.map.setStyle(val) },
+  collisionBoxes (val) { this.map.showCollisionBoxes = val },
+  tileBoundaries (val) { this.map.showTileBoundaries = val },
+  repaint (val) { this.map.repaint = val },
+  zoom (next, prev) {
+    console.log('ZOOOM!!', this, next, prev)
+    this.map.setZoom(next)
+  },
+  center (val) { this.map.setCenter(val) },
+  bearing (val) { this.map.setBearing(val) },
+  pitch (val) { this.map.setPitch(val) },
+  light (val) { this.map.setLigh(val) }
+}
+
+function watcher (prop, callback, next, prev) {
+  if (this.initial) return
+  if (this.$listeners[`update:${prop}`]) {
+    if (this.updates[prop]) {
+      this._watcher.active = false
+      this.$nextTick(() => {
+        this._watcher.active = true
+      })
+    } else {
+      this._watcher.active = true
+      callback(next, prev)
     }
+    this.updates[prop] = false
+  } else {
+    callback(next, prev)
   }
+}
+
+function makeWatchers () {
+  const watchers = {}
+  Object.entries(props).forEach(prop => {
+    watchers[prop[0]] = function (next, prev) {
+      return watcher.call(this, prop[0], prop[1].bind(this), next, prev)
+    }
+  })
+  return watchers
+}
+
+export default {
+  watch: makeWatchers()
 }

@@ -14,10 +14,10 @@ import CanvasLayer from './components/layer/CanvasLayer'
 import VideoLayer from './components/layer/VideoLayer'
 import VectorLayer from './components/layer/VectorLayer'
 
-import baseMixin from './lib/mixin'
 import controlMixin from './components/UI/controls/controlMixin'
+import withRegistration from './lib/withRegistration'
 
-export const mglBaseMixin = baseMixin
+export const mglRegistrationMixin = withRegistration
 export const mglControlMixin = controlMixin
 
 export const MglMap = GlMap

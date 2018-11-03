@@ -1,19 +1,25 @@
+<template>
+  <div class="mgl-map-wrapper">
+    <div v-once :id="container" ref="container"/>
+    <slot />
+  </div>
+</template>
+
 <script>
 import withEvents from '../../lib/withEvents'
 import mapEvents from './events'
 import props from './options'
-import watchers from './watchers'
-import eventCatchers from './methods/private/eventCatchers'
-
-import publicMethods from './methods/public'
+import withWatchers from './withWatchers'
+import withPrivateMethods from './methods/private'
+import withPublicMethods from './methods/public'
 
 export default {
   name: 'GlMap',
 
   mixins: [
-    watchers,
-    eventCatchers,
-    publicMethods,
+    withWatchers,
+    withPrivateMethods,
+    withPublicMethods,
     withEvents
   ],
 
@@ -41,12 +47,7 @@ export default {
 
   created () {
     this.map = null
-    this.updates = {
-      zoom: false,
-      center: false,
-      pitch: false,
-      bearing: false
-    }
+    this.propsIsUpdating = {}
   },
 
   mounted () {
@@ -56,11 +57,10 @@ export default {
         map.setRTLTextPlugin(this.RTLTextPluginUrl, this.$_RTLTextPluginError)
       }
       const eventNames = Object.keys(mapEvents)
-
-      // this.$_bindEvents(eventsToListen)
-      this.$_bindSelfEvents(eventNames, this.map, null, event => {
-        return { pitch: this.map.getPitch() }
-      })
+      this.$_bindMapEvents(eventNames)
+      // this.$_bindSelfEvents(eventNames, this.map, null, event => {
+      //   return { type: event.type } // TODO: Add info about current event
+      // })
       this.$_bindPropsUpdateEvents()
       this.initial = false
       this.mapLoaded = true
@@ -73,10 +73,11 @@ export default {
   },
 
   methods: {
-    $_updateSyncedPropsFabric (prop, dataGetter) {
+    $_updateSyncedPropsFabric (prop, data) {
       return event => {
-        this.updates[prop] = true
-        return this.$emit(`update:${prop}`, dataGetter())
+        this.propsIsUpdating[prop] = true
+        let info = typeof data === 'function' ? data() : data
+        return this.$emit(`update:${prop}`, info)
       }
     },
     $_bindPropsUpdateEvents () {
@@ -108,98 +109,19 @@ export default {
       this.$emit('rtl-plugin-error', { map: this.map, error: error })
     },
 
-    // $_bindEvents (events) {
-    //   if (events.length === 0) return
-    //   for (let e of events) {
-    //     this.map.on(e, event => {
-    //       this.$emit(e, event)
-    //     })
-    //   }
-    // },
+    $_bindMapEvents (events) {
+      Object.keys(this.$listeners).forEach(eventName => {
+        if (events.includes(eventName)) {
+          this.map.on(eventName, this.$_emitMapEvent)
+        }
+      })
+    },
 
-    $_unBindEvents (events) {
+    $_unbindEvents (events) {
       events.forEach(eventName => {
-        this.map.off(eventName)
-      })
-    },
-    supported (perfomanceCheck = false) {
-      return this.map.supported({ failIfMajorPerformanceCaveat: perfomanceCheck })
-    },
-
-    resize () {
-      this.map.resize()
-    },
-
-    project (mapCoordinates) {
-      return this.map.project(mapCoordinates)
-    },
-
-    unproject (containerCoordinates) {
-      return this.map.unproject(containerCoordinates)
-    },
-
-    cameraForBounds (bounds, options) {
-      return this.map.cameraForBounds(bounds, options)
-    },
-
-    fitBounds (bounds, options) {
-      let eventData = {
-        eventId: `fitBounds-${('' + Math.random()).split('.')[1]}`
-      }
-      if (bounds === this.map.getBounds()) {
-        return new Promise((resolve, reject) => resolve({ eventData, bounds: this.map.getBounds() }))
-      }
-      let zoomFunc = new Promise((resolve, reject) => {
-        this.map.on('zoomend', this.$_catchZoomFabric(eventData, resolve, reject))
-      })
-
-      let moveFunc = new Promise((resolve, reject) => {
-        this.map.on('moveend', this.$_catchMoveFabric(eventData, resolve, reject))
-      })
-      this.map.fitBounds(bounds, options, eventData)
-      return Promise.all([zoomFunc, moveFunc]).then(results => {
-        return { eventData, bounds: this.map.getBounds() }
-      })
-    },
-
-    stop () {
-      this.map.stop()
-      const [pitch, zoom, bearing, center] = [
-        this.map.getPitch(),
-        this.map.getZoom(),
-        this.map.getBearing(),
-        this.map.getCenter()
-      ]
-      this.$emit('update:pitch', pitch)
-      this.$emit('update:zoom', zoom)
-      this.$emit('update:bearing', bearing)
-      this.$emit('update:center', center)
-
-      return Promise.resolve({
-        pitch,
-        zoom,
-        bearing,
-        center
+        this.map.off(eventName, this.$_emitMapEvent)
       })
     }
-  },
-
-  render (h) {
-    return h(
-      'div',
-      [
-        h(
-          'div',
-          {
-            attrs: {
-              id: this.container
-            },
-            ref: 'container'
-          }
-        ),
-        this.$slots.default
-      ]
-    )
   }
 }
 </script>

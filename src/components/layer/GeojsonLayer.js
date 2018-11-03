@@ -50,13 +50,13 @@ export default {
               data: this.source
             })
           } else {
-            this.$_emitMapEvent('layer-source-error', { sourceId: this.sourceId, error: err })
+            this.$_emitEvent('layer-source-error', { sourceId: this.sourceId, error: err })
           }
         }
       }
       this.$_addLayer()
       // if (this.listenUserEvents) {
-      this.$_bindEvents(layerEvents)
+      this.$_bindLayerEvents(layerEvents)
       // }
       this.map.off('dataloading', this.$_watchSourceLoading)
       this.initial = false
@@ -69,7 +69,7 @@ export default {
         if (this.replace) {
           this.map.removeLayer(this.layerId)
         } else {
-          this.$_emitMapEvent('layer-exists', { layerId: this.layerId })
+          this.$_emitEvent('layer-exists', { layerId: this.layerId })
           return existed
         }
       }
@@ -98,7 +98,7 @@ export default {
       layer.metadata = this.metadata
 
       this.map.addLayer(layer, this.before)
-      this.$_emitMapEvent('added', { layerId: this.layerId })
+      this.$_emitEvent('added', { layerId: this.layerId })
     }
   }
 }

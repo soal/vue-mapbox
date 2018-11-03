@@ -10,6 +10,7 @@
 <script>
 import withRegistration from '../../lib/withRegistration'
 import withEvents from '../../lib/withEvents'
+import withSelfEvents from './withSelfEvents'
 
 const markerEvents = {
   drag: 'drag',
@@ -19,7 +20,7 @@ const markerEvents = {
 
 export default {
   name: 'MapMarker',
-  mixins: [withRegistration, withEvents],
+  mixins: [withRegistration, withEvents, withSelfEvents],
   props: {
     // mapbox marker options
     offset: {
@@ -98,28 +99,26 @@ export default {
 
       const eventNames = Object.keys(markerEvents)
       this.$_bindSelfEvents(eventNames, this.marker)
-      // if (this.$options._parentListeners) {
-      //   const eventsToListen = Object.keys(this.$options._parentListeners)
-      //     .filter(eventName =>
-      //       eventNames.indexOf(eventName) !== -1
-      //     )
-      //   this.$_bindSelfEvents(eventsToListen, this.marker)
-      // }
 
       this.initial = false
       payload.component.$off('load', this.$_deferredMount)
     },
+
     $_addMarker () {
       this.marker
         .setLngLat(this.coordinates)
         .addTo(this.map)
 
-      this.$_emitMapEvent('added', { marker: this.marker })
+      this.$_emitEvent('added', { marker: this.marker })
+    },
+
+    $_emitSelfEvent (event) {
+      this.$_emitEvent(event.type, { mapboxEvent: event, marker: this.marker })
     },
 
     remove () {
-      this.$_emitMapEvent('removed', { marker: this.marker })
-      return this.marker.remove()
+      this.marker.remove()
+      this.$_emitEvent('removed', { marker: this.marker })
     },
 
     togglePopup () {

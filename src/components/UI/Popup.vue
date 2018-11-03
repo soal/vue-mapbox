@@ -8,6 +8,7 @@
 <script>
 import withRegistration from '../../lib/withRegistration'
 import withEvents from '../../lib/withEvents'
+import withSelfEvents from './withSelfEvents'
 
 /**
  * Popup component.
@@ -15,7 +16,7 @@ import withEvents from '../../lib/withEvents'
  */
 export default {
   name: 'Popup',
-  mixins: [withRegistration, withEvents],
+  mixins: [withRegistration, withEvents, withSelfEvents],
   props: {
     /**
      * If `true`, a close button will appear in the top right corner of the popup.
@@ -97,8 +98,8 @@ export default {
 
   beforeDestroy () {
     if (this.map) {
-      this.$_emitMapEvent('removed', { popup: this.popup })
       this.popup.remove()
+      this.$_emitEvent('removed')
     }
   },
 
@@ -134,7 +135,7 @@ export default {
         }
       }
       this.popup.addTo(this.map)
-      this.$_emitMapEvent('added', { popup: this.popup })
+      this.$_emitEvent('added', { popup: this.popup })
 
       this.popup.on('close', this.$_onClose)
       this.popup.on('open', this.$_onOpen)
@@ -154,7 +155,7 @@ export default {
        * @event close
        * @type {object}
        */
-      this.$_emitMapEvent('close', { popup: this.popup })
+      this.$_emitEvent('close', { popup: this.popup })
     },
 
     $_onOpen () {
@@ -163,7 +164,12 @@ export default {
        * @event open
        * @type {object}
        */
-      this.$_emitMapEvent('open', { popup: this.popup })
+      this.$_emitEvent('open', { popup: this.popup })
+    },
+
+    remove () {
+      this.popup.remove()
+      this.$_emitEvent('remove', { popup: this.popup })
     }
   }
 }

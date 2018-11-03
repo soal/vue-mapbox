@@ -25,7 +25,7 @@ export default {
     $_deferredMount (payload) {
       this.map = payload.map
       this.map.addControl(this.control, this.position)
-      this.$emit('added', this.control)
+      this.$_emitEvent('added', { control: this.control })
       payload.component.$off('load', this.$_deferredMount)
     }
   }

@@ -22,7 +22,7 @@ npm install
 ```
 Running in dev mod:
 ```
-npm run dev
+npm run serve
 ```
 Running tests:
 ```

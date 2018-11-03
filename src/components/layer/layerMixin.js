@@ -106,42 +106,48 @@ export default {
       try {
         this.map.removeLayer(this.layerId)
       } catch (err) {
-        this.$_emitMapEvent('layer-does-not-exist', { map: this.map, component: this, layerId: this.sourceId, error: err })
+        this.$_emitEvent('layer-does-not-exist', { layerId: this.sourceId, error: err })
       }
       if (this.clearSource) {
         try {
           this.map.removeSource(this.sourceId)
         } catch (err) {
-          this.$_emitMapEvent('source-does-not-exist', { map: this.map, component: this, sourceId: this.sourceId, error: err })
+          this.$_emitEvent('source-does-not-exist', { sourceId: this.sourceId, error: err })
         }
       }
     }
   },
 
   methods: {
-    $_bindEvents (events) {
-      this.$_bindSelfEvents(events, this.map, this.layerId, { layerId: this.layerId })
+    $_bindLayerEvents (events) {
+      Object.keys(this.$listeners).forEach(eventName => {
+        if (events.includes(eventName)) {
+          this.map.on(eventName, this.layerId, this.$_emitMapEvent)
+        }
+      })
     },
 
-    $_unBindEvents (events) {
-      this.$_unbindSelfEvents(events, this.map, this.layerId)
+    $_unbindEvents (events) {
+      events.forEach(eventName => {
+        this.map.off(eventName, this.layerId, this.$_emitMapEvent)
+      })
     },
 
     $_watchSourceLoading (data) {
       if (data.dataType === 'source' && data.sourceId === this.sourceId) {
-        this.$_emitMapEvent('layer-source-loading', { sourceId: this.sourceId })
+        this.$_emitEvent('layer-source-loading', { sourceId: this.sourceId })
         this.map.off('dataloading', this.$_watchSourceLoading)
       }
     },
 
     move (beforeId) {
       this.map.moveLayer(this.layerId, beforeId)
-      this.$_emitMapEvent('layer-moved', { layerId: this.layerId, beforeId: beforeId })
+      this.$_emitEvent('layer-moved', { layerId: this.layerId, beforeId: beforeId })
     },
 
     remove () {
       this.map.removeLayer(this.layerId)
-      this.$_emitMapEvent('layer-removed', { layerId: this.layerId })
+      this.$_emitEvent('layer-removed', { layerId: this.layerId })
     }
   },
 

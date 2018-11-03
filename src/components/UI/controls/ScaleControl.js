@@ -11,13 +11,24 @@ export default {
     },
     unit: {
       type: String,
-      default: 'metric'
+      default: 'metric',
+      validator (value) {
+        return ['imperial', 'metric', 'nautical'].includes(value)
+      }
     }
   },
 
   data () {
     return {
       control: undefined
+    }
+  },
+
+  watch: {
+    unit (next, prev) {
+      if (this.control && next !== prev) {
+        this.control.setUnit(next)
+      }
     }
   },
 
@@ -33,7 +44,7 @@ export default {
       } catch (err) {
         console.log(err)
       }
-      this.$emit('added', this.control)
+      this.$_emitEvent('added', { control: this.control })
       payload.component.$off('load', this.$_deferredMount)
     }
   }

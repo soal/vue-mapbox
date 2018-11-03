@@ -1,8 +1,16 @@
 import controlMixin from './controlMixin'
+import withEvents from '../../../lib/withEvents'
+
+const geolocationEvents = {
+  trackuserlocationstart: 'trackuserlocationstart',
+  trackuserlocationend: 'trackuserlocationend',
+  geolocate: 'geolocate',
+  error: 'error'
+}
 
 export default {
   name: 'GeolocateControl',
-  mixins: [controlMixin],
+  mixins: [withEvents, controlMixin],
 
   props: {
     position: {
@@ -41,20 +49,30 @@ export default {
   created () {
     this.control = new this.mapbox.GeolocateControl(this._props)
 
-    this.control.on('error', err => {
-      this.$emit('geolocate-error', err)
-    })
-    this.control.on('geolocate', position => {
-      this.$emit('geolocate-error', position)
-    })
+    this.$_bindSelfEvents(Object.keys(geolocationEvents), this.control)
   },
 
   methods: {
     $_deferredMount (payload) {
       this.map = payload.map
       this.map.addControl(this.control, this.position)
-      this.$emit('added', this.control)
+      this.$_emitEvent('added', { control: this.control })
       payload.component.$off('load', this.$_deferredMount)
+    },
+
+    $_emitSelfEvent (event) {
+      if (event.type === 'error') {
+        this.$_emitEvent('geolocate-error', { mapboxEvent: event })
+      }
+      if (event.type === 'geolocate') {
+        this.$_emitEvent('geolocate', { mapboxEvent: event })
+      }
+    },
+
+    trigger () {
+      if (this.control) {
+        return this.control.trigger()
+      }
     }
   }
 }

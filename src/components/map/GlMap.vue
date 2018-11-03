@@ -57,10 +57,10 @@ export default {
         map.setRTLTextPlugin(this.RTLTextPluginUrl, this.$_RTLTextPluginError)
       }
       const eventNames = Object.keys(mapEvents)
-
-      this.$_bindSelfEvents(eventNames, this.map, null, event => {
-        return { type: event.type } // TODO: Add info about current event
-      })
+      this.$_bindMapEvents(eventNames)
+      // this.$_bindSelfEvents(eventNames, this.map, null, event => {
+      //   return { type: event.type } // TODO: Add info about current event
+      // })
       this.$_bindPropsUpdateEvents()
       this.initial = false
       this.mapLoaded = true
@@ -109,18 +109,17 @@ export default {
       this.$emit('rtl-plugin-error', { map: this.map, error: error })
     },
 
-    // $_bindEvents (events) {
-    //   if (events.length === 0) return
-    //   for (let e of events) {
-    //     this.map.on(e, event => {
-    //       this.$emit(e, event)
-    //     })
-    //   }
-    // },
+    $_bindMapEvents (events) {
+      Object.keys(this.$listeners).forEach(eventName => {
+        if (events.includes(eventName)) {
+          this.map.on(eventName, this.$_emitMapEvent)
+        }
+      })
+    },
 
-    $_unBindEvents (events) {
+    $_unbindEvents (events) {
       events.forEach(eventName => {
-        this.map.off(eventName)
+        this.map.off(eventName, this.$_emitMapEvent)
       })
     }
   }

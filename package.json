@@ -14,9 +14,8 @@
   "private": false,
   "main": "dist/vue-mapbox.umd.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name vue-mapbox src/main.js",
-    "rebuild": "vue-cli-service build --target lib --name vue-mapbox src/main.js --watch",
+    "serve": "vue-cli-service build --target lib --name vue-mapbox src/main.js --watch",
     "lint": "vue-cli-service lint"
   },
   "peerDependencies": {
@@ -24,14 +23,12 @@
     "mapbox-gl": "^0.50.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "vue": "^2.5.17",
     "@vue/cli-plugin-babel": "^3.0.0",
     "@vue/cli-plugin-eslint": "^3.0.0",
     "@vue/cli-service": "^3.0.0",
     "@vue/eslint-config-standard": "^3.0.5",
     "vue-template-compiler": "^2.5.17"
-  },
-  "dependencies": {
-    "babel-eslint": "^10.0.1"
   }
 }

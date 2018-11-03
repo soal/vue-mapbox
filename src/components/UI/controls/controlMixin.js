@@ -1,5 +1,5 @@
 import withRegistration from '../../../lib/withRegistration'
-import withEvents from '../../../lib/withEvents'
+import withEvents from '../../../lib/withMapEvents'
 
 export default {
   mixins: [withRegistration, withEvents],

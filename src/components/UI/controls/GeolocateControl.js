@@ -1,5 +1,6 @@
 import controlMixin from './controlMixin'
 import withEvents from '../../../lib/withEvents'
+import withSelfEvents from '../withSelfEvents'
 
 const geolocationEvents = {
   trackuserlocationstart: 'trackuserlocationstart',
@@ -10,7 +11,7 @@ const geolocationEvents = {
 
 export default {
   name: 'GeolocateControl',
-  mixins: [withEvents, controlMixin],
+  mixins: [withEvents, withSelfEvents, controlMixin],
 
   props: {
     position: {

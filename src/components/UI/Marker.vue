@@ -87,15 +87,18 @@ export default {
       this.map = payload.map
       this.$_addMarker()
 
-      this.marker.on('dragend', event => {
-        let newCoordinates
-        if (this.coordinates instanceof Array) {
-          newCoordinates = [event.target._lngLat.lng, event.target._lngLat.lat]
-        } else {
-          newCoordinates = event.target._lngLat
-        }
-        this.$emit('update:coordinates', newCoordinates)
-      })
+      console.log('LISTENERS: ', this.$listeners)
+      if (this.$listeners['update:coordinates']) {
+        this.marker.on('dragend', event => {
+          let newCoordinates
+          if (this.coordinates instanceof Array) {
+            newCoordinates = [event.target._lngLat.lng, event.target._lngLat.lat]
+          } else {
+            newCoordinates = event.target._lngLat
+          }
+          this.$emit('update:coordinates', newCoordinates)
+        })
+      }
 
       const eventNames = Object.keys(markerEvents)
       this.$_bindSelfEvents(eventNames, this.marker)

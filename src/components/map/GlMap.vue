@@ -58,6 +58,7 @@ export default {
       }
       const eventNames = Object.keys(mapEvents)
       this.$_bindMapEvents(eventNames)
+      this.$_registerAsyncActions(map)
       // this.$_bindSelfEvents(eventNames, this.map, null, event => {
       //   return { type: event.type } // TODO: Add info about current event
       // })

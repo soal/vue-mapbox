@@ -38,7 +38,6 @@ export const MglMarker = Marker
 export const MglPopup = Popup
 
 export const plugin = {
-
   /**
    *  Create Vue-mapbox plugin for Vue
    *
@@ -58,5 +57,5 @@ export const plugin = {
     Vue.mixin({ data () { return data } })
   }
 }
-
 export default plugin
+

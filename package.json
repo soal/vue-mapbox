@@ -18,9 +18,12 @@
     "serve": "vue-cli-service build --target lib --name vue-mapbox src/main.js --watch",
     "lint": "vue-cli-service lint"
   },
+  "dependencies": {
+    "map-promisified": "latest"
+  },
   "peerDependencies": {
     "vue": "^2.5.17",
-    "mapbox-gl": "^0.50.0"
+    "mapbox-gl": "^0.51.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

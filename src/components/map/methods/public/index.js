@@ -1,27 +1,15 @@
 import imageMethods from './image'
 import featureMethods from './feature'
-import rotateMethods from './rotate'
-import zoomMethods from './zoom'
-import easeMethods from './ease'
-import flyMethods from './fly'
-import panMethods from './pan'
-import jumpMethods from './jump'
 import projectMethods from './project'
-import boundsMethods from './bounds'
+import cameraMethods from './camera'
 import stopMethods from './stop'
 
 export default {
   mixins: [
     imageMethods,
     featureMethods,
-    rotateMethods,
-    zoomMethods,
-    easeMethods,
-    flyMethods,
-    panMethods,
-    jumpMethods,
     projectMethods,
-    boundsMethods,
+    cameraMethods,
     stopMethods
   ],
 

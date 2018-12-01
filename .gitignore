@@ -5,6 +5,7 @@ logs
 dist/*.hot-update*
 npm-debug.log*
 *.code-workspace
+*.je-project-settings
 
 # Runtime data
 pids
@@ -49,3 +50,4 @@ jspm_packages
 *.DS_Store
 vue-mapbox-demo
 checklist.txt
+.flowconfig

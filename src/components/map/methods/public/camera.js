@@ -34,7 +34,9 @@ export default {
   methods: {
     ...makeMethods(),
     cameraForBounds (...args) {
-      return this.map.cameraForBounds(...args)
+      if (this.map) {
+        return this.map.cameraForBounds(...args)
+      }
     }
   }
 }

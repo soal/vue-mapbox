@@ -5,31 +5,33 @@
 Vue-mapbox is wrapper around Mapbox GL JS library that provides vueish-way to interact with the map.
 
 [Description and documentation](https://soal.github.io/vue-mapbox)
- 
+
 ## Size
+
  ~ 39 kB minified  
  ~ 7 kB minified and gzipped
- 
+
 ## Browser compatibility
+
 _Coming soon_
 
-
 ## Development
-```
+
+```sh
 git clone git@github.com:soal/vue-mapbox.git
 cd vue-mapbox
 npm install
 ```
+
 Running in dev mod:
-```
+
+```sh
 npm run serve
 ```
-Running tests:
-```
-npm run tests
-```
+
 Build for production:
-```
+
+```sh
 npm run build
 ```
 

@@ -1,78 +1,108 @@
 export default {
   methods: {
-    cameraForBounds (bounds, options) {
-      return this.map.cameraForBounds(bounds, options)
+    cameraForBounds (...args) {
+      return this.map.cameraForBounds(...args)
     },
 
-    fitBounds (bounds, options) {
+    setCenter (...args) {
       if (this.$_mapAsyncActions) {
-        return this.$_mapAsyncActions.fitBounds(bounds, options)
+        return this.$_mapAsyncActions.setCenter(...args)
       }
     },
 
-    easeTo (options) {
+    fitBounds (...args) {
       if (this.$_mapAsyncActions) {
-        return this.$_mapAsyncActions.easeTo(options)
+        return this.$_mapAsyncActions.fitBounds(...args)
       }
     },
 
-    flyTo (options) {
+    easeTo (...args) {
       if (this.$_mapAsyncActions) {
-        return this.$_mapAsyncActions.flyTo(options)
+        return this.$_mapAsyncActions.easeTo(...args)
       }
     },
 
-    jumpTo (options) {
+    flyTo (...args) {
       if (this.$_mapAsyncActions) {
-        return this.$_mapAsyncActions.jumpTo(options)
+        return this.$_mapAsyncActions.flyTo(...args)
       }
     },
 
-    panBy (offset, options) {
+    jumpTo (...args) {
       if (this.$_mapAsyncActions) {
-        return this.$_mapAsyncActions.panBy(offset, options)
+        return this.$_mapAsyncActions.jumpTo(...args)
       }
     },
 
-    panTo (coordinates, options) {
+    panBy (...args) {
       if (this.$_mapAsyncActions) {
-        return this.$_mapAsyncActions.panTo(coordinates, options)
+        return this.$_mapAsyncActions.panBy(...args)
       }
     },
 
-    rotateTo (bearing, options) {
+    panTo (...args) {
       if (this.$_mapAsyncActions) {
-        return this.$_mapAsyncActions.rotateTo(bearing, options)
+        return this.$_mapAsyncActions.panTo(...args)
       }
     },
 
-    resetNorth (options) {
+    setPitch (...args) {
       if (this.$_mapAsyncActions) {
-        return this.$_mapAsyncActions.resetNorth(options)
+        return this.$_mapAsyncActions.setPitch(...args)
       }
     },
 
-    snapToNorth (options) {
+    setBearing (...args) {
       if (this.$_mapAsyncActions) {
-        return this.$_mapAsyncActions.snapToNorth(options)
+        return this.$_mapAsyncActions.setBearing(...args)
       }
     },
 
-    zoomTo (zoom, options) {
+    rotateTo (...args) {
       if (this.$_mapAsyncActions) {
-        return this.$_mapAsyncActions.zoomTo(zoom, options)
+        return this.$_mapAsyncActions.rotateTo(...args)
       }
     },
 
-    zoomIn (options) {
+    resetNorth (...args) {
       if (this.$_mapAsyncActions) {
-        return this.$_mapAsyncActions.zoomIn(options)
+        return this.$_mapAsyncActions.resetNorth(...args)
       }
     },
 
-    zoomOut (options) {
+    snapToNorth (...args) {
       if (this.$_mapAsyncActions) {
-        return this.$_mapAsyncActions.zoomOut(options)
+        return this.$_mapAsyncActions.snapToNorth(...args)
+      }
+    },
+
+    zoomTo (...args) {
+      if (this.$_mapAsyncActions) {
+        return this.$_mapAsyncActions.zoomTo(...args)
+      }
+    },
+
+    zoomIn (...args) {
+      if (this.$_mapAsyncActions) {
+        return this.$_mapAsyncActions.zoomIn(...args)
+      }
+    },
+
+    zoomOut (...args) {
+      if (this.$_mapAsyncActions) {
+        return this.$_mapAsyncActions.zoomOut(...args)
+      }
+    },
+
+    setZoom (...args) {
+      if (this.$_mapAsyncActions) {
+        return this.$_mapAsyncActions.setZoom(...args)
+      }
+    },
+
+    fitScreenCoordinates (...args) {
+      if (this.$_mapAsyncActions) {
+        return this.$_mapAsyncActions.fitScreenCoordinates(...args)
       }
     }
   }

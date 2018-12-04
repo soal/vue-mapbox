@@ -22,7 +22,11 @@ export default {
     filter: {
       type: Array,
       default: undefined
-    }
+    },
+    cluster: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   watch: {
@@ -44,14 +48,16 @@ export default {
         try {
           this.map.addSource(this.sourceId, {
             type: 'geojson',
-            data: this.source
+            data: this.source,
+            cluster: this.cluster
           })
         } catch (err) {
           if (this.replaceSource) {
             this.map.removeSource(this.sourceId)
             this.map.addSource(this.sourceId, {
               type: 'geojson',
-              data: this.source
+              data: this.source,
+              cluster: this.cluster
             })
           } else {
             this.$_emitMapEvent('layer-source-error', { sourceId: this.sourceId, error: err })

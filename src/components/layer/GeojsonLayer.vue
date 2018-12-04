@@ -26,6 +26,10 @@ export default {
     cluster: {
       type: Boolean,
       default: false
+    },
+    listenUserEvents: {
+      type: Boolean,
+      default: false
     }
   },
 

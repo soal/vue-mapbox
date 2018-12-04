@@ -25,8 +25,8 @@ export default {
     },
     cluster: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
 
   watch: {

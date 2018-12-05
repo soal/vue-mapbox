@@ -68,7 +68,9 @@ export default {
             this.map.addSource(this.sourceId, {
               type: 'geojson',
               data: this.source,
-              cluster: this.cluster
+              cluster: this.cluster,
+              clusterMaxZoom: this.clusterMaxZoom,
+              clusterRadius: this.clusterRadius
             })
           } else {
             this.$_emitMapEvent('layer-source-error', { sourceId: this.sourceId, error: err })

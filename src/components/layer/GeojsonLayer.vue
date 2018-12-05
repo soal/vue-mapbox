@@ -27,9 +27,13 @@ export default {
       type: Boolean,
       default: false
     },
-    listenUserEvents: {
-      type: Boolean,
-      default: false
+    clusterMaxZoom: {
+      type: Number,
+      default: 14
+    },
+    clusterRadius: {
+      type: Number,
+      default: 50
     }
   },
 
@@ -53,7 +57,10 @@ export default {
           this.map.addSource(this.sourceId, {
             type: 'geojson',
             data: this.source,
-            cluster: this.cluster
+            cluster: this.cluster,
+            clusterMaxZoom: this.clusterMaxZoom,
+            clusterRadius: this.clusterRadius
+
           })
         } catch (err) {
           if (this.replaceSource) {

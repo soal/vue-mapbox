@@ -49,24 +49,20 @@ export default {
 
   created () {
     this.control = new this.mapbox.GeolocateControl(this._props)
-
-    this.$_bindSelfEvents(Object.keys(geolocationEvents), this.control)
   },
 
   methods: {
     $_deferredMount (payload) {
-      this.map = payload.map
-      this.map.addControl(this.control, this.position)
-      this.$_emitEvent('added', { control: this.control })
-      payload.component.$off('load', this.$_deferredMount)
+      this.$_addControl(payload)
+      this.$_bindSelfEvents(Object.keys(geolocationEvents), this.control)
     },
 
     $_emitSelfEvent (event) {
       if (event.type === 'error') {
-        this.$_emitEvent('geolocate-error', { mapboxEvent: event })
+        this.$_emitMapEvent('geolocate-error', { control: this.control })
       }
       if (event.type === 'geolocate') {
-        this.$_emitEvent('geolocate', { mapboxEvent: event })
+        this.$_emitMapEvent('geolocate', { control: this.control })
       }
     },
 

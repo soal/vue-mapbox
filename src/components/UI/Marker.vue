@@ -86,8 +86,6 @@ export default {
 
       this.map = payload.map
       this.$_addMarker()
-
-      console.log('LISTENERS: ', this.$listeners)
       if (this.$listeners['update:coordinates']) {
         this.marker.on('dragend', event => {
           let newCoordinates
@@ -116,7 +114,7 @@ export default {
     },
 
     $_emitSelfEvent (event) {
-      this.$_emitEvent(event.type, { mapboxEvent: event, marker: this.marker })
+      this.$_emitMapEvent(event.type, { marker: this.marker })
     },
 
     remove () {

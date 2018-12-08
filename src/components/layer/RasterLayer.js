@@ -50,14 +50,14 @@ export default {
           this.$_emitEvent('layer-source-error', { sourceId: this.sourceId, error: err })
         }
       }
-      this._addLayer()
+      this.$_addLayer()
       this.$_bindLayerEvents(layerEvents)
       this.map.off('dataloading', this.$_watchSourceLoading)
       this.initial = false
       payload.component.$off('load', this.$_deferredMount)
     },
 
-    _addLayer () {
+    $_addLayer () {
       let existed = this.map.getLayer(this.layerId)
       if (existed) {
         if (this.replace) {

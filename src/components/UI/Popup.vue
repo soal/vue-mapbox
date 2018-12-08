@@ -10,6 +10,11 @@ import withRegistration from '../../lib/withRegistration'
 import withEvents from '../../lib/withEvents'
 import withSelfEvents from './withSelfEvents'
 
+const popupEvents = {
+  open: 'open',
+  close: 'close'
+}
+
 /**
  * Popup component.
  * @see See [Mapbox Gl JS Popup](https://www.mapbox.com/mapbox-gl-js/api/#popup)
@@ -135,10 +140,13 @@ export default {
         }
       }
       this.popup.addTo(this.map)
+
+      this.$_bindSelfEvents(Object.keys(popupEvents), this.popup)
+
       this.$_emitEvent('added', { popup: this.popup })
 
-      this.popup.on('close', this.$_onClose)
-      this.popup.on('open', this.$_onOpen)
+      // this.popup.on('close', this.$_onClose)
+      // this.popup.on('open', this.$_onOpen)
 
       if (this.$parent.marker !== undefined) {
         this.$parent.marker.setPopup(this.popup)
@@ -149,22 +157,8 @@ export default {
       }
     },
 
-    $_onClose () {
-      /**
-       * Popup close event
-       * @event close
-       * @type {object}
-       */
-      this.$_emitEvent('close', { popup: this.popup })
-    },
-
-    $_onOpen () {
-      /**
-       * Popup close event
-       * @event open
-       * @type {object}
-       */
-      this.$_emitEvent('open', { popup: this.popup })
+    $_emitSelfEvent (event) {
+      this.$_emitMapEvent(event.type, { popup: this.popup })
     },
 
     remove () {

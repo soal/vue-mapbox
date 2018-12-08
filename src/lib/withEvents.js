@@ -19,8 +19,8 @@ export default {
      *
      * @param {Object} event
      */
-    $_emitMapEvent (event) {
-      this.$_emitEvent(event.type, { mapboxEvent: event })
+    $_emitMapEvent (event, data = {}) {
+      this.$_emitEvent(event.type, { mapboxEvent: event, ...data })
     }
   }
 }

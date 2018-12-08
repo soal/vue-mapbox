@@ -33,6 +33,14 @@ export default {
     type: Number,
     default: 7
   },
+  pitchWithRotate: {
+    type: Boolean,
+    default: true
+  },
+  clickTolerance: {
+    type: Number,
+    default: 3
+  },
   // classes: {
   //   type: Array,
   //   default() {
@@ -43,9 +51,14 @@ export default {
     type: Boolean,
     default: true
   },
+  customAttribution: {
+    type: [String, Array],
+    default: null
+  },
   logoPosition: { // TODO: Add validator
     type: String,
-    default: 'bottom-left'
+    default: 'bottom-left',
+    validator: val => ['top-left', 'top-right', 'bottom-left', 'bottom-right'].includes(val)
   },
   failIfMajorPerformanceCaveat: {
     type: Boolean,
@@ -72,10 +85,6 @@ export default {
     }
   },
   boxZoom: {
-    type: Boolean,
-    default: true
-  },
-  crossSourceCollisions: {
     type: Boolean,
     default: true
   },
@@ -121,6 +130,10 @@ export default {
     type: Number,
     default: 0
   },
+  bounds: {
+    type: [Object, Array],
+    default: undefined
+  },
   renderWorldCopies: {
     type: Boolean,
     default: true
@@ -130,7 +143,8 @@ export default {
     default: undefined
   },
   light: {
-    type: Object
+    type: Object,
+    default: undefined
   },
   tileBoundaries: {
     type: Boolean,
@@ -147,5 +161,25 @@ export default {
   transformRequest: {
     type: Function,
     default: null
+  },
+  maxTileCacheSize: {
+    type: Number,
+    default: null
+  },
+  localIdeographFontFamily: {
+    type: String,
+    default: null
+  },
+  collectResourceTiming: {
+    type: Boolean,
+    default: false
+  },
+  fadeDuration: {
+    type: Number,
+    default: 300
+  },
+  crossSourceCollisions: {
+    type: Boolean,
+    default: true
   }
 }

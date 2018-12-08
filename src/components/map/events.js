@@ -40,5 +40,6 @@ export default {
   dragend: { name: 'dragend' },
   drag: { name: 'drag' },
   dragstart: { name: 'dragstart' },
-  pitch: { name: 'pitch' }
+  pitch: { name: 'pitch' },
+  idle: { name: 'idle' }
 }

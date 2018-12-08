@@ -114,7 +114,7 @@ export default {
     },
 
     $_emitSelfEvent (event) {
-      this.$_emitEvent(event.type, { mapboxEvent: event, marker: this.marker })
+      this.$_emitMapEvent(event.type, { marker: this.marker })
     },
 
     remove () {

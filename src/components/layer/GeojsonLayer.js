@@ -18,6 +18,18 @@ export default {
     filter: {
       type: Array,
       default: undefined
+    },
+    cluster: {
+      type: Boolean,
+      default: false
+    },
+    clusterMaxZoom: {
+      type: Number,
+      default: 14
+    },
+    clusterRadius: {
+      type: Number,
+      default: 50
     }
   },
 
@@ -40,14 +52,21 @@ export default {
         try {
           this.map.addSource(this.sourceId, {
             type: 'geojson',
-            data: this.source
+            data: this.source,
+            cluster: this.cluster,
+            clusterMaxZoom: this.clusterMaxZoom,
+            clusterRadius: this.clusterRadius
+
           })
         } catch (err) {
           if (this.replaceSource) {
             this.map.removeSource(this.sourceId)
             this.map.addSource(this.sourceId, {
               type: 'geojson',
-              data: this.source
+              data: this.source,
+              cluster: this.cluster,
+              clusterMaxZoom: this.clusterMaxZoom,
+              clusterRadius: this.clusterRadius
             })
           } else {
             this.$_emitEvent('layer-source-error', { sourceId: this.sourceId, error: err })

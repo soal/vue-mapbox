@@ -39,10 +39,6 @@ const componentProps = {
   replace: {
     type: Boolean,
     default: false
-  },
-  listenUserEvents: {
-    type: Boolean,
-    default: false
   }
 }
 
@@ -119,17 +115,21 @@ export default {
   },
 
   methods: {
+    $_emitLayerMapEvent (event) {
+      return this.$_emitMapEvent(event, { layerId: this.layerId })
+    },
+
     $_bindLayerEvents (events) {
       Object.keys(this.$listeners).forEach(eventName => {
         if (events.includes(eventName)) {
-          this.map.on(eventName, this.layerId, this.$_emitMapEvent)
+          this.map.on(eventName, this.layerId, this.$_emitLayerMapEvent)
         }
       })
     },
 
     $_unbindEvents (events) {
       events.forEach(eventName => {
-        this.map.off(eventName, this.layerId, this.$_emitMapEvent)
+        this.map.off(eventName, this.layerId, this.$_emitLayerMapEvent)
       })
     },
 

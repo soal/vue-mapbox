@@ -72,9 +72,7 @@ export default {
         }
       }
       this.$_addLayer()
-      if (this.listenUserEvents) {
-        this.$_bindLayerEvents(layerEvents)
-      }
+      this.$_bindLayerEvents(layerEvents)
       payload.component.$off('load', this.$_deferredMount)
       this.initial = false
     },

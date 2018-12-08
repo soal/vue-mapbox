@@ -130,7 +130,7 @@ export default {
     type: Number,
     default: 0
   },
-  bounds: {
+  initialBounds: {
     type: [Object, Array],
     default: undefined
   },

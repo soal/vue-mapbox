@@ -36,6 +36,7 @@ export default {
   computed: {
     loaded () { return this.map ? this.map.loaded() : false },
     version () { return this.map ? this.map.version : null },
+    // TODO: make 'bounds' synced prop
     bounds () { return this.map ? this.map.getBounds() : null },
     isStyleLoaded () { return this.map ? this.map.isStyleLoaded() : false },
     areTilesLoaded () { return this.map ? this.map.areTilesLoaded() : false },

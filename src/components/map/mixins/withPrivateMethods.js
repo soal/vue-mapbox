@@ -10,15 +10,19 @@ export default {
 
     $_bindPropsUpdateEvents () {
       const syncedProps = [
-        { event: 'moveend', prop: 'center', getter: this.map.getCenter.bind(this.map) },
-        { event: 'zoomend', prop: 'zoom', getter: this.map.getZoom.bind(this.map) },
-        { event: 'rotate', prop: 'bearing', getter: this.map.getBearing.bind(this.map) },
-        { event: 'pitch', prop: 'pitch', getter: this.map.getPitch.bind(this.map) }
+        { events: ['moveend'], prop: 'center', getter: this.map.getCenter.bind(this.map) },
+        { events: ['zoomend'], prop: 'zoom', getter: this.map.getZoom.bind(this.map) },
+        { events: ['rotate'], prop: 'bearing', getter: this.map.getBearing.bind(this.map) },
+        { events: ['pitch'], prop: 'pitch', getter: this.map.getPitch.bind(this.map) }
+        // TODO: make 'bounds' synced prop
+        // { events: ['moveend', 'zoomend', 'rotate', 'pitch'], prop: 'bounds', getter: this.map.getBounds.bind(this.map) }
       ]
-      syncedProps.forEach(({ event, prop, getter }) => {
-        if (this.$listeners[`update:${prop}`]) {
-          this.map.on(event, this.$_updateSyncedPropsFabric(prop, getter))
-        }
+      syncedProps.forEach(({ events, prop, getter }) => {
+        events.forEach(event => {
+          if (this.$listeners[`update:${prop}`]) {
+            this.map.on(event, this.$_updateSyncedPropsFabric(prop, getter))
+          }
+        })
       })
     },
 

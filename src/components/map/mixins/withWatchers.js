@@ -1,16 +1,18 @@
 const watchers = {
-  maxBounds (val) { this.map.setMaxBounds(val) },
-  minZoom (val) { this.map.setMinZoom(val) },
-  maxZoom (val) { this.map.setMaxZoom(val) },
-  mapStyle (val) { this.map.setStyle(val) },
-  collisionBoxes (val) { this.map.showCollisionBoxes = val },
-  tileBoundaries (val) { this.map.showTileBoundaries = val },
-  repaint (val) { this.map.repaint = val },
-  zoom (next, prev) { this.map.setZoom(next) },
-  center (val) { this.map.setCenter(val) },
-  bearing (val) { this.map.setBearing(val) },
-  pitch (val) { this.map.setPitch(val) },
-  light (val) { this.map.setLigh(val) }
+  maxBounds (next) { this.map.setMaxBounds(next) },
+  minZoom (next) { this.map.setMinZoom(next) },
+  maxZoom (next) { this.map.setMaxZoom(next) },
+  mapStyle (next) { this.map.setStyle(next) },
+  // TODO: make 'bounds' synced prop
+  // bounds (next) { this.map.fitBounds(next, { linear: true, duration: 0 }) },
+  collisionBoxes (next) { this.map.showCollisionBoxes = next },
+  tileBoundaries (next) { this.map.showTileBoundaries = next },
+  repaint (next) { this.map.repaint = next },
+  zoom (next) { this.map.setZoom(next) },
+  center (next) { this.map.setCenter(next) },
+  bearing (next) { this.map.setBearing(next) },
+  pitch (next) { this.map.setPitch(next) },
+  light (next) { this.map.setLigh(next) }
 }
 
 function watcher (prop, callback, next, prev) {

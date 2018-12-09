@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Layers and sources</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.d88857d0.css" as="style"><link rel="preload" href="/assets/js/app.772d6f02.js" as="script"><link rel="preload" href="/assets/js/2.953f184d.js" as="script"><link rel="preload" href="/assets/js/23.364eb733.js" as="script"><link rel="prefetch" href="/assets/js/10.754b3493.js"><link rel="prefetch" href="/assets/js/11.4f5c5c70.js"><link rel="prefetch" href="/assets/js/12.6e232428.js"><link rel="prefetch" href="/assets/js/13.5554e847.js"><link rel="prefetch" href="/assets/js/14.bda9238e.js"><link rel="prefetch" href="/assets/js/15.307c0493.js"><link rel="prefetch" href="/assets/js/16.f2f96c09.js"><link rel="prefetch" href="/assets/js/17.a335a0c5.js"><link rel="prefetch" href="/assets/js/18.2683ec90.js"><link rel="prefetch" href="/assets/js/19.bb897861.js"><link rel="prefetch" href="/assets/js/20.985b5b42.js"><link rel="prefetch" href="/assets/js/21.c53dd306.js"><link rel="prefetch" href="/assets/js/22.48c76f5e.js"><link rel="prefetch" href="/assets/js/24.86906055.js"><link rel="prefetch" href="/assets/js/25.7558f131.js"><link rel="prefetch" href="/assets/js/26.bad9ad24.js"><link rel="prefetch" href="/assets/js/27.692671ed.js"><link rel="prefetch" href="/assets/js/28.eeb22835.js"><link rel="prefetch" href="/assets/js/3.86e38456.js"><link rel="prefetch" href="/assets/js/4.3375b3fa.js"><link rel="prefetch" href="/assets/js/5.2e8503c0.js"><link rel="prefetch" href="/assets/js/6.dd9f2a6a.js"><link rel="prefetch" href="/assets/js/7.d9962bab.js"><link rel="prefetch" href="/assets/js/8.8d05eee1.js"><link rel="prefetch" href="/assets/js/9.dd2b94db.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d88857d0.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <!----> </div> <div class="page"> <div class="content default"><h1 id="layers-and-sources"><a href="#layers-and-sources" aria-hidden="true" class="header-anchor">#</a> Layers and sources</h1> <p>Geographic features on the map draws as layers. Every layer must have a source which contains data for layer (for exmaple, GeoJSON object). You can read more about sources in Mapbox GL JS <a href="https://www.mapbox.com/mapbox-gl-js/api/#sources" target="_blank" rel="noopener noreferrer">documentation<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p> <p>Vue-mapbox exposes layers as Vue components and source passed to layer as prop. There is several layers types for drawning different types of sources.
+For example adding a layer with GeoJSON data:</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mgl-map</span>
+    <span class="token attr-name">:accessToken</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>accessToken<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:mapStyle.sync</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mapStyle<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mgl-navigation-control</span> <span class="token attr-name">position</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>top-right<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span> <span class="token comment">&lt;!-- Adding navigation control--&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mgl-geojson-layer</span>
+      <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>fill<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">:sourceId</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>geoJsonSource.properties.id<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">:layerId</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>geoJsonSource.properties.id<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">:source.sync</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>geoJsonSource<span class="token punctuation">&quot;</span></span>
+    <span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mgl-geojson-layer</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mgl-map</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>
+  MglMap<span class="token punctuation">,</span>
+  MglNavigationControl<span class="token punctuation">,</span>
+  MglGeojsonLayer
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue-mapbox'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  components<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    MglMap<span class="token punctuation">,</span>
+    MglNavigationControl<span class="token punctuation">,</span>
+    MglGeolocateControl<span class="token punctuation">,</span>
+    MglGeojsonLayer
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      accessToken<span class="token punctuation">:</span> <span class="token string">'some_token'</span><span class="token punctuation">,</span>
+      mapStyle<span class="token punctuation">:</span> <span class="token string">'style_object'</span><span class="token punctuation">,</span>
+      geoJsonSource<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">//...some GeoJSON object</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>In this example <code>geoJsonSource</code> can be an <code>object</code>, representing GeoJSON feature or <code>string</code> with URL to GeoJSON.</p> <p>Sources are stored in Mapbox GL JS <code>Map</code> object by <code>sourceId</code>. If you sure that source already added to map, you can skip <code>source</code> prop and just pass <code>sourceId</code> and use same source for different layers. If you try to add same source twice it raises an error, but you can set <code>replaceSource</code> prop to <code>true</code> to just replace old source with new one passed in <code>source</code> prop.</p> <p>By default when Layer components destroing, it removes source from map. If you want to keep source in Map (for e.g. for future using or if other layers use this source), set <code>clearSource</code> prop to <code>false</code>.</p></div> <!----> <!----> </div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.772d6f02.js" defer></script><script src="/assets/js/2.953f184d.js" defer></script><script src="/assets/js/23.364eb733.js" defer></script>
+  </body>
+</html>

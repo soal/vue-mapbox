@@ -274,72 +274,14 @@
 - **Description:** If specified, defines a CSS font-family for locally overriding generation of glyphs in the 'CJK Unified Ideographs' and 'Hangul Syllables' ranges. In these ranges, font settings from the map's style will be ignored, except for font-weight keywords (light/regular/medium/bold). The purpose of this option is to avoid bandwidth-intensive glyph server requests. 
 - **See:** `options.localIdeographFontFamily` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
 
-## Methods
+## Actions
+
+Asynchronous actions exposed via `GlMap.actions`
 
 ### `.stop()`
 - **Description:** Stops all animations on the map
 - **Returns:** `{Promise<{ pitch, zoom, bearing, center }>}`
   Promise that resolves object with map parameters on the moment of call `stop()`
-
-### `.supported(perfomanceCheck = false)`
-
-- **Description:** Wrapper aroud Mapbox GL JS method
-- **See:** [supported](https://www.mapbox.com/mapbox-gl-js/api/#supported) Map method
-
-### `.resize()`
-
-- **Description:** Wrapper aroud Mapbox GL JS method
-- **See:** [resize](https://www.mapbox.com/mapbox-gl-js/api/#map#resize) Map method
-
-### `.project(mapCoordinates)`
-
-- **Description:** Wrapper aroud Mapbox GL JS method
-- **See:** [project](https://www.mapbox.com/mapbox-gl-js/api/#map#project) Map method
-
-### `.unproject(containerCoordinates)`
-
-- **Description:** Wrapper aroud Mapbox GL JS method
-- **See:** [unproject](https://www.mapbox.com/mapbox-gl-js/api/#map#unproject) Map method
-
-### `.queryRenderedFeatures(geometry?, parameters?)`
-
-- **Description:** Wrapper aroud Mapbox GL JS method
-- **See:** [queryRenderedFeatures](https://www.mapbox.com/mapbox-gl-js/api/#map#queryrenderedfeatures) Map method
-
-### `.querySourceFeatures(sourceId, parameters?)`
-
-- **Description:** Wrapper aroud Mapbox GL JS method
-- **See:** [querySourceFeatures](https://www.mapbox.com/mapbox-gl-js/api/#map#querysourcefeatures) Map method
-
-### `.getFeatureState(feature?)`
-
-- **Description:** Wrapper aroud Mapbox GL JS method
-- **See:** [getFeatureState](https://www.mapbox.com/mapbox-gl-js/api/#map#getfeaturestate) Map method
-
-### `.setFeatureState(feature?, state)`
-
-- **Description:** Wrapper aroud Mapbox GL JS method
-- **See:** [#setfeaturestate](https://www.mapbox.com/mapbox-gl-js/api/#map#setfeaturestate) Map method
-
-### `.addImage(name, image, options)`
-
-- **Description:** Wrapper aroud Mapbox GL JS method
-- **See:** [addImage](https://www.mapbox.com/mapbox-gl-js/api/#map#addimage) Map method
-
-### `.removeImage(name)`
-
-- **Description:** Wrapper aroud Mapbox GL JS method
-- **See:** [removeImage](https://www.mapbox.com/mapbox-gl-js/api/#map#removeimage) Map method
-
-### `.loadImage(url, callback)`
-
-- **Description:** Wrapper aroud Mapbox GL JS method
-- **See:** [loadImage](https://www.mapbox.com/mapbox-gl-js/api/#map#loadimage) Map method
-
-### `.hasImage(id)`
-
-- **Description:** Wrapper aroud Mapbox GL JS method
-- **See:** [hasImage](https://www.mapbox.com/mapbox-gl-js/api/#map#hasimage) Map method
 
 ### `.panBy(offset, options)`
 
@@ -431,11 +373,6 @@
 - **Returns:** `{Promise<{ eventData, bounds }>}`
   Promise that resolves object with event data and new bounds of the map when animation ends
 - **See:** [fitBounds](https://www.mapbox.com/mapbox-gl-js/api/#map#fitbounds) Map method
-
-### `.cameraForBounds(bounds, options)`
-
-- **Description:** Wrapper aroud Mapbox GL JS method
-- **See:** [cameraForBounds](https://www.mapbox.com/mapbox-gl-js/api/#map#cameraforbounds) Map method
 
 ### `.jumpTo(options)`
 

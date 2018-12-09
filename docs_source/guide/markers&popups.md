@@ -4,7 +4,7 @@
 
 The Marker component is a wrapper around the [Mapbox GL Marker API](https://www.mapbox.com/mapbox-gl-js/api/#marker).
 
-```vue
+```vue{2}
 <template>
   <mgl-map
     :accessToken="mapboxAccessToken"
@@ -41,7 +41,7 @@ Full list of props you cab see on [API page](api/marker.md#props)
 
 ### Slots
 
-The Marker component has two slots: the `marker` slot and the `popup` slot.
+The Marker component has two slots: the `marker` slot and default slot used for popup.
 
 #### The `marker` slot
 
@@ -81,7 +81,7 @@ export default {
 
 ### Default slot
 
-Default slot allows you to specify content to display in a Mapbox popup when the marker is clicked. See [below](markers&popups.md#markers-amp-popups-together)
+Default slot allows you to specify content to display in a Mapbox popup when the marker is clicked. See [below](#markers-popups-together)
 
 ## Popup
 
@@ -150,7 +150,7 @@ Popup often used inside of map markers. You can achive this by passing Popup ins
     :center="coordinates"
   >
     <mgl-marker :coordinates="coordinates">
-      <mgl-popup slot="popup">
+      <mgl-popup>
         <v-card>
           <div>Hello, I'm popup!</div>
         </v-card>
@@ -169,10 +169,12 @@ export default {
     MglPopup
   },
 
-  data: () => ({
-    mapStyle: 'mapbox://styles/mapbox/basic-v10',
-    coordinates: [ -111.549668, 39.014 ]
-  })
+  data() {
+    return {
+      mapStyle: 'mapbox://styles/mapbox/basic-v10',
+      coordinates: [ -111.549668, 39.014 ]
+    }
+  }
 }
 </script>
 ```

@@ -16,14 +16,16 @@
   "scripts": {
     "build": "vue-cli-service build --target lib --name vue-mapbox src/main.js",
     "serve": "vue-cli-service build --target lib --name vue-mapbox src/main.js --watch",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "docs:serve": "vuepress dev docs_source",
+    "docs:build": "vuepress build docs_source"
   },
   "dependencies": {
     "map-promisified": "latest"
   },
   "peerDependencies": {
-    "vue": "^2.5.18",
-    "mapbox-gl": "^0.51.0"
+    "mapbox-gl": "^0.51.0",
+    "vue": "^2.5.18"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.0",
@@ -31,9 +33,10 @@
     "@vue/cli-service": "^3.2.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
-    "eslint-loader": "2.1.0",
-    "eslint": "^5.9.0",
-    "vue": "^2.5.17",
-    "vue-template-compiler": "^2.5.17"
+    "eslint": "^5.10.0",
+    "eslint-loader": "2.1.1",
+    "vue": "^2.5.18",
+    "vue-template-compiler": "^2.5.18",
+    "vuepress": "^1.0.0-alpha.27"
   }
 }

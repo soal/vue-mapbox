@@ -4,7 +4,7 @@ function walkParents (component) {
     return component
   } else {
     if (component.$parent !== undefined) {
-      walkParents(component.$parent)
+      return walkParents(component.$parent)
     }
   }
 }

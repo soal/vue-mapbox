@@ -48,7 +48,7 @@ export default {
     anchor: {
       validator (value) {
         let allowedValues = ['top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right']
-        return (typeof value === 'string' && allowedValues.indexOf(value) !== -1) || value === undefined
+        return typeof value === 'string' && allowedValues.includes(value)
       },
       default: undefined
     },
@@ -144,9 +144,6 @@ export default {
       this.$_bindSelfEvents(Object.keys(popupEvents), this.popup)
 
       this.$_emitEvent('added', { popup: this.popup })
-
-      // this.popup.on('close', this.$_onClose)
-      // this.popup.on('open', this.$_onOpen)
 
       if (this.$parent.marker !== undefined) {
         this.$parent.marker.setPopup(this.popup)

@@ -57,14 +57,14 @@ export default {
           this.$_emitEvent('layer-source-error', { sourceId: this.sourceId, error: err })
         }
       }
-      this._addLayer()
+      this.$_addLayer()
       this.$_bindLayerEvents(layerEvents)
       this.map.off('dataloading', this.$_watchSourceLoading)
       this.initial = false
       payload.mapComponent.$on('load', this.$_deferredMount)
     },
 
-    _addLayer () {
+    $_addLayer () {
       let existed = this.map.getLayer(this.layerId)
       if (existed) {
         if (this.replace) {
@@ -98,6 +98,28 @@ export default {
 
       this.map.addLayer(layer, this.before)
       this.$_emitEvent('added', { layerId: this.layerId })
+    },
+
+    setFeatureState (featureId, state) {
+      if (this.map) {
+        const params = {
+          id: featureId,
+          source: this.source,
+          'source-layer': this['source-layer']
+        }
+        return this.map.setFeatureState(params, state)
+      }
+    },
+
+    getFeatureState (featureId) {
+      if (this.map) {
+        const params = {
+          id: featureId,
+          source: this.source,
+          'source-layer': this['source-layer']
+        }
+        return this.map.getFeatureState(params)
+      }
     }
   }
 }

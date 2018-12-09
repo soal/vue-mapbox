@@ -116,6 +116,22 @@ export default {
 
       this.map.addLayer(layer, this.before)
       this.$_emitEvent('added', { layerId: this.layerId })
+    },
+
+    setFeatureState (featureId, state) {
+      if (this.map) {
+        const params = { id: featureId, source: this.source }
+        if (this['source-layer']) params['source-layer'] = this['source-layer']
+        return this.map.setFeatureState(params, state)
+      }
+    },
+
+    getFeatureState (featureId) {
+      if (this.map) {
+        const params = { id: featureId, source: this.source }
+        if (this['source-layer']) params['source-layer'] = this['source-layer']
+        return this.map.getFeatureState(params)
+      }
     }
   }
 }

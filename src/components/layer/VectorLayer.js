@@ -27,6 +27,32 @@ export default {
     }
   },
 
+  computed: {
+    sourceFeatures () {
+      return filter => {
+        if (this.map) {
+          return this.map.querySourceFeatures(this.sourceId, {
+            sourceLayer: this['source-layer'],
+            filter
+          })
+        }
+        return null
+      }
+    },
+
+    renderedFeatures () {
+      return (geometry, filter) => {
+        if (this.map) {
+          return this.map.queryRenderedFeatures(geometry, {
+            layers: [this.layerId],
+            filter
+          })
+        }
+        return null
+      }
+    }
+  },
+
   watch: {
     filter (filter) {
       if (this.initial) return

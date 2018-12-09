@@ -33,6 +33,29 @@ export default {
     }
   },
 
+  computed: {
+    sourceFeatures () {
+      return filter => {
+        if (this.map) {
+          return this.map.querySourceFeatures(this.sourceId, { filter })
+        }
+        return null
+      }
+    },
+
+    renderedFeatures () {
+      return (geometry, filter) => {
+        if (this.map) {
+          return this.map.queryRenderedFeatures(geometry, {
+            layers: [this.layerId],
+            filter
+          })
+        }
+        return null
+      }
+    }
+  },
+
   watch: {
     source (data) {
       if (this.initial) return

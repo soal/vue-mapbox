@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Markers and Popups</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.d88857d0.css" as="style"><link rel="preload" href="/assets/js/app.772d6f02.js" as="script"><link rel="preload" href="/assets/js/2.953f184d.js" as="script"><link rel="preload" href="/assets/js/24.86906055.js" as="script"><link rel="prefetch" href="/assets/js/10.754b3493.js"><link rel="prefetch" href="/assets/js/11.4f5c5c70.js"><link rel="prefetch" href="/assets/js/12.6e232428.js"><link rel="prefetch" href="/assets/js/13.5554e847.js"><link rel="prefetch" href="/assets/js/14.bda9238e.js"><link rel="prefetch" href="/assets/js/15.307c0493.js"><link rel="prefetch" href="/assets/js/16.f2f96c09.js"><link rel="prefetch" href="/assets/js/17.a335a0c5.js"><link rel="prefetch" href="/assets/js/18.2683ec90.js"><link rel="prefetch" href="/assets/js/19.bb897861.js"><link rel="prefetch" href="/assets/js/20.985b5b42.js"><link rel="prefetch" href="/assets/js/21.c53dd306.js"><link rel="prefetch" href="/assets/js/22.48c76f5e.js"><link rel="prefetch" href="/assets/js/23.364eb733.js"><link rel="prefetch" href="/assets/js/25.7558f131.js"><link rel="prefetch" href="/assets/js/26.bad9ad24.js"><link rel="prefetch" href="/assets/js/27.692671ed.js"><link rel="prefetch" href="/assets/js/28.eeb22835.js"><link rel="prefetch" href="/assets/js/3.86e38456.js"><link rel="prefetch" href="/assets/js/4.3375b3fa.js"><link rel="prefetch" href="/assets/js/5.2e8503c0.js"><link rel="prefetch" href="/assets/js/6.dd9f2a6a.js"><link rel="prefetch" href="/assets/js/7.d9962bab.js"><link rel="prefetch" href="/assets/js/8.8d05eee1.js"><link rel="prefetch" href="/assets/js/9.dd2b94db.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d88857d0.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <!----> </div> <div class="page"> <div class="content default"><h1 id="markers-and-popups"><a href="#markers-and-popups" aria-hidden="true" class="header-anchor">#</a> Markers and Popups</h1> <h2 id="marker"><a href="#marker" aria-hidden="true" class="header-anchor">#</a> Marker</h2> <p>The Marker component is a wrapper around the <a href="https://www.mapbox.com/mapbox-gl-js/api/#marker" target="_blank" rel="noopener noreferrer">Mapbox GL Marker API<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mgl-map</span>
+    <span class="token attr-name">:accessToken</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mapboxAccessToken<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:mapStyle.sync</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mapStyle<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:center</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>coordinates<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mgl-marker</span> <span class="token attr-name">:coordinates</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>coordinates<span class="token punctuation">&quot;</span></span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>blue<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mgl-marker</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mgl-map</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> MglMap<span class="token punctuation">,</span> MglMarker <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue-mapbox'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  components<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    MglMap<span class="token punctuation">,</span>
+    MglMarker
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    mapStyle<span class="token punctuation">:</span> <span class="token string">'mapbox://styles/mapbox/basic-v10'</span><span class="token punctuation">,</span>
+    coordinates<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token operator">-</span><span class="token number">111.549668</span><span class="token punctuation">,</span> <span class="token number">39.014</span> <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h3 id="props"><a href="#props" aria-hidden="true" class="header-anchor">#</a> Props</h3> <ul><li><code>color {String}</code> Set the color of the default marker (not applicable when using the <code>marker</code> slot)</li> <li><code>coordinates {Array}</code> The GeoJSON coordinates for marker placement on the map</li> <li><code>offset {Object, Array}</code> Display the marker at an offset distance from the coordinates</li></ul> <p>Full list of props you cab see on <a href="/api/marker.html#props">API page</a></p> <h3 id="slots"><a href="#slots" aria-hidden="true" class="header-anchor">#</a> Slots</h3> <p>The Marker component has two slots: the <code>marker</code> slot and the <code>popup</code> slot.</p> <h4 id="the-marker-slot"><a href="#the-marker-slot" aria-hidden="true" class="header-anchor">#</a> The <code>marker</code> slot</h4> <p>The <code>marker</code> slot allows you to customize the look of the marker.  Here is an example of using the <a href="https://vuetifyjs.com/en/components/icons" target="_blank" rel="noopener noreferrer">Vuetify <code>v-icon</code> component<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> instead of the default marker icon:</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mgl-map</span>
+    <span class="token attr-name">:accessToken</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mapboxAccessToken<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:mapStyle.sync</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mapStyle<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:center</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>coordinates<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mgl-marker</span> <span class="token attr-name">:coordinates</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>coordinates<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>v-icon</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>marker<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>mdi-map-marker<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>v-icon</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mgl-marker</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mgl-map</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> MglMap<span class="token punctuation">,</span> MglMarker <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue-mapbox'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  components<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    MglMap<span class="token punctuation">,</span>
+    MglMarker
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  
+  data<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    mapStyle<span class="token punctuation">:</span> <span class="token string">'mapbox://styles/mapbox/basic-v10'</span><span class="token punctuation">,</span>
+    coordinates<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token operator">-</span><span class="token number">111.549668</span><span class="token punctuation">,</span> <span class="token number">39.014</span> <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h3 id="default-slot"><a href="#default-slot" aria-hidden="true" class="header-anchor">#</a> Default slot</h3> <p>Default slot allows you to specify content to display in a Mapbox popup when the marker is clicked. See <a href="/markers&amp;popups.html#markers-amp-popups-together">below</a></p> <h2 id="popup"><a href="#popup" aria-hidden="true" class="header-anchor">#</a> Popup</h2> <p>The Popup component is wrapper around the <a href="https://www.mapbox.com/mapbox-gl-js/api/#popup" target="_blank" rel="noopener noreferrer">Mapbox GL Popup API<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p> <p>You can specify content inside popup in default slot. It can be HTML or Vue component.
+In this example <a href="https://vuetifyjs.com/en/components/cards" target="_blank" rel="noopener noreferrer">Vuetify card component<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> used as a content for popup:</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mgl-map</span>
+    <span class="token attr-name">:accessToken</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mapboxAccessToken<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:mapStyle.sync</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mapStyle<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:center</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>coordinates<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mgl-popup</span>
+      <span class="token attr-name">:coordinates</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>coordinates<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">:anchor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>top<span class="token punctuation">&quot;</span></span>
+    <span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>v-card</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>Hello, I'm popup!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>v-card</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mgl-popup</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> MglMap<span class="token punctuation">,</span> MglPopup <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue-mapbox'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  components<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    MglMap<span class="token punctuation">,</span>
+    MglPopup
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    mapStyle<span class="token punctuation">:</span> <span class="token string">'mapbox://styles/mapbox/basic-v10'</span><span class="token punctuation">,</span>
+    coordinates<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token operator">-</span><span class="token number">111.549668</span><span class="token punctuation">,</span> <span class="token number">39.014</span> <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>If you set <code>onlyText</code> prop to <code>true</code> content in Popup default slot will be treated as plain text. It can be useful if you loading popup content from external untrusted source.</p> <h3 id="props-2"><a href="#props-2" aria-hidden="true" class="header-anchor">#</a> Props</h3> <ul><li><p><code>closeButton {Boolean}</code> If <code>true</code>, a close button will appear in the top right corner of the popup.</p></li> <li><p><code>closeOnClick {Boolean}</code> If true, the popup will closed when the map is clicked.</p></li> <li><p><code>coordinates {Array}</code> The GeoJSON coordinates for popup placement on the map. If popup used inside marker this prop will be ignored.</p></li> <li><p><code>anchor {string}</code> prop specifies the part of the Popup that should be positioned closest to the coordinates point.</p></li></ul> <p>Full list of props you can see on <a href="/api/popup.html#props">API page</a></p> <h2 id="markers-popups-together"><a href="#markers-popups-together" aria-hidden="true" class="header-anchor">#</a> Markers &amp; Popups together</h2> <p>Popup often used inside of map markers. You can achive this by passing Popup inside Marker in default slot:</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mgl-map</span>
+    <span class="token attr-name">:accessToken</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mapboxAccessToken<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:mapStyle.sync</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mapStyle<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:center</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>coordinates<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mgl-marker</span> <span class="token attr-name">:coordinates</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>coordinates<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mgl-popup</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>popup<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>v-card</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>Hello, I'm popup!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>v-card</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mgl-popup</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mgl-marker</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mgl-map</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> MglMap<span class="token punctuation">,</span> MglPopup<span class="token punctuation">,</span> MglMarker <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue-mapbox'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  components<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    MglMap<span class="token punctuation">,</span>
+    MglMarker<span class="token punctuation">,</span>
+    MglPopup
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  data<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    mapStyle<span class="token punctuation">:</span> <span class="token string">'mapbox://styles/mapbox/basic-v10'</span><span class="token punctuation">,</span>
+    coordinates<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token operator">-</span><span class="token number">111.549668</span><span class="token punctuation">,</span> <span class="token number">39.014</span> <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>In this case, Popup will be automatically bound to Marker. You can use <code>togglePopup</code> Marker method to toggle visibility of bound Popup.
+Take note that Popup 'coordinates' prop will be ignored.</p></div> <!----> <!----> </div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.772d6f02.js" defer></script><script src="/assets/js/2.953f184d.js" defer></script><script src="/assets/js/24.86906055.js" defer></script>
+  </body>
+</html>

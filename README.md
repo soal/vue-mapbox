@@ -35,4 +35,21 @@ Build for production:
 npm run build
 ```
 
+### Documentation
+
+Documentation use [VuePress 1.0](https://vuepress.vuejs.org).
+Documentations source palced in `docs_source` directory and builds into `docs` directory
+
+Start documentation site in development mode:
+
+```sh
+npm run docs:serve
+```
+
+Build documentation:
+
+```sh
+npm run docs:build
+```
+
 Inspired by KoRiGaN's [Vue2Leaflet](https://github.com/KoRiGaN/Vue2Leaflet).

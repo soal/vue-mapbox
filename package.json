@@ -22,7 +22,7 @@
     "map-promisified": "latest"
   },
   "peerDependencies": {
-    "vue": "^2.5.17",
+    "vue": "^2.5.18",
     "mapbox-gl": "^0.51.0"
   },
   "devDependencies": {

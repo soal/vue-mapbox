@@ -18,6 +18,41 @@ export default {
     filter: {
       type: Array,
       default: undefined
+    },
+    cluster: {
+      type: Boolean,
+      default: false
+    },
+    clusterMaxZoom: {
+      type: Number,
+      default: 14
+    },
+    clusterRadius: {
+      type: Number,
+      default: 50
+    }
+  },
+
+  computed: {
+    sourceFeatures () {
+      return filter => {
+        if (this.map) {
+          return this.map.querySourceFeatures(this.sourceId, { filter })
+        }
+        return null
+      }
+    },
+
+    renderedFeatures () {
+      return (geometry, filter) => {
+        if (this.map) {
+          return this.map.queryRenderedFeatures(geometry, {
+            layers: [this.layerId],
+            filter
+          })
+        }
+        return null
+      }
     }
   },
 
@@ -40,14 +75,21 @@ export default {
         try {
           this.map.addSource(this.sourceId, {
             type: 'geojson',
-            data: this.source
+            data: this.source,
+            cluster: this.cluster,
+            clusterMaxZoom: this.clusterMaxZoom,
+            clusterRadius: this.clusterRadius
+
           })
         } catch (err) {
           if (this.replaceSource) {
             this.map.removeSource(this.sourceId)
             this.map.addSource(this.sourceId, {
               type: 'geojson',
-              data: this.source
+              data: this.source,
+              cluster: this.cluster,
+              clusterMaxZoom: this.clusterMaxZoom,
+              clusterRadius: this.clusterRadius
             })
           } else {
             this.$_emitEvent('layer-source-error', { sourceId: this.sourceId, error: err })
@@ -97,6 +139,22 @@ export default {
 
       this.map.addLayer(layer, this.before)
       this.$_emitEvent('added', { layerId: this.layerId })
+    },
+
+    setFeatureState (featureId, state) {
+      if (this.map) {
+        const params = { id: featureId, source: this.source }
+        if (this['source-layer']) params['source-layer'] = this['source-layer']
+        return this.map.setFeatureState(params, state)
+      }
+    },
+
+    getFeatureState (featureId) {
+      if (this.map) {
+        const params = { id: featureId, source: this.source }
+        if (this['source-layer']) params['source-layer'] = this['source-layer']
+        return this.map.getFeatureState(params)
+      }
     }
   }
 }

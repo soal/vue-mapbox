@@ -279,6 +279,7 @@
 Asynchronous actions exposed via `GlMap.actions`
 
 ### `.stop()`
+
 - **Description:** Stops all animations on the map
 - **Returns:** `{Promise<{ pitch, zoom, bearing, center }>}`
   Promise that resolves object with map parameters on the moment of call `stop()`

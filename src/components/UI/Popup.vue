@@ -158,7 +158,7 @@ export default {
     },
 
     $_emitSelfEvent (event) {
-      this.$_emitMapEvent(event.type, { popup: this.popup })
+      this.$_emitMapEvent(event, { popup: this.popup })
     },
 
     remove () {

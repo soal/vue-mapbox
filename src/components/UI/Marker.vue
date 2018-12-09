@@ -114,7 +114,7 @@ export default {
     },
 
     $_emitSelfEvent (event) {
-      this.$_emitMapEvent(event.type, { marker: this.marker })
+      this.$_emitMapEvent(event, { marker: this.marker })
     },
 
     remove () {

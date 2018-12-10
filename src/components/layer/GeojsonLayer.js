@@ -10,7 +10,7 @@ export default {
     },
     type: {
       validator (value) {
-        let allowedValues = ['fill', 'line', 'symbol', 'circle', 'fill-extrusion', 'raster', 'background']
+        let allowedValues = ['fill', 'line', 'symbol', 'circle', 'fill-extrusion', 'raster', 'background', 'heatmap']
         return (typeof value === 'string' && allowedValues.indexOf(value) !== -1) || value === undefined
       },
       default: 'fill'

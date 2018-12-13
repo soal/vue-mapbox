@@ -2,20 +2,17 @@
 
 ## Adding map component
 
-For using maps with Mapbox GL JS you need a map style. See details in Mapbox GL JS [documentation](https://mapbox.com/mapbox-gl-js/style-spec).  
-For using Mapbox-hosted maps, you need to set `access_token`. See details in Mapbox [documentation](https://mapbox.com/help/define-access-token/).  
+For using maps with Mapbox GL JS you need a [map style](https://mapbox.com/mapbox-gl-js/style-spec).  
+If you using Mapbox-hosted maps, you need to set `access_token`. Look for details in Mapbox [documentation](https://mapbox.com/help/define-access-token/).  
 If you using self-hosting maps on your own server you can omit this parameter.
 
-```vue
+```vue{2}
 <template>
-<mgl-map
-    :accessToken="accessToken"
-    :mapStyle.sync="mapStyle"
-/>
+  <MglMap :accessToken="accessToken" :mapStyle.sync="mapStyle" />
 </template>
 
 <script>
-import { MglMap } from 'vue-mapbox'
+import { MglMap } from "vue-mapbox";
 
 export default {
   components: {
@@ -24,10 +21,10 @@ export default {
   data() {
     return {
       accessToken: ACCESS_TOKEN, // your access token. Needed if you using Mapbox maps
-      mapStyle: MAP_STYLE, // your map style
-    }
+      mapStyle: MAP_STYLE // your map style
+    };
   }
-}
+};
 </script>
 ```
 
@@ -35,8 +32,10 @@ export default {
 
 You can control map parameters like zoom, bearing, pitch etc. by changing props.
 If you set `.sync` modifier ([Vue docs](https://vuejs.org/v2/guide/components.html#sync-Modifier)) to prop, it will updates when you use operations that takes time to proceed. For example, if you use `flyTo` method, props `zoom`, `center`, `bearing`, `pitch` will be updated when animation ends.
+
 <!-- See example with flyTo:
 example with flyTo -->
+
 Full list of props see in [API docs](/api/glmap.md#props), note field 'Synced' in description
 
 ## Map actions
@@ -61,7 +60,7 @@ export deafult {
         speed: 1
       })
       console.log(newParams)
-      /* => { 
+      /* => {
               center: [30, 30],
               zoom: 9,
               bearing: 9,
@@ -78,4 +77,4 @@ See full list of actions on [API](/api/glmap.md#actions) page.
 
 ### Method `actions.stop()`
 
-Method `.stop()` just stops all animations on map, updates props with new positions and return Promise with map parameters in the moment when `.stop()` called.  
+Method `.stop()` just stops all animations on map, updates props with new positions and return Promise with map parameters in the moment when `.stop()` called.

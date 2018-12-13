@@ -1,4 +1,5 @@
 # Composition
+
 You can use Mapbox GL feature as Vue component and compose it as a child of GlMap. During creation all components waits until map properly initialized.
 
 For example, adding map controls:
@@ -6,12 +7,12 @@ For example, adding map controls:
 ```vue
 <template>
 <div id="#app">
-  <mgl-map
+  <MglMap
     :accessToken="accessToken"
     :mapStyle.sync="mapStyle"
   >
-    <mgl-navigation-control position="top-right"/>
-    <mgl-geolocate-control position="top-right" />
+    <MglNavigationControl position="top-right"/>
+    <MglGeolocateControl position="top-right" />
   </mgl-map>
 </div>
 </template>
@@ -43,19 +44,15 @@ Adding a popup:
 
 ```vue
 <template>
-<div id="#app">
-  <mgl-map
-    :accessToken="accessToken"
-    :mapStyle.sync="mapStyle"
-  >
-    <mgl-navigation-control position="top-right"/>
-    <mgl-geolocate-control position="top-right" />
-    <mgl-popup :coordinates="popupCoordinates">
-      <span>Hello world!</span>
-    </mgl-popup>
-
-  </mgl-map>
-</div>
+  <div id="#app">
+    <MglMap :accessToken="accessToken" :mapStyle.sync="mapStyle">
+      <MglNavigationControl position="top-right" />
+      <MglGeolocateControl position="top-right" />
+      <MglPopup :coordinates="popupCoordinates">
+        <span>Hello world!</span>
+      </MglPopup>
+    </MglMap>
+  </div>
 </template>
 
 <script>
@@ -64,7 +61,7 @@ import {
   MglNavigationControl,
   MglGeolocateControl,
   MglPopup
-} from 'vue-mapbox'
+} from "vue-mapbox";
 
 export default {
   components: {
@@ -75,12 +72,12 @@ export default {
   },
   data() {
     return {
-      accessToken: 'some_token',
-      mapStyle: 'style_object',
+      accessToken: "some_token",
+      mapStyle: "style_object",
       popupCoordinates: [10, 10]
-    }
+    };
   }
-}
+};
 </script>
 ```
 
@@ -89,17 +86,18 @@ Vue-mapbox component will work even if it wrapped in another component as long a
 For example:
 
 **_Popup wrapper_**:
-```vue
+
+```vue{2}
 <template>
-<div class="popup-wrapper">
-  <mgl-popup :coordinates="popupCoordinates">
-    <span>Hello world from wrapped popup!</span>
-  </mgl-popup>
-</div>
+  <div class="popup-wrapper">
+    <MglPopup :coordinates="popupCoordinates">
+      <span>Hello world from wrapped popup!</span>
+    </MglPopup>
+  </div>
 </template>
 
 <script>
-import { MglPopup } from 'vue-mapbox'
+import { MglPopup } from 'vue-mapbox';
 
 export default {
   name: 'PopupWrapper'
@@ -118,21 +116,20 @@ export default {
 ```
 
 **_Main component_**:
+
 ```vue
 <template>
-<div id="#app">
-  <mgl-map
-    :accessToken="accessToken"
-    :mapStyle.sync="mapStyle"
-  >
-    <popup-wrapper /> <!-- works! -->
-  </mgl-map>
-</div>
+  <div id="#app">
+    <MglMap :accessToken="accessToken" :mapStyle.sync="mapStyle">
+      <PopupWrapper />
+      <!-- works! -->
+    </MglMap>
+  </div>
 </template>
 
 <script>
-import { MglMap } from 'vue-mapbox'
-import PopupWrapper from 'PopupWrapper' // wrapper for popup
+import { MglMap } from "vue-mapbox";
+import PopupWrapper from "PopupWrapper"; // wrapper for popup
 
 export default {
   components: {
@@ -141,11 +138,11 @@ export default {
   },
   data() {
     return {
-      accessToken: 'some_token',
-      mapStyle: 'style_object'
-    }
+      accessToken: "some_token",
+      mapStyle: "style_object"
+    };
   }
-}
+};
 </script>
 ```
 

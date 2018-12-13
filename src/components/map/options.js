@@ -1,8 +1,8 @@
 export default {
   container: {
     type: [String, HTMLElement],
-    default () {
-      return `map-${('' + Math.random()).split('.')[1]}`
+    default() {
+      return `map-${("" + Math.random()).split(".")[1]}`;
     }
   },
   accessToken: {
@@ -55,10 +55,11 @@ export default {
     type: [String, Array],
     default: null
   },
-  logoPosition: { // TODO: Add validator
+  logoPosition: {
     type: String,
-    default: 'bottom-left',
-    validator: val => ['top-left', 'top-right', 'bottom-left', 'bottom-right'].includes(val)
+    default: "bottom-left",
+    validator: val =>
+      ["top-left", "top-right", "bottom-left", "bottom-right"].includes(val)
   },
   failIfMajorPerformanceCaveat: {
     type: Boolean,
@@ -74,14 +75,14 @@ export default {
   },
   maxBounds: {
     type: Array,
-    default () {
-      return undefined
+    default() {
+      return undefined;
     }
   },
   scrollZoom: {
     type: [Boolean, Object],
-    default () {
-      return true
+    default() {
+      return true;
     }
   },
   boxZoom: {
@@ -106,8 +107,8 @@ export default {
   },
   touchZoomRotate: {
     type: [Boolean, Object],
-    default () {
-      return true
+    default() {
+      return true;
     }
   },
   trackResize: {
@@ -182,4 +183,4 @@ export default {
     type: Boolean,
     default: true
   }
-}
+};

@@ -6,28 +6,30 @@ The Marker component is a wrapper around the [Mapbox GL Marker API](https://www.
 
 ```vue{2}
 <template>
-  <mgl-map
+  <MglMap
     :accessToken="mapboxAccessToken"
     :mapStyle.sync="mapStyle"
     :center="coordinates"
   >
-    <mgl-marker :coordinates="coordinates" color="blue"></mgl-marker>
-  </mgl-map>
+    <MglMarker :coordinates="coordinates" color="blue" />
+  </MglMap>
 </template>
 
 <script>
-import { MglMap, MglMarker } from 'vue-mapbox'
+import { MglMap, MglMarker } from "vue-mapbox";
 
 export default {
   components: {
     MglMap,
     MglMarker
   },
-  data: () => ({
-    mapStyle: 'mapbox://styles/mapbox/basic-v10',
-    coordinates: [ -111.549668, 39.014 ]
-  })
-}
+  data() {
+    return {
+      mapStyle: "mapbox://styles/mapbox/basic-v10",
+      coordinates: [-111.549668, 39.014]
+    };
+  }
+};
 </script>
 ```
 
@@ -37,7 +39,7 @@ export default {
 - `coordinates {Array}` The GeoJSON coordinates for marker placement on the map
 - `offset {Object, Array}` Display the marker at an offset distance from the coordinates
 
-Full list of props you cab see on [API page](api/marker.md#props)
+Full list of props you cab see on [API page](/api/marker.md#props)
 
 ### Slots
 
@@ -45,37 +47,37 @@ The Marker component has two slots: the `marker` slot and default slot used for 
 
 #### The `marker` slot
 
-The `marker` slot allows you to customize the look of the marker.  Here is an example of using the [Vuetify `v-icon` component](https://vuetifyjs.com/en/components/icons) instead of the default marker icon:
+The `marker` slot allows you to customize the look of the marker. Here is an example of using the [Vuetify `v-icon` component](https://vuetifyjs.com/en/components/icons) instead of the default marker icon:
 
-```vue
+```vue{2}
 <template>
-  <mgl-map
+  <MglMap
     :accessToken="mapboxAccessToken"
     :mapStyle.sync="mapStyle"
     :center="coordinates"
   >
-    <mgl-marker :coordinates="coordinates">
-
+    <MglMarker :coordinates="coordinates">
       <v-icon slot="marker">mdi-map-marker</v-icon>
-
-    </mgl-marker>
-  </mgl-map>
+    </MglMarker>
+  </MglMap>
 </template>
 
 <script>
-import { MglMap, MglMarker } from 'vue-mapbox'
+import { MglMap, MglMarker } from "vue-mapbox";
 
 export default {
   components: {
     MglMap,
     MglMarker
   },
-  
-  data: () => ({
-    mapStyle: 'mapbox://styles/mapbox/basic-v10',
-    coordinates: [ -111.549668, 39.014 ]
-  })
-}
+
+  data() {
+    return {
+      mapStyle: "mapbox://styles/mapbox/basic-v10",
+      coordinates: [-111.549668, 39.014]
+    };
+  }
+};
 </script>
 ```
 
@@ -92,34 +94,32 @@ In this example [Vuetify card component](https://vuetifyjs.com/en/components/car
 
 ```vue
 <template>
-  <mgl-map
+  <MglMap
     :accessToken="mapboxAccessToken"
     :mapStyle.sync="mapStyle"
     :center="coordinates"
   >
-    <mgl-popup
-      :coordinates="coordinates"
-      :anchor="top"
-    >
-      <v-card>
-        <div>Hello, I'm popup!</div>
-      </v-card>
-    </mgl-popup>
+    <MglPopup :coordinates="coordinates" :anchor="top">
+      <VCard> <div>Hello, I'm popup!</div> </VCard>
+    </MglPopup>
+  </MglMap>
 </template>
 
 <script>
-import { MglMap, MglPopup } from 'vue-mapbox'
+import { MglMap, MglPopup } from "vue-mapbox";
 
 export default {
   components: {
     MglMap,
     MglPopup
   },
-  data: () => ({
-    mapStyle: 'mapbox://styles/mapbox/basic-v10',
-    coordinates: [ -111.549668, 39.014 ]
-  })
-}
+  data() {
+    return {
+      mapStyle: "mapbox://styles/mapbox/basic-v10",
+      coordinates: [-111.549668, 39.014]
+    };
+  }
+};
 </script>
 ```
 
@@ -135,8 +135,7 @@ If you set `onlyText` prop to `true` content in Popup default slot will be treat
 
 - `anchor {string}` prop specifies the part of the Popup that should be positioned closest to the coordinates point.
 
-Full list of props you can see on [API page](api/popup.md#props)
-
+Full list of props you can see on [API page](/api/popup.md#props)
 
 ## Markers & Popups together
 
@@ -144,23 +143,21 @@ Popup often used inside of map markers. You can achive this by passing Popup ins
 
 ```vue
 <template>
-  <mgl-map
+  <MglMap
     :accessToken="mapboxAccessToken"
     :mapStyle.sync="mapStyle"
     :center="coordinates"
   >
-    <mgl-marker :coordinates="coordinates">
-      <mgl-popup>
-        <v-card>
-          <div>Hello, I'm popup!</div>
-        </v-card>
-      </mgl-popup>
-    </mgl-marker>
-  </mgl-map>
+    <MglMarker :coordinates="coordinates">
+      <MglPopup>
+        <VCard> <div>Hello, I'm popup!</div> </VCard>
+      </MglPopup>
+    </MglMarker>
+  </MglMap>
 </template>
 
 <script>
-import { MglMap, MglPopup, MglMarker } from 'vue-mapbox'
+import { MglMap, MglPopup, MglMarker } from "vue-mapbox";
 
 export default {
   components: {
@@ -171,13 +168,13 @@ export default {
 
   data() {
     return {
-      mapStyle: 'mapbox://styles/mapbox/basic-v10',
-      coordinates: [ -111.549668, 39.014 ]
-    }
+      mapStyle: "mapbox://styles/mapbox/basic-v10",
+      coordinates: [-111.549668, 39.014]
+    };
   }
-}
+};
 </script>
 ```
 
 In this case, Popup will be automatically bound to Marker. You can use `togglePopup` Marker method to toggle visibility of bound Popup.
-Take note that Popup 'coordinates' prop will be ignored.
+Take note that Popup `coordinates` prop will be ignored.

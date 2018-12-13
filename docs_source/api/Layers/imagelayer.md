@@ -1,2 +1,3 @@
-# VectorLayer
+# ImageLayer
+
 _Coming soon_

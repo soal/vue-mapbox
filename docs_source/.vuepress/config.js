@@ -34,7 +34,7 @@ module.exports = {
           ["/api/controls.md", "Controls"],
           ["/api/marker.md", "MapMarker"],
           ["/api/popup.md", "Popup"],
-          ["/api/Layers/", "Layer events"],
+          ["/api/Layers/", "Layer commons"],
           ["/api/Layers/geojsonlayer.md", "GeojsonLayer"],
           ["/api/Layers/vectorlayer.md", "VectorLayer"],
           ["/api/Layers/rasterlayer.md", "RasterLayer"],

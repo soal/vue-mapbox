@@ -52,7 +52,7 @@ export default {
 </script>
 ```
 
-See list of controls and they properties in [API docs](api/controls.md).
+See list of controls and they properties in [API docs](/api/controls.md).
 
 ### Attribution control
 

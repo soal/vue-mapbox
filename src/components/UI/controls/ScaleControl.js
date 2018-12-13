@@ -1,7 +1,7 @@
-import controlMixin from './controlMixin'
+import controlMixin from "./controlMixin";
 
 export default {
-  name: 'ScaleControl',
+  name: "ScaleControl",
   mixins: [controlMixin],
 
   props: {
@@ -11,34 +11,34 @@ export default {
     },
     unit: {
       type: String,
-      default: 'metric',
-      validator (value) {
-        return ['imperial', 'metric', 'nautical'].includes(value)
+      default: "metric",
+      validator(value) {
+        return ["imperial", "metric", "nautical"].includes(value);
       }
     }
   },
 
-  data () {
+  data() {
     return {
       control: undefined
-    }
+    };
   },
 
   watch: {
-    unit (next, prev) {
+    unit(next, prev) {
       if (this.control && next !== prev) {
-        this.control.setUnit(next)
+        this.control.setUnit(next);
       }
     }
   },
 
-  created () {
-    this.control = new this.mapbox.ScaleControl(this._props)
+  created() {
+    this.control = new this.mapbox.ScaleControl(this._props);
   },
 
   methods: {
-    $_deferredMount (payload) {
-      this.$_addControl(payload)
+    $_deferredMount(payload) {
+      this.$_addControl(payload);
     }
   }
-}
+};

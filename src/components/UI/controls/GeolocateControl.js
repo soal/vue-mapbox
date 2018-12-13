@@ -1,30 +1,26 @@
-import controlMixin from './controlMixin'
-import withEvents from '../../../lib/withEvents'
-import withSelfEvents from '../withSelfEvents'
+import controlMixin from "./controlMixin";
+import withEvents from "../../../lib/withEvents";
+import withSelfEvents from "../withSelfEvents";
 
 const geolocationEvents = {
-  trackuserlocationstart: 'trackuserlocationstart',
-  trackuserlocationend: 'trackuserlocationend',
-  geolocate: 'geolocate',
-  error: 'error'
-}
+  trackuserlocationstart: "trackuserlocationstart",
+  trackuserlocationend: "trackuserlocationend",
+  geolocate: "geolocate",
+  error: "error"
+};
 
 export default {
-  name: 'GeolocateControl',
+  name: "GeolocateControl",
   mixins: [withEvents, withSelfEvents, controlMixin],
 
   props: {
-    position: {
-      type: String,
-      default: 'top-right'
-    },
     positionOptions: {
       type: Object,
-      default () {
+      default() {
         return {
           enableHighAccuracy: false,
           timeout: 6000
-        }
+        };
       }
     },
     trackUserLocation: {
@@ -41,35 +37,35 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       control: undefined
-    }
+    };
   },
 
-  created () {
-    this.control = new this.mapbox.GeolocateControl(this._props)
+  created() {
+    this.control = new this.mapbox.GeolocateControl(this._props);
   },
 
   methods: {
-    $_deferredMount (payload) {
-      this.$_addControl(payload)
-      this.$_bindSelfEvents(Object.keys(geolocationEvents), this.control)
+    $_deferredMount(payload) {
+      this.$_addControl(payload);
+      this.$_bindSelfEvents(Object.keys(geolocationEvents), this.control);
     },
 
-    $_emitSelfEvent (event) {
-      if (event.type === 'error') {
-        this.$_emitMapEvent('geolocate-error', { control: this.control })
+    $_emitSelfEvent(event) {
+      if (event.type === "error") {
+        this.$_emitMapEvent("geolocate-error", { control: this.control });
       }
-      if (event.type === 'geolocate') {
-        this.$_emitMapEvent('geolocate', { control: this.control })
+      if (event.type === "geolocate") {
+        this.$_emitMapEvent("geolocate", { control: this.control });
       }
     },
 
-    trigger () {
+    trigger() {
       if (this.control) {
-        return this.control.trigger()
+        return this.control.trigger();
       }
     }
   }
-}
+};

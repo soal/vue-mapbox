@@ -1,28 +1,34 @@
-import controlMixin from './controlMixin'
+import controlMixin from "./controlMixin";
 
 export default {
-  name: 'AttributionControl',
+  name: "AttributionControl",
   mixins: [controlMixin],
   props: {
     compact: {
       type: Boolean,
       default: true
+    },
+    customAttribution: {
+      type: [String, Array],
+      deafault: undefined
     }
   },
 
-  data () {
+  data() {
     return {
       control: undefined
-    }
+    };
   },
 
-  created () {
-    this.control = new this.mapbox.AttributionControl({ compact: this.compact })
+  created() {
+    this.control = new this.mapbox.AttributionControl({
+      compact: this.compact
+    });
   },
 
   methods: {
-    $_deferredMount (payload) {
-      this.$_addControl(payload)
+    $_deferredMount(payload) {
+      this.$_addControl(payload);
     }
   }
-}
+};

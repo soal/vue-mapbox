@@ -7,7 +7,7 @@
 - **Type**: `String`, `Object`
 - **Required**
 - **Synced**
-- **Description:**  The map's Mapbox style. This must be an a JSON object conforming to the schema described in the Mapbox Style Specification , or a URL to such JSON.
+- **Description:** The map's Mapbox style. This must be an a JSON object conforming to the schema described in the Mapbox Style Specification , or a URL to such JSON.
 - **See:** `options.style` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
 
 ### `container`
@@ -271,78 +271,86 @@
 - **Type:** `String`
 - **Default:** `null`
 - **Non-Synced**
-- **Description:** If specified, defines a CSS font-family for locally overriding generation of glyphs in the 'CJK Unified Ideographs' and 'Hangul Syllables' ranges. In these ranges, font settings from the map's style will be ignored, except for font-weight keywords (light/regular/medium/bold). The purpose of this option is to avoid bandwidth-intensive glyph server requests. 
+- **Description:** If specified, defines a CSS font-family for locally overriding generation of glyphs in the 'CJK Unified Ideographs' and 'Hangul Syllables' ranges. In these ranges, font settings from the map's style will be ignored, except for font-weight keywords (light/regular/medium/bold). The purpose of this option is to avoid bandwidth-intensive glyph server requests.
 - **See:** `options.localIdeographFontFamily` in [Map](https://www.mapbox.com/mapbox-gl-js/api/#map)
 
 ## Actions
 
 Asynchronous actions exposed via `GlMap.actions`
 
-### `.stop()`
+### `.stop(eventData?)`
 
+- **Arguments:**
+  - `eventData` `{Object}` Custom data passed to corresponfing event.
 - **Description:** Stops all animations on the map
 - **Returns:** `{Promise<{ pitch, zoom, bearing, center }>}`
   Promise that resolves object with map parameters on the moment of call `stop()`
 
-### `.panBy(offset, options)`
+### `.panBy(offset, options?, eventData?)`
 
 - **Arguments:**
   - `offset` `{Point | number[]}` x and y coordinates by which to pan the map
   - `options` `{AnimationOptions object}` animation options. See [AnimationOptions](https://www.mapbox.com/mapbox-gl-js/api/#animationoptions)
+  - `eventData` `{Object}` Custom data passed to corresponfing event.
 - **Description:** Pans the map by the specified offest
 - **Returns:** `{Promise<{ eventData, center }>}`
   Promise that resolves object with event data and new center of the map when animation ends
 - **See:** [panBy](https://www.mapbox.com/mapbox-gl-js/api/#map#panby) Map method
 
-### `.panTo(coordinates, options)`
+### `.panTo(coordinates, options?, eventData?)`
 
 - **Arguments:**
   - `coordinates` `{LngLat | number[][]}` The location to pan the map to. See also: [LngLat](https://www.mapbox.com/mapbox-gl-js/api/#lnglat)
   - `options` `{AnimationOptions object}` animation options. See [AnimationOptions](https://www.mapbox.com/mapbox-gl-js/api/#animationoptions)
+  - `eventData` `{Object}` Custom data passed to corresponfing event.
 - **Description:** Pans the map to the specified location, with an animated transition
 - **Returns:** `{Promise<{ eventData, center }>}`
   Promise that resolves object with event data and new center of the map when animation ends
 - **See:** [panTo](https://www.mapbox.com/mapbox-gl-js/api/#map#panto) Map method
 
-### `.zoomTo(zoom, options)`
+### `.zoomTo(zoom, options?, eventData?)`
 
 - **Arguments:**
   - `zoom` `{number}` The zoom level to transition to
   - `options` `{AnimationOptions object}` animation options. See [AnimationOptions](https://www.mapbox.com/mapbox-gl-js/api/#animationoptions)
+  - `eventData` `{Object}` Custom data passed to corresponfing event.
 - **Description:** Zooms the map to the specified zoom level, with an animated transition
 - **Returns:** `{Promise<{ eventData, zoom }>}`
   Promise that resolves object with event data and new zoom level of the map when animation ends
 - **See:** [zoomTo](https://www.mapbox.com/mapbox-gl-js/api/#map#zoomto) Map method
 
-### `.zoomIn(options)`
+### `.zoomIn(options?, eventData?)`
 
 - **Arguments:**
   - `options` `{AnimationOptions object}` animation options. See [AnimationOptions](https://www.mapbox.com/mapbox-gl-js/api/#animationoptions)
+  - `eventData` `{Object}` Custom data passed to corresponfing event.
 - **Description:** Increases the map's zoom level by 1
 - **Returns:** `{Promise<{ eventData, zoom }>}`
   Promise that resolves object with event data and new zoom level of the map when animation ends
 - **See:** [zoomIn](https://www.mapbox.com/mapbox-gl-js/api/#map#zoomin) Map method
 
-### `.zoomOut(options)`
+### `.zoomOut(options?, eventData?)`
 
 - **Arguments:**
   - `options` `{AnimationOptions object}` animation options. See [AnimationOptions](https://www.mapbox.com/mapbox-gl-js/api/#animationoptions)
+  - `eventData` `{Object}` Custom data passed to corresponfing event.
 - **Description:** Decreases the map's zoom level by 1
 - **Returns:** `{Promise<{ eventData, zoom }>}`
   Promise that resolves object with event data and new zoom level of the map when animation ends
 - **See:** [zoomOut](https://www.mapbox.com/mapbox-gl-js/api/#map#zoomOut) Map method
 
-### `.rotateTo(bearing, options)`
+### `.rotateTo(bearing, options?, eventData?)`
 
 - **Arguments:**
   - `bearing` `{number}` The desired bearing
   - `options` `{AnimationOptions object}` animation options. See [AnimationOptions](https://www.mapbox.com/mapbox-gl-js/api/#animationoptions)
+  - `eventData` `{Object}` Custom data passed to corresponfing event.
 - **Description:** Rotates the map to the specified bearing, with an animated transition. The bearing is the compass direction that is \"up\"; for example, a bearing of 90° orients the map so that east is up.
 - **Returns:** `{Promise<{ eventData, bearing }>}`
   Promise that resolves object with event data and new bearing of the map when animation ends
 - **See:** [rotateTo](https://www.mapbox.com/mapbox-gl-js/api/#map#rotateto) Map method
 
-### `.resetNorth(options)`
+### `.resetNorth(options?, eventData?)`
 
 - **Arguments:**
   - `options` `{AnimationOptions object}` animation options. See [AnimationOptions](https://www.mapbox.com/mapbox-gl-js/api/#animationoptions)
@@ -351,72 +359,80 @@ Asynchronous actions exposed via `GlMap.actions`
   Promise that resolves object with event data and new bearing of the map when animation ends
 - **See:** [resetNorth](https://www.mapbox.com/mapbox-gl-js/api/#map#resetnorth) Map method
 
-### `.snapToNorth(options)`
+### `.snapToNorth(options?, eventData?)`
 
 - **Arguments:**
   - `options` `{AnimationOptions object}` animation options. See [AnimationOptions](https://www.mapbox.com/mapbox-gl-js/api/#animationoptions)
+  - `eventData` `{Object}` Custom data passed to corresponfing event.
 - **Description:** Snaps the map so that north is up (0° bearing), if the current bearing is close enough to it (i.e. within the `bearingSnap` prop threshold).
 - **Returns:** `{Promise<{ eventData, bearing }>}`
   Promise that resolves object with event data and new bearing of the map when animation ends
 - **See:** [snapToNorth](https://www.mapbox.com/mapbox-gl-js/api/#map#snaptonorth) Map method
 
-### `.fitBounds(bounds, options)`
+### `.fitBounds(bounds, options?, eventData?)`
 
 - **Arguments:**
   - `bounds` `{ number[][] | LngLatBounds }` Center these bounds in the viewport and use the highest zoom level up to and including `maxZoom` that fits them in the viewport
   - `options` `{Object}`
     - `options.padding?` `{number}` The amount of padding in pixels to add to the given bounds
-    - `options.linear` `{boolean}` *default*: `false` If true , the map transitions using `Map#easeTo`. If false , the map transitions using `Map#flyTo`. See those functions and AnimationOptions for information about options available.
+    - `options.linear` `{boolean}` _default_: `false` If true , the map transitions using `Map#easeTo`. If false , the map transitions using `Map#flyTo`. See those functions and AnimationOptions for information about options available.
     - `options.easing?` An easing function for the animated transition. See [AnimationOptions](https://www.mapbox.com/mapbox-gl-js/api/#animationoptions)
-    - `options.offset` `{ number[] | Point }` *default:* `[0, 0]` The center of the given bounds relative to the map's center, measured in pixels
+    - `options.offset` `{ number[] | Point }` _default:_ `[0, 0]` The center of the given bounds relative to the map's center, measured in pixels
     - `options.maxZoom?` `{number}` The maximum zoom level to allow when the map view transitions to the specified bounds
+  - `eventData` `{Object}` Custom data passed to corresponfing event.
 - **Description:** Pans and zooms the map to contain its visible area within the specified geographical bounds. This function will also reset the map's bearing to 0 if bearing is nonzero
 - **Returns:** `{Promise<{ eventData, bounds }>}`
   Promise that resolves object with event data and new bounds of the map when animation ends
 - **See:** [fitBounds](https://www.mapbox.com/mapbox-gl-js/api/#map#fitbounds) Map method
 
-### `.jumpTo(options)`
+### `.jumpTo(options, eventData?)`
 
 - **Arguments:**
   - `options` `{Object}` See [CameraOptions](https://www.mapbox.com/mapbox-gl-js/api/#cameraoptions)
     - `options.pitch?` `{number}` The desired pitch, in degrees
     - `options.zoom?` `{number}` The desired zoom level
     - `options.center?` `{number[] | LngLat}` The desired center
-    - `options.bearing?` `{number}`  The desired bearing, in degrees
-    - `options.around?` `{number[] | LngLat}`  If `zoom` is specified, `around` determines the point around which the zoom is centered.
+    - `options.bearing?` `{number}` The desired bearing, in degrees
+    - `options.around?` `{number[] | LngLat}` If `zoom` is specified, `around` determines the point around which the zoom is centered.
+  - `eventData` `{Object}` Custom data passed to corresponfing event.
 - **Description:** Changes any combination of center, zoom, bearing, and pitch, without an animated transition. The map will retain its current values for any details not specified in options
 - **Returns:** `{Promise<{ eventData, pitch, zoom, center, bearing }>}`
   Promise that resolves object with event data and new pitch, zoom, center and bearing of the map
 - **See:** [jumpTo](https://www.mapbox.com/mapbox-gl-js/api/#map#jumpto) Map method
 
-### `.easeTo(options)`
+### `.easeTo(options, eventData?)`
 
 - **Arguments:**
+
   - `options` `{Object}` Combination of [CameraOptions](https://www.mapbox.com/mapbox-gl-js/api/#cameraoptions) and [AnimationOptions](https://www.mapbox.com/mapbox-gl-js/api/#animationoptions)
 
     - `options.pitch?` `{number}` The desired pitch, in degrees
     - `options.zoom?` `{number}` The desired zoom level
     - `options.center?` `{number[] | LngLat}` The desired center
-    - `options.bearing?` `{number}`  The desired bearing, in degrees
-    - `options.around?` `{number[] | LngLat}`  If `zoom` is specified, `around` determines the point around which the zoom is centered.
+    - `options.bearing?` `{number}` The desired bearing, in degrees
+    - `options.around?` `{number[] | LngLat}` If `zoom` is specified, `around` determines the point around which the zoom is centered.
     - `options.duration?` `{number}` The animation's duration, measured in milliseconds.
     - `options.easing?` `{Function}` A function taking a time in the range 0..1 and returning a number where 0 is the initial state and 1 is the final state.
     - `options.offset?` `{number[] | Point}` of the target center relative to real map container center at the end of animation.
     - `options.animate?` `{boolean}`: If `false`, no animation will occur
+
+  - `eventData` `{Object}` Custom data passed to corresponfing event.
+
 - **Description:** Changes any combination of center, zoom, bearing, and pitch, with an animated transition between old and new values. The map will retain its current values for any details not specified in `options`
 - **Returns:** `{Promise<{ eventData, pitch, zoom, center, bearing }>}`
   Promise that resolves object with event data and new pitch, zoom, center and bearing of the map when animations ends
 - **See:** [easeTo](https://www.mapbox.com/mapbox-gl-js/api/#map#easeto) Map method
 
-### `.flyTo(options)`
+### `.flyTo(options, eventData?)`
 
 - **Arguments:**
   - `options` `{Object}`
-    - `options.curve?` `{number}` *default* `1.42` The zooming "curve" that will occur along the flight path. A high value maximizes zooming for an exaggerated animation, while a low value minimizes zooming for an effect closer to Map#easeTo. 1.42 is the average value selected by participants in the user study discussed in van Wijk (2003). A value of Math.pow(6, 0.25) would be equivalent to the root mean squared average velocity. A value of 1 would produce a circular motion
+    - `options.curve?` `{number}` _default_ `1.42` The zooming "curve" that will occur along the flight path. A high value maximizes zooming for an exaggerated animation, while a low value minimizes zooming for an effect closer to Map#easeTo. 1.42 is the average value selected by participants in the user study discussed in van Wijk (2003). A value of Math.pow(6, 0.25) would be equivalent to the root mean squared average velocity. A value of 1 would produce a circular motion
     - `options.minZoom?` `{number}` The zero-based zoom level at the peak of the flight path. If `options.curve` is specified, this option is ignored
-    - `options.speed?` `{number}` *default* `1.2` The average speed of the animation defined in relation to `options.curve`. A speed of 1.2 means that the map appears to move along the flight path by 1.2 times `options.curve` screenfuls every second. A screenful is the map's visible span. It does not correspond to a fixed physical distance, but varies by zoom level
+    - `options.speed?` `{number}` _default_ `1.2` The average speed of the animation defined in relation to `options.curve`. A speed of 1.2 means that the map appears to move along the flight path by 1.2 times `options.curve` screenfuls every second. A screenful is the map's visible span. It does not correspond to a fixed physical distance, but varies by zoom level
     - `options.screenSpeed?` `{number}` The average speed of the animation measured in screenfuls per second, assuming a linear timing curve. If `options.speed` is specified, this option is ignored
     - `options.maxDuration?` `{number}` The animation's maximum duration, measured in milliseconds. If duration exceeds maximum duration, it resets to 0
+  - `eventData` `{Object}` Custom data passed to corresponfing event.
 - **Description:** Changes any combination of center, zoom, bearing, and pitch, animating the transition along a curve that evokes flight. The animation seamlessly incorporates zooming and panning to help the user maintain her bearings even after traversing a great distance
 - **Returns:** `{Promise<{ eventData, pitch, zoom, center, bearing }>}`
   Promise that resolves object with event data and new pitch, zoom, center and bearing of the map when animations ends
@@ -426,7 +442,7 @@ Asynchronous actions exposed via `GlMap.actions`
 
 ### `@load`
 
-  - **Description:** Fires after map fully loaded
-  - **Payload** `{ map, component }` `map` is Mapbox Gl JS Map object, `component` is instance of GlMap component
+- **Description:** Fires after map fully loaded
+- **Payload** `{ map, component }` `map` is Mapbox Gl JS Map object, `component` is instance of GlMap component
 
 GlMap passes all Mapbox GL JS Map events. Full list of map events see [here](https://www.mapbox.com/mapbox-gl-js/api/#map.event:resize)

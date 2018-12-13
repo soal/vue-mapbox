@@ -1,26 +1,26 @@
 <template>
   <div style="display: none">
     <!-- @slot Slot for popup content -->
-    <slot/>
+    <slot />
   </div>
 </template>
 
 <script>
-import withRegistration from '../../lib/withRegistration'
-import withEvents from '../../lib/withEvents'
-import withSelfEvents from './withSelfEvents'
+import withRegistration from "../../lib/withRegistration";
+import withEvents from "../../lib/withEvents";
+import withSelfEvents from "./withSelfEvents";
 
 const popupEvents = {
-  open: 'open',
-  close: 'close'
-}
+  open: "open",
+  close: "close"
+};
 
 /**
  * Popup component.
  * @see See [Mapbox Gl JS Popup](https://www.mapbox.com/mapbox-gl-js/api/#popup)
  */
 export default {
-  name: 'Popup',
+  name: "Popup",
   mixins: [withRegistration, withEvents, withSelfEvents],
   props: {
     /**
@@ -46,9 +46,18 @@ export default {
      *  'top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right'
      */
     anchor: {
-      validator (value) {
-        let allowedValues = ['top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right']
-        return typeof value === 'string' && allowedValues.includes(value)
+      validator(value) {
+        let allowedValues = [
+          "top",
+          "bottom",
+          "left",
+          "right",
+          "top-left",
+          "top-right",
+          "bottom-left",
+          "bottom-right"
+        ];
+        return typeof value === "string" && allowedValues.includes(value);
       },
       default: undefined
     },
@@ -77,11 +86,11 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       initial: true,
       popup: undefined
-    }
+    };
   },
 
   computed: {
@@ -89,79 +98,80 @@ export default {
      * true if popup is open
      * @returns {*}
      */
-    isOpen () {
+    isOpen() {
       if (this.popup !== undefined) {
-        return this.popup.isOpen()
+        return this.popup.isOpen();
       }
-      return false
+      return false;
     }
   },
 
-  mounted () {
-    this.$_checkMapTree()
+  mounted() {
+    this.$_checkMapTree();
   },
 
-  beforeDestroy () {
+  beforeDestroy() {
     if (this.map) {
-      this.popup.remove()
-      this.$_emitEvent('removed')
+      this.popup.remove();
+      this.$_emitEvent("removed");
     }
   },
 
   watch: {
-    coordinates (lngLat) {
-      if (this.initial) return
-      this.popup.setLngLat(lngLat)
+    coordinates(lngLat) {
+      if (this.initial) return;
+      this.popup.setLngLat(lngLat);
     }
   },
 
   methods: {
-    $_deferredMount (payload) {
-      this.map = payload.map
-      this.$_addPopup()
-      this.initial = false
-      payload.component.$off('load', this.$_deferredMount)
+    $_deferredMount(payload) {
+      this.map = payload.map;
+      this.$_addPopup();
+      this.initial = false;
+      payload.component.$off("load", this.$_deferredMount);
     },
 
-    $_addPopup () {
-      this.popup = new this.mapbox.Popup({ ...this._props })
-      if (this.coordinates !== undefined) this.popup.setLngLat(this.coordinates)
+    $_addPopup() {
+      this.popup = new this.mapbox.Popup({ ...this._props });
+      if (this.coordinates !== undefined)
+        this.popup.setLngLat(this.coordinates);
       if (this.$slots.default !== undefined) {
         if (this.onlyText) {
           if (this.$slots.default[0].elm.nodeType === 3) {
-            let tmpEl = document.createElement('span')
-            tmpEl.appendChild(this.$slots.default[0].elm)
-            this.popup.setText(tmpEl.innerText)
+            let tmpEl = document.createElement("span");
+            tmpEl.appendChild(this.$slots.default[0].elm);
+            this.popup.setText(tmpEl.innerText);
           } else {
-            this.popup.setText(this.$slots.default[0].elm.innerText)
+            this.popup.setText(this.$slots.default[0].elm.innerText);
           }
         } else {
-          this.popup.setDOMContent(this.$slots.default[0].elm)
+          this.popup.setDOMContent(this.$slots.default[0].elm);
         }
       }
-      this.popup.addTo(this.map)
+      this.popup.addTo(this.map);
 
-      this.$_bindSelfEvents(Object.keys(popupEvents), this.popup)
+      this.$_bindSelfEvents(Object.keys(popupEvents), this.popup);
 
-      this.$_emitEvent('added', { popup: this.popup })
+      this.$_emitEvent("added", { popup: this.popup });
 
       if (this.$parent.marker !== undefined) {
-        this.$parent.marker.setPopup(this.popup)
+        this.$parent.marker.setPopup(this.popup);
       } else {
-        this.$parent.$once('added', ({ marker }) => {
-          marker.setPopup(this.popup)
-        })
+        this.$parent.$once("added", ({ marker }) => {
+          marker.setPopup(this.popup);
+        });
       }
     },
 
-    $_emitSelfEvent (event) {
-      this.$_emitMapEvent(event, { popup: this.popup })
+    $_emitSelfEvent(event) {
+      this.$_emitMapEvent(event, { popup: this.popup });
     },
 
-    remove () {
-      this.popup.remove()
-      this.$_emitEvent('remove', { popup: this.popup })
+    remove() {
+      this.popup.remove();
+      this.$_emitEvent("remove", { popup: this.popup });
     }
   }
-}
+};
 </script>

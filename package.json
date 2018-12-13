@@ -20,6 +20,17 @@
     "docs:serve": "vuepress dev docs_source",
     "docs:build": "vuepress build docs_source"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "map-promisified": "latest"
   },
@@ -31,10 +42,13 @@
     "@vue/cli-plugin-babel": "^3.2.0",
     "@vue/cli-plugin-eslint": "^3.2.1",
     "@vue/cli-service": "^3.2.0",
+    "@vue/eslint-config-prettier": "^4.0.1",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.10.0",
     "eslint-loader": "2.1.1",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
     "vue": "^2.5.18",
     "vue-template-compiler": "^2.5.18",
     "vuepress": "^1.0.0-alpha.27"

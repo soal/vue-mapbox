@@ -6,12 +6,12 @@ export default {
      * @param {string} name EventName
      * @param {Object} [data={}] Additional data
      */
-    $_emitEvent (name, data = {}) {
+    $_emitEvent(name, data = {}) {
       this.$emit(name, {
         map: this.map,
         component: this,
         ...data
-      })
+      });
     },
 
     /**
@@ -19,8 +19,8 @@ export default {
      *
      * @param {Object} event
      */
-    $_emitMapEvent (event, data = {}) {
-      this.$_emitEvent(event.type, { mapboxEvent: event, ...data })
+    $_emitMapEvent(event, data = {}) {
+      this.$_emitEvent(event.type, { mapboxEvent: event, ...data });
     }
   }
-}
+};

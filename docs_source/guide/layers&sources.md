@@ -50,4 +50,10 @@ Sources are stored in Mapbox GL JS `Map` object by `sourceId`. If you sure that 
 
 By default when Layer components destroing, it removes source from map. If you want to keep source in Map (for e.g. for future using or if other layers use this source), set `clearSource` prop to `false`.
 
+## Layer getters
+
+GeoJSON and Vector layers has getters for they features.
+
 ## Layer methods
+
+Layer components has methods `move()`

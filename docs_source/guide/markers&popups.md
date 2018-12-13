@@ -92,7 +92,7 @@ The Popup component is wrapper around the [Mapbox GL Popup API](https://www.mapb
 You can specify content inside popup in default slot. It can be HTML or Vue component.
 In this example [Vuetify card component](https://vuetifyjs.com/en/components/cards) used as a content for popup:
 
-```vue
+```vue{2}
 <template>
   <MglMap
     :accessToken="mapboxAccessToken"

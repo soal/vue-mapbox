@@ -152,6 +152,7 @@ export default {
 
     remove() {
       this.map.removeLayer(this.layerId);
+      this.map.removeSource(this.sourceId);
       this.$_emitEvent("layer-removed", { layerId: this.layerId });
       this.$destroy();
     }

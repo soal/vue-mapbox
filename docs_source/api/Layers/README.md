@@ -9,79 +9,73 @@
 - **Type:** `String`
 - **Required**
 - **Non-Synced**
-- **Description:** The ID of the source to add. Must not conflict with existing sources. .
-- **See:** `options.positionOptions` in [GeolocateControl](https://www.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
+- **Description:** ID of the source to add. Must not conflict with existing sources.
+- **See:** `.addSource()` [Map method](https://www.mapbox.com/mapbox-gl-js/api/#map#addsource)
 
 #### Props for Mapbox GL layer
 
 ### `layerId`
 
-**Type** `String`
-**Required**
+- **Type** `String`
+- **Description:** ID of the layer to add. Must not conflict with existing layers.
+- **Required**
+- **Non-Synced**
+- **See:** `id` in [Mapbox Layer Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-id)
 
 ### `metadata`
 
 - **Type:** `Object`
-- **Default:** `{ enableHighAccuracy: false, timeout: 6000}`
 - **Non-Synced**
-- **Description:** A Geolocation API PositionOptions object.
-- **See:** `options.positionOptions` in [GeolocateControl](https://www.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
-
-### `refLayer`
-
-- **Type:** `String`
-- **Default:** `{ enableHighAccuracy: false, timeout: 6000}`
-- **Non-Synced**
-- **Description:** A Geolocation API PositionOptions object.
-- **See:** `options.positionOptions` in [GeolocateControl](https://www.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
-
-### `source-layer`
-
-- **Type:** `String`
-- **Default:** `{ enableHighAccuracy: false, timeout: 6000}`
-- **Non-Synced**
-- **Description:** A Geolocation API PositionOptions object.
-- **See:** `options.positionOptions` in [GeolocateControl](https://www.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
+- **Description:** Arbitrary properties useful to track with the layer, but do not influence rendering.
+- **See:** `metadata` in [Mapbox Layer Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-metadata)
 
 ### `minZoom`
 
 - **Type:** `Number`
-- **Default:** `{ enableHighAccuracy: false, timeout: 6000}`
+- **Default:** `undefined`
 - **Non-Synced**
-- **Description:** A Geolocation API PositionOptions object.
-- **See:** `options.positionOptions` in [GeolocateControl](https://www.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
+- **Description:** The minimum zoom level for the layer. At zoom levels less than the minzoom, the layer will be hidden.
+- **See:** `minzoom` in [Mapbox Layer Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-minzoom)
 
 ### `maxZoom`
 
 - **Type:** `Number`
-- **Default:** `{ enableHighAccuracy: false, timeout: 6000}`
+- **Default:** `undeined`
 - **Non-Synced**
-- **Description:** A Geolocation API PositionOptions object.
-- **See:** `options.positionOptions` in [GeolocateControl](https://www.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
+- **Description:** The maximum zoom level for the layer. At zoom levels equal to or greater than the maxzoom, the layer will be hidden.
+- **See:** `maxzoom` in [Mapbox Layer Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-maxzoom)
 
 ### `paint`
 
 - **Type:** `Object`
-- **Default:** `{ enableHighAccuracy: false, timeout: 6000}`
+- **Default:** `undefined`
 - **Non-Synced**
-- **Description:** A Geolocation API PositionOptions object.
-- **See:** `options.positionOptions` in [GeolocateControl](https://www.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
+- **Description:** Default paint properties for this layer.
+- **See:** `paint` in [Mapbox Layer Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-paint)
 
 ### `layout`
 
 - **Type:** `Object`
-- **Default:** `{ enableHighAccuracy: false, timeout: 6000}`
+- **Default:** `undefined`
 - **Non-Synced**
-- **Description:** A Geolocation API PositionOptions object.
-- **See:** `options.positionOptions` in [GeolocateControl](https://www.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
+- **Description:** Layout properties for the layer.
+- **See:** `layout` in [Mapbox Layer Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-paint)
+
+### `filter`
+
+- **Type:** `Object`
+- **Default:** `undefined`
+- **Non-Synced**
+- **Description:** A expression specifying conditions on source features. Only features that match the filter are displayed.
+- **See:** `before` in `.addLayer()` [Map method](https://www.mapbox.com/mapbox-gl-js/api/#map#addlayer)
 
 ### `before`
 
-- **Type:** `Object`
-- **Default:** `{ enableHighAccuracy: false, timeout: 6000}`
+- **Type:** `String`
+- **Default:** `undefined`
 - **Non-Synced**
-- **Description:** A Geolocation API PositionOptions object.
-- **See:** `options.positionOptions` in [GeolocateControl](https://www.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
+- **Description:** The ID of an existing layer to insert the new layer before.
+- **See:** `metadata` in [Mapbox Layer Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-metadata)
 
 #### Props for Vue-Mapbox component
 
@@ -90,7 +84,7 @@
 - **Type:** `Boolean`
 - **Default:** `true`
 - **Non-Synced**
-- **Description:** If `true`, component will remove layer source from map on destroy
+- **Description:** If `true`, component will remove layer source from map on component destruction.
 
 ### `replaceSource`
 
@@ -111,18 +105,18 @@
 ### `sourceLoaded`
 
 - **Type** `Boolean`
-- **Description** Flag that indicated if layer source already loaded
+- **Description** Flag that indicated if layer source already loaded.
 
 ### `mapLayer`
 
 - **Type** `Object`
-- **Description** Mapbox GL layer object
+- **Description** Mapbox GL layer object.
 - **See** [`.getLayer`](https://www.mapbox.com/mapbox-gl-js/api/#map#getlayer) map method
 
 ### `mapSource`
 
 - **Type** `Object`
-- **Description** Source for this layer
+- **Description** Source for this layer.
 - **See** [`Mapbox GL source`](https://www.mapbox.com/mapbox-gl-js/api/#sources)
 
 ## Methods

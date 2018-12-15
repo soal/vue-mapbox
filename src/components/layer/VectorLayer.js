@@ -21,10 +21,6 @@ export default {
       type: Number,
       default: undefined
     },
-    filter: {
-      type: Array,
-      default: undefined
-    },
     "source-layer": {
       type: String,
       required: true

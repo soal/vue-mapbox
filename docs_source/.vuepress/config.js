@@ -5,6 +5,14 @@ module.exports = {
 
   themeConfig: {
     nav: [
+      {
+        text: "Guide",
+        link: "/guide/"
+      },
+      {
+        text: "API",
+        link: "/api/"
+      },
       { text: "Github", link: "https://github.com/soal/vue-mapbox" },
       {
         text: "Map-promisified",

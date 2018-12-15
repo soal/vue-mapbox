@@ -27,10 +27,6 @@ export default {
       },
       default: "fill"
     },
-    filter: {
-      type: Array,
-      default: undefined
-    },
     cluster: {
       type: Boolean,
       default: false

@@ -136,9 +136,6 @@ export default {
       } else {
         layer.type = this.type ? this.type : "fill";
         layer.source = this.sourceId;
-        if (this["source-layer"]) {
-          layer["source-layer"] = this["source-layer"];
-        }
         if (this.minzoom) layer.minzoom = this.minzoom;
         if (this.maxzoom) layer.maxzoom = this.maxzoom;
         if (this.layout) {
@@ -160,7 +157,6 @@ export default {
     setFeatureState(featureId, state) {
       if (this.map) {
         const params = { id: featureId, source: this.source };
-        if (this["source-layer"]) params["source-layer"] = this["source-layer"];
         return this.map.setFeatureState(params, state);
       }
     },
@@ -168,7 +164,6 @@ export default {
     getFeatureState(featureId) {
       if (this.map) {
         const params = { id: featureId, source: this.source };
-        if (this["source-layer"]) params["source-layer"] = this["source-layer"];
         return this.map.getFeatureState(params);
       }
     }

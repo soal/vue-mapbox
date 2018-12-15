@@ -14,8 +14,7 @@ const mapboxLayerStyleProps = {
     required: true
   },
   metadata: Object,
-  refLayer: String,
-  "source-layer": String,
+  // refLayer: String,
   minZoom: Number,
   maxZoom: Number,
   paint: Object,

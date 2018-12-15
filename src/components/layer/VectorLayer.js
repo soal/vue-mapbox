@@ -24,6 +24,10 @@ export default {
     filter: {
       type: Array,
       default: undefined
+    },
+    "source-layer": {
+      type: String,
+      required: true
     }
   },
 

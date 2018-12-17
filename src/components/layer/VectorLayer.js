@@ -74,6 +74,7 @@ export default {
 
       this.map.on("dataloading", this.$_watchSourceLoading);
       try {
+        // FIXME: Vector sources removed in v0.51. Source now defines in layer
         this.map.addSource(this.sourceId, source);
       } catch (err) {
         if (this.replaceSource) {

@@ -4,9 +4,9 @@
 
 ### `source`
 
-- **Type:** `Object`
+- **Type:** `Object | String`
 - **Required**
-- **Non-Synced**A source containing GeoJSON.
+- **Non-Synced** A source containing GeoJSON or URL to it.
 - **Description:** sources.
 - **See:** `GeoJSONSource` in [Mapbox API Docs](https://www.mapbox.com/mapbox-gl-js/api/#geojsonsource)
 

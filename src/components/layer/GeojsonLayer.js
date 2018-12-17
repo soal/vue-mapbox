@@ -38,6 +38,25 @@ export default {
     clusterRadius: {
       type: Number,
       default: 50
+    },
+    lineMetrics: {
+      type: Boolean,
+      default: false
+    },
+    buffer: {
+      type: Number,
+      default: 128
+    },
+    tolerance: {
+      type: Number,
+      default: 0.375
+    },
+    generateId: {
+      type: Boolean,
+      default: false
+    },
+    attribution: {
+      type: String
     }
   },
 
@@ -80,24 +99,24 @@ export default {
       this.map = payload.map;
       this.map.on("dataloading", this.$_watchSourceLoading);
       if (this.source) {
+        const source = {
+          type: "geojson",
+          data: this.source,
+          cluster: this.cluster,
+          clusterMaxZoom: this.clusterMaxZoom,
+          clusterRadius: this.clusterRadius,
+          lineMetrics: this.lineMetrics,
+          buffer: this.buffer,
+          tolerance: this.lorenace,
+          generateId: this.generateId,
+          attribution: this.attribution
+        };
         try {
-          this.map.addSource(this.sourceId, {
-            type: "geojson",
-            data: this.source,
-            cluster: this.cluster,
-            clusterMaxZoom: this.clusterMaxZoom,
-            clusterRadius: this.clusterRadius
-          });
+          this.map.addSource(this.sourceId, source);
         } catch (err) {
           if (this.replaceSource) {
             this.map.removeSource(this.sourceId);
-            this.map.addSource(this.sourceId, {
-              type: "geojson",
-              data: this.source,
-              cluster: this.cluster,
-              clusterMaxZoom: this.clusterMaxZoom,
-              clusterRadius: this.clusterRadius
-            });
+            this.map.addSource(this.sourceId, source);
           } else {
             this.$_emitEvent("layer-source-error", {
               sourceId: this.sourceId,

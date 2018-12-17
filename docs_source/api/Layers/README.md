@@ -111,7 +111,7 @@
 
 - **Type** `Object`
 - **Description** Mapbox GL layer object.
-- **See** [`.getLayer`](https://www.mapbox.com/mapbox-gl-js/api/#map#getlayer) map method
+- **See** [`.getLayer()`](https://www.mapbox.com/mapbox-gl-js/api/#map#getlayer) map method
 
 ### `mapSource`
 
@@ -121,9 +121,17 @@
 
 ## Methods
 
-### `.move()`
+### `.move(beforeId?)`
+
+- **Arguments:**
+- `beforeId` `String` The ID of an existing layer to insert the new layer before. If this argument is omitted, the layer will be appended to the end of the layers array.
+- **Description** Moves a layer to a different z-position.
+- **See** [`.moveLayer()`](https://www.mapbox.com/mapbox-gl-js/api/#map#movelayer) map method
 
 ### `.remove()`
+
+- **Description** Removes the layer with and source assosiated with it.
+- **See** [`.removeLayer()`](https://www.mapbox.com/mapbox-gl-js/api/#map#removelayer) map method
 
 ## Events
 

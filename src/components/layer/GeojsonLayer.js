@@ -56,7 +56,8 @@ export default {
       default: false
     },
     attribution: {
-      type: String
+      type: String,
+      default: ""
     }
   },
 
@@ -107,7 +108,7 @@ export default {
           clusterRadius: this.clusterRadius,
           lineMetrics: this.lineMetrics,
           buffer: this.buffer,
-          tolerance: this.lorenace,
+          tolerance: this.tolerance,
           generateId: this.generateId,
           attribution: this.attribution
         };

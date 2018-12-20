@@ -11,7 +11,7 @@ export default {
     },
     tiles: {
       type: Array,
-      default: () => []
+      default: null
     },
     tilesMinZoom: {
       type: Number,
@@ -21,7 +21,7 @@ export default {
       type: Number,
       default: undefined
     },
-    "source-layer": {
+    sourceLayer: {
       type: String,
       required: true
     }
@@ -66,15 +66,16 @@ export default {
       this.map = payload.map;
       let source = {
         type: "vector",
-        tilesMinZoom: this.tilesMinZoom,
-        tilesMaxZoom: this.tilesMaxZoom,
-        url: this.url,
-        tiles: this.tiles
+        url: this.url
       };
+
+      if (this.tiles) source.tiles = this.tiles;
+      if (this.tilesMinZoom) source.tilesMinZoom = this.tilesMinZoom;
+      if (this.tilesMaxZoom) source.tilesMaxZoom = this.tilesMinZoom;
 
       this.map.on("dataloading", this.$_watchSourceLoading);
       try {
-        // FIXME: Vector sources removed in v0.51. Source now defines in layer
+        // FIXME: Check all props
         this.map.addSource(this.sourceId, source);
       } catch (err) {
         if (this.replaceSource) {
@@ -91,7 +92,7 @@ export default {
       this.$_bindLayerEvents(layerEvents);
       this.map.off("dataloading", this.$_watchSourceLoading);
       this.initial = false;
-      payload.mapComponent.$on("load", this.$_deferredMount);
+      payload.component.$off("load", this.$_deferredMount);
     },
 
     $_addLayer() {
@@ -106,14 +107,15 @@ export default {
       }
       let layer = {
         id: this.layerId,
-        source: this.sourceId
+        source: this.sourceId,
+        "source-layer": this.sourceLayer
       };
+
       if (this.refLayer) {
         layer.ref = this.refLayer;
       } else {
         layer.type = this.type ? this.type : "fill";
         layer.source = this.sourceId;
-        layer["source-layer"] = this["source-layer"];
         if (this.minzoom) layer.minzoom = this.minzoom;
         if (this.maxzoom) layer.maxzoom = this.maxzoom;
         if (this.layout) {

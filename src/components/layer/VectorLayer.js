@@ -24,6 +24,18 @@ export default {
     sourceLayer: {
       type: String,
       required: true
+    },
+    bounds: {
+      type: Array,
+      default: () => [-180, -85.051129, 180, 85.051129]
+    },
+    scheme: {
+      type: String,
+      default: undefined
+    },
+    attribution: {
+      type: String,
+      default: undefined
     }
   },
 
@@ -72,6 +84,9 @@ export default {
       if (this.tiles) source.tiles = this.tiles;
       if (this.tilesMinZoom) source.minzoom = this.tilesMinZoom;
       if (this.tilesMaxZoom) source.maxzoom = this.tilesMinZoom;
+      if (this.bounds) source.bounds = this.bounds;
+      if (this.attribution) source.attribution = this.attribution;
+      if (this.scheme) source.scheme = this.scheme;
 
       this.map.on("dataloading", this.$_watchSourceLoading);
       try {

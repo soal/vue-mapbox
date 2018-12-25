@@ -7,7 +7,7 @@
 - **Type:** `String`
 - **Default** `undefined`
 - **Non-Synced**
-- **Description:** A URL to a TileJSON resource as source for this layer. Supported protocols are http:, https:, and mapbox://<mapid>.
+- **Description:** A URL to a TileJSON resource as source for this layer. Supported protocols are `http:`, `https:`, and `mapbox://<mapid>`.
 - **See:** `url` in [Mapbox Source Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector)
 
 ### `tiles`
@@ -41,6 +41,27 @@
 - **Non-Synced**
 - **Description:** Layer to use from a vector tile source.
 - **See:** `source-layer` in [Mapbox Layer Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-source-layer)
+
+### `bounds`
+
+- **Type:** `Array`
+- **Non-Synced**
+- **Description:** An array containing the longitude and latitude of the southwest and northeast corners of the source's bounding box in the following order: [sw.lng, sw.lat, ne.lng, ne.lat].
+- **See:** `bounds` in [Mapbox Source Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector-bounds)
+
+### `scheme`
+
+- **Type:** `String`
+- **Non-Synced**
+- **Description:** Influences the y direction of the tile coordinates.
+- **See:** `scheme` in [Mapbox Source Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector-scheme)
+
+### `attribution`
+
+- **Type:** `String`
+- **Non-Synced**
+- **Description:** Contains an attribution to be displayed when the map is shown to a user.
+- **See:** `attribution` in [Mapbox Source Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector-attribution)
 
 ## Computed getters
 

@@ -440,6 +440,12 @@ Asynchronous actions exposed via `GlMap.actions`
 
 ## Events
 
+Payload of events contains object with properties:
+
+- `mapboxEvent` Original Mapbox GL JS event
+- `map` Current map object
+- `component` Component that emits event
+
 ### `@load`
 
 - **Description:** Fires after map fully loaded

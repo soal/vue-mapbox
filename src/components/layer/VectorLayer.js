@@ -70,8 +70,8 @@ export default {
       };
 
       if (this.tiles) source.tiles = this.tiles;
-      if (this.tilesMinZoom) source.tilesMinZoom = this.tilesMinZoom;
-      if (this.tilesMaxZoom) source.tilesMaxZoom = this.tilesMinZoom;
+      if (this.tilesMinZoom) source.minzoom = this.tilesMinZoom;
+      if (this.tilesMaxZoom) source.maxzoom = this.tilesMinZoom;
 
       this.map.on("dataloading", this.$_watchSourceLoading);
       try {

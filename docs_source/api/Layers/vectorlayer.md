@@ -7,32 +7,32 @@
 - **Type:** `String`
 - **Default** `undefined`
 - **Non-Synced**
-- **Description:** Layer to use from a vector tile source.
-- **See:** `source-layer` in [Mapbox Layer Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-source-layer)
+- **Description:** A URL to a TileJSON resource as source for this layer. Supported protocols are http:, https:, and mapbox://<mapid>.
+- **See:** `url` in [Mapbox Source Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector)
 
 ### `tiles`
 
 - **Type:** `Array`
 - **Default** `[]`
 - **Non-Synced**
-- **Description:** Layer to use from a vector tile source.
-- **See:** `source-layer` in [Mapbox Layer Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-source-layer)
+- **Description:** An array of one or more tile source URLs, as in the TileJSON spec.
+- **See:** `tiles` in [Mapbox Source Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector-tiles)
 
 ### `tilesMinZoom`
 
 - **Type:** `Number`
-- **Default** `undefined`
+- **Default** `0`
 - **Non-Synced**
-- **Description:** Layer to use from a vector tile source.
-- **See:** `source-layer` in [Mapbox Layer Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-source-layer)
+- **Description:** Minimum zoom level for which tiles are available, as in the TileJSON spec.
+- **See:** `minzoom` in [Mapbox Source Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector-minzoom)
 
 ### `tilesMaxZoom`
 
 - **Type:** `Number`
-- **Default** `undefined`
+- **Default** `22`
 - **Non-Synced**
-- **Description:** Layer to use from a vector tile source.
-- **See:** `source-layer` in [Mapbox Layer Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-source-layer)
+- **Description:** Maximum zoom level for which tiles are available, as in the TileJSON spec.
+- **See:** `maxzoom` in [Mapbox Source Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector-maxzoom)
 
 ### `sourceLayer`
 

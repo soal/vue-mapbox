@@ -1,3 +1,3 @@
-# Plugin devlopment
+# Plugin development
 
 _coming soon_

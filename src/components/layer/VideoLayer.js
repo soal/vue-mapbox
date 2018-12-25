@@ -14,11 +14,13 @@ export default {
       required: true
     }
   },
+
   data() {
     return {
       source: undefined
     };
   },
+
   computed: {
     video() {
       return this.map.getSource(this.sourceId).getVideo();

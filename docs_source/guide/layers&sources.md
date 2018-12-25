@@ -65,4 +65,4 @@ First moves a layer to a different z-position. Second destroys component removes
 
 ## Layer events
 
-Layers emits events when loading data or on user interaction like `click`. See full list of events in [API section](/api/Layers/)
+Layers emits events when loading data or on user interaction like `click`. See full list of events in [API section](/api/Layers/README.md#events)

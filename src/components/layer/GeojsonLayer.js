@@ -27,10 +27,6 @@ export default {
       },
       default: "fill"
     },
-    filter: {
-      type: Array,
-      default: undefined
-    },
     cluster: {
       type: Boolean,
       default: false
@@ -42,6 +38,26 @@ export default {
     clusterRadius: {
       type: Number,
       default: 50
+    },
+    lineMetrics: {
+      type: Boolean,
+      default: false
+    },
+    buffer: {
+      type: Number,
+      default: 128
+    },
+    tolerance: {
+      type: Number,
+      default: 0.375
+    },
+    generateId: {
+      type: Boolean,
+      default: false
+    },
+    attribution: {
+      type: String,
+      default: ""
     }
   },
 
@@ -84,24 +100,24 @@ export default {
       this.map = payload.map;
       this.map.on("dataloading", this.$_watchSourceLoading);
       if (this.source) {
+        const source = {
+          type: "geojson",
+          data: this.source,
+          cluster: this.cluster,
+          clusterMaxZoom: this.clusterMaxZoom,
+          clusterRadius: this.clusterRadius,
+          lineMetrics: this.lineMetrics,
+          buffer: this.buffer,
+          tolerance: this.tolerance,
+          generateId: this.generateId,
+          attribution: this.attribution
+        };
         try {
-          this.map.addSource(this.sourceId, {
-            type: "geojson",
-            data: this.source,
-            cluster: this.cluster,
-            clusterMaxZoom: this.clusterMaxZoom,
-            clusterRadius: this.clusterRadius
-          });
+          this.map.addSource(this.sourceId, source);
         } catch (err) {
           if (this.replaceSource) {
             this.map.removeSource(this.sourceId);
-            this.map.addSource(this.sourceId, {
-              type: "geojson",
-              data: this.source,
-              cluster: this.cluster,
-              clusterMaxZoom: this.clusterMaxZoom,
-              clusterRadius: this.clusterRadius
-            });
+            this.map.addSource(this.sourceId, source);
           } else {
             this.$_emitEvent("layer-source-error", {
               sourceId: this.sourceId,
@@ -136,9 +152,6 @@ export default {
       } else {
         layer.type = this.type ? this.type : "fill";
         layer.source = this.sourceId;
-        if (this["source-layer"]) {
-          layer["source-layer"] = this["source-layer"];
-        }
         if (this.minzoom) layer.minzoom = this.minzoom;
         if (this.maxzoom) layer.maxzoom = this.maxzoom;
         if (this.layout) {
@@ -160,7 +173,6 @@ export default {
     setFeatureState(featureId, state) {
       if (this.map) {
         const params = { id: featureId, source: this.source };
-        if (this["source-layer"]) params["source-layer"] = this["source-layer"];
         return this.map.setFeatureState(params, state);
       }
     },
@@ -168,7 +180,6 @@ export default {
     getFeatureState(featureId) {
       if (this.map) {
         const params = { id: featureId, source: this.source };
-        if (this["source-layer"]) params["source-layer"] = this["source-layer"];
         return this.map.getFeatureState(params);
       }
     }

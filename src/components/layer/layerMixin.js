@@ -14,13 +14,13 @@ const mapboxLayerStyleProps = {
     required: true
   },
   metadata: Object,
-  refLayer: String,
-  "source-layer": String,
+  // refLayer: String,
   minZoom: Number,
   maxZoom: Number,
   paint: Object,
   layout: Object,
-  before: Object
+  before: Object,
+  filter: undefined
 };
 
 const componentProps = {
@@ -65,13 +65,13 @@ export default {
   },
 
   watch: {
-    minzoom(val) {
+    minZoom(val) {
       if (this.initial) return;
-      this.map.setLayerZoomRange(this.layerId, val, this.maxzoom);
+      this.map.setLayerZoomRange(this.layerId, val, this.maxZoom);
     },
-    maxzoom(val) {
+    maxZoom(val) {
       if (this.initial) return;
-      this.map.setLayerZoomRange(this.layerId, this.minzoom, val);
+      this.map.setLayerZoomRange(this.layerId, this.minZoom, val);
     },
     paint(properties) {
       if (this.initial) return;

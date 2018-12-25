@@ -78,3 +78,7 @@ See full list of actions on [API](/api/glmap.md#actions) page.
 ### Method `actions.stop()`
 
 Method `.stop()` just stops all animations on map, updates props with new positions and return Promise with map parameters in the moment when `.stop()` called.
+
+### Events
+
+See list of events on [API](/api/glmap.md#events) page.

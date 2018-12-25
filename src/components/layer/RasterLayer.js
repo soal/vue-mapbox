@@ -11,19 +11,31 @@ export default {
     },
     tiles: {
       type: Array,
-      default: () => []
+      default: undefined
     },
     tilesMinZoom: {
       type: Number,
-      default: undefined
+      default: 0
     },
     tilesMaxZoom: {
       type: Number,
-      default: undefined
+      default: 22
     },
     tileSize: {
       type: Number,
-      defaul: undefined
+      defaul: 512
+    },
+    bounds: {
+      type: Array,
+      default: () => [-180, -85.051129, 180, 85.051129]
+    },
+    scheme: {
+      type: String,
+      default: undefined
+    },
+    attribution: {
+      type: String,
+      default: undefined
     }
   },
 
@@ -32,12 +44,16 @@ export default {
       this.map = payload.map;
       let source = {
         type: "raster",
-        tilesMinZoom: this.tilesMinZoom,
-        tilesMaxZoom: this.tilesMaxZoom,
-        tileSize: this.tileSize,
         url: this.url,
-        tiles: this.tiles
+        minzoom: this.tilesMinZoom,
+        maxzoom: this.tilesMaxZoom,
+        tileSize: this.tileSize,
+        bounds: this.bounds
       };
+
+      if (this.tiles) source.tiles = this.tiles;
+      if (this.scheme) source.scheme = this.scheme;
+      if (this.attribution) source.attribution = this.attribution;
 
       this.map.on("dataloading", this.$_watchSourceLoading);
       try {

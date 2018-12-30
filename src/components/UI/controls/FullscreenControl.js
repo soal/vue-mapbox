@@ -1,29 +1,29 @@
-import controlMixin from './controlMixin'
+import controlMixin from "./controlMixin";
 
 export default {
-  name: 'FullscreenControl',
+  name: "FullscreenControl",
   mixins: [controlMixin],
 
   props: {
     position: {
       type: String,
-      default: 'top-right'
+      default: "top-right"
     }
   },
 
-  data () {
+  data() {
     return {
       control: undefined
-    }
+    };
   },
 
-  created () {
-    this.control = new this.mapbox.FullscreenControl()
+  created() {
+    this.control = new this.mapbox.FullscreenControl();
   },
 
   methods: {
-    $_deferredMount (payload) {
-      this.$_addControl(payload)
+    $_deferredMount(payload) {
+      this.$_addControl(payload);
     }
   }
-}
+};

@@ -2,6 +2,7 @@ module.exports = {
   title: "Vue-Mapbox",
   description: "Combine powers of Mapbox GL JS and Vue.js",
   dest: "docs",
+  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
 
   themeConfig: {
     nav: [

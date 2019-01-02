@@ -1,6 +1,6 @@
 ---
 home: true
-# heroImage: /hero.png
+heroImage: /logo.svg
 actionText: Get Started →
 actionLink: /guide/
 features:
@@ -59,7 +59,6 @@ export default {
   }
 }
 </script>
-
 ```
 
 ::: tip Dependencies

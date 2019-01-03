@@ -60,4 +60,4 @@ MIT
 
 ## Contributing
 
-Just fork `development` branch and create PR when your is done. Please ensure you are not added dist files.
+Just fork `development` branch and create PR when your work is done. Please ensure you are not added dist files.

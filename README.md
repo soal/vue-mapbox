@@ -8,7 +8,7 @@ Vue-mapbox is wrapper around Mapbox GL JS library that provides vueish-way to in
 
 ## Size
 
- ~ 39 kB minified  
+~ 39 kB minified  
  ~ 7 kB minified and gzipped
 
 ## Browser compatibility
@@ -53,3 +53,11 @@ npm run docs:build
 ```
 
 Inspired by KoRiGaN's [Vue2Leaflet](https://github.com/KoRiGaN/Vue2Leaflet).
+
+## License
+
+MIT
+
+## Contributing
+
+Just fork `development` branch and create PR when your is done. Please ensure you are not added dist files.

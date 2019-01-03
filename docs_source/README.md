@@ -18,24 +18,24 @@ If you like long story, check out [blog post](https://soal.github.io/posts/why-v
 
 ```vue{2}
 <template>
-  <mgl-map
+  <MglMap
     container="map-test"
     :center.sync="center"
     :accessToken="accessToken"
     :mapStyle="mapStyle"
   >
-    <mgl-marker
+    <MglMarker
       :coordinates.sync="markerCoordinates"
       color='green'
     />
-    <mgl-geojson-layer
+    <MglGeojsonLayer
       type="fill"
       :sourceId="sourceId"
       :layerId="layerId"
       :source="geojson"
       @click="handleClick"
     />
-  </mgl-map>
+  </MglMap>
 </temaplate>
 
 <script>

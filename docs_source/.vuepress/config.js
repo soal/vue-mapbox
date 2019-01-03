@@ -1,5 +1,5 @@
 module.exports = {
-  title: "Vue-Mapbox",
+  title: "VueMapbox",
   description: "Combine powers of Mapbox GL JS and Vue.js",
   dest: "docs",
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
@@ -16,7 +16,7 @@ module.exports = {
       },
       { text: "Github", link: "https://github.com/soal/vue-mapbox" },
       {
-        text: "Map-promisified",
+        text: "map-promisified",
         link: "https://github.com/soal/map-promisified"
       }
     ],

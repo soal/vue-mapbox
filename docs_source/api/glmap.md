@@ -278,6 +278,10 @@
 
 Asynchronous actions exposed via `GlMap.actions`
 
+::: tip
+[Map-promisified](https://github.com/soal/map-promisified) is used as wrapper around Mapbox GL JS methods. That library can be used independently from VueMapbox.
+:::
+
 ### `.stop(eventData?)`
 
 - **Arguments:**

@@ -41,7 +41,7 @@ When map loads, `MglMap` component emits `load` event. Pyload od the event conta
 
 ::: warning Storing Map object
 Take note that it's generally bad idea to add to Vuex or component's `data` anything but primitive types and plain objects. Vue adds getters and setters to every property, so if you add `Map` object to Vuex store or component `data`, it may lead to weird bugs.
-If you want to store map object, store it as non-reactive property, like in example below.
+If you want to store map object, store it as non-reactive property like in example below.
 :::
 
 ```vue

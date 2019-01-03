@@ -6,7 +6,7 @@ For using maps with Mapbox GL JS you need a [map style](https://mapbox.com/mapbo
 If you using Mapbox-hosted maps, you need to set `access_token`. Look for details in Mapbox [documentation](https://mapbox.com/help/define-access-token/).  
 If you using self-hosting maps on your own server you can omit this parameter.
 
-```vue{2}
+```vue
 <template>
   <MglMap :accessToken="accessToken" :mapStyle.sync="mapStyle" />
 </template>
@@ -37,7 +37,7 @@ Full list of props see in [API docs](/api/glmap.md#props), note field 'Synced' i
 
 ## Map loading
 
-When map loads, `MglMap` component emits `load` event. Pyload od the event contains Mapbox GL JS `Map` object.
+When map loads, `MglMap` component emits `load` event. Pyload of the event contains Mapbox GL JS `Map` object.
 
 ::: warning Storing Map object
 Take note that it's generally bad idea to add to Vuex or component's `data` anything but primitive types and plain objects. Vue adds getters and setters to every property, so if you add `Map` object to Vuex store or component `data`, it may lead to weird bugs.
@@ -77,7 +77,7 @@ Asynchronous map methods exposed at GlMap component in `actions` property. They 
 Promise resolves with map properties that has been changed by used action.
 For example:
 
-```vue{2}
+```vue
 <script>
 export deafult {
   name: 'App',

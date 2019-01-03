@@ -4,7 +4,7 @@
 
 The Marker component is a wrapper around the [Mapbox GL Marker API](https://www.mapbox.com/mapbox-gl-js/api/#marker).
 
-```vue{2}
+```vue
 <template>
   <MglMap
     :accessToken="mapboxAccessToken"
@@ -49,7 +49,7 @@ The Marker component has two slots: the `marker` slot and default slot used for 
 
 The `marker` slot allows you to customize the look of the marker. Here is an example of using the [Vuetify `v-icon` component](https://vuetifyjs.com/en/components/icons) instead of the default marker icon:
 
-```vue{2}
+```vue
 <template>
   <MglMap
     :accessToken="mapboxAccessToken"
@@ -92,7 +92,7 @@ The Popup component is wrapper around the [Mapbox GL Popup API](https://www.mapb
 You can specify content inside popup in default slot. It can be HTML or Vue component.
 In this example [Vuetify card component](https://vuetifyjs.com/en/components/cards) used as a content for popup:
 
-```vue{2}
+```vue
 <template>
   <MglMap
     :accessToken="mapboxAccessToken"

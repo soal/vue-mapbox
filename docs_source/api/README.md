@@ -2,7 +2,7 @@
 
 ## Register Vue-Mapbox as Vue plugin
 
-```javascript{2}
+```javascript
 Vue.use(VueMapbox, options);
 ```
 
@@ -20,7 +20,7 @@ Vue.use(VueMapbox, options);
 
 ## Example
 
-```javascript{2}
+```javascript
 import VueMapbox from "vue-mapbox";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import Mapbox from "mapbox-gl";

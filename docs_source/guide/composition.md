@@ -18,11 +18,7 @@ For example, adding map controls:
 </template>
 
 <script>
-import {
-  MglMap,
-  MglNavigationControl,
-  MglGeolocateControl
-} from 'vue-mapbox'
+import { MglMap, MglNavigationControl, MglGeolocateControl } from "vue-mapbox";
 
 export default {
   components: {
@@ -32,11 +28,11 @@ export default {
   },
   data() {
     return {
-      accessToken: 'some_token',
-      mapStyle: 'style_object'
-    }
+      accessToken: "some_token",
+      mapStyle: "style_object"
+    };
   }
-}
+};
 </script>
 ```
 
@@ -87,7 +83,7 @@ For example:
 
 **_Popup wrapper_**:
 
-```vue{2}
+```vue
 <template>
   <div class="popup-wrapper">
     <MglPopup :coordinates="popupCoordinates">

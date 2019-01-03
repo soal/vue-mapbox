@@ -8,7 +8,7 @@ In Vue-mapbox they exposed as Vue components, so you can control they properties
 
 _All controls_:
 
-```vue{2}
+```vue
 <template>
   <div id="#app">
     <MglMap

@@ -16,7 +16,7 @@ footer: MIT Licensed
 
 If you like long story, check out [blog post](https://soal.github.io/posts/why-vue-mapbox.html)
 
-```vue{2}
+```vue
 <template>
   <MglMap
     container="map-test"

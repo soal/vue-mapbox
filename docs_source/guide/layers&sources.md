@@ -7,7 +7,7 @@ Geographic features on the map draws as layers. Every layer must have a source w
 Vue-mapbox exposes layers as Vue components and source passed to layer as prop. There is several layers types for drawning different types of sources.
 For example adding a layer with GeoJSON data:
 
-```vue{2}
+```vue
 <template>
   <MglMap :accessToken="accessToken" :mapStyle.sync="mapStyle">
     <MglNavigationControl position="top-right" />
@@ -22,14 +22,13 @@ For example adding a layer with GeoJSON data:
 </template>
 ```
 
-```javascript{2}
+```javascript
 import { MglMap, MglNavigationControl, MglGeojsonLayer } from "vue-mapbox";
 
 export default {
   components: {
     MglMap,
     MglNavigationControl,
-    MglGeolocateControl,
     MglGeojsonLayer
   },
   data() {

@@ -1,7 +1,0 @@
-# GeojsonLayer
-
-## Props
-
-## Methods
-
-## Events

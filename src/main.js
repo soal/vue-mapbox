@@ -1,43 +1,45 @@
-import GlMap from './components/GlMap.vue'
-import NavigationControl from './components/UI/NavigationControl.vue'
-import GeolocateControl from './components/UI/GeolocateControl.vue'
-import FullscreenControl from './components/UI/FullscreenControl.vue'
-import AttributionControl from './components/UI/AttributionControl.vue'
-import ScaleControl from './components/UI/ScaleControl.vue'
-import Marker from './components/UI/Marker.vue'
-import Popup from './components/UI/Popup.vue'
+import GlMap from "./components/map/GlMap.vue";
 
-import GeojsonLayer from './components/layer/GeojsonLayer.vue'
-import ImageLayer from './components/layer/ImageLayer.vue'
-import CanvasLayer from './components/layer/CanvasLayer.vue'
-import VideoLayer from './components/layer/VideoLayer.vue'
-import VectorLayer from './components/layer/VectorLayer.vue'
+import NavigationControl from "./components/UI/controls/NavigationControl";
+import GeolocateControl from "./components/UI/controls/GeolocateControl";
+import FullscreenControl from "./components/UI/controls/FullscreenControl";
+import AttributionControl from "./components/UI/controls/AttributionControl";
+import ScaleControl from "./components/UI/controls/ScaleControl";
+import Marker from "./components/UI/Marker.vue";
+import Popup from "./components/UI/Popup.vue";
 
-import baseMixin from './lib/mixin'
-import controlMixin from './lib/controlMixin'
+import GeojsonLayer from "./components/layer/GeojsonLayer";
+import ImageLayer from "./components/layer/ImageLayer";
+import CanvasLayer from "./components/layer/CanvasLayer";
+import VideoLayer from "./components/layer/VideoLayer";
+import VectorLayer from "./components/layer/VectorLayer";
+import RasterLayer from "./components/layer/RasterLayer";
 
-export const mglBaseMixin = baseMixin
-export const mglControlMixin = controlMixin
+import controlMixin from "./components/UI/controls/controlMixin";
+import withRegistration from "./lib/withRegistration";
 
-export const MglMap = GlMap
+export const mglRegistrationMixin = withRegistration;
+export const mglControlMixin = controlMixin;
 
-export const MglNavigationControl = NavigationControl
-export const MglGeolocateControl = GeolocateControl
-export const MglFullscreenControl = FullscreenControl
-export const MglAttributionControl = AttributionControl
-export const MglScaleControl = ScaleControl
+export const MglMap = GlMap;
 
-export const MglGeojsonLayer = GeojsonLayer
-export const MglImageLayer = ImageLayer
-export const MglCanvasLayer = CanvasLayer
-export const MglVideoLayer = VideoLayer
-export const MglVectorLayer = VectorLayer
+export const MglNavigationControl = NavigationControl;
+export const MglGeolocateControl = GeolocateControl;
+export const MglFullscreenControl = FullscreenControl;
+export const MglAttributionControl = AttributionControl;
+export const MglScaleControl = ScaleControl;
 
-export const MglMarker = Marker
-export const MglPopup = Popup
+export const MglGeojsonLayer = GeojsonLayer;
+export const MglImageLayer = ImageLayer;
+export const MglCanvasLayer = CanvasLayer;
+export const MglVideoLayer = VideoLayer;
+export const MglVectorLayer = VectorLayer;
+export const MglRasterLayer = RasterLayer;
+
+export const MglMarker = Marker;
+export const MglPopup = Popup;
 
 export const plugin = {
-
   /**
    *  Create Vue-mapbox plugin for Vue
    *
@@ -46,16 +48,19 @@ export const plugin = {
    * @returns
    */
   install(Vue, options = {}) {
-    const data = { mapbox: options.mapboxgl }
+    const data = { mapbox: options.mapboxgl };
     if (options.plugins && options.plugins.length) {
       options.plugins.forEach(plugin => {
-        const key = Object.keys(plugin)[0]
-        const value = Object.values(plugin)[0]
-        data[key] = value
-      })
+        const key = Object.keys(plugin)[0];
+        const value = Object.values(plugin)[0];
+        data[key] = value;
+      });
     }
-    Vue.mixin({ data() { return data } })
+    Vue.mixin({
+      data() {
+        return data;
+      }
+    });
   }
-}
-
-export default plugin
+};
+export default plugin;

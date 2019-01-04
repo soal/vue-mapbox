@@ -1,7 +1,7 @@
 export default {
   methods: {
     $_updateSyncedPropsFabric(prop, data) {
-      return event => {
+      return () => {
         this.propsIsUpdating[prop] = true;
         let info = typeof data === "function" ? data() : data;
         return this.$emit(`update:${prop}`, info);

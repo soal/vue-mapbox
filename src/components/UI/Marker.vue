@@ -56,7 +56,7 @@ export default {
       if (this.initial) return;
       this.marker.setLngLat(lngLat);
     },
-    draggable(next, prev) {
+    draggable(next) {
       if (this.initial) return;
       this.marker.setDraggable(next);
     }

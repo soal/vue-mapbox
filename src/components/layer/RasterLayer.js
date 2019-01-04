@@ -23,7 +23,7 @@ export default {
     },
     tileSize: {
       type: Number,
-      defaul: 512
+      default: 512
     },
     bounds: {
       type: Array,
@@ -45,11 +45,14 @@ export default {
       let source = {
         type: "raster",
         url: this.url,
-        minzoom: this.tilesMinZoom,
-        maxzoom: this.tilesMaxZoom,
-        tileSize: this.tileSize,
-        bounds: this.bounds
+        tileSize: this.tileSize
       };
+
+      if (!this.url) {
+        source.minzoom = this.tilesMinZoom;
+        source.maxzoom = this.tilesMaxZoom;
+        source.bounds = this.bounds;
+      }
 
       if (this.tiles) source.tiles = this.tiles;
       if (this.scheme) source.scheme = this.scheme;
@@ -88,19 +91,12 @@ export default {
       }
       let layer = {
         id: this.layerId,
+        type: "raster",
         source: this.sourceId
       };
-      if (this.refLayer) {
-        layer.ref = this.refLayer;
-      } else {
-        layer.type = "raster";
-        layer.source = this.sourceId;
-        layer["source-layer"] = this["source-layer"];
-        if (this.minzoom) layer.minzoom = this.minzoom;
-        if (this.maxzoom) layer.maxzoom = this.maxzoom;
-        if (this.layout) {
-          layer.layout = this.layout;
-        }
+      layer.source = this.sourceId;
+      if (this.layout) {
+        layer.layout = this.layout;
       }
       layer.paint = this.paint ? this.paint : { "raster-opacity": 1 };
       layer.metadata = this.metadata;

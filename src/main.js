@@ -13,6 +13,7 @@ import ImageLayer from "./components/layer/ImageLayer";
 import CanvasLayer from "./components/layer/CanvasLayer";
 import VideoLayer from "./components/layer/VideoLayer";
 import VectorLayer from "./components/layer/VectorLayer";
+import RasterLayer from "./components/layer/RasterLayer";
 
 import controlMixin from "./components/UI/controls/controlMixin";
 import withRegistration from "./lib/withRegistration";
@@ -33,6 +34,7 @@ export const MglImageLayer = ImageLayer;
 export const MglCanvasLayer = CanvasLayer;
 export const MglVideoLayer = VideoLayer;
 export const MglVectorLayer = VectorLayer;
+export const MglRasterLayer = RasterLayer;
 
 export const MglMarker = Marker;
 export const MglPopup = Popup;

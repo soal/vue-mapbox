@@ -167,7 +167,8 @@
   outline: none;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  background: #fff url(/assets/img/search.83621669.svg) 0.6rem 0.5rem no-repeat;
+  background: #fff url(/vue-mapbox/assets/img/search.83621669.svg) 0.6rem 0.5rem
+    no-repeat;
   background-size: 1rem;
 }
 .search-box input:focus {
@@ -601,7 +602,7 @@ a.sidebar-link.active {
   top: -0.12em;
   left: 0.5em;
 }
-.sidebar-heading: .open .arrow {
+.sidebar-heading:.open .arrow {
   top: -0.18em;
 }
 .sidebar-group-items {

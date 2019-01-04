@@ -59,8 +59,8 @@
                 6: "9ba78da0",
                 7: "8570b8fe",
                 8: "1dc54cc8",
-                9: "32ab09a4",
-                10: "8820322f",
+                9: "947d3e5e",
+                10: "c860027f",
                 11: "7124ea12",
                 12: "237dea5f",
                 13: "428afe9f",
@@ -147,7 +147,7 @@
     (a.o = function(t, e) {
       return Object.prototype.hasOwnProperty.call(t, e);
     }),
-    (a.p = "/"),
+    (a.p = "/vue-mapbox/"),
     (a.oe = function(t) {
       throw (console.error(t), t);
     });
@@ -7387,8 +7387,8 @@
         "v-acd593fc": () => n.e(6).then(n.bind(null, 131)),
         "v-9af1f7dc": () => n.e(7).then(n.bind(null, 134)),
         "v-073619c3": () => n.e(8).then(n.bind(null, 143)),
-        "v-0bcaedd9": () => n.e(9).then(n.bind(null, 140)),
-        "v-77c73199": () => n.e(10).then(n.bind(null, 133)),
+        "v-77c73199": () => n.e(10).then(n.bind(null, 140)),
+        "v-0bcaedd9": () => n.e(9).then(n.bind(null, 133)),
         "v-5717614d": () => n.e(11).then(n.bind(null, 135)),
         "v-1f50ee59": () => n.e(12).then(n.bind(null, 136)),
         "v-45aa14ce": () => n.e(13).then(n.bind(null, 137)),
@@ -7639,19 +7639,19 @@
           }
         },
         {
-          name: "v-0bcaedd9",
-          path: "/api/Layers/geojsonlayer.html",
-          component: Jt,
-          beforeEnter: (t, e, n) => {
-            qt("Layout", "v-0bcaedd9").then(n);
-          }
-        },
-        {
           name: "v-77c73199",
           path: "/api/Layers/imagelayer.html",
           component: Jt,
           beforeEnter: (t, e, n) => {
             qt("Layout", "v-77c73199").then(n);
+          }
+        },
+        {
+          name: "v-0bcaedd9",
+          path: "/api/Layers/geojsonlayer.html",
+          component: Jt,
+          beforeEnter: (t, e, n) => {
+            qt("Layout", "v-0bcaedd9").then(n);
           }
         },
         {
@@ -7790,7 +7790,7 @@
       te = {
         title: "VueMapbox",
         description: "Combine powers of Mapbox GL JS and Vue.js",
-        base: "/",
+        base: "/vue-mapbox/",
         pages: [
           {
             title: "Home",
@@ -7886,6 +7886,19 @@
             ]
           },
           {
+            title: "ImageLayer",
+            frontmatter: {},
+            regularPath: "/api/Layers/imagelayer.html",
+            key: "v-77c73199",
+            path: "/api/Layers/imagelayer.html",
+            headers: [
+              { level: 2, title: "Props", slug: "props" },
+              { level: 3, title: "url", slug: "url" },
+              { level: 3, title: "coordinates", slug: "coordinates" },
+              { level: 2, title: "Events", slug: "events" }
+            ]
+          },
+          {
             title: "GeojsonLayer",
             frontmatter: {},
             regularPath: "/api/Layers/geojsonlayer.html",
@@ -7925,19 +7938,6 @@
                 title: "getFeatureState(featureId)",
                 slug: "getfeaturestate-featureid"
               },
-              { level: 2, title: "Events", slug: "events" }
-            ]
-          },
-          {
-            title: "ImageLayer",
-            frontmatter: {},
-            regularPath: "/api/Layers/imagelayer.html",
-            key: "v-77c73199",
-            path: "/api/Layers/imagelayer.html",
-            headers: [
-              { level: 2, title: "Props", slug: "props" },
-              { level: 3, title: "url", slug: "url" },
-              { level: 3, title: "coordinates", slug: "coordinates" },
               { level: 2, title: "Events", slug: "events" }
             ]
           },
@@ -8810,7 +8810,7 @@
       ge = ve.router;
     (window.__VUEPRESS_VERSION__ = {
       version: "1.0.0-alpha.30",
-      hash: "3019c90"
+      hash: "b5c50de"
     }),
       ge.onReady(function() {
         me.$mount("#app");

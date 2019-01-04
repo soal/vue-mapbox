@@ -23,7 +23,7 @@ cd vue-mapbox
 npm install
 ```
 
-Running in dev mod:
+Running in dev mode:
 
 ```sh
 npm run serve

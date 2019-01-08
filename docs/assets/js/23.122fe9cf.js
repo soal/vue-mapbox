@@ -766,7 +766,10 @@
                         rel: "noopener noreferrer"
                       }
                     },
-                    [t._v("'.queryRenderedFeatures()'"), e("OutboundLink")],
+                    [
+                      e("code", [t._v(".queryRenderedFeatures()")]),
+                      e("OutboundLink")
+                    ],
                     1
                   ),
                   t._v(" and "),
@@ -780,7 +783,10 @@
                         rel: "noopener noreferrer"
                       }
                     },
-                    [t._v("'.querySourceFeatures()'"), e("OutboundLink")],
+                    [
+                      e("code", [t._v(".querySourceFeatures()")]),
+                      e("OutboundLink")
+                    ],
                     1
                   ),
                   t._v(

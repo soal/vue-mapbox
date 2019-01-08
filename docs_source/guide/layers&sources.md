@@ -55,7 +55,7 @@ As you can expect, layers watch for their props and translate changes to map acc
 
 ## Layer getters
 
-GeoJSON and Vector layers has getters for their features: `.getRenderedFeatures(filter?)`, `.getSourceFeatures(geometry?, filter?)` and `.getFeatureState(featureId)`. They works similiar to ['.queryRenderedFeatures()'](https://www.mapbox.com/mapbox-gl-js/api/#map#queryrenderedfeatures) and ['.querySourceFeatures()'](https://www.mapbox.com/mapbox-gl-js/api/#map#querysourcefeatures) Map mthods, but returns features onnly in source of current layer.
+GeoJSON and Vector layers has getters for their features: `.getRenderedFeatures(filter?)`, `.getSourceFeatures(geometry?, filter?)` and `.getFeatureState(featureId)`. They works similiar to [`.queryRenderedFeatures()`](https://www.mapbox.com/mapbox-gl-js/api/#map#queryrenderedfeatures) and [`.querySourceFeatures()`](https://www.mapbox.com/mapbox-gl-js/api/#map#querysourcefeatures) Map mthods, but returns features onnly in source of current layer.
 
 ## Layer methods
 

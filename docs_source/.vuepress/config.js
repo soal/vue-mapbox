@@ -37,7 +37,7 @@ module.exports = {
       },
       {
         title: "API",
-        collapsable: true,
+        collapsable: false,
         children: [
           ["/api/", "VueMapbox"],
           ["/api/glmap.md", "GlMap"],
@@ -54,7 +54,7 @@ module.exports = {
       },
       {
         title: "Plugins",
-        collapsable: true,
+        collapsable: false,
         children: [
           ["/plugins/", "Using plugins"],
           ["/plugins/plugin_development.md", "Create a plugin"]

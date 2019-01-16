@@ -4904,14 +4904,17 @@
                 if (this.filter) layer.filter = this.filter;
               }
 
-              layer.paint = this.paint
-                ? this.paint
-                : {
-                    "fill-color": "rgba(".concat(
-                      12 * (this.layerId.length * 3),
-                      ",153,80,0.55)"
-                    )
-                  };
+              if (this.type !== "symbol") {
+                layer.paint = this.paint
+                  ? this.paint
+                  : {
+                      "fill-color": "rgba(".concat(
+                        12 * (this.layerId.length * 3),
+                        ",153,80,0.55)"
+                      )
+                    };
+              }
+
               layer.metadata = this.metadata;
               this.map.addLayer(layer, this.before);
               this.$_emitEvent("added", {
@@ -5073,7 +5076,7 @@
             }
           },
           computed: {
-            canvas: function canvas() {
+            canvasElement: function canvasElement() {
               return this.mapSource ? this.mapSource.getCanvas() : null;
             }
           },

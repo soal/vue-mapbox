@@ -158,7 +158,7 @@ export default {
       if (this.$parent.marker !== undefined) {
         this.$parent.marker.setPopup(this.popup);
       } else {
-        this.$parent.$once("added", ({ marker }) => {
+        this.$parent.$once("added", ({ marker } = {}) => {
           marker.setPopup(this.popup);
         });
       }

@@ -2931,7 +2931,7 @@ module.exports = /******/ (function(modules) {
       // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
       var web_dom_iterable = __webpack_require__("ac6a");
 
-      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"752d9a0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/GlMap.vue?vue&type=template&id=43dc8291&
+      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"752d9a0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/GlMap.vue?vue&type=template&id=3e0acdb8&
       var render = function() {
         var _vm = this;
         var _h = _vm.$createElement;
@@ -2952,7 +2952,7 @@ module.exports = /******/ (function(modules) {
         }
       ];
 
-      // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=template&id=43dc8291&
+      // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=template&id=3e0acdb8&
 
       // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
       function _defineProperty(obj, key, value) {
@@ -3655,7 +3655,7 @@ module.exports = /******/ (function(modules) {
             _this.map = map;
 
             if (_this.RTLTextPluginUrl !== undefined) {
-              map.setRTLTextPlugin(
+              _this.mapbox.setRTLTextPlugin(
                 _this.RTLTextPluginUrl,
                 _this.$_RTLTextPluginError
               );
@@ -5527,10 +5527,16 @@ module.exports = /******/ (function(modules) {
           }
         }
       };
+      // CONCATENATED MODULE: ./src/pluginMixin.js
+
+      /* harmony default export */ var pluginMixin = {
+        mixins: [withRegistration, withEvents, withSelfEvents]
+      };
       // CONCATENATED MODULE: ./src/main.js
 
       var mglRegistrationMixin = withRegistration;
       var mglControlMixin = controlMixin;
+      var mglPluginMixin = pluginMixin;
       var MglMap = GlMap;
       var MglNavigationControl = NavigationControl;
       var MglGeolocateControl = GeolocateControl;
@@ -5591,6 +5597,13 @@ module.exports = /******/ (function(modules) {
         "mglControlMixin",
         function() {
           return mglControlMixin;
+        }
+      );
+      /* concated harmony reexport mglPluginMixin */ __webpack_require__.d(
+        __webpack_exports__,
+        "mglPluginMixin",
+        function() {
+          return mglPluginMixin;
         }
       );
       /* concated harmony reexport MglMap */ __webpack_require__.d(

@@ -1,4 +1,3 @@
-// @ts-check
 function walkParents(component) {
   if (component.baseMap) {
     return component;

@@ -68,7 +68,10 @@ export default {
     this.$_loadMap().then(map => {
       this.map = map;
       if (this.RTLTextPluginUrl !== undefined) {
-        this.mapbox.setRTLTextPlugin(this.RTLTextPluginUrl, this.$_RTLTextPluginError);
+        this.mapbox.setRTLTextPlugin(
+          this.RTLTextPluginUrl,
+          this.$_RTLTextPluginError
+        );
       }
       const eventNames = Object.keys(mapEvents);
       this.$_bindMapEvents(eventNames);

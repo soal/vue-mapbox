@@ -4,22 +4,6 @@ import mixin from "./layerMixin";
 export default {
   name: "VideoLayer",
   mixins: [mixin],
-  props: {
-    coordinates: {
-      type: Array,
-      required: true
-    },
-    urls: {
-      type: Array,
-      required: true
-    }
-  },
-
-  data() {
-    return {
-      source: undefined
-    };
-  },
 
   computed: {
     video() {
@@ -38,8 +22,7 @@ export default {
     _deferredMount(payload) {
       const source = {
         type: "video",
-        urls: this.urls,
-        coordinates: this.coordinates
+        ...this.source
       };
 
       this.map = payload.map;
@@ -76,23 +59,9 @@ export default {
       let layer = {
         id: this.layerId,
         source: this.sourceId,
-        type: "background"
+        type: "background",
+        ...this.layer
       };
-      if (this.refLayer) {
-        layer.ref = this.refLayer;
-      } else {
-        if (this["source-layer"]) {
-          layer["source-layer"] = this["source-layer"];
-        }
-        if (this.minzoom) layer.minzoom = this.minzoom;
-        if (this.maxzoom) layer.maxzoom = this.maxzoom;
-        // if (this.layout) {
-        //   layer.layout = this.layout;
-        // }
-        // if (this.filter) layer.filter = this.filter
-      }
-      // layer.paint = this.paint ? this.paint : { 'raster-opacity': 0.85 };
-      layer.metadata = this.metadata;
 
       this.map.addLayer(layer, this.before);
       this.$_emitEvent("added", { layerId: this.layerId });

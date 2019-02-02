@@ -4,23 +4,13 @@ import layerEvents from "../../lib/layerEvents";
 export default {
   name: "ImageLayer",
   mixins: [mixin],
-  props: {
-    coordinates: {
-      type: Array,
-      required: true
-    },
-    url: {
-      type: String,
-      required: true
-    }
-  },
 
   watch: {
-    coordinates(val) {
+    "source.coordinates": function(val) {
       if (this.initial) return;
       this.mapSource.setCoordinates(val);
     },
-    url(val) {
+    "source.url": function(val) {
       if (this.initial) return;
       this.mapSource.updateImage({ url: val, coordinates: this.coordinates });
     }
@@ -30,8 +20,7 @@ export default {
     $_deferredMount(payload) {
       const source = {
         type: "image",
-        url: this.url,
-        coordinates: this.coordinates
+        ...this.source
       };
 
       this.map = payload.map;
@@ -65,26 +54,12 @@ export default {
           return existed;
         }
       }
-      let layer = {
+      const layer = {
         id: this.layerId,
         source: this.sourceId,
-        type: "raster"
+        type: "raster",
+        ...this.layer
       };
-      if (this.refLayer) {
-        layer.ref = this.refLayer;
-      } else {
-        if (this["source-layer"]) {
-          layer["source-layer"] = this["source-layer"];
-        }
-        if (this.minzoom) layer.minzoom = this.minzoom;
-        if (this.maxzoom) layer.maxzoom = this.maxzoom;
-        if (this.layout) {
-          layer.layout = this.layout;
-        }
-        if (this.filter) layer.filter = this.filter;
-      }
-      layer.paint = this.paint ? this.paint : { "raster-opacity": 1 };
-      layer.metadata = this.metadata;
 
       this.map.addLayer(layer, this.before);
       this.$_emitEvent("added", { layerId: this.layerId });

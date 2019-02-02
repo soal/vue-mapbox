@@ -49,6 +49,13 @@
 - **Description:** An array containing the longitude and latitude of the southwest and northeast corners of the source's bounding box in the following order: [sw.lng, sw.lat, ne.lng, ne.lat].
 - **See:** `bounds` in [Mapbox Source Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector-bounds)
 
+### `type`
+
+- **Type:** `String`
+- **Non-Synced**
+- **Description:** Rendering type of this layer.
+- **See:** `type` in [Mapbox Source Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layers-type)
+
 ### `scheme`
 
 - **Type:** `String`

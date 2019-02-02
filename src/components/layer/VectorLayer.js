@@ -27,7 +27,7 @@ export default {
     },
     type: {
       type: String,
-      required: true
+      default: "fill"
     },
     bounds: {
       type: Array,
@@ -133,7 +133,7 @@ export default {
       if (this.refLayer) {
         layer.ref = this.refLayer;
       } else {
-        layer.type = this.type ? this.type : "fill";
+        layer.type = this.type;
         layer.source = this.sourceId;
         if (this.minzoom) layer.minzoom = this.minzoom;
         if (this.maxzoom) layer.maxzoom = this.maxzoom;

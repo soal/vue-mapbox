@@ -19,7 +19,7 @@ const mapboxLayerStyleProps = {
   maxZoom: Number,
   paint: Object,
   layout: Object,
-  before: Object,
+  before: String,
   filter: undefined
 };
 

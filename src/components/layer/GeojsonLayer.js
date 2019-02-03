@@ -30,7 +30,6 @@ export default {
     getClusterExpansionZoom() {
       return clusterId => {
         return new Promise((resolve, reject) => {
-          console.log("VM source in Promise", this.mapSource);
           if (this.mapSource) {
             this.mapSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
               if (err) {

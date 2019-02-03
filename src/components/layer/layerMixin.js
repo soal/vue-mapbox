@@ -5,6 +5,10 @@ const mapboxSourceProps = {
   sourceId: {
     type: String,
     required: true
+  },
+  source: {
+    type: [Object, String],
+    default: undefined
   }
 };
 
@@ -13,14 +17,14 @@ const mapboxLayerStyleProps = {
     type: String,
     required: true
   },
-  metadata: Object,
-  // refLayer: String,
-  minZoom: Number,
-  maxZoom: Number,
-  paint: Object,
-  layout: Object,
-  before: Object,
-  filter: undefined
+  layer: {
+    type: Object,
+    required: true
+  },
+  before: {
+    type: String,
+    default: undefined
+  }
 };
 
 const componentProps = {
@@ -64,32 +68,60 @@ export default {
     }
   },
 
-  watch: {
-    minZoom(val) {
-      if (this.initial) return;
-      this.map.setLayerZoomRange(this.layerId, val, this.maxZoom);
-    },
-    maxZoom(val) {
-      if (this.initial) return;
-      this.map.setLayerZoomRange(this.layerId, this.minZoom, val);
-    },
-    paint(properties) {
-      if (this.initial) return;
-      for (let prop of Object.keys(this.paint)) {
-        if (this.paint[prop] !== properties[prop]) {
-          this.map.setPaintProperty(this.layerId, prop, properties[prop]);
-          this.paint[prop] = properties[prop];
-        }
-      }
-    },
-    layout(properties) {
-      if (this.initial) return;
-      for (let prop of Object.keys(this.layout)) {
-        if (this.layout[prop] !== properties[prop]) {
-          this.map.setLayoutProperty(this.layerId, prop, properties[prop]);
-          this.layout[prop] = properties[prop];
-        }
-      }
+  created() {
+    if (this.layer.minzoom) {
+      this.$watch("layer.minzoom", function(next) {
+        if (this.initial) return;
+        this.map.setLayerZoomRange(this.layerId, next, this.layer.maxzoom);
+      });
+    }
+
+    if (this.layer.maxzoom) {
+      this.$watch("layer.maxzoom", function(next) {
+        if (this.initial) return;
+        this.map.setLayerZoomRange(this.layerId, this.layer.minzoom, next);
+      });
+    }
+
+    if (this.layer.paint) {
+      this.$watch(
+        "layer.paint",
+        function(next) {
+          if (this.initial) return;
+          if (next) {
+            for (let prop of Object.keys(next)) {
+              this.map.setPaintProperty(this.layerId, prop, next[prop]);
+            }
+          }
+        },
+        { deep: true }
+      );
+    }
+
+    if (this.layer.layout) {
+      this.$watch(
+        "layer.layout",
+        function(next) {
+          if (this.initial) return;
+          if (next) {
+            for (let prop of Object.keys(next)) {
+              this.map.setLayoutProperty(this.layerId, prop, next[prop]);
+            }
+          }
+        },
+        { deep: true }
+      );
+    }
+
+    if (this.layer.filter) {
+      this.$watch(
+        "layer.filter",
+        function(next) {
+          if (this.initial) return;
+          this.map.setFilter(this.layerId, next);
+        },
+        { deep: true }
+      );
     }
   },
 

@@ -44,7 +44,15 @@
                 t._v(" "),
                 e("p", [
                   t._v(
-                    "Geographic features on the map draws as layers. Every layer must have a source which contains data for layer (for exmaple, GeoJSON object). You can read more about sources in Mapbox GL JS "
+                    "Geographic features on the map draws as layers.\nLayer use "
+                  ),
+                  e("code", [t._v("source")]),
+                  t._v(
+                    " object that contains data for layer (for example, GeoJSON object). Source must be added to map and several layers can use common "
+                  ),
+                  e("code", [t._v("source")]),
+                  t._v(
+                    " and draw it's data differently.\nAlso, layer has own configuration object that declares how layer draws on the map. You can read more about sources in Mapbox GL JS docs for "
                   ),
                   e(
                     "a",
@@ -56,15 +64,32 @@
                         rel: "noopener noreferrer"
                       }
                     },
-                    [t._v("docs"), e("OutboundLink")],
+                    [t._v("sources"), e("OutboundLink")],
+                    1
+                  ),
+                  t._v(" ans "),
+                  e(
+                    "a",
+                    {
+                      attrs: {
+                        href: "https://www.mapbox.com/mapbox-gl-js/api/#layers",
+                        target: "_blank",
+                        rel: "noopener noreferrer"
+                      }
+                    },
+                    [t._v("layers"), e("OutboundLink")],
                     1
                   ),
                   t._v(".")
                 ]),
                 t._v(" "),
                 e("p", [
+                  t._v("Vue-mapbox exposes layers as Vue components.\n"),
+                  e("code", [t._v("source")]),
+                  t._v(" and "),
+                  e("code", [t._v("layer")]),
                   t._v(
-                    "Vue-mapbox exposes layers as Vue components and source passed to layer as prop. There is several layers types for drawning different types of sources.\nFor example adding a layer with GeoJSON data:"
+                    " configuration object passed to layer component as props. There is several layers types for drawing different types of sources.\nFor example adding a layer with GeoJSON data:"
                   )
                 ]),
                 t._v(" "),
@@ -250,43 +275,6 @@
                         e(
                           "span",
                           { pre: !0, attrs: { class: "token attr-name" } },
-                          [t._v("type")]
-                        ),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token attr-value" } },
-                          [
-                            e(
-                              "span",
-                              {
-                                pre: !0,
-                                attrs: { class: "token punctuation" }
-                              },
-                              [t._v("=")]
-                            ),
-                            e(
-                              "span",
-                              {
-                                pre: !0,
-                                attrs: { class: "token punctuation" }
-                              },
-                              [t._v('"')]
-                            ),
-                            t._v("fill"),
-                            e(
-                              "span",
-                              {
-                                pre: !0,
-                                attrs: { class: "token punctuation" }
-                              },
-                              [t._v('"')]
-                            )
-                          ]
-                        ),
-                        t._v("\n      "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token attr-name" } },
                           [t._v(":sourceId")]
                         ),
                         e(
@@ -309,7 +297,7 @@
                               },
                               [t._v('"')]
                             ),
-                            t._v("geoJsonSource.properties.id"),
+                            t._v("geoJsonSource.id"),
                             e(
                               "span",
                               {
@@ -324,7 +312,7 @@
                         e(
                           "span",
                           { pre: !0, attrs: { class: "token attr-name" } },
-                          [t._v(":layerId")]
+                          [t._v("layerId")]
                         ),
                         e(
                           "span",
@@ -346,7 +334,7 @@
                               },
                               [t._v('"')]
                             ),
-                            t._v("geoJsonSource.properties.id"),
+                            t._v("myLayer"),
                             e(
                               "span",
                               {
@@ -361,7 +349,7 @@
                         e(
                           "span",
                           { pre: !0, attrs: { class: "token attr-name" } },
-                          [t._v(":source.sync")]
+                          [t._v(":source")]
                         ),
                         e(
                           "span",
@@ -384,6 +372,43 @@
                               [t._v('"')]
                             ),
                             t._v("geoJsonSource"),
+                            e(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v('"')]
+                            )
+                          ]
+                        ),
+                        t._v("\n      "),
+                        e(
+                          "span",
+                          { pre: !0, attrs: { class: "token attr-name" } },
+                          [t._v(":layer")]
+                        ),
+                        e(
+                          "span",
+                          { pre: !0, attrs: { class: "token attr-value" } },
+                          [
+                            e(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v("=")]
+                            ),
+                            e(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v('"')]
+                            ),
+                            t._v("geoJsonlayer"),
                             e(
                               "span",
                               {
@@ -433,239 +458,303 @@
                           [t._v(">")]
                         )
                       ]),
+                      t._v("\n\n"),
+                      e("span", { pre: !0, attrs: { class: "token tag" } }, [
+                        e("span", { pre: !0, attrs: { class: "token tag" } }, [
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("<")]
+                          ),
+                          t._v("script")
+                        ]),
+                        e(
+                          "span",
+                          { pre: !0, attrs: { class: "token punctuation" } },
+                          [t._v(">")]
+                        )
+                      ]),
+                      e(
+                        "span",
+                        {
+                          pre: !0,
+                          attrs: { class: "token script language-javascript" }
+                        },
+                        [
+                          t._v("\n"),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token keyword" } },
+                            [t._v("import")]
+                          ),
+                          t._v(" "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("{")]
+                          ),
+                          t._v(" MglMap"),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(",")]
+                          ),
+                          t._v(" MglNavigationControl"),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(",")]
+                          ),
+                          t._v(" MglGeojsonLayer "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("}")]
+                          ),
+                          t._v(" "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token keyword" } },
+                            [t._v("from")]
+                          ),
+                          t._v(" "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token string" } },
+                            [t._v('"vue-mapbox"')]
+                          ),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(";")]
+                          ),
+                          t._v("\n\n"),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token keyword" } },
+                            [t._v("export")]
+                          ),
+                          t._v(" "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token keyword" } },
+                            [t._v("default")]
+                          ),
+                          t._v(" "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("{")]
+                          ),
+                          t._v("\n  components"),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(":")]
+                          ),
+                          t._v(" "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("{")]
+                          ),
+                          t._v("\n    MglMap"),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(",")]
+                          ),
+                          t._v("\n    MglNavigationControl"),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(",")]
+                          ),
+                          t._v("\n    MglGeojsonLayer\n  "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("}")]
+                          ),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(",")]
+                          ),
+                          t._v("\n  "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token function" } },
+                            [t._v("data")]
+                          ),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("(")]
+                          ),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(")")]
+                          ),
+                          t._v(" "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("{")]
+                          ),
+                          t._v("\n    "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token keyword" } },
+                            [t._v("return")]
+                          ),
+                          t._v(" "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("{")]
+                          ),
+                          t._v("\n      accessToken"),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(":")]
+                          ),
+                          t._v(" "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token string" } },
+                            [t._v('"some_token"')]
+                          ),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(",")]
+                          ),
+                          t._v("\n      mapStyle"),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(":")]
+                          ),
+                          t._v(" "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token string" } },
+                            [t._v('"style_object"')]
+                          ),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(",")]
+                          ),
+                          t._v("\n      geoJsonSource"),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(":")]
+                          ),
+                          t._v(" "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("{")]
+                          ),
+                          t._v("\n        "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token comment" } },
+                            [t._v("//...some GeoJSON object")]
+                          ),
+                          t._v("\n      "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("}")]
+                          ),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(",")]
+                          ),
+                          t._v("\n      geoJsonLayer"),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(":")]
+                          ),
+                          t._v(" "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("{")]
+                          ),
+                          t._v("\n        "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token comment" } },
+                            [
+                              t._v(
+                                "//...some GeoJSON layer configuration object"
+                              )
+                            ]
+                          ),
+                          t._v("\n      "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("}")]
+                          ),
+                          t._v("\n    "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("}")]
+                          ),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(";")]
+                          ),
+                          t._v("\n  "),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("}")]
+                          ),
+                          t._v("\n"),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("}")]
+                          ),
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(";")]
+                          ),
+                          t._v("\n")
+                        ]
+                      ),
+                      e("span", { pre: !0, attrs: { class: "token tag" } }, [
+                        e("span", { pre: !0, attrs: { class: "token tag" } }, [
+                          e(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("</")]
+                          ),
+                          t._v("script")
+                        ]),
+                        e(
+                          "span",
+                          { pre: !0, attrs: { class: "token punctuation" } },
+                          [t._v(">")]
+                        )
+                      ]),
                       t._v("\n")
                     ])
                   ])
-                ]),
-                e("div", { staticClass: "language-javascript extra-class" }, [
-                  e(
-                    "pre",
-                    { pre: !0, attrs: { class: "language-javascript" } },
-                    [
-                      e("code", [
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token keyword" } },
-                          [t._v("import")]
-                        ),
-                        t._v(" "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v("{")]
-                        ),
-                        t._v(" MglMap"),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(",")]
-                        ),
-                        t._v(" MglNavigationControl"),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(",")]
-                        ),
-                        t._v(" MglGeojsonLayer "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v("}")]
-                        ),
-                        t._v(" "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token keyword" } },
-                          [t._v("from")]
-                        ),
-                        t._v(" "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token string" } },
-                          [t._v('"vue-mapbox"')]
-                        ),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(";")]
-                        ),
-                        t._v("\n\n"),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token keyword" } },
-                          [t._v("export")]
-                        ),
-                        t._v(" "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token keyword" } },
-                          [t._v("default")]
-                        ),
-                        t._v(" "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v("{")]
-                        ),
-                        t._v("\n  components"),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(":")]
-                        ),
-                        t._v(" "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v("{")]
-                        ),
-                        t._v("\n    MglMap"),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(",")]
-                        ),
-                        t._v("\n    MglNavigationControl"),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(",")]
-                        ),
-                        t._v("\n    MglGeojsonLayer\n  "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v("}")]
-                        ),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(",")]
-                        ),
-                        t._v("\n  "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token function" } },
-                          [t._v("data")]
-                        ),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v("(")]
-                        ),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(")")]
-                        ),
-                        t._v(" "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v("{")]
-                        ),
-                        t._v("\n    "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token keyword" } },
-                          [t._v("return")]
-                        ),
-                        t._v(" "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v("{")]
-                        ),
-                        t._v("\n      accessToken"),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(":")]
-                        ),
-                        t._v(" "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token string" } },
-                          [t._v('"some_token"')]
-                        ),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(",")]
-                        ),
-                        t._v("\n      mapStyle"),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(":")]
-                        ),
-                        t._v(" "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token string" } },
-                          [t._v('"style_object"')]
-                        ),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(",")]
-                        ),
-                        t._v("\n      geoJsonSource"),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(":")]
-                        ),
-                        t._v(" "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v("{")]
-                        ),
-                        t._v("\n        "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token comment" } },
-                          [t._v("//...some GeoJSON object")]
-                        ),
-                        t._v("\n      "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v("}")]
-                        ),
-                        t._v("\n    "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v("}")]
-                        ),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(";")]
-                        ),
-                        t._v("\n  "),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v("}")]
-                        ),
-                        t._v("\n"),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v("}")]
-                        ),
-                        e(
-                          "span",
-                          { pre: !0, attrs: { class: "token punctuation" } },
-                          [t._v(";")]
-                        ),
-                        t._v("\n")
-                      ])
-                    ]
-                  )
                 ]),
                 e("p", [
                   t._v("In this example "),
@@ -689,8 +778,12 @@
                   t._v(" prop and just pass "),
                   e("code", [t._v("sourceId")]),
                   t._v(
-                    " and use same source for different layers. If you try to add same source twice it raises an error, but you can set "
+                    " and use same source for different layers. If you try to add same source with same "
                   ),
+                  e("code", [t._v("id")]),
+                  t._v(" twice, VueMapbox would just use "),
+                  e("code", [t._v("source")]),
+                  t._v(" that already existed on the map, but you can set "),
                   e("code", [t._v("replaceSource")]),
                   t._v(" prop to "),
                   e("code", [t._v("true")]),
@@ -701,7 +794,7 @@
                 t._v(" "),
                 e("p", [
                   t._v(
-                    "By default when Layer components destroing, it removes source from map. If you want to keep source in Map (for e.g. for future using or if other layers use this source), set "
+                    "By default when Layer components destroying, it removes source from map. If you want to keep source in Map (for e.g. for future using or if other layers use this source), set "
                   ),
                   e("code", [t._v("clearSource")]),
                   t._v(" prop to "),
@@ -709,29 +802,40 @@
                   t._v(".")
                 ]),
                 t._v(" "),
-                e("h2", { attrs: { id: "updating-layer-state-with-props" } }, [
+                e("h2", { attrs: { id: "reactivity" } }, [
                   e(
                     "a",
                     {
                       staticClass: "header-anchor",
-                      attrs: {
-                        href: "#updating-layer-state-with-props",
-                        "aria-hidden": "true"
-                      }
+                      attrs: { href: "#reactivity", "aria-hidden": "true" }
                     },
                     [t._v("#")]
                   ),
-                  t._v(" Updating layer state with props")
+                  t._v(" Reactivity")
                 ]),
                 t._v(" "),
                 e("p", [
                   t._v(
-                    "As you can expect, layers watch for their props and translate changes to map accordingly. For exmaple, if you change content of "
+                    "Layer components watch for changes in object in their "
+                  ),
+                  e("code", [t._v("layer")]),
+                  t._v(
+                    " prop and translate changes to map accordingly. For example, if you change content of "
                   ),
                   e("code", [t._v("filter")]),
                   t._v(
-                    " prop in GeojsonLayer, changes will be automatically applied to layer on the map."
-                  )
+                    " prop in GeojsonLayer, changes will be automatically applied to layer on the map. Not all layer settings can be set dynamically, currently reactive properties are "
+                  ),
+                  e("code", [t._v("minzoom")]),
+                  t._v(", "),
+                  e("code", [t._v("maxzoom")]),
+                  t._v(", "),
+                  e("code", [t._v("paint")]),
+                  t._v(", "),
+                  e("code", [t._v("layout")]),
+                  t._v(" and "),
+                  e("code", [t._v("filter")]),
+                  t._v(".")
                 ]),
                 t._v(" "),
                 e("h2", { attrs: { id: "layer-getters" } }, [
@@ -755,7 +859,7 @@
                   e("code", [t._v(".getSourceFeatures(geometry?, filter?)")]),
                   t._v(" and "),
                   e("code", [t._v(".getFeatureState(featureId)")]),
-                  t._v(". They works similiar to "),
+                  t._v(". They works similar to "),
                   e(
                     "a",
                     {
@@ -790,7 +894,7 @@
                     1
                   ),
                   t._v(
-                    " Map mthods, but returns features onnly in source of current layer."
+                    " Map methods, but returns features only from source of current layer."
                   )
                 ]),
                 t._v(" "),
@@ -812,7 +916,7 @@
                   t._v(" and "),
                   e("code", [t._v("remove()")]),
                   t._v(
-                    ".\nFirst moves a layer to a different z-position. Second destroys component removes layer and source from map event if layer created with prop "
+                    ".\nFirst moves a layer to a different z-position. Second destroys component and removes layer and source from map event if layer created with prop "
                   ),
                   e("code", [t._v("clearSource: false")]),
                   t._v(".")

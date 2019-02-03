@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
   [7],
   {
-    134: function(e, r, t) {
+    143: function(e, r, t) {
       "use strict";
       t.r(r);
       var a = t(15),
@@ -106,6 +106,54 @@
                   ])
                 ]),
                 e._v(" "),
+                t("h3", { attrs: { id: "source" } }, [
+                  t(
+                    "a",
+                    {
+                      staticClass: "header-anchor",
+                      attrs: { href: "#source", "aria-hidden": "true" }
+                    },
+                    [e._v("#")]
+                  ),
+                  e._v(" "),
+                  t("code", [e._v("source")])
+                ]),
+                e._v(" "),
+                t("ul", [
+                  t("li", [
+                    t("strong", [e._v("Type:")]),
+                    e._v(" "),
+                    t("code", [e._v("Object | String")])
+                  ]),
+                  e._v(" "),
+                  t("li", [
+                    t("strong", [e._v("Non-Synced")]),
+                    e._v(" A source for layer or URL to it.")
+                  ]),
+                  e._v(" "),
+                  t("li", [t("strong", [e._v("Description:")])]),
+                  e._v(" "),
+                  t("li", [
+                    t("strong", [e._v("See:")]),
+                    e._v(" "),
+                    t("code", [e._v("sources")]),
+                    e._v(" in "),
+                    t(
+                      "a",
+                      {
+                        attrs: {
+                          href:
+                            "https://docs.mapbox.com/mapbox-gl-js/style-spec/#sources",
+                          target: "_blank",
+                          rel: "noopener noreferrer"
+                        }
+                      },
+                      [e._v("Mapbox Style Spec"), t("OutboundLink")],
+                      1
+                    )
+                  ])
+                ]),
+                e._v(" "),
                 t("h4", { attrs: { id: "props-for-mapbox-gl-layer" } }, [
                   t(
                     "a",
@@ -173,46 +221,46 @@
                   ])
                 ]),
                 e._v(" "),
-                t("h3", { attrs: { id: "metadata" } }, [
+                t("h3", { attrs: { id: "layer" } }, [
                   t(
                     "a",
                     {
                       staticClass: "header-anchor",
-                      attrs: { href: "#metadata", "aria-hidden": "true" }
+                      attrs: { href: "#layer", "aria-hidden": "true" }
                     },
                     [e._v("#")]
                   ),
                   e._v(" "),
-                  t("code", [e._v("metadata")])
+                  t("code", [e._v("layer")])
                 ]),
                 e._v(" "),
                 t("ul", [
                   t("li", [
-                    t("strong", [e._v("Type:")]),
+                    t("strong", [e._v("Type")]),
                     e._v(" "),
-                    t("code", [e._v("Object")])
+                    t("code", [e._v("String")])
                   ]),
+                  e._v(" "),
+                  t("li", [
+                    t("strong", [e._v("Description:")]),
+                    e._v(" Layer configuration object.")
+                  ]),
+                  e._v(" "),
+                  t("li", [t("strong", [e._v("Required")])]),
                   e._v(" "),
                   t("li", [t("strong", [e._v("Non-Synced")])]),
                   e._v(" "),
                   t("li", [
-                    t("strong", [e._v("Description:")]),
-                    e._v(
-                      " Arbitrary properties useful to track with the layer, but do not influence rendering."
-                    )
-                  ]),
-                  e._v(" "),
-                  t("li", [
                     t("strong", [e._v("See:")]),
                     e._v(" "),
-                    t("code", [e._v("metadata")]),
+                    t("code", [e._v("layers")]),
                     e._v(" in "),
                     t(
                       "a",
                       {
                         attrs: {
                           href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-metadata",
+                            "https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers",
                           target: "_blank",
                           rel: "noopener noreferrer"
                         }
@@ -223,280 +271,25 @@
                   ])
                 ]),
                 e._v(" "),
-                t("h3", { attrs: { id: "minzoom" } }, [
-                  t(
-                    "a",
-                    {
-                      staticClass: "header-anchor",
-                      attrs: { href: "#minzoom", "aria-hidden": "true" }
-                    },
-                    [e._v("#")]
-                  ),
-                  e._v(" "),
-                  t("code", [e._v("minZoom")])
-                ]),
-                e._v(" "),
-                t("ul", [
-                  t("li", [
-                    t("strong", [e._v("Type:")]),
-                    e._v(" "),
-                    t("code", [e._v("Number")])
+                t("div", { staticClass: "tip custom-block" }, [
+                  t("p", { staticClass: "custom-block-title" }, [
+                    e._v("Reactivity")
                   ]),
                   e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("Default:")]),
-                    e._v(" "),
-                    t("code", [e._v("undefined")])
-                  ]),
-                  e._v(" "),
-                  t("li", [t("strong", [e._v("Non-Synced")])]),
-                  e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("Description:")]),
-                    e._v(
-                      " The minimum zoom level for the layer. At zoom levels less than the minzoom, the layer will be hidden."
-                    )
-                  ]),
-                  e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("See:")]),
-                    e._v(" "),
+                  t("p", [
                     t("code", [e._v("minzoom")]),
-                    e._v(" in "),
-                    t(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-minzoom",
-                          target: "_blank",
-                          rel: "noopener noreferrer"
-                        }
-                      },
-                      [e._v("Mapbox Layer Style Spec"), t("OutboundLink")],
-                      1
-                    )
-                  ])
-                ]),
-                e._v(" "),
-                t("h3", { attrs: { id: "maxzoom" } }, [
-                  t(
-                    "a",
-                    {
-                      staticClass: "header-anchor",
-                      attrs: { href: "#maxzoom", "aria-hidden": "true" }
-                    },
-                    [e._v("#")]
-                  ),
-                  e._v(" "),
-                  t("code", [e._v("maxZoom")])
-                ]),
-                e._v(" "),
-                t("ul", [
-                  t("li", [
-                    t("strong", [e._v("Type:")]),
-                    e._v(" "),
-                    t("code", [e._v("Number")])
-                  ]),
-                  e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("Default:")]),
-                    e._v(" "),
-                    t("code", [e._v("undeined")])
-                  ]),
-                  e._v(" "),
-                  t("li", [t("strong", [e._v("Non-Synced")])]),
-                  e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("Description:")]),
-                    e._v(
-                      " The maximum zoom level for the layer. At zoom levels equal to or greater than the maxzoom, the layer will be hidden."
-                    )
-                  ]),
-                  e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("See:")]),
-                    e._v(" "),
+                    e._v(", "),
                     t("code", [e._v("maxzoom")]),
-                    e._v(" in "),
-                    t(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-maxzoom",
-                          target: "_blank",
-                          rel: "noopener noreferrer"
-                        }
-                      },
-                      [e._v("Mapbox Layer Style Spec"), t("OutboundLink")],
-                      1
-                    )
-                  ])
-                ]),
-                e._v(" "),
-                t("h3", { attrs: { id: "paint" } }, [
-                  t(
-                    "a",
-                    {
-                      staticClass: "header-anchor",
-                      attrs: { href: "#paint", "aria-hidden": "true" }
-                    },
-                    [e._v("#")]
-                  ),
-                  e._v(" "),
-                  t("code", [e._v("paint")])
-                ]),
-                e._v(" "),
-                t("ul", [
-                  t("li", [
-                    t("strong", [e._v("Type:")]),
-                    e._v(" "),
-                    t("code", [e._v("Object")])
-                  ]),
-                  e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("Default:")]),
-                    e._v(" "),
-                    t("code", [e._v("undefined")])
-                  ]),
-                  e._v(" "),
-                  t("li", [t("strong", [e._v("Non-Synced")])]),
-                  e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("Description:")]),
-                    e._v(" Default paint properties for this layer.")
-                  ]),
-                  e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("See:")]),
-                    e._v(" "),
+                    e._v(", "),
                     t("code", [e._v("paint")]),
-                    e._v(" in "),
-                    t(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-paint",
-                          target: "_blank",
-                          rel: "noopener noreferrer"
-                        }
-                      },
-                      [e._v("Mapbox Layer Style Spec"), t("OutboundLink")],
-                      1
-                    )
-                  ])
-                ]),
-                e._v(" "),
-                t("h3", { attrs: { id: "layout" } }, [
-                  t(
-                    "a",
-                    {
-                      staticClass: "header-anchor",
-                      attrs: { href: "#layout", "aria-hidden": "true" }
-                    },
-                    [e._v("#")]
-                  ),
-                  e._v(" "),
-                  t("code", [e._v("layout")])
-                ]),
-                e._v(" "),
-                t("ul", [
-                  t("li", [
-                    t("strong", [e._v("Type:")]),
-                    e._v(" "),
-                    t("code", [e._v("Object")])
-                  ]),
-                  e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("Default:")]),
-                    e._v(" "),
-                    t("code", [e._v("undefined")])
-                  ]),
-                  e._v(" "),
-                  t("li", [t("strong", [e._v("Non-Synced")])]),
-                  e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("Description:")]),
-                    e._v(" Layout properties for the layer.")
-                  ]),
-                  e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("See:")]),
-                    e._v(" "),
+                    e._v(", "),
                     t("code", [e._v("layout")]),
-                    e._v(" in "),
-                    t(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-paint",
-                          target: "_blank",
-                          rel: "noopener noreferrer"
-                        }
-                      },
-                      [e._v("Mapbox Layer Style Spec"), t("OutboundLink")],
-                      1
-                    )
-                  ])
-                ]),
-                e._v(" "),
-                t("h3", { attrs: { id: "filter" } }, [
-                  t(
-                    "a",
-                    {
-                      staticClass: "header-anchor",
-                      attrs: { href: "#filter", "aria-hidden": "true" }
-                    },
-                    [e._v("#")]
-                  ),
-                  e._v(" "),
-                  t("code", [e._v("filter")])
-                ]),
-                e._v(" "),
-                t("ul", [
-                  t("li", [
-                    t("strong", [e._v("Type:")]),
-                    e._v(" "),
-                    t("code", [e._v("Object")])
-                  ]),
-                  e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("Default:")]),
-                    e._v(" "),
-                    t("code", [e._v("undefined")])
-                  ]),
-                  e._v(" "),
-                  t("li", [t("strong", [e._v("Non-Synced")])]),
-                  e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("Description:")]),
+                    e._v(" and "),
+                    t("code", [e._v("filter")]),
+                    e._v(" fields of "),
+                    t("code", [e._v("layer")]),
                     e._v(
-                      " A expression specifying conditions on source features. Only features that match the filter are displayed."
-                    )
-                  ]),
-                  e._v(" "),
-                  t("li", [
-                    t("strong", [e._v("See:")]),
-                    e._v(" "),
-                    t("code", [e._v("before")]),
-                    e._v(" in "),
-                    t("code", [e._v(".addLayer()")]),
-                    e._v(" "),
-                    t(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "https://www.mapbox.com/mapbox-gl-js/api/#map#addlayer",
-                          target: "_blank",
-                          rel: "noopener noreferrer"
-                        }
-                      },
-                      [e._v("Map method"), t("OutboundLink")],
-                      1
+                      " prop are reactive. If you change their value, changes automatically applied to the map."
                     )
                   ])
                 ]),
@@ -640,9 +433,13 @@
                   e._v(" "),
                   t("li", [
                     t("strong", [e._v("Description:")]),
+                    e._v(" If source passed to "),
+                    t("code", [e._v("source")]),
                     e._v(
-                      " If source passed to 'source' prop of layer component already added ot the map, it will generate error event. If "
+                      " prop of layer component already added ot the map, it will be ignored and existed "
                     ),
+                    t("code", [e._v("source")]),
+                    e._v(" will be used. If "),
                     t("code", [e._v("replaceSource")]),
                     e._v(" is "),
                     t("code", [e._v("true")]),

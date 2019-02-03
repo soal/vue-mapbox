@@ -4,47 +4,13 @@ import mixin from "./layerMixin";
 export default {
   name: "VectorLayer",
   mixins: [mixin],
-  props: {
-    url: {
-      type: String,
-      default: undefined
-    },
-    tiles: {
-      type: Array,
-      default: null
-    },
-    tilesMinZoom: {
-      type: Number,
-      default: undefined
-    },
-    tilesMaxZoom: {
-      type: Number,
-      default: undefined
-    },
-    sourceLayer: {
-      type: String,
-      required: true
-    },
-    bounds: {
-      type: Array,
-      default: () => [-180, -85.051129, 180, 85.051129]
-    },
-    scheme: {
-      type: String,
-      default: undefined
-    },
-    attribution: {
-      type: String,
-      default: undefined
-    }
-  },
 
   computed: {
     getSourceFeatures() {
       return filter => {
         if (this.map) {
           return this.map.querySourceFeatures(this.sourceId, {
-            sourceLayer: this["source-layer"],
+            sourceLayer: this.layer["source-layer"],
             filter
           });
         }
@@ -78,29 +44,16 @@ export default {
       this.map = payload.map;
       let source = {
         type: "vector",
-        url: this.url
+        ...this.source
       };
-
-      if (this.tiles) source.tiles = this.tiles;
-      if (this.tilesMinZoom) source.minzoom = this.tilesMinZoom;
-      if (this.tilesMaxZoom) source.maxzoom = this.tilesMinZoom;
-      if (this.bounds) source.bounds = this.bounds;
-      if (this.attribution) source.attribution = this.attribution;
-      if (this.scheme) source.scheme = this.scheme;
 
       this.map.on("dataloading", this.$_watchSourceLoading);
       try {
-        // FIXME: Check all props
         this.map.addSource(this.sourceId, source);
       } catch (err) {
         if (this.replaceSource) {
           this.map.removeSource(this.sourceId);
           this.map.addSource(this.sourceId, source);
-        } else {
-          this.$_emitEvent("layer-source-error", {
-            sourceId: this.sourceId,
-            error: err
-          });
         }
       }
       this.$_addLayer();
@@ -123,27 +76,8 @@ export default {
       let layer = {
         id: this.layerId,
         source: this.sourceId,
-        "source-layer": this.sourceLayer
+        ...this.layer
       };
-
-      if (this.refLayer) {
-        layer.ref = this.refLayer;
-      } else {
-        layer.type = this.type ? this.type : "fill";
-        layer.source = this.sourceId;
-        if (this.minzoom) layer.minzoom = this.minzoom;
-        if (this.maxzoom) layer.maxzoom = this.maxzoom;
-        if (this.layout) {
-          layer.layout = this.layout;
-        }
-        if (this.filter) layer.filter = this.filter;
-      }
-      layer.paint = this.paint
-        ? this.paint
-        : {
-            "fill-color": `rgba(${12 * (this.layerId.length * 3)},153,80,0.55)`
-          };
-      layer.metadata = this.metadata;
 
       this.map.addLayer(layer, this.before);
       this.$_emitEvent("added", { layerId: this.layerId });
@@ -154,7 +88,7 @@ export default {
         const params = {
           id: featureId,
           source: this.source,
-          "source-layer": this["source-layer"]
+          "source-layer": this.layer["source-layer"]
         };
         return this.map.setFeatureState(params, state);
       }
@@ -165,7 +99,7 @@ export default {
         const params = {
           id: featureId,
           source: this.source,
-          "source-layer": this["source-layer"]
+          "source-layer": this.layer["source-layer"]
         };
         return this.map.getFeatureState(params);
       }

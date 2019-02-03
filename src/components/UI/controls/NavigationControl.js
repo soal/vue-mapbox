@@ -3,26 +3,20 @@ import controlMixin from "./controlMixin";
 export default {
   name: "NavigationControl",
   mixins: [controlMixin],
-  props: {
-    position: {
-      type: String,
-      default: "top-right" // TODO: add validator
-    }
-  },
 
-  data() {
-    return {
-      control: undefined
-    };
+  props: {
+    showCompass: {
+      type: Boolean,
+      default: true
+    },
+    showZoom: {
+      type: Boolean,
+      default: true
+    }
   },
 
   created() {
-    this.control = new this.mapbox.NavigationControl();
-  },
-
-  methods: {
-    $_deferredMount(payload) {
-      this.$_addControl(payload);
-    }
+    this.control = new this.mapbox.NavigationControl(this.$props);
+    this.$_addControl();
   }
 };

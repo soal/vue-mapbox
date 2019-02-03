@@ -63,4 +63,4 @@ export const MglPopup = Popup;
 //     });
 //   }
 // };
-// export default plugin;
+export default GlMap;

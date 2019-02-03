@@ -1,9 +1,7 @@
 <template>
   <div class="mgl-map-wrapper">
     <div v-once :id="container" ref="container" />
-    <template v-if="initialized">
-      <slot />
-    </template>
+    <slot v-if="initialized" />
   </div>
 </template>
 
@@ -23,9 +21,12 @@ export default {
   props,
 
   provide() {
+    const self = this;
     return {
       mapbox: this.mapbox,
-      map: null
+      get map() {
+        return self.map;
+      }
     };
   },
 

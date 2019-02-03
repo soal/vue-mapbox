@@ -24,10 +24,6 @@ const mapboxLayerStyleProps = {
   before: {
     type: String,
     default: undefined
-  },
-  filter: {
-    type: Array,
-    default: null
   }
 };
 
@@ -117,9 +113,9 @@ export default {
       );
     }
 
-    if (this.filter) {
+    if (this.layer.filter) {
       this.$watch(
-        "filter",
+        "layer.filter",
         function(next) {
           if (this.initial) return;
           this.map.setFilter(this.layerId, next);

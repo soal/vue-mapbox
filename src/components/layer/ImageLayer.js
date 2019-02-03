@@ -5,14 +5,36 @@ export default {
   name: "ImageLayer",
   mixins: [mixin],
 
-  watch: {
-    "source.coordinates": function(val) {
-      if (this.initial) return;
-      this.mapSource.setCoordinates(val);
-    },
-    "source.url": function(val) {
-      if (this.initial) return;
-      this.mapSource.updateImage({ url: val, coordinates: this.coordinates });
+  created() {
+    if (this.source) {
+      if (this.source.coordinates) {
+        this.$watch(
+          "source.coordinates",
+          function(next) {
+            if (this.initial) return;
+            if (next) {
+              this.mapSource.setCoordinates(next);
+            }
+          },
+          { deep: true }
+        );
+      }
+
+      if (this.source.url) {
+        this.$watch(
+          "source.url",
+          function(next) {
+            if (this.initial) return;
+            if (next) {
+              this.mapSource.updateImage({
+                url: next,
+                coordinates: this.source.coordinates
+              });
+            }
+          },
+          { deep: true }
+        );
+      }
     }
   },
 
@@ -31,11 +53,6 @@ export default {
         if (this.replaceSource) {
           this.map.removeSource(this.sourceId);
           this.map.addSource(this.sourceId, source);
-        } else {
-          this.$_emitEvent("layer-source-error", {
-            sourceId: this.sourceId,
-            error: err
-          });
         }
       }
       this.$_addLayer();

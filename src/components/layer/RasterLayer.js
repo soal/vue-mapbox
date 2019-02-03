@@ -64,11 +64,6 @@ export default {
         if (this.replaceSource) {
           this.map.removeSource(this.sourceId);
           this.map.addSource(this.sourceId, source);
-        } else {
-          this.$_emitEvent("layer-source-error", {
-            sourceId: this.sourceId,
-            error: err
-          });
         }
       }
       this.$_addLayer();

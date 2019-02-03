@@ -1,7 +1,9 @@
 <template>
   <div class="mgl-map-wrapper">
     <div v-once :id="container" ref="container" />
-    <slot />
+    <template v-if="initialized">
+      <slot />
+    </template>
   </div>
 </template>
 
@@ -20,11 +22,18 @@ export default {
 
   props,
 
+  provide() {
+    return {
+      mapbox: this.mapbox,
+      map: null
+    };
+  },
+
   data() {
     return {
       initial: true,
       baseMap: true,
-      mapLoaded: false
+      initialized: false
     };
   },
 
@@ -78,7 +87,7 @@ export default {
       this.$_registerAsyncActions(map);
       this.$_bindPropsUpdateEvents();
       this.initial = false;
-      this.mapLoaded = true;
+      this.initialized = true;
       this.$emit("load", { map, component: this });
     });
   },

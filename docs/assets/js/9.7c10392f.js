@@ -1,11 +1,11 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
-  [12],
+  [9],
   {
-    136: function(e, t, r) {
+    140: function(e, t, r) {
       "use strict";
       r.r(t);
       var o = r(15),
-        a = Object(o.a)(
+        s = Object(o.a)(
           {},
           function() {
             var e = this,
@@ -15,16 +15,16 @@
               "ContentSlotsDistributor",
               { attrs: { "slot-key": e.$parent.slotKey } },
               [
-                r("h1", { attrs: { id: "vectorlayer" } }, [
+                r("h1", { attrs: { id: "geojsonlayer" } }, [
                   r(
                     "a",
                     {
                       staticClass: "header-anchor",
-                      attrs: { href: "#vectorlayer", "aria-hidden": "true" }
+                      attrs: { href: "#geojsonlayer", "aria-hidden": "true" }
                     },
                     [e._v("#")]
                   ),
-                  e._v(" VectorLayer")
+                  e._v(" GeojsonLayer")
                 ]),
                 e._v(" "),
                 r("h2", { attrs: { id: "props" } }, [
@@ -39,429 +39,60 @@
                   e._v(" Props")
                 ]),
                 e._v(" "),
-                r("h3", { attrs: { id: "url" } }, [
+                r(
+                  "p",
+                  [
+                    e._v("All common "),
+                    r("router-link", { attrs: { to: "/api/Layers/#props" } }, [
+                      e._v("layers props")
+                    ])
+                  ],
+                  1
+                ),
+                e._v(" "),
+                r("h3", { attrs: { id: "source" } }, [
                   r(
                     "a",
                     {
                       staticClass: "header-anchor",
-                      attrs: { href: "#url", "aria-hidden": "true" }
+                      attrs: { href: "#source", "aria-hidden": "true" }
                     },
                     [e._v("#")]
                   ),
                   e._v(" "),
-                  r("code", [e._v("url")])
+                  r("code", [e._v("source")])
                 ]),
                 e._v(" "),
                 r("ul", [
                   r("li", [
                     r("strong", [e._v("Type:")]),
                     e._v(" "),
-                    r("code", [e._v("String")])
-                  ]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("Default")]),
-                    e._v(" "),
-                    r("code", [e._v("undefined")])
+                    r("code", [e._v("Object | String")])
                   ]),
                   e._v(" "),
                   r("li", [r("strong", [e._v("Non-Synced")])]),
                   e._v(" "),
                   r("li", [
                     r("strong", [e._v("Description:")]),
-                    e._v(
-                      " A URL to a TileJSON resource as source for this layer. Supported protocols are "
-                    ),
-                    r("code", [e._v("http:")]),
-                    e._v(", "),
-                    r("code", [e._v("https:")]),
-                    e._v(", and "),
-                    r("code", [e._v("mapbox://<mapid>")]),
-                    e._v(".")
+                    e._v(" A source containing GeoJSON or URL to it.")
                   ]),
                   e._v(" "),
                   r("li", [
                     r("strong", [e._v("See:")]),
                     e._v(" "),
-                    r("code", [e._v("url")]),
+                    r("code", [e._v("GeoJSONSource")]),
                     e._v(" in "),
                     r(
                       "a",
                       {
                         attrs: {
                           href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector",
+                            "https://www.mapbox.com/mapbox-gl-js/api/#geojsonsource",
                           target: "_blank",
                           rel: "noopener noreferrer"
                         }
                       },
-                      [e._v("Mapbox Source Style Spec"), r("OutboundLink")],
-                      1
-                    )
-                  ])
-                ]),
-                e._v(" "),
-                r("h3", { attrs: { id: "tiles" } }, [
-                  r(
-                    "a",
-                    {
-                      staticClass: "header-anchor",
-                      attrs: { href: "#tiles", "aria-hidden": "true" }
-                    },
-                    [e._v("#")]
-                  ),
-                  e._v(" "),
-                  r("code", [e._v("tiles")])
-                ]),
-                e._v(" "),
-                r("ul", [
-                  r("li", [
-                    r("strong", [e._v("Type:")]),
-                    e._v(" "),
-                    r("code", [e._v("Array")])
-                  ]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("Default")]),
-                    e._v(" "),
-                    r("code", [e._v("[]")])
-                  ]),
-                  e._v(" "),
-                  r("li", [r("strong", [e._v("Non-Synced")])]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("Description:")]),
-                    e._v(
-                      " An array of one or more tile source URLs, as in the TileJSON spec."
-                    )
-                  ]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("See:")]),
-                    e._v(" "),
-                    r("code", [e._v("tiles")]),
-                    e._v(" in "),
-                    r(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector-tiles",
-                          target: "_blank",
-                          rel: "noopener noreferrer"
-                        }
-                      },
-                      [e._v("Mapbox Source Style Spec"), r("OutboundLink")],
-                      1
-                    )
-                  ])
-                ]),
-                e._v(" "),
-                r("h3", { attrs: { id: "tilesminzoom" } }, [
-                  r(
-                    "a",
-                    {
-                      staticClass: "header-anchor",
-                      attrs: { href: "#tilesminzoom", "aria-hidden": "true" }
-                    },
-                    [e._v("#")]
-                  ),
-                  e._v(" "),
-                  r("code", [e._v("tilesMinZoom")])
-                ]),
-                e._v(" "),
-                r("ul", [
-                  r("li", [
-                    r("strong", [e._v("Type:")]),
-                    e._v(" "),
-                    r("code", [e._v("Number")])
-                  ]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("Default")]),
-                    e._v(" "),
-                    r("code", [e._v("0")])
-                  ]),
-                  e._v(" "),
-                  r("li", [r("strong", [e._v("Non-Synced")])]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("Description:")]),
-                    e._v(
-                      " Minimum zoom level for which tiles are available, as in the TileJSON spec."
-                    )
-                  ]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("See:")]),
-                    e._v(" "),
-                    r("code", [e._v("minzoom")]),
-                    e._v(" in "),
-                    r(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector-minzoom",
-                          target: "_blank",
-                          rel: "noopener noreferrer"
-                        }
-                      },
-                      [e._v("Mapbox Source Style Spec"), r("OutboundLink")],
-                      1
-                    )
-                  ])
-                ]),
-                e._v(" "),
-                r("h3", { attrs: { id: "tilesmaxzoom" } }, [
-                  r(
-                    "a",
-                    {
-                      staticClass: "header-anchor",
-                      attrs: { href: "#tilesmaxzoom", "aria-hidden": "true" }
-                    },
-                    [e._v("#")]
-                  ),
-                  e._v(" "),
-                  r("code", [e._v("tilesMaxZoom")])
-                ]),
-                e._v(" "),
-                r("ul", [
-                  r("li", [
-                    r("strong", [e._v("Type:")]),
-                    e._v(" "),
-                    r("code", [e._v("Number")])
-                  ]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("Default")]),
-                    e._v(" "),
-                    r("code", [e._v("22")])
-                  ]),
-                  e._v(" "),
-                  r("li", [r("strong", [e._v("Non-Synced")])]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("Description:")]),
-                    e._v(
-                      " Maximum zoom level for which tiles are available, as in the TileJSON spec."
-                    )
-                  ]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("See:")]),
-                    e._v(" "),
-                    r("code", [e._v("maxzoom")]),
-                    e._v(" in "),
-                    r(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector-maxzoom",
-                          target: "_blank",
-                          rel: "noopener noreferrer"
-                        }
-                      },
-                      [e._v("Mapbox Source Style Spec"), r("OutboundLink")],
-                      1
-                    )
-                  ])
-                ]),
-                e._v(" "),
-                r("h3", { attrs: { id: "sourcelayer" } }, [
-                  r(
-                    "a",
-                    {
-                      staticClass: "header-anchor",
-                      attrs: { href: "#sourcelayer", "aria-hidden": "true" }
-                    },
-                    [e._v("#")]
-                  ),
-                  e._v(" "),
-                  r("code", [e._v("sourceLayer")])
-                ]),
-                e._v(" "),
-                r("ul", [
-                  r("li", [
-                    r("strong", [e._v("Type:")]),
-                    e._v(" "),
-                    r("code", [e._v("String")])
-                  ]),
-                  e._v(" "),
-                  r("li", [r("strong", [e._v("Required")])]),
-                  e._v(" "),
-                  r("li", [r("strong", [e._v("Non-Synced")])]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("Description:")]),
-                    e._v(" Layer to use from a vector tile source.")
-                  ]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("See:")]),
-                    e._v(" "),
-                    r("code", [e._v("source-layer")]),
-                    e._v(" in "),
-                    r(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-source-layer",
-                          target: "_blank",
-                          rel: "noopener noreferrer"
-                        }
-                      },
-                      [e._v("Mapbox Layer Style Spec"), r("OutboundLink")],
-                      1
-                    )
-                  ])
-                ]),
-                e._v(" "),
-                r("h3", { attrs: { id: "bounds" } }, [
-                  r(
-                    "a",
-                    {
-                      staticClass: "header-anchor",
-                      attrs: { href: "#bounds", "aria-hidden": "true" }
-                    },
-                    [e._v("#")]
-                  ),
-                  e._v(" "),
-                  r("code", [e._v("bounds")])
-                ]),
-                e._v(" "),
-                r("ul", [
-                  r("li", [
-                    r("strong", [e._v("Type:")]),
-                    e._v(" "),
-                    r("code", [e._v("Array")])
-                  ]),
-                  e._v(" "),
-                  r("li", [r("strong", [e._v("Non-Synced")])]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("Description:")]),
-                    e._v(
-                      " An array containing the longitude and latitude of the southwest and northeast corners of the source's bounding box in the following order: [sw.lng, sw.lat, ne.lng, ne.lat]."
-                    )
-                  ]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("See:")]),
-                    e._v(" "),
-                    r("code", [e._v("bounds")]),
-                    e._v(" in "),
-                    r(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector-bounds",
-                          target: "_blank",
-                          rel: "noopener noreferrer"
-                        }
-                      },
-                      [e._v("Mapbox Source Style Spec"), r("OutboundLink")],
-                      1
-                    )
-                  ])
-                ]),
-                e._v(" "),
-                r("h3", { attrs: { id: "scheme" } }, [
-                  r(
-                    "a",
-                    {
-                      staticClass: "header-anchor",
-                      attrs: { href: "#scheme", "aria-hidden": "true" }
-                    },
-                    [e._v("#")]
-                  ),
-                  e._v(" "),
-                  r("code", [e._v("scheme")])
-                ]),
-                e._v(" "),
-                r("ul", [
-                  r("li", [
-                    r("strong", [e._v("Type:")]),
-                    e._v(" "),
-                    r("code", [e._v("String")])
-                  ]),
-                  e._v(" "),
-                  r("li", [r("strong", [e._v("Non-Synced")])]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("Description:")]),
-                    e._v(" Influences the y direction of the tile coordinates.")
-                  ]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("See:")]),
-                    e._v(" "),
-                    r("code", [e._v("scheme")]),
-                    e._v(" in "),
-                    r(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector-scheme",
-                          target: "_blank",
-                          rel: "noopener noreferrer"
-                        }
-                      },
-                      [e._v("Mapbox Source Style Spec"), r("OutboundLink")],
-                      1
-                    )
-                  ])
-                ]),
-                e._v(" "),
-                r("h3", { attrs: { id: "attribution" } }, [
-                  r(
-                    "a",
-                    {
-                      staticClass: "header-anchor",
-                      attrs: { href: "#attribution", "aria-hidden": "true" }
-                    },
-                    [e._v("#")]
-                  ),
-                  e._v(" "),
-                  r("code", [e._v("attribution")])
-                ]),
-                e._v(" "),
-                r("ul", [
-                  r("li", [
-                    r("strong", [e._v("Type:")]),
-                    e._v(" "),
-                    r("code", [e._v("String")])
-                  ]),
-                  e._v(" "),
-                  r("li", [r("strong", [e._v("Non-Synced")])]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("Description:")]),
-                    e._v(
-                      " Contains an attribution to be displayed when the map is shown to a user."
-                    )
-                  ]),
-                  e._v(" "),
-                  r("li", [
-                    r("strong", [e._v("See:")]),
-                    e._v(" "),
-                    r("code", [e._v("attribution")]),
-                    e._v(" in "),
-                    r(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-vector-attribution",
-                          target: "_blank",
-                          rel: "noopener noreferrer"
-                        }
-                      },
-                      [e._v("Mapbox Source Style Spec"), r("OutboundLink")],
+                      [e._v("Mapbox API Docs"), r("OutboundLink")],
                       1
                     )
                   ])
@@ -608,6 +239,223 @@
                         }
                       },
                       [e._v("map method"), r("OutboundLink")],
+                      1
+                    )
+                  ])
+                ]),
+                e._v(" "),
+                r(
+                  "h3",
+                  { attrs: { id: "getclusterexpansionzoom-clusterid" } },
+                  [
+                    r(
+                      "a",
+                      {
+                        staticClass: "header-anchor",
+                        attrs: {
+                          href: "#getclusterexpansionzoom-clusterid",
+                          "aria-hidden": "true"
+                        }
+                      },
+                      [e._v("#")]
+                    ),
+                    e._v(" "),
+                    r("code", [e._v("getClusterExpansionZoom(clusterId)")])
+                  ]
+                ),
+                e._v(" "),
+                r("ul", [
+                  r("li", [
+                    r("strong", [e._v("Arguments:")]),
+                    e._v(" "),
+                    r("ul", [
+                      r("li", [
+                        r("code", [e._v("clusterId")]),
+                        e._v(" "),
+                        r("code", [e._v("Number")]),
+                        e._v(" The value of the cluster's cluster_id property.")
+                      ])
+                    ])
+                  ]),
+                  e._v(" "),
+                  r("li", [
+                    r("strong", [e._v("Description")]),
+                    e._v(
+                      " For clustered sources, fetches the zoom at which the given cluster expands and returns "
+                    ),
+                    r("code", [e._v("Promise")]),
+                    e._v(" with zoom level as payload.")
+                  ]),
+                  e._v(" "),
+                  r("li", [
+                    r("strong", [e._v("See")]),
+                    e._v(" "),
+                    r("code", [e._v(".getClusterExpansionZoom()")]),
+                    e._v(" "),
+                    r(
+                      "a",
+                      {
+                        attrs: {
+                          href:
+                            "https://docs.mapbox.com/mapbox-gl-js/api/#geojsonsource#getclusterexpansionzoom",
+                          target: "_blank",
+                          rel: "noopener noreferrer"
+                        }
+                      },
+                      [e._v("GeoJSONSource method"), r("OutboundLink")],
+                      1
+                    )
+                  ])
+                ]),
+                e._v(" "),
+                r("h3", { attrs: { id: "getclusterchildren-clusterid" } }, [
+                  r(
+                    "a",
+                    {
+                      staticClass: "header-anchor",
+                      attrs: {
+                        href: "#getclusterchildren-clusterid",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [e._v("#")]
+                  ),
+                  e._v(" "),
+                  r("code", [e._v("getClusterChildren(clusterId)")])
+                ]),
+                e._v(" "),
+                r("ul", [
+                  r("li", [
+                    r("strong", [e._v("Arguments:")]),
+                    e._v(" "),
+                    r("ul", [
+                      r("li", [
+                        r("code", [e._v("clusterId")]),
+                        e._v(" "),
+                        r("code", [e._v("Number")]),
+                        e._v(" The value of the cluster's cluster_id property.")
+                      ]),
+                      e._v(" "),
+                      r("li", [
+                        r("code", [e._v("limit")]),
+                        e._v(" "),
+                        r("code", [e._v("Number")]),
+                        e._v(" The maximum number of features to return.")
+                      ]),
+                      e._v(" "),
+                      r("li", [
+                        r("code", [e._v("offset")]),
+                        e._v(" "),
+                        r("code", [e._v("Number")]),
+                        e._v(
+                          " The number of features to skip (e.g. for pagination)."
+                        )
+                      ])
+                    ])
+                  ]),
+                  e._v(" "),
+                  r("li", [
+                    r("strong", [e._v("Description")]),
+                    e._v(
+                      " For clustered sources, fetches the original points that belong to the cluster and returns "
+                    ),
+                    r("code", [e._v("Promise")]),
+                    e._v(" with an "),
+                    r("code", [e._v("Array")]),
+                    e._v(" of GeoJSON features as payload.")
+                  ]),
+                  e._v(" "),
+                  r("li", [
+                    r("strong", [e._v("See")]),
+                    e._v(" "),
+                    r("code", [e._v(".getClusterChildren()")]),
+                    e._v(" "),
+                    r(
+                      "a",
+                      {
+                        attrs: {
+                          href:
+                            "https://docs.mapbox.com/mapbox-gl-js/api/#geojsonsource#getclusterchildren",
+                          target: "_blank",
+                          rel: "noopener noreferrer"
+                        }
+                      },
+                      [e._v("GeoJSONSource method"), r("OutboundLink")],
+                      1
+                    )
+                  ])
+                ]),
+                e._v(" "),
+                r(
+                  "h3",
+                  { attrs: { id: "getclusterleaves-clusterid-limit-offset" } },
+                  [
+                    r(
+                      "a",
+                      {
+                        staticClass: "header-anchor",
+                        attrs: {
+                          href: "#getclusterleaves-clusterid-limit-offset",
+                          "aria-hidden": "true"
+                        }
+                      },
+                      [e._v("#")]
+                    ),
+                    e._v(" "),
+                    r("code", [
+                      e._v("getClusterLeaves(clusterId, limit, offset)")
+                    ])
+                  ]
+                ),
+                e._v(" "),
+                r("ul", [
+                  r("li", [
+                    r("strong", [e._v("Arguments:")]),
+                    e._v(" "),
+                    r("ul", [
+                      r("li", [
+                        r("code", [e._v("filter")]),
+                        e._v(" "),
+                        r("code", [e._v("Array")]),
+                        e._v(" A filter to limit query results.")
+                      ]),
+                      e._v(" "),
+                      r("li", [
+                        r("code", [e._v("geometry")]),
+                        e._v(" "),
+                        r("code", [e._v("Array | Object")]),
+                        e._v(" The geometry of the query region.")
+                      ])
+                    ])
+                  ]),
+                  e._v(" "),
+                  r("li", [
+                    r("strong", [e._v("Description")]),
+                    e._v(" Returns "),
+                    r("code", [e._v("Promise")]),
+                    e._v(
+                      " with an array of visible GeoJSON Feature objects from assosiated source filtered by "
+                    ),
+                    r("code", [e._v("filter")]),
+                    e._v(" in the payload.")
+                  ]),
+                  e._v(" "),
+                  r("li", [
+                    r("strong", [e._v("See")]),
+                    e._v(" "),
+                    r("code", [e._v(".getClusterLeaves()")]),
+                    e._v(" "),
+                    r(
+                      "a",
+                      {
+                        attrs: {
+                          href:
+                            "https://docs.mapbox.com/mapbox-gl-js/api/#geojsonsource#getclusterleaves",
+                          target: "_blank",
+                          rel: "noopener noreferrer"
+                        }
+                      },
+                      [e._v("GeoJSONSource method"), r("OutboundLink")],
                       1
                     )
                   ])
@@ -779,8 +627,8 @@
           null,
           null
         );
-      a.options.__file = "vectorlayer.md";
-      t.default = a.exports;
+      s.options.__file = "geojsonlayer.md";
+      t.default = s.exports;
     }
   }
 ]);

@@ -4,11 +4,6 @@ import mixin from "./layerMixin";
 export default {
   name: "GeojsonLayer",
   mixins: [mixin],
-  props: {
-    source: {
-      type: [Object, String]
-    }
-  },
 
   computed: {
     getSourceFeatures() {
@@ -30,17 +25,78 @@ export default {
         }
         return null;
       };
+    },
+
+    getClusterExpansionZoom() {
+      return clusterId => {
+        return new Promise((resolve, reject) => {
+          console.log("VM source in Promise", this.mapSource);
+          if (this.mapSource) {
+            this.mapSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
+              if (err) {
+                return reject(err);
+              }
+              return resolve(zoom);
+            });
+          } else {
+            return reject(
+              new Error(`Map source with id ${this.sourceId} not found.`)
+            );
+          }
+        });
+      };
+    },
+
+    getClusterChildren() {
+      return clusterId => {
+        return new Promise((resolve, reject) => {
+          const source = this.mapSource;
+          if (source) {
+            source.getClusterChildren(clusterId, (err, features) => {
+              if (err) {
+                return reject(err);
+              }
+              return resolve(features);
+            });
+          } else {
+            return reject(
+              new Error(`Map source with id ${this.sourceId} not found.`)
+            );
+          }
+        });
+      };
+    },
+
+    getClusterLeaves() {
+      return (...args) => {
+        return new Promise((resolve, reject) => {
+          if (this.mapSource) {
+            this.mapSource.getClusterLeaves(...args, (err, features) => {
+              if (err) {
+                return reject(err);
+              }
+              return resolve(features);
+            });
+          } else {
+            return reject(
+              new Error(`Map source with id ${this.sourceId} not found.`)
+            );
+          }
+        });
+      };
     }
   },
 
-  watch: {
-    source(data) {
-      if (this.initial) return;
-      this.mapSource.setData(data);
-    },
-    filter(filter) {
-      if (this.initial) return;
-      this.map.setFilter(this.layerId, filter);
+  created() {
+    if (this.source) {
+      this.$watch(
+        "source.data",
+        function(next) {
+          if (this.initial) return;
+          this.mapSource.setData(next);
+        },
+        { deep: true }
+      );
     }
   },
 
@@ -59,12 +115,13 @@ export default {
           if (this.replaceSource) {
             this.map.removeSource(this.sourceId);
             this.map.addSource(this.sourceId, source);
-          } else {
-            this.$_emitEvent("layer-source-error", {
-              sourceId: this.sourceId,
-              error: err
-            });
           }
+          // else {
+          //   this.$_emitEvent("layer-source-error", {
+          //     sourceId: this.sourceId,
+          //     error: err
+          //   });
+          // }
         }
       }
       this.$_addLayer();

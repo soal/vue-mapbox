@@ -11,15 +11,17 @@ export default {
     }
   },
 
-  watch: {
-    coordinates(val) {
-      if (this.initial) return;
-      this.mapSource.setCoordinates(val);
+  created() {
+    if (this.source && this.source.coordinates) {
+      this.$watch("source.coordinates", function(next) {
+        if (this.initial) return;
+        this.mapSource.setCoordinates(next);
+      });
     }
   },
 
   methods: {
-    _deferredMount(payload) {
+    $_deferredMount(payload) {
       const source = {
         type: "video",
         ...this.source

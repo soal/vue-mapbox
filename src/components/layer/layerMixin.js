@@ -7,7 +7,7 @@ const mapboxSourceProps = {
     required: true
   },
   source: {
-    type: Object,
+    type: [Object, String],
     default: undefined
   }
 };
@@ -74,14 +74,14 @@ export default {
 
   created() {
     if (this.layer.minzoom) {
-      this.$watch("layer.minzoom", function(next, prev) {
+      this.$watch("layer.minzoom", function(next) {
         if (this.initial) return;
         this.map.setLayerZoomRange(this.layerId, next, this.layer.maxzoom);
       });
     }
 
     if (this.layer.maxzoom) {
-      this.$watch("layer.maxzoom", function(next, prev) {
+      this.$watch("layer.maxzoom", function(next) {
         if (this.initial) return;
         this.map.setLayerZoomRange(this.layerId, this.layer.minzoom, next);
       });
@@ -112,6 +112,17 @@ export default {
               this.map.setLayoutProperty(this.layerId, prop, next[prop]);
             }
           }
+        },
+        { deep: true }
+      );
+    }
+
+    if (this.filter) {
+      this.$watch(
+        "filter",
+        function(next) {
+          if (this.initial) return;
+          this.map.setFilter(this.layerId, next);
         },
         { deep: true }
       );

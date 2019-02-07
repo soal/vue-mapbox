@@ -1,10 +1,10 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
   [19],
   {
-    147: function(t, a, s) {
+    157: function(t, a, s) {
       "use strict";
       s.r(a);
-      var n = s(15),
+      var n = s(17),
         e = Object(n.a)(
           {},
           function() {
@@ -558,7 +558,7 @@
                               [t._v('"')]
                             ),
                             t._v(
-                              "https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css"
+                              "https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css"
                             ),
                             s(
                               "span",

@@ -49,7 +49,7 @@ Add Vue, MapboxGL and Vue-mapbox scripts on your page:
     <!-- ... -->
     <!-- Mapbox GL CSS -->
     <link
-      href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css"
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css"
       rel="stylesheet"
     />
     <!-- Vue-mapbox CSS -->

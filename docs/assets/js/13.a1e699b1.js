@@ -1,11 +1,11 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
-  [10],
+  [13],
   {
-    140: function(e, r, t) {
+    147: function(e, r, t) {
       "use strict";
       t.r(r);
-      var a = t(15),
-        s = Object(a.a)(
+      var o = t(17),
+        a = Object(o.a)(
           {},
           function() {
             var e = this,
@@ -15,16 +15,16 @@
               "ContentSlotsDistributor",
               { attrs: { "slot-key": e.$parent.slotKey } },
               [
-                t("h1", { attrs: { id: "imagelayer" } }, [
+                t("h1", { attrs: { id: "canvaslayer" } }, [
                   t(
                     "a",
                     {
                       staticClass: "header-anchor",
-                      attrs: { href: "#imagelayer", "aria-hidden": "true" }
+                      attrs: { href: "#canvaslayer", "aria-hidden": "true" }
                     },
                     [e._v("#")]
                   ),
-                  e._v(" ImageLayer")
+                  e._v(" CanvasLayer")
                 ]),
                 e._v(" "),
                 t("h2", { attrs: { id: "props" } }, [
@@ -39,24 +39,24 @@
                   e._v(" Props")
                 ]),
                 e._v(" "),
-                t("h3", { attrs: { id: "url" } }, [
+                t("h3", { attrs: { id: "urls" } }, [
                   t(
                     "a",
                     {
                       staticClass: "header-anchor",
-                      attrs: { href: "#url", "aria-hidden": "true" }
+                      attrs: { href: "#urls", "aria-hidden": "true" }
                     },
                     [e._v("#")]
                   ),
                   e._v(" "),
-                  t("code", [e._v("url")])
+                  t("code", [e._v("urls")])
                 ]),
                 e._v(" "),
                 t("ul", [
                   t("li", [
                     t("strong", [e._v("Type:")]),
                     e._v(" "),
-                    t("code", [e._v("String")])
+                    t("code", [e._v("Array")])
                   ]),
                   e._v(" "),
                   t("li", [t("strong", [e._v("Required")])]),
@@ -65,20 +65,20 @@
                   e._v(" "),
                   t("li", [
                     t("strong", [e._v("Description:")]),
-                    e._v(" URL that points to an image.")
+                    e._v(" URLs to video content in order of preferred format.")
                   ]),
                   e._v(" "),
                   t("li", [
                     t("strong", [e._v("See:")]),
                     e._v(" "),
-                    t("code", [e._v("url")]),
+                    t("code", [e._v("urls")]),
                     e._v(" in "),
                     t(
                       "a",
                       {
                         attrs: {
                           href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-image-url",
+                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-video-urls",
                           target: "_blank",
                           rel: "noopener noreferrer"
                         }
@@ -116,7 +116,7 @@
                   t("li", [
                     t("strong", [e._v("Description:")]),
                     e._v(
-                      " Corners of image specified in longitude, latitude pairs."
+                      " Corners of video specified in longitude, latitude pairs."
                     )
                   ]),
                   e._v(" "),
@@ -130,7 +130,7 @@
                       {
                         attrs: {
                           href:
-                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-image-coordinates",
+                            "https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-video-coordinates",
                           target: "_blank",
                           rel: "noopener noreferrer"
                         }
@@ -141,28 +141,60 @@
                   ])
                 ]),
                 e._v(" "),
-                t("h2", { attrs: { id: "events" } }, [
+                t("h2", { attrs: { id: "computed-getters" } }, [
                   t(
                     "a",
                     {
                       staticClass: "header-anchor",
-                      attrs: { href: "#events", "aria-hidden": "true" }
+                      attrs: {
+                        href: "#computed-getters",
+                        "aria-hidden": "true"
+                      }
                     },
                     [e._v("#")]
                   ),
-                  e._v(" Events")
+                  e._v(" Computed getters")
                 ]),
                 e._v(" "),
-                t(
-                  "p",
-                  [
-                    e._v("All common layer "),
-                    t("router-link", { attrs: { to: "/api/Layers/#events" } }, [
-                      e._v("events")
-                    ])
-                  ],
-                  1
-                )
+                t("h3", { attrs: { id: "video" } }, [
+                  t(
+                    "a",
+                    {
+                      staticClass: "header-anchor",
+                      attrs: { href: "#video", "aria-hidden": "true" }
+                    },
+                    [e._v("#")]
+                  ),
+                  e._v(" "),
+                  t("code", [e._v("video")])
+                ]),
+                e._v(" "),
+                t("ul", [
+                  t("li", [
+                    t("strong", [e._v("Description")]),
+                    e._v(" Returns the HTML video element.")
+                  ]),
+                  e._v(" "),
+                  t("li", [
+                    t("strong", [e._v("See")]),
+                    e._v(" "),
+                    t("code", [e._v(".getVideo()")]),
+                    e._v(" "),
+                    t(
+                      "a",
+                      {
+                        attrs: {
+                          href:
+                            "https://www.mapbox.com/mapbox-gl-js/api/#videosource#getvideo",
+                          target: "_blank",
+                          rel: "noopener noreferrer"
+                        }
+                      },
+                      [e._v("method"), t("OutboundLink")],
+                      1
+                    )
+                  ])
+                ])
               ]
             );
           },
@@ -172,8 +204,8 @@
           null,
           null
         );
-      s.options.__file = "imagelayer.md";
-      r.default = s.exports;
+      a.options.__file = "videolayer.md";
+      r.default = a.exports;
     }
   }
 ]);

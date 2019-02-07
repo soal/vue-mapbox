@@ -13,6 +13,7 @@
   },
   "private": false,
   "main": "dist/vue-mapbox.umd.js",
+  "module": "src/main.js",
   "scripts": {
     "build": "vue-cli-service build --target lib --name vue-mapbox src/main.js",
     "serve": "vue-cli-service build --target lib --name vue-mapbox src/main.js --watch",

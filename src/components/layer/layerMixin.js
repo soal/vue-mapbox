@@ -50,6 +50,8 @@ export default {
     ...componentProps
   },
 
+  inject: ["mapbox", "map"],
+
   data() {
     return {
       initial: true

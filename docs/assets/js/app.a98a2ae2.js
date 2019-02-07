@@ -59,8 +59,8 @@
                 6: "9ba78da0",
                 7: "8570b8fe",
                 8: "1dc54cc8",
-                9: "32ab09a4",
-                10: "8820322f",
+                9: "947d3e5e",
+                10: "c860027f",
                 11: "7124ea12",
                 12: "237dea5f",
                 13: "428afe9f",
@@ -69,13 +69,13 @@
                 16: "9d99c77c",
                 17: "80a74ab9",
                 18: "8560ce56",
-                19: "c796bb7a",
+                19: "10bc7364",
                 20: "6013db72",
                 21: "d0158e4b",
                 22: "16da5fc3",
                 23: "122fe9cf",
-                24: "457d7b82",
-                25: "f8923f09",
+                24: "348c4e3e",
+                25: "d70c51fb",
                 26: "ea7b6fca"
               }[t] +
               ".js"
@@ -7387,8 +7387,8 @@
         "v-acd593fc": () => n.e(6).then(n.bind(null, 131)),
         "v-9af1f7dc": () => n.e(7).then(n.bind(null, 134)),
         "v-073619c3": () => n.e(8).then(n.bind(null, 143)),
-        "v-0bcaedd9": () => n.e(9).then(n.bind(null, 140)),
-        "v-77c73199": () => n.e(10).then(n.bind(null, 133)),
+        "v-77c73199": () => n.e(10).then(n.bind(null, 140)),
+        "v-0bcaedd9": () => n.e(9).then(n.bind(null, 133)),
         "v-5717614d": () => n.e(11).then(n.bind(null, 135)),
         "v-1f50ee59": () => n.e(12).then(n.bind(null, 136)),
         "v-45aa14ce": () => n.e(13).then(n.bind(null, 137)),
@@ -7401,8 +7401,8 @@
         "v-2939380e": () => n.e(21).then(n.bind(null, 151)),
         "v-fb4e549a": () => n.e(22).then(n.bind(null, 132)),
         "v-0250a037": () => n.e(23).then(n.bind(null, 150)),
-        "v-0f9139b7": () => n.e(24).then(n.bind(null, 148)),
-        "v-50ef8540": () => n.e(25).then(n.bind(null, 146)),
+        "v-50ef8540": () => n.e(25).then(n.bind(null, 148)),
+        "v-0f9139b7": () => n.e(24).then(n.bind(null, 146)),
         "v-2692d7ee": () => n.e(26).then(n.bind(null, 144)),
         "v-6c9c2319": () => n.e(16).then(n.bind(null, 142))
       },
@@ -7639,19 +7639,19 @@
           }
         },
         {
-          name: "v-0bcaedd9",
-          path: "/api/Layers/geojsonlayer.html",
-          component: Jt,
-          beforeEnter: (t, e, n) => {
-            qt("Layout", "v-0bcaedd9").then(n);
-          }
-        },
-        {
           name: "v-77c73199",
           path: "/api/Layers/imagelayer.html",
           component: Jt,
           beforeEnter: (t, e, n) => {
             qt("Layout", "v-77c73199").then(n);
+          }
+        },
+        {
+          name: "v-0bcaedd9",
+          path: "/api/Layers/geojsonlayer.html",
+          component: Jt,
+          beforeEnter: (t, e, n) => {
+            qt("Layout", "v-0bcaedd9").then(n);
           }
         },
         {
@@ -7753,14 +7753,6 @@
           }
         },
         {
-          name: "v-0f9139b7",
-          path: "/guide/markers&popups.html",
-          component: Jt,
-          beforeEnter: (t, e, n) => {
-            qt("Layout", "v-0f9139b7").then(n);
-          }
-        },
-        {
           name: "v-50ef8540",
           path: "/plugins/",
           component: Jt,
@@ -7769,6 +7761,14 @@
           }
         },
         { path: "/plugins/index.html", redirect: "/plugins/" },
+        {
+          name: "v-0f9139b7",
+          path: "/guide/markers&popups.html",
+          component: Jt,
+          beforeEnter: (t, e, n) => {
+            qt("Layout", "v-0f9139b7").then(n);
+          }
+        },
         {
           name: "v-2692d7ee",
           path: "/plugins/plugin_development.html",
@@ -7886,6 +7886,19 @@
             ]
           },
           {
+            title: "ImageLayer",
+            frontmatter: {},
+            regularPath: "/api/Layers/imagelayer.html",
+            key: "v-77c73199",
+            path: "/api/Layers/imagelayer.html",
+            headers: [
+              { level: 2, title: "Props", slug: "props" },
+              { level: 3, title: "url", slug: "url" },
+              { level: 3, title: "coordinates", slug: "coordinates" },
+              { level: 2, title: "Events", slug: "events" }
+            ]
+          },
+          {
             title: "GeojsonLayer",
             frontmatter: {},
             regularPath: "/api/Layers/geojsonlayer.html",
@@ -7925,19 +7938,6 @@
                 title: "getFeatureState(featureId)",
                 slug: "getfeaturestate-featureid"
               },
-              { level: 2, title: "Events", slug: "events" }
-            ]
-          },
-          {
-            title: "ImageLayer",
-            frontmatter: {},
-            regularPath: "/api/Layers/imagelayer.html",
-            key: "v-77c73199",
-            path: "/api/Layers/imagelayer.html",
-            headers: [
-              { level: 2, title: "Props", slug: "props" },
-              { level: 3, title: "url", slug: "url" },
-              { level: 3, title: "coordinates", slug: "coordinates" },
               { level: 2, title: "Events", slug: "events" }
             ]
           },
@@ -8223,6 +8223,13 @@
             ]
           },
           {
+            title: "Plugins",
+            frontmatter: {},
+            regularPath: "/plugins/",
+            key: "v-50ef8540",
+            path: "/plugins/"
+          },
+          {
             title: "Markers and Popups",
             frontmatter: {},
             regularPath: "/guide/markers&popups.html",
@@ -8241,13 +8248,6 @@
                 slug: "markers-popups-together"
               }
             ]
-          },
-          {
-            title: "Plugins",
-            frontmatter: {},
-            regularPath: "/plugins/",
-            key: "v-50ef8540",
-            path: "/plugins/"
           },
           {
             title: "Plugin development",
@@ -8810,7 +8810,7 @@
       ge = ve.router;
     (window.__VUEPRESS_VERSION__ = {
       version: "1.0.0-alpha.30",
-      hash: "a26bfdb"
+      hash: "4fe2b63"
     }),
       ge.onReady(function() {
         me.$mount("#app");

@@ -125,7 +125,7 @@
                               [t._v('"')]
                             ),
                             t._v(
-                              "https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css"
+                              "https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css"
                             ),
                             s(
                               "span",
@@ -618,6 +618,105 @@
                       s(
                         "span",
                         { pre: !0, attrs: { class: "token comment" } },
+                        [t._v("\x3c!-- Vue-mapbox CSS --\x3e")]
+                      ),
+                      t._v("\n    "),
+                      s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                        s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("<")]
+                          ),
+                          t._v("link")
+                        ]),
+                        t._v("\n      "),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token attr-name" } },
+                          [t._v("href")]
+                        ),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token attr-value" } },
+                          [
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v("=")]
+                            ),
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v('"')]
+                            ),
+                            t._v(
+                              "https://cdn.jsdelivr.net/npm/vue-mapbox@latest/dist/vue-mapbox.css"
+                            ),
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v('"')]
+                            )
+                          ]
+                        ),
+                        t._v("\n      "),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token attr-name" } },
+                          [t._v("rel")]
+                        ),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token attr-value" } },
+                          [
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v("=")]
+                            ),
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v('"')]
+                            ),
+                            t._v("stylesheet"),
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v('"')]
+                            )
+                          ]
+                        ),
+                        t._v("\n    "),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token punctuation" } },
+                          [t._v("/>")]
+                        )
+                      ]),
+                      t._v("\n    "),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token comment" } },
                         [t._v("\x3c!-- Mapbox GL JS --\x3e")]
                       ),
                       t._v("\n    "),
@@ -657,7 +756,7 @@
                               [t._v('"')]
                             ),
                             t._v(
-                              "https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js"
+                              "https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js"
                             ),
                             s(
                               "span",

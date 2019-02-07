@@ -14,7 +14,7 @@ Add mapbox CSS file to `<head></head>` block of your HTML file (e.g. `index.html
 
 ```html
 <link
-  href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css"
+  href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css"
   rel="stylesheet"
 />
 ```
@@ -52,8 +52,13 @@ Add Vue, MapboxGL and Vue-mapbox scripts on your page:
       href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css"
       rel="stylesheet"
     />
+    <!-- Vue-mapbox CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/vue-mapbox@latest/dist/vue-mapbox.css"
+      rel="stylesheet"
+    />
     <!-- Mapbox GL JS -->
-    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js"></script>
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js"></script>
     <!-- VueJS -->
     <script src="https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.min.js"></script>
     <!-- Vue-mapbox -->

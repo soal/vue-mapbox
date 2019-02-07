@@ -1,32 +1,35 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
-  [25],
+  [26],
   {
-    146: function(t, s, i) {
+    154: function(t, e, n) {
       "use strict";
-      i.r(s);
-      var n = i(15),
-        e = Object(n.a)(
+      n.r(e);
+      var s = n(17),
+        i = Object(s.a)(
           {},
           function() {
             var t = this.$createElement,
-              s = this._self._c || t;
-            return s(
+              e = this._self._c || t;
+            return e(
               "ContentSlotsDistributor",
               { attrs: { "slot-key": this.$parent.slotKey } },
               [
-                s("h1", { attrs: { id: "plugins" } }, [
-                  s(
+                e("h1", { attrs: { id: "plugin-development" } }, [
+                  e(
                     "a",
                     {
                       staticClass: "header-anchor",
-                      attrs: { href: "#plugins", "aria-hidden": "true" }
+                      attrs: {
+                        href: "#plugin-development",
+                        "aria-hidden": "true"
+                      }
                     },
                     [this._v("#")]
                   ),
-                  this._v(" Plugins")
+                  this._v(" Plugin development")
                 ]),
                 this._v(" "),
-                s("p", [s("em", [this._v("coming soon")])])
+                e("p", [e("em", [this._v("coming soon")])])
               ]
             );
           },
@@ -36,8 +39,8 @@
           null,
           null
         );
-      e.options.__file = "README.md";
-      s.default = e.exports;
+      i.options.__file = "plugin_development.md";
+      e.default = i.exports;
     }
   }
 ]);

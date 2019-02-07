@@ -8,10 +8,15 @@ If you using self-hosting maps on your own server you can omit this parameter.
 
 ```vue
 <template>
-  <MglMap :accessToken="accessToken" :mapStyle.sync="mapStyle" />
+  <MglMap
+    :mapbox="mapbox"
+    :accessToken="accessToken"
+    :mapStyle.sync="mapStyle"
+  />
 </template>
 
 <script>
+import Mapbox from "mapbox-gl";
 import { MglMap } from "vue-mapbox";
 
 export default {
@@ -23,6 +28,11 @@ export default {
       accessToken: ACCESS_TOKEN, // your access token. Needed if you using Mapbox maps
       mapStyle: MAP_STYLE // your map style
     };
+  },
+
+  created() {
+    // We need to set mapbox-gl library here in order to use it in template
+    this.mapbox = Mapbox;
   }
 };
 </script>
@@ -46,8 +56,8 @@ If you want to store map object, store it as non-reactive property like in examp
 
 ```vue
 <template>
-  <MglMap 
-    :accessToken="accessToken" 
+  <MglMap
+    :accessToken="accessToken"
     :mapStyle.sync="mapStyle"
     @load="onMapLoaded"
   />

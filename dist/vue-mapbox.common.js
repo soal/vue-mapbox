@@ -1517,6 +1517,11 @@ module.exports = /******/ (function(modules) {
       /***/
     },
 
+    /***/ "66e4": /***/ function(module, exports, __webpack_require__) {
+      // extracted by mini-css-extract-plugin
+      /***/
+    },
+
     /***/ "6762": /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -2162,20 +2167,6 @@ module.exports = /******/ (function(modules) {
 
     /***/ "84f2": /***/ function(module, exports) {
       module.exports = {};
-
-      /***/
-    },
-
-    /***/ "8615": /***/ function(module, exports, __webpack_require__) {
-      // https://github.com/tc39/proposal-object-values-entries
-      var $export = __webpack_require__("5ca1");
-      var $values = __webpack_require__("504c")(false);
-
-      $export($export.S, "Object", {
-        values: function values(it) {
-          return $values(it);
-        }
-      });
 
       /***/
     },
@@ -2856,6 +2847,25 @@ module.exports = /******/ (function(modules) {
       /***/
     },
 
+    /***/ e743: /***/ function(
+      module,
+      __webpack_exports__,
+      __webpack_require__
+    ) {
+      "use strict";
+      /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_54c577ae_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+        "66e4"
+      );
+      /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_54c577ae_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
+        _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_54c577ae_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__
+      );
+      /* unused harmony reexport * */
+      /* unused harmony default export */ var _unused_webpack_default_export =
+        _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_54c577ae_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a;
+
+      /***/
+    },
+
     /***/ ebd6: /***/ function(module, exports, __webpack_require__) {
       // 7.3.20 SpeciesConstructor(O, defaultConstructor)
       var anObject = __webpack_require__("cb7c");
@@ -2919,19 +2929,7 @@ module.exports = /******/ (function(modules) {
       // Indicate to webpack that this file can be concatenated
       /* harmony default export */ var setPublicPath = null;
 
-      // EXTERNAL MODULE: ./node_modules/core-js/modules/es7.object.values.js
-      var es7_object_values = __webpack_require__("8615");
-
-      // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.iterator.js
-      var es6_array_iterator = __webpack_require__("cadf");
-
-      // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
-      var es6_object_keys = __webpack_require__("456d");
-
-      // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
-      var web_dom_iterable = __webpack_require__("ac6a");
-
-      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"752d9a0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/GlMap.vue?vue&type=template&id=3e0acdb8&
+      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"752d9a0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/GlMap.vue?vue&type=template&id=54c577ae&scoped=true&
       var render = function() {
         var _vm = this;
         var _h = _vm.$createElement;
@@ -2939,7 +2937,7 @@ module.exports = /******/ (function(modules) {
         return _c(
           "div",
           { staticClass: "mgl-map-wrapper" },
-          [_vm._m(0), _vm._t("default")],
+          [_vm._m(0), _vm.initialized ? _vm._t("default") : _vm._e()],
           2
         );
       };
@@ -2952,7 +2950,16 @@ module.exports = /******/ (function(modules) {
         }
       ];
 
-      // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=template&id=3e0acdb8&
+      // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=template&id=54c577ae&scoped=true&
+
+      // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
+      var web_dom_iterable = __webpack_require__("ac6a");
+
+      // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.iterator.js
+      var es6_array_iterator = __webpack_require__("cadf");
+
+      // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
+      var es6_object_keys = __webpack_require__("456d");
 
       // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
       function _defineProperty(obj, key, value) {
@@ -3187,6 +3194,10 @@ module.exports = /******/ (function(modules) {
           default: function _default() {
             return "map-".concat(("" + Math.random()).split(".")[1]);
           }
+        },
+        mapbox: {
+          type: Object,
+          required: true
         },
         accessToken: {
           type: String,
@@ -3607,11 +3618,21 @@ module.exports = /******/ (function(modules) {
           withEvents
         ],
         props: options,
+        provide: function provide() {
+          var self = this;
+          return {
+            mapbox: this.mapbox,
+
+            get map() {
+              return self.map;
+            }
+          };
+        },
         data: function data() {
           return {
             initial: true,
             baseMap: true,
-            mapLoaded: false
+            initialized: false
           };
         },
         computed: {
@@ -3670,7 +3691,7 @@ module.exports = /******/ (function(modules) {
             _this.$_bindPropsUpdateEvents();
 
             _this.initial = false;
-            _this.mapLoaded = true;
+            _this.initialized = true;
 
             _this.$emit("load", {
               map: map,
@@ -3684,6 +3705,11 @@ module.exports = /******/ (function(modules) {
       };
       // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=script&lang=js&
       /* harmony default export */ var map_GlMapvue_type_script_lang_js_ = GlMapvue_type_script_lang_js_;
+      // EXTERNAL MODULE: ./src/components/map/GlMap.vue?vue&type=style&index=0&id=54c577ae&scoped=true&lang=css&
+      var GlMapvue_type_style_index_0_id_54c577ae_scoped_true_lang_css_ = __webpack_require__(
+        "e743"
+      );
+
       // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
       /* globals __VUE_SSR_CONTEXT__ */
 
@@ -3795,56 +3821,12 @@ module.exports = /******/ (function(modules) {
         staticRenderFns,
         false,
         null,
-        null,
+        "54c577ae",
         null
       );
 
       component.options.__file = "GlMap.vue";
       /* harmony default export */ var GlMap = component.exports;
-      // CONCATENATED MODULE: ./src/lib/withRegistration.js
-      function walkParents(component) {
-        if (component.baseMap) {
-          return component;
-        } else {
-          if (component.$parent !== undefined) {
-            return walkParents(component.$parent);
-          }
-        }
-      }
-
-      /* harmony default export */ var withRegistration = {
-        created: function created() {
-          this.map = null;
-        },
-        mounted: function mounted() {
-          this.$_checkMapTree(); // We wait for "load" event from map component to ensure mapbox is loaded and map created
-        },
-        methods: {
-          $_findBaseMap: function $_findBaseMap() {
-            var baseMapComponent = walkParents(this.$parent);
-
-            if (baseMapComponent === undefined) {
-              throw new Error("Component must have root map");
-            }
-
-            return baseMapComponent;
-          },
-          $_checkMapTree: function $_checkMapTree() {
-            var mapComponent = this.$_findBaseMap();
-
-            if (mapComponent) {
-              if (mapComponent.mapLoaded) {
-                this.$_deferredMount({
-                  component: mapComponent,
-                  map: mapComponent.map
-                });
-              } else {
-                mapComponent.$on("load", this.$_deferredMount);
-              }
-            }
-          }
-        }
-      };
       // CONCATENATED MODULE: ./src/components/UI/withSelfEvents.js
 
       /* harmony default export */ var withSelfEvents = {
@@ -3874,20 +3856,26 @@ module.exports = /******/ (function(modules) {
         }
       };
       // CONCATENATED MODULE: ./src/components/UI/controls/controlMixin.js
+      // import withRegistration from "../../../lib/withRegistration";
 
       /* harmony default export */ var controlMixin = {
-        mixins: [withRegistration, withEvents, withSelfEvents],
+        mixins: [withEvents, withSelfEvents],
+        inject: ["mapbox", "map"],
+        props: {
+          position: {
+            type: String,
+            default: "top-right"
+          }
+        },
         beforeDestroy: function beforeDestroy() {
-          if (this.map !== undefined) {
+          if (this.map) {
             this.map.removeControl(this.control);
           }
         },
         methods: {
-          $_addControl: function $_addControl(payload) {
-            this.map = payload.map;
-
+          $_addControl: function $_addControl() {
             try {
-              this.map.addControl(this.control);
+              this.map.addControl(this.control, this.position);
             } catch (err) {
               this.$_emitEvent("error", {
                 error: err
@@ -3898,7 +3886,6 @@ module.exports = /******/ (function(modules) {
             this.$_emitEvent("added", {
               control: this.control
             });
-            payload.component.$off("load", this.$_deferredMount);
           }
         },
         render: function render() {}
@@ -3909,23 +3896,18 @@ module.exports = /******/ (function(modules) {
         name: "NavigationControl",
         mixins: [controlMixin],
         props: {
-          position: {
-            type: String,
-            default: "top-right" // TODO: add validator
+          showCompass: {
+            type: Boolean,
+            default: true
+          },
+          showZoom: {
+            type: Boolean,
+            default: true
           }
-        },
-        data: function data() {
-          return {
-            control: undefined
-          };
         },
         created: function created() {
-          this.control = new this.mapbox.NavigationControl();
-        },
-        methods: {
-          $_deferredMount: function $_deferredMount(payload) {
-            this.$_addControl(payload);
-          }
+          this.control = new this.mapbox.NavigationControl(this.$props);
+          this.$_addControl();
         }
       };
       // CONCATENATED MODULE: ./src/components/UI/controls/GeolocateControl.js
@@ -3949,14 +3931,6 @@ module.exports = /******/ (function(modules) {
               };
             }
           },
-          trackUserLocation: {
-            type: Boolean,
-            default: false
-          },
-          showUserLocation: {
-            type: Boolean,
-            default: true
-          },
           fitBoundsOptions: {
             type: Object,
             default: function _default() {
@@ -3964,21 +3938,22 @@ module.exports = /******/ (function(modules) {
                 maxZoom: 15
               };
             }
+          },
+          trackUserLocation: {
+            type: Boolean,
+            default: false
+          },
+          showUserLocation: {
+            type: Boolean,
+            default: true
           }
         },
-        data: function data() {
-          return {
-            control: undefined
-          };
-        },
         created: function created() {
-          this.control = new this.mapbox.GeolocateControl(this._props);
+          this.control = new this.mapbox.GeolocateControl(this.$props);
+          this.$_addControl();
+          this.$_bindSelfEvents(Object.keys(geolocationEvents), this.control);
         },
         methods: {
-          $_deferredMount: function $_deferredMount(payload) {
-            this.$_addControl(payload);
-            this.$_bindSelfEvents(Object.keys(geolocationEvents), this.control);
-          },
           $_emitSelfEvent: function $_emitSelfEvent(event) {
             if (event.type === "error") {
               this.$_emitMapEvent("geolocate-error", {
@@ -4005,23 +3980,14 @@ module.exports = /******/ (function(modules) {
         name: "FullscreenControl",
         mixins: [controlMixin],
         props: {
-          position: {
-            type: String,
-            default: "top-right"
+          container: {
+            type: HTMLElement,
+            default: undefined
           }
-        },
-        data: function data() {
-          return {
-            control: undefined
-          };
         },
         created: function created() {
-          this.control = new this.mapbox.FullscreenControl();
-        },
-        methods: {
-          $_deferredMount: function $_deferredMount(payload) {
-            this.$_addControl(payload);
-          }
+          this.control = new this.mapbox.FullscreenControl(this.$props);
+          this.$_addControl();
         }
       };
       // CONCATENATED MODULE: ./src/components/UI/controls/AttributionControl.js
@@ -4039,20 +4005,9 @@ module.exports = /******/ (function(modules) {
             deafault: undefined
           }
         },
-        data: function data() {
-          return {
-            control: undefined
-          };
-        },
         created: function created() {
-          this.control = new this.mapbox.AttributionControl({
-            compact: this.compact
-          });
-        },
-        methods: {
-          $_deferredMount: function $_deferredMount(payload) {
-            this.$_addControl(payload);
-          }
+          this.control = new this.mapbox.AttributionControl(this.$props);
+          this.$_addControl();
         }
       };
       // CONCATENATED MODULE: ./src/components/UI/controls/ScaleControl.js
@@ -4073,11 +4028,6 @@ module.exports = /******/ (function(modules) {
             }
           }
         },
-        data: function data() {
-          return {
-            control: undefined
-          };
-        },
         watch: {
           unit: function unit(next, prev) {
             if (this.control && next !== prev) {
@@ -4086,16 +4036,12 @@ module.exports = /******/ (function(modules) {
           }
         },
         created: function created() {
-          this.control = new this.mapbox.ScaleControl(this._props);
-        },
-        methods: {
-          $_deferredMount: function $_deferredMount(payload) {
-            this.$_addControl(payload);
-          }
+          this.control = new this.mapbox.ScaleControl(this.$props);
+          this.$_addControl();
         }
       };
-      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"752d9a0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=template&id=57267865&
-      var Markervue_type_template_id_57267865_render = function() {
+      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"752d9a0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=template&id=219782b8&
+      var Markervue_type_template_id_219782b8_render = function() {
         var _vm = this;
         var _h = _vm.$createElement;
         var _c = _vm._self._c || _h;
@@ -4106,9 +4052,9 @@ module.exports = /******/ (function(modules) {
           2
         );
       };
-      var Markervue_type_template_id_57267865_staticRenderFns = [];
+      var Markervue_type_template_id_219782b8_staticRenderFns = [];
 
-      // CONCATENATED MODULE: ./src/components/UI/Marker.vue?vue&type=template&id=57267865&
+      // CONCATENATED MODULE: ./src/components/UI/Marker.vue?vue&type=template&id=219782b8&
 
       // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=script&lang=js&
 
@@ -4129,7 +4075,8 @@ module.exports = /******/ (function(modules) {
       };
       /* harmony default export */ var Markervue_type_script_lang_js_ = {
         name: "MapMarker",
-        mixins: [withRegistration, withEvents, withSelfEvents],
+        mixins: [withEvents, withSelfEvents],
+        inject: ["mapbox", "map"],
         props: {
           // mapbox marker options
           offset: {
@@ -4170,8 +4117,38 @@ module.exports = /******/ (function(modules) {
             this.marker.setDraggable(next);
           }
         },
-        mounted: function mounted() {
-          this.$_checkMapTree();
+        created: function created() {
+          var _this = this;
+
+          var markerOptions = _objectSpread({}, this.$props);
+
+          if (this.$slots.marker) {
+            markerOptions.element = this.$slots.marker[0].elm;
+          }
+
+          this.marker = new this.mapbox.Marker(markerOptions);
+          this.$_addMarker();
+
+          if (this.$listeners["update:coordinates"]) {
+            this.marker.on("dragend", function(event) {
+              var newCoordinates;
+
+              if (_this.coordinates instanceof Array) {
+                newCoordinates = [
+                  event.target._lngLat.lng,
+                  event.target._lngLat.lat
+                ];
+              } else {
+                newCoordinates = event.target._lngLat;
+              }
+
+              _this.$emit("update:coordinates", newCoordinates);
+            });
+          }
+
+          var eventNames = Object.keys(markerEvents);
+          this.$_bindSelfEvents(eventNames, this.marker);
+          this.initial = false;
         },
         beforeDestroy: function beforeDestroy() {
           if (this.map !== undefined && this.marker !== undefined) {
@@ -4179,44 +4156,6 @@ module.exports = /******/ (function(modules) {
           }
         },
         methods: {
-          $_deferredMount: function $_deferredMount(payload) {
-            var _this = this;
-
-            if (!this.marker) {
-              var markerOptions = _objectSpread({}, this._props);
-
-              if (this.$slots.marker) {
-                markerOptions.element = this.$slots.marker[0].elm;
-              }
-
-              this.marker = new this.mapbox.Marker(markerOptions);
-            }
-
-            this.map = payload.map;
-            this.$_addMarker();
-
-            if (this.$listeners["update:coordinates"]) {
-              this.marker.on("dragend", function(event) {
-                var newCoordinates;
-
-                if (_this.coordinates instanceof Array) {
-                  newCoordinates = [
-                    event.target._lngLat.lng,
-                    event.target._lngLat.lat
-                  ];
-                } else {
-                  newCoordinates = event.target._lngLat;
-                }
-
-                _this.$emit("update:coordinates", newCoordinates);
-              });
-            }
-
-            var eventNames = Object.keys(markerEvents);
-            this.$_bindSelfEvents(eventNames, this.marker);
-            this.initial = false;
-            payload.component.$off("load", this.$_deferredMount);
-          },
           $_addMarker: function $_addMarker() {
             this.marker.setLngLat(this.coordinates).addTo(this.map);
             this.$_emitEvent("added", {
@@ -4247,8 +4186,8 @@ module.exports = /******/ (function(modules) {
 
       var Marker_component = normalizeComponent(
         UI_Markervue_type_script_lang_js_,
-        Markervue_type_template_id_57267865_render,
-        Markervue_type_template_id_57267865_staticRenderFns,
+        Markervue_type_template_id_219782b8_render,
+        Markervue_type_template_id_219782b8_staticRenderFns,
         false,
         null,
         null,
@@ -4257,8 +4196,8 @@ module.exports = /******/ (function(modules) {
 
       Marker_component.options.__file = "Marker.vue";
       /* harmony default export */ var Marker = Marker_component.exports;
-      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"752d9a0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=template&id=3210c140&
-      var Popupvue_type_template_id_3210c140_render = function() {
+      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"752d9a0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=template&id=24cace89&
+      var Popupvue_type_template_id_24cace89_render = function() {
         var _vm = this;
         var _h = _vm.$createElement;
         var _c = _vm._self._c || _h;
@@ -4269,9 +4208,9 @@ module.exports = /******/ (function(modules) {
           2
         );
       };
-      var Popupvue_type_template_id_3210c140_staticRenderFns = [];
+      var Popupvue_type_template_id_24cace89_staticRenderFns = [];
 
-      // CONCATENATED MODULE: ./src/components/UI/Popup.vue?vue&type=template&id=3210c140&
+      // CONCATENATED MODULE: ./src/components/UI/Popup.vue?vue&type=template&id=24cace89&
 
       // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=script&lang=js&
 
@@ -4294,7 +4233,8 @@ module.exports = /******/ (function(modules) {
 
       /* harmony default export */ var Popupvue_type_script_lang_js_ = {
         name: "Popup",
-        mixins: [withRegistration, withEvents, withSelfEvents],
+        mixins: [withEvents, withSelfEvents],
+        inject: ["mapbox", "map"],
         props: {
           /**
            * If `true`, a close button will appear in the top right corner of the popup.
@@ -4382,8 +4322,12 @@ module.exports = /******/ (function(modules) {
             return false;
           }
         },
+        created: function created() {
+          this.popup = new this.mapbox.Popup(this.$props);
+        },
         mounted: function mounted() {
-          this.$_checkMapTree();
+          this.$_addPopup();
+          this.initial = false;
         },
         beforeDestroy: function beforeDestroy() {
           if (this.map) {
@@ -4398,16 +4342,10 @@ module.exports = /******/ (function(modules) {
           }
         },
         methods: {
-          $_deferredMount: function $_deferredMount(payload) {
-            this.map = payload.map;
-            this.$_addPopup();
-            this.initial = false;
-            payload.component.$off("load", this.$_deferredMount);
-          },
           $_addPopup: function $_addPopup() {
             var _this = this;
 
-            this.popup = new this.mapbox.Popup(_objectSpread({}, this._props));
+            this.popup = new this.mapbox.Popup(this.$props);
             if (this.coordinates !== undefined)
               this.popup.setLngLat(this.coordinates);
 
@@ -4461,8 +4399,8 @@ module.exports = /******/ (function(modules) {
 
       var Popup_component = normalizeComponent(
         UI_Popupvue_type_script_lang_js_,
-        Popupvue_type_template_id_3210c140_render,
-        Popupvue_type_template_id_3210c140_staticRenderFns,
+        Popupvue_type_template_id_24cace89_render,
+        Popupvue_type_template_id_24cace89_staticRenderFns,
         false,
         null,
         null,
@@ -4490,6 +4428,50 @@ module.exports = /******/ (function(modules) {
         "touchend",
         "touchcancel"
       ];
+      // CONCATENATED MODULE: ./src/lib/withRegistration.js
+      function walkParents(component) {
+        if (component.baseMap) {
+          return component;
+        } else {
+          if (component.$parent !== undefined) {
+            return walkParents(component.$parent);
+          }
+        }
+      }
+
+      /* harmony default export */ var withRegistration = {
+        created: function created() {
+          this.map = null;
+        },
+        mounted: function mounted() {
+          this.$_checkMapTree(); // We wait for "load" event from map component to ensure mapbox is loaded and map created
+        },
+        methods: {
+          $_findBaseMap: function $_findBaseMap() {
+            var baseMapComponent = walkParents(this.$parent);
+
+            if (baseMapComponent === undefined) {
+              throw new Error("Component must have root map");
+            }
+
+            return baseMapComponent;
+          },
+          $_checkMapTree: function $_checkMapTree() {
+            var mapComponent = this.$_findBaseMap();
+
+            if (mapComponent) {
+              if (mapComponent.mapLoaded) {
+                this.$_deferredMount({
+                  component: mapComponent,
+                  map: mapComponent.map
+                });
+              } else {
+                mapComponent.$on("load", this.$_deferredMount);
+              }
+            }
+          }
+        }
+      };
       // CONCATENATED MODULE: ./src/components/layer/layerMixin.js
 
       var mapboxSourceProps = {
@@ -5471,40 +5453,32 @@ module.exports = /******/ (function(modules) {
       var MglVectorLayer = VectorLayer;
       var MglRasterLayer = RasterLayer;
       var MglMarker = Marker;
-      var MglPopup = Popup;
-      var main_plugin = {
-        /**
-         *  Create Vue-mapbox plugin for Vue
-         *
-         * @param {Object} Vue
-         * @param {Object} options: mapboxgl: MapboxGl JS instances
-         * @returns
-         */
-        install: function install(Vue) {
-          var options =
-            arguments.length > 1 && arguments[1] !== undefined
-              ? arguments[1]
-              : {};
-          var _data = {
-            mapbox: options.mapboxgl
-          };
+      var MglPopup = Popup; // export const plugin = {
+      //   /**
+      //    *  Create Vue-mapbox plugin for Vue
+      //    *
+      //    * @param {Object} Vue
+      //    * @param {Object} options: mapboxgl: MapboxGl JS instances
+      //    * @returns
+      //    */
+      //   install(Vue, options = {}) {
+      //     const data = { mapbox: options.mapboxgl };
+      //     if (options.plugins && options.plugins.length) {
+      //       options.plugins.forEach(plugin => {
+      //         const key = Object.keys(plugin)[0];
+      //         const value = Object.values(plugin)[0];
+      //         data[key] = value;
+      //       });
+      //     }
+      //     Vue.mixin({
+      //       data() {
+      //         return data;
+      //       }
+      //     });
+      //   }
+      // };
 
-          if (options.plugins && options.plugins.length) {
-            options.plugins.forEach(function(plugin) {
-              var key = Object.keys(plugin)[0];
-              var value = Object.values(plugin)[0];
-              _data[key] = value;
-            });
-          }
-
-          Vue.mixin({
-            data: function data() {
-              return _data;
-            }
-          });
-        }
-      };
-      /* harmony default export */ var main = main_plugin;
+      /* harmony default export */ var main = GlMap;
       // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
       /* concated harmony reexport mglRegistrationMixin */ __webpack_require__.d(
         __webpack_exports__,
@@ -5616,13 +5590,6 @@ module.exports = /******/ (function(modules) {
         "MglPopup",
         function() {
           return MglPopup;
-        }
-      );
-      /* concated harmony reexport plugin */ __webpack_require__.d(
-        __webpack_exports__,
-        "plugin",
-        function() {
-          return main_plugin;
         }
       );
 

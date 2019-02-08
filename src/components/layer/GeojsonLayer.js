@@ -97,11 +97,12 @@ export default {
         { deep: true }
       );
     }
+    this.$_deferredMount();
   },
 
   methods: {
-    $_deferredMount(payload) {
-      this.map = payload.map;
+    $_deferredMount() {
+      // this.map = payload.map;
       this.map.on("dataloading", this.$_watchSourceLoading);
       if (this.source) {
         const source = {
@@ -121,7 +122,7 @@ export default {
       this.$_bindLayerEvents(layerEvents);
       this.map.off("dataloading", this.$_watchSourceLoading);
       this.initial = false;
-      payload.component.$off("load", this.$_deferredMount);
+      // payload.component.$off("load", this.$_deferredMount);
     },
 
     $_addLayer() {

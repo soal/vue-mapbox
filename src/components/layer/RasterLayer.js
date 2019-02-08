@@ -4,58 +4,17 @@ import mixin from "./layerMixin";
 export default {
   name: "RasterLayer",
   mixins: [mixin],
-  // props: {
-  //   url: {
-  //     type: String,
-  //     default: undefined
-  //   },
-  //   tiles: {
-  //     type: Array,
-  //     default: undefined
-  //   },
-  //   tilesMinZoom: {
-  //     type: Number,
-  //     default: 0
-  //   },
-  //   tilesMaxZoom: {
-  //     type: Number,
-  //     default: 22
-  //   },
-  //   tileSize: {
-  //     type: Number,
-  //     default: 512
-  //   },
-  //   bounds: {
-  //     type: Array,
-  //     default: () => [-180, -85.051129, 180, 85.051129]
-  //   },
-  //   scheme: {
-  //     type: String,
-  //     default: undefined
-  //   },
-  //   attribution: {
-  //     type: String,
-  //     default: undefined
-  //   }
-  // },
+
+  created() {
+    this.$_deferredMount();
+  },
 
   methods: {
-    $_deferredMount(payload) {
-      this.map = payload.map;
+    $_deferredMount() {
       let source = {
         type: "raster",
         ...this.source
       };
-
-      // if (!this.url) {
-      //   source.minzoom = this.tilesMinZoom;
-      //   source.maxzoom = this.tilesMaxZoom;
-      //   source.bounds = this.bounds;
-      // }
-
-      // if (this.tiles) source.tiles = this.tiles;
-      // if (this.scheme) source.scheme = this.scheme;
-      // if (this.attribution) source.attribution = this.attribution;
 
       this.map.on("dataloading", this.$_watchSourceLoading);
       try {
@@ -70,7 +29,6 @@ export default {
       this.$_bindLayerEvents(layerEvents);
       this.map.off("dataloading", this.$_watchSourceLoading);
       this.initial = false;
-      payload.component.$off("load", this.$_deferredMount);
     },
 
     $_addLayer() {

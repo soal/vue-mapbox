@@ -93,7 +93,7 @@ export deafult {
   name: 'App',
 
   methods: {
-    aync onMapLoad(event) {
+    async onMapLoad(event) {
       // Here we cathing 'load' map event
       const asyncActions = event.component.actions
 
@@ -120,7 +120,7 @@ See full list of actions on [API](/api/glmap.md#actions) page.
 
 ### Method `actions.stop()`
 
-Method `.stop()` just stops all animations on map, updates props with new positions and return Promise with map parameters in the moment when `.stop()` called.
+Method `.stop()` just stops all animations on map, updates props with new positions and return Promise with map parameters at the moment when `.stop()` called.
 
 ### Events
 

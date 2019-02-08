@@ -1,4 +1,4 @@
-import withRegistration from "../../lib/withRegistration";
+// import withRegistration from "../../lib/withRegistration";
 import withEvents from "../../lib/withEvents";
 
 const mapboxSourceProps = {
@@ -43,7 +43,7 @@ const componentProps = {
 };
 
 export default {
-  mixins: [withRegistration, withEvents],
+  mixins: [withEvents],
   props: {
     ...mapboxSourceProps,
     ...mapboxLayerStyleProps,

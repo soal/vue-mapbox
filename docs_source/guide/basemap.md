@@ -8,11 +8,7 @@ If you using self-hosting maps on your own server you can omit this parameter.
 
 ```vue
 <template>
-  <MglMap
-    :mapbox="mapbox"
-    :accessToken="accessToken"
-    :mapStyle.sync="mapStyle"
-  />
+  <MglMap :accessToken="accessToken" :mapStyle="mapStyle" />
 </template>
 
 <script>

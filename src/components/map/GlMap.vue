@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import Mapbox from "mapbox-gl";
 import withEvents from "../../lib/withEvents";
 import mapEvents from "./events";
 import props from "./options";
@@ -23,7 +24,9 @@ export default {
   provide() {
     const self = this;
     return {
-      mapbox: this.mapbox,
+      get mapbox() {
+        return self.mapbox;
+      },
       get map() {
         return self.map;
       }
@@ -33,7 +36,6 @@ export default {
   data() {
     return {
       initial: true,
-      baseMap: true,
       initialized: false
     };
   },
@@ -72,6 +74,7 @@ export default {
   created() {
     this.map = null;
     this.propsIsUpdating = {};
+    this.mapbox = Mapbox;
   },
 
   mounted() {

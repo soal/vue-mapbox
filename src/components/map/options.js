@@ -5,10 +5,6 @@ export default {
       return `map-${("" + Math.random()).split(".")[1]}`;
     }
   },
-  mapbox: {
-    type: Object,
-    required: true
-  },
   accessToken: {
     type: String,
     default: undefined

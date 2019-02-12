@@ -4,26 +4,17 @@ import mixin from "./layerMixin";
 export default {
   name: "CanvasLayer",
   mixins: [mixin],
+
+  inject: ["mapbox", "map"],
+
   props: {
-    canvas: {
-      type: [HTMLCanvasElement, String],
-      default: null
-    },
-    coordinates: {
-      type: Array,
+    source: {
+      type: Object,
       required: true
     },
-    animate: {
-      type: Boolean,
-      default: true
-    },
-    width: {
-      type: Number,
-      default: 100
-    },
-    height: {
-      type: Number,
-      default: 100
+    layer: {
+      type: Object,
+      default: null
     }
   },
 
@@ -34,38 +25,23 @@ export default {
   },
 
   watch: {
-    minzoom(val) {
-      if (this.initial) return;
-      this.map.setLayerZoomRange(this.layerId, val, this.maxzoom);
-    },
-    maxzoom(val) {
-      if (this.initial) return;
-      this.map.setLayerZoomRange(this.layerId, this.minzoom, val);
-    },
     coordinates(val) {
       if (this.initial) return;
       this.mapSource.setCoordinates(val);
     }
   },
 
-  methods: {
-    $_deferredMount(payload) {
-      let canvasElement = this.canvas;
-      if (!canvasElement) {
-        canvasElement = document.createElement("canvas");
-        canvasElement.id = this.sourceId;
-        canvasElement.width = this.width;
-        canvasElement.height = this.height;
-      }
+  created() {
+    this.$_deferredMount();
+  },
 
+  methods: {
+    $_deferredMount() {
       const source = {
         type: "canvas",
-        coordinates: this.coordinates,
-        animate: this.animate,
-        canvas: canvasElement
+        ...this.source
       };
 
-      this.map = payload.map;
       this.map.on("dataloading", this.$_watchSourceLoading);
       try {
         this.map.addSource(this.sourceId, source);
@@ -77,7 +53,6 @@ export default {
       }
       this.$_addLayer();
       this.$_bindLayerEvents(layerEvents);
-      payload.component.$off("load", this.$_deferredMount);
       this.initial = false;
     },
 
@@ -94,22 +69,14 @@ export default {
       let layer = {
         id: this.layerId,
         source: this.sourceId,
-        type: "raster"
+        type: "raster",
+        ...this.layer
       };
-      if (this.refLayer) {
-        layer.ref = this.refLayer;
-      } else {
-        if (this["source-layer"]) {
-          layer["source-layer"] = this["source-layer"];
-        }
-        if (this.minzoom) layer.minzoom = this.minzoom;
-        if (this.maxzoom) layer.maxzoom = this.maxzoom;
-      }
-      layer.paint = this.paint ? this.paint : { "raster-opacity": 0.85 };
-      layer.metadata = this.metadata;
-
       this.map.addLayer(layer, this.before);
-      this.$_emitEvent("added", { layerId: this.layerId, canvas: this.canvas });
+      this.$_emitEvent("added", {
+        layerId: this.layerId,
+        canvas: this.canvasElement
+      });
     }
   }
 };

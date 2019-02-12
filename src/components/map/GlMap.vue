@@ -1,11 +1,12 @@
 <template>
   <div class="mgl-map-wrapper">
     <div v-once :id="container" ref="container" />
-    <slot />
+    <slot v-if="initialized" />
   </div>
 </template>
 
 <script>
+import Mapbox from "mapbox-gl";
 import withEvents from "../../lib/withEvents";
 import mapEvents from "./events";
 import props from "./options";
@@ -20,11 +21,22 @@ export default {
 
   props,
 
+  provide() {
+    const self = this;
+    return {
+      get mapbox() {
+        return self.mapbox;
+      },
+      get map() {
+        return self.map;
+      }
+    };
+  },
+
   data() {
     return {
       initial: true,
-      baseMap: true,
-      mapLoaded: false
+      initialized: false
     };
   },
 
@@ -62,6 +74,7 @@ export default {
   created() {
     this.map = null;
     this.propsIsUpdating = {};
+    this.mapbox = Mapbox;
   },
 
   mounted() {
@@ -78,7 +91,7 @@ export default {
       this.$_registerAsyncActions(map);
       this.$_bindPropsUpdateEvents();
       this.initial = false;
-      this.mapLoaded = true;
+      this.initialized = true;
       this.$emit("load", { map, component: this });
     });
   },
@@ -88,3 +101,18 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.mgl-map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mapboxgl-map {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+}
+</style>

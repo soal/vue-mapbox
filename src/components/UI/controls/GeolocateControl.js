@@ -23,6 +23,10 @@ export default {
         };
       }
     },
+    fitBoundsOptions: {
+      type: Object,
+      default: () => ({ maxZoom: 15 })
+    },
     trackUserLocation: {
       type: Boolean,
       default: false
@@ -30,29 +34,16 @@ export default {
     showUserLocation: {
       type: Boolean,
       default: true
-    },
-    fitBoundsOptions: {
-      type: Object,
-      default: () => ({ maxZoom: 15 })
     }
   },
 
-  data() {
-    return {
-      control: undefined
-    };
-  },
-
   created() {
-    this.control = new this.mapbox.GeolocateControl(this._props);
+    this.control = new this.mapbox.GeolocateControl(this.$props);
+    this.$_addControl();
+    this.$_bindSelfEvents(Object.keys(geolocationEvents), this.control);
   },
 
   methods: {
-    $_deferredMount(payload) {
-      this.$_addControl(payload);
-      this.$_bindSelfEvents(Object.keys(geolocationEvents), this.control);
-    },
-
     $_emitSelfEvent(event) {
       if (event.type === "error") {
         this.$_emitMapEvent("geolocate-error", { control: this.control });

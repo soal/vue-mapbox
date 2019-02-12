@@ -38,10 +38,12 @@ export default {
     }
   },
 
+  created() {
+    this.$_deferredMount();
+  },
+
   methods: {
-    $_deferredMount(payload) {
-      if (payload.mapId !== this.mapId) return;
-      this.map = payload.map;
+    $_deferredMount() {
       let source = {
         type: "vector",
         ...this.source
@@ -60,7 +62,6 @@ export default {
       this.$_bindLayerEvents(layerEvents);
       this.map.off("dataloading", this.$_watchSourceLoading);
       this.initial = false;
-      payload.component.$off("load", this.$_deferredMount);
     },
 
     $_addLayer() {

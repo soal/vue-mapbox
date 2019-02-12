@@ -1,6 +1,6 @@
 {
   "name": "vue-mapbox",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "author": {
     "name": "soal",
     "email": "sorrrow.about.alice@gmail.com",
@@ -33,7 +33,8 @@
     ]
   },
   "dependencies": {
-    "map-promisified": "latest"
+    "map-promisified": "latest",
+    "mapbox-gl": "^0.53.0"
   },
   "peerDependencies": {
     "mapbox-gl": "^0.51.0",

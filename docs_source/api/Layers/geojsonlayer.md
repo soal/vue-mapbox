@@ -69,6 +69,15 @@ All common [layers props](/api/Layers/README.md#props)
 - **Description** Gets the state of a feature.
 - **See** `.getFeatureState()` [map method](https://www.mapbox.com/mapbox-gl-js/api/#map#getfeaturestate)
 
+### `removeFeatureState(featureId?, sourceLayer?, key?)`
+
+- **Arguments:**
+  - `featureId` `String | Number` Feature identifier.
+  - `sourceLayer` `string` Source layer id.
+  - `key` `string` The key in the feature state to reset.
+- **Description** Removes feature state, setting it back to the default behavior. If no featureId or key is specified, removes all states of that source. If featureId is also specified, removes all keys for that feature's state. If key is also specified, removes that key from that feature's state.
+- **See** `.removeFeatureState()` [map method](https://docs.mapbox.com/mapbox-gl-js/api/#map#removefeaturestate)
+
 ## Events
 
 All common layer [events](/api/Layers/#events)

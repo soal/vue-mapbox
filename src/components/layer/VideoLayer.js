@@ -18,16 +18,16 @@ export default {
         this.mapSource.setCoordinates(next);
       });
     }
+    this.$_deferredMount();
   },
 
   methods: {
-    $_deferredMount(payload) {
+    $_deferredMount() {
       const source = {
         type: "video",
         ...this.source
       };
 
-      this.map = payload.map;
       this.map.on("dataloading", this.$_watchSourceLoading);
       try {
         this.map.addSource(this.sourceId, source);
@@ -40,7 +40,6 @@ export default {
       this.$_addLayer();
       this.$_bindLayerEvents(layerEvents);
       this.initial = false;
-      payload.component.$off("load", this.$_deferredMount);
     },
 
     $_addLayer() {

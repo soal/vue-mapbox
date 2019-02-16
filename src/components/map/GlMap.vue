@@ -104,15 +104,17 @@ export default {
 
 <style scoped>
 .mgl-map-wrapper {
+  height: 100%;
   position: relative;
   width: 100%;
-  height: 100%;
 }
 
 .mapboxgl-map {
   height: 100%;
-  width: 100%;
+  left: 0;
   overflow: hidden;
   position: absolute;
+  top: 0;
+  width: 100%;
 }
 </style>

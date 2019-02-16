@@ -38,21 +38,13 @@ export default {
   },
 
   created() {
-    this.control = new this.mapbox.GeolocateControl(this.$props);
+    const GeolocateControl = this.mapbox.GeolocateControl;
+    this.control = new GeolocateControl(this.$props);
     this.$_addControl();
     this.$_bindSelfEvents(Object.keys(geolocationEvents), this.control);
   },
 
   methods: {
-    $_emitSelfEvent(event) {
-      if (event.type === "error") {
-        this.$_emitMapEvent("geolocate-error", { control: this.control });
-      }
-      if (event.type === "geolocate") {
-        this.$_emitMapEvent("geolocate", { control: this.control });
-      }
-    },
-
     trigger() {
       if (this.control) {
         return this.control.trigger();

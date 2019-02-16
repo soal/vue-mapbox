@@ -60,7 +60,7 @@ All components will be placed in global VueMapbox object (`VueMapbox.MglMap` etc
 
 In version `0.2` you don't need to register VueMapbox as Vue plugin.
 
-You don't need this code anymore:
+So you don't need this code anymore:
 
 ```js
 import VueMapbox from "vue-mapbox";

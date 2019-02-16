@@ -1,9 +1,11 @@
 # Create a plugin component
 
-## Overview
+<!-- ## Overview
 
 ## Basic template for plugin component
 
 ## VueMapbox helpers
 
-## Component API recommendations
+## Component API recommendations -->
+
+_coming soon_

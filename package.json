@@ -52,6 +52,6 @@
     "lint-staged": "^8.1.0",
     "vue": "^2.5.21",
     "vue-template-compiler": "^2.5.21",
-    "vuepress": "^1.0.0-alpha.30"
+    "vuepress": "^1.0.0-alpha.37"
   }
 }

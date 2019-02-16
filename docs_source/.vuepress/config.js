@@ -53,11 +53,14 @@ module.exports = {
         ]
       },
       {
-        title: "Plugins",
+        title: "Plugin components",
         collapsable: false,
         children: [
-          ["/plugins/", "Using plugins"],
-          ["/plugins/plugin_development.md", "Create a plugin"]
+          ["/plugin_components/", "Using plugin components"],
+          [
+            "/plugin_components/plugin_components_development.md",
+            "Create a plugin component"
+          ]
         ]
       }
       // ['/plugins/', 'Plugins'],

@@ -29,6 +29,9 @@ export default {
       },
       get map() {
         return self.map;
+      },
+      get actions() {
+        return self.actions;
       }
     };
   },

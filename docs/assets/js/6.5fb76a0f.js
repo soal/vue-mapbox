@@ -881,11 +881,7 @@
                 a("div", { staticClass: "tip custom-block" }, [
                   a("p", { staticClass: "custom-block-title" }, [t._v("Size")]),
                   t._v(" "),
-                  a("p", [
-                    t._v("~ 39 kB minified"),
-                    a("br"),
-                    t._v("\n~ 7 kB minified and gzipped")
-                  ])
+                  a("p", [t._v("~ 15 kB minified and gzipped")])
                 ]),
                 t._v(" "),
                 a("div", { staticClass: "warning custom-block" }, [

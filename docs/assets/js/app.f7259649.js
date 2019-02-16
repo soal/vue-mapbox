@@ -56,27 +56,27 @@
                 3: "02aa2be5",
                 4: "4f3338df",
                 5: "d3d1578a",
-                6: "9e9c1707",
+                6: "5fb76a0f",
                 7: "cdef235f",
                 8: "8b4b828f",
-                9: "4d8cfa7d",
-                10: "956c4fd3",
+                9: "aebbb2ac",
+                10: "496a25ae",
                 11: "6a850a37",
-                12: "bad0d71b",
-                13: "bc66feef",
+                12: "f0cb3c91",
+                13: "57cb96bf",
                 14: "7b3fcbc6",
                 15: "6be5284d",
                 16: "733d6730",
                 17: "172f4295",
                 18: "2cbd5aa4",
-                19: "d87522f9",
+                19: "10105f2d",
                 20: "f558f091",
-                21: "0ec0d4b2",
+                21: "6a1f30f2",
                 22: "8dc7d898",
-                23: "8f63a317",
-                24: "fbed590e",
-                25: "95863ab0",
-                26: "23e57730"
+                23: "211d4995",
+                24: "22f05a02",
+                25: "8dd04822",
+                26: "f0948172"
               }[t] +
               ".js"
             );
@@ -8308,11 +8308,11 @@
         "v-acd593fc": () => n.e(6).then(n.bind(null, 163)),
         "v-9af1f7dc": () => n.e(7).then(n.bind(null, 162)),
         "v-073619c3": () => n.e(8).then(n.bind(null, 161)),
-        "v-77c73199": () => n.e(10).then(n.bind(null, 160)),
+        "v-0bcaedd9": () => n.e(9).then(n.bind(null, 160)),
         "v-5717614d": () => n.e(11).then(n.bind(null, 159)),
-        "v-1f50ee59": () => n.e(12).then(n.bind(null, 158)),
-        "v-45aa14ce": () => n.e(13).then(n.bind(null, 157)),
-        "v-0bcaedd9": () => n.e(9).then(n.bind(null, 156)),
+        "v-77c73199": () => n.e(10).then(n.bind(null, 158)),
+        "v-1f50ee59": () => n.e(12).then(n.bind(null, 157)),
+        "v-45aa14ce": () => n.e(13).then(n.bind(null, 156)),
         "v-5b471da2": () => n.e(15).then(n.bind(null, 155)),
         "v-3df8c167": () => n.e(17).then(n.bind(null, 144)),
         "v-f144760e": () => n.e(18).then(n.bind(null, 153)),
@@ -8320,10 +8320,10 @@
         "v-254c4c59": () => n.e(20).then(n.bind(null, 151)),
         "v-2939380e": () => n.e(21).then(n.bind(null, 150)),
         "v-fb4e549a": () => n.e(22).then(n.bind(null, 149)),
-        "v-0f9139b7": () => n.e(24).then(n.bind(null, 148)),
-        "v-0250a037": () => n.e(23).then(n.bind(null, 147)),
-        "v-50ef8540": () => n.e(25).then(n.bind(null, 146)),
-        "v-2692d7ee": () => n.e(26).then(n.bind(null, 145)),
+        "v-0250a037": () => n.e(23).then(n.bind(null, 148)),
+        "v-0f9139b7": () => n.e(24).then(n.bind(null, 147)),
+        "v-2719271c": () => n.e(25).then(n.bind(null, 146)),
+        "v-22ef9d0e": () => n.e(26).then(n.bind(null, 145)),
         "v-cd0cec28": () => n.e(14).then(n.bind(null, 154)),
         "v-6c9c2319": () => n.e(16).then(n.bind(null, 152))
       },
@@ -8576,11 +8576,11 @@
           }
         },
         {
-          name: "v-77c73199",
-          path: "/api/Layers/imagelayer.html",
+          name: "v-0bcaedd9",
+          path: "/api/Layers/geojsonlayer.html",
           component: Da,
           beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-77c73199").then(n);
+            Sa("Layout", "v-0bcaedd9").then(n);
           }
         },
         {
@@ -8589,6 +8589,14 @@
           component: Da,
           beforeEnter: (t, e, n) => {
             Sa("Layout", "v-5717614d").then(n);
+          }
+        },
+        {
+          name: "v-77c73199",
+          path: "/api/Layers/imagelayer.html",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-77c73199").then(n);
           }
         },
         {
@@ -8605,14 +8613,6 @@
           component: Da,
           beforeEnter: (t, e, n) => {
             Sa("Layout", "v-45aa14ce").then(n);
-          }
-        },
-        {
-          name: "v-0bcaedd9",
-          path: "/api/Layers/geojsonlayer.html",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-0bcaedd9").then(n);
           }
         },
         {
@@ -8673,14 +8673,6 @@
           }
         },
         {
-          name: "v-0f9139b7",
-          path: "/guide/markers&popups.html",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-0f9139b7").then(n);
-          }
-        },
-        {
           name: "v-0250a037",
           path: "/guide/layers&sources.html",
           component: Da,
@@ -8689,20 +8681,31 @@
           }
         },
         {
-          name: "v-50ef8540",
-          path: "/plugins/",
+          name: "v-0f9139b7",
+          path: "/guide/markers&popups.html",
           component: Da,
           beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-50ef8540").then(n);
+            Sa("Layout", "v-0f9139b7").then(n);
           }
         },
-        { path: "/plugins/index.html", redirect: "/plugins/" },
         {
-          name: "v-2692d7ee",
-          path: "/plugins/plugin_development.html",
+          name: "v-2719271c",
+          path: "/plugin_components/",
           component: Da,
           beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-2692d7ee").then(n);
+            Sa("Layout", "v-2719271c").then(n);
+          }
+        },
+        {
+          path: "/plugin_components/index.html",
+          redirect: "/plugin_components/"
+        },
+        {
+          name: "v-22ef9d0e",
+          path: "/plugin_components/plugin_components_development.html",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-22ef9d0e").then(n);
           }
         },
         {
@@ -8814,77 +8817,6 @@
             ]
           },
           {
-            title: "ImageLayer",
-            frontmatter: {},
-            regularPath: "/api/Layers/imagelayer.html",
-            key: "v-77c73199",
-            path: "/api/Layers/imagelayer.html",
-            headers: [
-              { level: 2, title: "Props", slug: "props" },
-              { level: 3, title: "source", slug: "source" },
-              { level: 2, title: "Events", slug: "events" }
-            ]
-          },
-          {
-            title: "RasterLayer",
-            frontmatter: {},
-            regularPath: "/api/Layers/rasterlayer.html",
-            key: "v-5717614d",
-            path: "/api/Layers/rasterlayer.html",
-            headers: [
-              { level: 2, title: "Props", slug: "props" },
-              { level: 3, title: "source", slug: "source" },
-              { level: 2, title: "Events", slug: "events" }
-            ]
-          },
-          {
-            title: "VectorLayer",
-            frontmatter: {},
-            regularPath: "/api/Layers/vectorlayer.html",
-            key: "v-1f50ee59",
-            path: "/api/Layers/vectorlayer.html",
-            headers: [
-              { level: 2, title: "Props", slug: "props" },
-              { level: 3, title: "source", slug: "source" },
-              { level: 2, title: "Computed getters", slug: "computed-getters" },
-              {
-                level: 3,
-                title: "getSourceFeatures(filter?)",
-                slug: "getsourcefeatures-filter"
-              },
-              {
-                level: 3,
-                title: "getRenderedFeatures(geometry, filter)",
-                slug: "getrenderedfeatures-geometry-filter"
-              },
-              { level: 2, title: "Methods", slug: "methods" },
-              {
-                level: 3,
-                title: "setFeatureState(featureId, state)",
-                slug: "setfeaturestate-featureid-state"
-              },
-              {
-                level: 3,
-                title: "getFeatureState(featureId)",
-                slug: "getfeaturestate-featureid"
-              },
-              { level: 2, title: "Events", slug: "events" }
-            ]
-          },
-          {
-            title: "CanvasLayer",
-            frontmatter: {},
-            regularPath: "/api/Layers/videolayer.html",
-            key: "v-45aa14ce",
-            path: "/api/Layers/videolayer.html",
-            headers: [
-              { level: 2, title: "Props", slug: "props" },
-              { level: 3, title: "source", slug: "source" },
-              { level: 2, title: "Computed getters", slug: "computed-getters" },
-              { level: 3, title: "video", slug: "video" }
-            ]
-          },
-          {
             title: "GeojsonLayer",
             frontmatter: {},
             regularPath: "/api/Layers/geojsonlayer.html",
@@ -8936,6 +8868,77 @@
                 slug: "removefeaturestate-featureid-sourcelayer-key"
               },
               { level: 2, title: "Events", slug: "events" }
+            ]
+          },
+          {
+            title: "RasterLayer",
+            frontmatter: {},
+            regularPath: "/api/Layers/rasterlayer.html",
+            key: "v-5717614d",
+            path: "/api/Layers/rasterlayer.html",
+            headers: [
+              { level: 2, title: "Props", slug: "props" },
+              { level: 3, title: "source", slug: "source" },
+              { level: 2, title: "Events", slug: "events" }
+            ]
+          },
+          {
+            title: "ImageLayer",
+            frontmatter: {},
+            regularPath: "/api/Layers/imagelayer.html",
+            key: "v-77c73199",
+            path: "/api/Layers/imagelayer.html",
+            headers: [
+              { level: 2, title: "Props", slug: "props" },
+              { level: 3, title: "source", slug: "source" },
+              { level: 2, title: "Events", slug: "events" }
+            ]
+          },
+          {
+            title: "VectorLayer",
+            frontmatter: {},
+            regularPath: "/api/Layers/vectorlayer.html",
+            key: "v-1f50ee59",
+            path: "/api/Layers/vectorlayer.html",
+            headers: [
+              { level: 2, title: "Props", slug: "props" },
+              { level: 3, title: "source", slug: "source" },
+              { level: 2, title: "Computed getters", slug: "computed-getters" },
+              {
+                level: 3,
+                title: "getSourceFeatures(filter?)",
+                slug: "getsourcefeatures-filter"
+              },
+              {
+                level: 3,
+                title: "getRenderedFeatures(geometry, filter)",
+                slug: "getrenderedfeatures-geometry-filter"
+              },
+              { level: 2, title: "Methods", slug: "methods" },
+              {
+                level: 3,
+                title: "setFeatureState(featureId, state)",
+                slug: "setfeaturestate-featureid-state"
+              },
+              {
+                level: 3,
+                title: "getFeatureState(featureId)",
+                slug: "getfeaturestate-featureid"
+              },
+              { level: 2, title: "Events", slug: "events" }
+            ]
+          },
+          {
+            title: "CanvasLayer",
+            frontmatter: {},
+            regularPath: "/api/Layers/videolayer.html",
+            key: "v-45aa14ce",
+            path: "/api/Layers/videolayer.html",
+            headers: [
+              { level: 2, title: "Props", slug: "props" },
+              { level: 3, title: "source", slug: "source" },
+              { level: 2, title: "Computed getters", slug: "computed-getters" },
+              { level: 3, title: "video", slug: "video" }
             ]
           },
           {
@@ -9054,7 +9057,12 @@
               },
               { level: 3, title: "Installation", slug: "installation" },
               { level: 2, title: "Using in browser", slug: "using-in-browser" },
-              { level: 3, title: "Installation", slug: "installation-2" }
+              { level: 3, title: "Installation", slug: "installation-2" },
+              {
+                level: 2,
+                title: "Migration from version 0.1.x",
+                slug: "migration-from-version-0-1-x"
+              }
             ]
           },
           {
@@ -9107,6 +9115,20 @@
             ]
           },
           {
+            title: "Layers and sources",
+            frontmatter: {},
+            regularPath: "/guide/layers&sources.html",
+            key: "v-0250a037",
+            path: "/guide/layers&sources.html",
+            headers: [
+              { level: 2, title: "Adding layers", slug: "adding-layers" },
+              { level: 2, title: "Reactivity", slug: "reactivity" },
+              { level: 2, title: "Layer getters", slug: "layer-getters" },
+              { level: 2, title: "Layer methods", slug: "layer-methods" },
+              { level: 2, title: "Layer events", slug: "layer-events" }
+            ]
+          },
+          {
             title: "Markers and Popups",
             frontmatter: {},
             regularPath: "/guide/markers&popups.html",
@@ -9127,41 +9149,31 @@
             ]
           },
           {
-            title: "Layers and sources",
+            title: "Plugin components",
             frontmatter: {},
-            regularPath: "/guide/layers&sources.html",
-            key: "v-0250a037",
-            path: "/guide/layers&sources.html",
+            regularPath: "/plugin_components/",
+            key: "v-2719271c",
+            path: "/plugin_components/",
             headers: [
-              { level: 2, title: "Adding layers", slug: "adding-layers" },
-              { level: 2, title: "Reactivity", slug: "reactivity" },
-              { level: 2, title: "Layer getters", slug: "layer-getters" },
-              { level: 2, title: "Layer methods", slug: "layer-methods" },
-              { level: 2, title: "Layer events", slug: "layer-events" }
-            ]
-          },
-          {
-            title: "Plugins",
-            frontmatter: {},
-            regularPath: "/plugins/",
-            key: "v-50ef8540",
-            path: "/plugins/",
-            headers: [
-              { level: 2, title: "Overview", slug: "overview" },
-              { level: 2, title: "Using plugins", slug: "using-plugins" },
               {
                 level: 2,
-                title: "Available plugins",
-                slug: "available-plugins"
+                title: "Using plugin components",
+                slug: "using-plugin-components"
+              },
+              {
+                level: 2,
+                title: "Available plugin components",
+                slug: "available-plugin-components"
               }
             ]
           },
           {
-            title: "Plugin development",
+            title: "Create a plugin component",
             frontmatter: {},
-            regularPath: "/plugins/plugin_development.html",
-            key: "v-2692d7ee",
-            path: "/plugins/plugin_development.html"
+            regularPath:
+              "/plugin_components/plugin_components_development.html",
+            key: "v-22ef9d0e",
+            path: "/plugin_components/plugin_components_development.html"
           },
           {
             title: "GlMap",
@@ -9477,11 +9489,14 @@
               ]
             },
             {
-              title: "Plugins",
+              title: "Plugin components",
               collapsable: !1,
               children: [
-                ["/plugins/", "Using plugins"],
-                ["/plugins/plugin_development.md", "Create a plugin"]
+                ["/plugin_components/", "Using plugin components"],
+                [
+                  "/plugin_components/plugin_components_development.md",
+                  "Create a plugin component"
+                ]
               ]
             }
           ]
@@ -9873,7 +9888,7 @@
       rs = es.router;
     (window.__VUEPRESS_VERSION__ = {
       version: "1.0.0-alpha.37",
-      hash: "8e853c4"
+      hash: "4c00514"
     }),
       rs.onReady(function() {
         ns.$mount("#app");

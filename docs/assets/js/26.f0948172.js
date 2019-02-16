@@ -4,8 +4,8 @@
     145: function(t, e, n) {
       "use strict";
       n.r(e);
-      var s = n(17),
-        i = Object(s.a)(
+      var o = n(17),
+        s = Object(o.a)(
           {},
           function() {
             var t = this.$createElement,
@@ -14,19 +14,19 @@
               "ContentSlotsDistributor",
               { attrs: { "slot-key": this.$parent.slotKey } },
               [
-                e("h1", { attrs: { id: "plugin-development" } }, [
+                e("h1", { attrs: { id: "create-a-plugin-component" } }, [
                   e(
                     "a",
                     {
                       staticClass: "header-anchor",
                       attrs: {
-                        href: "#plugin-development",
+                        href: "#create-a-plugin-component",
                         "aria-hidden": "true"
                       }
                     },
                     [this._v("#")]
                   ),
-                  this._v(" Plugin development")
+                  this._v(" Create a plugin component")
                 ]),
                 this._v(" "),
                 e("p", [e("em", [this._v("coming soon")])])
@@ -39,8 +39,8 @@
           null,
           null
         );
-      i.options.__file = "plugin_development.md";
-      e.default = i.exports;
+      s.options.__file = "plugin_components_development.md";
+      e.default = s.exports;
     }
   }
 ]);

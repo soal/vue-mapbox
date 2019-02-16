@@ -788,6 +788,127 @@
                   t._v(" etc.)")
                 ]),
                 t._v(" "),
+                s("h2", { attrs: { id: "migration-from-version-0-1-x" } }, [
+                  s(
+                    "a",
+                    {
+                      staticClass: "header-anchor",
+                      attrs: {
+                        href: "#migration-from-version-0-1-x",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [t._v("#")]
+                  ),
+                  t._v(" Migration from version 0.1.x")
+                ]),
+                t._v(" "),
+                s("p", [
+                  t._v("In version "),
+                  s("code", [t._v("0.2")]),
+                  t._v(" you don't need to register VueMapbox as Vue plugin.")
+                ]),
+                t._v(" "),
+                s("p", [t._v("So you don't need this code anymore:")]),
+                t._v(" "),
+                s("div", { staticClass: "language-js extra-class" }, [
+                  s("pre", { pre: !0, attrs: { class: "language-js" } }, [
+                    s("code", [
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token keyword" } },
+                        [t._v("import")]
+                      ),
+                      t._v(" VueMapbox "),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token keyword" } },
+                        [t._v("from")]
+                      ),
+                      t._v(" "),
+                      s("span", { pre: !0, attrs: { class: "token string" } }, [
+                        t._v('"vue-mapbox"')
+                      ]),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token punctuation" } },
+                        [t._v(";")]
+                      ),
+                      t._v("\n"),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token keyword" } },
+                        [t._v("import")]
+                      ),
+                      t._v(" Mapbox "),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token keyword" } },
+                        [t._v("from")]
+                      ),
+                      t._v(" "),
+                      s("span", { pre: !0, attrs: { class: "token string" } }, [
+                        t._v('"mapbox-gl"')
+                      ]),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token punctuation" } },
+                        [t._v(";")]
+                      ),
+                      t._v("\n\nVue"),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token punctuation" } },
+                        [t._v(".")]
+                      ),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token function" } },
+                        [t._v("use")]
+                      ),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token punctuation" } },
+                        [t._v("(")]
+                      ),
+                      t._v("VueMapbox"),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token punctuation" } },
+                        [t._v(",")]
+                      ),
+                      t._v(" "),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token punctuation" } },
+                        [t._v("{")]
+                      ),
+                      t._v(" mapboxgl"),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token punctuation" } },
+                        [t._v(":")]
+                      ),
+                      t._v(" Mapbox "),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token punctuation" } },
+                        [t._v("}")]
+                      ),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token punctuation" } },
+                        [t._v(")")]
+                      ),
+                      s(
+                        "span",
+                        { pre: !0, attrs: { class: "token punctuation" } },
+                        [t._v(";")]
+                      ),
+                      t._v("\n")
+                    ])
+                  ])
+                ]),
                 s(
                   "p",
                   [

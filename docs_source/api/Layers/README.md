@@ -10,7 +10,7 @@
 - **Required**
 - **Non-Synced**
 - **Description:** ID of the source to add. Must not conflict with existing sources.
-- **See:** `.addSource()` [Map method](https://www.mapbox.com/mapbox-gl-js/api/#map#addsource)
+- **See:** `.addSource()` [Map method](https://docs.mapbox.com/mapbox-gl-js/api/#map#addsource)
 
 ### `source`
 
@@ -27,7 +27,7 @@
 - **Description:** ID of the layer to add. Must not conflict with existing layers.
 - **Required**
 - **Non-Synced**
-- **See:** `id` in [Mapbox Layer Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-id)
+- **See:** `id` in [Mapbox Layer Style Spec](https://docs.mapbox.com/mapbox-gl-js/style-spec/#layer-id)
 
 ### `layer`
 
@@ -47,7 +47,7 @@
 - **Default:** `undefined`
 - **Non-Synced**
 - **Description:** The ID of an existing layer to insert the new layer before.
-- **See:** `metadata` in [Mapbox Layer Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#layer-metadata)
+- **See:** `metadata` in [Mapbox Layer Style Spec](https://docs.mapbox.com/mapbox-gl-js/style-spec/#layer-metadata)
 
 #### Props for Vue-Mapbox component
 
@@ -83,13 +83,13 @@
 
 - **Type** `Object`
 - **Description** Mapbox GL layer object.
-- **See** [`.getLayer()`](https://www.mapbox.com/mapbox-gl-js/api/#map#getlayer) map method
+- **See** [`.getLayer()`](https://docs.mapbox.com/mapbox-gl-js/api/#map#getlayer) map method
 
 ### `mapSource`
 
 - **Type** `Object`
 - **Description** Source for this layer.
-- **See** [`Mapbox GL source`](https://www.mapbox.com/mapbox-gl-js/api/#sources)
+- **See** [`Mapbox GL source`](https://docs.mapbox.com/mapbox-gl-js/api/#sources)
 
 ## Methods
 
@@ -98,12 +98,12 @@
 - **Arguments:**
 - `beforeId` `String` The ID of an existing layer to insert the new layer before. If this argument is omitted, the layer will be appended to the end of the layers array.
 - **Description** Moves a layer to a different z-position.
-- **See** [`.moveLayer()`](https://www.mapbox.com/mapbox-gl-js/api/#map#movelayer) map method
+- **See** [`.moveLayer()`](https://docs.mapbox.com/mapbox-gl-js/api/#map#movelayer) map method
 
 ### `.remove()`
 
 - **Description** Removes the layer with and source assosiated with it.
-- **See** [`.removeLayer()`](https://www.mapbox.com/mapbox-gl-js/api/#map#removelayer) map method
+- **See** [`.removeLayer()`](https://docs.mapbox.com/mapbox-gl-js/api/#map#removelayer) map method
 
 ## Events
 

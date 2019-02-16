@@ -9,7 +9,7 @@ All common [layers props](/api/Layers/README.md#props)
 - **Type:** `Object | String`
 - **Non-Synced**
 - **Description:** A source containing GeoJSON or URL to it.
-- **See:** `GeoJSONSource` in [Mapbox API Docs](https://www.mapbox.com/mapbox-gl-js/api/#geojsonsource)
+- **See:** `GeoJSONSource` in [Mapbox API Docs](https://docs.mapbox.com/mapbox-gl-js/api/#geojsonsource)
 
 ## Computed getters
 
@@ -18,7 +18,7 @@ All common [layers props](/api/Layers/README.md#props)
 - **Arguments:**
   - `filter` `Array` A filter to limit query results.
 - **Description** Returns an array of GeoJSON Feature objects from assosiated source filtered by `filter`.
-- **See** `.querySourceFeatures()` [map method](https://www.mapbox.com/mapbox-gl-js/api/#map#querysourcefeatures)
+- **See** `.querySourceFeatures()` [map method](https://docs.mapbox.com/mapbox-gl-js/api/#map#querysourcefeatures)
 
 ### `getRenderedFeatures(geometry, filter)`
 
@@ -26,7 +26,7 @@ All common [layers props](/api/Layers/README.md#props)
   - `filter` `Array` A filter to limit query results.
   - `geometry` `Array | Object` The geometry of the query region.
 - **Description** Returns an array of visible GeoJSON Feature objects from assosiated source filtered by `filter`.
-- **See** `.queryRenderedFeatures()` [map method](https://www.mapbox.com/mapbox-gl-js/api/#map#queryrenderedfeatures)
+- **See** `.queryRenderedFeatures()` [map method](https://docs.mapbox.com/mapbox-gl-js/api/#map#queryrenderedfeatures)
 
 ### `getClusterExpansionZoom(clusterId)`
 
@@ -60,14 +60,14 @@ All common [layers props](/api/Layers/README.md#props)
   - `featureId` `String | Number` Feature identifier.
   - `state` `Object` A set of key-value pairs. The values should be valid JSON types.
 - **Description** Sets the state of a feature. The state object is merged in with the existing state of the feature.
-- **See** `.setFeatureState()` [map method](https://www.mapbox.com/mapbox-gl-js/api/#map#setfeaturestate)
+- **See** `.setFeatureState()` [map method](https://docs.mapbox.com/mapbox-gl-js/api/#map#setfeaturestate)
 
 ### `getFeatureState(featureId)`
 
 - **Arguments:**
   - `featureId` `String | Number` Feature identifier.
 - **Description** Gets the state of a feature.
-- **See** `.getFeatureState()` [map method](https://www.mapbox.com/mapbox-gl-js/api/#map#getfeaturestate)
+- **See** `.getFeatureState()` [map method](https://docs.mapbox.com/mapbox-gl-js/api/#map#getfeaturestate)
 
 ### `removeFeatureState(featureId?, sourceLayer?, key?)`
 

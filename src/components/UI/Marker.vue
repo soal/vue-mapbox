@@ -121,7 +121,7 @@ export default {
 
     remove() {
       this.marker.remove();
-      this.$_emitEvent("removed", { marker: this.marker });
+      this.$_emitEvent("removed");
     },
 
     togglePopup() {

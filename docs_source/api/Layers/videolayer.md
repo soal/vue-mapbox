@@ -21,4 +21,4 @@ If you change it's value, changes automatically applied to the map.
 ### `video`
 
 - **Description** Returns the HTML video element.
-- **See** `.getVideo()` [method](https://www.mapbox.com/mapbox-gl-js/api/#videosource#getvideo)
+- **See** `.getVideo()` [method](https://docs.mapbox.com/mapbox-gl-js/api/#videosource#getvideo)

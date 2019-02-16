@@ -56,4 +56,17 @@ Add Vue, MapboxGL and Vue-mapbox scripts on your page:
 
 All components will be placed in global VueMapbox object (`VueMapbox.MglMap` etc.)
 
+## Migration from version 0.1.x
+
+In version `0.2` you don't need to register VueMapbox as Vue plugin.
+
+You don't need this code anymore:
+
+```js
+import VueMapbox from "vue-mapbox";
+import Mapbox from "mapbox-gl";
+
+Vue.use(VueMapbox, { mapboxgl: Mapbox });
+```
+
 Now you're ready for mapping. See how to [create a map](/guide/basemap.md).

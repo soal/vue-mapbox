@@ -68,8 +68,7 @@ export default {
 :::
 
 ::: tip Size
-~ 39 kB minified  
- ~ 7 kB minified and gzipped
+~ 15 kB minified and gzipped
 :::
 
 ::: warning Browser compatibility

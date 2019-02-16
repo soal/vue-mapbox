@@ -43,7 +43,8 @@ Full list of props see in [API docs](/api/glmap.md#props), note field 'Synced' i
 
 ## Map loading
 
-When map loads, `MglMap` component emits `load` event. Pyload of the event contains Mapbox GL JS `Map` object.
+When map loads, `MglMap` component emits `load` event. Payload of the event contains Mapbox GL JS `Map` object.
+All components placed under `MglMap` will be rendered only after map fully loaded.
 
 ::: warning Storing Map object
 Take note that it's generally bad idea to add to Vuex or component's `data` anything but primitive types and plain objects. Vue adds getters and setters to every property, so if you add `Map` object to Vuex store or component `data`, it may lead to weird bugs.
@@ -79,8 +80,8 @@ export default {
 
 ## Map actions
 
-Asynchronous map methods exposed at GlMap component in `actions` property. They returns `Promise`, that resolves when action completed.
-Promise resolves with map properties that has been changed by used action.
+Asynchronous map methods exposed at MglMap component in `actions` property. They returns `Promise`, that resolves when action completed.
+Promise resolves with map properties that has been changed by used action.  
 For example:
 
 ```vue

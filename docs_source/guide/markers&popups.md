@@ -99,7 +99,7 @@ In this example [Vuetify card component](https://vuetifyjs.com/en/components/car
     :mapStyle.sync="mapStyle"
     :center="coordinates"
   >
-    <MglPopup :coordinates="coordinates" :anchor="top">
+    <MglPopup anchor="top">
       <VCard> <div>Hello, I'm popup!</div> </VCard>
     </MglPopup>
   </MglMap>

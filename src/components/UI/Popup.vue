@@ -22,7 +22,7 @@ export default {
   name: "Popup",
   mixins: [withEvents, withSelfEvents],
 
-  inject: ["mapbox", "map"],
+  inject: ["mapbox", "map", "marker"],
 
   props: {
     /**
@@ -155,12 +155,8 @@ export default {
 
       this.$_emitEvent("added", { popup: this.popup });
 
-      if (this.$parent.marker !== undefined) {
-        this.$parent.marker.setPopup(this.popup);
-      } else {
-        this.$parent.$once("added", ({ marker }) => {
-          marker.setPopup(this.popup);
-        });
+      if (this.marker) {
+        this.marker.setPopup(this.popup);
       }
     },
 

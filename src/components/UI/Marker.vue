@@ -1,7 +1,7 @@
 <template>
   <div style="display: none">
     <!-- slot for custom marker -->
-    <slot name="marker" />
+    <slot v-if="marker" name="marker" />
     <!-- slot for popup -->
     <slot />
   </div>
@@ -22,6 +22,15 @@ export default {
   mixins: [withEvents, withSelfEvents],
 
   inject: ["mapbox", "map"],
+
+  provide() {
+    const self = this;
+    return {
+      get marker() {
+        return self.marker;
+      }
+    };
+  },
 
   props: {
     // mapbox marker options

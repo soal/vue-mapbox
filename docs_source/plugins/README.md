@@ -1,7 +1,11 @@
 # Plugins
 
-<!-- ## Overview
+## Overview
 
-## Using plugins -->
+Basic conception of Mapbox
 
-_coming soon_
+## Using plugins
+
+## Available plugins
+
+[VueMapbox Geocoder]()

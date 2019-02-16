@@ -229,6 +229,11 @@ module.exports = /******/ (function(modules) {
       /***/
     },
 
+    /***/ "044e": /***/ function(module, exports, __webpack_require__) {
+      // extracted by mini-css-extract-plugin
+      /***/
+    },
+
     /***/ "0d58": /***/ function(module, exports, __webpack_require__) {
       // 19.1.2.14 / 15.2.3.14 Object.keys(O)
       var $keys = __webpack_require__("ce10");
@@ -440,6 +445,12 @@ module.exports = /******/ (function(modules) {
           );
         }
       };
+
+      /***/
+    },
+
+    /***/ "2191": /***/ function(module, exports) {
+      module.exports = require("map-promisified");
 
       /***/
     },
@@ -753,6 +764,12 @@ module.exports = /******/ (function(modules) {
           }
         }
       );
+
+      /***/
+    },
+
+    /***/ "2ff6": /***/ function(module, exports) {
+      module.exports = require("mapbox-gl");
 
       /***/
     },
@@ -1517,11 +1534,6 @@ module.exports = /******/ (function(modules) {
       /***/
     },
 
-    /***/ "66e4": /***/ function(module, exports, __webpack_require__) {
-      // extracted by mini-css-extract-plugin
-      /***/
-    },
-
     /***/ "6762": /***/ function(module, exports, __webpack_require__) {
       "use strict";
 
@@ -1664,417 +1676,6 @@ module.exports = /******/ (function(modules) {
         if (it && !has((it = stat ? it : it.prototype), TAG))
           def(it, TAG, { configurable: true, value: tag });
       };
-
-      /***/
-    },
-
-    /***/ "7f84": /***/ function(module, exports, __webpack_require__) {
-      (function(e, n) {
-        true ? (module.exports = n()) : undefined;
-      })(window, function() {
-        return (function(e) {
-          var n = {};
-          function t(o) {
-            if (n[o]) return n[o].exports;
-            var r = (n[o] = { i: o, l: !1, exports: {} });
-            return e[o].call(r.exports, r, r.exports, t), (r.l = !0), r.exports;
-          }
-          return (
-            (t.m = e),
-            (t.c = n),
-            (t.d = function(e, n, o) {
-              t.o(e, n) ||
-                Object.defineProperty(e, n, { enumerable: !0, get: o });
-            }),
-            (t.r = function(e) {
-              "undefined" !== typeof Symbol &&
-                Symbol.toStringTag &&
-                Object.defineProperty(e, Symbol.toStringTag, {
-                  value: "Module"
-                }),
-                Object.defineProperty(e, "__esModule", { value: !0 });
-            }),
-            (t.t = function(e, n) {
-              if ((1 & n && (e = t(e)), 8 & n)) return e;
-              if (4 & n && "object" === typeof e && e && e.__esModule) return e;
-              var o = Object.create(null);
-              if (
-                (t.r(o),
-                Object.defineProperty(o, "default", {
-                  enumerable: !0,
-                  value: e
-                }),
-                2 & n && "string" != typeof e)
-              )
-                for (var r in e)
-                  t.d(
-                    o,
-                    r,
-                    function(n) {
-                      return e[n];
-                    }.bind(null, r)
-                  );
-              return o;
-            }),
-            (t.n = function(e) {
-              var n =
-                e && e.__esModule
-                  ? function() {
-                      return e["default"];
-                    }
-                  : function() {
-                      return e;
-                    };
-              return t.d(n, "a", n), n;
-            }),
-            (t.o = function(e, n) {
-              return Object.prototype.hasOwnProperty.call(e, n);
-            }),
-            (t.p = ""),
-            t((t.s = 0))
-          );
-        })([
-          function(e, n, t) {
-            e.exports = t(1);
-          },
-          function(e, n, t) {
-            "use strict";
-            t.r(n);
-            var o = [
-                {
-                  name: "moveend",
-                  check: function(e, n) {
-                    return n.center && e.isMoving();
-                  }
-                },
-                {
-                  name: "zoomend",
-                  check: function(e, n) {
-                    return (
-                      void 0 !== n.zoom && null !== n.zoom && e.isZooming()
-                    );
-                  }
-                },
-                {
-                  name: "rotateend",
-                  check: function(e, n) {
-                    return (
-                      void 0 !== n.bearing &&
-                      null !== n.bearing &&
-                      e.isRotating()
-                    );
-                  }
-                },
-                {
-                  name: "pitchend",
-                  check: function(e, n) {
-                    return (
-                      void 0 !== n.pitch && null !== n.bearing && e.isMoving()
-                    );
-                  }
-                }
-              ],
-              r = function(e) {
-                return {
-                  center: e.getCenter(),
-                  zoom: e.getZoom(),
-                  bearing: e.getBearing(),
-                  pitch: e.getPitch()
-                };
-              },
-              i = { events: o, getter: r },
-              u = {
-                events: [
-                  {
-                    name: "moveend",
-                    check: function(e) {
-                      return e.isMoving();
-                    }
-                  }
-                ],
-                getter: function(e) {
-                  return { center: e.getCenter() };
-                }
-              },
-              c = {
-                events: [
-                  {
-                    name: "zoomend",
-                    check: function(e) {
-                      return e.isZooming();
-                    }
-                  }
-                ],
-                getter: function(e) {
-                  return { zoom: e.getZoom() };
-                }
-              },
-              f = {
-                events: [
-                  {
-                    name: "rotateend",
-                    check: function(e) {
-                      return e.isRotating();
-                    }
-                  }
-                ],
-                getter: function(e) {
-                  return { bearing: e.getBearing() };
-                }
-              },
-              a = {
-                setCenter: u,
-                panBy: u,
-                panTo: u,
-                setZoom: c,
-                zoomTo: c,
-                zoomIn: c,
-                zoomOut: c,
-                setBearing: f,
-                rotateTo: f,
-                resetNorth: f,
-                snapToNorth: f,
-                setPitch: {
-                  events: [
-                    {
-                      name: "pitchend",
-                      check: function(e) {
-                        return !0;
-                      }
-                    }
-                  ],
-                  getter: function(e) {
-                    return { pitch: e.getPitch() };
-                  }
-                },
-                fitBounds: {
-                  events: [
-                    {
-                      name: "zoomend",
-                      check: function(e) {
-                        return e.isZooming();
-                      }
-                    },
-                    {
-                      name: "moveend",
-                      check: function(e) {
-                        return e.isMoving();
-                      }
-                    },
-                    {
-                      name: "rotateend",
-                      check: function(e) {
-                        return e.isRotating();
-                      }
-                    }
-                  ],
-                  getter: function(e) {
-                    return {
-                      zoom: e.getZoom(),
-                      bearing: e.getBearing(),
-                      pitch: e.getPitch(),
-                      center: e.getCenter()
-                    };
-                  }
-                },
-                fitScreenCoordinates: {
-                  events: [
-                    {
-                      name: "zoomend",
-                      check: function(e, n) {
-                        return e.isZooming();
-                      }
-                    },
-                    {
-                      name: "moveend",
-                      check: function(e, n) {
-                        return e.isMoving();
-                      }
-                    },
-                    {
-                      name: "rotateend",
-                      check: function(e, n) {
-                        return n.bearing && e.isRotating();
-                      }
-                    }
-                  ],
-                  getter: function(e) {
-                    return {
-                      zoom: e.getZoom(),
-                      center: e.getCenter(),
-                      bearing: e.getBearing(),
-                      pitch: e.getPitch()
-                    };
-                  }
-                },
-                jumpTo: i,
-                easeTo: i,
-                flyTo: i
-              };
-            function l(e) {
-              return (
-                (l =
-                  "function" === typeof Symbol &&
-                  "symbol" === typeof Symbol.iterator
-                    ? function(e) {
-                        return typeof e;
-                      }
-                    : function(e) {
-                        return e &&
-                          "function" === typeof Symbol &&
-                          e.constructor === Symbol &&
-                          e !== Symbol.prototype
-                          ? "symbol"
-                          : typeof e;
-                      }),
-                l(e)
-              );
-            }
-            function m(e) {
-              for (var n = 1; n < arguments.length; n++) {
-                var t = null != arguments[n] ? arguments[n] : {},
-                  o = Object.keys(t);
-                "function" === typeof Object.getOwnPropertySymbols &&
-                  (o = o.concat(
-                    Object.getOwnPropertySymbols(t).filter(function(e) {
-                      return Object.getOwnPropertyDescriptor(t, e).enumerable;
-                    })
-                  )),
-                  o.forEach(function(n) {
-                    g(e, n, t[n]);
-                  });
-              }
-              return e;
-            }
-            function g(e, n, t) {
-              return (
-                n in e
-                  ? Object.defineProperty(e, n, {
-                      value: t,
-                      enumerable: !0,
-                      configurable: !0,
-                      writable: !0
-                    })
-                  : (e[n] = t),
-                e
-              );
-            }
-            function s(e) {
-              return ""
-                .concat(e, "-")
-                .concat(("" + Math.random()).split(".")[1]);
-            }
-            function d(e, n, t, o) {
-              var r = function r(i) {
-                i.type === n && i.eventId === t && (e.off(n, r), o(i));
-              };
-              return r;
-            }
-            function p(e, n) {
-              var t = e[n],
-                o = t.length;
-              return function() {
-                for (
-                  var r = [],
-                    i = { eventId: s(n) },
-                    u = a[n].events.map(function(n, t) {
-                      return {
-                        event: n,
-                        func: new Promise(function(o, u) {
-                          (r[t] = {
-                            event: n,
-                            func: d(e, n.name, i.eventId, o)
-                          }),
-                            e.on(n.name, r[t].func);
-                        })
-                      };
-                    }),
-                    c = [],
-                    f = 0;
-                  f < o;
-                  f++
-                )
-                  f === o - 1
-                    ? c.push(
-                        m(
-                          {},
-                          i,
-                          (f < 0 || arguments.length <= f
-                            ? void 0
-                            : arguments[f]) || {}
-                        )
-                      )
-                    : c.push(
-                        (f < 0 || arguments.length <= f
-                          ? void 0
-                          : arguments[f]) || null
-                      );
-                var g = [],
-                  p = (arguments.length <= 0 ? void 0 : arguments[0]) || {};
-                try {
-                  t.apply(e, c),
-                    "fitBounds" === n && (p = {}),
-                    "fitScreenCoordinates" === n &&
-                      ((p = { bearing: null }),
-                      (p.bearing = null),
-                      "number" ===
-                        typeof (arguments.length <= 2
-                          ? void 0
-                          : arguments[2]) &&
-                        (p.bearing =
-                          arguments.length <= 2 ? void 0 : arguments[2]),
-                      (arguments.length <= 3 ? void 0 : arguments[3]) &&
-                        "object" ===
-                          l(arguments.length <= 3 ? void 0 : arguments[3]) &&
-                        (p = m(
-                          {},
-                          p,
-                          arguments.length <= 3 ? void 0 : arguments[3]
-                        ))),
-                    (g = u.map(function(n) {
-                      var t = n.event,
-                        o = n.func;
-                      return t.check(e, p)
-                        ? o
-                        : (e.off(t.name, o), Promise.resolve());
-                    }));
-                } catch (v) {
-                  throw (r.forEach(function(n) {
-                    var t = n.event,
-                      o = n.func;
-                    e.off(t.name, o);
-                  }),
-                  v);
-                }
-                return Promise.all(g).then(function() {
-                  return a[n].getter(e);
-                });
-              };
-            }
-            var v = p,
-              h = function(e) {
-                var n = Object.keys(a),
-                  t = {};
-                return (
-                  n.forEach(function(o) {
-                    -1 !== n.indexOf(o) && (t[o] = v(e, o));
-                  }),
-                  t
-                );
-              };
-            function b(e) {
-              var n =
-                arguments.length > 1 && void 0 !== arguments[1]
-                  ? arguments[1]
-                  : null;
-              return n ? v(e, n) : h(e);
-            }
-            t.d(n, "default", function() {
-              return b;
-            });
-          }
-        ])["default"];
-      });
 
       /***/
     },
@@ -2818,6 +2419,25 @@ module.exports = /******/ (function(modules) {
       /***/
     },
 
+    /***/ d7b6: /***/ function(
+      module,
+      __webpack_exports__,
+      __webpack_require__
+    ) {
+      "use strict";
+      /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_1409523d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+        "044e"
+      );
+      /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_1409523d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
+        _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_1409523d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__
+      );
+      /* unused harmony reexport * */
+      /* unused harmony default export */ var _unused_webpack_default_export =
+        _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_1409523d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a;
+
+      /***/
+    },
+
     /***/ d8e8: /***/ function(module, exports) {
       module.exports = function(it) {
         if (typeof it != "function")
@@ -2843,25 +2463,6 @@ module.exports = /******/ (function(modules) {
       module.exports = "constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(
         ","
       );
-
-      /***/
-    },
-
-    /***/ e743: /***/ function(
-      module,
-      __webpack_exports__,
-      __webpack_require__
-    ) {
-      "use strict";
-      /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_54c577ae_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-        "66e4"
-      );
-      /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_54c577ae_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
-        _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_54c577ae_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__
-      );
-      /* unused harmony reexport * */
-      /* unused harmony default export */ var _unused_webpack_default_export =
-        _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_54c577ae_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a;
 
       /***/
     },
@@ -2929,7 +2530,7 @@ module.exports = /******/ (function(modules) {
       // Indicate to webpack that this file can be concatenated
       /* harmony default export */ var setPublicPath = null;
 
-      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"752d9a0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/GlMap.vue?vue&type=template&id=54c577ae&scoped=true&
+      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/GlMap.vue?vue&type=template&id=1409523d&scoped=true&
       var render = function() {
         var _vm = this;
         var _h = _vm.$createElement;
@@ -2950,7 +2551,7 @@ module.exports = /******/ (function(modules) {
         }
       ];
 
-      // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=template&id=54c577ae&scoped=true&
+      // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=template&id=1409523d&scoped=true&
 
       // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
       var web_dom_iterable = __webpack_require__("ac6a");
@@ -2960,6 +2561,14 @@ module.exports = /******/ (function(modules) {
 
       // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
       var es6_object_keys = __webpack_require__("456d");
+
+      // EXTERNAL MODULE: external {"commonjs":"mapbox-gl","commonjs2":"mapbox-gl","amd":"mapbox-gl","root":"mapbox-gl"}
+      var external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapbox_gl_root_mapbox_gl_ = __webpack_require__(
+        "2ff6"
+      );
+      var external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapbox_gl_root_mapbox_gl_default = /*#__PURE__*/ __webpack_require__.n(
+        external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapbox_gl_root_mapbox_gl_
+      );
 
       // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
       function _defineProperty(obj, key, value) {
@@ -3194,10 +2803,6 @@ module.exports = /******/ (function(modules) {
           default: function _default() {
             return "map-".concat(("" + Math.random()).split(".")[1]);
           }
-        },
-        mapbox: {
-          type: Object,
-          required: true
         },
         accessToken: {
           type: String,
@@ -3565,10 +3170,12 @@ module.exports = /******/ (function(modules) {
           }
         }
       };
-      // EXTERNAL MODULE: ./node_modules/map-promisified/dist/mapPromisify.js
-      var mapPromisify = __webpack_require__("7f84");
-      var mapPromisify_default = /*#__PURE__*/ __webpack_require__.n(
-        mapPromisify
+      // EXTERNAL MODULE: external {"commonjs":"map-promisified","commonjs2":"map-promisified","amd":"map-promisified","root":"map-promisified"}
+      var external_commonjs_map_promisified_commonjs2_map_promisified_amd_map_promisified_root_map_promisified_ = __webpack_require__(
+        "2191"
+      );
+      var external_commonjs_map_promisified_commonjs2_map_promisified_amd_map_promisified_root_map_promisified_default = /*#__PURE__*/ __webpack_require__.n(
+        external_commonjs_map_promisified_commonjs2_map_promisified_amd_map_promisified_root_map_promisified_
       );
 
       // CONCATENATED MODULE: ./src/components/map/mixins/withAsyncActions.js
@@ -3579,23 +3186,29 @@ module.exports = /******/ (function(modules) {
         },
         methods: {
           $_registerAsyncActions: function $_registerAsyncActions(map) {
-            this.actions = _objectSpread({}, mapPromisify_default()(map), {
-              stop: function stop() {
-                var _this = this;
+            this.actions = _objectSpread(
+              {},
+              external_commonjs_map_promisified_commonjs2_map_promisified_amd_map_promisified_root_map_promisified_default()(
+                map
+              ),
+              {
+                stop: function stop() {
+                  var _this = this;
 
-                this.map.stop();
-                var updatedProps = {
-                  pitch: this.map.getPitch(),
-                  zoom: this.map.getZoom(),
-                  bearing: this.map.getBearing(),
-                  center: this.map.getCenter()
-                };
-                Object.entries(updatedProps).forEach(function(prop) {
-                  _this.$_updateSyncedPropsFabric(prop[0], prop[1])();
-                });
-                return Promise.resolve(updatedProps);
+                  this.map.stop();
+                  var updatedProps = {
+                    pitch: this.map.getPitch(),
+                    zoom: this.map.getZoom(),
+                    bearing: this.map.getBearing(),
+                    center: this.map.getCenter()
+                  };
+                  Object.entries(updatedProps).forEach(function(prop) {
+                    _this.$_updateSyncedPropsFabric(prop[0], prop[1])();
+                  });
+                  return Promise.resolve(updatedProps);
+                }
               }
-            });
+            );
           }
         }
       };
@@ -3621,7 +3234,9 @@ module.exports = /******/ (function(modules) {
         provide: function provide() {
           var self = this;
           return {
-            mapbox: this.mapbox,
+            get mapbox() {
+              return self.mapbox;
+            },
 
             get map() {
               return self.map;
@@ -3631,7 +3246,6 @@ module.exports = /******/ (function(modules) {
         data: function data() {
           return {
             initial: true,
-            baseMap: true,
             initialized: false
           };
         },
@@ -3668,6 +3282,8 @@ module.exports = /******/ (function(modules) {
         created: function created() {
           this.map = null;
           this.propsIsUpdating = {};
+          this.mapbox =
+            external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapbox_gl_root_mapbox_gl_default.a;
         },
         mounted: function mounted() {
           var _this = this;
@@ -3705,9 +3321,9 @@ module.exports = /******/ (function(modules) {
       };
       // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=script&lang=js&
       /* harmony default export */ var map_GlMapvue_type_script_lang_js_ = GlMapvue_type_script_lang_js_;
-      // EXTERNAL MODULE: ./src/components/map/GlMap.vue?vue&type=style&index=0&id=54c577ae&scoped=true&lang=css&
-      var GlMapvue_type_style_index_0_id_54c577ae_scoped_true_lang_css_ = __webpack_require__(
-        "e743"
+      // EXTERNAL MODULE: ./src/components/map/GlMap.vue?vue&type=style&index=0&id=1409523d&scoped=true&lang=css&
+      var GlMapvue_type_style_index_0_id_1409523d_scoped_true_lang_css_ = __webpack_require__(
+        "d7b6"
       );
 
       // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
@@ -3821,7 +3437,7 @@ module.exports = /******/ (function(modules) {
         staticRenderFns,
         false,
         null,
-        "54c577ae",
+        "1409523d",
         null
       );
 
@@ -3831,7 +3447,13 @@ module.exports = /******/ (function(modules) {
 
       /* harmony default export */ var withSelfEvents = {
         methods: {
-          /** Bind events for markers and popups.
+          $_emitSelfEvent: function $_emitSelfEvent(event) {
+            this.$_emitMapEvent(event, {
+              control: this.control
+            });
+          },
+
+          /** Bind events for markers and popups and controls.
            * MapboxGL JS emits this events on popup or marker object,
            * so we treat them as 'self' events of these objects
            */
@@ -3949,24 +3571,12 @@ module.exports = /******/ (function(modules) {
           }
         },
         created: function created() {
-          this.control = new this.mapbox.GeolocateControl(this.$props);
+          var GeolocateControl = this.mapbox.GeolocateControl;
+          this.control = new GeolocateControl(this.$props);
           this.$_addControl();
           this.$_bindSelfEvents(Object.keys(geolocationEvents), this.control);
         },
         methods: {
-          $_emitSelfEvent: function $_emitSelfEvent(event) {
-            if (event.type === "error") {
-              this.$_emitMapEvent("geolocate-error", {
-                control: this.control
-              });
-            }
-
-            if (event.type === "geolocate") {
-              this.$_emitMapEvent("geolocate", {
-                control: this.control
-              });
-            }
-          },
           trigger: function trigger() {
             if (this.control) {
               return this.control.trigger();
@@ -4040,21 +3650,21 @@ module.exports = /******/ (function(modules) {
           this.$_addControl();
         }
       };
-      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"752d9a0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=template&id=219782b8&
-      var Markervue_type_template_id_219782b8_render = function() {
+      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=template&id=031b2b03&
+      var Markervue_type_template_id_031b2b03_render = function() {
         var _vm = this;
         var _h = _vm.$createElement;
         var _c = _vm._self._c || _h;
         return _c(
           "div",
           { staticStyle: { display: "none" } },
-          [_vm._t("marker"), _vm._t("default")],
+          [_vm.marker ? _vm._t("marker") : _vm._e(), _vm._t("default")],
           2
         );
       };
-      var Markervue_type_template_id_219782b8_staticRenderFns = [];
+      var Markervue_type_template_id_031b2b03_staticRenderFns = [];
 
-      // CONCATENATED MODULE: ./src/components/UI/Marker.vue?vue&type=template&id=219782b8&
+      // CONCATENATED MODULE: ./src/components/UI/Marker.vue?vue&type=template&id=031b2b03&
 
       // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=script&lang=js&
 
@@ -4077,6 +3687,14 @@ module.exports = /******/ (function(modules) {
         name: "MapMarker",
         mixins: [withEvents, withSelfEvents],
         inject: ["mapbox", "map"],
+        provide: function provide() {
+          var self = this;
+          return {
+            get marker() {
+              return self.marker;
+            }
+          };
+        },
         props: {
           // mapbox marker options
           offset: {
@@ -4169,9 +3787,7 @@ module.exports = /******/ (function(modules) {
           },
           remove: function remove() {
             this.marker.remove();
-            this.$_emitEvent("removed", {
-              marker: this.marker
-            });
+            this.$_emitEvent("removed");
           },
           togglePopup: function togglePopup() {
             return this.marker.togglePopup();
@@ -4186,8 +3802,8 @@ module.exports = /******/ (function(modules) {
 
       var Marker_component = normalizeComponent(
         UI_Markervue_type_script_lang_js_,
-        Markervue_type_template_id_219782b8_render,
-        Markervue_type_template_id_219782b8_staticRenderFns,
+        Markervue_type_template_id_031b2b03_render,
+        Markervue_type_template_id_031b2b03_staticRenderFns,
         false,
         null,
         null,
@@ -4196,8 +3812,8 @@ module.exports = /******/ (function(modules) {
 
       Marker_component.options.__file = "Marker.vue";
       /* harmony default export */ var Marker = Marker_component.exports;
-      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"752d9a0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=template&id=24cace89&
-      var Popupvue_type_template_id_24cace89_render = function() {
+      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=template&id=4b9d5350&
+      var Popupvue_type_template_id_4b9d5350_render = function() {
         var _vm = this;
         var _h = _vm.$createElement;
         var _c = _vm._self._c || _h;
@@ -4208,9 +3824,9 @@ module.exports = /******/ (function(modules) {
           2
         );
       };
-      var Popupvue_type_template_id_24cace89_staticRenderFns = [];
+      var Popupvue_type_template_id_4b9d5350_staticRenderFns = [];
 
-      // CONCATENATED MODULE: ./src/components/UI/Popup.vue?vue&type=template&id=24cace89&
+      // CONCATENATED MODULE: ./src/components/UI/Popup.vue?vue&type=template&id=4b9d5350&
 
       // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=script&lang=js&
 
@@ -4234,7 +3850,7 @@ module.exports = /******/ (function(modules) {
       /* harmony default export */ var Popupvue_type_script_lang_js_ = {
         name: "Popup",
         mixins: [withEvents, withSelfEvents],
-        inject: ["mapbox", "map"],
+        inject: ["mapbox", "map", "marker"],
         props: {
           /**
            * If `true`, a close button will appear in the top right corner of the popup.
@@ -4343,8 +3959,6 @@ module.exports = /******/ (function(modules) {
         },
         methods: {
           $_addPopup: function $_addPopup() {
-            var _this = this;
-
             this.popup = new this.mapbox.Popup(this.$props);
             if (this.coordinates !== undefined)
               this.popup.setLngLat(this.coordinates);
@@ -4369,13 +3983,8 @@ module.exports = /******/ (function(modules) {
               popup: this.popup
             });
 
-            if (this.$parent.marker !== undefined) {
-              this.$parent.marker.setPopup(this.popup);
-            } else {
-              this.$parent.$once("added", function(_ref) {
-                var marker = _ref.marker;
-                marker.setPopup(_this.popup);
-              });
+            if (this.marker) {
+              this.marker.setPopup(this.popup);
             }
           },
           $_emitSelfEvent: function $_emitSelfEvent(event) {
@@ -4399,8 +4008,8 @@ module.exports = /******/ (function(modules) {
 
       var Popup_component = normalizeComponent(
         UI_Popupvue_type_script_lang_js_,
-        Popupvue_type_template_id_24cace89_render,
-        Popupvue_type_template_id_24cace89_staticRenderFns,
+        Popupvue_type_template_id_4b9d5350_render,
+        Popupvue_type_template_id_4b9d5350_staticRenderFns,
         false,
         null,
         null,
@@ -4428,51 +4037,9 @@ module.exports = /******/ (function(modules) {
         "touchend",
         "touchcancel"
       ];
-      // CONCATENATED MODULE: ./src/lib/withRegistration.js
-      function walkParents(component) {
-        if (component.baseMap) {
-          return component;
-        } else {
-          if (component.$parent !== undefined) {
-            return walkParents(component.$parent);
-          }
-        }
-      }
-
-      /* harmony default export */ var withRegistration = {
-        created: function created() {
-          this.map = null;
-        },
-        mounted: function mounted() {
-          this.$_checkMapTree(); // We wait for "load" event from map component to ensure mapbox is loaded and map created
-        },
-        methods: {
-          $_findBaseMap: function $_findBaseMap() {
-            var baseMapComponent = walkParents(this.$parent);
-
-            if (baseMapComponent === undefined) {
-              throw new Error("Component must have root map");
-            }
-
-            return baseMapComponent;
-          },
-          $_checkMapTree: function $_checkMapTree() {
-            var mapComponent = this.$_findBaseMap();
-
-            if (mapComponent) {
-              if (mapComponent.mapLoaded) {
-                this.$_deferredMount({
-                  component: mapComponent,
-                  map: mapComponent.map
-                });
-              } else {
-                mapComponent.$on("load", this.$_deferredMount);
-              }
-            }
-          }
-        }
-      };
       // CONCATENATED MODULE: ./src/components/layer/layerMixin.js
+
+      // import withRegistration from "../../lib/withRegistration";
 
       var mapboxSourceProps = {
         sourceId: {
@@ -4513,13 +4080,14 @@ module.exports = /******/ (function(modules) {
         }
       };
       /* harmony default export */ var layerMixin = {
-        mixins: [withRegistration, withEvents],
+        mixins: [withEvents],
         props: _objectSpread(
           {},
           mapboxSourceProps,
           mapboxLayerStyleProps,
           componentProps
         ),
+        inject: ["mapbox", "map"],
         data: function data() {
           return {
             initial: true
@@ -4838,10 +4406,12 @@ module.exports = /******/ (function(modules) {
               }
             );
           }
+
+          this.$_deferredMount();
         },
         methods: {
-          $_deferredMount: function $_deferredMount(payload) {
-            this.map = payload.map;
+          $_deferredMount: function $_deferredMount() {
+            // this.map = payload.map;
             this.map.on("dataloading", this.$_watchSourceLoading);
 
             if (this.source) {
@@ -4865,8 +4435,7 @@ module.exports = /******/ (function(modules) {
             this.$_addLayer();
             this.$_bindLayerEvents(layerEvents);
             this.map.off("dataloading", this.$_watchSourceLoading);
-            this.initial = false;
-            payload.component.$off("load", this.$_deferredMount);
+            this.initial = false; // payload.component.$off("load", this.$_deferredMount);
           },
           $_addLayer: function $_addLayer() {
             var existed = this.map.getLayer(this.layerId);
@@ -4911,6 +4480,20 @@ module.exports = /******/ (function(modules) {
                 source: this.source
               };
               return this.map.getFeatureState(params);
+            }
+          },
+          removeFeatureState: function removeFeatureState(
+            featureId,
+            sourceLayer,
+            key
+          ) {
+            if (this.map) {
+              var params = {
+                id: featureId,
+                source: this.source,
+                sourceLayer: sourceLayer
+              };
+              return this.map.removeFeatureState(params, key);
             }
           }
         }
@@ -4957,9 +4540,11 @@ module.exports = /******/ (function(modules) {
               );
             }
           }
+
+          this.$_deferredMount();
         },
         methods: {
-          $_deferredMount: function $_deferredMount(payload) {
+          $_deferredMount: function $_deferredMount() {
             var source = _objectSpread(
               {
                 type: "image"
@@ -4967,7 +4552,6 @@ module.exports = /******/ (function(modules) {
               this.source
             );
 
-            this.map = payload.map;
             this.map.on("dataloading", this.$_watchSourceLoading);
 
             try {
@@ -4982,7 +4566,6 @@ module.exports = /******/ (function(modules) {
             this.$_addLayer();
             this.$_bindLayerEvents(layerEvents);
             this.initial = false;
-            payload.component.$off("load", this.$_deferredMount);
           },
           $_addLayer: function $_addLayer() {
             var existed = this.map.getLayer(this.layerId);
@@ -5019,26 +4602,15 @@ module.exports = /******/ (function(modules) {
       /* harmony default export */ var CanvasLayer = {
         name: "CanvasLayer",
         mixins: [layerMixin],
+        inject: ["mapbox", "map"],
         props: {
-          canvas: {
-            type: [HTMLCanvasElement, String],
-            default: null
-          },
-          coordinates: {
-            type: Array,
+          source: {
+            type: Object,
             required: true
           },
-          animate: {
-            type: Boolean,
-            default: true
-          },
-          width: {
-            type: Number,
-            default: 100
-          },
-          height: {
-            type: Number,
-            default: 100
+          layer: {
+            type: Object,
+            default: null
           }
         },
         computed: {
@@ -5047,37 +4619,23 @@ module.exports = /******/ (function(modules) {
           }
         },
         watch: {
-          minzoom: function minzoom(val) {
-            if (this.initial) return;
-            this.map.setLayerZoomRange(this.layerId, val, this.maxzoom);
-          },
-          maxzoom: function maxzoom(val) {
-            if (this.initial) return;
-            this.map.setLayerZoomRange(this.layerId, this.minzoom, val);
-          },
           coordinates: function coordinates(val) {
             if (this.initial) return;
             this.mapSource.setCoordinates(val);
           }
         },
+        created: function created() {
+          this.$_deferredMount();
+        },
         methods: {
-          $_deferredMount: function $_deferredMount(payload) {
-            var canvasElement = this.canvas;
+          $_deferredMount: function $_deferredMount() {
+            var source = _objectSpread(
+              {
+                type: "canvas"
+              },
+              this.source
+            );
 
-            if (!canvasElement) {
-              canvasElement = document.createElement("canvas");
-              canvasElement.id = this.sourceId;
-              canvasElement.width = this.width;
-              canvasElement.height = this.height;
-            }
-
-            var source = {
-              type: "canvas",
-              coordinates: this.coordinates,
-              animate: this.animate,
-              canvas: canvasElement
-            };
-            this.map = payload.map;
             this.map.on("dataloading", this.$_watchSourceLoading);
 
             try {
@@ -5091,7 +4649,6 @@ module.exports = /******/ (function(modules) {
 
             this.$_addLayer();
             this.$_bindLayerEvents(layerEvents);
-            payload.component.$off("load", this.$_deferredMount);
             this.initial = false;
           },
           $_addLayer: function $_addLayer() {
@@ -5108,33 +4665,19 @@ module.exports = /******/ (function(modules) {
               }
             }
 
-            var layer = {
-              id: this.layerId,
-              source: this.sourceId,
-              type: "raster"
-            };
+            var layer = _objectSpread(
+              {
+                id: this.layerId,
+                source: this.sourceId,
+                type: "raster"
+              },
+              this.layer
+            );
 
-            if (this.refLayer) {
-              layer.ref = this.refLayer;
-            } else {
-              if (this["source-layer"]) {
-                layer["source-layer"] = this["source-layer"];
-              }
-
-              if (this.minzoom) layer.minzoom = this.minzoom;
-              if (this.maxzoom) layer.maxzoom = this.maxzoom;
-            }
-
-            layer.paint = this.paint
-              ? this.paint
-              : {
-                  "raster-opacity": 0.85
-                };
-            layer.metadata = this.metadata;
             this.map.addLayer(layer, this.before);
             this.$_emitEvent("added", {
               layerId: this.layerId,
-              canvas: this.canvas
+              canvas: this.canvasElement
             });
           }
         }
@@ -5156,9 +4699,11 @@ module.exports = /******/ (function(modules) {
               this.mapSource.setCoordinates(next);
             });
           }
+
+          this.$_deferredMount();
         },
         methods: {
-          $_deferredMount: function $_deferredMount(payload) {
+          $_deferredMount: function $_deferredMount() {
             var source = _objectSpread(
               {
                 type: "video"
@@ -5166,7 +4711,6 @@ module.exports = /******/ (function(modules) {
               this.source
             );
 
-            this.map = payload.map;
             this.map.on("dataloading", this.$_watchSourceLoading);
 
             try {
@@ -5181,7 +4725,6 @@ module.exports = /******/ (function(modules) {
             this.$_addLayer();
             this.$_bindLayerEvents(layerEvents);
             this.initial = false;
-            payload.component.$off("load", this.$_deferredMount);
           },
           $_addLayer: function $_addLayer() {
             var existed = this.map.getLayer(this.layerId);
@@ -5254,11 +4797,11 @@ module.exports = /******/ (function(modules) {
             this.map.setFilter(this.layerId, _filter);
           }
         },
+        created: function created() {
+          this.$_deferredMount();
+        },
         methods: {
-          $_deferredMount: function $_deferredMount(payload) {
-            if (payload.mapId !== this.mapId) return;
-            this.map = payload.map;
-
+          $_deferredMount: function $_deferredMount() {
             var source = _objectSpread(
               {
                 type: "vector"
@@ -5281,7 +4824,6 @@ module.exports = /******/ (function(modules) {
             this.$_bindLayerEvents(layerEvents);
             this.map.off("dataloading", this.$_watchSourceLoading);
             this.initial = false;
-            payload.component.$off("load", this.$_deferredMount);
           },
           $_addLayer: function $_addLayer() {
             var existed = this.map.getLayer(this.layerId);
@@ -5337,57 +4879,17 @@ module.exports = /******/ (function(modules) {
       /* harmony default export */ var RasterLayer = {
         name: "RasterLayer",
         mixins: [layerMixin],
-        // props: {
-        //   url: {
-        //     type: String,
-        //     default: undefined
-        //   },
-        //   tiles: {
-        //     type: Array,
-        //     default: undefined
-        //   },
-        //   tilesMinZoom: {
-        //     type: Number,
-        //     default: 0
-        //   },
-        //   tilesMaxZoom: {
-        //     type: Number,
-        //     default: 22
-        //   },
-        //   tileSize: {
-        //     type: Number,
-        //     default: 512
-        //   },
-        //   bounds: {
-        //     type: Array,
-        //     default: () => [-180, -85.051129, 180, 85.051129]
-        //   },
-        //   scheme: {
-        //     type: String,
-        //     default: undefined
-        //   },
-        //   attribution: {
-        //     type: String,
-        //     default: undefined
-        //   }
-        // },
+        created: function created() {
+          this.$_deferredMount();
+        },
         methods: {
-          $_deferredMount: function $_deferredMount(payload) {
-            this.map = payload.map;
-
+          $_deferredMount: function $_deferredMount() {
             var source = _objectSpread(
               {
                 type: "raster"
               },
               this.source
-            ); // if (!this.url) {
-            //   source.minzoom = this.tilesMinZoom;
-            //   source.maxzoom = this.tilesMaxZoom;
-            //   source.bounds = this.bounds;
-            // }
-            // if (this.tiles) source.tiles = this.tiles;
-            // if (this.scheme) source.scheme = this.scheme;
-            // if (this.attribution) source.attribution = this.attribution;
+            );
 
             this.map.on("dataloading", this.$_watchSourceLoading);
 
@@ -5404,7 +4906,6 @@ module.exports = /******/ (function(modules) {
             this.$_bindLayerEvents(layerEvents);
             this.map.off("dataloading", this.$_watchSourceLoading);
             this.initial = false;
-            payload.component.$off("load", this.$_deferredMount);
           },
           $_addLayer: function $_addLayer() {
             var existed = this.map.getLayer(this.layerId);
@@ -5433,6 +4934,50 @@ module.exports = /******/ (function(modules) {
             this.$_emitEvent("added", {
               layerId: this.layerId
             });
+          }
+        }
+      };
+      // CONCATENATED MODULE: ./src/lib/withRegistration.js
+      function walkParents(component) {
+        if (component.baseMap) {
+          return component;
+        } else {
+          if (component.$parent !== undefined) {
+            return walkParents(component.$parent);
+          }
+        }
+      }
+
+      /* harmony default export */ var withRegistration = {
+        created: function created() {
+          this.map = null;
+        },
+        mounted: function mounted() {
+          this.$_checkMapTree(); // We wait for "load" event from map component to ensure mapbox is loaded and map created
+        },
+        methods: {
+          $_findBaseMap: function $_findBaseMap() {
+            var baseMapComponent = walkParents(this.$parent);
+
+            if (baseMapComponent === undefined) {
+              throw new Error("Component must have root map");
+            }
+
+            return baseMapComponent;
+          },
+          $_checkMapTree: function $_checkMapTree() {
+            var mapComponent = this.$_findBaseMap();
+
+            if (mapComponent) {
+              if (mapComponent.mapLoaded) {
+                this.$_deferredMount({
+                  component: mapComponent,
+                  map: mapComponent.map
+                });
+              } else {
+                mapComponent.$on("load", this.$_deferredMount);
+              }
+            }
           }
         }
       };

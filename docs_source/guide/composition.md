@@ -142,4 +142,4 @@ export default {
 </script>
 ```
 
-After successful mount all components emits 'added' envent with Vue component object and additional data, such as corresponding Mapbox GL JS object or object containing layer id in payload.
+After successful mount all components emits `added` envent with Vue component object and additional data, such as corresponding Mapbox GL JS object or object containing layer id in payload.

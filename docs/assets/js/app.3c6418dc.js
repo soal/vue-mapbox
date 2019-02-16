@@ -56,12 +56,12 @@
                 3: "02aa2be5",
                 4: "4f3338df",
                 5: "d3d1578a",
-                6: "5fb76a0f",
-                7: "cdef235f",
+                6: "49edb5d4",
+                7: "8a7d31ef",
                 8: "8b4b828f",
                 9: "aebbb2ac",
-                10: "496a25ae",
-                11: "6a850a37",
+                10: "02b7c2a1",
+                11: "ee64ec8f",
                 12: "f0cb3c91",
                 13: "57cb96bf",
                 14: "7b3fcbc6",
@@ -73,8 +73,8 @@
                 20: "f558f091",
                 21: "6a1f30f2",
                 22: "8dc7d898",
-                23: "211d4995",
-                24: "22f05a02",
+                23: "8f63a317",
+                24: "fbed590e",
                 25: "8dd04822",
                 26: "f0948172"
               }[t] +
@@ -8305,12 +8305,12 @@
         Layout: () => Promise.all([n.e(0), n.e(2)]).then(n.bind(null, 142))
       },
       ka = {
-        "v-acd593fc": () => n.e(6).then(n.bind(null, 163)),
-        "v-9af1f7dc": () => n.e(7).then(n.bind(null, 162)),
+        "v-9af1f7dc": () => n.e(7).then(n.bind(null, 163)),
+        "v-acd593fc": () => n.e(6).then(n.bind(null, 162)),
         "v-073619c3": () => n.e(8).then(n.bind(null, 161)),
         "v-0bcaedd9": () => n.e(9).then(n.bind(null, 160)),
-        "v-5717614d": () => n.e(11).then(n.bind(null, 159)),
-        "v-77c73199": () => n.e(10).then(n.bind(null, 158)),
+        "v-77c73199": () => n.e(10).then(n.bind(null, 159)),
+        "v-5717614d": () => n.e(11).then(n.bind(null, 158)),
         "v-1f50ee59": () => n.e(12).then(n.bind(null, 157)),
         "v-45aa14ce": () => n.e(13).then(n.bind(null, 156)),
         "v-5b471da2": () => n.e(15).then(n.bind(null, 155)),
@@ -8320,8 +8320,8 @@
         "v-254c4c59": () => n.e(20).then(n.bind(null, 151)),
         "v-2939380e": () => n.e(21).then(n.bind(null, 150)),
         "v-fb4e549a": () => n.e(22).then(n.bind(null, 149)),
-        "v-0250a037": () => n.e(23).then(n.bind(null, 148)),
-        "v-0f9139b7": () => n.e(24).then(n.bind(null, 147)),
+        "v-0f9139b7": () => n.e(24).then(n.bind(null, 148)),
+        "v-0250a037": () => n.e(23).then(n.bind(null, 147)),
         "v-2719271c": () => n.e(25).then(n.bind(null, 146)),
         "v-22ef9d0e": () => n.e(26).then(n.bind(null, 145)),
         "v-cd0cec28": () => n.e(14).then(n.bind(null, 154)),
@@ -8550,15 +8550,6 @@
     })(Da, "mixins", Ta);
     const Na = [
         {
-          name: "v-acd593fc",
-          path: "/",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-acd593fc").then(n);
-          }
-        },
-        { path: "/index.html", redirect: "/" },
-        {
           name: "v-9af1f7dc",
           path: "/api/Layers/",
           component: Da,
@@ -8567,6 +8558,15 @@
           }
         },
         { path: "/api/Layers/index.html", redirect: "/api/Layers/" },
+        {
+          name: "v-acd593fc",
+          path: "/",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-acd593fc").then(n);
+          }
+        },
+        { path: "/index.html", redirect: "/" },
         {
           name: "v-073619c3",
           path: "/api/Layers/canvaslayer.html",
@@ -8584,19 +8584,19 @@
           }
         },
         {
-          name: "v-5717614d",
-          path: "/api/Layers/rasterlayer.html",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-5717614d").then(n);
-          }
-        },
-        {
           name: "v-77c73199",
           path: "/api/Layers/imagelayer.html",
           component: Da,
           beforeEnter: (t, e, n) => {
             Sa("Layout", "v-77c73199").then(n);
+          }
+        },
+        {
+          name: "v-5717614d",
+          path: "/api/Layers/rasterlayer.html",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-5717614d").then(n);
           }
         },
         {
@@ -8673,19 +8673,19 @@
           }
         },
         {
-          name: "v-0250a037",
-          path: "/guide/layers&sources.html",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-0250a037").then(n);
-          }
-        },
-        {
           name: "v-0f9139b7",
           path: "/guide/markers&popups.html",
           component: Da,
           beforeEnter: (t, e, n) => {
             Sa("Layout", "v-0f9139b7").then(n);
+          }
+        },
+        {
+          name: "v-0250a037",
+          path: "/guide/layers&sources.html",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-0250a037").then(n);
           }
         },
         {
@@ -8733,36 +8733,6 @@
         base: "/vue-mapbox/",
         pages: [
           {
-            title: "Home",
-            frontmatter: {
-              home: !0,
-              heroImage: "/logo.svg",
-              actionText: "Get Started →",
-              actionLink: "/guide/",
-              features: [
-                {
-                  title: "Declarative style",
-                  details:
-                    "You can use map elements like layers, markers, popups as Vue components and control them via synchronized props"
-                },
-                {
-                  title: "Vuefied",
-                  details:
-                    "Map elements declared as components respect Vue lifecycle, emit map events like Vue events and can be used in OOP-style"
-                },
-                {
-                  title: "Promisified async actions",
-                  details:
-                    "You can do async map operations and get results in Promise without messing with map events and figuring out what action cause it"
-                }
-              ],
-              footer: "MIT Licensed"
-            },
-            regularPath: "/",
-            key: "v-acd593fc",
-            path: "/"
-          },
-          {
             title: "Layers common",
             frontmatter: {},
             regularPath: "/api/Layers/",
@@ -8804,6 +8774,36 @@
               { level: 3, title: "@touchend", slug: "touchend" },
               { level: 3, title: "@touchcancel", slug: "touchcancel" }
             ]
+          },
+          {
+            title: "Home",
+            frontmatter: {
+              home: !0,
+              heroImage: "/logo.svg",
+              actionText: "Get Started →",
+              actionLink: "/guide/",
+              features: [
+                {
+                  title: "Declarative style",
+                  details:
+                    "You can use map elements like layers, markers, popups as Vue components and control them via synchronized props"
+                },
+                {
+                  title: "Vuefied",
+                  details:
+                    "Map elements declared as components respect Vue lifecycle, emit map events like Vue events and can be used in OOP-style"
+                },
+                {
+                  title: "Promisified async actions",
+                  details:
+                    "You can do async map operations and get results in Promise without messing with map events and figuring out what action cause it"
+                }
+              ],
+              footer: "MIT Licensed"
+            },
+            regularPath: "/",
+            key: "v-acd593fc",
+            path: "/"
           },
           {
             title: "CanvasLayer",
@@ -8871,11 +8871,11 @@
             ]
           },
           {
-            title: "RasterLayer",
+            title: "ImageLayer",
             frontmatter: {},
-            regularPath: "/api/Layers/rasterlayer.html",
-            key: "v-5717614d",
-            path: "/api/Layers/rasterlayer.html",
+            regularPath: "/api/Layers/imagelayer.html",
+            key: "v-77c73199",
+            path: "/api/Layers/imagelayer.html",
             headers: [
               { level: 2, title: "Props", slug: "props" },
               { level: 3, title: "source", slug: "source" },
@@ -8883,11 +8883,11 @@
             ]
           },
           {
-            title: "ImageLayer",
+            title: "RasterLayer",
             frontmatter: {},
-            regularPath: "/api/Layers/imagelayer.html",
-            key: "v-77c73199",
-            path: "/api/Layers/imagelayer.html",
+            regularPath: "/api/Layers/rasterlayer.html",
+            key: "v-5717614d",
+            path: "/api/Layers/rasterlayer.html",
             headers: [
               { level: 2, title: "Props", slug: "props" },
               { level: 3, title: "source", slug: "source" },
@@ -9115,20 +9115,6 @@
             ]
           },
           {
-            title: "Layers and sources",
-            frontmatter: {},
-            regularPath: "/guide/layers&sources.html",
-            key: "v-0250a037",
-            path: "/guide/layers&sources.html",
-            headers: [
-              { level: 2, title: "Adding layers", slug: "adding-layers" },
-              { level: 2, title: "Reactivity", slug: "reactivity" },
-              { level: 2, title: "Layer getters", slug: "layer-getters" },
-              { level: 2, title: "Layer methods", slug: "layer-methods" },
-              { level: 2, title: "Layer events", slug: "layer-events" }
-            ]
-          },
-          {
             title: "Markers and Popups",
             frontmatter: {},
             regularPath: "/guide/markers&popups.html",
@@ -9146,6 +9132,20 @@
                 title: "Markers & Popups together",
                 slug: "markers-popups-together"
               }
+            ]
+          },
+          {
+            title: "Layers and sources",
+            frontmatter: {},
+            regularPath: "/guide/layers&sources.html",
+            key: "v-0250a037",
+            path: "/guide/layers&sources.html",
+            headers: [
+              { level: 2, title: "Adding layers", slug: "adding-layers" },
+              { level: 2, title: "Reactivity", slug: "reactivity" },
+              { level: 2, title: "Layer getters", slug: "layer-getters" },
+              { level: 2, title: "Layer methods", slug: "layer-methods" },
+              { level: 2, title: "Layer events", slug: "layer-events" }
             ]
           },
           {
@@ -9888,7 +9888,7 @@
       rs = es.router;
     (window.__VUEPRESS_VERSION__ = {
       version: "1.0.0-alpha.37",
-      hash: "4c00514"
+      hash: "772b8c0"
     }),
       rs.onReady(function() {
         ns.$mount("#app");

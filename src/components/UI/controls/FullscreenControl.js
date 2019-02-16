@@ -5,25 +5,14 @@ export default {
   mixins: [controlMixin],
 
   props: {
-    position: {
-      type: String,
-      default: "top-right"
+    container: {
+      type: HTMLElement,
+      default: undefined
     }
-  },
-
-  data() {
-    return {
-      control: undefined
-    };
   },
 
   created() {
-    this.control = new this.mapbox.FullscreenControl();
-  },
-
-  methods: {
-    $_deferredMount(payload) {
-      this.$_addControl(payload);
-    }
+    this.control = new this.mapbox.FullscreenControl(this.$props);
+    this.$_addControl();
   }
 };

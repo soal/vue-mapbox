@@ -2,21 +2,19 @@
 
 ## Props
 
-### `url`
+All common [layers props](/api/Layers/README.md#props)
 
-- **Type:** `String`
-- **Required**
+### `source`
+
+- **Type:** `Object | String`
 - **Non-Synced**
-- **Description:** URL that points to an image.
-- **See:** `url` in [Mapbox Source Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-image-url)
+- **Description:** A data source containing an image.
+- **See:** `ImageSource` in [Mapbox API Docs](https://docs.mapbox.com/mapbox-gl-js/api/#imagesource)
 
-### `coordinates`
-
-- **Type:** `Array`
-- **Required**
-- **Non-Synced**
-- **Description:** Corners of image specified in longitude, latitude pairs.
-- **See:** `coordinates` in [Mapbox Source Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-image-coordinates)
+::: tip Reactivity
+`coordinates` and `url` fields of the `source` prop are reactive.
+If you change their value, changes automatically applied to the map.
+:::
 
 ## Events
 

@@ -19,23 +19,6 @@ Add mapbox CSS file to `<head></head>` block of your HTML file (e.g. `index.html
 />
 ```
 
-### Register a plugin
-
-You need to set up vue-mapbox as a plugin for Vue and pass mapbox-gl as argument:
-
-```javascript
-import Vue from "vue";
-import VueMapbox from "vue-mapbox";
-import Mapbox from "mapbox-gl";
-
-Vue.use(VueMapbox, { mapboxgl: Mapbox });
-
-new Vue({
-  el: "#app",
-  render: h => h(require("./App"))
-});
-```
-
 ## Using in browser
 
 ### Installation
@@ -71,12 +54,19 @@ Add Vue, MapboxGL and Vue-mapbox scripts on your page:
 </html>
 ```
 
-Register plugin and add base map component to your application:
-
-```javascript
-Vue.use(VueMapbox.plugin, { mapboxgl: window.mapboxgl });
-```
-
 All components will be placed in global VueMapbox object (`VueMapbox.MglMap` etc.)
+
+## Migration from version 0.1.x
+
+In version `0.2` you don't need to register VueMapbox as Vue plugin.
+
+So you don't need this code anymore:
+
+```js
+import VueMapbox from "vue-mapbox";
+import Mapbox from "mapbox-gl";
+
+Vue.use(VueMapbox, { mapboxgl: Mapbox });
+```
 
 Now you're ready for mapping. See how to [create a map](/guide/basemap.md).

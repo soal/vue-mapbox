@@ -4,59 +4,17 @@ import mixin from "./layerMixin";
 export default {
   name: "RasterLayer",
   mixins: [mixin],
-  props: {
-    url: {
-      type: String,
-      default: undefined
-    },
-    tiles: {
-      type: Array,
-      default: undefined
-    },
-    tilesMinZoom: {
-      type: Number,
-      default: 0
-    },
-    tilesMaxZoom: {
-      type: Number,
-      default: 22
-    },
-    tileSize: {
-      type: Number,
-      default: 512
-    },
-    bounds: {
-      type: Array,
-      default: () => [-180, -85.051129, 180, 85.051129]
-    },
-    scheme: {
-      type: String,
-      default: undefined
-    },
-    attribution: {
-      type: String,
-      default: undefined
-    }
+
+  created() {
+    this.$_deferredMount();
   },
 
   methods: {
-    $_deferredMount(payload) {
-      this.map = payload.map;
+    $_deferredMount() {
       let source = {
         type: "raster",
-        url: this.url,
-        tileSize: this.tileSize
+        ...this.source
       };
-
-      if (!this.url) {
-        source.minzoom = this.tilesMinZoom;
-        source.maxzoom = this.tilesMaxZoom;
-        source.bounds = this.bounds;
-      }
-
-      if (this.tiles) source.tiles = this.tiles;
-      if (this.scheme) source.scheme = this.scheme;
-      if (this.attribution) source.attribution = this.attribution;
 
       this.map.on("dataloading", this.$_watchSourceLoading);
       try {
@@ -65,18 +23,12 @@ export default {
         if (this.replaceSource) {
           this.map.removeSource(this.sourceId);
           this.map.addSource(this.sourceId, source);
-        } else {
-          this.$_emitEvent("layer-source-error", {
-            sourceId: this.sourceId,
-            error: err
-          });
         }
       }
       this.$_addLayer();
       this.$_bindLayerEvents(layerEvents);
       this.map.off("dataloading", this.$_watchSourceLoading);
       this.initial = false;
-      payload.component.$off("load", this.$_deferredMount);
     },
 
     $_addLayer() {
@@ -92,14 +44,9 @@ export default {
       let layer = {
         id: this.layerId,
         type: "raster",
-        source: this.sourceId
+        source: this.sourceId,
+        ...this.layer
       };
-      layer.source = this.sourceId;
-      if (this.layout) {
-        layer.layout = this.layout;
-      }
-      layer.paint = this.paint ? this.paint : { "raster-opacity": 1 };
-      layer.metadata = this.metadata;
 
       this.map.addLayer(layer, this.before);
       this.$_emitEvent("added", { layerId: this.layerId });

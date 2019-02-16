@@ -14,21 +14,8 @@ export default {
     }
   },
 
-  data() {
-    return {
-      control: undefined
-    };
-  },
-
   created() {
-    this.control = new this.mapbox.AttributionControl({
-      compact: this.compact
-    });
-  },
-
-  methods: {
-    $_deferredMount(payload) {
-      this.$_addControl(payload);
-    }
+    this.control = new this.mapbox.AttributionControl(this.$props);
+    this.$_addControl();
   }
 };

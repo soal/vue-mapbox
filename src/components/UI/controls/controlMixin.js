@@ -1,26 +1,34 @@
-import withRegistration from "../../../lib/withRegistration";
+// import withRegistration from "../../../lib/withRegistration";
 import withEvents from "../../../lib/withEvents";
 import withSelfEvents from "../withSelfEvents";
 
 export default {
-  mixins: [withRegistration, withEvents, withSelfEvents],
+  mixins: [withEvents, withSelfEvents],
+
+  inject: ["mapbox", "map"],
+
+  props: {
+    position: {
+      type: String,
+      default: "top-right"
+    }
+  },
+
   beforeDestroy() {
-    if (this.map !== undefined) {
+    if (this.map) {
       this.map.removeControl(this.control);
     }
   },
 
   methods: {
-    $_addControl(payload) {
-      this.map = payload.map;
+    $_addControl() {
       try {
-        this.map.addControl(this.control);
+        this.map.addControl(this.control, this.position);
       } catch (err) {
         this.$_emitEvent("error", { error: err });
         return;
       }
       this.$_emitEvent("added", { control: this.control });
-      payload.component.$off("load", this.$_deferredMount);
     }
   },
 

@@ -39,8 +39,7 @@ module.exports = {
         title: "API",
         collapsable: false,
         children: [
-          ["/api/", "VueMapbox"],
-          ["/api/glmap.md", "GlMap"],
+          ["/api/", "GlMap"],
           ["/api/controls.md", "Controls"],
           ["/api/marker.md", "MapMarker"],
           ["/api/popup.md", "Popup"],
@@ -49,15 +48,19 @@ module.exports = {
           ["/api/Layers/vectorlayer.md", "VectorLayer"],
           ["/api/Layers/rasterlayer.md", "RasterLayer"],
           ["/api/Layers/imagelayer.md", "ImageLayer"],
-          ["/api/Layers/videolayer.md", "VideoLayer"]
+          ["/api/Layers/videolayer.md", "VideoLayer"],
+          ["/api/Layers/canvaslayer.md", "CanvasLayer"]
         ]
       },
       {
-        title: "Plugins",
+        title: "Plugin components",
         collapsable: false,
         children: [
-          ["/plugins/", "Using plugins"],
-          ["/plugins/plugin_development.md", "Create a plugin"]
+          ["/plugin_components/", "Using plugin components"],
+          [
+            "/plugin_components/plugin_components_development.md",
+            "Create a plugin component"
+          ]
         ]
       }
       // ['/plugins/', 'Plugins'],

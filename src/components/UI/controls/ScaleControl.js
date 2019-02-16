@@ -2,6 +2,7 @@ import controlMixin from "./controlMixin";
 
 export default {
   name: "ScaleControl",
+
   mixins: [controlMixin],
 
   props: {
@@ -18,12 +19,6 @@ export default {
     }
   },
 
-  data() {
-    return {
-      control: undefined
-    };
-  },
-
   watch: {
     unit(next, prev) {
       if (this.control && next !== prev) {
@@ -33,12 +28,7 @@ export default {
   },
 
   created() {
-    this.control = new this.mapbox.ScaleControl(this._props);
-  },
-
-  methods: {
-    $_deferredMount(payload) {
-      this.$_addControl(payload);
-    }
+    this.control = new this.mapbox.ScaleControl(this.$props);
+    this.$_addControl();
   }
 };

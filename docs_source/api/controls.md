@@ -12,7 +12,7 @@ An AttributionControl control presents the map's attribution information.
 - **Default:** `true`
 - **Non-Synced**
 - **Description:** If true force a compact attribution
-- **See:** `options.compact` in [AttributionControl](https://www.mapbox.com/mapbox-gl-js/api/#attributioncontrol)
+- **See:** `options.compact` in [AttributionControl](https://docs.mapbox.com/mapbox-gl-js/api/#attributioncontrol)
 
 ### `customAttribution`
 
@@ -20,11 +20,20 @@ An AttributionControl control presents the map's attribution information.
 - **Default:** `true`
 - **Non-Synced**
 - **Description:** String or strings to show in addition to any other attributions.
-- **See:** `options.customAttribution` in [AttributionControl](https://www.mapbox.com/mapbox-gl-js/api/#attributioncontrol)
+- **See:** `options.customAttribution` in [AttributionControl](https://docs.mapbox.com/mapbox-gl-js/api/#attributioncontrol)
 
 ## FullscreenControl
 
 Creates a button on the map to toggle fulscreen mode.
+
+### Props
+
+### `container`
+
+- **Type:** `HTMLElement`
+- **Non-Synced**
+- **Description:** DOM element which should be made full screen. By default, the map container element will be made full screen.
+- **See:** `options.container` in [FullscreenControl](https://docs.mapbox.com/mapbox-gl-js/api/#fullscreencontrol)
 
 ## GeolocateControl
 
@@ -38,7 +47,7 @@ Provides a button that uses the browser's geolocation API to locate the user on 
 - **Default:** `{ enableHighAccuracy: false, timeout: 6000}`
 - **Non-Synced**
 - **Description:** A Geolocation API PositionOptions object.
-- **See:** `options.positionOptions` in [GeolocateControl](https://www.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
+- **See:** `options.positionOptions` in [GeolocateControl](https://docs.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
 
 ### `fitBoundsOptions`
 
@@ -46,7 +55,7 @@ Provides a button that uses the browser's geolocation API to locate the user on 
 - **Default:** `{ maxZoom:15 }`
 - **Non-Synced**
 - **Description:** A fitBounds options object to use when the map is panned and zoomed to the user's location.
-- **See:** `options.fitBoundsOptions` in [GeolocateControl](https://www.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
+- **See:** `options.fitBoundsOptions` in [GeolocateControl](https://docs.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
 
 ### `trackUserLocation`
 
@@ -54,7 +63,7 @@ Provides a button that uses the browser's geolocation API to locate the user on 
 - **Default:** `false`
 - **Non-Synced**
 - **Description:** If true the Geolocate Control becomes a toggle button and when active the map will receive updates to the user's location as it changes.to the user's location.
-- **See:** `options.trackUserLocation` in [GeolocateControl](https://www.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
+- **See:** `options.trackUserLocation` in [GeolocateControl](https://docs.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
 
 ### `showUserLocation`
 
@@ -62,7 +71,7 @@ Provides a button that uses the browser's geolocation API to locate the user on 
 - **Default:** `true`
 - **Non-Synced**
 - **Description:** By default a dot will be shown on the map at the user's location. Set to false to disable.
-- **See:** `options.showUserLocation` in [GeolocateControl](https://www.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
+- **See:** `options.showUserLocation` in [GeolocateControl](https://docs.mapbox.com/mapbox-gl-js/api/#geolocatecontrol)
 
 ### Methods
 
@@ -70,7 +79,7 @@ Provides a button that uses the browser's geolocation API to locate the user on 
 
 - **Description:** Trigger a geolocation
 - **Returns:** `boolean`
-- **See:** [trigger](https://www.mapbox.com/mapbox-gl-js/api/#geolocatecontrol#trigger) GeolocateControl method
+- **See:** [trigger](https://docs.mapbox.com/mapbox-gl-js/api/#geolocatecontrol#trigger) GeolocateControl method
 
 ## NavigationControl
 
@@ -82,7 +91,7 @@ Provides a button that uses the browser's geolocation API to locate the user on 
 - **Default:** `true`
 - **Non-Synced**
 - **Description:** If true the compass button is included.
-- **See:** `options.showCompass` in [NavigationControl](https://www.mapbox.com/mapbox-gl-js/api/#navigationcontrol)
+- **See:** `options.showCompass` in [NavigationControl](https://docs.mapbox.com/mapbox-gl-js/api/#navigationcontrol)
 
 ### `showZoom`
 
@@ -90,7 +99,7 @@ Provides a button that uses the browser's geolocation API to locate the user on 
 - **Default:** `true`
 - **Non-Synced**
 - **Description:** If true the zoom-in and zoom-out buttons are included.
-- **See:** `options.showZoom` in [NavigationControl](https://www.mapbox.com/mapbox-gl-js/api/#navigationcontrol)
+- **See:** `options.showZoom` in [NavigationControl](https://docs.mapbox.com/mapbox-gl-js/api/#navigationcontrol)
 
 ## ScaleControl
 
@@ -102,7 +111,7 @@ Provides a button that uses the browser's geolocation API to locate the user on 
 - **Default:** `100`
 - **Non-Synced**
 - **Description:** The maximum length of the scale control in pixels.
-- **See:** `options.maxWidth` in [ScaleControl](https://www.mapbox.com/mapbox-gl-js/api/#scalecontrol)
+- **See:** `options.maxWidth` in [ScaleControl](https://docs.mapbox.com/mapbox-gl-js/api/#scalecontrol)
 
 ### `unit`
 
@@ -110,4 +119,4 @@ Provides a button that uses the browser's geolocation API to locate the user on 
 - **Default:** `metric`
 - **Non-Synced**
 - **Description:** Unit of the distance
-- **See:** `options.unit` in [ScaleControl](https://www.mapbox.com/mapbox-gl-js/api/#scalecontrol)
+- **See:** `options.unit` in [ScaleControl](https://docs.mapbox.com/mapbox-gl-js/api/#scalecontrol)

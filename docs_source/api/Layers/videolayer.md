@@ -2,25 +2,23 @@
 
 ## Props
 
-### `urls`
+All common [layers props](/api/Layers/README.md#props)
 
-- **Type:** `Array`
-- **Required**
+### `source`
+
+- **Type:** `Object | String`
 - **Non-Synced**
-- **Description:** URLs to video content in order of preferred format.
-- **See:** `urls` in [Mapbox Source Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-video-urls)
+- **Description:** A data source containing video.
+- **See:** `Video source` in [Mapbox API Docs](https://docs.mapbox.com/mapbox-gl-js/api/#videosource)
 
-### `coordinates`
-
-- **Type:** `Array`
-- **Required**
-- **Non-Synced**
-- **Description:** Corners of video specified in longitude, latitude pairs.
-- **See:** `coordinates` in [Mapbox Source Style Spec](https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-video-coordinates)
+::: tip Reactivity
+`coordinates` field of the `source` prop is reactive.
+If you change it's value, changes automatically applied to the map.
+:::
 
 ## Computed getters
 
 ### `video`
 
 - **Description** Returns the HTML video element.
-- **See** `.getVideo()` [method](https://www.mapbox.com/mapbox-gl-js/api/#videosource#getvideo)
+- **See** `.getVideo()` [method](https://docs.mapbox.com/mapbox-gl-js/api/#videosource#getvideo)

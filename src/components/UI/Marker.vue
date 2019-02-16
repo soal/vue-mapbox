@@ -1,14 +1,13 @@
 <template>
   <div style="display: none">
     <!-- slot for custom marker -->
-    <slot name="marker" />
+    <slot v-if="marker" name="marker" />
     <!-- slot for popup -->
     <slot />
   </div>
 </template>
 
 <script>
-import withRegistration from "../../lib/withRegistration";
 import withEvents from "../../lib/withEvents";
 import withSelfEvents from "./withSelfEvents";
 
@@ -20,7 +19,19 @@ const markerEvents = {
 
 export default {
   name: "MapMarker",
-  mixins: [withRegistration, withEvents, withSelfEvents],
+  mixins: [withEvents, withSelfEvents],
+
+  inject: ["mapbox", "map"],
+
+  provide() {
+    const self = this;
+    return {
+      get marker() {
+        return self.marker;
+      }
+    };
+  },
+
   props: {
     // mapbox marker options
     offset: {
@@ -62,8 +73,33 @@ export default {
     }
   },
 
-  mounted() {
-    this.$_checkMapTree();
+  created() {
+    const markerOptions = {
+      ...this.$props
+    };
+    if (this.$slots.marker) {
+      markerOptions.element = this.$slots.marker[0].elm;
+    }
+    this.marker = new this.mapbox.Marker(markerOptions);
+
+    this.$_addMarker();
+
+    if (this.$listeners["update:coordinates"]) {
+      this.marker.on("dragend", event => {
+        let newCoordinates;
+        if (this.coordinates instanceof Array) {
+          newCoordinates = [event.target._lngLat.lng, event.target._lngLat.lat];
+        } else {
+          newCoordinates = event.target._lngLat;
+        }
+        this.$emit("update:coordinates", newCoordinates);
+      });
+    }
+
+    const eventNames = Object.keys(markerEvents);
+    this.$_bindSelfEvents(eventNames, this.marker);
+
+    this.initial = false;
   },
 
   beforeDestroy() {
@@ -73,41 +109,6 @@ export default {
   },
 
   methods: {
-    $_deferredMount(payload) {
-      if (!this.marker) {
-        const markerOptions = {
-          ...this._props
-        };
-        if (this.$slots.marker) {
-          markerOptions.element = this.$slots.marker[0].elm;
-        }
-        this.marker = new this.mapbox.Marker(markerOptions);
-      }
-
-      this.map = payload.map;
-      this.$_addMarker();
-      if (this.$listeners["update:coordinates"]) {
-        this.marker.on("dragend", event => {
-          let newCoordinates;
-          if (this.coordinates instanceof Array) {
-            newCoordinates = [
-              event.target._lngLat.lng,
-              event.target._lngLat.lat
-            ];
-          } else {
-            newCoordinates = event.target._lngLat;
-          }
-          this.$emit("update:coordinates", newCoordinates);
-        });
-      }
-
-      const eventNames = Object.keys(markerEvents);
-      this.$_bindSelfEvents(eventNames, this.marker);
-
-      this.initial = false;
-      payload.component.$off("load", this.$_deferredMount);
-    },
-
     $_addMarker() {
       this.marker.setLngLat(this.coordinates).addTo(this.map);
 
@@ -120,7 +121,7 @@ export default {
 
     remove() {
       this.marker.remove();
-      this.$_emitEvent("removed", { marker: this.marker });
+      this.$_emitEvent("removed");
     },
 
     togglePopup() {

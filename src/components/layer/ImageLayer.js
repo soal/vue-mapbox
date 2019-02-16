@@ -4,37 +4,48 @@ import layerEvents from "../../lib/layerEvents";
 export default {
   name: "ImageLayer",
   mixins: [mixin],
-  props: {
-    coordinates: {
-      type: Array,
-      required: true
-    },
-    url: {
-      type: String,
-      required: true
-    }
-  },
 
-  watch: {
-    coordinates(val) {
-      if (this.initial) return;
-      this.mapSource.setCoordinates(val);
-    },
-    url(val) {
-      if (this.initial) return;
-      this.mapSource.updateImage({ url: val, coordinates: this.coordinates });
+  created() {
+    if (this.source) {
+      if (this.source.coordinates) {
+        this.$watch(
+          "source.coordinates",
+          function(next) {
+            if (this.initial) return;
+            if (next) {
+              this.mapSource.setCoordinates(next);
+            }
+          },
+          { deep: true }
+        );
+      }
+
+      if (this.source.url) {
+        this.$watch(
+          "source.url",
+          function(next) {
+            if (this.initial) return;
+            if (next) {
+              this.mapSource.updateImage({
+                url: next,
+                coordinates: this.source.coordinates
+              });
+            }
+          },
+          { deep: true }
+        );
+      }
     }
+    this.$_deferredMount();
   },
 
   methods: {
-    $_deferredMount(payload) {
+    $_deferredMount() {
       const source = {
         type: "image",
-        url: this.url,
-        coordinates: this.coordinates
+        ...this.source
       };
 
-      this.map = payload.map;
       this.map.on("dataloading", this.$_watchSourceLoading);
       try {
         this.map.addSource(this.sourceId, source);
@@ -42,17 +53,11 @@ export default {
         if (this.replaceSource) {
           this.map.removeSource(this.sourceId);
           this.map.addSource(this.sourceId, source);
-        } else {
-          this.$_emitEvent("layer-source-error", {
-            sourceId: this.sourceId,
-            error: err
-          });
         }
       }
       this.$_addLayer();
       this.$_bindLayerEvents(layerEvents);
       this.initial = false;
-      payload.component.$off("load", this.$_deferredMount);
     },
 
     $_addLayer() {
@@ -65,26 +70,12 @@ export default {
           return existed;
         }
       }
-      let layer = {
+      const layer = {
         id: this.layerId,
         source: this.sourceId,
-        type: "raster"
+        type: "raster",
+        ...this.layer
       };
-      if (this.refLayer) {
-        layer.ref = this.refLayer;
-      } else {
-        if (this["source-layer"]) {
-          layer["source-layer"] = this["source-layer"];
-        }
-        if (this.minzoom) layer.minzoom = this.minzoom;
-        if (this.maxzoom) layer.maxzoom = this.maxzoom;
-        if (this.layout) {
-          layer.layout = this.layout;
-        }
-        if (this.filter) layer.filter = this.filter;
-      }
-      layer.paint = this.paint ? this.paint : { "raster-opacity": 1 };
-      layer.metadata = this.metadata;
 
       this.map.addLayer(layer, this.before);
       this.$_emitEvent("added", { layerId: this.layerId });

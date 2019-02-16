@@ -8,10 +8,11 @@ If you using self-hosting maps on your own server you can omit this parameter.
 
 ```vue
 <template>
-  <MglMap :accessToken="accessToken" :mapStyle.sync="mapStyle" />
+  <MglMap :accessToken="accessToken" :mapStyle="mapStyle" />
 </template>
 
 <script>
+import Mapbox from "mapbox-gl";
 import { MglMap } from "vue-mapbox";
 
 export default {
@@ -23,6 +24,11 @@ export default {
       accessToken: ACCESS_TOKEN, // your access token. Needed if you using Mapbox maps
       mapStyle: MAP_STYLE // your map style
     };
+  },
+
+  created() {
+    // We need to set mapbox-gl library here in order to use it in template
+    this.mapbox = Mapbox;
   }
 };
 </script>
@@ -37,7 +43,8 @@ Full list of props see in [API docs](/api/glmap.md#props), note field 'Synced' i
 
 ## Map loading
 
-When map loads, `MglMap` component emits `load` event. Pyload of the event contains Mapbox GL JS `Map` object.
+When map loads, `MglMap` component emits `load` event. Payload of the event contains Mapbox GL JS `Map` object.
+All components placed under `MglMap` will be rendered only after map fully loaded.
 
 ::: warning Storing Map object
 Take note that it's generally bad idea to add to Vuex or component's `data` anything but primitive types and plain objects. Vue adds getters and setters to every property, so if you add `Map` object to Vuex store or component `data`, it may lead to weird bugs.
@@ -46,8 +53,8 @@ If you want to store map object, store it as non-reactive property like in examp
 
 ```vue
 <template>
-  <MglMap 
-    :accessToken="accessToken" 
+  <MglMap
+    :accessToken="accessToken"
     :mapStyle.sync="mapStyle"
     @load="onMapLoaded"
   />
@@ -73,8 +80,8 @@ export default {
 
 ## Map actions
 
-Asynchronous map methods exposed at GlMap component in `actions` property. They returns `Promise`, that resolves when action completed.
-Promise resolves with map properties that has been changed by used action.
+Asynchronous map methods exposed at MglMap component in `actions` property. They returns `Promise`, that resolves when action completed.
+Promise resolves with map properties that has been changed by used action.  
 For example:
 
 ```vue
@@ -83,7 +90,7 @@ export deafult {
   name: 'App',
 
   methods: {
-    aync onMapLoad(event) {
+    async onMapLoad(event) {
       // Here we cathing 'load' map event
       const asyncActions = event.component.actions
 
@@ -110,7 +117,7 @@ See full list of actions on [API](/api/glmap.md#actions) page.
 
 ### Method `actions.stop()`
 
-Method `.stop()` just stops all animations on map, updates props with new positions and return Promise with map parameters in the moment when `.stop()` called.
+Method `.stop()` just stops all animations on map, updates props with new positions and return Promise with map parameters at the moment when `.stop()` called.
 
 ### Events
 

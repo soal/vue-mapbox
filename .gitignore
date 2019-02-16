@@ -51,3 +51,4 @@ jspm_packages
 vue-mapbox-demo
 checklist.txt
 .flowconfig
+docs_source/.vuepress/dist

@@ -4,62 +4,6 @@ import mixin from "./layerMixin";
 export default {
   name: "GeojsonLayer",
   mixins: [mixin],
-  props: {
-    source: {
-      type: [Object, String]
-    },
-    type: {
-      validator(value) {
-        let allowedValues = [
-          "fill",
-          "line",
-          "symbol",
-          "circle",
-          "fill-extrusion",
-          "raster",
-          "background",
-          "heatmap"
-        ];
-        return (
-          (typeof value === "string" && allowedValues.indexOf(value) !== -1) ||
-          value === undefined
-        );
-      },
-      default: "fill"
-    },
-    cluster: {
-      type: Boolean,
-      default: false
-    },
-    clusterMaxZoom: {
-      type: Number,
-      default: 14
-    },
-    clusterRadius: {
-      type: Number,
-      default: 50
-    },
-    lineMetrics: {
-      type: Boolean,
-      default: false
-    },
-    buffer: {
-      type: Number,
-      default: 128
-    },
-    tolerance: {
-      type: Number,
-      default: 0.375
-    },
-    generateId: {
-      type: Boolean,
-      default: false
-    },
-    attribution: {
-      type: String,
-      default: ""
-    }
-  },
 
   computed: {
     getSourceFeatures() {
@@ -81,36 +25,89 @@ export default {
         }
         return null;
       };
+    },
+
+    getClusterExpansionZoom() {
+      return clusterId => {
+        return new Promise((resolve, reject) => {
+          if (this.mapSource) {
+            this.mapSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
+              if (err) {
+                return reject(err);
+              }
+              return resolve(zoom);
+            });
+          } else {
+            return reject(
+              new Error(`Map source with id ${this.sourceId} not found.`)
+            );
+          }
+        });
+      };
+    },
+
+    getClusterChildren() {
+      return clusterId => {
+        return new Promise((resolve, reject) => {
+          const source = this.mapSource;
+          if (source) {
+            source.getClusterChildren(clusterId, (err, features) => {
+              if (err) {
+                return reject(err);
+              }
+              return resolve(features);
+            });
+          } else {
+            return reject(
+              new Error(`Map source with id ${this.sourceId} not found.`)
+            );
+          }
+        });
+      };
+    },
+
+    getClusterLeaves() {
+      return (...args) => {
+        return new Promise((resolve, reject) => {
+          if (this.mapSource) {
+            this.mapSource.getClusterLeaves(...args, (err, features) => {
+              if (err) {
+                return reject(err);
+              }
+              return resolve(features);
+            });
+          } else {
+            return reject(
+              new Error(`Map source with id ${this.sourceId} not found.`)
+            );
+          }
+        });
+      };
     }
   },
 
-  watch: {
-    source(data) {
-      if (this.initial) return;
-      this.mapSource.setData(data);
-    },
-    filter(filter) {
-      if (this.initial) return;
-      this.map.setFilter(this.layerId, filter);
+  created() {
+    if (this.source) {
+      this.$watch(
+        "source.data",
+        function(next) {
+          if (this.initial) return;
+          this.mapSource.setData(next);
+        },
+        { deep: true }
+      );
     }
+    this.$_deferredMount();
   },
 
   methods: {
-    $_deferredMount(payload) {
-      this.map = payload.map;
+    $_deferredMount() {
+      // this.map = payload.map;
       this.map.on("dataloading", this.$_watchSourceLoading);
       if (this.source) {
         const source = {
           type: "geojson",
-          data: this.source,
-          cluster: this.cluster,
-          clusterMaxZoom: this.clusterMaxZoom,
-          clusterRadius: this.clusterRadius,
-          lineMetrics: this.lineMetrics,
-          buffer: this.buffer,
-          tolerance: this.tolerance,
-          generateId: this.generateId,
-          attribution: this.attribution
+          ...this.source
         };
         try {
           this.map.addSource(this.sourceId, source);
@@ -118,11 +115,6 @@ export default {
           if (this.replaceSource) {
             this.map.removeSource(this.sourceId);
             this.map.addSource(this.sourceId, source);
-          } else {
-            this.$_emitEvent("layer-source-error", {
-              sourceId: this.sourceId,
-              error: err
-            });
           }
         }
       }
@@ -130,7 +122,7 @@ export default {
       this.$_bindLayerEvents(layerEvents);
       this.map.off("dataloading", this.$_watchSourceLoading);
       this.initial = false;
-      payload.component.$off("load", this.$_deferredMount);
+      // payload.component.$off("load", this.$_deferredMount);
     },
 
     $_addLayer() {
@@ -143,32 +135,11 @@ export default {
           return existed;
         }
       }
-      let layer = {
+      const layer = {
         id: this.layerId,
-        source: this.sourceId
+        source: this.sourceId,
+        ...this.layer
       };
-      if (this.refLayer) {
-        layer.ref = this.refLayer;
-      } else {
-        layer.type = this.type ? this.type : "fill";
-        layer.source = this.sourceId;
-        if (this.minzoom) layer.minzoom = this.minzoom;
-        if (this.maxzoom) layer.maxzoom = this.maxzoom;
-        if (this.layout) {
-          layer.layout = this.layout;
-        }
-        if (this.filter) layer.filter = this.filter;
-      }
-      if (this.type !== "symbol") {
-        layer.paint = this.paint
-          ? this.paint
-          : {
-              "fill-color": `rgba(${12 *
-                (this.layerId.length * 3)},153,80,0.55)`
-            };
-      }
-      layer.metadata = this.metadata;
-
       this.map.addLayer(layer, this.before);
       this.$_emitEvent("added", { layerId: this.layerId });
     },
@@ -184,6 +155,17 @@ export default {
       if (this.map) {
         const params = { id: featureId, source: this.source };
         return this.map.getFeatureState(params);
+      }
+    },
+
+    removeFeatureState(featureId, sourceLayer, key) {
+      if (this.map) {
+        const params = {
+          id: featureId,
+          source: this.source,
+          sourceLayer
+        };
+        return this.map.removeFeatureState(params, key);
       }
     }
   }

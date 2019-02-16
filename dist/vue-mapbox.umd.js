@@ -1,10 +1,18 @@
 (function webpackUniversalModuleDefinition(root, factory) {
   if (typeof exports === "object" && typeof module === "object")
-    module.exports = factory();
-  else if (typeof define === "function" && define.amd) define([], factory);
-  else if (typeof exports === "object") exports["vue-mapbox"] = factory();
-  else root["vue-mapbox"] = factory();
-})(typeof self !== "undefined" ? self : this, function() {
+    module.exports = factory(require("map-promisified"), require("mapbox-gl"));
+  else if (typeof define === "function" && define.amd)
+    define(["map-promisified", "mapbox-gl"], factory);
+  else if (typeof exports === "object")
+    exports["vue-mapbox"] = factory(
+      require("map-promisified"),
+      require("mapbox-gl")
+    );
+  else root["vue-mapbox"] = factory(root["map-promisified"], root["mapbox-gl"]);
+})(typeof self !== "undefined" ? self : this, function(
+  __WEBPACK_EXTERNAL_MODULE__2191__,
+  __WEBPACK_EXTERNAL_MODULE__2ff6__
+) {
   return /******/ (function(modules) {
     // webpackBootstrap
     /******/ // The module cache
@@ -241,6 +249,11 @@
         /***/
       },
 
+      /***/ "044e": /***/ function(module, exports, __webpack_require__) {
+        // extracted by mini-css-extract-plugin
+        /***/
+      },
+
       /***/ "0d58": /***/ function(module, exports, __webpack_require__) {
         // 19.1.2.14 / 15.2.3.14 Object.keys(O)
         var $keys = __webpack_require__("ce10");
@@ -452,6 +465,12 @@
             );
           }
         };
+
+        /***/
+      },
+
+      /***/ "2191": /***/ function(module, exports) {
+        module.exports = __WEBPACK_EXTERNAL_MODULE__2191__;
 
         /***/
       },
@@ -771,6 +790,12 @@
             }
           }
         );
+
+        /***/
+      },
+
+      /***/ "2ff6": /***/ function(module, exports) {
+        module.exports = __WEBPACK_EXTERNAL_MODULE__2ff6__;
 
         /***/
       },
@@ -1687,420 +1712,6 @@
         /***/
       },
 
-      /***/ "7f84": /***/ function(module, exports, __webpack_require__) {
-        (function(e, n) {
-          true ? (module.exports = n()) : undefined;
-        })(window, function() {
-          return (function(e) {
-            var n = {};
-            function t(o) {
-              if (n[o]) return n[o].exports;
-              var r = (n[o] = { i: o, l: !1, exports: {} });
-              return (
-                e[o].call(r.exports, r, r.exports, t), (r.l = !0), r.exports
-              );
-            }
-            return (
-              (t.m = e),
-              (t.c = n),
-              (t.d = function(e, n, o) {
-                t.o(e, n) ||
-                  Object.defineProperty(e, n, { enumerable: !0, get: o });
-              }),
-              (t.r = function(e) {
-                "undefined" !== typeof Symbol &&
-                  Symbol.toStringTag &&
-                  Object.defineProperty(e, Symbol.toStringTag, {
-                    value: "Module"
-                  }),
-                  Object.defineProperty(e, "__esModule", { value: !0 });
-              }),
-              (t.t = function(e, n) {
-                if ((1 & n && (e = t(e)), 8 & n)) return e;
-                if (4 & n && "object" === typeof e && e && e.__esModule)
-                  return e;
-                var o = Object.create(null);
-                if (
-                  (t.r(o),
-                  Object.defineProperty(o, "default", {
-                    enumerable: !0,
-                    value: e
-                  }),
-                  2 & n && "string" != typeof e)
-                )
-                  for (var r in e)
-                    t.d(
-                      o,
-                      r,
-                      function(n) {
-                        return e[n];
-                      }.bind(null, r)
-                    );
-                return o;
-              }),
-              (t.n = function(e) {
-                var n =
-                  e && e.__esModule
-                    ? function() {
-                        return e["default"];
-                      }
-                    : function() {
-                        return e;
-                      };
-                return t.d(n, "a", n), n;
-              }),
-              (t.o = function(e, n) {
-                return Object.prototype.hasOwnProperty.call(e, n);
-              }),
-              (t.p = ""),
-              t((t.s = 0))
-            );
-          })([
-            function(e, n, t) {
-              e.exports = t(1);
-            },
-            function(e, n, t) {
-              "use strict";
-              t.r(n);
-              var o = [
-                  {
-                    name: "moveend",
-                    check: function(e, n) {
-                      return n.center && e.isMoving();
-                    }
-                  },
-                  {
-                    name: "zoomend",
-                    check: function(e, n) {
-                      return (
-                        void 0 !== n.zoom && null !== n.zoom && e.isZooming()
-                      );
-                    }
-                  },
-                  {
-                    name: "rotateend",
-                    check: function(e, n) {
-                      return (
-                        void 0 !== n.bearing &&
-                        null !== n.bearing &&
-                        e.isRotating()
-                      );
-                    }
-                  },
-                  {
-                    name: "pitchend",
-                    check: function(e, n) {
-                      return (
-                        void 0 !== n.pitch && null !== n.bearing && e.isMoving()
-                      );
-                    }
-                  }
-                ],
-                r = function(e) {
-                  return {
-                    center: e.getCenter(),
-                    zoom: e.getZoom(),
-                    bearing: e.getBearing(),
-                    pitch: e.getPitch()
-                  };
-                },
-                i = { events: o, getter: r },
-                u = {
-                  events: [
-                    {
-                      name: "moveend",
-                      check: function(e) {
-                        return e.isMoving();
-                      }
-                    }
-                  ],
-                  getter: function(e) {
-                    return { center: e.getCenter() };
-                  }
-                },
-                c = {
-                  events: [
-                    {
-                      name: "zoomend",
-                      check: function(e) {
-                        return e.isZooming();
-                      }
-                    }
-                  ],
-                  getter: function(e) {
-                    return { zoom: e.getZoom() };
-                  }
-                },
-                f = {
-                  events: [
-                    {
-                      name: "rotateend",
-                      check: function(e) {
-                        return e.isRotating();
-                      }
-                    }
-                  ],
-                  getter: function(e) {
-                    return { bearing: e.getBearing() };
-                  }
-                },
-                a = {
-                  setCenter: u,
-                  panBy: u,
-                  panTo: u,
-                  setZoom: c,
-                  zoomTo: c,
-                  zoomIn: c,
-                  zoomOut: c,
-                  setBearing: f,
-                  rotateTo: f,
-                  resetNorth: f,
-                  snapToNorth: f,
-                  setPitch: {
-                    events: [
-                      {
-                        name: "pitchend",
-                        check: function(e) {
-                          return !0;
-                        }
-                      }
-                    ],
-                    getter: function(e) {
-                      return { pitch: e.getPitch() };
-                    }
-                  },
-                  fitBounds: {
-                    events: [
-                      {
-                        name: "zoomend",
-                        check: function(e) {
-                          return e.isZooming();
-                        }
-                      },
-                      {
-                        name: "moveend",
-                        check: function(e) {
-                          return e.isMoving();
-                        }
-                      },
-                      {
-                        name: "rotateend",
-                        check: function(e) {
-                          return e.isRotating();
-                        }
-                      }
-                    ],
-                    getter: function(e) {
-                      return {
-                        zoom: e.getZoom(),
-                        bearing: e.getBearing(),
-                        pitch: e.getPitch(),
-                        center: e.getCenter()
-                      };
-                    }
-                  },
-                  fitScreenCoordinates: {
-                    events: [
-                      {
-                        name: "zoomend",
-                        check: function(e, n) {
-                          return e.isZooming();
-                        }
-                      },
-                      {
-                        name: "moveend",
-                        check: function(e, n) {
-                          return e.isMoving();
-                        }
-                      },
-                      {
-                        name: "rotateend",
-                        check: function(e, n) {
-                          return n.bearing && e.isRotating();
-                        }
-                      }
-                    ],
-                    getter: function(e) {
-                      return {
-                        zoom: e.getZoom(),
-                        center: e.getCenter(),
-                        bearing: e.getBearing(),
-                        pitch: e.getPitch()
-                      };
-                    }
-                  },
-                  jumpTo: i,
-                  easeTo: i,
-                  flyTo: i
-                };
-              function l(e) {
-                return (
-                  (l =
-                    "function" === typeof Symbol &&
-                    "symbol" === typeof Symbol.iterator
-                      ? function(e) {
-                          return typeof e;
-                        }
-                      : function(e) {
-                          return e &&
-                            "function" === typeof Symbol &&
-                            e.constructor === Symbol &&
-                            e !== Symbol.prototype
-                            ? "symbol"
-                            : typeof e;
-                        }),
-                  l(e)
-                );
-              }
-              function m(e) {
-                for (var n = 1; n < arguments.length; n++) {
-                  var t = null != arguments[n] ? arguments[n] : {},
-                    o = Object.keys(t);
-                  "function" === typeof Object.getOwnPropertySymbols &&
-                    (o = o.concat(
-                      Object.getOwnPropertySymbols(t).filter(function(e) {
-                        return Object.getOwnPropertyDescriptor(t, e).enumerable;
-                      })
-                    )),
-                    o.forEach(function(n) {
-                      g(e, n, t[n]);
-                    });
-                }
-                return e;
-              }
-              function g(e, n, t) {
-                return (
-                  n in e
-                    ? Object.defineProperty(e, n, {
-                        value: t,
-                        enumerable: !0,
-                        configurable: !0,
-                        writable: !0
-                      })
-                    : (e[n] = t),
-                  e
-                );
-              }
-              function s(e) {
-                return ""
-                  .concat(e, "-")
-                  .concat(("" + Math.random()).split(".")[1]);
-              }
-              function d(e, n, t, o) {
-                var r = function r(i) {
-                  i.type === n && i.eventId === t && (e.off(n, r), o(i));
-                };
-                return r;
-              }
-              function p(e, n) {
-                var t = e[n],
-                  o = t.length;
-                return function() {
-                  for (
-                    var r = [],
-                      i = { eventId: s(n) },
-                      u = a[n].events.map(function(n, t) {
-                        return {
-                          event: n,
-                          func: new Promise(function(o, u) {
-                            (r[t] = {
-                              event: n,
-                              func: d(e, n.name, i.eventId, o)
-                            }),
-                              e.on(n.name, r[t].func);
-                          })
-                        };
-                      }),
-                      c = [],
-                      f = 0;
-                    f < o;
-                    f++
-                  )
-                    f === o - 1
-                      ? c.push(
-                          m(
-                            {},
-                            i,
-                            (f < 0 || arguments.length <= f
-                              ? void 0
-                              : arguments[f]) || {}
-                          )
-                        )
-                      : c.push(
-                          (f < 0 || arguments.length <= f
-                            ? void 0
-                            : arguments[f]) || null
-                        );
-                  var g = [],
-                    p = (arguments.length <= 0 ? void 0 : arguments[0]) || {};
-                  try {
-                    t.apply(e, c),
-                      "fitBounds" === n && (p = {}),
-                      "fitScreenCoordinates" === n &&
-                        ((p = { bearing: null }),
-                        (p.bearing = null),
-                        "number" ===
-                          typeof (arguments.length <= 2
-                            ? void 0
-                            : arguments[2]) &&
-                          (p.bearing =
-                            arguments.length <= 2 ? void 0 : arguments[2]),
-                        (arguments.length <= 3 ? void 0 : arguments[3]) &&
-                          "object" ===
-                            l(arguments.length <= 3 ? void 0 : arguments[3]) &&
-                          (p = m(
-                            {},
-                            p,
-                            arguments.length <= 3 ? void 0 : arguments[3]
-                          ))),
-                      (g = u.map(function(n) {
-                        var t = n.event,
-                          o = n.func;
-                        return t.check(e, p)
-                          ? o
-                          : (e.off(t.name, o), Promise.resolve());
-                      }));
-                  } catch (v) {
-                    throw (r.forEach(function(n) {
-                      var t = n.event,
-                        o = n.func;
-                      e.off(t.name, o);
-                    }),
-                    v);
-                  }
-                  return Promise.all(g).then(function() {
-                    return a[n].getter(e);
-                  });
-                };
-              }
-              var v = p,
-                h = function(e) {
-                  var n = Object.keys(a),
-                    t = {};
-                  return (
-                    n.forEach(function(o) {
-                      -1 !== n.indexOf(o) && (t[o] = v(e, o));
-                    }),
-                    t
-                  );
-                };
-              function b(e) {
-                var n =
-                  arguments.length > 1 && void 0 !== arguments[1]
-                    ? arguments[1]
-                    : null;
-                return n ? v(e, n) : h(e);
-              }
-              t.d(n, "default", function() {
-                return b;
-              });
-            }
-          ])["default"];
-        });
-
-        /***/
-      },
-
       /***/ "8079": /***/ function(module, exports, __webpack_require__) {
         var global = __webpack_require__("7726");
         var macrotask = __webpack_require__("1991").set;
@@ -2187,27 +1798,8 @@
         /***/
       },
 
-      /***/ "83e1": /***/ function(module, exports, __webpack_require__) {
-        // extracted by mini-css-extract-plugin
-        /***/
-      },
-
       /***/ "84f2": /***/ function(module, exports) {
         module.exports = {};
-
-        /***/
-      },
-
-      /***/ "8615": /***/ function(module, exports, __webpack_require__) {
-        // https://github.com/tc39/proposal-object-values-entries
-        var $export = __webpack_require__("5ca1");
-        var $values = __webpack_require__("504c")(false);
-
-        $export($export.S, "Object", {
-          values: function values(it) {
-            return $values(it);
-          }
-        });
 
         /***/
       },
@@ -2486,25 +2078,6 @@
               : cof(it) == "RegExp")
           );
         };
-
-        /***/
-      },
-
-      /***/ ac42: /***/ function(
-        module,
-        __webpack_exports__,
-        __webpack_require__
-      ) {
-        "use strict";
-        /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_b7a136fa_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          "83e1"
-        );
-        /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_b7a136fa_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
-          _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_b7a136fa_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__
-        );
-        /* unused harmony reexport * */
-        /* unused harmony default export */ var _unused_webpack_default_export =
-          _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_b7a136fa_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a;
 
         /***/
       },
@@ -2882,6 +2455,25 @@
         /***/
       },
 
+      /***/ d7b6: /***/ function(
+        module,
+        __webpack_exports__,
+        __webpack_require__
+      ) {
+        "use strict";
+        /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_1409523d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          "044e"
+        );
+        /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_1409523d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
+          _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_1409523d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__
+        );
+        /* unused harmony reexport * */
+        /* unused harmony default export */ var _unused_webpack_default_export =
+          _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_index_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GlMap_vue_vue_type_style_index_0_id_1409523d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a;
+
+        /***/
+      },
+
       /***/ d8e8: /***/ function(module, exports) {
         module.exports = function(it) {
           if (typeof it != "function")
@@ -2974,19 +2566,7 @@
         // Indicate to webpack that this file can be concatenated
         /* harmony default export */ var setPublicPath = null;
 
-        // EXTERNAL MODULE: ./node_modules/core-js/modules/es7.object.values.js
-        var es7_object_values = __webpack_require__("8615");
-
-        // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.iterator.js
-        var es6_array_iterator = __webpack_require__("cadf");
-
-        // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
-        var es6_object_keys = __webpack_require__("456d");
-
-        // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
-        var web_dom_iterable = __webpack_require__("ac6a");
-
-        // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"752d9a0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/GlMap.vue?vue&type=template&id=b7a136fa&scoped=true&
+        // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/GlMap.vue?vue&type=template&id=1409523d&scoped=true&
         var render = function() {
           var _vm = this;
           var _h = _vm.$createElement;
@@ -2994,7 +2574,7 @@
           return _c(
             "div",
             { staticClass: "mgl-map-wrapper" },
-            [_vm._m(0), _vm._t("default")],
+            [_vm._m(0), _vm.initialized ? _vm._t("default") : _vm._e()],
             2
           );
         };
@@ -3010,7 +2590,24 @@
           }
         ];
 
-        // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=template&id=b7a136fa&scoped=true&
+        // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=template&id=1409523d&scoped=true&
+
+        // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
+        var web_dom_iterable = __webpack_require__("ac6a");
+
+        // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.iterator.js
+        var es6_array_iterator = __webpack_require__("cadf");
+
+        // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
+        var es6_object_keys = __webpack_require__("456d");
+
+        // EXTERNAL MODULE: external {"commonjs":"mapbox-gl","commonjs2":"mapbox-gl","amd":"mapbox-gl","root":"mapbox-gl"}
+        var external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapbox_gl_root_mapbox_gl_ = __webpack_require__(
+          "2ff6"
+        );
+        var external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapbox_gl_root_mapbox_gl_default = /*#__PURE__*/ __webpack_require__.n(
+          external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapbox_gl_root_mapbox_gl_
+        );
 
         // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
         function _defineProperty(obj, key, value) {
@@ -3621,10 +3218,12 @@
             }
           }
         };
-        // EXTERNAL MODULE: ./node_modules/map-promisified/dist/mapPromisify.js
-        var mapPromisify = __webpack_require__("7f84");
-        var mapPromisify_default = /*#__PURE__*/ __webpack_require__.n(
-          mapPromisify
+        // EXTERNAL MODULE: external {"commonjs":"map-promisified","commonjs2":"map-promisified","amd":"map-promisified","root":"map-promisified"}
+        var external_commonjs_map_promisified_commonjs2_map_promisified_amd_map_promisified_root_map_promisified_ = __webpack_require__(
+          "2191"
+        );
+        var external_commonjs_map_promisified_commonjs2_map_promisified_amd_map_promisified_root_map_promisified_default = /*#__PURE__*/ __webpack_require__.n(
+          external_commonjs_map_promisified_commonjs2_map_promisified_amd_map_promisified_root_map_promisified_
         );
 
         // CONCATENATED MODULE: ./src/components/map/mixins/withAsyncActions.js
@@ -3635,23 +3234,29 @@
           },
           methods: {
             $_registerAsyncActions: function $_registerAsyncActions(map) {
-              this.actions = _objectSpread({}, mapPromisify_default()(map), {
-                stop: function stop() {
-                  var _this = this;
+              this.actions = _objectSpread(
+                {},
+                external_commonjs_map_promisified_commonjs2_map_promisified_amd_map_promisified_root_map_promisified_default()(
+                  map
+                ),
+                {
+                  stop: function stop() {
+                    var _this = this;
 
-                  this.map.stop();
-                  var updatedProps = {
-                    pitch: this.map.getPitch(),
-                    zoom: this.map.getZoom(),
-                    bearing: this.map.getBearing(),
-                    center: this.map.getCenter()
-                  };
-                  Object.entries(updatedProps).forEach(function(prop) {
-                    _this.$_updateSyncedPropsFabric(prop[0], prop[1])();
-                  });
-                  return Promise.resolve(updatedProps);
+                    this.map.stop();
+                    var updatedProps = {
+                      pitch: this.map.getPitch(),
+                      zoom: this.map.getZoom(),
+                      bearing: this.map.getBearing(),
+                      center: this.map.getCenter()
+                    };
+                    Object.entries(updatedProps).forEach(function(prop) {
+                      _this.$_updateSyncedPropsFabric(prop[0], prop[1])();
+                    });
+                    return Promise.resolve(updatedProps);
+                  }
                 }
-              });
+              );
             }
           }
         };
@@ -3674,11 +3279,22 @@
             withEvents
           ],
           props: options,
+          provide: function provide() {
+            var self = this;
+            return {
+              get mapbox() {
+                return self.mapbox;
+              },
+
+              get map() {
+                return self.map;
+              }
+            };
+          },
           data: function data() {
             return {
               initial: true,
-              baseMap: true,
-              mapLoaded: false
+              initialized: false
             };
           },
           computed: {
@@ -3714,6 +3330,8 @@
           created: function created() {
             this.map = null;
             this.propsIsUpdating = {};
+            this.mapbox =
+              external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapbox_gl_root_mapbox_gl_default.a;
           },
           mounted: function mounted() {
             var _this = this;
@@ -3737,7 +3355,7 @@
               _this.$_bindPropsUpdateEvents();
 
               _this.initial = false;
-              _this.mapLoaded = true;
+              _this.initialized = true;
 
               _this.$emit("load", {
                 map: map,
@@ -3751,9 +3369,9 @@
         };
         // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=script&lang=js&
         /* harmony default export */ var map_GlMapvue_type_script_lang_js_ = GlMapvue_type_script_lang_js_;
-        // EXTERNAL MODULE: ./src/components/map/GlMap.vue?vue&type=style&index=0&id=b7a136fa&scoped=true&lang=css&
-        var GlMapvue_type_style_index_0_id_b7a136fa_scoped_true_lang_css_ = __webpack_require__(
-          "ac42"
+        // EXTERNAL MODULE: ./src/components/map/GlMap.vue?vue&type=style&index=0&id=1409523d&scoped=true&lang=css&
+        var GlMapvue_type_style_index_0_id_1409523d_scoped_true_lang_css_ = __webpack_require__(
+          "d7b6"
         );
 
         // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
@@ -3867,62 +3485,23 @@
           staticRenderFns,
           false,
           null,
-          "b7a136fa",
+          "1409523d",
           null
         );
 
         component.options.__file = "GlMap.vue";
         /* harmony default export */ var GlMap = component.exports;
-        // CONCATENATED MODULE: ./src/lib/withRegistration.js
-        // @ts-check
-        function walkParents(component) {
-          if (component.baseMap) {
-            return component;
-          } else {
-            if (component.$parent !== undefined) {
-              return walkParents(component.$parent);
-            }
-          }
-        }
-
-        /* harmony default export */ var withRegistration = {
-          created: function created() {
-            this.map = null;
-          },
-          mounted: function mounted() {
-            this.$_checkMapTree(); // We wait for "load" event from map component to ensure mapbox is loaded and map created
-          },
-          methods: {
-            $_findBaseMap: function $_findBaseMap() {
-              var baseMapComponent = walkParents(this.$parent);
-
-              if (baseMapComponent === undefined) {
-                throw new Error("Component must have root map");
-              }
-
-              return baseMapComponent;
-            },
-            $_checkMapTree: function $_checkMapTree() {
-              var mapComponent = this.$_findBaseMap();
-
-              if (mapComponent) {
-                if (mapComponent.mapLoaded) {
-                  this.$_deferredMount({
-                    component: mapComponent,
-                    map: mapComponent.map
-                  });
-                } else {
-                  mapComponent.$on("load", this.$_deferredMount);
-                }
-              }
-            }
-          }
-        };
         // CONCATENATED MODULE: ./src/components/UI/withSelfEvents.js
 
         /* harmony default export */ var withSelfEvents = {
           methods: {
-            /** Bind events for markers and popups.
+            $_emitSelfEvent: function $_emitSelfEvent(event) {
+              this.$_emitMapEvent(event, {
+                control: this.control
+              });
+            },
+
+            /** Bind events for markers and popups and controls.
              * MapboxGL JS emits this events on popup or marker object,
              * so we treat them as 'self' events of these objects
              */
@@ -3947,20 +3526,26 @@
           }
         };
         // CONCATENATED MODULE: ./src/components/UI/controls/controlMixin.js
+        // import withRegistration from "../../../lib/withRegistration";
 
         /* harmony default export */ var controlMixin = {
-          mixins: [withRegistration, withEvents, withSelfEvents],
+          mixins: [withEvents, withSelfEvents],
+          inject: ["mapbox", "map"],
+          props: {
+            position: {
+              type: String,
+              default: "top-right"
+            }
+          },
           beforeDestroy: function beforeDestroy() {
-            if (this.map !== undefined) {
+            if (this.map) {
               this.map.removeControl(this.control);
             }
           },
           methods: {
-            $_addControl: function $_addControl(payload) {
-              this.map = payload.map;
-
+            $_addControl: function $_addControl() {
               try {
-                this.map.addControl(this.control);
+                this.map.addControl(this.control, this.position);
               } catch (err) {
                 this.$_emitEvent("error", {
                   error: err
@@ -3971,7 +3556,6 @@
               this.$_emitEvent("added", {
                 control: this.control
               });
-              payload.component.$off("load", this.$_deferredMount);
             }
           },
           render: function render() {}
@@ -3982,23 +3566,18 @@
           name: "NavigationControl",
           mixins: [controlMixin],
           props: {
-            position: {
-              type: String,
-              default: "top-right" // TODO: add validator
+            showCompass: {
+              type: Boolean,
+              default: true
+            },
+            showZoom: {
+              type: Boolean,
+              default: true
             }
-          },
-          data: function data() {
-            return {
-              control: undefined
-            };
           },
           created: function created() {
-            this.control = new this.mapbox.NavigationControl();
-          },
-          methods: {
-            $_deferredMount: function $_deferredMount(payload) {
-              this.$_addControl(payload);
-            }
+            this.control = new this.mapbox.NavigationControl(this.$props);
+            this.$_addControl();
           }
         };
         // CONCATENATED MODULE: ./src/components/UI/controls/GeolocateControl.js
@@ -4022,14 +3601,6 @@
                 };
               }
             },
-            trackUserLocation: {
-              type: Boolean,
-              default: false
-            },
-            showUserLocation: {
-              type: Boolean,
-              default: true
-            },
             fitBoundsOptions: {
               type: Object,
               default: function _default() {
@@ -4037,37 +3608,23 @@
                   maxZoom: 15
                 };
               }
+            },
+            trackUserLocation: {
+              type: Boolean,
+              default: false
+            },
+            showUserLocation: {
+              type: Boolean,
+              default: true
             }
           },
-          data: function data() {
-            return {
-              control: undefined
-            };
-          },
           created: function created() {
-            this.control = new this.mapbox.GeolocateControl(this._props);
+            var GeolocateControl = this.mapbox.GeolocateControl;
+            this.control = new GeolocateControl(this.$props);
+            this.$_addControl();
+            this.$_bindSelfEvents(Object.keys(geolocationEvents), this.control);
           },
           methods: {
-            $_deferredMount: function $_deferredMount(payload) {
-              this.$_addControl(payload);
-              this.$_bindSelfEvents(
-                Object.keys(geolocationEvents),
-                this.control
-              );
-            },
-            $_emitSelfEvent: function $_emitSelfEvent(event) {
-              if (event.type === "error") {
-                this.$_emitMapEvent("geolocate-error", {
-                  control: this.control
-                });
-              }
-
-              if (event.type === "geolocate") {
-                this.$_emitMapEvent("geolocate", {
-                  control: this.control
-                });
-              }
-            },
             trigger: function trigger() {
               if (this.control) {
                 return this.control.trigger();
@@ -4081,23 +3638,14 @@
           name: "FullscreenControl",
           mixins: [controlMixin],
           props: {
-            position: {
-              type: String,
-              default: "top-right"
+            container: {
+              type: HTMLElement,
+              default: undefined
             }
-          },
-          data: function data() {
-            return {
-              control: undefined
-            };
           },
           created: function created() {
-            this.control = new this.mapbox.FullscreenControl();
-          },
-          methods: {
-            $_deferredMount: function $_deferredMount(payload) {
-              this.$_addControl(payload);
-            }
+            this.control = new this.mapbox.FullscreenControl(this.$props);
+            this.$_addControl();
           }
         };
         // CONCATENATED MODULE: ./src/components/UI/controls/AttributionControl.js
@@ -4115,20 +3663,9 @@
               deafault: undefined
             }
           },
-          data: function data() {
-            return {
-              control: undefined
-            };
-          },
           created: function created() {
-            this.control = new this.mapbox.AttributionControl({
-              compact: this.compact
-            });
-          },
-          methods: {
-            $_deferredMount: function $_deferredMount(payload) {
-              this.$_addControl(payload);
-            }
+            this.control = new this.mapbox.AttributionControl(this.$props);
+            this.$_addControl();
           }
         };
         // CONCATENATED MODULE: ./src/components/UI/controls/ScaleControl.js
@@ -4149,11 +3686,6 @@
               }
             }
           },
-          data: function data() {
-            return {
-              control: undefined
-            };
-          },
           watch: {
             unit: function unit(next, prev) {
               if (this.control && next !== prev) {
@@ -4162,29 +3694,25 @@
             }
           },
           created: function created() {
-            this.control = new this.mapbox.ScaleControl(this._props);
-          },
-          methods: {
-            $_deferredMount: function $_deferredMount(payload) {
-              this.$_addControl(payload);
-            }
+            this.control = new this.mapbox.ScaleControl(this.$props);
+            this.$_addControl();
           }
         };
-        // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"752d9a0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=template&id=57267865&
-        var Markervue_type_template_id_57267865_render = function() {
+        // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=template&id=031b2b03&
+        var Markervue_type_template_id_031b2b03_render = function() {
           var _vm = this;
           var _h = _vm.$createElement;
           var _c = _vm._self._c || _h;
           return _c(
             "div",
             { staticStyle: { display: "none" } },
-            [_vm._t("marker"), _vm._t("default")],
+            [_vm.marker ? _vm._t("marker") : _vm._e(), _vm._t("default")],
             2
           );
         };
-        var Markervue_type_template_id_57267865_staticRenderFns = [];
+        var Markervue_type_template_id_031b2b03_staticRenderFns = [];
 
-        // CONCATENATED MODULE: ./src/components/UI/Marker.vue?vue&type=template&id=57267865&
+        // CONCATENATED MODULE: ./src/components/UI/Marker.vue?vue&type=template&id=031b2b03&
 
         // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=script&lang=js&
 
@@ -4205,7 +3733,16 @@
         };
         /* harmony default export */ var Markervue_type_script_lang_js_ = {
           name: "MapMarker",
-          mixins: [withRegistration, withEvents, withSelfEvents],
+          mixins: [withEvents, withSelfEvents],
+          inject: ["mapbox", "map"],
+          provide: function provide() {
+            var self = this;
+            return {
+              get marker() {
+                return self.marker;
+              }
+            };
+          },
           props: {
             // mapbox marker options
             offset: {
@@ -4246,8 +3783,38 @@
               this.marker.setDraggable(next);
             }
           },
-          mounted: function mounted() {
-            this.$_checkMapTree();
+          created: function created() {
+            var _this = this;
+
+            var markerOptions = _objectSpread({}, this.$props);
+
+            if (this.$slots.marker) {
+              markerOptions.element = this.$slots.marker[0].elm;
+            }
+
+            this.marker = new this.mapbox.Marker(markerOptions);
+            this.$_addMarker();
+
+            if (this.$listeners["update:coordinates"]) {
+              this.marker.on("dragend", function(event) {
+                var newCoordinates;
+
+                if (_this.coordinates instanceof Array) {
+                  newCoordinates = [
+                    event.target._lngLat.lng,
+                    event.target._lngLat.lat
+                  ];
+                } else {
+                  newCoordinates = event.target._lngLat;
+                }
+
+                _this.$emit("update:coordinates", newCoordinates);
+              });
+            }
+
+            var eventNames = Object.keys(markerEvents);
+            this.$_bindSelfEvents(eventNames, this.marker);
+            this.initial = false;
           },
           beforeDestroy: function beforeDestroy() {
             if (this.map !== undefined && this.marker !== undefined) {
@@ -4255,44 +3822,6 @@
             }
           },
           methods: {
-            $_deferredMount: function $_deferredMount(payload) {
-              var _this = this;
-
-              if (!this.marker) {
-                var markerOptions = _objectSpread({}, this._props);
-
-                if (this.$slots.marker) {
-                  markerOptions.element = this.$slots.marker[0].elm;
-                }
-
-                this.marker = new this.mapbox.Marker(markerOptions);
-              }
-
-              this.map = payload.map;
-              this.$_addMarker();
-
-              if (this.$listeners["update:coordinates"]) {
-                this.marker.on("dragend", function(event) {
-                  var newCoordinates;
-
-                  if (_this.coordinates instanceof Array) {
-                    newCoordinates = [
-                      event.target._lngLat.lng,
-                      event.target._lngLat.lat
-                    ];
-                  } else {
-                    newCoordinates = event.target._lngLat;
-                  }
-
-                  _this.$emit("update:coordinates", newCoordinates);
-                });
-              }
-
-              var eventNames = Object.keys(markerEvents);
-              this.$_bindSelfEvents(eventNames, this.marker);
-              this.initial = false;
-              payload.component.$off("load", this.$_deferredMount);
-            },
             $_addMarker: function $_addMarker() {
               this.marker.setLngLat(this.coordinates).addTo(this.map);
               this.$_emitEvent("added", {
@@ -4306,9 +3835,7 @@
             },
             remove: function remove() {
               this.marker.remove();
-              this.$_emitEvent("removed", {
-                marker: this.marker
-              });
+              this.$_emitEvent("removed");
             },
             togglePopup: function togglePopup() {
               return this.marker.togglePopup();
@@ -4323,8 +3850,8 @@
 
         var Marker_component = normalizeComponent(
           UI_Markervue_type_script_lang_js_,
-          Markervue_type_template_id_57267865_render,
-          Markervue_type_template_id_57267865_staticRenderFns,
+          Markervue_type_template_id_031b2b03_render,
+          Markervue_type_template_id_031b2b03_staticRenderFns,
           false,
           null,
           null,
@@ -4333,8 +3860,8 @@
 
         Marker_component.options.__file = "Marker.vue";
         /* harmony default export */ var Marker = Marker_component.exports;
-        // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"752d9a0d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=template&id=3210c140&
-        var Popupvue_type_template_id_3210c140_render = function() {
+        // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=template&id=4b9d5350&
+        var Popupvue_type_template_id_4b9d5350_render = function() {
           var _vm = this;
           var _h = _vm.$createElement;
           var _c = _vm._self._c || _h;
@@ -4345,9 +3872,9 @@
             2
           );
         };
-        var Popupvue_type_template_id_3210c140_staticRenderFns = [];
+        var Popupvue_type_template_id_4b9d5350_staticRenderFns = [];
 
-        // CONCATENATED MODULE: ./src/components/UI/Popup.vue?vue&type=template&id=3210c140&
+        // CONCATENATED MODULE: ./src/components/UI/Popup.vue?vue&type=template&id=4b9d5350&
 
         // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=script&lang=js&
 
@@ -4370,7 +3897,8 @@
 
         /* harmony default export */ var Popupvue_type_script_lang_js_ = {
           name: "Popup",
-          mixins: [withRegistration, withEvents, withSelfEvents],
+          mixins: [withEvents, withSelfEvents],
+          inject: ["mapbox", "map", "marker"],
           props: {
             /**
              * If `true`, a close button will appear in the top right corner of the popup.
@@ -4460,8 +3988,12 @@
               return false;
             }
           },
+          created: function created() {
+            this.popup = new this.mapbox.Popup(this.$props);
+          },
           mounted: function mounted() {
-            this.$_checkMapTree();
+            this.$_addPopup();
+            this.initial = false;
           },
           beforeDestroy: function beforeDestroy() {
             if (this.map) {
@@ -4476,18 +4008,8 @@
             }
           },
           methods: {
-            $_deferredMount: function $_deferredMount(payload) {
-              this.map = payload.map;
-              this.$_addPopup();
-              this.initial = false;
-              payload.component.$off("load", this.$_deferredMount);
-            },
             $_addPopup: function $_addPopup() {
-              var _this = this;
-
-              this.popup = new this.mapbox.Popup(
-                _objectSpread({}, this._props)
-              );
+              this.popup = new this.mapbox.Popup(this.$props);
               if (this.coordinates !== undefined)
                 this.popup.setLngLat(this.coordinates);
 
@@ -4511,13 +4033,8 @@
                 popup: this.popup
               });
 
-              if (this.$parent.marker !== undefined) {
-                this.$parent.marker.setPopup(this.popup);
-              } else {
-                this.$parent.$once("added", function(_ref) {
-                  var marker = _ref.marker;
-                  marker.setPopup(_this.popup);
-                });
+              if (this.marker) {
+                this.marker.setPopup(this.popup);
               }
             },
             $_emitSelfEvent: function $_emitSelfEvent(event) {
@@ -4541,8 +4058,8 @@
 
         var Popup_component = normalizeComponent(
           UI_Popupvue_type_script_lang_js_,
-          Popupvue_type_template_id_3210c140_render,
-          Popupvue_type_template_id_3210c140_staticRenderFns,
+          Popupvue_type_template_id_4b9d5350_render,
+          Popupvue_type_template_id_4b9d5350_staticRenderFns,
           false,
           null,
           null,
@@ -4572,10 +4089,16 @@
         ];
         // CONCATENATED MODULE: ./src/components/layer/layerMixin.js
 
+        // import withRegistration from "../../lib/withRegistration";
+
         var mapboxSourceProps = {
           sourceId: {
             type: String,
             required: true
+          },
+          source: {
+            type: [Object, String],
+            default: undefined
           }
         };
         var mapboxLayerStyleProps = {
@@ -4583,14 +4106,14 @@
             type: String,
             required: true
           },
-          metadata: Object,
-          // refLayer: String,
-          minZoom: Number,
-          maxZoom: Number,
-          paint: Object,
-          layout: Object,
-          before: Object,
-          filter: undefined
+          layer: {
+            type: Object,
+            required: true
+          },
+          before: {
+            type: String,
+            default: undefined
+          }
         };
         var componentProps = {
           clearSource: {
@@ -4607,13 +4130,14 @@
           }
         };
         /* harmony default export */ var layerMixin = {
-          mixins: [withRegistration, withEvents],
+          mixins: [withEvents],
           props: _objectSpread(
             {},
             mapboxSourceProps,
             mapboxLayerStyleProps,
             componentProps
           ),
+          inject: ["mapbox", "map"],
           data: function data() {
             return {
               initial: true
@@ -4630,50 +4154,86 @@
               return this.map ? this.map.getSource(this.sourceId) : null;
             }
           },
-          watch: {
-            minZoom: function minZoom(val) {
-              if (this.initial) return;
-              this.map.setLayerZoomRange(this.layerId, val, this.maxZoom);
-            },
-            maxZoom: function maxZoom(val) {
-              if (this.initial) return;
-              this.map.setLayerZoomRange(this.layerId, this.minZoom, val);
-            },
-            paint: function paint(properties) {
-              if (this.initial) return;
+          created: function created() {
+            if (this.layer.minzoom) {
+              this.$watch("layer.minzoom", function(next) {
+                if (this.initial) return;
+                this.map.setLayerZoomRange(
+                  this.layerId,
+                  next,
+                  this.layer.maxzoom
+                );
+              });
+            }
 
-              var _arr = Object.keys(this.paint);
+            if (this.layer.maxzoom) {
+              this.$watch("layer.maxzoom", function(next) {
+                if (this.initial) return;
+                this.map.setLayerZoomRange(
+                  this.layerId,
+                  this.layer.minzoom,
+                  next
+                );
+              });
+            }
 
-              for (var _i = 0; _i < _arr.length; _i++) {
-                var prop = _arr[_i];
+            if (this.layer.paint) {
+              this.$watch(
+                "layer.paint",
+                function(next) {
+                  if (this.initial) return;
 
-                if (this.paint[prop] !== properties[prop]) {
-                  this.map.setPaintProperty(
-                    this.layerId,
-                    prop,
-                    properties[prop]
-                  );
-                  this.paint[prop] = properties[prop];
+                  if (next) {
+                    var _arr = Object.keys(next);
+
+                    for (var _i = 0; _i < _arr.length; _i++) {
+                      var prop = _arr[_i];
+                      this.map.setPaintProperty(this.layerId, prop, next[prop]);
+                    }
+                  }
+                },
+                {
+                  deep: true
                 }
-              }
-            },
-            layout: function layout(properties) {
-              if (this.initial) return;
+              );
+            }
 
-              var _arr2 = Object.keys(this.layout);
+            if (this.layer.layout) {
+              this.$watch(
+                "layer.layout",
+                function(next) {
+                  if (this.initial) return;
 
-              for (var _i2 = 0; _i2 < _arr2.length; _i2++) {
-                var prop = _arr2[_i2];
+                  if (next) {
+                    var _arr2 = Object.keys(next);
 
-                if (this.layout[prop] !== properties[prop]) {
-                  this.map.setLayoutProperty(
-                    this.layerId,
-                    prop,
-                    properties[prop]
-                  );
-                  this.layout[prop] = properties[prop];
+                    for (var _i2 = 0; _i2 < _arr2.length; _i2++) {
+                      var prop = _arr2[_i2];
+                      this.map.setLayoutProperty(
+                        this.layerId,
+                        prop,
+                        next[prop]
+                      );
+                    }
+                  }
+                },
+                {
+                  deep: true
                 }
-              }
+              );
+            }
+
+            if (this.layer.filter) {
+              this.$watch(
+                "layer.filter",
+                function(next) {
+                  if (this.initial) return;
+                  this.map.setFilter(this.layerId, next);
+                },
+                {
+                  deep: true
+                }
+              );
             }
           },
           beforeDestroy: function beforeDestroy() {
@@ -4763,63 +4323,6 @@
         /* harmony default export */ var GeojsonLayer = {
           name: "GeojsonLayer",
           mixins: [layerMixin],
-          props: {
-            source: {
-              type: [Object, String]
-            },
-            type: {
-              validator: function validator(value) {
-                var allowedValues = [
-                  "fill",
-                  "line",
-                  "symbol",
-                  "circle",
-                  "fill-extrusion",
-                  "raster",
-                  "background",
-                  "heatmap"
-                ];
-                return (
-                  (typeof value === "string" &&
-                    allowedValues.indexOf(value) !== -1) ||
-                  value === undefined
-                );
-              },
-              default: "fill"
-            },
-            cluster: {
-              type: Boolean,
-              default: false
-            },
-            clusterMaxZoom: {
-              type: Number,
-              default: 14
-            },
-            clusterRadius: {
-              type: Number,
-              default: 50
-            },
-            lineMetrics: {
-              type: Boolean,
-              default: false
-            },
-            buffer: {
-              type: Number,
-              default: 128
-            },
-            tolerance: {
-              type: Number,
-              default: 0.375
-            },
-            generateId: {
-              type: Boolean,
-              default: false
-            },
-            attribution: {
-              type: String,
-              default: ""
-            }
-          },
           computed: {
             getSourceFeatures: function getSourceFeatures() {
               var _this = this;
@@ -4847,36 +4350,138 @@
 
                 return null;
               };
+            },
+            getClusterExpansionZoom: function getClusterExpansionZoom() {
+              var _this3 = this;
+
+              return function(clusterId) {
+                return new Promise(function(resolve, reject) {
+                  if (_this3.mapSource) {
+                    _this3.mapSource.getClusterExpansionZoom(
+                      clusterId,
+                      function(err, zoom) {
+                        if (err) {
+                          return reject(err);
+                        }
+
+                        return resolve(zoom);
+                      }
+                    );
+                  } else {
+                    return reject(
+                      new Error(
+                        "Map source with id ".concat(
+                          _this3.sourceId,
+                          " not found."
+                        )
+                      )
+                    );
+                  }
+                });
+              };
+            },
+            getClusterChildren: function getClusterChildren() {
+              var _this4 = this;
+
+              return function(clusterId) {
+                return new Promise(function(resolve, reject) {
+                  var source = _this4.mapSource;
+
+                  if (source) {
+                    source.getClusterChildren(clusterId, function(
+                      err,
+                      features
+                    ) {
+                      if (err) {
+                        return reject(err);
+                      }
+
+                      return resolve(features);
+                    });
+                  } else {
+                    return reject(
+                      new Error(
+                        "Map source with id ".concat(
+                          _this4.sourceId,
+                          " not found."
+                        )
+                      )
+                    );
+                  }
+                });
+              };
+            },
+            getClusterLeaves: function getClusterLeaves() {
+              var _this5 = this;
+
+              return function() {
+                for (
+                  var _len = arguments.length, args = new Array(_len), _key = 0;
+                  _key < _len;
+                  _key++
+                ) {
+                  args[_key] = arguments[_key];
+                }
+
+                return new Promise(function(resolve, reject) {
+                  if (_this5.mapSource) {
+                    var _this5$mapSource;
+
+                    (_this5$mapSource =
+                      _this5.mapSource).getClusterLeaves.apply(
+                      _this5$mapSource,
+                      args.concat([
+                        function(err, features) {
+                          if (err) {
+                            return reject(err);
+                          }
+
+                          return resolve(features);
+                        }
+                      ])
+                    );
+                  } else {
+                    return reject(
+                      new Error(
+                        "Map source with id ".concat(
+                          _this5.sourceId,
+                          " not found."
+                        )
+                      )
+                    );
+                  }
+                });
+              };
             }
           },
-          watch: {
-            source: function source(data) {
-              if (this.initial) return;
-              this.mapSource.setData(data);
-            },
-            filter: function filter(_filter) {
-              if (this.initial) return;
-              this.map.setFilter(this.layerId, _filter);
+          created: function created() {
+            if (this.source) {
+              this.$watch(
+                "source.data",
+                function(next) {
+                  if (this.initial) return;
+                  this.mapSource.setData(next);
+                },
+                {
+                  deep: true
+                }
+              );
             }
+
+            this.$_deferredMount();
           },
           methods: {
-            $_deferredMount: function $_deferredMount(payload) {
-              this.map = payload.map;
+            $_deferredMount: function $_deferredMount() {
+              // this.map = payload.map;
               this.map.on("dataloading", this.$_watchSourceLoading);
 
               if (this.source) {
-                var source = {
-                  type: "geojson",
-                  data: this.source,
-                  cluster: this.cluster,
-                  clusterMaxZoom: this.clusterMaxZoom,
-                  clusterRadius: this.clusterRadius,
-                  lineMetrics: this.lineMetrics,
-                  buffer: this.buffer,
-                  tolerance: this.tolerance,
-                  generateId: this.generateId,
-                  attribution: this.attribution
-                };
+                var source = _objectSpread(
+                  {
+                    type: "geojson"
+                  },
+                  this.source
+                );
 
                 try {
                   this.map.addSource(this.sourceId, source);
@@ -4884,11 +4489,6 @@
                   if (this.replaceSource) {
                     this.map.removeSource(this.sourceId);
                     this.map.addSource(this.sourceId, source);
-                  } else {
-                    this.$_emitEvent("layer-source-error", {
-                      sourceId: this.sourceId,
-                      error: err
-                    });
                   }
                 }
               }
@@ -4896,8 +4496,7 @@
               this.$_addLayer();
               this.$_bindLayerEvents(layerEvents);
               this.map.off("dataloading", this.$_watchSourceLoading);
-              this.initial = false;
-              payload.component.$off("load", this.$_deferredMount);
+              this.initial = false; // payload.component.$off("load", this.$_deferredMount);
             },
             $_addLayer: function $_addLayer() {
               var existed = this.map.getLayer(this.layerId);
@@ -4913,38 +4512,14 @@
                 }
               }
 
-              var layer = {
-                id: this.layerId,
-                source: this.sourceId
-              };
+              var layer = _objectSpread(
+                {
+                  id: this.layerId,
+                  source: this.sourceId
+                },
+                this.layer
+              );
 
-              if (this.refLayer) {
-                layer.ref = this.refLayer;
-              } else {
-                layer.type = this.type ? this.type : "fill";
-                layer.source = this.sourceId;
-                if (this.minzoom) layer.minzoom = this.minzoom;
-                if (this.maxzoom) layer.maxzoom = this.maxzoom;
-
-                if (this.layout) {
-                  layer.layout = this.layout;
-                }
-
-                if (this.filter) layer.filter = this.filter;
-              }
-
-              if (this.type !== "symbol") {
-                layer.paint = this.paint
-                  ? this.paint
-                  : {
-                      "fill-color": "rgba(".concat(
-                        12 * (this.layerId.length * 3),
-                        ",153,80,0.55)"
-                      )
-                    };
-              }
-
-              layer.metadata = this.metadata;
               this.map.addLayer(layer, this.before);
               this.$_emitEvent("added", {
                 layerId: this.layerId
@@ -4967,6 +4542,20 @@
                 };
                 return this.map.getFeatureState(params);
               }
+            },
+            removeFeatureState: function removeFeatureState(
+              featureId,
+              sourceLayer,
+              key
+            ) {
+              if (this.map) {
+                var params = {
+                  id: featureId,
+                  source: this.source,
+                  sourceLayer: sourceLayer
+                };
+                return this.map.removeFeatureState(params, key);
+              }
             }
           }
         };
@@ -4975,37 +4564,55 @@
         /* harmony default export */ var ImageLayer = {
           name: "ImageLayer",
           mixins: [layerMixin],
-          props: {
-            coordinates: {
-              type: Array,
-              required: true
-            },
-            url: {
-              type: String,
-              required: true
+          created: function created() {
+            if (this.source) {
+              if (this.source.coordinates) {
+                this.$watch(
+                  "source.coordinates",
+                  function(next) {
+                    if (this.initial) return;
+
+                    if (next) {
+                      this.mapSource.setCoordinates(next);
+                    }
+                  },
+                  {
+                    deep: true
+                  }
+                );
+              }
+
+              if (this.source.url) {
+                this.$watch(
+                  "source.url",
+                  function(next) {
+                    if (this.initial) return;
+
+                    if (next) {
+                      this.mapSource.updateImage({
+                        url: next,
+                        coordinates: this.source.coordinates
+                      });
+                    }
+                  },
+                  {
+                    deep: true
+                  }
+                );
+              }
             }
-          },
-          watch: {
-            coordinates: function coordinates(val) {
-              if (this.initial) return;
-              this.mapSource.setCoordinates(val);
-            },
-            url: function url(val) {
-              if (this.initial) return;
-              this.mapSource.updateImage({
-                url: val,
-                coordinates: this.coordinates
-              });
-            }
+
+            this.$_deferredMount();
           },
           methods: {
-            $_deferredMount: function $_deferredMount(payload) {
-              var source = {
-                type: "image",
-                url: this.url,
-                coordinates: this.coordinates
-              };
-              this.map = payload.map;
+            $_deferredMount: function $_deferredMount() {
+              var source = _objectSpread(
+                {
+                  type: "image"
+                },
+                this.source
+              );
+
               this.map.on("dataloading", this.$_watchSourceLoading);
 
               try {
@@ -5014,18 +4621,12 @@
                 if (this.replaceSource) {
                   this.map.removeSource(this.sourceId);
                   this.map.addSource(this.sourceId, source);
-                } else {
-                  this.$_emitEvent("layer-source-error", {
-                    sourceId: this.sourceId,
-                    error: err
-                  });
                 }
               }
 
               this.$_addLayer();
               this.$_bindLayerEvents(layerEvents);
               this.initial = false;
-              payload.component.$off("load", this.$_deferredMount);
             },
             $_addLayer: function $_addLayer() {
               var existed = this.map.getLayer(this.layerId);
@@ -5041,35 +4642,15 @@
                 }
               }
 
-              var layer = {
-                id: this.layerId,
-                source: this.sourceId,
-                type: "raster"
-              };
+              var layer = _objectSpread(
+                {
+                  id: this.layerId,
+                  source: this.sourceId,
+                  type: "raster"
+                },
+                this.layer
+              );
 
-              if (this.refLayer) {
-                layer.ref = this.refLayer;
-              } else {
-                if (this["source-layer"]) {
-                  layer["source-layer"] = this["source-layer"];
-                }
-
-                if (this.minzoom) layer.minzoom = this.minzoom;
-                if (this.maxzoom) layer.maxzoom = this.maxzoom;
-
-                if (this.layout) {
-                  layer.layout = this.layout;
-                }
-
-                if (this.filter) layer.filter = this.filter;
-              }
-
-              layer.paint = this.paint
-                ? this.paint
-                : {
-                    "raster-opacity": 1
-                  };
-              layer.metadata = this.metadata;
               this.map.addLayer(layer, this.before);
               this.$_emitEvent("added", {
                 layerId: this.layerId
@@ -5082,26 +4663,15 @@
         /* harmony default export */ var CanvasLayer = {
           name: "CanvasLayer",
           mixins: [layerMixin],
+          inject: ["mapbox", "map"],
           props: {
-            canvas: {
-              type: [HTMLCanvasElement, String],
-              default: null
-            },
-            coordinates: {
-              type: Array,
+            source: {
+              type: Object,
               required: true
             },
-            animate: {
-              type: Boolean,
-              default: true
-            },
-            width: {
-              type: Number,
-              default: 100
-            },
-            height: {
-              type: Number,
-              default: 100
+            layer: {
+              type: Object,
+              default: null
             }
           },
           computed: {
@@ -5110,37 +4680,23 @@
             }
           },
           watch: {
-            minzoom: function minzoom(val) {
-              if (this.initial) return;
-              this.map.setLayerZoomRange(this.layerId, val, this.maxzoom);
-            },
-            maxzoom: function maxzoom(val) {
-              if (this.initial) return;
-              this.map.setLayerZoomRange(this.layerId, this.minzoom, val);
-            },
             coordinates: function coordinates(val) {
               if (this.initial) return;
               this.mapSource.setCoordinates(val);
             }
           },
+          created: function created() {
+            this.$_deferredMount();
+          },
           methods: {
-            $_deferredMount: function $_deferredMount(payload) {
-              var canvasElement = this.canvas;
+            $_deferredMount: function $_deferredMount() {
+              var source = _objectSpread(
+                {
+                  type: "canvas"
+                },
+                this.source
+              );
 
-              if (!canvasElement) {
-                canvasElement = document.createElement("canvas");
-                canvasElement.id = this.sourceId;
-                canvasElement.width = this.width;
-                canvasElement.height = this.height;
-              }
-
-              var source = {
-                type: "canvas",
-                coordinates: this.coordinates,
-                animate: this.animate,
-                canvas: canvasElement
-              };
-              this.map = payload.map;
               this.map.on("dataloading", this.$_watchSourceLoading);
 
               try {
@@ -5149,17 +4705,11 @@
                 if (this.replaceSource) {
                   this.map.removeSource(this.sourceId);
                   this.map.addSource(this.sourceId, source);
-                } else {
-                  this.$_emitEvent("layer-source-error", {
-                    sourceId: this.sourceId,
-                    error: err
-                  });
                 }
               }
 
               this.$_addLayer();
               this.$_bindLayerEvents(layerEvents);
-              payload.component.$off("load", this.$_deferredMount);
               this.initial = false;
             },
             $_addLayer: function $_addLayer() {
@@ -5176,33 +4726,19 @@
                 }
               }
 
-              var layer = {
-                id: this.layerId,
-                source: this.sourceId,
-                type: "raster"
-              };
+              var layer = _objectSpread(
+                {
+                  id: this.layerId,
+                  source: this.sourceId,
+                  type: "raster"
+                },
+                this.layer
+              );
 
-              if (this.refLayer) {
-                layer.ref = this.refLayer;
-              } else {
-                if (this["source-layer"]) {
-                  layer["source-layer"] = this["source-layer"];
-                }
-
-                if (this.minzoom) layer.minzoom = this.minzoom;
-                if (this.maxzoom) layer.maxzoom = this.maxzoom;
-              }
-
-              layer.paint = this.paint
-                ? this.paint
-                : {
-                    "raster-opacity": 0.85
-                  };
-              layer.metadata = this.metadata;
               this.map.addLayer(layer, this.before);
               this.$_emitEvent("added", {
                 layerId: this.layerId,
-                canvas: this.canvas
+                canvas: this.canvasElement
               });
             }
           }
@@ -5212,40 +4748,30 @@
         /* harmony default export */ var VideoLayer = {
           name: "VideoLayer",
           mixins: [layerMixin],
-          props: {
-            coordinates: {
-              type: Array,
-              required: true
-            },
-            urls: {
-              type: Array,
-              required: true
-            }
-          },
-          data: function data() {
-            return {
-              source: undefined
-            };
-          },
           computed: {
             video: function video() {
               return this.map.getSource(this.sourceId).getVideo();
             }
           },
-          watch: {
-            coordinates: function coordinates(val) {
-              if (this.initial) return;
-              this.mapSource.setCoordinates(val);
+          created: function created() {
+            if (this.source && this.source.coordinates) {
+              this.$watch("source.coordinates", function(next) {
+                if (this.initial) return;
+                this.mapSource.setCoordinates(next);
+              });
             }
+
+            this.$_deferredMount();
           },
           methods: {
-            _deferredMount: function _deferredMount(payload) {
-              var source = {
-                type: "video",
-                urls: this.urls,
-                coordinates: this.coordinates
-              };
-              this.map = payload.map;
+            $_deferredMount: function $_deferredMount() {
+              var source = _objectSpread(
+                {
+                  type: "video"
+                },
+                this.source
+              );
+
               this.map.on("dataloading", this.$_watchSourceLoading);
 
               try {
@@ -5254,18 +4780,12 @@
                 if (this.replaceSource) {
                   this.map.removeSource(this.sourceId);
                   this.map.addSource(this.sourceId, source);
-                } else {
-                  this.$_emitEvent("layer-source-error", {
-                    sourceId: this.sourceId,
-                    error: err
-                  });
                 }
               }
 
               this.$_addLayer();
               this.$_bindLayerEvents(layerEvents);
               this.initial = false;
-              payload.component.$off("load", this.$_deferredMount);
             },
             $_addLayer: function $_addLayer() {
               var existed = this.map.getLayer(this.layerId);
@@ -5281,27 +4801,15 @@
                 }
               }
 
-              var layer = {
-                id: this.layerId,
-                source: this.sourceId,
-                type: "background"
-              };
+              var layer = _objectSpread(
+                {
+                  id: this.layerId,
+                  source: this.sourceId,
+                  type: "background"
+                },
+                this.layer
+              );
 
-              if (this.refLayer) {
-                layer.ref = this.refLayer;
-              } else {
-                if (this["source-layer"]) {
-                  layer["source-layer"] = this["source-layer"];
-                }
-
-                if (this.minzoom) layer.minzoom = this.minzoom;
-                if (this.maxzoom) layer.maxzoom = this.maxzoom; // if (this.layout) {
-                //   layer.layout = this.layout;
-                // }
-                // if (this.filter) layer.filter = this.filter
-              } // layer.paint = this.paint ? this.paint : { 'raster-opacity': 0.85 };
-
-              layer.metadata = this.metadata;
               this.map.addLayer(layer, this.before);
               this.$_emitEvent("added", {
                 layerId: this.layerId
@@ -5314,42 +4822,6 @@
         /* harmony default export */ var VectorLayer = {
           name: "VectorLayer",
           mixins: [layerMixin],
-          props: {
-            url: {
-              type: String,
-              default: undefined
-            },
-            tiles: {
-              type: Array,
-              default: null
-            },
-            tilesMinZoom: {
-              type: Number,
-              default: undefined
-            },
-            tilesMaxZoom: {
-              type: Number,
-              default: undefined
-            },
-            sourceLayer: {
-              type: String,
-              required: true
-            },
-            bounds: {
-              type: Array,
-              default: function _default() {
-                return [-180, -85.051129, 180, 85.051129];
-              }
-            },
-            scheme: {
-              type: String,
-              default: undefined
-            },
-            attribution: {
-              type: String,
-              default: undefined
-            }
-          },
           computed: {
             getSourceFeatures: function getSourceFeatures() {
               var _this = this;
@@ -5357,7 +4829,7 @@
               return function(filter) {
                 if (_this.map) {
                   return _this.map.querySourceFeatures(_this.sourceId, {
-                    sourceLayer: _this["source-layer"],
+                    sourceLayer: _this.layer["source-layer"],
                     filter: filter
                   });
                 }
@@ -5386,34 +4858,26 @@
               this.map.setFilter(this.layerId, _filter);
             }
           },
+          created: function created() {
+            this.$_deferredMount();
+          },
           methods: {
-            $_deferredMount: function $_deferredMount(payload) {
-              if (payload.mapId !== this.mapId) return;
-              this.map = payload.map;
-              var source = {
-                type: "vector",
-                url: this.url
-              };
-              if (this.tiles) source.tiles = this.tiles;
-              if (this.tilesMinZoom) source.minzoom = this.tilesMinZoom;
-              if (this.tilesMaxZoom) source.maxzoom = this.tilesMinZoom;
-              if (this.bounds) source.bounds = this.bounds;
-              if (this.attribution) source.attribution = this.attribution;
-              if (this.scheme) source.scheme = this.scheme;
+            $_deferredMount: function $_deferredMount() {
+              var source = _objectSpread(
+                {
+                  type: "vector"
+                },
+                this.source
+              );
+
               this.map.on("dataloading", this.$_watchSourceLoading);
 
               try {
-                // FIXME: Check all props
                 this.map.addSource(this.sourceId, source);
               } catch (err) {
                 if (this.replaceSource) {
                   this.map.removeSource(this.sourceId);
                   this.map.addSource(this.sourceId, source);
-                } else {
-                  this.$_emitEvent("layer-source-error", {
-                    sourceId: this.sourceId,
-                    error: err
-                  });
                 }
               }
 
@@ -5421,7 +4885,6 @@
               this.$_bindLayerEvents(layerEvents);
               this.map.off("dataloading", this.$_watchSourceLoading);
               this.initial = false;
-              payload.component.$off("load", this.$_deferredMount);
             },
             $_addLayer: function $_addLayer() {
               var existed = this.map.getLayer(this.layerId);
@@ -5437,36 +4900,14 @@
                 }
               }
 
-              var layer = {
-                id: this.layerId,
-                source: this.sourceId,
-                "source-layer": this.sourceLayer
-              };
+              var layer = _objectSpread(
+                {
+                  id: this.layerId,
+                  source: this.sourceId
+                },
+                this.layer
+              );
 
-              if (this.refLayer) {
-                layer.ref = this.refLayer;
-              } else {
-                layer.type = this.type ? this.type : "fill";
-                layer.source = this.sourceId;
-                if (this.minzoom) layer.minzoom = this.minzoom;
-                if (this.maxzoom) layer.maxzoom = this.maxzoom;
-
-                if (this.layout) {
-                  layer.layout = this.layout;
-                }
-
-                if (this.filter) layer.filter = this.filter;
-              }
-
-              layer.paint = this.paint
-                ? this.paint
-                : {
-                    "fill-color": "rgba(".concat(
-                      12 * (this.layerId.length * 3),
-                      ",153,80,0.55)"
-                    )
-                  };
-              layer.metadata = this.metadata;
               this.map.addLayer(layer, this.before);
               this.$_emitEvent("added", {
                 layerId: this.layerId
@@ -5477,7 +4918,7 @@
                 var params = {
                   id: featureId,
                   source: this.source,
-                  "source-layer": this["source-layer"]
+                  "source-layer": this.layer["source-layer"]
                 };
                 return this.map.setFeatureState(params, state);
               }
@@ -5487,7 +4928,7 @@
                 var params = {
                   id: featureId,
                   source: this.source,
-                  "source-layer": this["source-layer"]
+                  "source-layer": this.layer["source-layer"]
                 };
                 return this.map.getFeatureState(params);
               }
@@ -5499,60 +4940,18 @@
         /* harmony default export */ var RasterLayer = {
           name: "RasterLayer",
           mixins: [layerMixin],
-          props: {
-            url: {
-              type: String,
-              default: undefined
-            },
-            tiles: {
-              type: Array,
-              default: undefined
-            },
-            tilesMinZoom: {
-              type: Number,
-              default: 0
-            },
-            tilesMaxZoom: {
-              type: Number,
-              default: 22
-            },
-            tileSize: {
-              type: Number,
-              default: 512
-            },
-            bounds: {
-              type: Array,
-              default: function _default() {
-                return [-180, -85.051129, 180, 85.051129];
-              }
-            },
-            scheme: {
-              type: String,
-              default: undefined
-            },
-            attribution: {
-              type: String,
-              default: undefined
-            }
+          created: function created() {
+            this.$_deferredMount();
           },
           methods: {
-            $_deferredMount: function $_deferredMount(payload) {
-              this.map = payload.map;
-              var source = {
-                type: "raster",
-                url: this.url,
-                tileSize: this.tileSize
-              };
+            $_deferredMount: function $_deferredMount() {
+              var source = _objectSpread(
+                {
+                  type: "raster"
+                },
+                this.source
+              );
 
-              if (!this.url) {
-                source.minzoom = this.tilesMinZoom;
-                source.maxzoom = this.tilesMaxZoom;
-                source.bounds = this.bounds;
-              }
-
-              if (this.tiles) source.tiles = this.tiles;
-              if (this.scheme) source.scheme = this.scheme;
-              if (this.attribution) source.attribution = this.attribution;
               this.map.on("dataloading", this.$_watchSourceLoading);
 
               try {
@@ -5561,11 +4960,6 @@
                 if (this.replaceSource) {
                   this.map.removeSource(this.sourceId);
                   this.map.addSource(this.sourceId, source);
-                } else {
-                  this.$_emitEvent("layer-source-error", {
-                    sourceId: this.sourceId,
-                    error: err
-                  });
                 }
               }
 
@@ -5573,7 +4967,6 @@
               this.$_bindLayerEvents(layerEvents);
               this.map.off("dataloading", this.$_watchSourceLoading);
               this.initial = false;
-              payload.component.$off("load", this.$_deferredMount);
             },
             $_addLayer: function $_addLayer() {
               var existed = this.map.getLayer(this.layerId);
@@ -5589,27 +4982,63 @@
                 }
               }
 
-              var layer = {
-                id: this.layerId,
-                type: "raster",
-                source: this.sourceId
-              };
-              layer.source = this.sourceId;
+              var layer = _objectSpread(
+                {
+                  id: this.layerId,
+                  type: "raster",
+                  source: this.sourceId
+                },
+                this.layer
+              );
 
-              if (this.layout) {
-                layer.layout = this.layout;
-              }
-
-              layer.paint = this.paint
-                ? this.paint
-                : {
-                    "raster-opacity": 1
-                  };
-              layer.metadata = this.metadata;
               this.map.addLayer(layer, this.before);
               this.$_emitEvent("added", {
                 layerId: this.layerId
               });
+            }
+          }
+        };
+        // CONCATENATED MODULE: ./src/lib/withRegistration.js
+        function walkParents(component) {
+          if (component.baseMap) {
+            return component;
+          } else {
+            if (component.$parent !== undefined) {
+              return walkParents(component.$parent);
+            }
+          }
+        }
+
+        /* harmony default export */ var withRegistration = {
+          created: function created() {
+            this.map = null;
+          },
+          mounted: function mounted() {
+            this.$_checkMapTree(); // We wait for "load" event from map component to ensure mapbox is loaded and map created
+          },
+          methods: {
+            $_findBaseMap: function $_findBaseMap() {
+              var baseMapComponent = walkParents(this.$parent);
+
+              if (baseMapComponent === undefined) {
+                throw new Error("Component must have root map");
+              }
+
+              return baseMapComponent;
+            },
+            $_checkMapTree: function $_checkMapTree() {
+              var mapComponent = this.$_findBaseMap();
+
+              if (mapComponent) {
+                if (mapComponent.mapLoaded) {
+                  this.$_deferredMount({
+                    component: mapComponent,
+                    map: mapComponent.map
+                  });
+                } else {
+                  mapComponent.$on("load", this.$_deferredMount);
+                }
+              }
             }
           }
         };
@@ -5630,40 +5059,32 @@
         var MglVectorLayer = VectorLayer;
         var MglRasterLayer = RasterLayer;
         var MglMarker = Marker;
-        var MglPopup = Popup;
-        var main_plugin = {
-          /**
-           *  Create Vue-mapbox plugin for Vue
-           *
-           * @param {Object} Vue
-           * @param {Object} options: mapboxgl: MapboxGl JS instances
-           * @returns
-           */
-          install: function install(Vue) {
-            var options =
-              arguments.length > 1 && arguments[1] !== undefined
-                ? arguments[1]
-                : {};
-            var _data = {
-              mapbox: options.mapboxgl
-            };
+        var MglPopup = Popup; // export const plugin = {
+        //   /**
+        //    *  Create Vue-mapbox plugin for Vue
+        //    *
+        //    * @param {Object} Vue
+        //    * @param {Object} options: mapboxgl: MapboxGl JS instances
+        //    * @returns
+        //    */
+        //   install(Vue, options = {}) {
+        //     const data = { mapbox: options.mapboxgl };
+        //     if (options.plugins && options.plugins.length) {
+        //       options.plugins.forEach(plugin => {
+        //         const key = Object.keys(plugin)[0];
+        //         const value = Object.values(plugin)[0];
+        //         data[key] = value;
+        //       });
+        //     }
+        //     Vue.mixin({
+        //       data() {
+        //         return data;
+        //       }
+        //     });
+        //   }
+        // };
 
-            if (options.plugins && options.plugins.length) {
-              options.plugins.forEach(function(plugin) {
-                var key = Object.keys(plugin)[0];
-                var value = Object.values(plugin)[0];
-                _data[key] = value;
-              });
-            }
-
-            Vue.mixin({
-              data: function data() {
-                return _data;
-              }
-            });
-          }
-        };
-        /* harmony default export */ var main = main_plugin;
+        /* harmony default export */ var main = GlMap;
         // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
         /* concated harmony reexport mglRegistrationMixin */ __webpack_require__.d(
           __webpack_exports__,
@@ -5775,13 +5196,6 @@
           "MglPopup",
           function() {
             return MglPopup;
-          }
-        );
-        /* concated harmony reexport plugin */ __webpack_require__.d(
-          __webpack_exports__,
-          "plugin",
-          function() {
-            return main_plugin;
           }
         );
 

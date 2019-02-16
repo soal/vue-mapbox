@@ -2,7 +2,7 @@
 
 ## Marker
 
-The Marker component is a wrapper around the [Mapbox GL Marker API](https://www.mapbox.com/mapbox-gl-js/api/#marker).
+The Marker component is a wrapper around the [Mapbox GL Marker API](https://docs.mapbox.com/mapbox-gl-js/api/#marker).
 
 ```vue
 <template>
@@ -87,7 +87,7 @@ Default slot allows you to specify content to display in a Mapbox popup when the
 
 ## Popup
 
-The Popup component is wrapper around the [Mapbox GL Popup API](https://www.mapbox.com/mapbox-gl-js/api/#popup).
+The Popup component is wrapper around the [Mapbox GL Popup API](https://docs.mapbox.com/mapbox-gl-js/api/#popup).
 
 You can specify content inside popup in default slot. It can be HTML or Vue component.
 In this example [Vuetify card component](https://vuetifyjs.com/en/components/cards) used as a content for popup:
@@ -99,7 +99,7 @@ In this example [Vuetify card component](https://vuetifyjs.com/en/components/car
     :mapStyle.sync="mapStyle"
     :center="coordinates"
   >
-    <MglPopup :coordinates="coordinates" :anchor="top">
+    <MglPopup anchor="top">
       <VCard> <div>Hello, I'm popup!</div> </VCard>
     </MglPopup>
   </MglMap>

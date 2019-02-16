@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import withRegistration from "../../lib/withRegistration";
 import withEvents from "../../lib/withEvents";
 import withSelfEvents from "./withSelfEvents";
 
@@ -21,7 +20,10 @@ const popupEvents = {
  */
 export default {
   name: "Popup",
-  mixins: [withRegistration, withEvents, withSelfEvents],
+  mixins: [withEvents, withSelfEvents],
+
+  inject: ["mapbox", "map", "marker"],
+
   props: {
     /**
      * If `true`, a close button will appear in the top right corner of the popup.
@@ -106,8 +108,13 @@ export default {
     }
   },
 
+  created() {
+    this.popup = new this.mapbox.Popup(this.$props);
+  },
+
   mounted() {
-    this.$_checkMapTree();
+    this.$_addPopup();
+    this.initial = false;
   },
 
   beforeDestroy() {
@@ -125,15 +132,8 @@ export default {
   },
 
   methods: {
-    $_deferredMount(payload) {
-      this.map = payload.map;
-      this.$_addPopup();
-      this.initial = false;
-      payload.component.$off("load", this.$_deferredMount);
-    },
-
     $_addPopup() {
-      this.popup = new this.mapbox.Popup({ ...this._props });
+      this.popup = new this.mapbox.Popup(this.$props);
       if (this.coordinates !== undefined)
         this.popup.setLngLat(this.coordinates);
       if (this.$slots.default !== undefined) {
@@ -155,12 +155,8 @@ export default {
 
       this.$_emitEvent("added", { popup: this.popup });
 
-      if (this.$parent.marker !== undefined) {
-        this.$parent.marker.setPopup(this.popup);
-      } else {
-        this.$parent.$once("added", ({ marker }) => {
-          marker.setPopup(this.popup);
-        });
+      if (this.marker) {
+        this.marker.setPopup(this.popup);
       }
     },
 

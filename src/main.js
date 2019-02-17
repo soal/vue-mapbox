@@ -15,11 +15,22 @@ import VideoLayer from "./components/layer/VideoLayer";
 import VectorLayer from "./components/layer/VectorLayer";
 import RasterLayer from "./components/layer/RasterLayer";
 
+import withEventsMixin from "./lib/withEvents";
+import withSelfEventsMixin from "./components/UI/withSelfEvents";
 import controlMixin from "./components/UI/controls/controlMixin";
-import withRegistration from "./lib/withRegistration";
+import layerMixin from "./components/layer/layerMixin";
 
-export const mglRegistrationMixin = withRegistration;
-export const mglControlMixin = controlMixin;
+export const withEvents = withEventsMixin;
+export const withSelfEvents = withSelfEventsMixin;
+export const asControl = controlMixin;
+export const asLayer = layerMixin;
+
+export const $helpers = {
+  withEvents: withEventsMixin,
+  withSelfEvents: withSelfEventsMixin,
+  asControl: controlMixin,
+  asLayer: layerMixin
+};
 
 export const MglMap = GlMap;
 

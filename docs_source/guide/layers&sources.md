@@ -72,3 +72,8 @@ First moves a layer to a different z-position. Second destroys component and rem
 ## Layer events
 
 Layers emits events when loading data or on user interaction like `click`. See full list of events in [API section](/api/Layers/README.md#events)
+
+## Migration from 0.1
+
+In versoin `0.1` layer and source options was exposed via separate props.
+Since `0.2` there are consolidated `source` object props for data source and `layer` for layer options. See [sources](https://docs.mapbox.com/mapbox-gl-js/api/#sources) and [layers](https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers) in Mapbox GL JS docs.

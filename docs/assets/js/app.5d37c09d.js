@@ -56,27 +56,27 @@
                 3: "02aa2be5",
                 4: "4f3338df",
                 5: "d3d1578a",
-                6: "a47ab602",
-                7: "680cee53",
-                8: "971eeeee",
-                9: "743716ee",
-                10: "02b7c2a1",
+                6: "4b592af2",
+                7: "cdef235f",
+                8: "8b4b828f",
+                9: "5e3d2dbf",
+                10: "956c4fd3",
                 11: "ee64ec8f",
-                12: "f0cb3c91",
-                13: "57cb96bf",
+                12: "43a2535b",
+                13: "bc66feef",
                 14: "7b3fcbc6",
                 15: "6be5284d",
                 16: "733d6730",
-                17: "172f4295",
-                18: "d88e5bd1",
-                19: "97aa0ad9",
+                17: "fcb09264",
+                18: "e3e5e444",
+                19: "10105f2d",
                 20: "f558f091",
-                21: "2afe645e",
-                22: "bd2f7df9",
+                21: "6a1f30f2",
+                22: "defc259e",
                 23: "2747757f",
-                24: "7dbe887f",
-                25: "67635c68",
-                26: "1b430498"
+                24: "22f05a02",
+                25: "8dd04822",
+                26: "f0948172"
               }[t] +
               ".js"
             );
@@ -8306,24 +8306,24 @@
       },
       ka = {
         "v-acd593fc": () => n.e(6).then(n.bind(null, 163)),
-        "v-073619c3": () => n.e(8).then(n.bind(null, 162)),
-        "v-0bcaedd9": () => n.e(9).then(n.bind(null, 161)),
-        "v-9af1f7dc": () => n.e(7).then(n.bind(null, 160)),
-        "v-77c73199": () => n.e(10).then(n.bind(null, 159)),
+        "v-9af1f7dc": () => n.e(7).then(n.bind(null, 162)),
+        "v-073619c3": () => n.e(8).then(n.bind(null, 161)),
+        "v-77c73199": () => n.e(10).then(n.bind(null, 160)),
+        "v-0bcaedd9": () => n.e(9).then(n.bind(null, 159)),
         "v-5717614d": () => n.e(11).then(n.bind(null, 158)),
-        "v-1f50ee59": () => n.e(12).then(n.bind(null, 157)),
-        "v-45aa14ce": () => n.e(13).then(n.bind(null, 156)),
+        "v-45aa14ce": () => n.e(13).then(n.bind(null, 157)),
+        "v-1f50ee59": () => n.e(12).then(n.bind(null, 156)),
         "v-5b471da2": () => n.e(15).then(n.bind(null, 155)),
-        "v-3df8c167": () => n.e(17).then(n.bind(null, 144)),
-        "v-2939380e": () => n.e(21).then(n.bind(null, 153)),
-        "v-f144760e": () => n.e(18).then(n.bind(null, 165)),
+        "v-f144760e": () => n.e(18).then(n.bind(null, 144)),
+        "v-3df8c167": () => n.e(17).then(n.bind(null, 153)),
+        "v-147a1068": () => n.e(19).then(n.bind(null, 165)),
         "v-254c4c59": () => n.e(20).then(n.bind(null, 151)),
-        "v-0f9139b7": () => n.e(24).then(n.bind(null, 150)),
+        "v-2939380e": () => n.e(21).then(n.bind(null, 150)),
         "v-0250a037": () => n.e(23).then(n.bind(null, 149)),
-        "v-2719271c": () => n.e(25).then(n.bind(null, 148)),
-        "v-22ef9d0e": () => n.e(26).then(n.bind(null, 147)),
-        "v-147a1068": () => n.e(19).then(n.bind(null, 146)),
-        "v-fb4e549a": () => n.e(22).then(n.bind(null, 145)),
+        "v-fb4e549a": () => n.e(22).then(n.bind(null, 148)),
+        "v-0f9139b7": () => n.e(24).then(n.bind(null, 147)),
+        "v-2719271c": () => n.e(25).then(n.bind(null, 146)),
+        "v-22ef9d0e": () => n.e(26).then(n.bind(null, 145)),
         "v-cd0cec28": () => n.e(14).then(n.bind(null, 154)),
         "v-6c9c2319": () => n.e(16).then(n.bind(null, 152))
       },
@@ -8559,11 +8559,28 @@
         },
         { path: "/index.html", redirect: "/" },
         {
+          name: "v-9af1f7dc",
+          path: "/api/Layers/",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-9af1f7dc").then(n);
+          }
+        },
+        { path: "/api/Layers/index.html", redirect: "/api/Layers/" },
+        {
           name: "v-073619c3",
           path: "/api/Layers/canvaslayer.html",
           component: Da,
           beforeEnter: (t, e, n) => {
             Sa("Layout", "v-073619c3").then(n);
+          }
+        },
+        {
+          name: "v-77c73199",
+          path: "/api/Layers/imagelayer.html",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-77c73199").then(n);
           }
         },
         {
@@ -8575,36 +8592,11 @@
           }
         },
         {
-          name: "v-9af1f7dc",
-          path: "/api/Layers/",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-9af1f7dc").then(n);
-          }
-        },
-        { path: "/api/Layers/index.html", redirect: "/api/Layers/" },
-        {
-          name: "v-77c73199",
-          path: "/api/Layers/imagelayer.html",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-77c73199").then(n);
-          }
-        },
-        {
           name: "v-5717614d",
           path: "/api/Layers/rasterlayer.html",
           component: Da,
           beforeEnter: (t, e, n) => {
             Sa("Layout", "v-5717614d").then(n);
-          }
-        },
-        {
-          name: "v-1f50ee59",
-          path: "/api/Layers/vectorlayer.html",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-1f50ee59").then(n);
           }
         },
         {
@@ -8616,27 +8608,19 @@
           }
         },
         {
+          name: "v-1f50ee59",
+          path: "/api/Layers/vectorlayer.html",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-1f50ee59").then(n);
+          }
+        },
+        {
           name: "v-5b471da2",
           path: "/api/controls.html",
           component: Da,
           beforeEnter: (t, e, n) => {
             Sa("Layout", "v-5b471da2").then(n);
-          }
-        },
-        {
-          name: "v-3df8c167",
-          path: "/api/marker.html",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-3df8c167").then(n);
-          }
-        },
-        {
-          name: "v-2939380e",
-          path: "/guide/composition.html",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-2939380e").then(n);
           }
         },
         {
@@ -8648,6 +8632,23 @@
           }
         },
         {
+          name: "v-3df8c167",
+          path: "/api/marker.html",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-3df8c167").then(n);
+          }
+        },
+        {
+          name: "v-147a1068",
+          path: "/guide/",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-147a1068").then(n);
+          }
+        },
+        { path: "/guide/index.html", redirect: "/guide/" },
+        {
           name: "v-254c4c59",
           path: "/guide/basemap.html",
           component: Da,
@@ -8656,11 +8657,11 @@
           }
         },
         {
-          name: "v-0f9139b7",
-          path: "/guide/markers&popups.html",
+          name: "v-2939380e",
+          path: "/guide/composition.html",
           component: Da,
           beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-0f9139b7").then(n);
+            Sa("Layout", "v-2939380e").then(n);
           }
         },
         {
@@ -8669,6 +8670,22 @@
           component: Da,
           beforeEnter: (t, e, n) => {
             Sa("Layout", "v-0250a037").then(n);
+          }
+        },
+        {
+          name: "v-fb4e549a",
+          path: "/guide/controls.html",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-fb4e549a").then(n);
+          }
+        },
+        {
+          name: "v-0f9139b7",
+          path: "/guide/markers&popups.html",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-0f9139b7").then(n);
           }
         },
         {
@@ -8689,23 +8706,6 @@
           component: Da,
           beforeEnter: (t, e, n) => {
             Sa("Layout", "v-22ef9d0e").then(n);
-          }
-        },
-        {
-          name: "v-147a1068",
-          path: "/guide/",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-147a1068").then(n);
-          }
-        },
-        { path: "/guide/index.html", redirect: "/guide/" },
-        {
-          name: "v-fb4e549a",
-          path: "/guide/controls.html",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-fb4e549a").then(n);
           }
         },
         {
@@ -8763,6 +8763,49 @@
             path: "/"
           },
           {
+            title: "Layers common",
+            frontmatter: {},
+            regularPath: "/api/Layers/",
+            key: "v-9af1f7dc",
+            path: "/api/Layers/",
+            headers: [
+              { level: 2, title: "Props", slug: "props" },
+              { level: 3, title: "sourceId", slug: "sourceid" },
+              { level: 3, title: "source", slug: "source" },
+              { level: 3, title: "layerId", slug: "layerid" },
+              { level: 3, title: "layer", slug: "layer" },
+              { level: 3, title: "before", slug: "before" },
+              { level: 3, title: "clearSource", slug: "clearsource" },
+              { level: 3, title: "replaceSource", slug: "replacesource" },
+              { level: 3, title: "replace", slug: "replace" },
+              {
+                level: 2,
+                title: "Computed properties",
+                slug: "computed-properties"
+              },
+              { level: 3, title: "sourceLoaded", slug: "sourceloaded" },
+              { level: 3, title: "mapLayer", slug: "maplayer" },
+              { level: 3, title: "mapSource", slug: "mapsource" },
+              { level: 2, title: "Methods", slug: "methods" },
+              { level: 3, title: ".move(beforeId?)", slug: "move-beforeid" },
+              { level: 3, title: ".remove()", slug: "remove" },
+              { level: 2, title: "Events", slug: "events" },
+              { level: 3, title: "@mousedown", slug: "mousedown" },
+              { level: 3, title: "@mouseup", slug: "mouseup" },
+              { level: 3, title: "@click", slug: "click" },
+              { level: 3, title: "@dblclick", slug: "dblclick" },
+              { level: 3, title: "@mousemove", slug: "mousemove" },
+              { level: 3, title: "@mouseenter", slug: "mouseenter" },
+              { level: 3, title: "@mouseleave", slug: "mouseleave" },
+              { level: 3, title: "@mouseover", slug: "mouseover" },
+              { level: 3, title: "@mouseout", slug: "mouseout" },
+              { level: 3, title: "@contextmenu", slug: "contextmenu" },
+              { level: 3, title: "@touchstart", slug: "touchstart" },
+              { level: 3, title: "@touchend", slug: "touchend" },
+              { level: 3, title: "@touchcancel", slug: "touchcancel" }
+            ]
+          },
+          {
             title: "CanvasLayer",
             frontmatter: {},
             regularPath: "/api/Layers/canvaslayer.html",
@@ -8770,6 +8813,18 @@
             path: "/api/Layers/canvaslayer.html",
             headers: [
               { level: 2, title: "Props", slug: "props" },
+              { level: 2, title: "Events", slug: "events" }
+            ]
+          },
+          {
+            title: "ImageLayer",
+            frontmatter: {},
+            regularPath: "/api/Layers/imagelayer.html",
+            key: "v-77c73199",
+            path: "/api/Layers/imagelayer.html",
+            headers: [
+              { level: 2, title: "Props", slug: "props" },
+              { level: 3, title: "source", slug: "source" },
               { level: 2, title: "Events", slug: "events" }
             ]
           },
@@ -8828,61 +8883,6 @@
             ]
           },
           {
-            title: "Layers common",
-            frontmatter: {},
-            regularPath: "/api/Layers/",
-            key: "v-9af1f7dc",
-            path: "/api/Layers/",
-            headers: [
-              { level: 2, title: "Props", slug: "props" },
-              { level: 3, title: "sourceId", slug: "sourceid" },
-              { level: 3, title: "source", slug: "source" },
-              { level: 3, title: "layerId", slug: "layerid" },
-              { level: 3, title: "layer", slug: "layer" },
-              { level: 3, title: "before", slug: "before" },
-              { level: 3, title: "clearSource", slug: "clearsource" },
-              { level: 3, title: "replaceSource", slug: "replacesource" },
-              { level: 3, title: "replace", slug: "replace" },
-              {
-                level: 2,
-                title: "Computed properties",
-                slug: "computed-properties"
-              },
-              { level: 3, title: "sourceLoaded", slug: "sourceloaded" },
-              { level: 3, title: "mapLayer", slug: "maplayer" },
-              { level: 3, title: "mapSource", slug: "mapsource" },
-              { level: 2, title: "Methods", slug: "methods" },
-              { level: 3, title: ".move(beforeId?)", slug: "move-beforeid" },
-              { level: 3, title: ".remove()", slug: "remove" },
-              { level: 2, title: "Events", slug: "events" },
-              { level: 3, title: "@mousedown", slug: "mousedown" },
-              { level: 3, title: "@mouseup", slug: "mouseup" },
-              { level: 3, title: "@click", slug: "click" },
-              { level: 3, title: "@dblclick", slug: "dblclick" },
-              { level: 3, title: "@mousemove", slug: "mousemove" },
-              { level: 3, title: "@mouseenter", slug: "mouseenter" },
-              { level: 3, title: "@mouseleave", slug: "mouseleave" },
-              { level: 3, title: "@mouseover", slug: "mouseover" },
-              { level: 3, title: "@mouseout", slug: "mouseout" },
-              { level: 3, title: "@contextmenu", slug: "contextmenu" },
-              { level: 3, title: "@touchstart", slug: "touchstart" },
-              { level: 3, title: "@touchend", slug: "touchend" },
-              { level: 3, title: "@touchcancel", slug: "touchcancel" }
-            ]
-          },
-          {
-            title: "ImageLayer",
-            frontmatter: {},
-            regularPath: "/api/Layers/imagelayer.html",
-            key: "v-77c73199",
-            path: "/api/Layers/imagelayer.html",
-            headers: [
-              { level: 2, title: "Props", slug: "props" },
-              { level: 3, title: "source", slug: "source" },
-              { level: 2, title: "Events", slug: "events" }
-            ]
-          },
-          {
             title: "RasterLayer",
             frontmatter: {},
             regularPath: "/api/Layers/rasterlayer.html",
@@ -8892,6 +8892,19 @@
               { level: 2, title: "Props", slug: "props" },
               { level: 3, title: "source", slug: "source" },
               { level: 2, title: "Events", slug: "events" }
+            ]
+          },
+          {
+            title: "CanvasLayer",
+            frontmatter: {},
+            regularPath: "/api/Layers/videolayer.html",
+            key: "v-45aa14ce",
+            path: "/api/Layers/videolayer.html",
+            headers: [
+              { level: 2, title: "Props", slug: "props" },
+              { level: 3, title: "source", slug: "source" },
+              { level: 2, title: "Computed getters", slug: "computed-getters" },
+              { level: 3, title: "video", slug: "video" }
             ]
           },
           {
@@ -8926,19 +8939,6 @@
                 slug: "getfeaturestate-featureid"
               },
               { level: 2, title: "Events", slug: "events" }
-            ]
-          },
-          {
-            title: "CanvasLayer",
-            frontmatter: {},
-            regularPath: "/api/Layers/videolayer.html",
-            key: "v-45aa14ce",
-            path: "/api/Layers/videolayer.html",
-            headers: [
-              { level: 2, title: "Props", slug: "props" },
-              { level: 3, title: "source", slug: "source" },
-              { level: 2, title: "Computed getters", slug: "computed-getters" },
-              { level: 3, title: "video", slug: "video" }
             ]
           },
           {
@@ -8994,6 +8994,29 @@
             ]
           },
           {
+            title: "Popup",
+            frontmatter: {},
+            regularPath: "/api/popup.html",
+            key: "v-f144760e",
+            path: "/api/popup.html",
+            headers: [
+              { level: 2, title: "Props", slug: "props" },
+              { level: 3, title: "closeButton", slug: "closebutton" },
+              { level: 3, title: "closeOnClick", slug: "closeonclick" },
+              { level: 3, title: "anchor", slug: "anchor" },
+              { level: 3, title: "offset", slug: "offset" },
+              { level: 3, title: "coordinates", slug: "coordinates" },
+              { level: 3, title: "onlyText", slug: "onlytext" },
+              { level: 2, title: "Slots", slug: "slots" },
+              { level: 3, title: "default", slug: "default" },
+              { level: 2, title: "Events", slug: "events" },
+              { level: 3, title: "@added", slug: "added" },
+              { level: 3, title: "@removed", slug: "removed" },
+              { level: 3, title: "@open", slug: "open" },
+              { level: 3, title: "@close", slug: "close" }
+            ]
+          },
+          {
             title: "Marker",
             frontmatter: {},
             regularPath: "/api/marker.html",
@@ -9021,33 +9044,25 @@
             ]
           },
           {
-            title: "Composition",
+            title: "Quickstart",
             frontmatter: {},
-            regularPath: "/guide/composition.html",
-            key: "v-2939380e",
-            path: "/guide/composition.html"
-          },
-          {
-            title: "Popup",
-            frontmatter: {},
-            regularPath: "/api/popup.html",
-            key: "v-f144760e",
-            path: "/api/popup.html",
+            regularPath: "/guide/",
+            key: "v-147a1068",
+            path: "/guide/",
             headers: [
-              { level: 2, title: "Props", slug: "props" },
-              { level: 3, title: "closeButton", slug: "closebutton" },
-              { level: 3, title: "closeOnClick", slug: "closeonclick" },
-              { level: 3, title: "anchor", slug: "anchor" },
-              { level: 3, title: "offset", slug: "offset" },
-              { level: 3, title: "coordinates", slug: "coordinates" },
-              { level: 3, title: "onlyText", slug: "onlytext" },
-              { level: 2, title: "Slots", slug: "slots" },
-              { level: 3, title: "default", slug: "default" },
-              { level: 2, title: "Events", slug: "events" },
-              { level: 3, title: "@added", slug: "added" },
-              { level: 3, title: "@removed", slug: "removed" },
-              { level: 3, title: "@open", slug: "open" },
-              { level: 3, title: "@close", slug: "close" }
+              {
+                level: 2,
+                title: "Using as ES module",
+                slug: "using-as-es-module"
+              },
+              { level: 3, title: "Installation", slug: "installation" },
+              { level: 2, title: "Using in browser", slug: "using-in-browser" },
+              { level: 3, title: "Installation", slug: "installation-2" },
+              {
+                level: 2,
+                title: "Migration from version 0.1.x",
+                slug: "migration-from-version-0-1-x"
+              }
             ]
           },
           {
@@ -9078,24 +9093,11 @@
             ]
           },
           {
-            title: "Markers and Popups",
+            title: "Composition",
             frontmatter: {},
-            regularPath: "/guide/markers&popups.html",
-            key: "v-0f9139b7",
-            path: "/guide/markers&popups.html",
-            headers: [
-              { level: 2, title: "Marker", slug: "marker" },
-              { level: 3, title: "Props", slug: "props" },
-              { level: 3, title: "Slots", slug: "slots" },
-              { level: 3, title: "Default slot", slug: "default-slot" },
-              { level: 2, title: "Popup", slug: "popup" },
-              { level: 3, title: "Props", slug: "props-2" },
-              {
-                level: 2,
-                title: "Markers & Popups together",
-                slug: "markers-popups-together"
-              }
-            ]
+            regularPath: "/guide/composition.html",
+            key: "v-2939380e",
+            path: "/guide/composition.html"
           },
           {
             title: "Layers and sources",
@@ -9113,6 +9115,41 @@
                 level: 2,
                 title: "Migration from 0.1",
                 slug: "migration-from-0-1"
+              }
+            ]
+          },
+          {
+            title: "Map controls",
+            frontmatter: {},
+            regularPath: "/guide/controls.html",
+            key: "v-fb4e549a",
+            path: "/guide/controls.html",
+            headers: [
+              { level: 2, title: "Overview", slug: "overview" },
+              {
+                level: 3,
+                title: "Attribution control",
+                slug: "attribution-control"
+              }
+            ]
+          },
+          {
+            title: "Markers and Popups",
+            frontmatter: {},
+            regularPath: "/guide/markers&popups.html",
+            key: "v-0f9139b7",
+            path: "/guide/markers&popups.html",
+            headers: [
+              { level: 2, title: "Marker", slug: "marker" },
+              { level: 3, title: "Props", slug: "props" },
+              { level: 3, title: "Slots", slug: "slots" },
+              { level: 3, title: "Default slot", slug: "default-slot" },
+              { level: 2, title: "Popup", slug: "popup" },
+              { level: 3, title: "Props", slug: "props-2" },
+              {
+                level: 2,
+                title: "Markers & Popups together",
+                slug: "markers-popups-together"
               }
             ]
           },
@@ -9142,43 +9179,6 @@
               "/plugin_components/plugin_components_development.html",
             key: "v-22ef9d0e",
             path: "/plugin_components/plugin_components_development.html"
-          },
-          {
-            title: "Quickstart",
-            frontmatter: {},
-            regularPath: "/guide/",
-            key: "v-147a1068",
-            path: "/guide/",
-            headers: [
-              {
-                level: 2,
-                title: "Using as ES module",
-                slug: "using-as-es-module"
-              },
-              { level: 3, title: "Installation", slug: "installation" },
-              { level: 2, title: "Using in browser", slug: "using-in-browser" },
-              { level: 3, title: "Installation", slug: "installation-2" },
-              {
-                level: 2,
-                title: "Migration from version 0.1.x",
-                slug: "migration-from-version-0-1-x"
-              }
-            ]
-          },
-          {
-            title: "Map controls",
-            frontmatter: {},
-            regularPath: "/guide/controls.html",
-            key: "v-fb4e549a",
-            path: "/guide/controls.html",
-            headers: [
-              { level: 2, title: "Overview", slug: "overview" },
-              {
-                level: 3,
-                title: "Attribution control",
-                slug: "attribution-control"
-              }
-            ]
           },
           {
             title: "GlMap",
@@ -9893,7 +9893,7 @@
       rs = es.router;
     (window.__VUEPRESS_VERSION__ = {
       version: "1.0.0-alpha.37",
-      hash: "c077fc5"
+      hash: "fc3aaa6"
     }),
       rs.onReady(function() {
         ns.$mount("#app");

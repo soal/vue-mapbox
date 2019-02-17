@@ -39,28 +39,4 @@ export const MglRasterLayer = RasterLayer;
 export const MglMarker = Marker;
 export const MglPopup = Popup;
 
-// export const plugin = {
-//   /**
-//    *  Create Vue-mapbox plugin for Vue
-//    *
-//    * @param {Object} Vue
-//    * @param {Object} options: mapboxgl: MapboxGl JS instances
-//    * @returns
-//    */
-//   install(Vue, options = {}) {
-//     const data = { mapbox: options.mapboxgl };
-//     if (options.plugins && options.plugins.length) {
-//       options.plugins.forEach(plugin => {
-//         const key = Object.keys(plugin)[0];
-//         const value = Object.values(plugin)[0];
-//         data[key] = value;
-//       });
-//     }
-//     Vue.mixin({
-//       data() {
-//         return data;
-//       }
-//     });
-//   }
-// };
 export default GlMap;

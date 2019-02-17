@@ -56,10 +56,10 @@
                 3: "02aa2be5",
                 4: "4f3338df",
                 5: "d3d1578a",
-                6: "49edb5d4",
-                7: "8a7d31ef",
-                8: "8b4b828f",
-                9: "aebbb2ac",
+                6: "a47ab602",
+                7: "680cee53",
+                8: "971eeeee",
+                9: "743716ee",
                 10: "02b7c2a1",
                 11: "ee64ec8f",
                 12: "f0cb3c91",
@@ -68,15 +68,15 @@
                 15: "6be5284d",
                 16: "733d6730",
                 17: "172f4295",
-                18: "2cbd5aa4",
-                19: "10105f2d",
+                18: "d88e5bd1",
+                19: "97aa0ad9",
                 20: "f558f091",
-                21: "6a1f30f2",
-                22: "8dc7d898",
-                23: "8f63a317",
-                24: "fbed590e",
-                25: "8dd04822",
-                26: "f0948172"
+                21: "2afe645e",
+                22: "bd2f7df9",
+                23: "2747757f",
+                24: "7dbe887f",
+                25: "67635c68",
+                26: "1b430498"
               }[t] +
               ".js"
             );
@@ -8305,25 +8305,25 @@
         Layout: () => Promise.all([n.e(0), n.e(2)]).then(n.bind(null, 142))
       },
       ka = {
-        "v-9af1f7dc": () => n.e(7).then(n.bind(null, 163)),
-        "v-acd593fc": () => n.e(6).then(n.bind(null, 162)),
-        "v-073619c3": () => n.e(8).then(n.bind(null, 161)),
-        "v-0bcaedd9": () => n.e(9).then(n.bind(null, 160)),
+        "v-acd593fc": () => n.e(6).then(n.bind(null, 163)),
+        "v-073619c3": () => n.e(8).then(n.bind(null, 162)),
+        "v-0bcaedd9": () => n.e(9).then(n.bind(null, 161)),
+        "v-9af1f7dc": () => n.e(7).then(n.bind(null, 160)),
         "v-77c73199": () => n.e(10).then(n.bind(null, 159)),
         "v-5717614d": () => n.e(11).then(n.bind(null, 158)),
         "v-1f50ee59": () => n.e(12).then(n.bind(null, 157)),
         "v-45aa14ce": () => n.e(13).then(n.bind(null, 156)),
         "v-5b471da2": () => n.e(15).then(n.bind(null, 155)),
         "v-3df8c167": () => n.e(17).then(n.bind(null, 144)),
-        "v-f144760e": () => n.e(18).then(n.bind(null, 153)),
-        "v-147a1068": () => n.e(19).then(n.bind(null, 165)),
+        "v-2939380e": () => n.e(21).then(n.bind(null, 153)),
+        "v-f144760e": () => n.e(18).then(n.bind(null, 165)),
         "v-254c4c59": () => n.e(20).then(n.bind(null, 151)),
-        "v-2939380e": () => n.e(21).then(n.bind(null, 150)),
-        "v-fb4e549a": () => n.e(22).then(n.bind(null, 149)),
-        "v-0f9139b7": () => n.e(24).then(n.bind(null, 148)),
-        "v-0250a037": () => n.e(23).then(n.bind(null, 147)),
-        "v-2719271c": () => n.e(25).then(n.bind(null, 146)),
-        "v-22ef9d0e": () => n.e(26).then(n.bind(null, 145)),
+        "v-0f9139b7": () => n.e(24).then(n.bind(null, 150)),
+        "v-0250a037": () => n.e(23).then(n.bind(null, 149)),
+        "v-2719271c": () => n.e(25).then(n.bind(null, 148)),
+        "v-22ef9d0e": () => n.e(26).then(n.bind(null, 147)),
+        "v-147a1068": () => n.e(19).then(n.bind(null, 146)),
+        "v-fb4e549a": () => n.e(22).then(n.bind(null, 145)),
         "v-cd0cec28": () => n.e(14).then(n.bind(null, 154)),
         "v-6c9c2319": () => n.e(16).then(n.bind(null, 152))
       },
@@ -8550,15 +8550,6 @@
     })(Da, "mixins", Ta);
     const Na = [
         {
-          name: "v-9af1f7dc",
-          path: "/api/Layers/",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-9af1f7dc").then(n);
-          }
-        },
-        { path: "/api/Layers/index.html", redirect: "/api/Layers/" },
-        {
           name: "v-acd593fc",
           path: "/",
           component: Da,
@@ -8583,6 +8574,15 @@
             Sa("Layout", "v-0bcaedd9").then(n);
           }
         },
+        {
+          name: "v-9af1f7dc",
+          path: "/api/Layers/",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-9af1f7dc").then(n);
+          }
+        },
+        { path: "/api/Layers/index.html", redirect: "/api/Layers/" },
         {
           name: "v-77c73199",
           path: "/api/Layers/imagelayer.html",
@@ -8632,31 +8632,6 @@
           }
         },
         {
-          name: "v-f144760e",
-          path: "/api/popup.html",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-f144760e").then(n);
-          }
-        },
-        {
-          name: "v-147a1068",
-          path: "/guide/",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-147a1068").then(n);
-          }
-        },
-        { path: "/guide/index.html", redirect: "/guide/" },
-        {
-          name: "v-254c4c59",
-          path: "/guide/basemap.html",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-254c4c59").then(n);
-          }
-        },
-        {
           name: "v-2939380e",
           path: "/guide/composition.html",
           component: Da,
@@ -8665,11 +8640,19 @@
           }
         },
         {
-          name: "v-fb4e549a",
-          path: "/guide/controls.html",
+          name: "v-f144760e",
+          path: "/api/popup.html",
           component: Da,
           beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-fb4e549a").then(n);
+            Sa("Layout", "v-f144760e").then(n);
+          }
+        },
+        {
+          name: "v-254c4c59",
+          path: "/guide/basemap.html",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-254c4c59").then(n);
           }
         },
         {
@@ -8709,6 +8692,23 @@
           }
         },
         {
+          name: "v-147a1068",
+          path: "/guide/",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-147a1068").then(n);
+          }
+        },
+        { path: "/guide/index.html", redirect: "/guide/" },
+        {
+          name: "v-fb4e549a",
+          path: "/guide/controls.html",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-fb4e549a").then(n);
+          }
+        },
+        {
           name: "v-cd0cec28",
           path: "/api/",
           component: Da,
@@ -8732,49 +8732,6 @@
         description: "Combine powers of Mapbox GL JS and Vue.js",
         base: "/vue-mapbox/",
         pages: [
-          {
-            title: "Layers common",
-            frontmatter: {},
-            regularPath: "/api/Layers/",
-            key: "v-9af1f7dc",
-            path: "/api/Layers/",
-            headers: [
-              { level: 2, title: "Props", slug: "props" },
-              { level: 3, title: "sourceId", slug: "sourceid" },
-              { level: 3, title: "source", slug: "source" },
-              { level: 3, title: "layerId", slug: "layerid" },
-              { level: 3, title: "layer", slug: "layer" },
-              { level: 3, title: "before", slug: "before" },
-              { level: 3, title: "clearSource", slug: "clearsource" },
-              { level: 3, title: "replaceSource", slug: "replacesource" },
-              { level: 3, title: "replace", slug: "replace" },
-              {
-                level: 2,
-                title: "Computed properties",
-                slug: "computed-properties"
-              },
-              { level: 3, title: "sourceLoaded", slug: "sourceloaded" },
-              { level: 3, title: "mapLayer", slug: "maplayer" },
-              { level: 3, title: "mapSource", slug: "mapsource" },
-              { level: 2, title: "Methods", slug: "methods" },
-              { level: 3, title: ".move(beforeId?)", slug: "move-beforeid" },
-              { level: 3, title: ".remove()", slug: "remove" },
-              { level: 2, title: "Events", slug: "events" },
-              { level: 3, title: "@mousedown", slug: "mousedown" },
-              { level: 3, title: "@mouseup", slug: "mouseup" },
-              { level: 3, title: "@click", slug: "click" },
-              { level: 3, title: "@dblclick", slug: "dblclick" },
-              { level: 3, title: "@mousemove", slug: "mousemove" },
-              { level: 3, title: "@mouseenter", slug: "mouseenter" },
-              { level: 3, title: "@mouseleave", slug: "mouseleave" },
-              { level: 3, title: "@mouseover", slug: "mouseover" },
-              { level: 3, title: "@mouseout", slug: "mouseout" },
-              { level: 3, title: "@contextmenu", slug: "contextmenu" },
-              { level: 3, title: "@touchstart", slug: "touchstart" },
-              { level: 3, title: "@touchend", slug: "touchend" },
-              { level: 3, title: "@touchcancel", slug: "touchcancel" }
-            ]
-          },
           {
             title: "Home",
             frontmatter: {
@@ -8868,6 +8825,49 @@
                 slug: "removefeaturestate-featureid-sourcelayer-key"
               },
               { level: 2, title: "Events", slug: "events" }
+            ]
+          },
+          {
+            title: "Layers common",
+            frontmatter: {},
+            regularPath: "/api/Layers/",
+            key: "v-9af1f7dc",
+            path: "/api/Layers/",
+            headers: [
+              { level: 2, title: "Props", slug: "props" },
+              { level: 3, title: "sourceId", slug: "sourceid" },
+              { level: 3, title: "source", slug: "source" },
+              { level: 3, title: "layerId", slug: "layerid" },
+              { level: 3, title: "layer", slug: "layer" },
+              { level: 3, title: "before", slug: "before" },
+              { level: 3, title: "clearSource", slug: "clearsource" },
+              { level: 3, title: "replaceSource", slug: "replacesource" },
+              { level: 3, title: "replace", slug: "replace" },
+              {
+                level: 2,
+                title: "Computed properties",
+                slug: "computed-properties"
+              },
+              { level: 3, title: "sourceLoaded", slug: "sourceloaded" },
+              { level: 3, title: "mapLayer", slug: "maplayer" },
+              { level: 3, title: "mapSource", slug: "mapsource" },
+              { level: 2, title: "Methods", slug: "methods" },
+              { level: 3, title: ".move(beforeId?)", slug: "move-beforeid" },
+              { level: 3, title: ".remove()", slug: "remove" },
+              { level: 2, title: "Events", slug: "events" },
+              { level: 3, title: "@mousedown", slug: "mousedown" },
+              { level: 3, title: "@mouseup", slug: "mouseup" },
+              { level: 3, title: "@click", slug: "click" },
+              { level: 3, title: "@dblclick", slug: "dblclick" },
+              { level: 3, title: "@mousemove", slug: "mousemove" },
+              { level: 3, title: "@mouseenter", slug: "mouseenter" },
+              { level: 3, title: "@mouseleave", slug: "mouseleave" },
+              { level: 3, title: "@mouseover", slug: "mouseover" },
+              { level: 3, title: "@mouseout", slug: "mouseout" },
+              { level: 3, title: "@contextmenu", slug: "contextmenu" },
+              { level: 3, title: "@touchstart", slug: "touchstart" },
+              { level: 3, title: "@touchend", slug: "touchend" },
+              { level: 3, title: "@touchcancel", slug: "touchcancel" }
             ]
           },
           {
@@ -9021,6 +9021,13 @@
             ]
           },
           {
+            title: "Composition",
+            frontmatter: {},
+            regularPath: "/guide/composition.html",
+            key: "v-2939380e",
+            path: "/guide/composition.html"
+          },
+          {
             title: "Popup",
             frontmatter: {},
             regularPath: "/api/popup.html",
@@ -9041,28 +9048,6 @@
               { level: 3, title: "@removed", slug: "removed" },
               { level: 3, title: "@open", slug: "open" },
               { level: 3, title: "@close", slug: "close" }
-            ]
-          },
-          {
-            title: "Quickstart",
-            frontmatter: {},
-            regularPath: "/guide/",
-            key: "v-147a1068",
-            path: "/guide/",
-            headers: [
-              {
-                level: 2,
-                title: "Using as ES module",
-                slug: "using-as-es-module"
-              },
-              { level: 3, title: "Installation", slug: "installation" },
-              { level: 2, title: "Using in browser", slug: "using-in-browser" },
-              { level: 3, title: "Installation", slug: "installation-2" },
-              {
-                level: 2,
-                title: "Migration from version 0.1.x",
-                slug: "migration-from-version-0-1-x"
-              }
             ]
           },
           {
@@ -9090,28 +9075,6 @@
                 slug: "method-actions-stop"
               },
               { level: 3, title: "Events", slug: "events" }
-            ]
-          },
-          {
-            title: "Composition",
-            frontmatter: {},
-            regularPath: "/guide/composition.html",
-            key: "v-2939380e",
-            path: "/guide/composition.html"
-          },
-          {
-            title: "Map controls",
-            frontmatter: {},
-            regularPath: "/guide/controls.html",
-            key: "v-fb4e549a",
-            path: "/guide/controls.html",
-            headers: [
-              { level: 2, title: "Overview", slug: "overview" },
-              {
-                level: 3,
-                title: "Attribution control",
-                slug: "attribution-control"
-              }
             ]
           },
           {
@@ -9145,7 +9108,12 @@
               { level: 2, title: "Reactivity", slug: "reactivity" },
               { level: 2, title: "Layer getters", slug: "layer-getters" },
               { level: 2, title: "Layer methods", slug: "layer-methods" },
-              { level: 2, title: "Layer events", slug: "layer-events" }
+              { level: 2, title: "Layer events", slug: "layer-events" },
+              {
+                level: 2,
+                title: "Migration from 0.1",
+                slug: "migration-from-0-1"
+              }
             ]
           },
           {
@@ -9174,6 +9142,43 @@
               "/plugin_components/plugin_components_development.html",
             key: "v-22ef9d0e",
             path: "/plugin_components/plugin_components_development.html"
+          },
+          {
+            title: "Quickstart",
+            frontmatter: {},
+            regularPath: "/guide/",
+            key: "v-147a1068",
+            path: "/guide/",
+            headers: [
+              {
+                level: 2,
+                title: "Using as ES module",
+                slug: "using-as-es-module"
+              },
+              { level: 3, title: "Installation", slug: "installation" },
+              { level: 2, title: "Using in browser", slug: "using-in-browser" },
+              { level: 3, title: "Installation", slug: "installation-2" },
+              {
+                level: 2,
+                title: "Migration from version 0.1.x",
+                slug: "migration-from-version-0-1-x"
+              }
+            ]
+          },
+          {
+            title: "Map controls",
+            frontmatter: {},
+            regularPath: "/guide/controls.html",
+            key: "v-fb4e549a",
+            path: "/guide/controls.html",
+            headers: [
+              { level: 2, title: "Overview", slug: "overview" },
+              {
+                level: 3,
+                title: "Attribution control",
+                slug: "attribution-control"
+              }
+            ]
           },
           {
             title: "GlMap",
@@ -9888,7 +9893,7 @@
       rs = es.router;
     (window.__VUEPRESS_VERSION__ = {
       version: "1.0.0-alpha.37",
-      hash: "772b8c0"
+      hash: "c077fc5"
     }),
       rs.onReady(function() {
         ns.$mount("#app");

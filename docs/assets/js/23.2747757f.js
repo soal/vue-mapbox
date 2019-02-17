@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
   [23],
   {
-    147: function(t, a, e) {
+    149: function(t, a, e) {
       "use strict";
       e.r(a);
       var s = e(17),
@@ -954,7 +954,64 @@
                     ])
                   ],
                   1
-                )
+                ),
+                t._v(" "),
+                e("h2", { attrs: { id: "migration-from-0-1" } }, [
+                  e(
+                    "a",
+                    {
+                      staticClass: "header-anchor",
+                      attrs: {
+                        href: "#migration-from-0-1",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [t._v("#")]
+                  ),
+                  t._v(" Migration from 0.1")
+                ]),
+                t._v(" "),
+                e("p", [
+                  t._v("In versoin "),
+                  e("code", [t._v("0.1")]),
+                  t._v(
+                    " layer and source options was exposed via separate props.\nSince "
+                  ),
+                  e("code", [t._v("0.2")]),
+                  t._v(" there are consolidated "),
+                  e("code", [t._v("source")]),
+                  t._v(" object props for data source and "),
+                  e("code", [t._v("layer")]),
+                  t._v(" for layer options. See "),
+                  e(
+                    "a",
+                    {
+                      attrs: {
+                        href:
+                          "https://docs.mapbox.com/mapbox-gl-js/api/#sources",
+                        target: "_blank",
+                        rel: "noopener noreferrer"
+                      }
+                    },
+                    [t._v("sources"), e("OutboundLink")],
+                    1
+                  ),
+                  t._v(" and "),
+                  e(
+                    "a",
+                    {
+                      attrs: {
+                        href:
+                          "https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers",
+                        target: "_blank",
+                        rel: "noopener noreferrer"
+                      }
+                    },
+                    [t._v("layers"), e("OutboundLink")],
+                    1
+                  ),
+                  t._v(" in Mapbox GL JS docs.")
+                ])
               ]
             );
           },

@@ -3452,19 +3452,28 @@ module.exports = /******/ (function(modules) {
       /* harmony default export */ var withSelfEvents = {
         methods: {
           $_emitSelfEvent: function $_emitSelfEvent(event) {
-            this.$_emitMapEvent(event, {
-              control: this.control
-            });
+            var data =
+              arguments.length > 1 && arguments[1] !== undefined
+                ? arguments[1]
+                : {};
+            this.$_emitMapEvent(
+              event,
+              _objectSpread(
+                {
+                  control: this.control
+                },
+                data
+              )
+            );
           },
 
-          /** Bind events for markers and popups and controls.
+          /** Bind events for markers, popups and controls.
            * MapboxGL JS emits this events on popup or marker object,
            * so we treat them as 'self' events of these objects
            */
           $_bindSelfEvents: function $_bindSelfEvents(events, emitter) {
             var _this = this;
 
-            // console.log(Object.keys(this.$listeners), events)
             Object.keys(this.$listeners).forEach(function(eventName) {
               if (events.includes(eventName)) {
                 emitter.on(eventName, _this.$_emitSelfEvent);
@@ -3486,7 +3495,7 @@ module.exports = /******/ (function(modules) {
 
       /* harmony default export */ var controlMixin = {
         mixins: [withEvents, withSelfEvents],
-        inject: ["mapbox", "map"],
+        inject: ["mapbox", "map", "actions"],
         props: {
           position: {
             type: String,
@@ -4941,54 +4950,18 @@ module.exports = /******/ (function(modules) {
           }
         }
       };
-      // CONCATENATED MODULE: ./src/lib/withRegistration.js
-      function walkParents(component) {
-        if (component.baseMap) {
-          return component;
-        } else {
-          if (component.$parent !== undefined) {
-            return walkParents(component.$parent);
-          }
-        }
-      }
-
-      /* harmony default export */ var withRegistration = {
-        created: function created() {
-          this.map = null;
-        },
-        mounted: function mounted() {
-          this.$_checkMapTree(); // We wait for "load" event from map component to ensure mapbox is loaded and map created
-        },
-        methods: {
-          $_findBaseMap: function $_findBaseMap() {
-            var baseMapComponent = walkParents(this.$parent);
-
-            if (baseMapComponent === undefined) {
-              throw new Error("Component must have root map");
-            }
-
-            return baseMapComponent;
-          },
-          $_checkMapTree: function $_checkMapTree() {
-            var mapComponent = this.$_findBaseMap();
-
-            if (mapComponent) {
-              if (mapComponent.mapLoaded) {
-                this.$_deferredMount({
-                  component: mapComponent,
-                  map: mapComponent.map
-                });
-              } else {
-                mapComponent.$on("load", this.$_deferredMount);
-              }
-            }
-          }
-        }
-      };
       // CONCATENATED MODULE: ./src/main.js
 
-      var mglRegistrationMixin = withRegistration;
-      var mglControlMixin = controlMixin;
+      var main_withEvents = withEvents;
+      var main_withSelfEvents = withSelfEvents;
+      var asControl = controlMixin;
+      var asLayer = layerMixin;
+      var $helpers = {
+        withEvents: withEvents,
+        withSelfEvents: withSelfEvents,
+        asControl: controlMixin,
+        asLayer: layerMixin
+      };
       var MglMap = GlMap;
       var MglNavigationControl = NavigationControl;
       var MglGeolocateControl = GeolocateControl;
@@ -5002,45 +4975,42 @@ module.exports = /******/ (function(modules) {
       var MglVectorLayer = VectorLayer;
       var MglRasterLayer = RasterLayer;
       var MglMarker = Marker;
-      var MglPopup = Popup; // export const plugin = {
-      //   /**
-      //    *  Create Vue-mapbox plugin for Vue
-      //    *
-      //    * @param {Object} Vue
-      //    * @param {Object} options: mapboxgl: MapboxGl JS instances
-      //    * @returns
-      //    */
-      //   install(Vue, options = {}) {
-      //     const data = { mapbox: options.mapboxgl };
-      //     if (options.plugins && options.plugins.length) {
-      //       options.plugins.forEach(plugin => {
-      //         const key = Object.keys(plugin)[0];
-      //         const value = Object.values(plugin)[0];
-      //         data[key] = value;
-      //       });
-      //     }
-      //     Vue.mixin({
-      //       data() {
-      //         return data;
-      //       }
-      //     });
-      //   }
-      // };
-
+      var MglPopup = Popup;
       /* harmony default export */ var main = GlMap;
       // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
-      /* concated harmony reexport mglRegistrationMixin */ __webpack_require__.d(
+      /* concated harmony reexport withEvents */ __webpack_require__.d(
         __webpack_exports__,
-        "mglRegistrationMixin",
+        "withEvents",
         function() {
-          return mglRegistrationMixin;
+          return main_withEvents;
         }
       );
-      /* concated harmony reexport mglControlMixin */ __webpack_require__.d(
+      /* concated harmony reexport withSelfEvents */ __webpack_require__.d(
         __webpack_exports__,
-        "mglControlMixin",
+        "withSelfEvents",
         function() {
-          return mglControlMixin;
+          return main_withSelfEvents;
+        }
+      );
+      /* concated harmony reexport asControl */ __webpack_require__.d(
+        __webpack_exports__,
+        "asControl",
+        function() {
+          return asControl;
+        }
+      );
+      /* concated harmony reexport asLayer */ __webpack_require__.d(
+        __webpack_exports__,
+        "asLayer",
+        function() {
+          return asLayer;
+        }
+      );
+      /* concated harmony reexport $helpers */ __webpack_require__.d(
+        __webpack_exports__,
+        "$helpers",
+        function() {
+          return $helpers;
         }
       );
       /* concated harmony reexport MglMap */ __webpack_require__.d(

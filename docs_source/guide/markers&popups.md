@@ -99,7 +99,7 @@ In this example [Vuetify card component](https://vuetifyjs.com/en/components/car
     :mapStyle.sync="mapStyle"
     :center="coordinates"
   >
-    <MglPopup anchor="top">
+    <MglPopup :coorfinates="coordinates" anchor="top">
       <VCard> <div>Hello, I'm popup!</div> </VCard>
     </MglPopup>
   </MglMap>
@@ -150,7 +150,9 @@ Popup often used inside of map markers. You can achive this by passing Popup ins
   >
     <MglMarker :coordinates="coordinates">
       <MglPopup>
-        <VCard> <div>Hello, I'm popup!</div> </VCard>
+        <VCard>
+          <div>Hello, I'm popup!</div>
+        </VCard>
       </MglPopup>
     </MglMarker>
   </MglMap>

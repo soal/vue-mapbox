@@ -1,7 +1,7 @@
 export default {
   methods: {
-    $_emitSelfEvent(event) {
-      this.$_emitMapEvent(event, { control: this.control });
+    $_emitSelfEvent(event, data = {}) {
+      this.$_emitMapEvent(event, { control: this.control, ...data });
     },
     /** Bind events for markers, popups and controls.
      * MapboxGL JS emits this events on popup or marker object,

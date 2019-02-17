@@ -5,7 +5,7 @@ import withSelfEvents from "../withSelfEvents";
 export default {
   mixins: [withEvents, withSelfEvents],
 
-  inject: ["mapbox", "map"],
+  inject: ["mapbox", "map", "actions"],
 
   props: {
     position: {

@@ -15,11 +15,22 @@ import VideoLayer from "./components/layer/VideoLayer";
 import VectorLayer from "./components/layer/VectorLayer";
 import RasterLayer from "./components/layer/RasterLayer";
 
+import withEventsMixin from "./lib/withEvents";
+import withSelfEventsMixin from "./components/UI/withSelfEvents";
 import controlMixin from "./components/UI/controls/controlMixin";
-import withRegistration from "./lib/withRegistration";
+import layerMixin from "./components/layer/layerMixin";
 
-export const mglRegistrationMixin = withRegistration;
-export const mglControlMixin = controlMixin;
+export const withEvents = withEventsMixin;
+export const withSelfEvents = withSelfEventsMixin;
+export const asControl = controlMixin;
+export const asLayer = layerMixin;
+
+export const $helpers = {
+  withEvents: withEventsMixin,
+  withSelfEvents: withSelfEventsMixin,
+  asControl: controlMixin,
+  asLayer: layerMixin
+};
 
 export const MglMap = GlMap;
 
@@ -39,28 +50,4 @@ export const MglRasterLayer = RasterLayer;
 export const MglMarker = Marker;
 export const MglPopup = Popup;
 
-// export const plugin = {
-//   /**
-//    *  Create Vue-mapbox plugin for Vue
-//    *
-//    * @param {Object} Vue
-//    * @param {Object} options: mapboxgl: MapboxGl JS instances
-//    * @returns
-//    */
-//   install(Vue, options = {}) {
-//     const data = { mapbox: options.mapboxgl };
-//     if (options.plugins && options.plugins.length) {
-//       options.plugins.forEach(plugin => {
-//         const key = Object.keys(plugin)[0];
-//         const value = Object.values(plugin)[0];
-//         data[key] = value;
-//       });
-//     }
-//     Vue.mixin({
-//       data() {
-//         return data;
-//       }
-//     });
-//   }
-// };
 export default GlMap;

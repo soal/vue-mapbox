@@ -1,9 +1,9 @@
 <template>
   <div style="display: none">
     <!-- slot for custom marker -->
-    <slot v-if="marker" name="marker" />
+    <slot name="marker" />
     <!-- slot for popup -->
-    <slot />
+    <slot v-if="marker" />
   </div>
 </template>
 
@@ -73,7 +73,7 @@ export default {
     }
   },
 
-  created() {
+  mounted() {
     const markerOptions = {
       ...this.$props
     };
@@ -81,8 +81,6 @@ export default {
       markerOptions.element = this.$slots.marker[0].elm;
     }
     this.marker = new this.mapbox.Marker(markerOptions);
-
-    this.$_addMarker();
 
     if (this.$listeners["update:coordinates"]) {
       this.marker.on("dragend", event => {
@@ -100,6 +98,7 @@ export default {
     this.$_bindSelfEvents(eventNames, this.marker);
 
     this.initial = false;
+    this.$_addMarker();
   },
 
   beforeDestroy() {

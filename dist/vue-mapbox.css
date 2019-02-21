@@ -1,12 +1,11 @@
-.mgl-map-wrapper[data-v-9b87638e] {
+.mgl-map-wrapper {
   height: 100%;
   position: relative;
   width: 100%;
 }
-.mapboxgl-map[data-v-9b87638e] {
+.mgl-map-wrapper .mapboxgl-map {
   height: 100%;
   left: 0;
-  overflow: hidden;
   position: absolute;
   top: 0;
   width: 100%;

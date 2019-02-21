@@ -22,7 +22,17 @@ export default {
   name: "Popup",
   mixins: [withEvents, withSelfEvents],
 
-  inject: ["mapbox", "map", "marker"],
+  inject: {
+    mapbox: {
+      default: null
+    },
+    map: {
+      default: null
+    },
+    marker: {
+      default: null
+    }
+  },
 
   props: {
     /**

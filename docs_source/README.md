@@ -14,12 +14,7 @@ features:
 footer: MIT Licensed
 ---
 
-<<<<<<< HEAD
 If you like long story, check out [blog post](https://soal.red/reasoning-behind-vue-mapbox/)
-=======
-If you like long story, check out [blog post](hhttps://soal.red/reasoning-behind-vue-mapbox/)
-
-> > > > > > > 0d3ca3527fd03adc6a7d56171b5b68b98204f6aa
 
 ```vue
 <template>

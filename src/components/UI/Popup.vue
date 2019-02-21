@@ -144,8 +144,9 @@ export default {
   methods: {
     $_addPopup() {
       this.popup = new this.mapbox.Popup(this.$props);
-      if (this.coordinates !== undefined)
+      if (this.coordinates !== undefined) {
         this.popup.setLngLat(this.coordinates);
+      }
       if (this.$slots.default !== undefined) {
         if (this.onlyText) {
           if (this.$slots.default[0].elm.nodeType === 3) {

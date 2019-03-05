@@ -1,7 +1,7 @@
 export default {
   methods: {
     /**
-     * Emit Vue event with additionsl data
+     * Emit Vue event with additional data
      *
      * @param {string} name EventName
      * @param {Object} [data={}] Additional data

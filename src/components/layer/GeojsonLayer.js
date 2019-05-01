@@ -122,7 +122,6 @@ export default {
       this.$_bindLayerEvents(layerEvents);
       this.map.off("dataloading", this.$_watchSourceLoading);
       this.initial = false;
-      // payload.component.$off("load", this.$_deferredMount);
     },
 
     $_addLayer() {

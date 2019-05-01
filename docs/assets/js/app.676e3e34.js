@@ -74,8 +74,8 @@
                 21: "6a1f30f2",
                 22: "8dc7d898",
                 23: "4670d875",
-                24: "1e4b4f80",
-                25: "58b473a8",
+                24: "fe39c8d8",
+                25: "8dd04822",
                 26: "b01152e4"
               }[t] +
               ".js"
@@ -8321,8 +8321,8 @@
         "v-2939380e": () => n.e(21).then(n.bind(null, 150)),
         "v-fb4e549a": () => n.e(22).then(n.bind(null, 149)),
         "v-0250a037": () => n.e(23).then(n.bind(null, 148)),
-        "v-2719271c": () => n.e(25).then(n.bind(null, 147)),
-        "v-0f9139b7": () => n.e(24).then(n.bind(null, 146)),
+        "v-0f9139b7": () => n.e(24).then(n.bind(null, 147)),
+        "v-2719271c": () => n.e(25).then(n.bind(null, 146)),
         "v-22ef9d0e": () => n.e(26).then(n.bind(null, 145)),
         "v-cd0cec28": () => n.e(14).then(n.bind(null, 154)),
         "v-6c9c2319": () => n.e(16).then(n.bind(null, 152))
@@ -8681,6 +8681,14 @@
           }
         },
         {
+          name: "v-0f9139b7",
+          path: "/guide/markers&popups.html",
+          component: Da,
+          beforeEnter: (t, e, n) => {
+            Sa("Layout", "v-0f9139b7").then(n);
+          }
+        },
+        {
           name: "v-2719271c",
           path: "/plugin_components/",
           component: Da,
@@ -8691,14 +8699,6 @@
         {
           path: "/plugin_components/index.html",
           redirect: "/plugin_components/"
-        },
-        {
-          name: "v-0f9139b7",
-          path: "/guide/markers&popups.html",
-          component: Da,
-          beforeEnter: (t, e, n) => {
-            Sa("Layout", "v-0f9139b7").then(n);
-          }
         },
         {
           name: "v-22ef9d0e",
@@ -9135,25 +9135,6 @@
             ]
           },
           {
-            title: "Plugin components",
-            frontmatter: {},
-            regularPath: "/plugin_components/",
-            key: "v-2719271c",
-            path: "/plugin_components/",
-            headers: [
-              {
-                level: 2,
-                title: "Using plugin components",
-                slug: "using-plugin-components"
-              },
-              {
-                level: 2,
-                title: "Available plugin components",
-                slug: "available-plugin-components"
-              }
-            ]
-          },
-          {
             title: "Markers and Popups",
             frontmatter: {},
             regularPath: "/guide/markers&popups.html",
@@ -9170,6 +9151,25 @@
                 level: 2,
                 title: "Markers & Popups together",
                 slug: "markers-popups-together"
+              }
+            ]
+          },
+          {
+            title: "Plugin components",
+            frontmatter: {},
+            regularPath: "/plugin_components/",
+            key: "v-2719271c",
+            path: "/plugin_components/",
+            headers: [
+              {
+                level: 2,
+                title: "Using plugin components",
+                slug: "using-plugin-components"
+              },
+              {
+                level: 2,
+                title: "Available plugin components",
+                slug: "available-plugin-components"
               }
             ]
           },
@@ -9916,7 +9916,7 @@
       rs = es.router;
     (window.__VUEPRESS_VERSION__ = {
       version: "1.0.0-alpha.37",
-      hash: "ac9cb8d"
+      hash: "59c7b12"
     }),
       rs.onReady(function() {
         ns.$mount("#app");

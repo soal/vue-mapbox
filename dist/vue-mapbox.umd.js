@@ -3871,8 +3871,8 @@
 
         Marker_component.options.__file = "Marker.vue";
         /* harmony default export */ var Marker = Marker_component.exports;
-        // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=template&id=6abc114a&
-        var Popupvue_type_template_id_6abc114a_render = function() {
+        // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=template&id=6e79a273&
+        var Popupvue_type_template_id_6e79a273_render = function() {
           var _vm = this;
           var _h = _vm.$createElement;
           var _c = _vm._self._c || _h;
@@ -3883,9 +3883,9 @@
             2
           );
         };
-        var Popupvue_type_template_id_6abc114a_staticRenderFns = [];
+        var Popupvue_type_template_id_6e79a273_staticRenderFns = [];
 
-        // CONCATENATED MODULE: ./src/components/UI/Popup.vue?vue&type=template&id=6abc114a&
+        // CONCATENATED MODULE: ./src/components/UI/Popup.vue?vue&type=template&id=6e79a273&
 
         // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=script&lang=js&
 
@@ -4020,6 +4020,21 @@
               }
             }
           },
+          watch: {
+            coordinates: function coordinates(lngLat) {
+              if (this.initial) return;
+              this.popup.setLngLat(lngLat);
+            },
+            showed: function showed(next, prev) {
+              if (next !== prev) {
+                this.open = next;
+
+                if (this.marker) {
+                  this.marker.togglePopup();
+                }
+              }
+            }
+          },
           created: function created() {
             this.popup = new this.mapbox.Popup(this.$props);
           },
@@ -4031,12 +4046,6 @@
             if (this.map) {
               this.popup.remove();
               this.$_emitEvent("removed");
-            }
-          },
-          watch: {
-            coordinates: function coordinates(lngLat) {
-              if (this.initial) return;
-              this.popup.setLngLat(lngLat);
             }
           },
           methods: {
@@ -4099,8 +4108,8 @@
 
         var Popup_component = normalizeComponent(
           UI_Popupvue_type_script_lang_js_,
-          Popupvue_type_template_id_6abc114a_render,
-          Popupvue_type_template_id_6abc114a_staticRenderFns,
+          Popupvue_type_template_id_6e79a273_render,
+          Popupvue_type_template_id_6e79a273_staticRenderFns,
           false,
           null,
           null,

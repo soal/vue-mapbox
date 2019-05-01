@@ -2530,7 +2530,7 @@ module.exports = /******/ (function(modules) {
       // Indicate to webpack that this file can be concatenated
       /* harmony default export */ var setPublicPath = null;
 
-      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/GlMap.vue?vue&type=template&id=177ac976&
+      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/GlMap.vue?vue&type=template&id=a6b1c212&
       var render = function() {
         var _vm = this;
         var _h = _vm.$createElement;
@@ -2551,7 +2551,7 @@ module.exports = /******/ (function(modules) {
         }
       ];
 
-      // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=template&id=177ac976&
+      // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=template&id=a6b1c212&
 
       // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
       var web_dom_iterable = __webpack_require__("ac6a");
@@ -3320,7 +3320,11 @@ module.exports = /******/ (function(modules) {
           });
         },
         beforeDestroy: function beforeDestroy() {
-          if (this.map) this.map.remove();
+          var _this2 = this;
+
+          this.$nextTick(function() {
+            if (_this2.map) _this2.map.remove();
+          });
         }
       };
       // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=script&lang=js&
@@ -3482,6 +3486,7 @@ module.exports = /******/ (function(modules) {
             var _this2 = this;
 
             if (events.length === 0) return;
+            if (!emitter) return;
             events.forEach(function(eventName) {
               emitter.off(eventName, _this2.$_emitSelfEvent);
             });
@@ -3501,7 +3506,7 @@ module.exports = /******/ (function(modules) {
           }
         },
         beforeDestroy: function beforeDestroy() {
-          if (this.map) {
+          if (this.map && this.control) {
             this.map.removeControl(this.control);
           }
         },
@@ -4233,7 +4238,7 @@ module.exports = /******/ (function(modules) {
           }
         },
         beforeDestroy: function beforeDestroy() {
-          if (this.map) {
+          if (this.map && this.map.loaded()) {
             try {
               this.map.removeLayer(this.layerId);
             } catch (err) {
@@ -4277,13 +4282,15 @@ module.exports = /******/ (function(modules) {
           $_unbindEvents: function $_unbindEvents(events) {
             var _this2 = this;
 
-            events.forEach(function(eventName) {
-              _this2.map.off(
-                eventName,
-                _this2.layerId,
-                _this2.$_emitLayerMapEvent
-              );
-            });
+            if (this.map) {
+              events.forEach(function(eventName) {
+                _this2.map.off(
+                  eventName,
+                  _this2.layerId,
+                  _this2.$_emitLayerMapEvent
+                );
+              });
+            }
           },
           $_watchSourceLoading: function $_watchSourceLoading(data) {
             if (data.dataType === "source" && data.sourceId === this.sourceId) {
@@ -4485,7 +4492,7 @@ module.exports = /******/ (function(modules) {
             this.$_addLayer();
             this.$_bindLayerEvents(layerEvents);
             this.map.off("dataloading", this.$_watchSourceLoading);
-            this.initial = false; // payload.component.$off("load", this.$_deferredMount);
+            this.initial = false;
           },
           $_addLayer: function $_addLayer() {
             var existed = this.map.getLayer(this.layerId);

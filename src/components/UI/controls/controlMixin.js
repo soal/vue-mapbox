@@ -15,7 +15,7 @@ export default {
   },
 
   beforeDestroy() {
-    if (this.map) {
+    if (this.map && this.control) {
       this.map.removeControl(this.control);
     }
   },

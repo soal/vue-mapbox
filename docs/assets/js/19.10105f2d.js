@@ -1,27 +1,19 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
-  [18],
+  [19],
   {
-    164: function(t, a, s) {
+    165: function(t, a, s) {
       "use strict";
       s.r(a);
-      var n = {
-          props: ["slot-key"],
-          mounted: function() {
-            this.$nextTick(function() {
-              this.$vuepress.$emit("AsyncMarkdownContentMounted", this.slotKey);
-            });
-          }
-        },
-        e = s(5),
-        p = Object(e.a)(
-          n,
+      var n = s(17),
+        e = Object(n.a)(
+          {},
           function() {
             var t = this,
               a = t.$createElement,
               s = t._self._c || a;
             return s(
               "ContentSlotsDistributor",
-              { attrs: { "slot-key": t.slotKey } },
+              { attrs: { "slot-key": t.$parent.slotKey } },
               [
                 s("h1", { attrs: { id: "quickstart" } }, [
                   s(
@@ -937,8 +929,8 @@
           null,
           null
         );
-      p.options.__file = "README.md";
-      a.default = p.exports;
+      e.options.__file = "README.md";
+      a.default = e.exports;
     }
   }
 ]);

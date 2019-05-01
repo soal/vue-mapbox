@@ -125,7 +125,11 @@ export default {
 
 If you set `onlyText` prop to `true` content in Popup default slot will be treated as plain text. It can be useful if you loading popup content from external untrusted source.
 
+Popups added to the map is hidden by default. If you want to show the popup immediately you need to set the prop `showed` to `true`
+
 ### Props
+
+- `showed {Boolean}` If `true`, the popup shows immediately after component is created.
 
 - `closeButton {Boolean}` If `true`, a close button will appear in the top right corner of the popup.
 

@@ -1,28 +1,19 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
-  [23],
+  [24],
   {
-    156: function(t, a, s) {
+    146: function(t, a, s) {
       "use strict";
       s.r(a);
-      s(42), s(68), s(69);
-      var n = {
-          props: ["slot-key"],
-          mounted: function() {
-            this.$nextTick(function() {
-              this.$vuepress.$emit("AsyncMarkdownContentMounted", this.slotKey);
-            });
-          }
-        },
-        p = s(5),
-        e = Object(p.a)(
-          n,
+      var n = s(17),
+        p = Object(n.a)(
+          {},
           function() {
             var t = this,
               a = t.$createElement,
               s = t._self._c || a;
             return s(
               "ContentSlotsDistributor",
-              { attrs: { "slot-key": t.slotKey } },
+              { attrs: { "slot-key": t.$parent.slotKey } },
               [
                 s("h1", { attrs: { id: "markers-and-popups" } }, [
                   s(
@@ -1939,6 +1930,15 @@
                   )
                 ]),
                 t._v(" "),
+                s("p", [
+                  t._v(
+                    "Popups added to the map is hidden by default. If you want to show the popup immediately you need to set the prop "
+                  ),
+                  s("code", [t._v("showed")]),
+                  t._v(" to "),
+                  s("code", [t._v("true")])
+                ]),
+                t._v(" "),
                 s("h3", { attrs: { id: "props-2" } }, [
                   s(
                     "a",
@@ -1952,6 +1952,17 @@
                 ]),
                 t._v(" "),
                 s("ul", [
+                  s("li", [
+                    s("p", [
+                      s("code", [t._v("showed {Boolean}")]),
+                      t._v(" If "),
+                      s("code", [t._v("true")]),
+                      t._v(
+                        ", the popup shows immediately after component is created."
+                      )
+                    ])
+                  ]),
+                  t._v(" "),
                   s("li", [
                     s("p", [
                       s("code", [t._v("closeButton {Boolean}")]),
@@ -2650,8 +2661,8 @@
           null,
           null
         );
-      e.options.__file = "markers&popups.md";
-      a.default = e.exports;
+      p.options.__file = "markers&popups.md";
+      a.default = p.exports;
     }
   }
 ]);

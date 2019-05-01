@@ -1,27 +1,19 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
-  [17],
+  [18],
   {
-    163: function(t, e, o) {
+    153: function(e, t, o) {
       "use strict";
-      o.r(e);
-      var a = {
-          props: ["slot-key"],
-          mounted: function() {
-            this.$nextTick(function() {
-              this.$vuepress.$emit("AsyncMarkdownContentMounted", this.slotKey);
-            });
-          }
-        },
-        r = o(5),
-        s = Object(r.a)(
-          a,
+      o.r(t);
+      var a = o(17),
+        r = Object(a.a)(
+          {},
           function() {
-            var t = this,
-              e = t.$createElement,
-              o = t._self._c || e;
+            var e = this,
+              t = e.$createElement,
+              o = e._self._c || t;
             return o(
               "ContentSlotsDistributor",
-              { attrs: { "slot-key": t.slotKey } },
+              { attrs: { "slot-key": e.$parent.slotKey } },
               [
                 o("h1", { attrs: { id: "popup" } }, [
                   o(
@@ -30,11 +22,11 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#popup", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" Popup")
+                  e._v(" Popup")
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("h2", { attrs: { id: "props" } }, [
                   o(
                     "a",
@@ -42,11 +34,43 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#props", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" Props")
+                  e._v(" Props")
                 ]),
-                t._v(" "),
+                e._v(" "),
+                o("h3", { attrs: { id: "showed" } }, [
+                  o(
+                    "a",
+                    {
+                      staticClass: "header-anchor",
+                      attrs: { href: "#showed", "aria-hidden": "true" }
+                    },
+                    [e._v("#")]
+                  ),
+                  e._v(" "),
+                  o("code", [e._v("showed")])
+                ]),
+                e._v(" "),
+                o("ul", [
+                  o("li", [
+                    o("strong", [e._v("Type")]),
+                    e._v(": "),
+                    o("code", [e._v("Boolean")])
+                  ]),
+                  e._v(" "),
+                  o("li", [o("strong", [e._v("non-synced")])]),
+                  e._v(" "),
+                  o("li", [
+                    o("strong", [e._v("Description:")]),
+                    e._v(" If "),
+                    o("code", [e._v("true")]),
+                    e._v(
+                      ", the popup showes immediately after the component is mounted."
+                    )
+                  ])
+                ]),
+                e._v(" "),
                 o("h3", { attrs: { id: "closebutton" } }, [
                   o(
                     "a",
@@ -54,33 +78,33 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#closebutton", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" "),
-                  o("code", [t._v("closeButton")])
+                  e._v(" "),
+                  o("code", [e._v("closeButton")])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("ul", [
                   o("li", [
-                    o("strong", [t._v("Type")]),
-                    t._v(": "),
-                    o("code", [t._v("Boolean")])
+                    o("strong", [e._v("Type")]),
+                    e._v(": "),
+                    o("code", [e._v("Boolean")])
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
-                    o("strong", [t._v("Description:")]),
-                    t._v(" If "),
-                    o("code", [t._v("true")]),
-                    t._v(
+                    o("strong", [e._v("Description:")]),
+                    e._v(" If "),
+                    o("code", [e._v("true")]),
+                    e._v(
                       ", a close button will appear in the top right corner of the popup."
                     )
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
-                    o("strong", [t._v("See:")]),
-                    t._v(" "),
-                    o("code", [t._v("closeButton")]),
-                    t._v(" in "),
+                    o("strong", [e._v("See:")]),
+                    e._v(" "),
+                    o("code", [e._v("closeButton")]),
+                    e._v(" in "),
                     o(
                       "a",
                       {
@@ -91,12 +115,12 @@
                           rel: "noopener noreferrer"
                         }
                       },
-                      [t._v("Popup"), o("OutboundLink")],
+                      [e._v("Popup"), o("OutboundLink")],
                       1
                     )
                   ])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("h3", { attrs: { id: "closeonclick" } }, [
                   o(
                     "a",
@@ -104,31 +128,31 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#closeonclick", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" "),
-                  o("code", [t._v("closeOnClick")])
+                  e._v(" "),
+                  o("code", [e._v("closeOnClick")])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("ul", [
                   o("li", [
-                    o("strong", [t._v("Type")]),
-                    t._v(": "),
-                    o("code", [t._v("Boolean")])
+                    o("strong", [e._v("Type")]),
+                    e._v(": "),
+                    o("code", [e._v("Boolean")])
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
-                    o("strong", [t._v("Description:")]),
-                    t._v(" If "),
-                    o("code", [t._v("true")]),
-                    t._v(", the popup will closed when the map is clicked.")
+                    o("strong", [e._v("Description:")]),
+                    e._v(" If "),
+                    o("code", [e._v("true")]),
+                    e._v(", the popup will closed when the map is clicked.")
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
-                    o("strong", [t._v("See:")]),
-                    t._v(" "),
-                    o("code", [t._v("closeOnClick")]),
-                    t._v(" in "),
+                    o("strong", [e._v("See:")]),
+                    e._v(" "),
+                    o("code", [e._v("closeOnClick")]),
+                    e._v(" in "),
                     o(
                       "a",
                       {
@@ -139,12 +163,12 @@
                           rel: "noopener noreferrer"
                         }
                       },
-                      [t._v("Popup"), o("OutboundLink")],
+                      [e._v("Popup"), o("OutboundLink")],
                       1
                     )
                   ])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("h3", { attrs: { id: "anchor" } }, [
                   o(
                     "a",
@@ -152,31 +176,31 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#anchor", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" "),
-                  o("code", [t._v("anchor")])
+                  e._v(" "),
+                  o("code", [e._v("anchor")])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("ul", [
                   o("li", [
-                    o("strong", [t._v("Type")]),
-                    t._v(": "),
-                    o("code", [t._v("String")])
+                    o("strong", [e._v("Type")]),
+                    e._v(": "),
+                    o("code", [e._v("String")])
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
-                    o("strong", [t._v("Description:")]),
-                    t._v(
+                    o("strong", [e._v("Description:")]),
+                    e._v(
                       " A string indicating the part of the Popup that should be positioned closest to the Popup location. Options are 'top' , 'bottom' , 'left' , 'right' , 'top-left' , 'top-right' , 'bottom-left' , and 'bottom-right' . If unset the anchor will be dynamically set to ensure the popup falls within the map container with a preference for 'bottom'."
                     )
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
-                    o("strong", [t._v("See:")]),
-                    t._v(" "),
-                    o("code", [t._v("anchor")]),
-                    t._v(" in "),
+                    o("strong", [e._v("See:")]),
+                    e._v(" "),
+                    o("code", [e._v("anchor")]),
+                    e._v(" in "),
                     o(
                       "a",
                       {
@@ -187,12 +211,12 @@
                           rel: "noopener noreferrer"
                         }
                       },
-                      [t._v("Popup"), o("OutboundLink")],
+                      [e._v("Popup"), o("OutboundLink")],
                       1
                     )
                   ])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("h3", { attrs: { id: "offset" } }, [
                   o(
                     "a",
@@ -200,52 +224,52 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#offset", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" "),
-                  o("code", [t._v("offset")])
+                  e._v(" "),
+                  o("code", [e._v("offset")])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("ul", [
                   o("li", [
                     o("p", [
-                      o("strong", [t._v("Type")]),
-                      t._v(": "),
-                      o("code", [t._v("Number | Object | Array")])
+                      o("strong", [e._v("Type")]),
+                      e._v(": "),
+                      o("code", [e._v("Number | Object | Array")])
                     ])
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
                     o("p", [
-                      o("strong", [t._v("Description:")]),
-                      t._v(" A pixel offset applied to the popup's location.")
+                      o("strong", [e._v("Description:")]),
+                      e._v(" A pixel offset applied to the popup's location.")
                     ]),
-                    t._v(" "),
+                    e._v(" "),
                     o("ul", [
                       o("li", [
-                        t._v(
+                        e._v(
                           "a single number specifying a distance from the popup's location"
                         )
                       ]),
-                      t._v(" "),
+                      e._v(" "),
                       o("li", [
-                        t._v("a PointLike specifying a constant offset")
+                        e._v("a PointLike specifying a constant offset")
                       ]),
-                      t._v(" "),
+                      e._v(" "),
                       o("li", [
-                        t._v(
+                        e._v(
                           "an object of Points specifing an offset for each anchor position Negative offsets indicate left and up."
                         )
                       ])
                     ])
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
                     o("p", [
-                      o("strong", [t._v("See:")]),
-                      t._v(" "),
-                      o("code", [t._v("offset")]),
-                      t._v(" in "),
+                      o("strong", [e._v("See:")]),
+                      e._v(" "),
+                      o("code", [e._v("offset")]),
+                      e._v(" in "),
                       o(
                         "a",
                         {
@@ -256,13 +280,13 @@
                             rel: "noopener noreferrer"
                           }
                         },
-                        [t._v("Popup"), o("OutboundLink")],
+                        [e._v("Popup"), o("OutboundLink")],
                         1
                       )
                     ])
                   ])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("h3", { attrs: { id: "coordinates" } }, [
                   o(
                     "a",
@@ -270,30 +294,30 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#coordinates", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" "),
-                  o("code", [t._v("coordinates")])
+                  e._v(" "),
+                  o("code", [e._v("coordinates")])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("ul", [
                   o("li", [
-                    o("strong", [t._v("Type")]),
-                    t._v(": "),
-                    o("code", [t._v("Array")])
+                    o("strong", [e._v("Type")]),
+                    e._v(": "),
+                    o("code", [e._v("Array")])
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
-                    o("strong", [t._v("Description:")]),
-                    t._v(" Popup coordinates in format "),
-                    o("code", [t._v("[longitude, latitude]")])
+                    o("strong", [e._v("Description:")]),
+                    e._v(" Popup coordinates in format "),
+                    o("code", [e._v("[longitude, latitude]")])
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
-                    o("strong", [t._v("See:")]),
-                    t._v(" "),
-                    o("code", [t._v("setLngLat()")]),
-                    t._v(" in "),
+                    o("strong", [e._v("See:")]),
+                    e._v(" "),
+                    o("code", [e._v("setLngLat()")]),
+                    e._v(" in "),
                     o(
                       "a",
                       {
@@ -304,12 +328,12 @@
                           rel: "noopener noreferrer"
                         }
                       },
-                      [t._v("Popup"), o("OutboundLink")],
+                      [e._v("Popup"), o("OutboundLink")],
                       1
                     )
                   ])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("h3", { attrs: { id: "onlytext" } }, [
                   o(
                     "a",
@@ -317,31 +341,31 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#onlytext", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" "),
-                  o("code", [t._v("onlyText")])
+                  e._v(" "),
+                  o("code", [e._v("onlyText")])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("ul", [
                   o("li", [
-                    o("strong", [t._v("Type")]),
-                    t._v(": "),
-                    o("code", [t._v("Boolean")])
+                    o("strong", [e._v("Type")]),
+                    e._v(": "),
+                    o("code", [e._v("Boolean")])
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
-                    o("strong", [t._v("Description:")]),
-                    t._v(" If "),
-                    o("code", [t._v("true")]),
-                    t._v(" content of the Popup treated as plain text")
+                    o("strong", [e._v("Description:")]),
+                    e._v(" If "),
+                    o("code", [e._v("true")]),
+                    e._v(" content of the Popup treated as plain text")
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
-                    o("strong", [t._v("See:")]),
-                    t._v(" "),
-                    o("code", [t._v("setText")]),
-                    t._v(" in "),
+                    o("strong", [e._v("See:")]),
+                    e._v(" "),
+                    o("code", [e._v("setText")]),
+                    e._v(" in "),
                     o(
                       "a",
                       {
@@ -352,12 +376,12 @@
                           rel: "noopener noreferrer"
                         }
                       },
-                      [t._v("Popup"), o("OutboundLink")],
+                      [e._v("Popup"), o("OutboundLink")],
                       1
                     )
                   ])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("h2", { attrs: { id: "slots" } }, [
                   o(
                     "a",
@@ -365,11 +389,11 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#slots", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" Slots")
+                  e._v(" Slots")
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("h3", { attrs: { id: "default" } }, [
                   o(
                     "a",
@@ -377,25 +401,25 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#default", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" "),
-                  o("code", [t._v("default")])
+                  e._v(" "),
+                  o("code", [e._v("default")])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("ul", [
                   o("li", [
-                    o("strong", [t._v("Description:")]),
-                    t._v(
+                    o("strong", [e._v("Description:")]),
+                    e._v(
                       " Slot for Popup content. Can be plain text, HTML or Vue component. If "
                     ),
-                    o("code", [t._v("onlyText")]),
-                    t._v(" set to "),
-                    o("code", [t._v("true")]),
-                    t._v(" content in this slot treated as plaint text.")
+                    o("code", [e._v("onlyText")]),
+                    e._v(" set to "),
+                    o("code", [e._v("true")]),
+                    e._v(" content in this slot treated as plaint text.")
                   ])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("h2", { attrs: { id: "events" } }, [
                   o(
                     "a",
@@ -403,11 +427,11 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#events", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" Events")
+                  e._v(" Events")
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("h3", { attrs: { id: "added" } }, [
                   o(
                     "a",
@@ -415,28 +439,28 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#added", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" "),
-                  o("code", [t._v("@added")])
+                  e._v(" "),
+                  o("code", [e._v("@added")])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("ul", [
                   o("li", [
-                    o("strong", [t._v("Description:")]),
-                    t._v(" Fires when popup added on the map.")
+                    o("strong", [e._v("Description:")]),
+                    e._v(" Fires when popup added on the map.")
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
-                    o("strong", [t._v("Payload")]),
-                    t._v(" "),
-                    o("code", [t._v("{ popup: Popup }")]),
-                    t._v(" Object with MapboxGL "),
-                    o("code", [t._v("Popup")]),
-                    t._v(" object")
+                    o("strong", [e._v("Payload")]),
+                    e._v(" "),
+                    o("code", [e._v("{ popup: Popup }")]),
+                    e._v(" Object with MapboxGL "),
+                    o("code", [e._v("Popup")]),
+                    e._v(" object")
                   ])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("h3", { attrs: { id: "removed" } }, [
                   o(
                     "a",
@@ -444,28 +468,28 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#removed", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" "),
-                  o("code", [t._v("@removed")])
+                  e._v(" "),
+                  o("code", [e._v("@removed")])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("ul", [
                   o("li", [
-                    o("strong", [t._v("Description:")]),
-                    t._v(" Fires when popup removed the map.")
+                    o("strong", [e._v("Description:")]),
+                    e._v(" Fires when popup removed the map.")
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
-                    o("strong", [t._v("Payload")]),
-                    t._v(" "),
-                    o("code", [t._v("{ popup: Popup }")]),
-                    t._v(" Object with MapboxGL "),
-                    o("code", [t._v("Popup")]),
-                    t._v(" object")
+                    o("strong", [e._v("Payload")]),
+                    e._v(" "),
+                    o("code", [e._v("{ popup: Popup }")]),
+                    e._v(" Object with MapboxGL "),
+                    o("code", [e._v("Popup")]),
+                    e._v(" object")
                   ])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("h3", { attrs: { id: "open" } }, [
                   o(
                     "a",
@@ -473,28 +497,28 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#open", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" "),
-                  o("code", [t._v("@open")])
+                  e._v(" "),
+                  o("code", [e._v("@open")])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("ul", [
                   o("li", [
-                    o("strong", [t._v("Description:")]),
-                    t._v(" Fires when marker added on the map.")
+                    o("strong", [e._v("Description:")]),
+                    e._v(" Fires when marker added on the map.")
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
-                    o("strong", [t._v("Payload")]),
-                    t._v(" "),
-                    o("code", [t._v("{ popup: Popup }")]),
-                    t._v(" Object with MapboxGL "),
-                    o("code", [t._v("Popup")]),
-                    t._v(" object")
+                    o("strong", [e._v("Payload")]),
+                    e._v(" "),
+                    o("code", [e._v("{ popup: Popup }")]),
+                    e._v(" Object with MapboxGL "),
+                    o("code", [e._v("Popup")]),
+                    e._v(" object")
                   ])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("h3", { attrs: { id: "close" } }, [
                   o(
                     "a",
@@ -502,25 +526,25 @@
                       staticClass: "header-anchor",
                       attrs: { href: "#close", "aria-hidden": "true" }
                     },
-                    [t._v("#")]
+                    [e._v("#")]
                   ),
-                  t._v(" "),
-                  o("code", [t._v("@close")])
+                  e._v(" "),
+                  o("code", [e._v("@close")])
                 ]),
-                t._v(" "),
+                e._v(" "),
                 o("ul", [
                   o("li", [
-                    o("strong", [t._v("Description:")]),
-                    t._v(" Fires when marker added on the map.")
+                    o("strong", [e._v("Description:")]),
+                    e._v(" Fires when marker added on the map.")
                   ]),
-                  t._v(" "),
+                  e._v(" "),
                   o("li", [
-                    o("strong", [t._v("Payload")]),
-                    t._v(" "),
-                    o("code", [t._v("{ popup: Popup }")]),
-                    t._v(" Object with MapboxGL "),
-                    o("code", [t._v("Popup")]),
-                    t._v(" object")
+                    o("strong", [e._v("Payload")]),
+                    e._v(" "),
+                    o("code", [e._v("{ popup: Popup }")]),
+                    e._v(" Object with MapboxGL "),
+                    o("code", [e._v("Popup")]),
+                    e._v(" object")
                   ])
                 ])
               ]
@@ -532,8 +556,8 @@
           null,
           null
         );
-      s.options.__file = "popup.md";
-      e.default = s.exports;
+      r.options.__file = "popup.md";
+      t.default = r.exports;
     }
   }
 ]);

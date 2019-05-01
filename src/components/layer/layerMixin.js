@@ -128,7 +128,7 @@ export default {
   },
 
   beforeDestroy() {
-    if (this.map) {
+    if (this.map && this.map.loaded()) {
       try {
         this.map.removeLayer(this.layerId);
       } catch (err) {
@@ -164,9 +164,11 @@ export default {
     },
 
     $_unbindEvents(events) {
-      events.forEach(eventName => {
-        this.map.off(eventName, this.layerId, this.$_emitLayerMapEvent);
-      });
+      if (this.map) {
+        events.forEach(eventName => {
+          this.map.off(eventName, this.layerId, this.$_emitLayerMapEvent);
+        });
+      }
     },
 
     $_watchSourceLoading(data) {

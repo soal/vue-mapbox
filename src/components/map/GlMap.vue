@@ -100,7 +100,9 @@ export default {
   },
 
   beforeDestroy() {
-    if (this.map) this.map.remove();
+    this.$nextTick(() => {
+      if (this.map) this.map.remove();
+    });
   }
 };
 </script>

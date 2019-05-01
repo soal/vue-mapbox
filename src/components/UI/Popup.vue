@@ -95,6 +95,11 @@ export default {
     onlyText: {
       type: Boolean,
       default: false
+    },
+
+    showed: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -106,15 +111,22 @@ export default {
   },
 
   computed: {
-    /**
-     * true if popup is open
-     * @returns {*}
-     */
-    isOpen() {
-      if (this.popup !== undefined) {
-        return this.popup.isOpen();
+    open: {
+      get() {
+        if (this.popup !== undefined) {
+          return this.popup.isOpen();
+        }
+        return false;
+      },
+      set(value) {
+        if (this.map && this.popup) {
+          if (value) {
+            this.popup.remove();
+          } else {
+            this.popup.addTo(this.map);
+          }
+        }
       }
-      return false;
     }
   },
 
@@ -160,7 +172,6 @@ export default {
           this.popup.setDOMContent(this.$slots.default[0].elm);
         }
       }
-      this.popup.addTo(this.map);
 
       this.$_bindSelfEvents(Object.keys(popupEvents), this.popup);
 
@@ -168,6 +179,13 @@ export default {
 
       if (this.marker) {
         this.marker.setPopup(this.popup);
+      }
+      if (this.showed) {
+        this.open = true;
+
+        if (this.marker) {
+          this.marker.togglePopup();
+        }
       }
     },
 

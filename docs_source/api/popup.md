@@ -2,6 +2,12 @@
 
 ## Props
 
+### `showed`
+
+- **Type**: `Boolean`
+- **non-synced**
+- **Description:** If `true`, the popup showes immediately after the component is mounted.
+
 ### `closeButton`
 
 - **Type**: `Boolean`

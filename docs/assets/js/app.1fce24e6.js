@@ -9916,7 +9916,7 @@
       rs = es.router;
     (window.__VUEPRESS_VERSION__ = {
       version: "1.0.0-alpha.37",
-      hash: "59c7b12"
+      hash: "3aac194"
     }),
       rs.onReady(function() {
         ns.$mount("#app");

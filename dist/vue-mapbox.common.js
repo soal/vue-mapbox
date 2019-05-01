@@ -2612,7 +2612,7 @@ module.exports = /******/ (function(modules) {
       /* harmony default export */ var withEvents = {
         methods: {
           /**
-           * Emit Vue event with additionsl data
+           * Emit Vue event with additional data
            *
            * @param {string} name EventName
            * @param {Object} [data={}] Additional data
@@ -3663,21 +3663,21 @@ module.exports = /******/ (function(modules) {
           this.$_addControl();
         }
       };
-      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=template&id=031b2b03&
-      var Markervue_type_template_id_031b2b03_render = function() {
+      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=template&id=5c629593&
+      var Markervue_type_template_id_5c629593_render = function() {
         var _vm = this;
         var _h = _vm.$createElement;
         var _c = _vm._self._c || _h;
         return _c(
           "div",
           { staticStyle: { display: "none" } },
-          [_vm.marker ? _vm._t("marker") : _vm._e(), _vm._t("default")],
+          [_vm._t("marker"), _vm.marker ? _vm._t("default") : _vm._e()],
           2
         );
       };
-      var Markervue_type_template_id_031b2b03_staticRenderFns = [];
+      var Markervue_type_template_id_5c629593_staticRenderFns = [];
 
-      // CONCATENATED MODULE: ./src/components/UI/Marker.vue?vue&type=template&id=031b2b03&
+      // CONCATENATED MODULE: ./src/components/UI/Marker.vue?vue&type=template&id=5c629593&
 
       // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=script&lang=js&
 
@@ -3748,7 +3748,7 @@ module.exports = /******/ (function(modules) {
             this.marker.setDraggable(next);
           }
         },
-        created: function created() {
+        mounted: function mounted() {
           var _this = this;
 
           var markerOptions = _objectSpread({}, this.$props);
@@ -3758,7 +3758,6 @@ module.exports = /******/ (function(modules) {
           }
 
           this.marker = new this.mapbox.Marker(markerOptions);
-          this.$_addMarker();
 
           if (this.$listeners["update:coordinates"]) {
             this.marker.on("dragend", function(event) {
@@ -3780,6 +3779,7 @@ module.exports = /******/ (function(modules) {
           var eventNames = Object.keys(markerEvents);
           this.$_bindSelfEvents(eventNames, this.marker);
           this.initial = false;
+          this.$_addMarker();
         },
         beforeDestroy: function beforeDestroy() {
           if (this.map !== undefined && this.marker !== undefined) {
@@ -3815,8 +3815,8 @@ module.exports = /******/ (function(modules) {
 
       var Marker_component = normalizeComponent(
         UI_Markervue_type_script_lang_js_,
-        Markervue_type_template_id_031b2b03_render,
-        Markervue_type_template_id_031b2b03_staticRenderFns,
+        Markervue_type_template_id_5c629593_render,
+        Markervue_type_template_id_5c629593_staticRenderFns,
         false,
         null,
         null,
@@ -3825,8 +3825,8 @@ module.exports = /******/ (function(modules) {
 
       Marker_component.options.__file = "Marker.vue";
       /* harmony default export */ var Marker = Marker_component.exports;
-      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=template&id=4b9d5350&
-      var Popupvue_type_template_id_4b9d5350_render = function() {
+      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=template&id=6abc114a&
+      var Popupvue_type_template_id_6abc114a_render = function() {
         var _vm = this;
         var _h = _vm.$createElement;
         var _c = _vm._self._c || _h;
@@ -3837,9 +3837,9 @@ module.exports = /******/ (function(modules) {
           2
         );
       };
-      var Popupvue_type_template_id_4b9d5350_staticRenderFns = [];
+      var Popupvue_type_template_id_6abc114a_staticRenderFns = [];
 
-      // CONCATENATED MODULE: ./src/components/UI/Popup.vue?vue&type=template&id=4b9d5350&
+      // CONCATENATED MODULE: ./src/components/UI/Popup.vue?vue&type=template&id=6abc114a&
 
       // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=script&lang=js&
 
@@ -3863,7 +3863,17 @@ module.exports = /******/ (function(modules) {
       /* harmony default export */ var Popupvue_type_script_lang_js_ = {
         name: "Popup",
         mixins: [withEvents, withSelfEvents],
-        inject: ["mapbox", "map", "marker"],
+        inject: {
+          mapbox: {
+            default: null
+          },
+          map: {
+            default: null
+          },
+          marker: {
+            default: null
+          }
+        },
         props: {
           /**
            * If `true`, a close button will appear in the top right corner of the popup.
@@ -3930,6 +3940,10 @@ module.exports = /******/ (function(modules) {
           onlyText: {
             type: Boolean,
             default: false
+          },
+          showed: {
+            type: Boolean,
+            default: false
           }
         },
         data: function data() {
@@ -3939,16 +3953,23 @@ module.exports = /******/ (function(modules) {
           };
         },
         computed: {
-          /**
-           * true if popup is open
-           * @returns {*}
-           */
-          isOpen: function isOpen() {
-            if (this.popup !== undefined) {
-              return this.popup.isOpen();
-            }
+          open: {
+            get: function get() {
+              if (this.popup !== undefined) {
+                return this.popup.isOpen();
+              }
 
-            return false;
+              return false;
+            },
+            set: function set(value) {
+              if (this.map && this.popup) {
+                if (value) {
+                  this.popup.remove();
+                } else {
+                  this.popup.addTo(this.map);
+                }
+              }
+            }
           }
         },
         created: function created() {
@@ -3973,8 +3994,10 @@ module.exports = /******/ (function(modules) {
         methods: {
           $_addPopup: function $_addPopup() {
             this.popup = new this.mapbox.Popup(this.$props);
-            if (this.coordinates !== undefined)
+
+            if (this.coordinates !== undefined) {
               this.popup.setLngLat(this.coordinates);
+            }
 
             if (this.$slots.default !== undefined) {
               if (this.onlyText) {
@@ -3990,7 +4013,6 @@ module.exports = /******/ (function(modules) {
               }
             }
 
-            this.popup.addTo(this.map);
             this.$_bindSelfEvents(Object.keys(popupEvents), this.popup);
             this.$_emitEvent("added", {
               popup: this.popup
@@ -3998,6 +4020,14 @@ module.exports = /******/ (function(modules) {
 
             if (this.marker) {
               this.marker.setPopup(this.popup);
+            }
+
+            if (this.showed) {
+              this.open = true;
+
+              if (this.marker) {
+                this.marker.togglePopup();
+              }
             }
           },
           $_emitSelfEvent: function $_emitSelfEvent(event) {
@@ -4021,8 +4051,8 @@ module.exports = /******/ (function(modules) {
 
       var Popup_component = normalizeComponent(
         UI_Popupvue_type_script_lang_js_,
-        Popupvue_type_template_id_4b9d5350_render,
-        Popupvue_type_template_id_4b9d5350_staticRenderFns,
+        Popupvue_type_template_id_6abc114a_render,
+        Popupvue_type_template_id_6abc114a_staticRenderFns,
         false,
         null,
         null,

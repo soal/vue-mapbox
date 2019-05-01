@@ -130,6 +130,22 @@ export default {
     }
   },
 
+  watch: {
+    coordinates(lngLat) {
+      if (this.initial) return;
+      this.popup.setLngLat(lngLat);
+    },
+
+    showed(next, prev) {
+      if (next !== prev) {
+        this.open = next;
+        if (this.marker) {
+          this.marker.togglePopup();
+        }
+      }
+    }
+  },
+
   created() {
     this.popup = new this.mapbox.Popup(this.$props);
   },
@@ -143,13 +159,6 @@ export default {
     if (this.map) {
       this.popup.remove();
       this.$_emitEvent("removed");
-    }
-  },
-
-  watch: {
-    coordinates(lngLat) {
-      if (this.initial) return;
-      this.popup.setLngLat(lngLat);
     }
   },
 

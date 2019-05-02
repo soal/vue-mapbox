@@ -2,6 +2,12 @@
 
 ## Props
 
+### `mapboxGl`
+
+- **Type**: `Object`
+- **Default:** `null`
+- - **Description:** Mapboxgl-js implementation. Useful for lazy-loading. If omitted, VueMapbox imports Mapbox-gl-js dynamically.
+
 ### `mapStyle`
 
 - **Type**: `String`, `Object`

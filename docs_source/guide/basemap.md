@@ -113,6 +113,24 @@ export deafult {
 </script>
 ```
 
+::: tip
+If you need, you can pass Mapbox-gl-js implementation as `mapboxGl` prop. May be useful for lazy-loading.
+Example:
+
+```vue
+<template>
+  <MglMap
+    :mapboxGl="mapbox-gl"
+    :accessToken="accessToken"
+    :mapStyle.sync="mapStyle"
+    @load="onMapLoaded"
+  />
+</template>
+```
+
+If none is passed, VueMapbox imports Mapbox-gl internally.
+:::
+
 See full list of actions on [API](/api/glmap.md#actions) page.
 
 ### Method `actions.stop()`

@@ -126,7 +126,7 @@ export default {
 
     $_bindMarkerDOMEvents() {
       Object.keys(this.$listeners).forEach(key => {
-        if (markerDOMEvents.includes(key)) {
+        if (Object.values(markerDOMEvents).includes(key)) {
           this.marker._element.addEventListener(key, event => {
             this.$_emitSelfEvent(event);
           });

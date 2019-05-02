@@ -17,6 +17,12 @@ const markerEvents = {
   dragend: "dragend"
 };
 
+const markerDOMEvents = {
+  click: "click",
+  mouseenter: "mouseenter",
+  mouseleave: "mouseleave"
+};
+
 export default {
   name: "MapMarker",
   mixins: [withEvents, withSelfEvents],
@@ -110,12 +116,22 @@ export default {
   methods: {
     $_addMarker() {
       this.marker.setLngLat(this.coordinates).addTo(this.map);
-
+      this.$_bindMarkerDOMEvents();
       this.$_emitEvent("added", { marker: this.marker });
     },
 
     $_emitSelfEvent(event) {
       this.$_emitMapEvent(event, { marker: this.marker });
+    },
+
+    $_bindMarkerDOMEvents() {
+      Object.keys(this.$listeners).forEach(key => {
+        if (Object.values(markerDOMEvents).includes(key)) {
+          this.marker._element.addEventListener(key, event => {
+            this.$_emitSelfEvent(event);
+          });
+        }
+      });
     },
 
     remove() {

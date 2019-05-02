@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
-  [20],
+  [19],
   {
-    151: function(t, a, s) {
+    150: function(t, a, s) {
       "use strict";
       s.r(a);
       var n = s(17),
@@ -535,6 +535,248 @@
                     ])
                   ])
                 ]),
+                s("div", { staticClass: "tip custom-block" }, [
+                  s("p", { staticClass: "custom-block-title" }, [t._v("TIP")]),
+                  t._v(" "),
+                  s("p", [
+                    t._v(
+                      "If you need, you can pass Mapbox-gl-js implementation as "
+                    ),
+                    s("code", [t._v("mapboxGl")]),
+                    t._v(" prop. May be useful for lazy-loading.\nExample:")
+                  ]),
+                  t._v(" "),
+                  s("div", { staticClass: "language-vue extra-class" }, [
+                    s("pre", { pre: !0, attrs: { class: "language-vue" } }, [
+                      s("code", [
+                        s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token tag" } },
+                            [
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v("<")]
+                              ),
+                              t._v("template")
+                            ]
+                          ),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(">")]
+                          )
+                        ]),
+                        t._v("\n  "),
+                        s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token tag" } },
+                            [
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v("<")]
+                              ),
+                              t._v("MglMap")
+                            ]
+                          ),
+                          t._v("\n    "),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token attr-name" } },
+                            [t._v(":mapboxGl")]
+                          ),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token attr-value" } },
+                            [
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v("=")]
+                              ),
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v('"')]
+                              ),
+                              t._v("mapbox-gl"),
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v('"')]
+                              )
+                            ]
+                          ),
+                          t._v("\n    "),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token attr-name" } },
+                            [t._v(":accessToken")]
+                          ),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token attr-value" } },
+                            [
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v("=")]
+                              ),
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v('"')]
+                              ),
+                              t._v("accessToken"),
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v('"')]
+                              )
+                            ]
+                          ),
+                          t._v("\n    "),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token attr-name" } },
+                            [t._v(":mapStyle.sync")]
+                          ),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token attr-value" } },
+                            [
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v("=")]
+                              ),
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v('"')]
+                              ),
+                              t._v("mapStyle"),
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v('"')]
+                              )
+                            ]
+                          ),
+                          t._v("\n    "),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token attr-name" } },
+                            [t._v("@load")]
+                          ),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token attr-value" } },
+                            [
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v("=")]
+                              ),
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v('"')]
+                              ),
+                              t._v("onMapLoaded"),
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v('"')]
+                              )
+                            ]
+                          ),
+                          t._v("\n  "),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("/>")]
+                          )
+                        ]),
+                        t._v("\n"),
+                        s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token tag" } },
+                            [
+                              s(
+                                "span",
+                                {
+                                  pre: !0,
+                                  attrs: { class: "token punctuation" }
+                                },
+                                [t._v("</")]
+                              ),
+                              t._v("template")
+                            ]
+                          ),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(">")]
+                          )
+                        ]),
+                        t._v("\n")
+                      ])
+                    ])
+                  ]),
+                  s("p", [
+                    t._v(
+                      "If none is passed, VueMapbox imports Mapbox-gl internally."
+                    )
+                  ])
+                ]),
+                t._v(" "),
                 s(
                   "h3",
                   {
@@ -594,11 +836,9 @@
                   "p",
                   [
                     t._v("Full list of props see in "),
-                    s(
-                      "router-link",
-                      { attrs: { to: "/api/glmap.html#props" } },
-                      [t._v("API docs")]
-                    ),
+                    s("router-link", { attrs: { to: "/api/#props" } }, [
+                      t._v("API docs")
+                    ]),
                     t._v(", note field 'Synced' in description")
                   ],
                   1
@@ -1424,11 +1664,9 @@
                   "p",
                   [
                     t._v("See full list of actions on "),
-                    s(
-                      "router-link",
-                      { attrs: { to: "/api/glmap.html#actions" } },
-                      [t._v("API")]
-                    ),
+                    s("router-link", { attrs: { to: "/api/#actions" } }, [
+                      t._v("API")
+                    ]),
                     t._v(" page.")
                   ],
                   1
@@ -1476,11 +1714,9 @@
                   "p",
                   [
                     t._v("See list of events on "),
-                    s(
-                      "router-link",
-                      { attrs: { to: "/api/glmap.html#events" } },
-                      [t._v("API")]
-                    ),
+                    s("router-link", { attrs: { to: "/api/#events" } }, [
+                      t._v("API")
+                    ]),
                     t._v(" page.")
                   ],
                   1

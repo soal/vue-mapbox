@@ -7,7 +7,7 @@ The purpose VueMapbox is to wrap up Mapbox Gl JS library. Any other functions ar
 Plugin components are essentially just Vue components that utilize `mapbox` and `map` objects provided by basic `MglMap`.
 
 VueMapbox internally use dependency injection mechanism of Vue ([provide/inject](https://vuejs.org/v2/api/#provide-inject) in Vue docs).
-When `MglMap` created, it waits for map loads and initializes then renders it's child components, and provide them `mapbox` (Mapbox GL JS library), `map` (initialized instance of the [Map](https://docs.mapbox.com/mapbox-gl-js/api/#map)) and `actions` ([promisified](/api/glmap.md#actions) Mapbox Map methods).
+When `MglMap` created, it waits for map loads and initializes then renders it's child components, and provide them `mapbox` (Mapbox GL JS library), `map` (initialized instance of the [Map](https://docs.mapbox.com/mapbox-gl-js/api/#map)) and `actions` ([promisified](/api/#actions) Mapbox Map methods).
 Inject these objects in your component, and you can add to map features you need.
 
 The basic idea is to keep the declarative style of Vue, so it's good to add for example additional controls or layer types to map as a component. It's a right place to wrap Mapbox Gl JS plugins, but it can be used for various purpose.

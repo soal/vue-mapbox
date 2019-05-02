@@ -1,7 +1,62 @@
 module.exports = /******/ (function(modules) {
   // webpackBootstrap
-  /******/ // The module cache
-  /******/ var installedModules = {}; // The require function
+  /******/ // install a JSONP callback for chunk loading
+  /******/ function webpackJsonpCallback(data) {
+    /******/ var chunkIds = data[0];
+    /******/ var moreModules = data[1]; // add "moreModules" to the modules object, // then flag all "chunkIds" as loaded and fire callback
+    /******/
+    /******/
+    /******/ /******/ /******/ var moduleId,
+      chunkId,
+      i = 0,
+      resolves = [];
+    /******/ for (; i < chunkIds.length; i++) {
+      /******/ chunkId = chunkIds[i];
+      /******/ if (installedChunks[chunkId]) {
+        /******/ resolves.push(installedChunks[chunkId][0]);
+        /******/
+      }
+      /******/ installedChunks[chunkId] = 0;
+      /******/
+    }
+    /******/ for (moduleId in moreModules) {
+      /******/ if (
+        Object.prototype.hasOwnProperty.call(moreModules, moduleId)
+      ) {
+        /******/ modules[moduleId] = moreModules[moduleId];
+        /******/
+      }
+      /******/
+    }
+    /******/ if (parentJsonpFunction) parentJsonpFunction(data);
+    /******/
+    /******/ while (resolves.length) {
+      /******/ resolves.shift()();
+      /******/
+    }
+    /******/
+    /******/
+  } // The module cache
+  /******/
+  /******/
+  /******/ /******/ var installedModules = {}; // object to store loaded and loading chunks // undefined = chunk not loaded, null = chunk preloaded/prefetched // Promise = chunk loading, 0 = chunk loaded
+  /******/
+  /******/ /******/ /******/ /******/ var installedChunks = {
+    /******/ 0: 0
+    /******/
+  }; // script path function
+  /******/
+  /******/
+  /******/
+  /******/ /******/ function jsonpScriptSrc(chunkId) {
+    /******/ return (
+      __webpack_require__.p +
+      "vue-mapbox.common." +
+      ({}[chunkId] || chunkId) +
+      ".js"
+    );
+    /******/
+  } // The require function
   /******/
   /******/ /******/ function __webpack_require__(moduleId) {
     /******/
@@ -107,7 +162,24 @@ module.exports = /******/ (function(modules) {
     return Object.prototype.hasOwnProperty.call(object, property);
   }; // __webpack_public_path__
   /******/
-  /******/ /******/ __webpack_require__.p = ""; // Load entry module and return exports
+  /******/ /******/ __webpack_require__.p = ""; // on error function for async loading
+  /******/
+  /******/ /******/ __webpack_require__.oe = function(err) {
+    console.error(err);
+    throw err;
+  };
+  /******/
+  /******/ var jsonpArray = ((typeof self !== "undefined" ? self : this)[
+    "webpackJsonpvue_mapbox"
+  ] =
+    (typeof self !== "undefined" ? self : this)["webpackJsonpvue_mapbox"] ||
+    []);
+  /******/ var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+  /******/ jsonpArray.push = webpackJsonpCallback;
+  /******/ jsonpArray = jsonpArray.slice();
+  /******/ for (var i = 0; i < jsonpArray.length; i++)
+    webpackJsonpCallback(jsonpArray[i]);
+  /******/ var parentJsonpFunction = oldJsonpFunction; // Load entry module and return exports
   /******/
   /******/
   /******/ /******/ return __webpack_require__(
@@ -1772,6 +1844,20 @@ module.exports = /******/ (function(modules) {
       /***/
     },
 
+    /***/ "8615": /***/ function(module, exports, __webpack_require__) {
+      // https://github.com/tc39/proposal-object-values-entries
+      var $export = __webpack_require__("5ca1");
+      var $values = __webpack_require__("504c")(false);
+
+      $export($export.S, "Object", {
+        values: function values(it) {
+          return $values(it);
+        }
+      });
+
+      /***/
+    },
+
     /***/ "86cc": /***/ function(module, exports, __webpack_require__) {
       var anObject = __webpack_require__("cb7c");
       var IE8_DOM_DEFINE = __webpack_require__("c69a");
@@ -2530,7 +2616,7 @@ module.exports = /******/ (function(modules) {
       // Indicate to webpack that this file can be concatenated
       /* harmony default export */ var setPublicPath = null;
 
-      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/GlMap.vue?vue&type=template&id=a6b1c212&
+      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/GlMap.vue?vue&type=template&id=b8a4f864&
       var render = function() {
         var _vm = this;
         var _h = _vm.$createElement;
@@ -2551,7 +2637,7 @@ module.exports = /******/ (function(modules) {
         }
       ];
 
-      // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=template&id=a6b1c212&
+      // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=template&id=b8a4f864&
 
       // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
       var web_dom_iterable = __webpack_require__("ac6a");
@@ -2562,13 +2648,8 @@ module.exports = /******/ (function(modules) {
       // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
       var es6_object_keys = __webpack_require__("456d");
 
-      // EXTERNAL MODULE: external {"commonjs":"mapbox-gl","commonjs2":"mapbox-gl","amd":"mapbox-gl","root":"mapbox-gl"}
-      var external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapbox_gl_root_mapbox_gl_ = __webpack_require__(
-        "2ff6"
-      );
-      var external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapbox_gl_root_mapbox_gl_default = /*#__PURE__*/ __webpack_require__.n(
-        external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapbox_gl_root_mapbox_gl_
-      );
+      // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.promise.js
+      var es6_promise = __webpack_require__("551c");
 
       // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
       function _defineProperty(obj, key, value) {
@@ -3070,9 +3151,6 @@ module.exports = /******/ (function(modules) {
       /* harmony default export */ var withWatchers = {
         watch: makeWatchers()
       };
-      // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.promise.js
-      var es6_promise = __webpack_require__("551c");
-
       // CONCATENATED MODULE: ./src/components/map/mixins/withPrivateMethods.js
 
       /* harmony default export */ var withPrivateMethods = {
@@ -3132,17 +3210,20 @@ module.exports = /******/ (function(modules) {
           $_loadMap: function $_loadMap() {
             var _this3 = this;
 
-            return new Promise(function(resolve) {
-              if (_this3.accessToken)
-                _this3.mapbox.accessToken = _this3.accessToken;
-              var map = new _this3.mapbox.Map(
-                _objectSpread({}, _this3._props, {
-                  container: _this3.$refs.container,
-                  style: _this3.mapStyle
-                })
-              );
-              map.on("load", function() {
-                return resolve(map);
+            return this.mapboxPromise.then(function(mapbox) {
+              _this3.mapbox = mapbox.default ? mapbox.default : mapbox;
+              return new Promise(function(resolve) {
+                if (_this3.accessToken)
+                  _this3.mapbox.accessToken = _this3.accessToken;
+                var map = new _this3.mapbox.Map(
+                  _objectSpread({}, _this3._props, {
+                    container: _this3.$refs.container,
+                    style: _this3.mapStyle
+                  })
+                );
+                map.on("load", function() {
+                  return resolve(map);
+                });
               });
             });
           },
@@ -3230,7 +3311,15 @@ module.exports = /******/ (function(modules) {
           withPrivateMethods,
           withEvents
         ],
-        props: options,
+        props: _objectSpread(
+          {
+            mapboxGl: {
+              type: Object,
+              default: null
+            }
+          },
+          options
+        ),
         provide: function provide() {
           var self = this;
           return {
@@ -3286,8 +3375,11 @@ module.exports = /******/ (function(modules) {
         created: function created() {
           this.map = null;
           this.propsIsUpdating = {};
-          this.mapbox =
-            external_commonjs_mapbox_gl_commonjs2_mapbox_gl_amd_mapbox_gl_root_mapbox_gl_default.a;
+          this.mapboxPromise = this.mapboxGl
+            ? Promise.resolve(this.mapboxGl)
+            : Promise.resolve(/* import() */).then(
+                __webpack_require__.t.bind(null, "2ff6", 7)
+              );
         },
         mounted: function mounted() {
           var _this = this;
@@ -3666,8 +3758,8 @@ module.exports = /******/ (function(modules) {
           this.$_addControl();
         }
       };
-      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=template&id=5c629593&
-      var Markervue_type_template_id_5c629593_render = function() {
+      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=template&id=63af2177&
+      var Markervue_type_template_id_63af2177_render = function() {
         var _vm = this;
         var _h = _vm.$createElement;
         var _c = _vm._self._c || _h;
@@ -3678,9 +3770,12 @@ module.exports = /******/ (function(modules) {
           2
         );
       };
-      var Markervue_type_template_id_5c629593_staticRenderFns = [];
+      var Markervue_type_template_id_63af2177_staticRenderFns = [];
 
-      // CONCATENATED MODULE: ./src/components/UI/Marker.vue?vue&type=template&id=5c629593&
+      // CONCATENATED MODULE: ./src/components/UI/Marker.vue?vue&type=template&id=63af2177&
+
+      // EXTERNAL MODULE: ./node_modules/core-js/modules/es7.object.values.js
+      var es7_object_values = __webpack_require__("8615");
 
       // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Marker.vue?vue&type=script&lang=js&
 
@@ -3698,6 +3793,11 @@ module.exports = /******/ (function(modules) {
         drag: "drag",
         dragstart: "dragstart",
         dragend: "dragend"
+      };
+      var markerDOMEvents = {
+        click: "click",
+        mouseenter: "mouseenter",
+        mouseleave: "mouseleave"
       };
       /* harmony default export */ var Markervue_type_script_lang_js_ = {
         name: "MapMarker",
@@ -3792,6 +3892,7 @@ module.exports = /******/ (function(modules) {
         methods: {
           $_addMarker: function $_addMarker() {
             this.marker.setLngLat(this.coordinates).addTo(this.map);
+            this.$_bindMarkerDOMEvents();
             this.$_emitEvent("added", {
               marker: this.marker
             });
@@ -3799,6 +3900,17 @@ module.exports = /******/ (function(modules) {
           $_emitSelfEvent: function $_emitSelfEvent(event) {
             this.$_emitMapEvent(event, {
               marker: this.marker
+            });
+          },
+          $_bindMarkerDOMEvents: function $_bindMarkerDOMEvents() {
+            var _this2 = this;
+
+            Object.keys(this.$listeners).forEach(function(key) {
+              if (Object.values(markerDOMEvents).includes(key)) {
+                _this2.marker._element.addEventListener(key, function(event) {
+                  _this2.$_emitSelfEvent(event);
+                });
+              }
             });
           },
           remove: function remove() {
@@ -3818,8 +3930,8 @@ module.exports = /******/ (function(modules) {
 
       var Marker_component = normalizeComponent(
         UI_Markervue_type_script_lang_js_,
-        Markervue_type_template_id_5c629593_render,
-        Markervue_type_template_id_5c629593_staticRenderFns,
+        Markervue_type_template_id_63af2177_render,
+        Markervue_type_template_id_63af2177_staticRenderFns,
         false,
         null,
         null,

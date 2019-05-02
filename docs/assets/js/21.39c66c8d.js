@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
-  [25],
+  [21],
   {
-    146: function(t, a, s) {
+    148: function(t, a, s) {
       "use strict";
       s.r(a);
       var n = s(17),
@@ -15,81 +15,53 @@
               "ContentSlotsDistributor",
               { attrs: { "slot-key": t.$parent.slotKey } },
               [
-                s("h1", { attrs: { id: "plugin-components" } }, [
+                s("h1", { attrs: { id: "map-controls" } }, [
                   s(
                     "a",
                     {
                       staticClass: "header-anchor",
-                      attrs: {
-                        href: "#plugin-components",
-                        "aria-hidden": "true"
-                      }
+                      attrs: { href: "#map-controls", "aria-hidden": "true" }
                     },
                     [t._v("#")]
                   ),
-                  t._v(" Plugin components")
+                  t._v(" Map controls")
+                ]),
+                t._v(" "),
+                s("h2", { attrs: { id: "overview" } }, [
+                  s(
+                    "a",
+                    {
+                      staticClass: "header-anchor",
+                      attrs: { href: "#overview", "aria-hidden": "true" }
+                    },
+                    [t._v("#")]
+                  ),
+                  t._v(" Overview")
                 ]),
                 t._v(" "),
                 s("p", [
                   t._v(
-                    "VueMapbox implements wrapper for core Mapbox Gl JS library API."
+                    "Controls is UI elemetns for controlling view of the map, such as scale or bearing.\nYou can check them out in Mapbox GL JS "
                   ),
-                  s("br"),
-                  t._v("\nAny other functions, like "),
                   s(
                     "a",
                     {
                       attrs: {
-                        href: "https://docs.mapbox.com/mapbox-gl-js/plugins/",
+                        href:
+                          "https://docs.mapbox.com/mapbox-gl-js/api/#user%20interface",
                         target: "_blank",
                         rel: "noopener noreferrer"
                       }
                     },
-                    [t._v("Mapbox Gl JS plugins"), s("OutboundLink")],
+                    [t._v("documentation"), s("OutboundLink")],
                     1
                   ),
                   t._v(
-                    " is out of scope.\nHowever, they can be implemented as plugin components."
+                    "\nIn Vue-mapbox they exposed as Vue components, so you can control they properties and behavior dynamically by changing props."
                   )
                 ]),
                 t._v(" "),
-                s("h2", { attrs: { id: "using-plugin-components" } }, [
-                  s(
-                    "a",
-                    {
-                      staticClass: "header-anchor",
-                      attrs: {
-                        href: "#using-plugin-components",
-                        "aria-hidden": "true"
-                      }
-                    },
-                    [t._v("#")]
-                  ),
-                  t._v(" Using plugin components")
-                ]),
-                t._v(" "),
-                s("p", [
-                  t._v(
-                    "Using plugin components is easy. Just put component inside "
-                  ),
-                  s("code", [t._v("MglMap")]),
-                  t._v(
-                    " components tree and pass necessary props to it.\nBelow is example for using "
-                  ),
-                  s(
-                    "a",
-                    {
-                      attrs: {
-                        href: "https://github.com/soal/vue-mapbox-geocoder",
-                        target: "_blank",
-                        rel: "noopener noreferrer"
-                      }
-                    },
-                    [t._v("VueMapbox Geocoder"), s("OutboundLink")],
-                    1
-                  ),
-                  t._v(".")
-                ]),
+                s("p", [s("em", [t._v("All controls")]), t._v(":")]),
                 t._v(" "),
                 s("div", { staticClass: "language-vue extra-class" }, [
                   s("pre", { pre: !0, attrs: { class: "language-vue" } }, [
@@ -117,13 +89,13 @@
                             { pre: !0, attrs: { class: "token punctuation" } },
                             [t._v("<")]
                           ),
-                          t._v("MglMap")
+                          t._v("div")
                         ]),
                         t._v(" "),
                         s(
                           "span",
                           { pre: !0, attrs: { class: "token attr-name" } },
-                          [t._v(":accessToken")]
+                          [t._v("id")]
                         ),
                         s(
                           "span",
@@ -145,57 +117,7 @@
                               },
                               [t._v('"')]
                             ),
-                            t._v("accessToken"),
-                            s(
-                              "span",
-                              {
-                                pre: !0,
-                                attrs: { class: "token punctuation" }
-                              },
-                              [t._v('"')]
-                            )
-                          ]
-                        ),
-                        t._v(" "),
-                        s(
-                          "span",
-                          { pre: !0, attrs: { class: "token attr-name" } },
-                          [t._v(":map")]
-                        ),
-                        s(
-                          "span",
-                          {
-                            pre: !0,
-                            attrs: { class: "token style-attr language-css" }
-                          },
-                          [
-                            s(
-                              "span",
-                              { pre: !0, attrs: { class: "token attr-name" } },
-                              [
-                                s(
-                                  "span",
-                                  {
-                                    pre: !0,
-                                    attrs: { class: "token attr-name" }
-                                  },
-                                  [t._v("Style")]
-                                )
-                              ]
-                            ),
-                            s(
-                              "span",
-                              {
-                                pre: !0,
-                                attrs: { class: "token punctuation" }
-                              },
-                              [t._v('="')]
-                            ),
-                            s(
-                              "span",
-                              { pre: !0, attrs: { class: "token attr-value" } },
-                              [t._v("mapStyle")]
-                            ),
+                            t._v("#app"),
                             s(
                               "span",
                               {
@@ -220,7 +142,7 @@
                             { pre: !0, attrs: { class: "token punctuation" } },
                             [t._v("<")]
                           ),
-                          t._v("MglGeocoderControl")
+                          t._v("MglMap")
                         ]),
                         t._v("\n      "),
                         s(
@@ -263,7 +185,7 @@
                         s(
                           "span",
                           { pre: !0, attrs: { class: "token attr-name" } },
-                          [t._v(":input.sync")]
+                          [t._v(":mapStyle.sync")]
                         ),
                         s(
                           "span",
@@ -285,7 +207,7 @@
                               },
                               [t._v('"')]
                             ),
-                            t._v("defaultInput"),
+                            t._v("mapStyle"),
                             s(
                               "span",
                               {
@@ -300,7 +222,7 @@
                         s(
                           "span",
                           { pre: !0, attrs: { class: "token attr-name" } },
-                          [t._v("@results")]
+                          [t._v(":attributionControl")]
                         ),
                         s(
                           "span",
@@ -322,7 +244,7 @@
                               },
                               [t._v('"')]
                             ),
-                            t._v("handleSearch"),
+                            t._v("false"),
                             s(
                               "span",
                               {
@@ -337,7 +259,273 @@
                         s(
                           "span",
                           { pre: !0, attrs: { class: "token punctuation" } },
+                          [t._v(">")]
+                        )
+                      ]),
+                      t._v("\n      "),
+                      s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                        s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("<")]
+                          ),
+                          t._v("MglAttributionControl")
+                        ]),
+                        t._v(" "),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token punctuation" } },
                           [t._v("/>")]
+                        )
+                      ]),
+                      t._v("\n      "),
+                      s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                        s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("<")]
+                          ),
+                          t._v("MglNavigationControl")
+                        ]),
+                        t._v(" "),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token attr-name" } },
+                          [t._v("position")]
+                        ),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token attr-value" } },
+                          [
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v("=")]
+                            ),
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v('"')]
+                            ),
+                            t._v("top-right"),
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v('"')]
+                            )
+                          ]
+                        ),
+                        t._v(" "),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token punctuation" } },
+                          [t._v("/>")]
+                        )
+                      ]),
+                      t._v("\n      "),
+                      s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                        s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("<")]
+                          ),
+                          t._v("MglGeolocateControl")
+                        ]),
+                        t._v(" "),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token attr-name" } },
+                          [t._v("position")]
+                        ),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token attr-value" } },
+                          [
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v("=")]
+                            ),
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v('"')]
+                            ),
+                            t._v("top-right"),
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v('"')]
+                            )
+                          ]
+                        ),
+                        t._v(" "),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token punctuation" } },
+                          [t._v("/>")]
+                        )
+                      ]),
+                      t._v("\n      "),
+                      s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                        s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("<")]
+                          ),
+                          t._v("MglNavigationControl")
+                        ]),
+                        t._v(" "),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token attr-name" } },
+                          [t._v("position")]
+                        ),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token attr-value" } },
+                          [
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v("=")]
+                            ),
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v('"')]
+                            ),
+                            t._v("top-right"),
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v('"')]
+                            )
+                          ]
+                        ),
+                        t._v(" "),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token punctuation" } },
+                          [t._v("/>")]
+                        )
+                      ]),
+                      t._v("\n      "),
+                      s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                        s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("<")]
+                          ),
+                          t._v("MglGeolocateControl")
+                        ]),
+                        t._v(" "),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token attr-name" } },
+                          [t._v("position")]
+                        ),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token attr-value" } },
+                          [
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v("=")]
+                            ),
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v('"')]
+                            ),
+                            t._v("top-right"),
+                            s(
+                              "span",
+                              {
+                                pre: !0,
+                                attrs: { class: "token punctuation" }
+                              },
+                              [t._v('"')]
+                            )
+                          ]
+                        ),
+                        t._v(" "),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token punctuation" } },
+                          [t._v("/>")]
+                        )
+                      ]),
+                      t._v("\n      "),
+                      s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                        s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("<")]
+                          ),
+                          t._v("MglScaleControl")
+                        ]),
+                        t._v(" "),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token punctuation" } },
+                          [t._v("/>")]
+                        )
+                      ]),
+                      t._v("\n    "),
+                      s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                        s("span", { pre: !0, attrs: { class: "token tag" } }, [
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v("</")]
+                          ),
+                          t._v("MglMap")
+                        ]),
+                        s(
+                          "span",
+                          { pre: !0, attrs: { class: "token punctuation" } },
+                          [t._v(">")]
                         )
                       ]),
                       t._v("\n  "),
@@ -348,7 +536,7 @@
                             { pre: !0, attrs: { class: "token punctuation" } },
                             [t._v("</")]
                           ),
-                          t._v("MglMap")
+                          t._v("div")
                         ]),
                         s(
                           "span",
@@ -407,7 +595,37 @@
                             { pre: !0, attrs: { class: "token punctuation" } },
                             [t._v("{")]
                           ),
-                          t._v(" MglMap "),
+                          t._v("\n  MglMap"),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(",")]
+                          ),
+                          t._v("\n  MglAttributionControl"),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(",")]
+                          ),
+                          t._v("\n  MglNavigationControl"),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(",")]
+                          ),
+                          t._v("\n  MglGeolocateControl"),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(",")]
+                          ),
+                          t._v("\n  MglFullscreenControl"),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(",")]
+                          ),
+                          t._v("\n  MglScaleControl\n"),
                           s(
                             "span",
                             { pre: !0, attrs: { class: "token punctuation" } },
@@ -424,29 +642,6 @@
                             "span",
                             { pre: !0, attrs: { class: "token string" } },
                             [t._v('"vue-mapbox"')]
-                          ),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v(";")]
-                          ),
-                          t._v("\n"),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token keyword" } },
-                            [t._v("import")]
-                          ),
-                          t._v(" MglGeocoderControl "),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token keyword" } },
-                            [t._v("from")]
-                          ),
-                          t._v(" "),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token string" } },
-                            [t._v('"vue-mapbox-geocoder"')]
                           ),
                           s(
                             "span",
@@ -471,24 +666,7 @@
                             { pre: !0, attrs: { class: "token punctuation" } },
                             [t._v("{")]
                           ),
-                          t._v("\n  name"),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v(":")]
-                          ),
-                          t._v(" "),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token string" } },
-                            [t._v('"App"')]
-                          ),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v(",")]
-                          ),
-                          t._v("\n\n  components"),
+                          t._v("\n  components"),
                           s(
                             "span",
                             { pre: !0, attrs: { class: "token punctuation" } },
@@ -506,7 +684,13 @@
                             { pre: !0, attrs: { class: "token punctuation" } },
                             [t._v(",")]
                           ),
-                          t._v("\n    MglGeocoderControl\n  "),
+                          t._v("\n    MglNavigationControl"),
+                          s(
+                            "span",
+                            { pre: !0, attrs: { class: "token punctuation" } },
+                            [t._v(",")]
+                          ),
+                          t._v("\n    MglGeolocateControl\n  "),
                           s(
                             "span",
                             { pre: !0, attrs: { class: "token punctuation" } },
@@ -578,24 +762,7 @@
                           s(
                             "span",
                             { pre: !0, attrs: { class: "token string" } },
-                            [t._v('"some_style"')]
-                          ),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v(",")]
-                          ),
-                          t._v("\n      defaultInput"),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v(":")]
-                          ),
-                          t._v(" "),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token string" } },
-                            [t._v('"Bodhgaya"')]
+                            [t._v('"style_object"')]
                           ),
                           t._v("\n    "),
                           s(
@@ -607,85 +774,6 @@
                             "span",
                             { pre: !0, attrs: { class: "token punctuation" } },
                             [t._v(";")]
-                          ),
-                          t._v("\n  "),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v("}")]
-                          ),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v(",")]
-                          ),
-                          t._v("\n  methods"),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v(":")]
-                          ),
-                          t._v(" "),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v("{")]
-                          ),
-                          t._v("\n    "),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token function" } },
-                            [t._v("handleSearch")]
-                          ),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v("(")]
-                          ),
-                          t._v("event"),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v(")")]
-                          ),
-                          t._v(" "),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v("{")]
-                          ),
-                          t._v("\n      console"),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v(".")]
-                          ),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token function" } },
-                            [t._v("log")]
-                          ),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v("(")]
-                          ),
-                          t._v("event"),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v(")")]
-                          ),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v(";")]
-                          ),
-                          t._v("\n    "),
-                          s(
-                            "span",
-                            { pre: !0, attrs: { class: "token punctuation" } },
-                            [t._v("}")]
                           ),
                           t._v("\n  "),
                           s(
@@ -729,54 +817,54 @@
                 s(
                   "p",
                   [
-                    t._v(
-                      "If you didn't find plugin your need, it's easy to implement plugin component yourself.\nVueMapbox solves map loading task and give some useful helpers.\nCheck out development "
-                    ),
-                    s(
-                      "router-link",
-                      {
-                        attrs: {
-                          to:
-                            "/plugin_components/plugin_components_development.html"
-                        }
-                      },
-                      [t._v("documantation")]
-                    ),
+                    t._v("See list of controls and they properties in "),
+                    s("router-link", { attrs: { to: "/api/controls.html" } }, [
+                      t._v("API docs")
+                    ]),
                     t._v(".")
                   ],
                   1
                 ),
                 t._v(" "),
-                s("h2", { attrs: { id: "available-plugin-components" } }, [
+                s("h3", { attrs: { id: "attribution-control" } }, [
                   s(
                     "a",
                     {
                       staticClass: "header-anchor",
                       attrs: {
-                        href: "#available-plugin-components",
+                        href: "#attribution-control",
                         "aria-hidden": "true"
                       }
                     },
                     [t._v("#")]
                   ),
-                  t._v(" Available plugin components")
+                  t._v(" Attribution control")
                 ]),
                 t._v(" "),
-                s("ul", [
-                  s("li", [
-                    s(
-                      "a",
-                      {
-                        attrs: {
-                          href: "https://github.com/soal/vue-mapbox-geocoder",
-                          target: "_blank",
-                          rel: "noopener noreferrer"
-                        }
-                      },
-                      [t._v("VueMapbox Geocoder"), s("OutboundLink")],
-                      1
-                    )
-                  ])
+                s("p", [
+                  t._v("Due to Mapbox "),
+                  s(
+                    "a",
+                    {
+                      attrs: {
+                        href:
+                          "https://docs.mapbox.com/help/how-attribution-works/",
+                        target: "_blank",
+                        rel: "noopener noreferrer"
+                      }
+                    },
+                    [t._v("policy"), s("OutboundLink")],
+                    1
+                  ),
+                  t._v(
+                    " attribution control\nis enabled by default. You can disable default attributions by setting\n"
+                  ),
+                  s("code", [t._v("attributionControl")]),
+                  t._v(" prop of MglMap to "),
+                  s("code", [t._v("false")]),
+                  t._v(
+                    " and set your own attribution\nusing AttributionControl component."
+                  )
                 ])
               ]
             );
@@ -787,7 +875,7 @@
           null,
           null
         );
-      e.options.__file = "README.md";
+      e.options.__file = "controls.md";
       a.default = e.exports;
     }
   }

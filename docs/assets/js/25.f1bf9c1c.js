@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
-  [26],
+  [25],
   {
-    145: function(t, s, a) {
+    154: function(t, s, a) {
       "use strict";
       a.r(s);
       var n = a(17),
@@ -102,11 +102,9 @@
                     t._v(") and "),
                     a("code", [t._v("actions")]),
                     t._v(" ("),
-                    a(
-                      "router-link",
-                      { attrs: { to: "/api/glmap.html#actions" } },
-                      [t._v("promisified")]
-                    ),
+                    a("router-link", { attrs: { to: "/api/#actions" } }, [
+                      t._v("promisified")
+                    ]),
                     t._v(
                       " Mapbox Map methods).\nInject these objects in your component, and you can add to map features you need."
                     )

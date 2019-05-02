@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
-  [16],
+  [14],
   {
-    152: function(e, o, t) {
+    151: function(e, o, t) {
       "use strict";
       t.r(o);
       var a = t(17),
@@ -37,6 +37,44 @@
                     [e._v("#")]
                   ),
                   e._v(" Props")
+                ]),
+                e._v(" "),
+                t("h3", { attrs: { id: "mapboxgl" } }, [
+                  t(
+                    "a",
+                    {
+                      staticClass: "header-anchor",
+                      attrs: { href: "#mapboxgl", "aria-hidden": "true" }
+                    },
+                    [e._v("#")]
+                  ),
+                  e._v(" "),
+                  t("code", [e._v("mapboxGl")])
+                ]),
+                e._v(" "),
+                t("ul", [
+                  t("li", [
+                    t("strong", [e._v("Type")]),
+                    e._v(": "),
+                    t("code", [e._v("Object")])
+                  ]),
+                  e._v(" "),
+                  t("li", [
+                    t("strong", [e._v("Default:")]),
+                    e._v(" "),
+                    t("code", [e._v("null")])
+                  ]),
+                  e._v(" "),
+                  t("li", [
+                    t("ul", [
+                      t("li", [
+                        t("strong", [e._v("Description:")]),
+                        e._v(
+                          " Mapboxgl-js implementation. Useful for lazy-loading. If omitted, VueMapbox imports Mapbox-gl-js dynamically."
+                        )
+                      ])
+                    ])
+                  ])
                 ]),
                 e._v(" "),
                 t("h3", { attrs: { id: "mapstyle" } }, [
@@ -3480,7 +3518,7 @@
           null,
           null
         );
-      n.options.__file = "glmap.md";
+      n.options.__file = "README.md";
       o.default = n.exports;
     }
   }

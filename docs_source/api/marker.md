@@ -75,14 +75,62 @@
 ### `@drag`
 
 - **Description:** Fires when marker dragged if marker `draggable` prop is `true`
-- **Payload** `{ component: MarkerComponent, map: Map, MapEvent: Event }` Object with `Marker` component, parent map and original MapboxGl event
+- **Payload** `{ component: MarkerComponent, map: Map, mapboxEvent: Event }` Object with `Marker` component, parent map and original MapboxGl event
 
 ### `@dragstart`
 
 - **Description:** Fires when marker dragging starts if marker `draggable` prop is `true`
-- **Payload** `{ component: MarkerComponent, map: Map, MapEvent: Event }` Object with `Marker` component, parent map and original MapboxGl event
+- **Payload** `{ component: MarkerComponent, map: Map, mapboxEvent: Event }` Object with `Marker` component, parent map and original MapboxGl event
 
 ### `@dragend`
 
 - **Description:** Fires when marker dragging ends if marker `draggable` prop is `true`
-- **Payload** `{ component: MarkerComponent, map: Map, MapEvent: Event }` Object with `Marker` component, parent map and original MapboxGl event
+- **Payload** `{ component: MarkerComponent, map: Map, mapboxEvent: Event }` Object with `Marker` component, parent map and original MapboxGl event
+
+### `@click` <Badge text="experimental" type="warn"/>
+
+- **Description:** Fires marker is clicked.
+- **Payload**
+
+```
+    {
+        component: MarkerComponent,
+        map: Map,
+        mapboxEvent: DOMEvent,
+        marker: Marker
+    }
+```
+
+Object with `Marker` component, parent map and original MapboxGl event
+
+### `@mouseenter` <Badge text="experimental" type="warn"/>
+
+- **Description:** Fires when mouse cursor enters marker area.
+- **Payload**
+
+```
+    {
+        component: MarkerComponent,
+        map: Map,
+        mapboxEvent: DOMEvent,
+        marker: Marker
+    }
+```
+
+Object with `Marker` component, parent map and original MapboxGl event
+
+### `@mouseleave` <Badge text="experimental" type="warn"/>
+
+- **Description:** Fires when mouse cursor leaves marker area.
+- **Payload**
+
+```
+    {
+        component: MarkerComponent,
+        map: Map,
+        mapboxEvent: DOMEvent,
+        marker: Marker
+    }
+```
+
+Object with `Marker` component, parent map and original MapboxGl event

@@ -6,10 +6,9 @@
 </template>
 
 <script>
-import Mapbox from "mapbox-gl";
 import withEvents from "../../lib/withEvents";
 import mapEvents from "./events";
-import props from "./options";
+import options from "./options";
 import withWatchers from "./mixins/withWatchers";
 import withPrivateMethods from "./mixins/withPrivateMethods";
 import withAsyncActions from "./mixins/withAsyncActions";
@@ -19,7 +18,13 @@ export default {
 
   mixins: [withWatchers, withAsyncActions, withPrivateMethods, withEvents],
 
-  props,
+  props: {
+    mapboxGl: {
+      type: Object,
+      default: null
+    },
+    ...options
+  },
 
   provide() {
     const self = this;
@@ -77,7 +82,9 @@ export default {
   created() {
     this.map = null;
     this.propsIsUpdating = {};
-    this.mapbox = Mapbox;
+    this.mapboxPromise = this.mapboxGl
+      ? Promise.resolve(this.mapboxGl)
+      : import("mapbox-gl");
   },
 
   mounted() {

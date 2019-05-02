@@ -34,12 +34,30 @@ export default {
 </script>
 ```
 
+::: tip
+If you need, you can pass Mapbox-gl-js implementation as `mapboxGl` prop. May be useful for lazy-loading.
+Example:
+
+```vue
+<template>
+  <MglMap
+    :mapboxGl="mapbox-gl"
+    :accessToken="accessToken"
+    :mapStyle.sync="mapStyle"
+    @load="onMapLoaded"
+  />
+</template>
+```
+
+If none is passed, VueMapbox imports Mapbox-gl internally.
+:::
+
 ### Interact with map properties as GlMap props
 
 You can control map parameters like zoom, bearing, pitch etc. by changing props.
 If you set `.sync` modifier ([Vue docs](https://vuejs.org/v2/guide/components.html#sync-Modifier)) to prop, it will updates when you use operations that takes time to proceed. For example, if you use `flyTo` method, props `zoom`, `center`, `bearing`, `pitch` will be updated when animation ends.
 
-Full list of props see in [API docs](/api/glmap.md#props), note field 'Synced' in description
+Full list of props see in [API docs](/api/#props), note field 'Synced' in description
 
 ## Map loading
 
@@ -113,25 +131,7 @@ export deafult {
 </script>
 ```
 
-::: tip
-If you need, you can pass Mapbox-gl-js implementation as `mapboxGl` prop. May be useful for lazy-loading.
-Example:
-
-```vue
-<template>
-  <MglMap
-    :mapboxGl="mapbox-gl"
-    :accessToken="accessToken"
-    :mapStyle.sync="mapStyle"
-    @load="onMapLoaded"
-  />
-</template>
-```
-
-If none is passed, VueMapbox imports Mapbox-gl internally.
-:::
-
-See full list of actions on [API](/api/glmap.md#actions) page.
+See full list of actions on [API](/api/#actions) page.
 
 ### Method `actions.stop()`
 
@@ -139,4 +139,4 @@ Method `.stop()` just stops all animations on map, updates props with new positi
 
 ### Events
 
-See list of events on [API](/api/glmap.md#events) page.
+See list of events on [API](/api/#events) page.

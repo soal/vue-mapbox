@@ -5086,7 +5086,7 @@
               if (this.map) {
                 var params = {
                   id: featureId,
-                  source: this.source,
+                  source: this.sourceId,
                   "source-layer": this.layer["source-layer"]
                 };
                 return this.map.setFeatureState(params, state);

@@ -4,7 +4,7 @@
 
 Geographic features on the map draws as layers.
 Layer use `source` object that contains data for layer (for example, GeoJSON object). Source must be added to map and several layers can use common `source` and draw it's data differently.
-Also, layer has own configuration object that declares how layer draws on the map. You can read more about it in Mapbox GL JS docs for [sources](https://docs.mapbox.com/mapbox-gl-js/api/#sources) ans [layers](https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers).
+Also, layer has own configuration object that declares how layer draws on the map. You can read more about it in Mapbox GL JS docs for [sources](https://docs.mapbox.com/mapbox-gl-js/api/#sources) and [layers](https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers).
 
 Vue-mapbox exposes layers as Vue components.
 `source` and `layer` configuration object passed to layer component as props. There is several layers types for drawing different types of sources.

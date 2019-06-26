@@ -280,6 +280,20 @@
 - **Description:** If specified, defines a CSS font-family for locally overriding generation of glyphs in the 'CJK Unified Ideographs' and 'Hangul Syllables' ranges. In these ranges, font settings from the map's style will be ignored, except for font-weight keywords (light/regular/medium/bold). The purpose of this option is to avoid bandwidth-intensive glyph server requests.
 - **See:** `options.localIdeographFontFamily` in [Map](https://docs.mapbox.com/mapbox-gl-js/api/#map)
 
+### `bounds`
+
+- **Type:** `Array`, `LngLatBoundsLike object`
+- **Default:** `undefined`
+- **Description:** The initial bounds of the map. If set, it overrides `center` and `zoom` construction options
+- **See:** `options.bounds` in [Map](https://docs.mapbox.com/mapbox-gl-js/api/#map)
+
+### `fitBoundsOptions`
+
+- **Type:** `fitBounds object`
+- **Default:** `undefined`
+- **Description:** A `fitBounds` object to use only when fitting the initial `bounds` provided above
+- **See:** `options.fitBoundsOptions` in [Map](https://docs.mapbox.com/mapbox-gl-js/api/#map)
+
 ## Actions
 
 Asynchronous actions exposed via `GlMap.actions`

@@ -131,8 +131,12 @@ export default {
     type: Number,
     default: 0
   },
-  initialBounds: {
+  bounds: {
     type: [Object, Array],
+    default: undefined
+  },
+  fitBoundsOptions: {
+    type: Object,
     default: undefined
   },
   renderWorldCopies: {

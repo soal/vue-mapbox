@@ -284,7 +284,8 @@
 
 - **Type:** `Array`, `LngLatBoundsLike object`
 - **Default:** `undefined`
-- **Description:** The initial bounds of the map. If set, it overrides `center` and `zoom` construction options
+- **Synced**
+- **Description:** The bounds of the map. If set, it overrides `center` and `zoom` construction options
 - **See:** `options.bounds` in [Map](https://docs.mapbox.com/mapbox-gl-js/api/#map)
 
 ### `fitBoundsOptions`

@@ -64,15 +64,15 @@
 
 ### `@removed`
 
-- **Description:** Fires when popup removed the map.
+- **Description:** Fires when popup removed from the map.
 - **Payload** `{ popup: Popup }` Object with MapboxGL `Popup` object
 
 ### `@open`
 
-- **Description:** Fires when marker added on the map.
+- **Description:** Fires when popup is opened manually or programatically.
 - **Payload** `{ popup: Popup }` Object with MapboxGL `Popup` object
 
 ### `@close`
 
-- **Description:** Fires when marker added on the map.
+- **Description:** Fires when popup is closed manually or programatically.
 - **Payload** `{ popup: Popup }` Object with MapboxGL `Popup` object

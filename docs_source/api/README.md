@@ -50,10 +50,10 @@
 
 ### `hash`
 
-- **Type:** `Boolean`
+- **Type:** `Boolean`, `String`
 - **Default:** `false`
 - **Synced**
-- **Description:** If true, the map's position (zoom, center latitude, center longitude, bearing, and pitch) will be synced with the hash fragment of the page's URL
+- **Description:** If true, the map's position (zoom, center latitude, center longitude, bearing, and pitch) will be synced with the hash fragment of the page's URL. If it's a string, it will be the name of the param in a parameter-styled hash.
 - **See:** `options.hash` in [Map](https://docs.mapbox.com/mapbox-gl-js/api/#map)
 
 ### `interactive`

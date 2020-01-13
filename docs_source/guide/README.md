@@ -14,7 +14,7 @@ Add mapbox CSS file to `<head></head>` block of your HTML file (e.g. `index.html
 
 ```html
 <link
-  href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css"
+  href="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css"
   rel="stylesheet"
 />
 ```

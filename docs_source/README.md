@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     handleClick: function () {
-      console.log('clicked)
+      console.log('clicked')
     }
   }
 }

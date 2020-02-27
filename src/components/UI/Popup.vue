@@ -178,7 +178,7 @@ export default {
             this.popup.setText(this.$slots.default[0].elm.innerText);
           }
         } else {
-          this.popup.setDOMContent(this.$slots.default[0].elm);
+          this.popup.setHTML(this.$slots.default[0].elm);
         }
       }
 

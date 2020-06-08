@@ -49,6 +49,12 @@
 - **Description:** If `true` content of the Popup treated as plain text
 - **See:** `setText` in [Popup](https://docs.mapbox.com/mapbox-gl-js/api/#popup#settext)
 
+### `maxWidth`
+
+- **Type**: `String`
+- **Description:** A string representing the value for the maximum width. (ex: '400px')
+- **See:** `maxWidth` in [Popup](https://docs.mapbox.com/mapbox-gl-js/api/#popup#setmaxwidth)
+
 ## Slots
 
 ### `default`

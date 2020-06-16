@@ -54,7 +54,7 @@ export default {
       geojson: { /* … some geojson */}
       layerId: 'firstLayer',
       sourceId: 'firstSource',
-      markerCoordinates='[50, 50]'
+      markerCoordinates: '[50, 50]'
     }
   }
 }

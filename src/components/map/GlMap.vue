@@ -86,7 +86,7 @@ export default {
   mounted() {
     this.$_loadMap().then(map => {
       this.map = map;
-      if (this.RTLTextPluginUrl !== undefined) {
+      if (this.RTLTextPluginUrl !== undefined && this.mapbox.getRTLTextPluginStatus() !== 'loaded') {
         this.mapbox.setRTLTextPlugin(
           this.RTLTextPluginUrl,
           this.$_RTLTextPluginError

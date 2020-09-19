@@ -23,10 +23,7 @@ If you like a long story, check out [blog post](https://soal.red/reasoning-behin
     :accessToken="accessToken"
     :mapStyle="mapStyle"
   >
-    <MglMarker
-      :coordinates.sync="markerCoordinates"
-      color='green'
-    />
+    <MglMarker :coordinates.sync="markerCoordinates" color="green" />
     <MglGeojsonLayer
       type="fill"
       :sourceId="sourceId"
@@ -38,31 +35,29 @@ If you like a long story, check out [blog post](https://soal.red/reasoning-behin
 </template>
 
 <script>
-import {
-  MglMap,
-  MglMarker,
-  MglGeojsonLayer
-} from 'vue-mapbox'
+import { MglMap, MglMarker, MglGeojsonLayer } from "vue-mapbox";
 
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {
-      accessToken: 'some_token',
-      mapStyle: 'mapbox://map_style',
-      geojson: { /* … some geojson */},
-      layerId: 'firstLayer',
-      sourceId: 'firstSource',
+      accessToken: "some_token",
+      mapStyle: "mapbox://map_style",
+      geojson: {
+        /* … some geojson */
+      },
+      layerId: "firstLayer",
+      sourceId: "firstSource",
       markerCoordinates: [50, 50],
       center: [50, 50]
-    }
+    };
   },
   methods: {
-    handleClick: function () {
-      console.log('clicked')
+    handleClick: function() {
+      console.log("clicked");
     }
   }
-}
+};
 </script>
 ```
 

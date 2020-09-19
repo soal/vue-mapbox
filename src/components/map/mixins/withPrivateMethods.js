@@ -33,7 +33,13 @@ export default {
         {
           events: ["moveend", "zoomend", "rotate", "pitch"],
           prop: "bounds",
-          getter: this.map.getBounds.bind(this.map)
+          getter: () => {
+            let newBounds = this.map.getBounds();
+            if (this.$props.bounds instanceof Array) {
+              newBounds = newBounds.toArray();
+            }
+            return newBounds;
+          }
         }
       ];
       syncedProps.forEach(({ events, prop, getter }) => {

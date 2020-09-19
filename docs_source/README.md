@@ -8,13 +8,12 @@ features:
     details: You can use map elements like layers, markers, popups as Vue components and control them via synchronized props
   - title: Vuefied
     details: Map elements declared as components respect Vue lifecycle, emit map events like Vue events and can be used in OOP-style
-
   - title: Promisified async actions
     details: You can do async map operations and get results in Promise without messing with map events and figuring out what action cause it
 footer: MIT Licensed
 ---
 
-If you like long story, check out [blog post](https://soal.red/reasoning-behind-vue-mapbox/)
+If you like a long story, check out [blog post](https://soal.red/reasoning-behind-vue-mapbox/)
 
 ```vue
 <template>
@@ -24,10 +23,7 @@ If you like long story, check out [blog post](https://soal.red/reasoning-behind-
     :accessToken="accessToken"
     :mapStyle="mapStyle"
   >
-    <MglMarker
-      :coordinates.sync="markerCoordinates"
-      color='green'
-    />
+    <MglMarker :coordinates.sync="markerCoordinates" color="green" />
     <MglGeojsonLayer
       type="fill"
       :sourceId="sourceId"
@@ -36,28 +32,32 @@ If you like long story, check out [blog post](https://soal.red/reasoning-behind-
       @click="handleClick"
     />
   </MglMap>
-</temaplate>
+</template>
 
 <script>
-import {
-  MglMap,
-  MglMarker,
-  MglGeojsonLayer
-} from 'vue-mapbox'
+import { MglMap, MglMarker, MglGeojsonLayer } from "vue-mapbox";
 
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {
-      accessToken: 'some_token',
-      mapStyle: 'mapbox://map_style',
-      geojson: { /* … some geojson */}
-      layerId: 'firstLayer',
-      sourceId: 'firstSource',
-      markerCoordinates: [50, 50]
+      accessToken: "some_token",
+      mapStyle: "mapbox://map_style",
+      geojson: {
+        /* … some geojson */
+      },
+      layerId: "firstLayer",
+      sourceId: "firstSource",
+      markerCoordinates: [50, 50],
+      center: [50, 50]
+    };
+  },
+  methods: {
+    handleClick: function() {
+      console.log("clicked");
     }
   }
-}
+};
 </script>
 ```
 

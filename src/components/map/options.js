@@ -22,7 +22,7 @@ export default {
     required: true
   },
   hash: {
-    type: Boolean,
+    type: [Boolean, String],
     default: false
   },
   interactive: {
@@ -131,8 +131,12 @@ export default {
     type: Number,
     default: 0
   },
-  initialBounds: {
+  bounds: {
     type: [Object, Array],
+    default: undefined
+  },
+  fitBoundsOptions: {
+    type: Object,
     default: undefined
   },
   renderWorldCopies: {

@@ -379,8 +379,8 @@
             return "auto" === h.type
               ? [g, u(t, h.children, h.basePath, a, m)]
               : (f || b) && h.headers && !i.d.test(h.path)
-                ? [g, u(t, Object(i.c)(h.headers), h.path, a, m)]
-                : g;
+              ? [g, u(t, Object(i.c)(h.headers), h.path, a, m)]
+              : g;
           }
         },
         h = (n(137), Object(a.a)(c, void 0, void 0, !1, null, null, null));
@@ -776,454 +776,460 @@
             }
           }
         },
-        u = (n(126),
-        Object(a.a)(
-          l,
-          function() {
-            var t = this,
-              e = t.$createElement,
-              n = t._self._c || e;
-            return n(
-              "main",
-              {
-                staticClass: "home",
-                attrs: { "aria-labelledby": "main-title" }
-              },
-              [
-                n("header", { staticClass: "hero" }, [
-                  t.data.heroImage
-                    ? n("img", {
-                        attrs: {
-                          src: t.$withBase(t.data.heroImage),
-                          alt: "hero"
-                        }
-                      })
+        u =
+          (n(126),
+          Object(a.a)(
+            l,
+            function() {
+              var t = this,
+                e = t.$createElement,
+                n = t._self._c || e;
+              return n(
+                "main",
+                {
+                  staticClass: "home",
+                  attrs: { "aria-labelledby": "main-title" }
+                },
+                [
+                  n("header", { staticClass: "hero" }, [
+                    t.data.heroImage
+                      ? n("img", {
+                          attrs: {
+                            src: t.$withBase(t.data.heroImage),
+                            alt: "hero"
+                          }
+                        })
+                      : t._e(),
+                    t._v(" "),
+                    n("h1", { attrs: { id: "main-title" } }, [
+                      t._v(t._s(t.data.heroText || t.$title || "Hello"))
+                    ]),
+                    t._v(" "),
+                    n("p", { staticClass: "description" }, [
+                      t._v(
+                        "\n      " +
+                          t._s(
+                            t.data.tagline ||
+                              t.$description ||
+                              "Welcome to your VuePress site"
+                          ) +
+                          "\n    "
+                      )
+                    ]),
+                    t._v(" "),
+                    t.data.actionText && t.data.actionLink
+                      ? n(
+                          "p",
+                          { staticClass: "action" },
+                          [
+                            n("NavLink", {
+                              staticClass: "action-button",
+                              attrs: { item: t.actionLink }
+                            })
+                          ],
+                          1
+                        )
+                      : t._e()
+                  ]),
+                  t._v(" "),
+                  t.data.features && t.data.features.length
+                    ? n(
+                        "div",
+                        { staticClass: "features" },
+                        t._l(t.data.features, function(e, i) {
+                          return n("div", { key: i, staticClass: "feature" }, [
+                            n("h2", [t._v(t._s(e.title))]),
+                            t._v(" "),
+                            n("p", [t._v(t._s(e.details))])
+                          ]);
+                        }),
+                        0
+                      )
                     : t._e(),
                   t._v(" "),
-                  n("h1", { attrs: { id: "main-title" } }, [
-                    t._v(t._s(t.data.heroText || t.$title || "Hello"))
-                  ]),
+                  n("Content", { staticClass: "custom" }),
                   t._v(" "),
-                  n("p", { staticClass: "description" }, [
-                    t._v(
-                      "\n      " +
-                        t._s(
-                          t.data.tagline ||
-                            t.$description ||
-                            "Welcome to your VuePress site"
-                        ) +
-                        "\n    "
-                    )
-                  ]),
-                  t._v(" "),
-                  t.data.actionText && t.data.actionLink
-                    ? n(
-                        "p",
-                        { staticClass: "action" },
-                        [
-                          n("NavLink", {
-                            staticClass: "action-button",
-                            attrs: { item: t.actionLink }
-                          })
-                        ],
-                        1
-                      )
+                  t.data.footer
+                    ? n("div", { staticClass: "footer" }, [
+                        t._v("\n    " + t._s(t.data.footer) + "\n  ")
+                      ])
                     : t._e()
-                ]),
+                ],
+                1
+              );
+            },
+            [],
+            !1,
+            null,
+            null,
+            null
+          ));
+      u.options.__file = "Home.vue";
+      var c = u.exports,
+        h =
+          (n(127),
+          Object(a.a)(
+            {},
+            function() {
+              var t = this,
+                e = t.$createElement,
+                n = t._self._c || e;
+              return n(
+                "div",
+                {
+                  staticClass: "sidebar-button",
+                  on: {
+                    click: function(e) {
+                      return t.$emit("toggle-sidebar");
+                    }
+                  }
+                },
+                [
+                  n(
+                    "svg",
+                    {
+                      staticClass: "icon",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        "aria-hidden": "true",
+                        role: "img",
+                        viewBox: "0 0 448 512"
+                      }
+                    },
+                    [
+                      n("path", {
+                        attrs: {
+                          fill: "currentColor",
+                          d:
+                            "M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
+                        }
+                      })
+                    ]
+                  )
+                ]
+              );
+            },
+            [],
+            !1,
+            null,
+            null,
+            null
+          ));
+      h.options.__file = "SidebarButton.vue";
+      var p = h.exports,
+        d =
+          (n(120),
+          n(39),
+          {
+            data: function() {
+              return { query: "", focused: !1, focusIndex: 0 };
+            },
+            computed: {
+              showSuggestions: function() {
+                return (
+                  this.focused && this.suggestions && this.suggestions.length
+                );
+              },
+              suggestions: function() {
+                var t = this.query.trim().toLowerCase();
+                if (t) {
+                  for (
+                    var e = this.$site.pages,
+                      n = this.$localePath,
+                      i = function(e) {
+                        return e.title && e.title.toLowerCase().indexOf(t) > -1;
+                      },
+                      s = [],
+                      a = 0;
+                    a < e.length && !(s.length >= 5);
+                    a++
+                  ) {
+                    var r = e[a];
+                    if (this.getPageLocalePath(r) === n && this.isSearchable(r))
+                      if (i(r)) s.push(r);
+                      else if (r.headers)
+                        for (
+                          var o = 0;
+                          o < r.headers.length && !(s.length >= 5);
+                          o++
+                        ) {
+                          var l = r.headers[o];
+                          i(l) &&
+                            s.push(
+                              Object.assign({}, r, {
+                                path: r.path + "#" + l.slug,
+                                header: l
+                              })
+                            );
+                        }
+                  }
+                  return s;
+                }
+              },
+              alignRight: function() {
+                return (
+                  (this.$site.themeConfig.nav || []).length +
+                    (this.$site.repo ? 1 : 0) <=
+                  2
+                );
+              }
+            },
+            methods: {
+              getPageLocalePath: function(t) {
+                for (var e in this.$site.locales || {})
+                  if ("/" !== e && 0 === t.path.indexOf(e)) return e;
+                return "/";
+              },
+              isSearchable: function(t) {
+                var e = null;
+                return (
+                  null === e ||
+                  (e = Array.isArray(e) ? e : new Array(e)).filter(function(e) {
+                    return t.path.match(e);
+                  }).length > 0
+                );
+              },
+              onUp: function() {
+                this.showSuggestions &&
+                  (this.focusIndex > 0
+                    ? this.focusIndex--
+                    : (this.focusIndex = this.suggestions.length - 1));
+              },
+              onDown: function() {
+                this.showSuggestions &&
+                  (this.focusIndex < this.suggestions.length - 1
+                    ? this.focusIndex++
+                    : (this.focusIndex = 0));
+              },
+              go: function(t) {
+                this.showSuggestions &&
+                  (this.$router.push(this.suggestions[t].path),
+                  (this.query = ""),
+                  (this.focusIndex = 0));
+              },
+              focus: function(t) {
+                this.focusIndex = t;
+              },
+              unfocus: function() {
+                this.focusIndex = -1;
+              }
+            }
+          }),
+        f =
+          (n(128),
+          Object(a.a)(
+            d,
+            function() {
+              var t = this,
+                e = t.$createElement,
+                n = t._self._c || e;
+              return n("div", { staticClass: "search-box" }, [
+                n("input", {
+                  class: { focused: t.focused },
+                  attrs: {
+                    "aria-label": "Search",
+                    autocomplete: "off",
+                    spellcheck: "false"
+                  },
+                  domProps: { value: t.query },
+                  on: {
+                    input: function(e) {
+                      t.query = e.target.value;
+                    },
+                    focus: function(e) {
+                      t.focused = !0;
+                    },
+                    blur: function(e) {
+                      t.focused = !1;
+                    },
+                    keyup: [
+                      function(e) {
+                        return !e.type.indexOf("key") &&
+                          t._k(e.keyCode, "enter", 13, e.key, "Enter")
+                          ? null
+                          : t.go(t.focusIndex);
+                      },
+                      function(e) {
+                        return !e.type.indexOf("key") &&
+                          t._k(e.keyCode, "up", 38, e.key, ["Up", "ArrowUp"])
+                          ? null
+                          : t.onUp(e);
+                      },
+                      function(e) {
+                        return !e.type.indexOf("key") &&
+                          t._k(e.keyCode, "down", 40, e.key, [
+                            "Down",
+                            "ArrowDown"
+                          ])
+                          ? null
+                          : t.onDown(e);
+                      }
+                    ]
+                  }
+                }),
                 t._v(" "),
-                t.data.features && t.data.features.length
+                t.showSuggestions
                   ? n(
-                      "div",
-                      { staticClass: "features" },
-                      t._l(t.data.features, function(e, i) {
-                        return n("div", { key: i, staticClass: "feature" }, [
-                          n("h2", [t._v(t._s(e.title))]),
-                          t._v(" "),
-                          n("p", [t._v(t._s(e.details))])
-                        ]);
+                      "ul",
+                      {
+                        staticClass: "suggestions",
+                        class: { "align-right": t.alignRight },
+                        on: { mouseleave: t.unfocus }
+                      },
+                      t._l(t.suggestions, function(e, i) {
+                        return n(
+                          "li",
+                          {
+                            staticClass: "suggestion",
+                            class: { focused: i === t.focusIndex },
+                            on: {
+                              mousedown: function(e) {
+                                return t.go(i);
+                              },
+                              mouseenter: function(e) {
+                                return t.focus(i);
+                              }
+                            }
+                          },
+                          [
+                            n(
+                              "a",
+                              {
+                                attrs: { href: e.path },
+                                on: {
+                                  click: function(t) {
+                                    t.preventDefault();
+                                  }
+                                }
+                              },
+                              [
+                                n("span", { staticClass: "page-title" }, [
+                                  t._v(t._s(e.title || e.path))
+                                ]),
+                                t._v(" "),
+                                e.header
+                                  ? n("span", { staticClass: "header" }, [
+                                      t._v("> " + t._s(e.header.title))
+                                    ])
+                                  : t._e()
+                              ]
+                            )
+                          ]
+                        );
                       }),
                       0
                     )
-                  : t._e(),
-                t._v(" "),
-                n("Content", { staticClass: "custom" }),
-                t._v(" "),
-                t.data.footer
-                  ? n("div", { staticClass: "footer" }, [
-                      t._v("\n    " + t._s(t.data.footer) + "\n  ")
-                    ])
                   : t._e()
-              ],
-              1
-            );
-          },
-          [],
-          !1,
-          null,
-          null,
-          null
-        ));
-      u.options.__file = "Home.vue";
-      var c = u.exports,
-        h = (n(127),
-        Object(a.a)(
-          {},
-          function() {
-            var t = this,
-              e = t.$createElement,
-              n = t._self._c || e;
-            return n(
-              "div",
-              {
-                staticClass: "sidebar-button",
-                on: {
-                  click: function(e) {
-                    return t.$emit("toggle-sidebar");
-                  }
-                }
-              },
-              [
-                n(
-                  "svg",
-                  {
-                    staticClass: "icon",
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      "aria-hidden": "true",
-                      role: "img",
-                      viewBox: "0 0 448 512"
-                    }
-                  },
-                  [
-                    n("path", {
-                      attrs: {
-                        fill: "currentColor",
-                        d:
-                          "M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
-                      }
-                    })
-                  ]
-                )
-              ]
-            );
-          },
-          [],
-          !1,
-          null,
-          null,
-          null
-        ));
-      h.options.__file = "SidebarButton.vue";
-      var p = h.exports,
-        d = (n(120),
-        n(39),
-        {
-          data: function() {
-            return { query: "", focused: !1, focusIndex: 0 };
-          },
-          computed: {
-            showSuggestions: function() {
-              return (
-                this.focused && this.suggestions && this.suggestions.length
-              );
+              ]);
             },
-            suggestions: function() {
-              var t = this.query.trim().toLowerCase();
-              if (t) {
-                for (
-                  var e = this.$site.pages,
-                    n = this.$localePath,
-                    i = function(e) {
-                      return e.title && e.title.toLowerCase().indexOf(t) > -1;
-                    },
-                    s = [],
-                    a = 0;
-                  a < e.length && !(s.length >= 5);
-                  a++
-                ) {
-                  var r = e[a];
-                  if (this.getPageLocalePath(r) === n && this.isSearchable(r))
-                    if (i(r)) s.push(r);
-                    else if (r.headers)
-                      for (
-                        var o = 0;
-                        o < r.headers.length && !(s.length >= 5);
-                        o++
-                      ) {
-                        var l = r.headers[o];
-                        i(l) &&
-                          s.push(
-                            Object.assign({}, r, {
-                              path: r.path + "#" + l.slug,
-                              header: l
-                            })
-                          );
-                      }
-                }
-                return s;
-              }
-            },
-            alignRight: function() {
-              return (
-                (this.$site.themeConfig.nav || []).length +
-                  (this.$site.repo ? 1 : 0) <=
-                2
-              );
-            }
-          },
-          methods: {
-            getPageLocalePath: function(t) {
-              for (var e in this.$site.locales || {})
-                if ("/" !== e && 0 === t.path.indexOf(e)) return e;
-              return "/";
-            },
-            isSearchable: function(t) {
-              var e = null;
-              return (
-                null === e ||
-                (e = Array.isArray(e) ? e : new Array(e)).filter(function(e) {
-                  return t.path.match(e);
-                }).length > 0
-              );
-            },
-            onUp: function() {
-              this.showSuggestions &&
-                (this.focusIndex > 0
-                  ? this.focusIndex--
-                  : (this.focusIndex = this.suggestions.length - 1));
-            },
-            onDown: function() {
-              this.showSuggestions &&
-                (this.focusIndex < this.suggestions.length - 1
-                  ? this.focusIndex++
-                  : (this.focusIndex = 0));
-            },
-            go: function(t) {
-              this.showSuggestions &&
-                (this.$router.push(this.suggestions[t].path),
-                (this.query = ""),
-                (this.focusIndex = 0));
-            },
-            focus: function(t) {
-              this.focusIndex = t;
-            },
-            unfocus: function() {
-              this.focusIndex = -1;
-            }
-          }
-        }),
-        f = (n(128),
-        Object(a.a)(
-          d,
-          function() {
-            var t = this,
-              e = t.$createElement,
-              n = t._self._c || e;
-            return n("div", { staticClass: "search-box" }, [
-              n("input", {
-                class: { focused: t.focused },
-                attrs: {
-                  "aria-label": "Search",
-                  autocomplete: "off",
-                  spellcheck: "false"
-                },
-                domProps: { value: t.query },
-                on: {
-                  input: function(e) {
-                    t.query = e.target.value;
-                  },
-                  focus: function(e) {
-                    t.focused = !0;
-                  },
-                  blur: function(e) {
-                    t.focused = !1;
-                  },
-                  keyup: [
-                    function(e) {
-                      return !e.type.indexOf("key") &&
-                        t._k(e.keyCode, "enter", 13, e.key, "Enter")
-                        ? null
-                        : t.go(t.focusIndex);
-                    },
-                    function(e) {
-                      return !e.type.indexOf("key") &&
-                        t._k(e.keyCode, "up", 38, e.key, ["Up", "ArrowUp"])
-                        ? null
-                        : t.onUp(e);
-                    },
-                    function(e) {
-                      return !e.type.indexOf("key") &&
-                        t._k(e.keyCode, "down", 40, e.key, [
-                          "Down",
-                          "ArrowDown"
-                        ])
-                        ? null
-                        : t.onDown(e);
-                    }
-                  ]
-                }
-              }),
-              t._v(" "),
-              t.showSuggestions
-                ? n(
-                    "ul",
-                    {
-                      staticClass: "suggestions",
-                      class: { "align-right": t.alignRight },
-                      on: { mouseleave: t.unfocus }
-                    },
-                    t._l(t.suggestions, function(e, i) {
-                      return n(
-                        "li",
-                        {
-                          staticClass: "suggestion",
-                          class: { focused: i === t.focusIndex },
-                          on: {
-                            mousedown: function(e) {
-                              return t.go(i);
-                            },
-                            mouseenter: function(e) {
-                              return t.focus(i);
-                            }
-                          }
-                        },
-                        [
-                          n(
-                            "a",
-                            {
-                              attrs: { href: e.path },
-                              on: {
-                                click: function(t) {
-                                  t.preventDefault();
-                                }
-                              }
-                            },
-                            [
-                              n("span", { staticClass: "page-title" }, [
-                                t._v(t._s(e.title || e.path))
-                              ]),
-                              t._v(" "),
-                              e.header
-                                ? n("span", { staticClass: "header" }, [
-                                    t._v("> " + t._s(e.header.title))
-                                  ])
-                                : t._e()
-                            ]
-                          )
-                        ]
-                      );
-                    }),
-                    0
-                  )
-                : t._e()
-            ]);
-          },
-          [],
-          !1,
-          null,
-          null,
-          null
-        ));
+            [],
+            !1,
+            null,
+            null,
+            null
+          ));
       f.options.__file = "SearchBox.vue";
       var g = f.exports,
         v = (n(129), n(25)),
-        m = (n(64),
-        {
-          components: { NavLink: o, DropdownTransition: n(122).a },
-          data: function() {
-            return { open: !1 };
-          },
-          props: { item: { required: !0 } },
-          methods: {
-            toggle: function() {
-              this.open = !this.open;
+        m =
+          (n(64),
+          {
+            components: { NavLink: o, DropdownTransition: n(122).a },
+            data: function() {
+              return { open: !1 };
+            },
+            props: { item: { required: !0 } },
+            methods: {
+              toggle: function() {
+                this.open = !this.open;
+              }
             }
-          }
-        }),
-        b = (n(132),
-        Object(a.a)(
-          m,
-          function() {
-            var t = this,
-              e = t.$createElement,
-              n = t._self._c || e;
-            return n(
-              "div",
-              { staticClass: "dropdown-wrapper", class: { open: t.open } },
-              [
-                n(
-                  "a",
-                  { staticClass: "dropdown-title", on: { click: t.toggle } },
-                  [
-                    n("span", { staticClass: "title" }, [
-                      t._v(t._s(t.item.text))
-                    ]),
-                    t._v(" "),
-                    n("span", {
-                      staticClass: "arrow",
-                      class: t.open ? "down" : "right"
-                    })
-                  ]
-                ),
-                t._v(" "),
-                n("DropdownTransition", [
+          }),
+        b =
+          (n(132),
+          Object(a.a)(
+            m,
+            function() {
+              var t = this,
+                e = t.$createElement,
+                n = t._self._c || e;
+              return n(
+                "div",
+                { staticClass: "dropdown-wrapper", class: { open: t.open } },
+                [
                   n(
-                    "ul",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: t.open,
-                          expression: "open"
-                        }
-                      ],
-                      staticClass: "nav-dropdown"
-                    },
-                    t._l(t.item.items, function(e, i) {
-                      return n(
-                        "li",
-                        { key: e.link || i, staticClass: "dropdown-item" },
-                        [
-                          "links" === e.type
-                            ? n("h4", [t._v(t._s(e.text))])
-                            : t._e(),
-                          t._v(" "),
-                          "links" === e.type
-                            ? n(
-                                "ul",
-                                { staticClass: "dropdown-subitem-wrapper" },
-                                t._l(e.items, function(t) {
-                                  return n(
-                                    "li",
-                                    {
-                                      key: t.link,
-                                      staticClass: "dropdown-subitem"
-                                    },
-                                    [n("NavLink", { attrs: { item: t } })],
-                                    1
-                                  );
-                                }),
-                                0
-                              )
-                            : n("NavLink", { attrs: { item: e } })
+                    "a",
+                    { staticClass: "dropdown-title", on: { click: t.toggle } },
+                    [
+                      n("span", { staticClass: "title" }, [
+                        t._v(t._s(t.item.text))
+                      ]),
+                      t._v(" "),
+                      n("span", {
+                        staticClass: "arrow",
+                        class: t.open ? "down" : "right"
+                      })
+                    ]
+                  ),
+                  t._v(" "),
+                  n("DropdownTransition", [
+                    n(
+                      "ul",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: t.open,
+                            expression: "open"
+                          }
                         ],
-                        1
-                      );
-                    }),
-                    0
-                  )
-                ])
-              ],
-              1
-            );
-          },
-          [],
-          !1,
-          null,
-          null,
-          null
-        ));
+                        staticClass: "nav-dropdown"
+                      },
+                      t._l(t.item.items, function(e, i) {
+                        return n(
+                          "li",
+                          { key: e.link || i, staticClass: "dropdown-item" },
+                          [
+                            "links" === e.type
+                              ? n("h4", [t._v(t._s(e.text))])
+                              : t._e(),
+                            t._v(" "),
+                            "links" === e.type
+                              ? n(
+                                  "ul",
+                                  { staticClass: "dropdown-subitem-wrapper" },
+                                  t._l(e.items, function(t) {
+                                    return n(
+                                      "li",
+                                      {
+                                        key: t.link,
+                                        staticClass: "dropdown-subitem"
+                                      },
+                                      [n("NavLink", { attrs: { item: t } })],
+                                      1
+                                    );
+                                  }),
+                                  0
+                                )
+                              : n("NavLink", { attrs: { item: e } })
+                          ],
+                          1
+                        );
+                      }),
+                      0
+                    )
+                  ])
+                ],
+                1
+              );
+            },
+            [],
+            !1,
+            null,
+            null,
+            null
+          ));
       b.options.__file = "DropdownLink.vue";
       var _ = {
           components: { NavLink: o, DropdownLink: b.exports },
@@ -1292,60 +1298,61 @@
             }
           }
         },
-        k = (n(133),
-        Object(a.a)(
-          _,
-          function() {
-            var t = this,
-              e = t.$createElement,
-              n = t._self._c || e;
-            return t.userLinks.length || t.repoLink
-              ? n(
-                  "nav",
-                  { staticClass: "nav-links" },
-                  [
-                    t._l(t.userLinks, function(t) {
-                      return n(
-                        "div",
-                        { key: t.link, staticClass: "nav-item" },
-                        [
-                          "links" === t.type
-                            ? n("DropdownLink", { attrs: { item: t } })
-                            : n("NavLink", { attrs: { item: t } })
-                        ],
-                        1
-                      );
-                    }),
-                    t._v(" "),
-                    t.repoLink
-                      ? n(
-                          "a",
-                          {
-                            staticClass: "repo-link",
-                            attrs: {
-                              href: t.repoLink,
-                              target: "_blank",
-                              rel: "noopener noreferrer"
-                            }
-                          },
+        k =
+          (n(133),
+          Object(a.a)(
+            _,
+            function() {
+              var t = this,
+                e = t.$createElement,
+                n = t._self._c || e;
+              return t.userLinks.length || t.repoLink
+                ? n(
+                    "nav",
+                    { staticClass: "nav-links" },
+                    [
+                      t._l(t.userLinks, function(t) {
+                        return n(
+                          "div",
+                          { key: t.link, staticClass: "nav-item" },
                           [
-                            t._v("\n    " + t._s(t.repoLabel) + "\n    "),
-                            n("OutboundLink")
+                            "links" === t.type
+                              ? n("DropdownLink", { attrs: { item: t } })
+                              : n("NavLink", { attrs: { item: t } })
                           ],
                           1
-                        )
-                      : t._e()
-                  ],
-                  2
-                )
-              : t._e();
-          },
-          [],
-          !1,
-          null,
-          null,
-          null
-        ));
+                        );
+                      }),
+                      t._v(" "),
+                      t.repoLink
+                        ? n(
+                            "a",
+                            {
+                              staticClass: "repo-link",
+                              attrs: {
+                                href: t.repoLink,
+                                target: "_blank",
+                                rel: "noopener noreferrer"
+                              }
+                            },
+                            [
+                              t._v("\n    " + t._s(t.repoLabel) + "\n    "),
+                              n("OutboundLink")
+                            ],
+                            1
+                          )
+                        : t._e()
+                    ],
+                    2
+                  )
+                : t._e();
+            },
+            [],
+            !1,
+            null,
+            null,
+            null
+          ));
       k.options.__file = "NavLinks.vue";
       var x = k.exports;
       function $(t, e) {
@@ -1392,82 +1399,85 @@
             }
           }
         },
-        L = (n(134),
-        Object(a.a)(
-          C,
-          function() {
-            var t = this,
-              e = t.$createElement,
-              n = t._self._c || e;
-            return n(
-              "header",
-              { staticClass: "navbar" },
-              [
-                n("SidebarButton", {
-                  on: {
-                    "toggle-sidebar": function(e) {
-                      return t.$emit("toggle-sidebar");
+        L =
+          (n(134),
+          Object(a.a)(
+            C,
+            function() {
+              var t = this,
+                e = t.$createElement,
+                n = t._self._c || e;
+              return n(
+                "header",
+                { staticClass: "navbar" },
+                [
+                  n("SidebarButton", {
+                    on: {
+                      "toggle-sidebar": function(e) {
+                        return t.$emit("toggle-sidebar");
+                      }
                     }
-                  }
-                }),
-                t._v(" "),
-                n(
-                  "router-link",
-                  { staticClass: "home-link", attrs: { to: t.$localePath } },
-                  [
-                    t.$site.themeConfig.logo
-                      ? n("img", {
-                          staticClass: "logo",
-                          attrs: {
-                            src: t.$withBase(t.$site.themeConfig.logo),
-                            alt: t.$siteTitle
-                          }
-                        })
-                      : t._e(),
-                    t._v(" "),
-                    t.$siteTitle
-                      ? n(
-                          "span",
-                          {
-                            ref: "siteName",
-                            staticClass: "site-name",
-                            class: { "can-hide": t.$site.themeConfig.logo }
-                          },
-                          [t._v(t._s(t.$siteTitle))]
-                        )
-                      : t._e()
-                  ]
-                ),
-                t._v(" "),
-                n(
-                  "div",
-                  {
-                    staticClass: "links",
-                    style: t.linksWrapMaxWidth
-                      ? { "max-width": t.linksWrapMaxWidth + "px" }
-                      : {}
-                  },
-                  [
-                    t.isAlgoliaSearch
-                      ? n("AlgoliaSearchBox", { attrs: { options: t.algolia } })
-                      : !1 !== t.$site.themeConfig.search
+                  }),
+                  t._v(" "),
+                  n(
+                    "router-link",
+                    { staticClass: "home-link", attrs: { to: t.$localePath } },
+                    [
+                      t.$site.themeConfig.logo
+                        ? n("img", {
+                            staticClass: "logo",
+                            attrs: {
+                              src: t.$withBase(t.$site.themeConfig.logo),
+                              alt: t.$siteTitle
+                            }
+                          })
+                        : t._e(),
+                      t._v(" "),
+                      t.$siteTitle
+                        ? n(
+                            "span",
+                            {
+                              ref: "siteName",
+                              staticClass: "site-name",
+                              class: { "can-hide": t.$site.themeConfig.logo }
+                            },
+                            [t._v(t._s(t.$siteTitle))]
+                          )
+                        : t._e()
+                    ]
+                  ),
+                  t._v(" "),
+                  n(
+                    "div",
+                    {
+                      staticClass: "links",
+                      style: t.linksWrapMaxWidth
+                        ? { "max-width": t.linksWrapMaxWidth + "px" }
+                        : {}
+                    },
+                    [
+                      t.isAlgoliaSearch
+                        ? n("AlgoliaSearchBox", {
+                            attrs: { options: t.algolia }
+                          })
+                        : !1 !== t.$site.themeConfig.search
                         ? n("SearchBox")
                         : t._e(),
-                    t._v(" "),
-                    n("NavLinks", { staticClass: "can-hide" })
-                  ],
-                  1
-                )
-              ],
-              1
-            );
-          },
-          [],
-          !1,
-          null,
-          null,
-          null
-        ));
+                      t._v(" "),
+                      n("NavLinks", { staticClass: "can-hide" })
+                    ],
+                    1
+                  )
+                ],
+                1
+              );
+            },
+            [],
+            !1,
+            null,
+            null,
+            null
+          ));
       L.options.__file = "Navbar.vue";
       var w = L.exports;
       function y(t, e, n) {
@@ -1492,8 +1502,8 @@
               return "string" == typeof this.$themeLocaleConfig.lastUpdated
                 ? this.$themeLocaleConfig.lastUpdated
                 : "string" == typeof this.$site.themeConfig.lastUpdated
-                  ? this.$site.themeConfig.lastUpdated
-                  : "Last Updated";
+                ? this.$site.themeConfig.lastUpdated
+                : "Last Updated";
             },
             prev: function() {
               var t,
@@ -1502,8 +1512,8 @@
               return !1 === n
                 ? void 0
                 : n
-                  ? Object(i.l)(this.$site.pages, n, this.$route.path)
-                  : ((t = this.$page), (e = this.sidebarItems), y(t, e, -1));
+                ? Object(i.l)(this.$site.pages, n, this.$route.path)
+                : ((t = this.$page), (e = this.sidebarItems), y(t, e, -1));
             },
             next: function() {
               var t,
@@ -1512,8 +1522,8 @@
               return !1 === n
                 ? void 0
                 : n
-                  ? Object(i.l)(this.$site.pages, n, this.$route.path)
-                  : ((t = this.$page), (e = this.sidebarItems), y(t, e, 1));
+                ? Object(i.l)(this.$site.pages, n, this.$route.path)
+                : ((t = this.$page), (e = this.sidebarItems), y(t, e, 1));
             },
             editLink: function() {
               if (!1 !== this.$page.frontmatter.editLink) {
@@ -1563,126 +1573,131 @@
             }
           }
         },
-        O = (n(135),
-        Object(a.a)(
-          S,
-          function() {
-            var t = this,
-              e = t.$createElement,
-              n = t._self._c || e;
-            return n(
-              "main",
-              { staticClass: "page" },
-              [
-                t._t("top"),
-                t._v(" "),
-                n("Content"),
-                t._v(" "),
-                n("footer", { staticClass: "page-edit" }, [
-                  t.editLink
-                    ? n(
-                        "div",
-                        { staticClass: "edit-link" },
-                        [
-                          n(
-                            "a",
-                            {
-                              attrs: {
-                                href: t.editLink,
-                                target: "_blank",
-                                rel: "noopener noreferrer"
-                              }
-                            },
-                            [t._v(t._s(t.editLinkText))]
-                          ),
-                          t._v(" "),
-                          n("OutboundLink")
-                        ],
-                        1
-                      )
-                    : t._e(),
+        O =
+          (n(135),
+          Object(a.a)(
+            S,
+            function() {
+              var t = this,
+                e = t.$createElement,
+                n = t._self._c || e;
+              return n(
+                "main",
+                { staticClass: "page" },
+                [
+                  t._t("top"),
                   t._v(" "),
-                  t.lastUpdated
-                    ? n("div", { staticClass: "last-updated" }, [
-                        n("span", { staticClass: "prefix" }, [
-                          t._v(t._s(t.lastUpdatedText) + ": ")
-                        ]),
-                        t._v(" "),
-                        n("span", { staticClass: "time" }, [
-                          t._v(t._s(t.lastUpdated))
+                  n("Content"),
+                  t._v(" "),
+                  n("footer", { staticClass: "page-edit" }, [
+                    t.editLink
+                      ? n(
+                          "div",
+                          { staticClass: "edit-link" },
+                          [
+                            n(
+                              "a",
+                              {
+                                attrs: {
+                                  href: t.editLink,
+                                  target: "_blank",
+                                  rel: "noopener noreferrer"
+                                }
+                              },
+                              [t._v(t._s(t.editLinkText))]
+                            ),
+                            t._v(" "),
+                            n("OutboundLink")
+                          ],
+                          1
+                        )
+                      : t._e(),
+                    t._v(" "),
+                    t.lastUpdated
+                      ? n("div", { staticClass: "last-updated" }, [
+                          n("span", { staticClass: "prefix" }, [
+                            t._v(t._s(t.lastUpdatedText) + ": ")
+                          ]),
+                          t._v(" "),
+                          n("span", { staticClass: "time" }, [
+                            t._v(t._s(t.lastUpdated))
+                          ])
+                        ])
+                      : t._e()
+                  ]),
+                  t._v(" "),
+                  t.prev || t.next
+                    ? n("div", { staticClass: "page-nav" }, [
+                        n("p", { staticClass: "inner" }, [
+                          t.prev
+                            ? n(
+                                "span",
+                                { staticClass: "prev" },
+                                [
+                                  t._v("\n        ←\n        "),
+                                  t.prev
+                                    ? n(
+                                        "router-link",
+                                        {
+                                          staticClass: "prev",
+                                          attrs: { to: t.prev.path }
+                                        },
+                                        [
+                                          t._v(
+                                            "\n          " +
+                                              t._s(
+                                                t.prev.title || t.prev.path
+                                              ) +
+                                              "\n        "
+                                          )
+                                        ]
+                                      )
+                                    : t._e()
+                                ],
+                                1
+                              )
+                            : t._e(),
+                          t._v(" "),
+                          t.next
+                            ? n(
+                                "span",
+                                { staticClass: "next" },
+                                [
+                                  t.next
+                                    ? n(
+                                        "router-link",
+                                        { attrs: { to: t.next.path } },
+                                        [
+                                          t._v(
+                                            "\n          " +
+                                              t._s(
+                                                t.next.title || t.next.path
+                                              ) +
+                                              "\n        "
+                                          )
+                                        ]
+                                      )
+                                    : t._e(),
+                                  t._v("\n        →\n      ")
+                                ],
+                                1
+                              )
+                            : t._e()
                         ])
                       ])
-                    : t._e()
-                ]),
-                t._v(" "),
-                t.prev || t.next
-                  ? n("div", { staticClass: "page-nav" }, [
-                      n("p", { staticClass: "inner" }, [
-                        t.prev
-                          ? n(
-                              "span",
-                              { staticClass: "prev" },
-                              [
-                                t._v("\n        ←\n        "),
-                                t.prev
-                                  ? n(
-                                      "router-link",
-                                      {
-                                        staticClass: "prev",
-                                        attrs: { to: t.prev.path }
-                                      },
-                                      [
-                                        t._v(
-                                          "\n          " +
-                                            t._s(t.prev.title || t.prev.path) +
-                                            "\n        "
-                                        )
-                                      ]
-                                    )
-                                  : t._e()
-                              ],
-                              1
-                            )
-                          : t._e(),
-                        t._v(" "),
-                        t.next
-                          ? n(
-                              "span",
-                              { staticClass: "next" },
-                              [
-                                t.next
-                                  ? n(
-                                      "router-link",
-                                      { attrs: { to: t.next.path } },
-                                      [
-                                        t._v(
-                                          "\n          " +
-                                            t._s(t.next.title || t.next.path) +
-                                            "\n        "
-                                        )
-                                      ]
-                                    )
-                                  : t._e(),
-                                t._v("\n        →\n      ")
-                              ],
-                              1
-                            )
-                          : t._e()
-                      ])
-                    ])
-                  : t._e(),
-                t._v(" "),
-                t._t("bottom")
-              ],
-              2
-            );
-          },
-          [],
-          !1,
-          null,
-          null,
-          null
-        ));
+                    : t._e(),
+                  t._v(" "),
+                  t._t("bottom")
+                ],
+                2
+              );
+            },
+            [],
+            !1,
+            null,
+            null,
+            null
+          ));
       O.options.__file = "Page.vue";
       var j = O.exports,
         I = {
@@ -1690,33 +1705,34 @@
           components: { SidebarLinks: n(121).default, NavLinks: x },
           props: ["items"]
         },
-        E = (n(138),
-        Object(a.a)(
-          I,
-          function() {
-            var t = this.$createElement,
-              e = this._self._c || t;
-            return e(
-              "aside",
-              { staticClass: "sidebar" },
-              [
-                e("NavLinks"),
-                this._v(" "),
-                this._t("top"),
-                this._v(" "),
-                e("SidebarLinks", { attrs: { depth: 0, items: this.items } }),
-                this._v(" "),
-                this._t("bottom")
-              ],
-              2
-            );
-          },
-          [],
-          !1,
-          null,
-          null,
-          null
-        ));
+        E =
+          (n(138),
+          Object(a.a)(
+            I,
+            function() {
+              var t = this.$createElement,
+                e = this._self._c || t;
+              return e(
+                "aside",
+                { staticClass: "sidebar" },
+                [
+                  e("NavLinks"),
+                  this._v(" "),
+                  this._t("top"),
+                  this._v(" "),
+                  e("SidebarLinks", { attrs: { depth: 0, items: this.items } }),
+                  this._v(" "),
+                  this._t("bottom")
+                ],
+                2
+              );
+            },
+            [],
+            !1,
+            null,
+            null,
+            null
+          ));
       E.options.__file = "Sidebar.vue";
       var T = {
           components: { Home: c, Page: j, Sidebar: E.exports, Navbar: w },
@@ -1788,71 +1804,72 @@
             }
           }
         },
-        D = (n(139),
-        n(140),
-        Object(a.a)(
-          T,
-          function() {
-            var t = this,
-              e = t.$createElement,
-              n = t._self._c || e;
-            return n(
-              "div",
-              {
-                staticClass: "theme-container",
-                class: t.pageClasses,
-                on: { touchstart: t.onTouchStart, touchend: t.onTouchEnd }
-              },
-              [
-                t.shouldShowNavbar
-                  ? n("Navbar", { on: { "toggle-sidebar": t.toggleSidebar } })
-                  : t._e(),
-                t._v(" "),
-                n("div", {
-                  staticClass: "sidebar-mask",
-                  on: {
-                    click: function(e) {
-                      return t.toggleSidebar(!1);
+        D =
+          (n(139),
+          n(140),
+          Object(a.a)(
+            T,
+            function() {
+              var t = this,
+                e = t.$createElement,
+                n = t._self._c || e;
+              return n(
+                "div",
+                {
+                  staticClass: "theme-container",
+                  class: t.pageClasses,
+                  on: { touchstart: t.onTouchStart, touchend: t.onTouchEnd }
+                },
+                [
+                  t.shouldShowNavbar
+                    ? n("Navbar", { on: { "toggle-sidebar": t.toggleSidebar } })
+                    : t._e(),
+                  t._v(" "),
+                  n("div", {
+                    staticClass: "sidebar-mask",
+                    on: {
+                      click: function(e) {
+                        return t.toggleSidebar(!1);
+                      }
                     }
-                  }
-                }),
-                t._v(" "),
-                n(
-                  "Sidebar",
-                  {
-                    attrs: { items: t.sidebarItems },
-                    on: { "toggle-sidebar": t.toggleSidebar }
-                  },
-                  [
-                    t._t("sidebar-top", null, { slot: "top" }),
-                    t._v(" "),
-                    t._t("sidebar-bottom", null, { slot: "bottom" })
-                  ],
-                  2
-                ),
-                t._v(" "),
-                t.$page.frontmatter.home
-                  ? n("Home")
-                  : n(
-                      "Page",
-                      { attrs: { "sidebar-items": t.sidebarItems } },
-                      [
-                        t._t("page-top", null, { slot: "top" }),
-                        t._v(" "),
-                        t._t("page-bottom", null, { slot: "bottom" })
-                      ],
-                      2
-                    )
-              ],
-              1
-            );
-          },
-          [],
-          !1,
-          null,
-          null,
-          null
-        ));
+                  }),
+                  t._v(" "),
+                  n(
+                    "Sidebar",
+                    {
+                      attrs: { items: t.sidebarItems },
+                      on: { "toggle-sidebar": t.toggleSidebar }
+                    },
+                    [
+                      t._t("sidebar-top", null, { slot: "top" }),
+                      t._v(" "),
+                      t._t("sidebar-bottom", null, { slot: "bottom" })
+                    ],
+                    2
+                  ),
+                  t._v(" "),
+                  t.$page.frontmatter.home
+                    ? n("Home")
+                    : n(
+                        "Page",
+                        { attrs: { "sidebar-items": t.sidebarItems } },
+                        [
+                          t._t("page-top", null, { slot: "top" }),
+                          t._v(" "),
+                          t._t("page-bottom", null, { slot: "bottom" })
+                        ],
+                        2
+                      )
+                ],
+                1
+              );
+            },
+            [],
+            !1,
+            null,
+            null,
+            null
+          ));
       D.options.__file = "Layout.vue";
       e.default = D.exports;
     }

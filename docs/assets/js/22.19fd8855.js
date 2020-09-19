@@ -67,7 +67,7 @@
                     [t._v("sources"), e("OutboundLink")],
                     1
                   ),
-                  t._v(" ans "),
+                  t._v(" and "),
                   e(
                     "a",
                     {

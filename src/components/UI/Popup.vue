@@ -120,7 +120,7 @@ export default {
       },
       set(value) {
         if (this.map && this.popup) {
-          if (value) {
+          if (!value) {
             this.popup.remove();
           } else {
             this.popup.addTo(this.map);

@@ -55,10 +55,6 @@ export default {
     version() {
       return this.map ? this.map.version : null;
     },
-    // TODO: make 'bounds' synced prop
-    bounds() {
-      return this.map ? this.map.getBounds() : null;
-    },
     isStyleLoaded() {
       return this.map ? this.map.isStyleLoaded() : false;
     },
@@ -90,7 +86,7 @@ export default {
   mounted() {
     this.$_loadMap().then(map => {
       this.map = map;
-      if (this.RTLTextPluginUrl !== undefined) {
+      if (this.RTLTextPluginUrl !== undefined && this.mapbox.getRTLTextPluginStatus() !== 'loaded') {
         this.mapbox.setRTLTextPlugin(
           this.RTLTextPluginUrl,
           this.$_RTLTextPluginError
@@ -127,5 +123,9 @@ export default {
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+.mapboxgl-canvas-container {
+    position: absolute;
 }
 </style>

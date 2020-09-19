@@ -50,7 +50,7 @@
 
 ### `hash`
 
-- **Type:** `Boolean`
+- **Type:** `Boolean, String`
 - **Default:** `false`
 - **Synced**
 - **Description:** If true, the map's position (zoom, center latitude, center longitude, bearing, and pitch) will be synced with the hash fragment of the page's URL
@@ -284,7 +284,8 @@
 
 - **Type:** `Array`, `LngLatBoundsLike object`
 - **Default:** `undefined`
-- **Description:** The initial bounds of the map. If set, it overrides `center` and `zoom` construction options
+- **Synced**
+- **Description:** The bounds of the map. If set, it overrides `center` and `zoom` construction options
 - **See:** `options.bounds` in [Map](https://docs.mapbox.com/mapbox-gl-js/api/#map)
 
 ### `fitBoundsOptions`

@@ -31,7 +31,7 @@ Add Vue, MapboxGL and Vue-mapbox scripts on your page:
     <!-- ... -->
     <!-- Mapbox GL CSS -->
     <link
-      href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css"
+      href="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css"
       rel="stylesheet"
     />
     <!-- Vue-mapbox CSS -->
@@ -40,7 +40,7 @@ Add Vue, MapboxGL and Vue-mapbox scripts on your page:
       rel="stylesheet"
     />
     <!-- Mapbox GL JS -->
-    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js"></script>
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
     <!-- VueJS -->
     <script src="https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.min.js"></script>
     <!-- Vue-mapbox -->

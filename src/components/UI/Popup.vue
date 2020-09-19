@@ -100,6 +100,11 @@ export default {
     showed: {
       type: Boolean,
       default: false
+    },
+    
+    maxWidth: {
+      type: String,
+      default: "240px"
     }
   },
 

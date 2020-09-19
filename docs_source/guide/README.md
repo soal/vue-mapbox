@@ -10,9 +10,12 @@ You can install vue-mapbox via npm. Take note that you need to install mapbox-gl
 npm install --save vue-mapbox mapbox-gl
 ```
 
-Import Mapbox CSS into your entry point file (typically `index.js` or `main.js`)
+Add mapbox JS and CSS files to the files where you need them:
+
 ```js
-import "mapbox-gl/src/css/mapbox-gl.css";
+import 'mapbox-gl/dist/mapbox-gl.css'
+import Mapbox from "mapbox-gl"
+import { MglMap } from "vue-mapbox"
 ```
 
 ## Using in browser

@@ -15,6 +15,7 @@
 ### `source`
 
 - **Type:** `Object | String`
+- **Required**
 - **Non-Synced** A source for layer or URL to it.
 - **Description:**
 - **See:** `sources` in [Mapbox Style Spec](https://docs.mapbox.com/mapbox-gl-js/style-spec/#sources)

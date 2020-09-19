@@ -22,7 +22,7 @@ export default {
     required: true
   },
   hash: {
-    type: Boolean,
+    type: [Boolean, String],
     default: false
   },
   interactive: {

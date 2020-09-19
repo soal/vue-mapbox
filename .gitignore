@@ -39,11 +39,11 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Code editors
 *.vscode
 *.idea
-
 *.sublime-*
-*.editorconfig
 *.code-workspace
 
 *.map*
@@ -51,4 +51,7 @@ jspm_packages
 vue-mapbox-demo
 checklist.txt
 .flowconfig
-docs_source/.vuepress/dist
+docs/.vuepress/dist
+docs_compiled
+
+

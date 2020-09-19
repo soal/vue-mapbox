@@ -124,4 +124,8 @@ export default {
   top: 0;
   width: 100%;
 }
+
+.mapboxgl-canvas-container {
+    position: absolute;
+}
 </style>

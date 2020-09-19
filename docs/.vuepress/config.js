@@ -6,6 +6,13 @@ module.exports = {
   base: "/",
 
   themeConfig: {
+    logo: "/logo.svg",
+    repo: "https://github.com/soal/vue-mapbox",
+    repoLabel: "Source",
+    docsBranch: "docs",
+    editLinks: true,
+    editLinkText: "Improve this page",
+    smoothScroll: true,
     nav: [
       {
         text: "Guide",
@@ -14,12 +21,12 @@ module.exports = {
       {
         text: "API",
         link: "/api/"
-      },
-      { text: "Github", link: "https://github.com/soal/vue-mapbox" },
-      {
-        text: "map-promisified",
-        link: "https://github.com/soal/map-promisified"
       }
+      // { text: "Github", link: "https://github.com/soal/vue-mapbox" },
+      // {
+      //   text: "map-promisified",
+      //   link: "https://github.com/soal/map-promisified"
+      // }
     ],
 
     sidebar: [

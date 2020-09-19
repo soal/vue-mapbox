@@ -1984,6 +1984,123 @@
                   ])
                 ]),
                 e._v(" "),
+                t("h3", { attrs: { id: "bounds" } }, [
+                  t(
+                    "a",
+                    {
+                      staticClass: "header-anchor",
+                      attrs: { href: "#bounds", "aria-hidden": "true" }
+                    },
+                    [e._v("#")]
+                  ),
+                  e._v(" "),
+                  t("code", [e._v("bounds")])
+                ]),
+                e._v(" "),
+                t("ul", [
+                  t("li", [
+                    t("strong", [e._v("Type:")]),
+                    e._v(" "),
+                    t("code", [e._v("Array")]),
+                    e._v(", "),
+                    t("code", [e._v("LngLatBoundsLike object")])
+                  ]),
+                  e._v(" "),
+                  t("li", [
+                    t("strong", [e._v("Default:")]),
+                    e._v(" "),
+                    t("code", [e._v("undefined")])
+                  ]),
+                  e._v(" "),
+                  t("li", [
+                    t("strong", [e._v("Description:")]),
+                    e._v(
+                      " The initial bounds of the map. If set, it overrides "
+                    ),
+                    t("code", [e._v("center")]),
+                    e._v(" and "),
+                    t("code", [e._v("zoom")]),
+                    e._v(" construction options")
+                  ]),
+                  e._v(" "),
+                  t("li", [
+                    t("strong", [e._v("See:")]),
+                    e._v(" "),
+                    t("code", [e._v("options.bounds")]),
+                    e._v(" in "),
+                    t(
+                      "a",
+                      {
+                        attrs: {
+                          href: "https://docs.mapbox.com/mapbox-gl-js/api/#map",
+                          target: "_blank",
+                          rel: "noopener noreferrer"
+                        }
+                      },
+                      [e._v("Map"), t("OutboundLink")],
+                      1
+                    )
+                  ])
+                ]),
+                e._v(" "),
+                t("h3", { attrs: { id: "fitboundsoptions" } }, [
+                  t(
+                    "a",
+                    {
+                      staticClass: "header-anchor",
+                      attrs: {
+                        href: "#fitboundsoptions",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [e._v("#")]
+                  ),
+                  e._v(" "),
+                  t("code", [e._v("fitBoundsOptions")])
+                ]),
+                e._v(" "),
+                t("ul", [
+                  t("li", [
+                    t("strong", [e._v("Type:")]),
+                    e._v(" "),
+                    t("code", [e._v("fitBounds object")])
+                  ]),
+                  e._v(" "),
+                  t("li", [
+                    t("strong", [e._v("Default:")]),
+                    e._v(" "),
+                    t("code", [e._v("undefined")])
+                  ]),
+                  e._v(" "),
+                  t("li", [
+                    t("strong", [e._v("Description:")]),
+                    e._v(" A "),
+                    t("code", [e._v("fitBounds")]),
+                    e._v(" object to use only when fitting the initial "),
+                    t("code", [e._v("bounds")]),
+                    e._v(" provided above")
+                  ]),
+                  e._v(" "),
+                  t("li", [
+                    t("strong", [e._v("See:")]),
+                    e._v(" "),
+                    t("code", [e._v("options.fitBoundsOptions")]),
+                    e._v(" in "),
+                    t(
+                      "a",
+                      {
+                        attrs: {
+                          href: "https://docs.mapbox.com/mapbox-gl-js/api/#map",
+                          target: "_blank",
+                          rel: "noopener noreferrer"
+                        }
+                      },
+                      [e._v("Map"), t("OutboundLink")],
+                      1
+                    )
+                  ])
+                ]),
+                e._v(" "),
                 t("h2", { attrs: { id: "actions" } }, [
                   t(
                     "a",

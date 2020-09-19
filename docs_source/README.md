@@ -36,7 +36,7 @@ If you like long story, check out [blog post](https://soal.red/reasoning-behind-
       @click="handleClick"
     />
   </MglMap>
-</temaplate>
+</template>
 
 <script>
 import {

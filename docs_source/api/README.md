@@ -50,7 +50,7 @@
 
 ### `hash`
 
-- **Type:** `Boolean`
+- **Type:** `Boolean, String`
 - **Default:** `false`
 - **Synced**
 - **Description:** If true, the map's position (zoom, center latitude, center longitude, bearing, and pitch) will be synced with the hash fragment of the page's URL

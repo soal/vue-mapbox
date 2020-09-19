@@ -18,8 +18,8 @@
     "build": "vue-cli-service build --target lib --name vue-mapbox src/main.js",
     "serve": "vue-cli-service build --target lib --name vue-mapbox src/main.js --watch",
     "lint": "vue-cli-service lint",
-    "docs:serve": "vuepress dev docs_source",
-    "docs:build": "vuepress build docs_source"
+    "docs:serve": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "husky": {
     "hooks": {
@@ -51,6 +51,6 @@
     "lint-staged": "^8.1.0",
     "vue": "^2.6.6",
     "vue-template-compiler": "^2.6.6",
-    "vuepress": "^1.0.0-alpha.37"
+    "vuepress": "^1.5.4"
   }
 }

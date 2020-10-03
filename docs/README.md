@@ -1,8 +1,11 @@
 ---
 home: true
-heroImage: /logo.svg
-actionText: Get Started →
-actionLink: /guide/
+logo: /logo.svg
+logoAlt: VueMapbox
+guideText: User guide
+guideLink: /guide/
+sourceText: Source
+sourceLink: https://github.com/soal/vue-mapbox
 features:
   - title: Declarative style
     details: You can use map elements like layers, markers, popups as Vue components and control them via synchronized props

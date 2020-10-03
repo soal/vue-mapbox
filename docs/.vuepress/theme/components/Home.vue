@@ -9,15 +9,15 @@
   >
     <div class="hero">
       <h2 class="tagline">
-        Combine powers of <a href="https://docs.mapbox.com/mapbox-gl-js" class="tagline-link mapbox">Mapbox</a> Web maps and <a href="https://vuejs.org" class="tagline-link vue">Vue</a>
+        Combine powers of <a target="_blank" href="https://docs.mapbox.com/mapbox-gl-js" class="tagline-link mapbox">Mapbox</a> Web maps and <a target="_blank" href="https://vuejs.org" class="tagline-link vue">Vue</a>
       </h2>
       <div v-if="actions" class="actions">
         <NavLink class="action-button" :item="actions.guide" />
-        <NavLink class="action-button" :item="{ link: '', text: 'Try online' }" />
+        <!-- <NavLink class="action-button" :item="{ link: '', text: 'Try online' }" /> -->
       </div>
+      <HomeMap class="hero-map" />
     </div>
 
-    <HomeMap />
 
     <div v-if="data.features && data.features.length" class="features">
       <div
@@ -102,6 +102,9 @@ h1, h2, .logo, .tagline
 
         &.mapbox
           color: $mapboxColor
+
+    .hero-map
+      margin 6rem 0
 
     // .actions
     //   grid-row 2 / -1

@@ -49,5 +49,3 @@ export const MglRasterLayer = RasterLayer;
 
 export const MglMarker = Marker;
 export const MglPopup = Popup;
-
-export default GlMap;

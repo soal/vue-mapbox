@@ -1,11 +1,11 @@
-<template>
+/* <template>
   <div class="mgl-map-wrapper">
     <div v-once :id="container" ref="container" />
     <slot v-if="initialized" />
   </div>
-</template>
+</template> */
 
-<script>
+import "../../styles/index.css";
 import withEvents from "../../lib/withEvents";
 import mapEvents from "./events";
 import options from "./options";
@@ -78,6 +78,7 @@ export default {
   created() {
     this.map = null;
     this.propsIsUpdating = {};
+    this.$_containerVNode = null;
     this.mapboxPromise = this.mapboxGl
       ? Promise.resolve(this.mapboxGl)
       : import("mapbox-gl");
@@ -86,7 +87,10 @@ export default {
   mounted() {
     this.$_loadMap().then(map => {
       this.map = map;
-      if (this.RTLTextPluginUrl !== undefined && this.mapbox.getRTLTextPluginStatus() !== 'loaded') {
+      if (
+        this.RTLTextPluginUrl !== undefined &&
+        this.mapbox.getRTLTextPluginStatus() !== "loaded"
+      ) {
         this.mapbox.setRTLTextPlugin(
           this.RTLTextPluginUrl,
           this.$_RTLTextPluginError
@@ -106,26 +110,18 @@ export default {
     this.$nextTick(() => {
       if (this.map) this.map.remove();
     });
+  },
+
+  render(h) {
+    if (!this.$$_containerVNode) {
+      this.$_containerVNode = h("div", {
+        id: this.container,
+        ref: "container"
+      });
+    }
+    return h("div", { class: "mgl-map-wrapper" }, [
+      this.$_containerVNode,
+      this.initialized ? this.$slots.default : null
+    ]);
   }
 };
-</script>
-
-<style>
-.mgl-map-wrapper {
-  height: 100%;
-  position: relative;
-  width: 100%;
-}
-
-.mgl-map-wrapper .mapboxgl-map {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-
-.mapboxgl-canvas-container {
-    position: absolute;
-}
-</style>

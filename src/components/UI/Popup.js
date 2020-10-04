@@ -1,11 +1,3 @@
-<template>
-  <div style="display: none">
-    <!-- @slot Slot for popup content -->
-    <slot />
-  </div>
-</template>
-
-<script>
 import withEvents from "../../lib/withEvents";
 import withSelfEvents from "./withSelfEvents";
 
@@ -206,6 +198,17 @@ export default {
       this.popup.remove();
       this.$_emitEvent("remove", { popup: this.popup });
     }
+  },
+
+  render(h) {
+    return h(
+      "div",
+      {
+        style: {
+          display: "none"
+        }
+      },
+      [this.$slots.default]
+    );
   }
 };
-</script>

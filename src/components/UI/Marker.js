@@ -1,13 +1,3 @@
-<template>
-  <div style="display: none">
-    <!-- slot for custom marker -->
-    <slot name="marker" />
-    <!-- slot for popup -->
-    <slot v-if="marker" />
-  </div>
-</template>
-
-<script>
 import withEvents from "../../lib/withEvents";
 import withSelfEvents from "./withSelfEvents";
 
@@ -142,6 +132,17 @@ export default {
     togglePopup() {
       return this.marker.togglePopup();
     }
+  },
+
+  render(h) {
+    return h(
+      "div",
+      {
+        style: {
+          display: "none"
+        }
+      },
+      [this.$slots.marker, this.marker ? this.$slots.default : null]
+    );
   }
 };
-</script>

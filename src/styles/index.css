@@ -1,0 +1,17 @@
+.mgl-map-wrapper {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.mgl-map-wrapper .mapboxgl-map {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.mapboxgl-canvas-container {
+  position: absolute;
+}

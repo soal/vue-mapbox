@@ -1,10 +1,3 @@
-/* <template>
-  <div class="mgl-map-wrapper">
-    <div v-once :id="container" ref="container" />
-    <slot v-if="initialized" />
-  </div>
-</template> */
-
 import "../../styles/index.css";
 import withEvents from "../../lib/withEvents";
 import mapEvents from "./events";

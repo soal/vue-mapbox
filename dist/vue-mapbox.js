@@ -593,8 +593,6 @@ var withSelfEventsMixin = {
   }
 };
 
-// import withRegistration from "../../../lib/withRegistration";
-
 var controlMixin = {
   mixins: [withEventsMixin, withSelfEventsMixin],
 

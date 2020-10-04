@@ -3,22 +3,22 @@
     ? factory(
         exports,
         require("@babel/runtime/helpers/defineProperty"),
-        require("map-promisified")
+        require("@babel/runtime/helpers/typeof")
       )
     : typeof define === "function" && define.amd
     ? define([
         "exports",
         "@babel/runtime/helpers/defineProperty",
-        "map-promisified"
+        "@babel/runtime/helpers/typeof"
       ], factory)
     : ((global =
         typeof globalThis !== "undefined" ? globalThis : global || self),
       factory(
         (global["vue-mapbox"] = {}),
         global._defineProperty,
-        global.promisify
+        global._typeof
       ));
-})(this, function(exports, _defineProperty, promisify) {
+})(this, function(exports, _defineProperty, _typeof) {
   "use strict";
 
   function _interopDefaultLegacy(e) {
@@ -28,7 +28,7 @@
   var _defineProperty__default = /*#__PURE__*/ _interopDefaultLegacy(
     _defineProperty
   );
-  var promisify__default = /*#__PURE__*/ _interopDefaultLegacy(promisify);
+  var _typeof__default = /*#__PURE__*/ _interopDefaultLegacy(_typeof);
 
   function ownKeys(object, enumerableOnly) {
     var keys = Object.keys(object);
@@ -707,36 +707,346 @@
     }
     return target;
   }
-  var withAsyncActions = {
-    created: function created() {
-      this.actions = {};
-    },
-    methods: {
-      $_registerAsyncActions: function $_registerAsyncActions(map) {
-        this.actions = _objectSpread$2(
-          _objectSpread$2({}, promisify__default["default"](map)),
-          {},
-          {
-            stop: function stop() {
-              var _this = this;
 
-              this.map.stop();
-              var updatedProps = {
-                pitch: this.map.getPitch(),
-                zoom: this.map.getZoom(),
-                bearing: this.map.getBearing(),
-                center: this.map.getCenter()
-              };
-              Object.entries(updatedProps).forEach(function(prop) {
-                _this.$_updateSyncedPropsFabric(prop[0], prop[1])();
-              });
-              return Promise.resolve(updatedProps);
-            }
-          }
+  var composedMethodEvents = [
+    {
+      name: "moveend",
+      check: function check(map, options) {
+        return options.center && map.isMoving();
+      }
+    },
+    {
+      name: "zoomend",
+      check: function check(map, options) {
+        return (
+          options.zoom !== undefined && options.zoom !== null && map.isZooming()
+        );
+      }
+    },
+    {
+      name: "rotateend",
+      check: function check(map, options) {
+        return (
+          options.bearing !== undefined &&
+          options.bearing !== null &&
+          map.isRotating()
+        );
+      }
+    },
+    {
+      name: "pitchend",
+      check: function check(map, options) {
+        return (
+          options.pitch !== undefined &&
+          options.bearing !== null &&
+          map.isMoving()
         );
       }
     }
+  ];
+
+  var composedMethodGetter = function composedMethodGetter(map) {
+    return {
+      center: map.getCenter(),
+      zoom: map.getZoom(),
+      bearing: map.getBearing(),
+      pitch: map.getPitch()
+    };
   };
+
+  var composedMethodConfig = {
+    events: composedMethodEvents,
+    getter: composedMethodGetter
+  };
+  var moveMethodConfig = {
+    events: [
+      {
+        name: "moveend",
+        check: function check(map) {
+          return map.isMoving();
+        }
+      }
+    ],
+    getter: function getter(map) {
+      return {
+        center: map.getCenter()
+      };
+    }
+  };
+  var zoomMethodConfig = {
+    events: [
+      {
+        name: "zoomend",
+        check: function check(map) {
+          return map.isZooming();
+        }
+      }
+    ],
+    getter: function getter(map) {
+      return {
+        zoom: map.getZoom()
+      };
+    }
+  };
+  var rotateMethodConfig = {
+    events: [
+      {
+        name: "rotateend",
+        check: function check(map) {
+          return map.isRotating();
+        }
+      }
+    ],
+    getter: function getter(map) {
+      return {
+        bearing: map.getBearing()
+      };
+    }
+  };
+  var methodsData = {
+    setCenter: moveMethodConfig,
+    panBy: moveMethodConfig,
+    panTo: moveMethodConfig,
+    setZoom: zoomMethodConfig,
+    zoomTo: zoomMethodConfig,
+    zoomIn: zoomMethodConfig,
+    zoomOut: zoomMethodConfig,
+    setBearing: rotateMethodConfig,
+    rotateTo: rotateMethodConfig,
+    resetNorth: rotateMethodConfig,
+    snapToNorth: rotateMethodConfig,
+    setPitch: {
+      events: [
+        {
+          name: "pitchend",
+          check: function check(map) {
+            return true;
+          }
+        }
+      ],
+      getter: function getter(map) {
+        return {
+          pitch: map.getPitch()
+        };
+      }
+    },
+    fitBounds: {
+      events: [
+        {
+          name: "zoomend",
+          check: function check(map) {
+            return map.isZooming();
+          }
+        },
+        {
+          name: "moveend",
+          check: function check(map) {
+            return map.isMoving();
+          }
+        },
+        {
+          name: "rotateend",
+          check: function check(map) {
+            return map.isRotating();
+          }
+        }
+      ],
+      getter: function getter(map) {
+        return {
+          zoom: map.getZoom(),
+          bearing: map.getBearing(),
+          pitch: map.getPitch(),
+          center: map.getCenter()
+        };
+      }
+    },
+    fitScreenCoordinates: {
+      events: [
+        {
+          name: "zoomend",
+          check: function check(map, options) {
+            return map.isZooming();
+          }
+        },
+        {
+          name: "moveend",
+          check: function check(map, options) {
+            return map.isMoving();
+          }
+        },
+        {
+          name: "rotateend",
+          check: function check(map, options) {
+            return options.bearing && map.isRotating();
+          }
+        }
+      ],
+      getter: function getter(map) {
+        return {
+          zoom: map.getZoom(),
+          center: map.getCenter(),
+          bearing: map.getBearing(),
+          pitch: map.getPitch()
+        };
+      }
+    },
+    jumpTo: composedMethodConfig,
+    easeTo: composedMethodConfig,
+    flyTo: composedMethodConfig
+  };
+
+  function generateEventId(methodName) {
+    return ""
+      .concat(methodName, "-")
+      .concat(("" + Math.random()).split(".")[1]);
+  }
+
+  function catchEventFabric(map, eventName, eventId, resolve) {
+    var catchEvent = function catchEvent(event) {
+      if (event.type !== eventName || event.eventId !== eventId) {
+        return;
+      }
+
+      map.off(eventName, catchEvent);
+      resolve(event);
+    };
+
+    return catchEvent;
+  }
+
+  function promisifyMethod(map, methodName) {
+    var method = map[methodName];
+    var argsCount = method.length;
+    return function() {
+      var handlers = [];
+      var eventData = {
+        eventId: generateEventId(methodName)
+      }; // Creating list of events and event listeners
+
+      var catchers = methodsData[methodName].events.map(function(event, index) {
+        return {
+          event: event,
+          func: new Promise(function(resolve, reject) {
+            handlers[index] = {
+              event: event,
+              func: catchEventFabric(
+                map,
+                event.name,
+                eventData.eventId,
+                resolve
+              )
+            };
+            map.on(event.name, handlers[index].func);
+          })
+        };
+      });
+      var argsArray = []; // Creating list of arguments.
+
+      for (var i = 0; i < argsCount; i++) {
+        if (i === argsCount - 1) {
+          // If args[i] is last argument, we assume that this is eventData argument,
+          // merge it with eventData passed by user and add in the end of list of arguments
+          argsArray.push(
+            _objectSpread$2(
+              _objectSpread$2({}, eventData),
+              (i < 0 || arguments.length <= i ? undefined : arguments[i]) || {}
+            )
+          );
+        } else {
+          // If args[i] is not last argument, just add it in the list of arguments
+          argsArray.push(
+            (i < 0 || arguments.length <= i ? undefined : arguments[i]) || null
+          );
+        }
+      }
+
+      var funcs = [];
+      var options = (arguments.length <= 0 ? undefined : arguments[0]) || {};
+
+      try {
+        method.apply(map, argsArray); // Filter catchers.
+        // If map state is not changes (e.g. zoomTo(1) don't produce any events if map already on zoom 1),
+        // just return resolved promise
+        // .fitBounds() and .fitScreenCoordinates() needs special processing due to different number of arguments
+
+        if (methodName === "fitBounds") {
+          // args[0] is bounding box, options is args[1], but we don't need them to calculate events to listen
+          options = {};
+        }
+
+        if (methodName === "fitScreenCoordinates") {
+          options = {
+            bearing: null
+          };
+          options.bearing = null; // bearing can be passed by user as optional argument
+
+          if (
+            typeof (arguments.length <= 2 ? undefined : arguments[2]) ===
+            "number"
+          ) {
+            options.bearing = arguments.length <= 2 ? undefined : arguments[2];
+          } // pass bearing merged with other options
+
+          if (
+            (arguments.length <= 3 ? undefined : arguments[3]) &&
+            _typeof__default["default"](
+              arguments.length <= 3 ? undefined : arguments[3]
+            ) === "object"
+          ) {
+            options = _objectSpread$2(
+              _objectSpread$2({}, options),
+              arguments.length <= 3 ? undefined : arguments[3]
+            );
+          }
+        }
+
+        funcs = catchers.map(function(_ref) {
+          var event = _ref.event,
+            func = _ref.func;
+
+          if (event.check(map, options)) {
+            return func;
+          } else {
+            map.off(event.name, func);
+            return Promise.resolve();
+          }
+        });
+      } catch (err) {
+        handlers.forEach(function(_ref2) {
+          var event = _ref2.event,
+            func = _ref2.func;
+          map.off(event.name, func);
+        });
+        throw err;
+      }
+
+      return Promise.all(funcs).then(function() {
+        return methodsData[methodName].getter(map);
+      });
+    };
+  }
+
+  function promisifyMap(map) {
+    var toPromisify = Object.keys(methodsData);
+    var actions = {};
+    toPromisify.forEach(function(key) {
+      if (toPromisify.indexOf(key) !== -1) {
+        actions[key] = promisifyMethod(map, key);
+      }
+    });
+    return actions;
+  }
+
+  function promisify(map) {
+    var methodName =
+      arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+    if (methodName) {
+      return promisifyMethod(map, methodName);
+    } else {
+      return promisifyMap(map);
+    }
+  }
 
   function ownKeys$3(object, enumerableOnly) {
     var keys = Object.keys(object);
@@ -775,6 +1085,74 @@
     }
     return target;
   }
+  var withAsyncActions = {
+    created: function created() {
+      this.actions = {};
+    },
+    methods: {
+      $_registerAsyncActions: function $_registerAsyncActions(map) {
+        this.actions = _objectSpread$3(
+          _objectSpread$3({}, promisify(map)),
+          {},
+          {
+            stop: function stop() {
+              var _this = this;
+
+              this.map.stop();
+              var updatedProps = {
+                pitch: this.map.getPitch(),
+                zoom: this.map.getZoom(),
+                bearing: this.map.getBearing(),
+                center: this.map.getCenter()
+              };
+              Object.entries(updatedProps).forEach(function(prop) {
+                _this.$_updateSyncedPropsFabric(prop[0], prop[1])();
+              });
+              return Promise.resolve(updatedProps);
+            }
+          }
+        );
+      }
+    }
+  };
+
+  function ownKeys$4(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+      var symbols = Object.getOwnPropertySymbols(object);
+      if (enumerableOnly)
+        symbols = symbols.filter(function(sym) {
+          return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+        });
+      keys.push.apply(keys, symbols);
+    }
+    return keys;
+  }
+
+  function _objectSpread$4(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      if (i % 2) {
+        ownKeys$4(Object(source), true).forEach(function(key) {
+          _defineProperty__default["default"](target, key, source[key]);
+        });
+      } else if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(
+          target,
+          Object.getOwnPropertyDescriptors(source)
+        );
+      } else {
+        ownKeys$4(Object(source)).forEach(function(key) {
+          Object.defineProperty(
+            target,
+            key,
+            Object.getOwnPropertyDescriptor(source, key)
+          );
+        });
+      }
+    }
+    return target;
+  }
   var GlMap = {
     name: "GlMap",
     mixins: [
@@ -783,7 +1161,7 @@
       withPrivateMethods,
       withEventsMixin
     ],
-    props: _objectSpread$3(
+    props: _objectSpread$4(
       {
         mapboxGl: {
           type: Object,
@@ -906,7 +1284,7 @@
     }
   };
 
-  function ownKeys$4(object, enumerableOnly) {
+  function ownKeys$5(object, enumerableOnly) {
     var keys = Object.keys(object);
     if (Object.getOwnPropertySymbols) {
       var symbols = Object.getOwnPropertySymbols(object);
@@ -919,11 +1297,11 @@
     return keys;
   }
 
-  function _objectSpread$4(target) {
+  function _objectSpread$5(target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i] != null ? arguments[i] : {};
       if (i % 2) {
-        ownKeys$4(Object(source), true).forEach(function(key) {
+        ownKeys$5(Object(source), true).forEach(function(key) {
           _defineProperty__default["default"](target, key, source[key]);
         });
       } else if (Object.getOwnPropertyDescriptors) {
@@ -932,7 +1310,7 @@
           Object.getOwnPropertyDescriptors(source)
         );
       } else {
-        ownKeys$4(Object(source)).forEach(function(key) {
+        ownKeys$5(Object(source)).forEach(function(key) {
           Object.defineProperty(
             target,
             key,
@@ -953,7 +1331,7 @@
             : {};
         this.$_emitMapEvent(
           event,
-          _objectSpread$4(
+          _objectSpread$5(
             {
               control: this.control
             },
@@ -987,7 +1365,6 @@
     }
   };
 
-  // import withRegistration from "../../../lib/withRegistration";
   var controlMixin = {
     mixins: [withEventsMixin, withSelfEventsMixin],
     inject: ["mapbox", "map", "actions"],
@@ -1154,7 +1531,7 @@
     }
   };
 
-  function ownKeys$5(object, enumerableOnly) {
+  function ownKeys$6(object, enumerableOnly) {
     var keys = Object.keys(object);
     if (Object.getOwnPropertySymbols) {
       var symbols = Object.getOwnPropertySymbols(object);
@@ -1167,11 +1544,11 @@
     return keys;
   }
 
-  function _objectSpread$5(target) {
+  function _objectSpread$6(target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i] != null ? arguments[i] : {};
       if (i % 2) {
-        ownKeys$5(Object(source), true).forEach(function(key) {
+        ownKeys$6(Object(source), true).forEach(function(key) {
           _defineProperty__default["default"](target, key, source[key]);
         });
       } else if (Object.getOwnPropertyDescriptors) {
@@ -1180,7 +1557,7 @@
           Object.getOwnPropertyDescriptors(source)
         );
       } else {
-        ownKeys$5(Object(source)).forEach(function(key) {
+        ownKeys$6(Object(source)).forEach(function(key) {
           Object.defineProperty(
             target,
             key,
@@ -1256,7 +1633,7 @@
     mounted: function mounted() {
       var _this = this;
 
-      var markerOptions = _objectSpread$5({}, this.$props);
+      var markerOptions = _objectSpread$6({}, this.$props);
 
       if (this.$slots.marker) {
         markerOptions.element = this.$slots.marker[0].elm;
@@ -1565,7 +1942,7 @@
     "touchcancel"
   ];
 
-  function ownKeys$6(object, enumerableOnly) {
+  function ownKeys$7(object, enumerableOnly) {
     var keys = Object.keys(object);
     if (Object.getOwnPropertySymbols) {
       var symbols = Object.getOwnPropertySymbols(object);
@@ -1578,11 +1955,11 @@
     return keys;
   }
 
-  function _objectSpread$6(target) {
+  function _objectSpread$7(target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i] != null ? arguments[i] : {};
       if (i % 2) {
-        ownKeys$6(Object(source), true).forEach(function(key) {
+        ownKeys$7(Object(source), true).forEach(function(key) {
           _defineProperty__default["default"](target, key, source[key]);
         });
       } else if (Object.getOwnPropertyDescriptors) {
@@ -1591,7 +1968,7 @@
           Object.getOwnPropertyDescriptors(source)
         );
       } else {
-        ownKeys$6(Object(source)).forEach(function(key) {
+        ownKeys$7(Object(source)).forEach(function(key) {
           Object.defineProperty(
             target,
             key,
@@ -1642,9 +2019,9 @@
   };
   var layerMixin = {
     mixins: [withEventsMixin],
-    props: _objectSpread$6(
-      _objectSpread$6(
-        _objectSpread$6({}, mapboxSourceProps),
+    props: _objectSpread$7(
+      _objectSpread$7(
+        _objectSpread$7({}, mapboxSourceProps),
         mapboxLayerStyleProps
       ),
       componentProps
@@ -1818,7 +2195,7 @@
     render: function render() {}
   };
 
-  function ownKeys$7(object, enumerableOnly) {
+  function ownKeys$8(object, enumerableOnly) {
     var keys = Object.keys(object);
     if (Object.getOwnPropertySymbols) {
       var symbols = Object.getOwnPropertySymbols(object);
@@ -1831,11 +2208,11 @@
     return keys;
   }
 
-  function _objectSpread$7(target) {
+  function _objectSpread$8(target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i] != null ? arguments[i] : {};
       if (i % 2) {
-        ownKeys$7(Object(source), true).forEach(function(key) {
+        ownKeys$8(Object(source), true).forEach(function(key) {
           _defineProperty__default["default"](target, key, source[key]);
         });
       } else if (Object.getOwnPropertyDescriptors) {
@@ -1844,7 +2221,7 @@
           Object.getOwnPropertyDescriptors(source)
         );
       } else {
-        ownKeys$7(Object(source)).forEach(function(key) {
+        ownKeys$8(Object(source)).forEach(function(key) {
           Object.defineProperty(
             target,
             key,
@@ -1998,7 +2375,7 @@
         this.map.on("dataloading", this.$_watchSourceLoading);
 
         if (this.source) {
-          var source = _objectSpread$7(
+          var source = _objectSpread$8(
             {
               type: "geojson"
             },
@@ -2034,7 +2411,7 @@
           }
         }
 
-        var layer = _objectSpread$7(
+        var layer = _objectSpread$8(
           {
             id: this.layerId,
             source: this.sourceId
@@ -2082,7 +2459,7 @@
     }
   };
 
-  function ownKeys$8(object, enumerableOnly) {
+  function ownKeys$9(object, enumerableOnly) {
     var keys = Object.keys(object);
     if (Object.getOwnPropertySymbols) {
       var symbols = Object.getOwnPropertySymbols(object);
@@ -2095,11 +2472,11 @@
     return keys;
   }
 
-  function _objectSpread$8(target) {
+  function _objectSpread$9(target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i] != null ? arguments[i] : {};
       if (i % 2) {
-        ownKeys$8(Object(source), true).forEach(function(key) {
+        ownKeys$9(Object(source), true).forEach(function(key) {
           _defineProperty__default["default"](target, key, source[key]);
         });
       } else if (Object.getOwnPropertyDescriptors) {
@@ -2108,7 +2485,7 @@
           Object.getOwnPropertyDescriptors(source)
         );
       } else {
-        ownKeys$8(Object(source)).forEach(function(key) {
+        ownKeys$9(Object(source)).forEach(function(key) {
           Object.defineProperty(
             target,
             key,
@@ -2164,129 +2541,9 @@
     },
     methods: {
       $_deferredMount: function $_deferredMount() {
-        var source = _objectSpread$8(
-          {
-            type: "image"
-          },
-          this.source
-        );
-
-        this.map.on("dataloading", this.$_watchSourceLoading);
-
-        try {
-          this.map.addSource(this.sourceId, source);
-        } catch (err) {
-          if (this.replaceSource) {
-            this.map.removeSource(this.sourceId);
-            this.map.addSource(this.sourceId, source);
-          }
-        }
-
-        this.$_addLayer();
-        this.$_bindLayerEvents(layerEvents);
-        this.initial = false;
-      },
-      $_addLayer: function $_addLayer() {
-        var existed = this.map.getLayer(this.layerId);
-
-        if (existed) {
-          if (this.replace) {
-            this.map.removeLayer(this.layerId);
-          } else {
-            this.$_emitEvent("layer-exists", {
-              layerId: this.layerId
-            });
-            return existed;
-          }
-        }
-
-        var layer = _objectSpread$8(
-          {
-            id: this.layerId,
-            source: this.sourceId,
-            type: "raster"
-          },
-          this.layer
-        );
-
-        this.map.addLayer(layer, this.before);
-        this.$_emitEvent("added", {
-          layerId: this.layerId
-        });
-      }
-    }
-  };
-
-  function ownKeys$9(object, enumerableOnly) {
-    var keys = Object.keys(object);
-    if (Object.getOwnPropertySymbols) {
-      var symbols = Object.getOwnPropertySymbols(object);
-      if (enumerableOnly)
-        symbols = symbols.filter(function(sym) {
-          return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-        });
-      keys.push.apply(keys, symbols);
-    }
-    return keys;
-  }
-
-  function _objectSpread$9(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i] != null ? arguments[i] : {};
-      if (i % 2) {
-        ownKeys$9(Object(source), true).forEach(function(key) {
-          _defineProperty__default["default"](target, key, source[key]);
-        });
-      } else if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(
-          target,
-          Object.getOwnPropertyDescriptors(source)
-        );
-      } else {
-        ownKeys$9(Object(source)).forEach(function(key) {
-          Object.defineProperty(
-            target,
-            key,
-            Object.getOwnPropertyDescriptor(source, key)
-          );
-        });
-      }
-    }
-    return target;
-  }
-  var CanvasLayer = {
-    name: "CanvasLayer",
-    mixins: [layerMixin],
-    inject: ["mapbox", "map"],
-    props: {
-      source: {
-        type: Object,
-        required: true
-      },
-      layer: {
-        type: Object,
-        default: null
-      }
-    },
-    computed: {
-      canvasElement: function canvasElement() {
-        return this.mapSource ? this.mapSource.getCanvas() : null;
-      }
-    },
-    watch: {
-      coordinates: function coordinates(val) {
-        if (this.initial) return;
-        this.mapSource.setCoordinates(val);
-      }
-    },
-    created: function created() {
-      this.$_deferredMount();
-    },
-    methods: {
-      $_deferredMount: function $_deferredMount() {
         var source = _objectSpread$9(
           {
-            type: "canvas"
+            type: "image"
           },
           this.source
         );
@@ -2331,8 +2588,7 @@
 
         this.map.addLayer(layer, this.before);
         this.$_emitEvent("added", {
-          layerId: this.layerId,
-          canvas: this.canvasElement
+          layerId: this.layerId
         });
       }
     }
@@ -2375,29 +2631,39 @@
     }
     return target;
   }
-  var VideoLayer = {
-    name: "VideoLayer",
+  var CanvasLayer = {
+    name: "CanvasLayer",
     mixins: [layerMixin],
+    inject: ["mapbox", "map"],
+    props: {
+      source: {
+        type: Object,
+        required: true
+      },
+      layer: {
+        type: Object,
+        default: null
+      }
+    },
     computed: {
-      video: function video() {
-        return this.map.getSource(this.sourceId).getVideo();
+      canvasElement: function canvasElement() {
+        return this.mapSource ? this.mapSource.getCanvas() : null;
+      }
+    },
+    watch: {
+      coordinates: function coordinates(val) {
+        if (this.initial) return;
+        this.mapSource.setCoordinates(val);
       }
     },
     created: function created() {
-      if (this.source && this.source.coordinates) {
-        this.$watch("source.coordinates", function(next) {
-          if (this.initial) return;
-          this.mapSource.setCoordinates(next);
-        });
-      }
-
       this.$_deferredMount();
     },
     methods: {
       $_deferredMount: function $_deferredMount() {
         var source = _objectSpread$a(
           {
-            type: "video"
+            type: "canvas"
           },
           this.source
         );
@@ -2435,14 +2701,15 @@
           {
             id: this.layerId,
             source: this.sourceId,
-            type: "background"
+            type: "raster"
           },
           this.layer
         );
 
         this.map.addLayer(layer, this.before);
         this.$_emitEvent("added", {
-          layerId: this.layerId
+          layerId: this.layerId,
+          canvas: this.canvasElement
         });
       }
     }
@@ -2475,6 +2742,116 @@
         );
       } else {
         ownKeys$b(Object(source)).forEach(function(key) {
+          Object.defineProperty(
+            target,
+            key,
+            Object.getOwnPropertyDescriptor(source, key)
+          );
+        });
+      }
+    }
+    return target;
+  }
+  var VideoLayer = {
+    name: "VideoLayer",
+    mixins: [layerMixin],
+    computed: {
+      video: function video() {
+        return this.map.getSource(this.sourceId).getVideo();
+      }
+    },
+    created: function created() {
+      if (this.source && this.source.coordinates) {
+        this.$watch("source.coordinates", function(next) {
+          if (this.initial) return;
+          this.mapSource.setCoordinates(next);
+        });
+      }
+
+      this.$_deferredMount();
+    },
+    methods: {
+      $_deferredMount: function $_deferredMount() {
+        var source = _objectSpread$b(
+          {
+            type: "video"
+          },
+          this.source
+        );
+
+        this.map.on("dataloading", this.$_watchSourceLoading);
+
+        try {
+          this.map.addSource(this.sourceId, source);
+        } catch (err) {
+          if (this.replaceSource) {
+            this.map.removeSource(this.sourceId);
+            this.map.addSource(this.sourceId, source);
+          }
+        }
+
+        this.$_addLayer();
+        this.$_bindLayerEvents(layerEvents);
+        this.initial = false;
+      },
+      $_addLayer: function $_addLayer() {
+        var existed = this.map.getLayer(this.layerId);
+
+        if (existed) {
+          if (this.replace) {
+            this.map.removeLayer(this.layerId);
+          } else {
+            this.$_emitEvent("layer-exists", {
+              layerId: this.layerId
+            });
+            return existed;
+          }
+        }
+
+        var layer = _objectSpread$b(
+          {
+            id: this.layerId,
+            source: this.sourceId,
+            type: "background"
+          },
+          this.layer
+        );
+
+        this.map.addLayer(layer, this.before);
+        this.$_emitEvent("added", {
+          layerId: this.layerId
+        });
+      }
+    }
+  };
+
+  function ownKeys$c(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+      var symbols = Object.getOwnPropertySymbols(object);
+      if (enumerableOnly)
+        symbols = symbols.filter(function(sym) {
+          return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+        });
+      keys.push.apply(keys, symbols);
+    }
+    return keys;
+  }
+
+  function _objectSpread$c(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      if (i % 2) {
+        ownKeys$c(Object(source), true).forEach(function(key) {
+          _defineProperty__default["default"](target, key, source[key]);
+        });
+      } else if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(
+          target,
+          Object.getOwnPropertyDescriptors(source)
+        );
+      } else {
+        ownKeys$c(Object(source)).forEach(function(key) {
           Object.defineProperty(
             target,
             key,
@@ -2529,7 +2906,7 @@
     },
     methods: {
       $_deferredMount: function $_deferredMount() {
-        var source = _objectSpread$b(
+        var source = _objectSpread$c(
           {
             type: "vector"
           },
@@ -2566,7 +2943,7 @@
           }
         }
 
-        var layer = _objectSpread$b(
+        var layer = _objectSpread$c(
           {
             id: this.layerId,
             source: this.sourceId
@@ -2602,7 +2979,7 @@
     }
   };
 
-  function ownKeys$c(object, enumerableOnly) {
+  function ownKeys$d(object, enumerableOnly) {
     var keys = Object.keys(object);
     if (Object.getOwnPropertySymbols) {
       var symbols = Object.getOwnPropertySymbols(object);
@@ -2615,11 +2992,11 @@
     return keys;
   }
 
-  function _objectSpread$c(target) {
+  function _objectSpread$d(target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i] != null ? arguments[i] : {};
       if (i % 2) {
-        ownKeys$c(Object(source), true).forEach(function(key) {
+        ownKeys$d(Object(source), true).forEach(function(key) {
           _defineProperty__default["default"](target, key, source[key]);
         });
       } else if (Object.getOwnPropertyDescriptors) {
@@ -2628,7 +3005,7 @@
           Object.getOwnPropertyDescriptors(source)
         );
       } else {
-        ownKeys$c(Object(source)).forEach(function(key) {
+        ownKeys$d(Object(source)).forEach(function(key) {
           Object.defineProperty(
             target,
             key,
@@ -2647,7 +3024,7 @@
     },
     methods: {
       $_deferredMount: function $_deferredMount() {
-        var source = _objectSpread$c(
+        var source = _objectSpread$d(
           {
             type: "raster"
           },
@@ -2684,7 +3061,7 @@
           }
         }
 
-        var layer = _objectSpread$c(
+        var layer = _objectSpread$d(
           {
             id: this.layerId,
             type: "raster",

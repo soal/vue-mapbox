@@ -43,8 +43,10 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
     "@babel/runtime": "^7.11.2",
     "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-node-resolve": "^9.0.0",
     "@vue/cli-plugin-babel": "^3.2.0",
     "@vue/cli-plugin-eslint": "^3.2.1",
     "@vue/cli-service": "^3.2.0",

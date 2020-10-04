@@ -25,6 +25,7 @@ export default {
   sourcedata: { name: "sourcedata" },
   mouseout: { name: "mouseout" },
   styledataloading: { name: "styledataloading" },
+  styleimagemissing: { name: "styleimagemissing" },
   moveend: { name: "moveend" },
   move: { name: "move" },
   render: { name: "render" },

@@ -89,7 +89,7 @@ export default {
         const params = {
           id: featureId,
           source: this.sourceId,
-          "source-layer": this.layer["source-layer"]
+          sourceLayer: this.layer["source-layer"]
         };
         return this.map.setFeatureState(params, state);
       }
@@ -100,7 +100,7 @@ export default {
         const params = {
           id: featureId,
           source: this.source,
-          "source-layer": this.layer["source-layer"]
+          sourceLayer: this.layer["source-layer"]
         };
         return this.map.getFeatureState(params);
       }

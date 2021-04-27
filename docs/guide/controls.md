@@ -19,8 +19,6 @@ _All controls_:
       <MglAttributionControl />
       <MglNavigationControl position="top-right" />
       <MglGeolocateControl position="top-right" />
-      <MglNavigationControl position="top-right" />
-      <MglGeolocateControl position="top-right" />
       <MglScaleControl />
     </MglMap>
   </div>

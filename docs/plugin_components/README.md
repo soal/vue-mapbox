@@ -49,7 +49,7 @@ export default {
 
 If you didn't find plugin your need, it's easy to implement plugin component yourself.
 VueMapbox solves map loading task and give some useful helpers.
-Check out development [documantation](/plugin_components/plugin_components_development.md).
+Check out development [documentation](/plugin_components/plugin_components_development.md).
 
 ## Available plugin components
 

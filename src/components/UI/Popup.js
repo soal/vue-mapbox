@@ -92,6 +92,11 @@ export default {
     showed: {
       type: Boolean,
       default: false
+    },
+    
+    focusAfterOpen: {
+      type: Boolean,
+      default: true,
     }
   },
 

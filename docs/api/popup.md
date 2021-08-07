@@ -49,6 +49,12 @@
 - **Description:** If `true` content of the Popup treated as plain text
 - **See:** `setText` in [Popup](https://docs.mapbox.com/mapbox-gl-js/api/#popup#settext)
 
+### `focusAfterOpen`
+
+- **Type**: `Boolean`
+- **Description:** If `true` the popup will try to focus the first focusable element inside the popup
+- **See:** `focusAfterOpen` in [Popup](https://docs.mapbox.com/mapbox-gl-js/api/#popup#focusafteropen)
+
 ## Slots
 
 ### `default`

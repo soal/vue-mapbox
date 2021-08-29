@@ -35,7 +35,7 @@ const watchers = {
     this.map.setPitch(next);
   },
   light(next) {
-    this.map.setLigh(next);
+    this.map.setLight(next);
   }
 };
 

@@ -295,6 +295,13 @@
 - **Description:** A `fitBounds` object to use only when fitting the initial `bounds` provided above
 - **See:** `options.fitBoundsOptions` in [Map](https://docs.mapbox.com/mapbox-gl-js/api/#map)
 
+### `cooperativeGestures`
+
+- **Type:** `Boolean`
+- **Default:** `true`
+- **Description:** If true , scroll zoom will require pressing the ctrl or ⌘ key while scrolling to zoom map
+- **See:** `options.cooperativeGestures` in [Map](https://docs.mapbox.com/mapbox-gl-js/api/#map)
+
 ## Actions
 
 Asynchronous actions exposed via `GlMap.actions`

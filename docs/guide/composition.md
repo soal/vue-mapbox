@@ -1,8 +1,8 @@
 # Composition
 
-You can use Mapbox GL feature as Vue component and compose it as a child of GlMap. During creation all components waits until map properly initialized.
+You can use a Mapbox GL feature as Vue component and compose it as a child of GlMap. During creation all components wait until the map is properly initialized.
 
-For example, adding map controls:
+For example, to add map controls:
 
 ```vue
 <template>
@@ -143,7 +143,7 @@ export default {
 ```
 
 ::: tip
-VueMapbox internally use dependency injection mechanism (`provide/inject` in Vue [docs](https://vuejs.org)). It means that any component in `MglMap` sub-tree can access to `map`, `mapbox` and `actions` through `inject` property.
+VueMapbox internally uses dependency injection (`provide/inject` in Vue [docs](https://vuejs.org)). This means that any component in `MglMap` sub-tree can access to `map`, `mapbox` and `actions` through `inject` property.
 :::
 
-After successful mount all components emits `added` envent with Vue component object and additional data, such as corresponding Mapbox GL JS object or object containing layer id in payload.
+After successful mounting all components emit the `added` event to the Vue component object that contains additional data, such as the corresponding Mapbox GL JS object or object containing layer id in payload.

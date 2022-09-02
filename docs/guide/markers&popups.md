@@ -39,7 +39,7 @@ export default {
 - `coordinates {Array}` The GeoJSON coordinates for marker placement on the map
 - `offset {Object, Array}` Display the marker at an offset distance from the coordinates
 
-Full list of props you cab see on [API page](/api/marker.md#props)
+Full list of props you can see on [API page](/api/marker.md#props)
 
 ### Slots
 
@@ -83,14 +83,14 @@ export default {
 
 ### Default slot
 
-Default slot allows you to specify content to display in a Mapbox popup when the marker is clicked. See [below](#markers-popups-together)
+Default slots allow you to specify content to display in a Mapbox popup when the marker is clicked. See [below](#markers-popups-together)
 
 ## Popup
 
-The Popup component is wrapper around the [Mapbox GL Popup API](https://docs.mapbox.com/mapbox-gl-js/api/#popup).
+The Popup component is a wrapper around the [Mapbox GL Popup API](https://docs.mapbox.com/mapbox-gl-js/api/#popup).
 
-You can specify content inside popup in default slot. It can be HTML or Vue component.
-In this example [Vuetify card component](https://vuetifyjs.com/en/components/cards) used as a content for popup:
+You can specify content inside the popup with a default slot. This can be HTML or a Vue component.
+In this example a [Vuetify card component](https://vuetifyjs.com/en/components/cards) is used as a content for popup:
 
 ```vue
 <template>

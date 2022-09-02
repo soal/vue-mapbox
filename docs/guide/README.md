@@ -68,4 +68,4 @@ import Mapbox from "mapbox-gl";
 Vue.use(VueMapbox, { mapboxgl: Mapbox });
 ```
 
-Now you're ready for mapping. See how to [create a map](/guide/basemap.md).
+Now you're ready to create your first map. See how to [create a map](/guide/basemap.md).

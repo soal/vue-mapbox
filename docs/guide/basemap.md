@@ -2,9 +2,9 @@
 
 ## Adding map component
 
-For using maps with Mapbox GL JS you need a [map style](https://mapbox.com/mapbox-gl-js/style-spec).  
-If you using Mapbox-hosted maps, you need to set `access_token`. Look for details in Mapbox [documentation](https://mapbox.com/help/define-access-token/).  
-If you using self-hosting maps on your own server you can omit this parameter.
+To use maps with Mapbox GL JS you need a [map style](https://mapbox.com/mapbox-gl-js/style-spec).  
+If you are using Mapbox-hosted maps, you need to set the `access_token`. Check out the Mapbox [documentation](https://mapbox.com/help/define-access-token/) for more details.  
+If you are  using self-hosting maps on your own server you can omit this parameter.
 
 ```vue
 <template>
@@ -105,7 +105,7 @@ For example:
 
 ```vue
 <script>
-export deafult {
+export default {
   name: 'App',
 
   methods: {

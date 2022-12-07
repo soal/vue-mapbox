@@ -47,7 +47,7 @@
     "@rollup/plugin-node-resolve": "^9.0.0",
     "eslint": "^5.10.0",
     "husky": "^1.2.0",
-    "lint-staged": "^8.1.0",
+    "lint-staged": "^13.1.0",
     "rollup": "^2.28.2",
     "rollup-plugin-css-only": "^2.1.0",
     "rollup-plugin-dynamic-import-variables": "^1.1.0",

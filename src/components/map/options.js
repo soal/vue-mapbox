@@ -186,5 +186,13 @@ export default {
   crossSourceCollisions: {
     type: Boolean,
     default: true
+  },
+  cooperativeGestures: {
+    type: Boolean,
+    default: true
+  },
+  locale: {
+    type: Object,
+    default: undefined
   }
 };

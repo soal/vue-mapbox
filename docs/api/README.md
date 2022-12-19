@@ -295,6 +295,20 @@
 - **Description:** A `fitBounds` object to use only when fitting the initial `bounds` provided above
 - **See:** `options.fitBoundsOptions` in [Map](https://docs.mapbox.com/mapbox-gl-js/api/#map)
 
+### `cooperativeGestures`
+
+- **Type:** `Boolean`
+- **Default:** `true`
+- **Description:** If true , scroll zoom will require pressing the ctrl or ⌘ key while scrolling to zoom map, and touch pan will require using two fingers while panning to move the map. Touch pitch will require three fingers to activate if enabled. 
+- **See:** `options.cooperativeGestures` in [Map](https://docs.mapbox.com/mapbox-gl-js/api/#map)
+
+### `locale`
+
+- **Type:** `Object`
+- **Default:** `undefined`
+- **Description:** A patch to apply to the default localization table for UI strings such as control tooltips. The locale object maps namespaced UI string IDs to translated strings in the target language.
+- **See:** `options.locale` in [Map](https://docs.mapbox.com/mapbox-gl-js/api/#map)
+
 ## Actions
 
 Asynchronous actions exposed via `GlMap.actions`
